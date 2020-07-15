@@ -1,0 +1,7 @@
+{
+    // Allow babel to find which version of
+    // ES we are using
+    "presets": [
+        "@babel/preset-env"
+    ]
+}
