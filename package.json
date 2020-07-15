@@ -3,8 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/bin/www",
-    "dev": "nodemon --exec babel-node ./server/bin/www"
+    "build": "npm-run-all clean transpile",
+    "clean": "rimraf dist-server",
+    "dev": "NODE_ENV=development babel-node ./server/bin/www",
+    "dev:watch": "NODE_ENV=development nodemon --exec babel-node ./server/bin/www",
+    "prod": "NODE_ENV=production npm run build && node ./dist-server/bin/www",
+    "start": "npm run prod",
+    "transpile": "babel ./server --out-dir dist-server --copy-files"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -19,6 +24,8 @@
     "@babel/core": "^7.10.5",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
   }
 }
