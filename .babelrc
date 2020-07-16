@@ -3,5 +3,18 @@
     // ES we are using
     "presets": [
         "@babel/preset-env"
+    ],
+    "plugins": [
+        [
+            "module-resolver",
+            {
+                "root": [
+                    "./"
+                ],
+                "alias": {
+                    "s@config": "./server/config"
+                }
+            }
+        ]
     ]
 }

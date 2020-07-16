@@ -7,15 +7,18 @@
 import app from '../app';
 import debugLib from 'debug';
 import http from 'http';
+// Import config
+import config from 's@config'
 
 const debug = debugLib('myapp:server');
 
 /**
  * Get port from environment and store in Express.
  */
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(config.port);
 app.set('port', port);
-
+// var ip = config.ip;
+// app.set('ip', ip);
 /**
  * Create HTTP server.
  */
