@@ -4,8 +4,10 @@ require('dotenv').config();
 const path = require('path');
 // Import Webpack
 const webpack = require('webpack');
-// Loading css extract plugin
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// Copy WP plugin
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+// Front end dep list
+const Assets = require('./assets');
 
 module.exports = {
     mode: process.env.NODE_ENV || 'development',
@@ -15,26 +17,14 @@ module.exports = {
         publicPath: '/', // only to serve files virtually
         path: path.resolve(__dirname, 'server/public')
     },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                use: {
-                    loader: 'babel-loader',
-                },
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader, // Extrae css
-                    //'style-loader', // Carga css con directivas tailwind
-                    'css-loader' // Permite compilar css
-                ],
-            }
-        ]
-    },
     plugins: [
-        new MiniCssExtractPlugin({
-        filename: 'stylesheets/app.css',
-    })]
+        new CopyWebpackPlugin({
+            patterns: Assets.map(asset => {
+                return {
+                    from: path.resolve(__dirname, `./client/node_modules/${asset}`),
+                    to: path.resolve(__dirname, './server/public/vendor')
+                };
+            })
+        })
+    ]
 }

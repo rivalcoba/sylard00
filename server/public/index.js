@@ -90,22 +90,10 @@
 /*!*************************!*\
   !*** ./client/index.js ***!
   \*************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ \"./client/styles/main.css\");\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_main_css__WEBPACK_IMPORTED_MODULE_0__);\n// Importando los estilos\n // Script Test\n\nvar root = document.createElement(\"div\");\nroot.innerHTML = \"<p>Hello Webpack.</p>\";\ndocument.body.appendChild(root);\n\nwindow.foo = function () {\n  alert(\"hola\");\n};\n\n//# sourceURL=webpack:///./client/index.js?");
-
-/***/ }),
-
-/***/ "./client/styles/main.css":
-/*!********************************!*\
-  !*** ./client/styles/main.css ***!
-  \********************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./client/styles/main.css?");
+eval("console.log(\"Saluda\")\n//var foo = function(){alert(\"hola\")}\n\n//# sourceURL=webpack:///./client/index.js?");
 
 /***/ })
 
