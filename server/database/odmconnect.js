@@ -1,3 +1,5 @@
+// To use asynch await here
+import "@babel/polyfill"
 import mongoose from 'mongoose'
 import keys from '@config/keys'
 
