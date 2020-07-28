@@ -1,4 +1,4 @@
-// import greeting from '@chelpers/greeting'
-import greeting from './helpers/greeting'
+import greeting from '@chelpers/greeting'
 
-window.foo = greeting
+// Loading function to the global variable
+window.greeting = greeting

@@ -32,7 +32,7 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: Assets.map(asset => {
                 return {
-                    from: path.resolve(__dirname, `./client/node_modules/${asset}`),
+                    from: path.resolve(__dirname, `./node_modules/${asset}`),
                     to: path.resolve(__dirname, './server/public/vendor')
                 };
             })

@@ -1,3 +1,6 @@
+// Importing frontend lib
+import swal from 'sweetalert'
+
 export default ()=>{
-    console.log("> Hello Everyone...")
+    swal("Good job!", "You clicked the button!", "success");
 }
