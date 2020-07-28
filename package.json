@@ -9,7 +9,7 @@
     "dev": "NODE_ENV=development babel-node ./server/bin/www",
     "w:d": "NODE_ENV=development nodemon --exec babel-node ./server/bin/www",
     "prod": "NODE_ENV=production npm run build && node ./dist-server/bin/www",
-    "start": "npm run prod",
+    "start": "node ./dist-server/bin/www",
     "b:s": "babel ./server --out-dir dist-server --copy-files",
     "p": "node ./dist-server/bin/www"
   },
