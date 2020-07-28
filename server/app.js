@@ -3,8 +3,6 @@ import express from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
-import keys from '@config/keys'
-import mongoose from 'mongoose'
 
 // Import config
 import netConfig from '@config/net'
