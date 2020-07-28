@@ -8,5 +8,7 @@ export default{
     homeUrl: process.env.APP_URL,
     databaseUrl: process.env.DATABASE_URL,
     port: process.env.PORT,
-    ip: process.env.IP
+    ip: process.env.IP,
+    mailUserName: process.env.MAIL_USERNAME,
+    mailPassword: process.env.MAIL_PASSWORD
 }

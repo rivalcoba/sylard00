@@ -13,6 +13,7 @@
     "transpile": "babel ./server --out-dir dist-server --copy-files"
   },
   "dependencies": {
+    "@fullstackjs/mail": "^1.0.7",
     "babel-plugin-module-resolver": "^4.0.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
