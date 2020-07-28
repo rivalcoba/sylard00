@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+import {Router} from 'express'
+
+// Creating an instance from the express router
+const router = new Router();
+
+// Import Controllers
+import homeController from '@controllers/home'
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Sylard' });
-});
+router.get('/', homeController.index);
+router.get('/dashboard', homeController.dashboard)
 
-module.exports = router;
+export default router

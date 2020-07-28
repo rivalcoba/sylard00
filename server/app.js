@@ -5,21 +5,22 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import keys from '@config/keys'
 import mongoose from 'mongoose'
+
 // Import config
 import netConfig from '@config/net'
 import templateEngine from '@config/template-engine'
+import appRoutes from '@routes/routes'
+import dbConnection from '@database/odmconnect'
 
+// -2. Importing Routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+// -1 Creating an instance of express
 const app = express();
 
-// 0. Connectitng to Database
-// Map Global promise - get ride of warning
-// To use global promises
-mongoose.Promise = global.Promise;
-// todo...
-console.log(`LN17@s/app.js: ${keys.databaseUrl}`)
+// 0. Connecting to the Database
+dbConnection();
 
 // Applying main App Configurations
 // 1. Apply Network Configurations
@@ -28,14 +29,15 @@ netConfig(app)
 // 2. Setup Template Engine
 templateEngine(app)
 
+// 3. Middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// 4. Registering Routes
+appRoutes(app)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

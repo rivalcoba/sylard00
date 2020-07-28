@@ -12,6 +12,9 @@
                 "alias": {
                     "@config": "./server/config",
                     "@server": "./server",
+                    "@controllers": "./server/controllers",
+                    "@database" : "./server/database",
+                    "@routes": "./server/routes",
                     "@client": "./client",
                     "@chelpers": "./client/helpers"
                 }

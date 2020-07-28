@@ -12,7 +12,6 @@ export default (app) => {
 }
 
 function normalizePort(val) {
-    console.log(`LN5@index> normilizing port`)
     var port = parseInt(val, 10);
 
     if (isNaN(port)) {
