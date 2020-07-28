@@ -3,14 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "npm-run-all clean transpile",
+    "build": "npm run clean && npm run b:c && npm run b:s",
     "b:c": "webpack --mode=development",
     "clean": "rimraf dist-server",
     "dev": "NODE_ENV=development babel-node ./server/bin/www",
     "w:d": "NODE_ENV=development nodemon --exec babel-node ./server/bin/www",
     "prod": "NODE_ENV=production npm run build && node ./dist-server/bin/www",
     "start": "npm run prod",
-    "transpile": "babel ./server --out-dir dist-server --copy-files"
+    "b:s": "babel ./server --out-dir dist-server --copy-files",
+    "p": "node ./dist-server/bin/www"
   },
   "dependencies": {
     "@fullstackjs/mail": "^1.0.7",
@@ -32,6 +33,7 @@
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
     "@babel/node": "^7.10.5",
+    "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "babel-loader": "^8.1.0",
     "colors": "^1.4.0",
