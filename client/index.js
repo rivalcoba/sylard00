@@ -1,2 +1,4 @@
-console.log("Saluda")
-//var foo = function(){alert("hola")}
+// import greeting from '@chelpers/greeting'
+import greeting from './helpers/greeting'
+
+window.foo = greeting

@@ -13,9 +13,20 @@ module.exports = {
     mode: process.env.NODE_ENV || 'development',
     entry: './client/index.js',
     output: {
-        filename: 'index.js', // outputfile
+        filename: 'js/index.js', // outputfile
         publicPath: '/', // only to serve files virtually
         path: path.resolve(__dirname, 'server/public')
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader'
+                },
+            }
+        ]
     },
     plugins: [
         new CopyWebpackPlugin({

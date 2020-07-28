@@ -3,22 +3,26 @@
 /**
  * Module dependencies.
  */
-
 import app from '../app';
 import debugLib from 'debug';
 import http from 'http';
-// Import config
-import config from 's@config'
+import colors from 'colors'
+
+colors.setTheme({
+  silly: 'rainbow',
+  input: 'grey',
+  verbose: 'cyan',
+  prompt: 'grey',
+  info: 'green',
+  data: 'grey',
+  help: 'cyan',
+  warn: 'yellow',
+  debug: 'blue',
+  error: 'red'
+});
 
 const debug = debugLib('myapp:server');
 
-/**
- * Get port from environment and store in Express.
- */
-var port = normalizePort(config.port);
-app.set('port', port);
-// var ip = config.ip;
-// app.set('ip', ip);
 /**
  * Create HTTP server.
  */
@@ -28,30 +32,11 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
-server.listen(port);
+const IP = app.get('ip');
+const PORT = app.get('port');
+server.listen(PORT, IP);
 server.on('error', onError);
 server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
 
 /**
  * Event listener for HTTP server "error" event.
@@ -91,4 +76,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+  console.log(`Ln75@www.js>: Listen @ http://${app.get('ip')}:${addr.port}`.info)
 }

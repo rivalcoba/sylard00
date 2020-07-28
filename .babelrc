@@ -1,6 +1,4 @@
 {
-    // Allow babel to find which version of
-    // ES we are using
     "presets": [
         "@babel/preset-env"
     ],
@@ -12,7 +10,10 @@
                     "./"
                 ],
                 "alias": {
-                    "s@config": "./server/config"
+                    "@config": "./server/config",
+                    "@server": "./server",
+                    "@client": "./client",
+                    "@chelpers": "./client/helpers"
                 }
             }
         ]
