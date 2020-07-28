@@ -106,7 +106,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var swee
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _helpers_greeting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/greeting */ \"./client/helpers/greeting.js\");\n // Loading function to the global variable\n\nwindow.greeting = _helpers_greeting__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\n\n//# sourceURL=webpack:///./client/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ \"./client/styles/main.css\");\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_main_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _helpers_greeting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers/greeting */ \"./client/helpers/greeting.js\");\n// Importando los estilos\n // Importando Scripts\n\n // Loading function to the global variable\n\nwindow.greeting = _helpers_greeting__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\n//# sourceURL=webpack:///./client/index.js?");
+
+/***/ }),
+
+/***/ "./client/styles/main.css":
+/*!********************************!*\
+  !*** ./client/styles/main.css ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./client/styles/main.css?");
 
 /***/ }),
 

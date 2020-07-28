@@ -8,6 +8,8 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // Front end dep list
 const Assets = require('./assets');
+// Loading css extract plugin
+const MiniExtractCssPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: process.env.NODE_ENV || 'development',
@@ -25,6 +27,13 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 },
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniExtractCssPlugin.loader, // Extrae css
+                    'css-loader', // Permite compilar css
+                ],
             }
         ]
     },
@@ -36,6 +45,9 @@ module.exports = {
                     to: path.resolve(__dirname, './server/public/vendor')
                 };
             })
-        })
+        }),
+        new MiniExtractCssPlugin({
+            filename: 'styles/index.css',
+        }),
     ]
 }
