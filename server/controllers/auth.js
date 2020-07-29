@@ -33,6 +33,11 @@ const registerUser = async (req, res, next) => {
     }
 }
 
+// Processing the Email Confirmation
+const emailConfirm = async (req, res)=>{
+    // const user = await User
+}
+
 export default{
     register,
     registerUser,

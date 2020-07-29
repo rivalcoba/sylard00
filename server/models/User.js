@@ -1,5 +1,10 @@
 import mongoose from 'mongoose'
 import {Schema} from 'mongoose'
+import Bcrypt from 'bcryptjs'
+import randomstring from 'randomstring'
+import Mail from '@fullstackjs/mail'
+import keys from '@config/keys'
+import colors from 'colors'
 
 // Creatnig a User Schema
 const UserSchema = new Schema({    
@@ -30,7 +35,39 @@ const UserSchema = new Schema({
         type: String,
         default: 'visitor',
         required: true
-    }
+    },
+    emailConfirmCode : String,
+    createdAt: Date,
+    updatedAt: Date,
+    emailConfirmedAt: Date
+})
+
+// Creating a Pre 
+// ref: https://mongoosejs.com/docs/middleware.html#pre
+UserSchema.pre('save', function(){
+    // Hashing Password before Save
+    this.password = Bcrypt.hashSync(this.password)
+    this.emailConfirmCode = randomstring.generate(64)
+    this.createdAt = new Date()
+})
+
+// Creating Post Middleware
+// ref: https://mongoosejs.com/docs/middleware.html#post
+// The method retunr a promise
+UserSchema.post('save', async function(){
+    try {
+        await new Mail('confirm-account')
+        .to(this.email, this.name)
+        .subject('Sylard, please confirm your account')
+        .data({
+            name: this.name,
+            url: `${keys.homeUrl}/auth/emails/confirm/${this.emailConfirmCode}`
+        })
+        .send()
+        console.log(`LN68@models/User.js>: Email send correctly!!!`.yellow.italic.bgBlue)
+    } catch (error) {
+        console.log(`LN70@models/User.js>: ${error.message}`.red.bold.bgYellow)
+    }    
 })
 
 // Exporting User Schema
