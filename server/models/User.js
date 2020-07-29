@@ -36,7 +36,7 @@ const UserSchema = new Schema({
         default: 'visitor',
         required: true
     },
-    emailConfirmCode : String,
+    emailConfirmationToken : String,
     createdAt: Date,
     updatedAt: Date,
     emailConfirmedAt: Date
@@ -47,7 +47,7 @@ const UserSchema = new Schema({
 UserSchema.pre('save', function(){
     // Hashing Password before Save
     this.password = Bcrypt.hashSync(this.password)
-    this.emailConfirmCode = randomstring.generate(64)
+    this.emailConfirmationToken = randomstring.generate(64)
     this.createdAt = new Date()
 })
 
@@ -61,7 +61,7 @@ UserSchema.post('save', async function(){
         .subject('Sylard, please confirm your account')
         .data({
             name: this.name,
-            url: `${keys.homeUrl}/auth/emails/confirm/${this.emailConfirmCode}`
+            url: `${keys.homeUrl}/auth/email/confirm/${this.emailConfirmationToken}`
         })
         .send()
         console.log(`LN68@models/User.js>: Email send correctly!!!`.yellow.italic.bgBlue)

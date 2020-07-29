@@ -17,6 +17,7 @@
                     "@database" : "./server/database",
                     "@models" : "./server/models",
                     "@routes": "./server/routes",
+                    "@validators": "./server/validators",
                     "@client": "./client",
                     "@chelpers": "./client/helpers"
                 }

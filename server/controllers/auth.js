@@ -34,13 +34,15 @@ const registerUser = async (req, res, next) => {
 }
 
 // Processing the Email Confirmation
-const emailConfirm = async (req, res)=>{
+const emailConfirmed = async (req, res)=>{
     // const user = await User
+    res.send(`email-confirm> GOOD :D Email confirmed: ${req.params.token}`)
 }
 
 export default{
     register,
     registerUser,
     login,
-    loginUser
+    loginUser,
+    emailConfirmed
 }
