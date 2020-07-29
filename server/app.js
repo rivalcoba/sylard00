@@ -2,17 +2,15 @@ import createError from 'http-errors'
 import express from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
-import logger from 'morgan'
+import morgan from 'morgan'
 
 // Import config
 import netConfig from '@config/net'
 import templateEngine from '@config/template-engine'
-import appRoutes from '@routes/routes'
 import dbConnection from '@database/odmconnect'
 
 // -2. Importing Routes
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+import addAppRoutes from '@routes/routes'
 
 // -1 Creating an instance of express
 const app = express();
@@ -27,15 +25,17 @@ netConfig(app)
 // 2. Setup Template Engine
 templateEngine(app)
 
-// 3. Middleware
-app.use(logger('dev'));
+// 3. Global Middleware
+app.use(morgan('dev'));
+// Used instead of Body Parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 4. Registering Routes
-appRoutes(app)
+addAppRoutes(app)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

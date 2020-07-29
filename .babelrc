@@ -15,6 +15,7 @@
                     "@server": "./server",
                     "@controllers": "./server/controllers",
                     "@database" : "./server/database",
+                    "@models" : "./server/models",
                     "@routes": "./server/routes",
                     "@client": "./client",
                     "@chelpers": "./client/helpers"
