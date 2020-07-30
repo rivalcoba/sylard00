@@ -58,6 +58,7 @@ UserSchema.post('save', async function(){
     try {
         console.log(`LN68@models/User.js>: Sending email to ${this.email}`.yellow.italic.bgRed)
         await new Mail('confirm-account')
+        .from("yoncece@sylard.com")
         .to(this.email, this.name)
         .subject('Sylard, please confirm your account')
         .data({
@@ -67,7 +68,7 @@ UserSchema.post('save', async function(){
         .send()
         console.log(`LN68@models/User.js>: Email send correctly!!!`.yellow.italic.bgBlue)
     } catch (error) {
-        console.log(`LN70@models/User.js> ERROR: ${error.message}`.red.bold.bgYellow)
+        console.log(`LN70@models/User.js> ERROR SENDING MAIL: ${error.message}`.red.bold.bgYellow)
     }    
 })
 
