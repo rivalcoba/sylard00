@@ -23,13 +23,12 @@ export default async (req, res, next)=>{
                 'token'
             )
         }
-
         // If the user was found
         req.user = user;
         next()
     } catch (error) {
         return res.status(422).json({
-            [error.type]: error.message
+            error: error.message
         })
     }
 }

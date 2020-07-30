@@ -26,9 +26,12 @@ const registerUser = async (req, res, next) => {
             name,
             email,
             password
-        }) 
-        return res.status(201).json({user: user.toJSON()})
+        })
+        let userModel = user.toJSON()
+        res.render('auth/confirmMailSent', userModel)
+        // return res.status(201).json({user: user.toJSON()})
     } catch (error) {
+        console.log(`controllers/auth.js> ERROR registering user: ${error.message}`)
         return res.status(409).send(`> Error : ${error.message}`)       
     }
 }
