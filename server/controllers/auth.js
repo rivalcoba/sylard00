@@ -12,7 +12,7 @@ const loginUser = (req, res, next) => {
 
 // Register User
 const register = (req, res)=>{
-    res.render('index/register', { title: 'Register', content:'Fill out the form to register....' });
+    res.render('auth/register', {onRegisterPage:true });
 }
 
 // Processing the form for

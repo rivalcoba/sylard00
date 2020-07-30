@@ -23,6 +23,11 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    role: {
+        type: String,
+        default: 'visitor',
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now
@@ -30,11 +35,6 @@ const UserSchema = new Schema({
     image: {
         type: String,
         default: 'https://img.icons8.com/fluent/48/000000/user-male-circle.png'
-    },
-    role: {
-        type: String,
-        default: 'visitor',
-        required: true
     },
     emailConfirmationToken : String,
     createdAt: Date,
