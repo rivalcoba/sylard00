@@ -45,7 +45,7 @@ const emailConfirmed = async (req, res)=>{
         const user = await User.findOne({
             emailConfirmationToken: req.user.emailConfirmationToken})
             .exec()
-        user.confirmUser()
+        user.activateUser()
         // We update the user with the confirmation
         res.render('auth/confirmedMail', req.user.toJSON())
     } catch (error) {

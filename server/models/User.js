@@ -74,7 +74,7 @@ UserSchema.post('save', async function(){
 })
 
 // User Methods
-UserSchema.methods.confirmUser = async function(){
+UserSchema.methods.activateUser = async function(){
     await this.updateOne({
             emailConfirmationToken: null,
             updatedAt: new Date(),

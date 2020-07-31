@@ -15,5 +15,5 @@ router.post('/register/user', authController.registerUser)
 router.get('/email/confirm/:token', emailConfirmValidator, authController.emailConfirmed)
 router.get('/login', authController.login)
 router.post('/login/user', authController.loginUser)
-
+    
 export default router
