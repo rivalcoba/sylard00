@@ -74,8 +74,12 @@ UserSchema.post('save', async function(){
 })
 
 // User Methods
-UserSchema.methods.awesomeMethod = async function(){
-    return true
+UserSchema.methods.confirmUser = async function(){
+    await this.updateOne({
+            emailConfirmationToken: null,
+            updatedAt: new Date(),
+            emailConfirmedAt: new Date()
+        }).exec()
 }
 
 // Exporting User Schema

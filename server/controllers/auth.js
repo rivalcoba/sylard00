@@ -42,15 +42,10 @@ const registerUser = async (req, res, next) => {
 const emailConfirmed = async (req, res)=>{
     try {
         // Activating Account
-        const user = await User.findOneAndUpdate({
-            emailConfirmationToken: req.user.emailConfirmationToken},{
-                emailConfirmationToken: null,
-                updatedAt: new Date(),
-                emailConfirmedAt: new Date()
-            },{
-                new: true
-            }).exec()
-                
+        const user = await User.findOne({
+            emailConfirmationToken: req.user.emailConfirmationToken})
+            .exec()
+        user.confirmUser()
         // We update the user with the confirmation
         res.render('auth/confirmedMail', req.user.toJSON())
     } catch (error) {
