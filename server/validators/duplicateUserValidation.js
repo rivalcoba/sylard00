@@ -44,7 +44,6 @@ export default async (req, res, next)=>{
         }
     } catch (error) {
         console.log(`duplicateUserValidation> ${error.message}`)
-        console.log(`>>> Errores: > ${error.errors}`)
         res.render("failed",{
             title: "Error en Registro",
             iconTitle: "fa fa-exclamation-circle",

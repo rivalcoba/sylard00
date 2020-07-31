@@ -20,11 +20,7 @@
         </div>
       </div>
 
-    <div class="row">
-        {{!-- <div class="input-field col s12">
-            <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-            <label for="disabled">Disabled</label>
-        </div> --}}
+    <div class="row">        
         <div class="switch col s12">
             <div class="grey-text">Registrarse como</div>
             <label>
@@ -33,7 +29,8 @@
                     id="role"
                     name="role"
                     type="checkbox"
-                    disabled>
+                    {{!-- disabled --}}
+                    >
                 <span class="lever"></span>
                 Colaborador
             </label>
@@ -58,6 +55,7 @@
             id="password" 
             type="password" 
             name="password"
+            placeholder="Debe ser al menos de 6 caracteres"
             class="validate">
           <label for="password">Password</label>
         </div>
@@ -66,10 +64,11 @@
       <div class="row">
         <div class="input-field col s12">
           <input 
-          id="password2"
-          name="password2"
+          id="confirmationPassword"
+          name="confirmationPassword"
+          placeholder="Debe coincidir con el de arriba"
           type="password" class="validate">
-          <label for="password2">Confirme su Password</label>
+          <label for="confirmationPassword">Confirme su Password</label>
         </div>
       </div>
 
