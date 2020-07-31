@@ -49,8 +49,12 @@ const emailConfirmed = async (req, res)=>{
         // We update the user with the confirmation
         res.render('auth/confirmedMail', req.user.toJSON())
     } catch (error) {
-        console.log(`Controllers>auth>emailConfirmed> ${error.message}`)
-        res.render('auth/failedConfirmedEmail', {message: `Error al validar el usuario con el siguiente correo: ${req.user.email}`})
+        console.log(`Controllers>auth>emailConfirmed> ${error.message}`)        
+        res.render("auth/failed",{
+            title: "Activacion de Cuenta",
+            iconTitle: "fa fa-frown-o",
+            message: "Ha ocurrido un desafortunado error en el proceso de Activacion.",
+            error: `El usuario con este correo ${req.body.email} no ha podido Activar.`})
     }    
 }
 

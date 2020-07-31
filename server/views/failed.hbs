@@ -1,4 +1,4 @@
-<h3 class="pink-text">Confirmación de Correo <i class="fa fa-frown-o"></i></h3>
+<h3 class="pink-text"><i class="{{iconTitle}}"></i> {{title}}</h3>
 <div class="row">
   <div class="col s12">
       Malas noticias!!! 
@@ -7,11 +7,10 @@
 <div>
   <blockquote>
     <p>
-      Ha ocurrido un desafortunado error en el proceso de
-      confirmación de correo electronico.
+      {{message}}
     </p>
     <p> 
-      El error es este: <em class="red-text">{{message}}</em>.
+      El error es este: <em class="red-text">{{error}}</em>.
     </p>  
     <p>
       Si suena muy tecnico te sugiero contactar al administrador.

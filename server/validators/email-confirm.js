@@ -29,6 +29,10 @@ export default async (req, res, next)=>{
         req.user = user;
         next()
     } catch (error) {
-        res.render("auth/failedConfirmedEmail",{message: error.message})
+        res.render("failed",{
+            title: "Error en Confirmacion",
+            iconTitle: "fa fa-exclamation-circle",
+            message: "Ha ocurrido un desafortunado error en el proceso de confirmación.",
+            error: `El siguiente token es inexistente: ${req.params.token}`})
     }
 }
