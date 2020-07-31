@@ -49,6 +49,7 @@ UserSchema.pre('save', function(){
     this.password = Bcrypt.hashSync(this.password)
     this.emailConfirmationToken = randomstring.generate(64)
     this.createdAt = new Date()
+    this.updatedAt = new Date()
 })
 
 // Creating Post Middleware
@@ -71,6 +72,11 @@ UserSchema.post('save', async function(){
         console.log(`LN70@models/User.js> ERROR SENDING MAIL: ${error.message}`.red.bold.bgYellow)
     }    
 })
+
+// User Methods
+UserSchema.methods.awesomeMethod = async function(){
+    return true
+}
 
 // Exporting User Schema
 export default mongoose.model('Users', UserSchema)

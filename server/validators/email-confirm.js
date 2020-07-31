@@ -13,22 +13,22 @@ export default async (req, res, next)=>{
         // Validates the existence of a valid token
         await EmailConfirmSchema.validate(req.params)
         
+        // Checking if the token is valid!!
         const user = await User.findOne({emailConfirmationToken: req.params.token})
         
         // If the user was not found
         if(!user){
             throw new Yup.ValidationError(
-                'Invalid Confirmation Code',
+                `Invalid Confirmation Code: ${req.params.token}`,
                 req.body,
                 'token'
             )
         }
         // If the user was found
+        // We continue with the process
         req.user = user;
         next()
     } catch (error) {
-        return res.status(422).json({
-            error: error.message
-        })
+        res.render("auth/failedConfirmedEmail",{message: error.message})
     }
 }
