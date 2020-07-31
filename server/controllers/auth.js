@@ -18,12 +18,13 @@ const register = (req, res)=>{
 // Registering New Users
 const registerUser = async (req, res, next) => {
     // Extracting Data from the request
-    const {name, email, password} = req.body
+    const {name, email, password, lastName} = req.body
     try {
         // Back en Validation
         // Creating the new user
         const user = await User.create({
             name,
+            lastName,
             email,
             password
         })
