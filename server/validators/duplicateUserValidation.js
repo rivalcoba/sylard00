@@ -4,13 +4,30 @@ import User from '@models/User';
 
 // Creating validation schema
 // All we need from the confirmation email is the token
-const EmailConfirmSchema = Yup.object().shape({
-    token: Yup.string().length(64).required()
+const UserRegistrationSchema = Yup.object().shape({
+    name: Yup.string().required('Se requiere ingresar nombre'),
+    lastName: Yup.string().required('Se requiere ingresar apellido'),
+    email: Yup.string().email().required('Se requiere ingresar un correo valido'),
+    role: Yup.string().oneOf(["colaborator","visitor"]).required('Se requiere proporcionar un rol'),
+    password: Yup.string().min(6).required('Se requiere ingresar password de al menos 6 caracteres'),
+    confirmationPassword: Yup.string().oneOf([Yup.ref('password')],'Los passwords ingresados no coinciden')
 });
 
 export default async (req, res, next)=>{
     try {
-        // Check for a duplicate user
+        req.body.role = typeof(req.body.role)==="undefined"?"visitor":"colaborator"
+        const {name, lastName, email, password, confirmationPassword, role} = req.body
+        
+        // Backend form validation
+        await UserRegistrationSchema.validate({
+            name,
+            lastName,
+            email,
+            password,
+            confirmationPassword,
+            role
+        })
+
         // by email
         const user = await User.findOne({email: req.body.email})
         // If the user was found
@@ -27,10 +44,11 @@ export default async (req, res, next)=>{
         }
     } catch (error) {
         console.log(`duplicateUserValidation> ${error.message}`)
+        console.log(`>>> Errores: > ${error.errors}`)
         res.render("failed",{
             title: "Error en Registro",
             iconTitle: "fa fa-exclamation-circle",
             message: "Ha ocurrido un desafortunado error en el proceso de registro.",
-            error: `No se ha podido confirmar la existencia del correo electronico en la base de datos.`})
+            error: `El formulario no ha sido llenado correctamente: ${error.message}`})
     }
 }
