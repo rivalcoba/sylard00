@@ -1,0 +1,12 @@
+{{#if error}}
+<div class="card-panel red darken-4">
+	<div class="center-align">
+		<span class="center white-text"><b>{{error}}</b></span>
+	</div>
+</div>
+{{/if}}
+
+{{#each errors}}
+<div class="alert alert-danger">{{text}}</div>
+{{else}}
+{{/each}}

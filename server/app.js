@@ -3,6 +3,10 @@ import express from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import morgan from 'morgan'
+import passportConfig from '@config/passport'
+import passport from 'passport'
+import session from 'express-session'
+import methodOverride from 'method-override'
 
 // Import config
 import netConfig from '@config/net'
@@ -11,6 +15,9 @@ import dbConnection from '@database/odmconnect'
 
 // -2. Importing Routes
 import addAppRoutes from '@routes/routes'
+
+// -3 Passport Config
+passportConfig(passport)
 
 // -1 Creating an instance of express
 const app = express();
@@ -27,14 +34,40 @@ templateEngine(app)
 
 // 3. Global Middleware
 app.use(morgan('dev'));
-// Used instead of Body Parser
+
+// 4. Used instead of Body Parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// 5. Manejo de cookies
 app.use(cookieParser());
+
+// 6. Archivos Estaticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 4. Registering Routes
+// 7. Falta Override
+app.use(methodOverride('_method'));
+
+// 8. Sessions for Passport
+app.use(session({
+  secret: 'itgam',
+  resave: true,
+  saveUninitialized: true
+}));
+
+// 9. PASSPORT middleware for used with sessions
+app.use(passport.initialize());
+app.use(passport.session());
+
+// 10. Flashing
+
+// 11. Variables Globales
+app.use((req, res, next)=>{
+  res.locals.user = req.user || null;
+  next()
+})
+
+// 12. Registering Routes
 addAppRoutes(app)
 
 // catch 404 and forward to error handler

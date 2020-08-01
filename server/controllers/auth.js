@@ -1,12 +1,25 @@
 // Importing user model
 import User from '@models/User'
+import passport from 'passport'
+
+// Show Loginform
+const login = (req, res, next) => { 
+    res.render('auth/login');
+}
 
 // Processes login form
-const login = (req, res, next) => {
-    res.render('index/documentation', { title: 'Login', content:'Enter your credentials to login.' });
-}
 const loginUser = (req, res, next) => {
-    res.render('index/documentation', { title: 'Login', content:'Enter your credentials to login.' });
+    // 1 Se agrega authenticacion
+    // y se pasa una estrategia
+    passport.authenticate('local', {
+        successRedirect:"/",
+        failureRedirect: "/auth/login/error",
+        failureFlash: false
+    })(req,res,next)
+}
+// Show login form with auth error
+const loginError = (req, res, next) => { 
+    res.render('auth/login',{error: "Usuario o Password incorrecto"});
 }
 
 // Register User
@@ -60,10 +73,19 @@ const emailConfirmed = async (req, res)=>{
     }    
 }
 
+const logoutUser = (req, res, next) => { 
+    // Funcion para salirse
+    req.logout()
+    res.redirect('/auth/login')
+
+}
+
 export default{
     register,
     registerUser,
     login,
     loginUser,
-    emailConfirmed
+    emailConfirmed,
+    loginError,
+    logoutUser
 }
