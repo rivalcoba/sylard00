@@ -1,3 +1,4 @@
+import "@babel/polyfill"
 // Importing validation framework
 import * as Yup from 'yup';
 import User from '@models/User';
