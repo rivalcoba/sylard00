@@ -18,5 +18,5 @@ router.get('/login', authController.login)
 router.post('/login/user', authController.loginUser)
 router.get('/login/error', authController.loginError)
 router.get('/logout', authController.logoutUser)
-    
+
 export default router

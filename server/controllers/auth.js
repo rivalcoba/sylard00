@@ -13,14 +13,15 @@ const loginUser = (req, res, next) => {
     // y se pasa una estrategia
     passport.authenticate('local', {
         successRedirect:"/",
-        failureRedirect: "/auth/login/error",
+        failureRedirect: "/auth/login",
         failureFlash: true
     })(req,res,next)
 }
 
 // Show login form with auth error
-const loginError = (req, res, next) => { 
-    res.render('auth/login',{error: "Usuario o Password incorrecto"});
+const loginError = (req, res, next) => {
+    req.flash('error_msg','Usuario o Password incorrecto')
+    res.redirect('/auth/login')
 }
 
 // Register User

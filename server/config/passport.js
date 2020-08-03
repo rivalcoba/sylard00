@@ -18,7 +18,7 @@ export default function(passport){
                 return done(
                     null, // error
                     false, // user
-                    {message : "Usuario no encontrado"} // Message
+                    {message : "Usuario incorrecto"} // Message
                 )
             }
             // MATCH PASSWORD
