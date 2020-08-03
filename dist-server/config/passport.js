@@ -8,5 +8,5 @@ _bcryptjs["default"].compare(b,a.password).then(function(b){return b?c(null,a):c
 !1,// user
 {message:"Password Incorrecto"}// Message
 )})["catch"](function(a){throw console.log("config>passport>bcryp> Error: ".concat(a)),a}):c(null,!1,// user
-{message:"Usuario no encontrado"}// Message
+{message:"Usuario incorrecto"}// Message
 )})})),a.serializeUser(function(a,b){b(null,a.id)}),a.deserializeUser(function(a,b){_User["default"].findById(a,function(a,c){b(a,c)})})}
