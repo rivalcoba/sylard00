@@ -21,6 +21,17 @@ export default function(passport){
                     {message : "Usuario incorrecto"} // Message
                 )
             }
+            console.log('--------------------------')
+            console.log(`> CUENTA ${user.emailConfirmedAt?'ACTIVA':'INACTIVA'}`)
+            console.log('--------------------------')
+            // Verifies if the account is active
+            if(!user.emailConfirmedAt){
+                return done(
+                    null, // error
+                    false, // user
+                    {message : "Cuenta inactiva, favor de activarla haciendo clic en el enlace previamente enviado a su correo."}
+                )
+            }
             // MATCH PASSWORD
             bcrypt.compare(password, user.password)
             .then((isMatch)=>{
