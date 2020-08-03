@@ -18,12 +18,6 @@ const loginUser = (req, res, next) => {
     })(req,res,next)
 }
 
-// Show login form with auth error
-const loginError = (req, res, next) => {
-    req.flash('error_msg','Usuario o Password incorrecto')
-    res.redirect('/auth/login')
-}
-
 // Register User
 const register = (req, res)=>{
     res.render('auth/register', {onRegisterPage:true });

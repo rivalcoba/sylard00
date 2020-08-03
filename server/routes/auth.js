@@ -16,7 +16,6 @@ router.post('/register/user',duplicateUserValidation, authController.registerUse
 router.get('/email/confirm/:token', emailConfirmValidator, authController.emailConfirmed)
 router.get('/login', authController.login)
 router.post('/login/user', authController.loginUser)
-router.get('/login/error', authController.loginError)
 router.get('/logout', authController.logoutUser)
 
 export default router
