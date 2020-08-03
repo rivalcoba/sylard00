@@ -6,6 +6,8 @@ const router = new Router();
 // Import Controllers
 import authController from '@controllers/auth'
 
+// Authorization Check Middleware
+import ensureAuthenticated from '@helpers/ensureAuth'
 // Import validator midlewares
 import emailConfirmValidator from '@validators/email-confirm'
 import duplicateUserValidation from '@validators/duplicateUserValidation'

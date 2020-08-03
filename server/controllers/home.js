@@ -1,7 +1,13 @@
 
 // Home Controllers
 const index = (req, res, next) => {
-    res.render('index/welcome', { title: 'Welcome to Sylard', content:'SYLARD means: Synchronized language annotation result display' });
+    // Check if the user is logged
+    if(res.locals.user){
+        res.redirect('/dashboard')
+    }
+    else{
+        res.render('index/welcome', { title: 'Welcome to Sylard', content:'SYLARD means: Synchronized language annotation result display' });
+    }    
 }
 const contact = (req, res, next) => {
     res.render('index/contact', { title: 'Contact', content:'Contact the administrator' });
