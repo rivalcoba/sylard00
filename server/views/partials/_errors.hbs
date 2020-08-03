@@ -1,4 +1,10 @@
 {{#if error}}
+<span id="error" hidden>{{error}}</span>
+<script>
+	let msg = document.getElementById("error").textContent
+	flashMessage('error',msg)
+</script>
+
 <div class="card-panel red darken-4">
 	<div class="center-align">
 		<span class="center white-text"><b>{{error}}</b></span>

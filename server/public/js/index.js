@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./client/helpers/flashMessage.js":
+/*!****************************************!*\
+  !*** ./client/helpers/flashMessage.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert */ \"./node_modules/sweetalert/dist/sweetalert.min.js\");\n/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_0__);\nvar Toast=sweetalert__WEBPACK_IMPORTED_MODULE_0___default.a.mixin({toast:!0,position:\"center\",showConfirmButton:!1,timer:3e3,timerProgressBar:!0,onOpen:function onOpen(a){a.addEventListener(\"mouseenter\",sweetalert__WEBPACK_IMPORTED_MODULE_0___default.a.stopTimer),a.addEventListener(\"mouseleave\",sweetalert__WEBPACK_IMPORTED_MODULE_0___default.a.resumeTimer)}});/* Icon type\nsuccess\nerror\nwarning\ninfo\nquestion\n*//* harmony default export */ __webpack_exports__[\"default\"] = (function(a,b){Toast.fire({icon:a,title:b})});\n\n//# sourceURL=webpack:///./client/helpers/flashMessage.js?");
+
+/***/ }),
+
 /***/ "./client/helpers/greeting.js":
 /*!************************************!*\
   !*** ./client/helpers/greeting.js ***!
@@ -106,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var swee
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ \"./client/styles/main.css\");\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_main_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _helpers_greeting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers/greeting */ \"./client/helpers/greeting.js\");\n// Importando los estilos\n// Importando Scripts\n// Loading function to the global variable\nwindow.greeting=_helpers_greeting__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\n//# sourceURL=webpack:///./client/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ \"./client/styles/main.css\");\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_main_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _helpers_greeting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers/greeting */ \"./client/helpers/greeting.js\");\n/* harmony import */ var _helpers_flashMessage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers/flashMessage */ \"./client/helpers/flashMessage.js\");\n// Importando los estilos\n// Importando Scripts\n// Loading function to the global variable\n// Loading flashing functions\nwindow.greeting=_helpers_greeting__WEBPACK_IMPORTED_MODULE_1__[\"default\"],window.flashMessage=_helpers_flashMessage__WEBPACK_IMPORTED_MODULE_2__[\"default\"];\n\n//# sourceURL=webpack:///./client/index.js?");
 
 /***/ }),
 
