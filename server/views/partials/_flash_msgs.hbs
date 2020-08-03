@@ -1,17 +1,19 @@
 {{#if success_msg}}
-<div id="flashMsg" class="card-panel green accent-4">
+<span id="success" hidden>{{success_msg}}</span>
+{{!-- <div id="flashMsg" class="card-panel green accent-4">
 	<div class="center-align">
 		<i class="fa-check-square-o fa-2x" style="color: white"></i>
 		<span class="center white-text"><b>{{success_msg}}</b></span>
 	</div>
-</div>
+</div> --}}
 {{/if}}
 
 {{#if error_msg}}
-<div id="flashMsg" class="card-panel red accent-4">
+<span id="error" hidden>{{error_msg}}</span>
+{{!-- <div id="flashMsg" class="card-panel red accent-4">
 	<div class="center-align">
 		<i class="fa fa-frown-o fa-2x" style="color: white"></i>
 		<span class="center white-text"><b>{{error_msg}}</b></span>
 	</div>
-</div>
+</div> --}}
 {{/if}}

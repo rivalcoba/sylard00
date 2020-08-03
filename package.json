@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./dist-server/bin/www",
     "build": "npm run clean && npm run b:c && npm run b:s",
-    "b:c": "webpack --mode=development",
+    "b:c": "webpack --mode=production",
     "b:s": "babel ./server --out-dir dist-server --copy-files",
     "clean": "rimraf dist-server",
     "dev": "NODE_ENV=development babel-node ./server/bin/www",
@@ -37,6 +37,7 @@
     "randomstring": "^1.1.5",
     "rimraf": "^3.0.2",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^9.17.1",
     "yup": "^0.29.2"
   },
   "devDependencies": {

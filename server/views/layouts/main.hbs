@@ -38,19 +38,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- WYSIWYG EDITOR -->  
   <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+  <!-- App scripts  -->
+  <script src="/js/index.js"></script>
   <script>
   $(document).ready(function(){
     $('.sidenav').sidenav();
     $('select').formSelect();
   });
+
+  // Sweet alert
+  if(document.getElementById("error")){
+    flashmsg('error',document.getElementById("error").textContent)
+  }
+  if(document.getElementById("error")){
+    flashmsg('error',document.getElementById("error").textContent)
+  }
+
   {{!-- Editor Avanzado   --}}
   {{!-- CKEDITOR.replace('body',{
     plugins: 'wysiwygarea,toolbar,basicstyles,link'
   }); --}}
   </script>
-<!-- App scripts  -->
-<script src="/js/index.js"></script>
-
 </body>
 
 </html>
