@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=void 0;var _default=function(a,b,c){b.locals.user.emailConfirmedAt?c():(a.flash("error_msg","Requiere activar su cuenta"),b.redirect("/auth/login"))};exports["default"]=_default;
