@@ -82,6 +82,5 @@ export default{
     login,
     loginUser,
     emailConfirmed,
-    loginError,
     logoutUser
 }
