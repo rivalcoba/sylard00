@@ -31,24 +31,21 @@ export default async (req, res, next)=>{
 
         // by email
         const user = await User.findOne({email: req.body.email})
-        // If the user was found
+        // If user was not found, its ok...
         if(!user){
             // We continue with the process
             req.user = user;
             next()
         }else{
-            res.render("failed",{
-                title: "Registro",
-                iconTitle: "fa fa-frown-o",
-                message: "Ha ocurrido un desafortunado error en el proceso de registro.",
-                error: `El usuario con este correo ${req.body.email} ya existe.`})
+            // Failed be cause a user is attepmting to register
+            // an aready registered user
+            // Setting the flashing message            
+            req.flash('error_msg',`El usuario con el correo "${req.body.email}" ya existe.`)
+            res.redirect('/auth/register')
         }
     } catch (error) {
-        console.log(`duplicateUserValidation> ${error.message}`)
-        res.render("failed",{
-            title: "Error en Registro",
-            iconTitle: "fa fa-exclamation-circle",
-            message: "Ha ocurrido un desafortunado error en el proceso de registro.",
-            error: `El formulario no ha sido llenado correctamente: ${error.message}`})
+        console.log(`duplicateUserValidation> ${error.message}`)        
+        req.flash('error_msg',`El formulario no ha sido llenado correctamente: ${error.message}`)
+        res.redirect('/auth/register')
     }
 }

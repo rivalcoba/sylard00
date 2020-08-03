@@ -7,6 +7,7 @@ import passportConfig from '@config/passport'
 import passport from 'passport'
 import session from 'express-session'
 import methodOverride from 'method-override'
+import flash from 'connect-flash'
 
 // Import config
 import netConfig from '@config/net'
@@ -48,9 +49,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 7. Falta Override
 app.use(methodOverride('_method'));
 
-// 8. Sessions for Passport
+// 8. Enabling Sessions for Passport
 app.use(session({
-  secret: 'itgam',
+  secret: 's_|/14rd',
   resave: true,
   saveUninitialized: true
 }));
@@ -60,9 +61,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // 10. Flashing
+app.use(flash())
 
 // 11. Variables Globales
 app.use((req, res, next)=>{
+  // Access to flash variables
+  res.locals.succes_msg= req.flash('sucess_msg')
+  res.locals.error_msg= req.flash('error_msg')
+  // Made for passport
+  res.locals.error= req.flash('error')
+  // To Keep de loged user info
   res.locals.user = req.user || null;
   next()
 })

@@ -3,7 +3,7 @@ import User from '@models/User'
 import passport from 'passport'
 
 // Show Loginform
-const login = (req, res, next) => { 
+const login = (req, res, next) => {
     res.render('auth/login');
 }
 
@@ -14,9 +14,10 @@ const loginUser = (req, res, next) => {
     passport.authenticate('local', {
         successRedirect:"/",
         failureRedirect: "/auth/login/error",
-        failureFlash: false
+        failureFlash: true
     })(req,res,next)
 }
+
 // Show login form with auth error
 const loginError = (req, res, next) => { 
     res.render('auth/login',{error: "Usuario o Password incorrecto"});
