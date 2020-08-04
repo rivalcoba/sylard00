@@ -66,10 +66,10 @@ app.use(flash())
 // 11. Variables Globales
 app.use((req, res, next)=>{
   // Access to flash variables
-  res.locals.succes_msg= req.flash('sucess_msg')
-  res.locals.error_msg= req.flash('error_msg')
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.error_msg = req.flash('error_msg')
   // Made for passport
-  res.locals.error= req.flash('error')
+  res.locals.passportError= req.flash('error')
   // To Keep de loged user info
   res.locals.user = req.user || null;
   next()

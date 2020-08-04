@@ -1,19 +1,15 @@
 {{#if success_msg}}
 <span id="success" hidden>{{success_msg}}</span>
-{{!-- <div id="flashMsg" class="card-panel green accent-4">
-	<div class="center-align">
-		<i class="fa-check-square-o fa-2x" style="color: white"></i>
-		<span class="center white-text"><b>{{success_msg}}</b></span>
-	</div>
-</div> --}}
+{{/if}}
+
+{{#if info_msg}}
+<span id="info" hidden>{{info_msg}}</span>
 {{/if}}
 
 {{#if error_msg}}
 <span id="error" hidden>{{error_msg}}</span>
-{{!-- <div id="flashMsg" class="card-panel red accent-4">
-	<div class="center-align">
-		<i class="fa fa-frown-o fa-2x" style="color: white"></i>
-		<span class="center white-text"><b>{{error_msg}}</b></span>
-	</div>
-</div> --}}
+{{/if}}
+
+{{#if passportError}}
+<span id="error" hidden>{{passportError}}</span>
 {{/if}}

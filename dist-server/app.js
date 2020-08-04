@@ -3,7 +3,7 @@ var app=(0,_express["default"])();// 0. Connecting to the Database
 (0,_odmconnect["default"])(),(0,_net["default"])(app),(0,_templateEngine["default"])(app),app.use((0,_morgan["default"])("dev")),app.use(_express["default"].json()),app.use(_express["default"].urlencoded({extended:!1})),app.use((0,_cookieParser["default"])()),app.use(_express["default"]["static"](_path["default"].join(__dirname,"public"))),app.use((0,_methodOverride["default"])("_method")),app.use((0,_expressSession["default"])({secret:"s_|/14rd",resave:!0,saveUninitialized:!0})),app.use(_passport2["default"].initialize()),app.use(_passport2["default"].session()),app.use((0,_connectFlash["default"])()),app.use(function(a,b,c){// Access to flash variables
 // Made for passport
 // To Keep de loged user info
-b.locals.succes_msg=a.flash("sucess_msg"),b.locals.error_msg=a.flash("error_msg"),b.locals.error=a.flash("error"),b.locals.user=a.user||null,c()}),(0,_routes["default"])(app),app.use(function(a,b,c){c((0,_httpErrors["default"])(404))}),app.use(function(a,b,c){// set locals, only providing error in development
+b.locals.success_msg=a.flash("success_msg"),b.locals.error_msg=a.flash("error_msg"),b.locals.passportError=a.flash("error"),b.locals.user=a.user||null,c()}),(0,_routes["default"])(app),app.use(function(a,b,c){c((0,_httpErrors["default"])(404))}),app.use(function(a,b,c){// set locals, only providing error in development
 // render the error page
 c.locals.message=a.message,c.locals.error="development"===b.app.get("env")?a:{},c.status(a.status||500),c.render("error")});//module.exports = app;
 var _default=app;exports["default"]=_default;
