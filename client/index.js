@@ -11,4 +11,3 @@ import myI18n from '@chelpers/myI18n'
 window.myI18n = myI18n
 // Flashea mensaje si lo hay
 flashmsg()
-console.log("HOLa")

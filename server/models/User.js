@@ -16,6 +16,16 @@ const UserSchema = new Schema({
     lastName:{
         type: String
     },
+    secLastName:{
+        type: String
+    },
+    shortBio:{
+        type: String
+    },
+    country:{
+        type: String
+    },
+    spokenLanguages:[String],
     email: {
         type: String,
         required: true

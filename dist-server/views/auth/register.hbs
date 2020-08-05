@@ -3,6 +3,8 @@
     <form class="col s12" action="/auth/register/user" method="post">
       <div class="row">
         <div class="input-field col s6">
+          <i class="fa fa-user prefix" style="color: grey;" aria-hidden="true"></i>
+
           <input
             placeholder="Ingrese su nombre"
             id="name" 
@@ -10,6 +12,7 @@
             value="{{name}}" required>
           <label for="nombre">Nombre</label>
         </div>
+
         <div class="input-field col s6">
           <input 
             placeholder="Ingrese su apellido" 
@@ -23,6 +26,7 @@
     <div class="row">        
         <div class="switch col s12">
             <div class="grey-text">Registrarse como</div>
+                <i class="fa fa-address-card fa-2x prefix" style="color: grey;" aria-hidden="true"></i>
             <label>
                 Visitante
                 <input 
@@ -39,6 +43,8 @@
 
       <div class="row">
         <div class="input-field col s12">
+          <i class="fa fa-envelope prefix" style="color: grey;" aria-hidden="true"></i>
+
           <input 
             id="email" 
             type="email" 
@@ -51,6 +57,7 @@
 
       <div class="row">
         <div class="input-field col s12">
+          <i class="fa fa-lock prefix" style="color: grey;" aria-hidden="true"></i>
           <input 
             id="password" 
             type="password" 
@@ -63,6 +70,7 @@
 
       <div class="row">
         <div class="input-field col s12">
+          <i class="fa fa-lock prefix" style="color: grey;" aria-hidden="true"></i>
           <input 
           id="confirmationPassword"
           name="confirmationPassword"
@@ -71,7 +79,69 @@
           <label for="confirmationPassword">Confirme su Password</label>
         </div>
       </div>
+      
+      <div class="row">
+        <div class="input-field col s4">
+          <i class="fa fa-plus-square prefix" onclick="addSelection()" style="color: rgba(4, 219, 119, 0.924);"></i>          
+          <label for="langSearch">Selecciona que idiomas hablas:</label>
+          <input type="search" id="langSearch" list="languages">          
+        </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="input-field col s4">
+          {{!-- <label for="spokenLanguages">Lenguajes Seleccionados</label> --}}
+          <input type="text" name="spokenLanguages" id="spokenLanguages" disabled>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <i class="fa fa-globe prefix" style="color: grey;" aria-hidden="true"></i>
+          <input type="text" name="country" id="country" list="countries">
+          <label for="country">Selecciona tu pais de origen</label>          
+        </div>
+      </div>
+
+      <button type="submit" class="btn waves-effect waves-light">
+        Submit
+        <i class="fa fa-paper-plane right"></i>
+      </button>
     </form>
   </div>
+
+{{!-- <form>
+  <div>
+    Selecciona que idiomas hablas:
+    <input type="search" id="mySearch" name="languages" list="languages">
+    <button>Search</button>
+  </div>
+</form> --}}
+
+<datalist id="languages">
+  {{#each nativeLanguages}}
+    <option value="{{this}}">
+  {{/each}}
+  {{!-- <option value="Italiano">
+  <option value="Español">
+  <option value="Frances"> --}}
+</datalist>
+<datalist id="countries">
+  <option value="Mexico">
+  <option value="EUA">
+  <option value="España">
+  <option value="Paraguay">
+</datalist>
+<br>
+<script>
+  //var selectedLang = ""
+  function addSelection(){
+    // Getting some references
+    let langSearchBox = document.getElementById('langSearch')
+    let selectedLanguagesBox = document.getElementById('spokenLanguages')
+    // Getting values
+    let language = langSearchBox.value
+    
+    let separator = ','
+    if(selectedLanguagesBox.value.length == 0)
+    separator = ''    
+    selectedLanguagesBox.value = selectedLanguagesBox.value.concat(separator, language)    
+  }
+</script>

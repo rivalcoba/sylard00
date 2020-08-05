@@ -1,6 +1,8 @@
 // Importing user model
 import User from '@models/User'
 import passport from 'passport'
+import path from 'path'
+import jsonReader from '@helpers/jsonReader'
 
 // Show Loginform
 const login = (req, res, next) => {
@@ -20,7 +22,12 @@ const loginUser = (req, res, next) => {
 
 // Register User
 const register = (req, res)=>{
-    res.render('auth/register', {onRegisterPage:true });
+    let languages = jsonReader.readFileSync(path.join(__dirname,'..','assets','languages.json'))
+    // console.log(`>>> JSON: ${languages.nativeLanguages[0]}`)
+    res.render('auth/register', {
+        onRegisterPage : true,
+        nativeLanguages : languages.nativeLanguages
+    });
 }
 
 // Processing the form for
