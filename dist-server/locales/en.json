@@ -5,5 +5,11 @@
   "LOGOUT":"Logout",
   "REGISTRATION":"Registration",
   "DASHBOARD": "Dashboard",
-  "COLLECTIONS": "Collections"
+  "COLLECTIONS": "Collections",
+  "SPEED_UP": "Speeds up development",
+  "SPEED_UP_CONTENT": "We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.",
+  "USER_EXP":"User Experience Focused",
+  "USER_EXP_CONTENT":"By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users.",
+  "EASY_WORK":"Easy to work with",
+  "EASY_WORK_CONTENT":"We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize."
 }

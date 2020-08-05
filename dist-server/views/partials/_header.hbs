@@ -1,7 +1,7 @@
 <nav class="blue darken-4">
   <div class="container">
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo center">
+      <a href="/" class="brand-logo">
         Sylard BT
       </a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars"></i></a>
@@ -19,15 +19,20 @@
         <li><a href="/auth/login">
             <i class="fa fa-sign-in"></i> {{translation.LOGIN}}</a>
         </li>
-          {{#unless onRegisterPage}}
-            <li>
-              <a href="/auth/register">
-                <i class="fa fa-user-plus" aria-hidden="true"></i> {{translation.REGISTRATION}}
-              </a>
-            </li>
-          {{/unless}}
+        {{#unless onRegisterPage}}
+        <li>
+          <a href="/auth/register">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> {{translation.REGISTRATION}}
+          </a>
+        </li>
+        {{/unless}}
         {{/if}}
         {{#if es}}
+        <li>
+          <a href="#">
+            <i class="fa fa-book"></i> {{translation.COLLECTIONS}}
+          </a>
+        </li>
         <li>
           <a href="" onclick="setlang('en')">
             <i class="fa fa-globe" aria-hidden="true"></i> ENG
@@ -44,6 +49,17 @@
     </div>
   </div>
 </nav>
+
+{{!-- breadcrumb --}}
+{{!-- <nav>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <a href="#!" class="breadcrumb">First</a>
+      <a href="#!" class="breadcrumb">Second</a>
+      <a href="#!" class="breadcrumb">Third</a>
+    </div>
+  </div>
+</nav> --}}
 
 {{!-- SIDE MENU --}}
 <ul class="sidenav" id="mobile-demo">
@@ -68,4 +84,17 @@
       <i class="fa fa-book"></i> {{translation.COLLECTIONS}}
     </a>
   </li>
+  {{#if es}}
+  <li>
+    <a href="" onclick="setlang('en')">
+      <i class="fa fa-globe" aria-hidden="true"></i> ENG
+    </a>
+  </li>
+  {{else}}
+  <li>
+    <a href="" onclick="setlang('es')">
+      <i class="fa fa-globe" aria-hidden="true"></i> ESP
+    </a>
+  </li>
+  {{/if}}
 </ul>
