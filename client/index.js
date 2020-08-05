@@ -2,11 +2,13 @@
 import './styles/main.css';
 // Importando Scripts
 //import greeting from '@chelpers/greeting'
-import flashm from '@chelpers/flashMessage'
+import flashmsg from '@chelpers/flashMessage'
 // Setting language helper
-import setLang from '@chelpers/setLang'
+import myI18n from '@chelpers/myI18n'
 
 // Loading function to the global variable
 //window.greeting = greeting
-window.flashmsg = flashm
-window.setLang = setLang
+window.myI18n = myI18n
+// Flashea mensaje si lo hay
+flashmsg()
+console.log("HOLa")
