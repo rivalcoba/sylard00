@@ -81,19 +81,19 @@
       </div>
       
       <div class="row">
-        <div class="input-field col s4">
+        <div class="input-field col s12 m6 l6">
           <i class="fa fa-plus-square prefix" onclick="addSelection()" style="color: rgba(4, 219, 119, 0.924);"></i>          
           <label for="langSearch">Selecciona que idiomas hablas:</label>
           <input type="search" id="langSearch" list="languages">          
         </div>
 
-        <div class="input-field col s4">
+        <div class="input-field col s12 m6 l6">
           {{!-- <label for="spokenLanguages">Lenguajes Seleccionados</label> --}}
           <input type="text" name="spokenLanguages" id="spokenLanguages" disabled>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s4">
+        <div class="input-field col s12">
           <i class="fa fa-globe prefix" style="color: grey;" aria-hidden="true"></i>
           <input type="text" name="country" id="country" list="countries">
           <label for="country">Selecciona tu pais de origen</label>          
@@ -107,27 +107,16 @@
     </form>
   </div>
 
-{{!-- <form>
-  <div>
-    Selecciona que idiomas hablas:
-    <input type="search" id="mySearch" name="languages" list="languages">
-    <button>Search</button>
-  </div>
-</form> --}}
-
 <datalist id="languages">
   {{#each nativeLanguages}}
-    <option value="{{this}}">
+    <option value="{{name}} | {{id}}">
   {{/each}}
-  {{!-- <option value="Italiano">
-  <option value="Español">
-  <option value="Frances"> --}}
 </datalist>
+
 <datalist id="countries">
-  <option value="Mexico">
-  <option value="EUA">
-  <option value="España">
-  <option value="Paraguay">
+  {{#each countries}}
+    <option value="{{name}}">
+  {{/each}}
 </datalist>
 <br>
 <script>

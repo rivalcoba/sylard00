@@ -23,10 +23,12 @@ const loginUser = (req, res, next) => {
 // Register User
 const register = (req, res)=>{
     let languages = jsonReader.readFileSync(path.join(__dirname,'..','assets','languages.json'))
+    let countries = jsonReader.readFileSync(path.join(__dirname,'..','assets','countries.json'))
     // console.log(`>>> JSON: ${languages.nativeLanguages[0]}`)
     res.render('auth/register', {
         onRegisterPage : true,
-        nativeLanguages : languages.nativeLanguages
+        nativeLanguages : languages,
+        countries : countries
     });
 }
 
