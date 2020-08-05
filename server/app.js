@@ -8,6 +8,7 @@ import passport from 'passport'
 import session from 'express-session'
 import methodOverride from 'method-override'
 import flash from 'connect-flash'
+import i18n from 'i18n-express'
 
 // Import config
 import netConfig from '@config/net'
@@ -75,7 +76,22 @@ app.use((req, res, next)=>{
   next()
 })
 
-// 12. Registering Routes
+// 12. i18n
+app.use(
+  i18n({
+    // where to store json files - defaults to './locales'
+    translationsPath: path.join(__dirname, 'locales'),
+    // setup some locales - other locales default to en silently
+    siteLangs: ['en', 'es'],
+    defaultLang: 'es',
+    textsVarName: 'translation',
+    paramLangName: 'slang',
+    // sets a custom cookie name to parse locale settings from
+    cookieLangName: 'langbisquet',
+  })
+)
+
+// 13. Registering Routes
 addAppRoutes(app)
 
 // catch 404 and forward to error handler

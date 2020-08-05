@@ -57,6 +57,16 @@
     flashmsg('success',document.getElementById("success").textContent)
   }
 
+  function setlang(lang) {
+      switch (lang) {
+        case 'en': document.cookie = 'langbisquet=en'
+          break;
+        case 'es': document.cookie = 'langbisquet=es'
+          break;
+      }
+      location.reload()
+    }
+
   {{!-- Editor Avanzado   --}}
   {{!-- CKEDITOR.replace('body',{
     plugins: 'wysiwygarea,toolbar,basicstyles,link'

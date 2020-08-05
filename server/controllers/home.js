@@ -6,7 +6,7 @@ const index = (req, res, next) => {
         res.redirect('/dashboard')
     }
     else{
-        res.render('index/welcome', { title: 'Welcome to Sylard', content:'SYLARD means: Synchronized language annotation result display' });
+        res.render('index/welcome', {});
     }    
 }
 const contact = (req, res, next) => {
