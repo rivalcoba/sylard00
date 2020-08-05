@@ -4,6 +4,8 @@
   "LOGIN":"Login",
   "LOGOUT":"Logout",
   "REGISTRATION":"Registration",
+  "EMAIL":"Email",
+  "PASSWORD":"Password",
   "DASHBOARD": "Dashboard",
   "COLLECTIONS": "Collections",
   "SPEED_UP": "Speeds up development",

@@ -4,6 +4,8 @@
   "LOGIN":"Ingresar",
   "LOGOUT":"Salir",
   "REGISTRATION":"Registrarse",
+  "EMAIL":"Correo Electrónico",
+  "PASSWORD":"Contraseña",
   "DASHBOARD": "Panel",
   "COLLECTIONS": "Colecciones",
   "SPEED_UP": "Acelera tu Desarrollo",
