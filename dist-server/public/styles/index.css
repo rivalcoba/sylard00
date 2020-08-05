@@ -1,18 +1,19 @@
 body {
-    padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  }
-  
-  a {
-    color: #00B7FF;
-  }
-  h1{
-    color: darkslategrey;
-  }
-  p{
-    color: mediumturquoise;
-  }
+  padding: 50px;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
 
-  .swal2-container .select-wrapper{
-    display: none !important;
-    }
+a {
+  color: #00b7ff;
+}
+h1 {
+  color: darkslategrey;
+}
+p {
+  color: mediumturquoise;
+}
+.logo {
+  width: 130px;
+  margin: auto;
+}
+
