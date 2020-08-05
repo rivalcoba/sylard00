@@ -2,13 +2,13 @@
   <div class="container">
     <div class="nav-wrapper">
       <a href="/" class="brand-logo center">
-        Sylard Backend Tester
+        Sylard BT
       </a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars"></i></a>
       {{!-- Rigth Nav --}}
       <ul class="right hide-on-med-and-down">
         {{#if user}}
-        <li><a href="/dashboard">Welcome {{user.firstName}}</a></li>
+        <li><a href="/dashboard">{{translation.WELCOME}} {{user.firstName}}</a></li>
         <li>
           <a href="/auth/logout">
             <i class="fa fa-sign-out"></i>
@@ -17,15 +17,28 @@
         </li>
         {{else}}
         <li><a href="/auth/login">
-            <i class="fa fa-sign-in"></i> Ingresar</a>
+            <i class="fa fa-sign-in"></i> {{translation.LOGIN}}</a>
         </li>
           {{#unless onRegisterPage}}
             <li>
               <a href="/auth/register">
-                <i class="fa fa-user-plus" aria-hidden="true"></i> Registrarse
+                <i class="fa fa-user-plus" aria-hidden="true"></i> {{translation.REGISTRATION}}
               </a>
             </li>
           {{/unless}}
+        {{/if}}
+        {{#if es}}
+        <li>
+          <a href="" onclick="setlang('en')">
+            <i class="fa fa-globe" aria-hidden="true"></i> ENG
+          </a>
+        </li>
+        {{else}}
+        <li>
+          <a href="" onclick="setlang('es')">
+            <i class="fa fa-globe" aria-hidden="true"></i> ESP
+          </a>
+        </li>
         {{/if}}
       </ul>
     </div>
@@ -35,25 +48,24 @@
 {{!-- SIDE MENU --}}
 <ul class="sidenav" id="mobile-demo">
   {{#if user}}
-  <li><a href="/dashboard"><i class="fa fa-cog"></i> Dashboard</a></li>
-  <li><a href="/stories/my"><i class="fa fa-user"></i> My Stories</a></li>
-  <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+  <li><a href="/dashboard"><i class="fa fa-cog"></i> {{translation.DASHBOARD}}</a></li>
+  <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> {{translation.LOGOUT}}</a></li>
   <li class="divider"></li>
   {{else}}
   <li>
     <a class="waves-effect waves-light btn pink darken-2" href="/auth/login">
-      <i class="fa fa-sign-in fa-inverse" style="color:white"></i> Ingresar
+      <i class="fa fa-sign-in fa-inverse" style="color:white"></i> {{translation.LOGIN}}
     </a>
   </li>
   <li>
     <a href="/auth/register">
-      <i class="fa fa-user-plus" aria-hidden="true"></i> Registrarse
+      <i class="fa fa-user-plus" aria-hidden="true"></i> {{translation.REGISTRATION}}
     </a>
   </li>
   {{/if}}
   <li>
     <a href="#">
-      <i class="fa fa-book"></i> Colecciones
+      <i class="fa fa-book"></i> {{translation.COLLECTIONS}}
     </a>
   </li>
 </ul>

@@ -66,6 +66,13 @@ app.use(flash())
 
 // 11. Variables Globales
 app.use((req, res, next)=>{
+  // Quering Language
+  if(req.cookies.langbisquet == 'en')
+  {
+    res.locals.en = true
+  }else{
+    res.locals.es = true
+  }
   // Access to flash variables
   res.locals.success_msg = req.flash('success_msg')
   res.locals.error_msg = req.flash('error_msg')
