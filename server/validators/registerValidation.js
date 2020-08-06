@@ -2,6 +2,8 @@ import "@babel/polyfill"
 // Importing validation framework
 import * as Yup from 'yup';
 import User from '@models/User';
+import getSpokenLang from '@helpers/getSpokenLang'
+import getCountryObj from '@helpers/getCountryObj'
 
 // Creating validation schema
 // All we need from the confirmation email is the token
@@ -16,9 +18,27 @@ const UserRegistrationSchema = Yup.object().shape({
 
 export default async (req, res, next)=>{
     try {
+        // Extracting form data
         req.body.role = typeof(req.body.role)==="undefined"?"visitor":"colaborator"
         const {name, lastName, email, password, confirmationPassword, role} = req.body
+        let {spokenLanguages, country} = req.body
         
+        // Parsing Spoken languages
+        if(spokenLanguages){
+            req.body.spokenLanguages = getSpokenLang(spokenLanguages)
+        }
+        // Parsing Country
+        country = getCountryObj(country)
+        if(country)
+            req.body.country = country
+        else{
+            throw new Yup.ValidationError(
+                `Pais no reconocido: "${req.body.country}"`,
+                'country',
+                '/auth/register/user'
+            )
+        }
+
         // Backend form validation
         await UserRegistrationSchema.validate({
             name,
@@ -45,7 +65,7 @@ export default async (req, res, next)=>{
         }
     } catch (error) {
         console.log(`duplicateUserValidation> ${error.message}`)        
-        req.flash('error_msg',`El formulario no ha sido llenado correctamente: ${error.message}`)
+        req.flash('error_msg',`Formulario incorrecto: ${error.message}`)
         res.redirect('/auth/register')
     }
 }

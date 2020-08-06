@@ -24,7 +24,7 @@ const loginUser = (req, res, next) => {
 const register = (req, res)=>{
     let languages = jsonReader.readFileSync(path.join(__dirname,'..','assets','languages.json'))
     let countries = jsonReader.readFileSync(path.join(__dirname,'..','assets','countries.json'))
-    // console.log(`>>> JSON: ${languages.nativeLanguages[0]}`)
+    
     res.render('auth/register', {
         onRegisterPage : true,
         nativeLanguages : languages,
@@ -38,9 +38,6 @@ const registerUser = async (req, res, next) => {
     // Extracting Data from the request
     const {name, lastName, secLastName, email, password, role, spokenLanguages, country} = req.body
     
-    console.log(`> spokenLanguages: ${spokenLanguages}`)
-    console.log(`> country: ${country}`)
-    
     try {
         // Back en Validation
         // Creating the new user
@@ -50,7 +47,9 @@ const registerUser = async (req, res, next) => {
             secLastName,
             email,
             password,
-            role
+            role, 
+            spokenLanguages, 
+            country
         })
         
         let userModel = user.toJSON()

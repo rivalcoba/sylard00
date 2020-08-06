@@ -10,7 +10,7 @@
             placeholder="Tim"
             id="name" 
             name="name" type="text" class="validate"
-            value="{{name}}" required>
+            value="{{name}}" /*required*/>
           <label for="nombre">Nombre</label>
         </div>
         <!-- lastName -->
@@ -20,7 +20,7 @@
             placeholder="Berners" 
             id="lastName" 
             name="lastName" type="text" class="validate"
-            value="{{lastName}}" required>
+            value="{{lastName}}" /*required*/>
           <label for="lastName">Apellido</label>
         </div>
 
@@ -65,7 +65,7 @@
             class="validate"
             name="email"
             value="{{email}}"
-            required>
+            /*required*/>
           <label for="email">Email</label>
         </div>
       </div>
@@ -101,7 +101,7 @@
         <div class="input-field col s12 m7 l7">
           <i class="fa fa-plus-square prefix" onclick="formsManager.addSelection()" style="color: rgba(4, 219, 119, 0.924);"></i>          
           <label for="langSearch">Selecciona que idiomas hablas:</label>
-          <input type="search" id="langSearch" list="languages">          
+          <input type="search" id="langSearch" list="languages">
         </div>
 
         <div class="input-field col s12 m7 l7">
@@ -112,7 +112,8 @@
             name="spokenLanguages" 
             id="spokenLanguages"
             style="resize: none;height: 80px;"
-            disabled>
+            readonly
+            >
             </textarea>
         </div>
       </div>
@@ -121,7 +122,12 @@
       <div class="row">
         <div class="input-field col s12 m6 l6">
           <i class="fa fa-globe prefix" style="color: grey;" aria-hidden="true"></i>
-          <input type="text" name="country" id="country" list="countries" value="{{country}}">
+          <input 
+            type="text" 
+            name="country"
+            id="country" 
+            list="countries"
+            value="{{country}}">
           <label for="country">Selecciona tu pais de origen</label>          
         </div>
       </div>
@@ -141,7 +147,11 @@
 
 <datalist id="countries">
   {{#each countries}}
-    <option value="{{name_es}} | {{name_en}} | {{code}}">
+    {{#if ../es}}
+      <option value="{{name_es}}">
+    {{else}}
+      <option value="{{name_en}}">
+    {{/if}}
   {{/each}}
 </datalist>
 <br>
