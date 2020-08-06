@@ -23,9 +23,14 @@ const UserSchema = new Schema({
         type: String
     },
     country:{
-        type: String
+        "name_en": String,
+        "name_es": String,
+        "code": String
     },
-    spokenLanguages:[String],
+    spokenLanguages:[{
+        name: String,
+        gid: String
+    }],
     email: {
         type: String,
         required: true

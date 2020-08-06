@@ -3,13 +3,15 @@ import flashLib from '@chelpers/flashLib'
 // Es usado en register.hbs para
 // agregar lenguas
 function clearLastSelection() {
+  // Adding the separator
+  let separator = '\n'
   let selectedLanguages = document.getElementById('spokenLanguages').value
   let indices = []
   // Se obtienen los indices de todos los separadores
-  let idx = selectedLanguages.indexOf(',')
+  let idx = selectedLanguages.indexOf(separator)
   while (idx != -1) {
     indices.push(idx)
-    idx = selectedLanguages.indexOf(',', idx + 1)
+    idx = selectedLanguages.indexOf(separator, idx + 1)
   }
   // Check if is only one element selected
   if (indices.length == 0) {
@@ -23,6 +25,8 @@ function clearLastSelection() {
   flashLib.showFlashMesage('success', `Se ha removido con éxito`)
 }
 function addSelection() {
+  // Adding the separator
+  let separator = '\n'
   // Getting some references
   let langSearchBox = document.getElementById('langSearch')
   let selectedLanguagesBox = document.getElementById('spokenLanguages')
@@ -32,17 +36,16 @@ function addSelection() {
   langSearchBox.value = ''
 
   // Extracting the language name
-  language = language.split(' | ')[0]
-  
+  //language = language.split(' | ')[0]
+  selectedLanguagesBox.value = selectedLanguagesBox.value.trim()
   // Check if added prevously
   if (selectedLanguagesBox.value.indexOf(language) >= 0) {
     return flashLib.showFlashMesage('error', `Lenguaje ya seleccionado`)
   }
 
   // Adding the separator
-  let separator = ','
-
-  if (selectedLanguagesBox.value.length == 0) separator = ''
+  if (selectedLanguagesBox.value.length == 0) 
+  separator = ''
 
   selectedLanguagesBox.value = selectedLanguagesBox.value.concat(
     separator,

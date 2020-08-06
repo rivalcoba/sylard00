@@ -36,13 +36,18 @@ const register = (req, res)=>{
 // Registering New Users
 const registerUser = async (req, res, next) => {
     // Extracting Data from the request
-    const {name, email, password, lastName, role} = req.body
+    const {name, lastName, secLastName, email, password, role, spokenLanguages, country} = req.body
+    
+    console.log(`> spokenLanguages: ${spokenLanguages}`)
+    console.log(`> country: ${country}`)
+    
     try {
         // Back en Validation
         // Creating the new user
         const user = await User.create({
             name,
             lastName,
+            secLastName,
             email,
             password,
             role

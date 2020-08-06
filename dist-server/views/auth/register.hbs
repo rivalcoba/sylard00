@@ -107,13 +107,19 @@
         <div class="input-field col s12 m7 l7">
           {{!-- <label for="spokenLanguages">Lenguajes Seleccionados</label> --}}
           <i class="fa fa-minus-square prefix" onclick="formsManager.clearLastSelection()" style="color: rgba(238, 48, 57, 0.924);"></i>
-          <input type="text" name="spokenLanguages" id="spokenLanguages" disabled>
+          <textarea 
+            type="text" 
+            name="spokenLanguages" 
+            id="spokenLanguages"
+            style="resize: none;height: 80px;"
+            disabled>
+            </textarea>
         </div>
       </div>
 
       <!-- country -->
       <div class="row">
-        <div class="input-field col s12 m4 l4">
+        <div class="input-field col s12 m6 l6">
           <i class="fa fa-globe prefix" style="color: grey;" aria-hidden="true"></i>
           <input type="text" name="country" id="country" list="countries" value="{{country}}">
           <label for="country">Selecciona tu pais de origen</label>          
@@ -129,7 +135,7 @@
 
 <datalist id="languages">
   {{#each nativeLanguages}}
-    <option value="{{name}} | {{id}}">
+    <option value="{{name}} | {{gid}}">
   {{/each}}
 </datalist>
 
