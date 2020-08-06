@@ -82,7 +82,7 @@
       
       <div class="row">
         <div class="input-field col s12 m6 l6">
-          <i class="fa fa-plus-square prefix" onclick="addSelection()" style="color: rgba(4, 219, 119, 0.924);"></i>          
+          <i class="fa fa-plus-square prefix" onclick="formsManager.addSelection()" style="color: rgba(4, 219, 119, 0.924);"></i>          
           <label for="langSearch">Selecciona que idiomas hablas:</label>
           <input type="search" id="langSearch" list="languages">          
         </div>
@@ -121,7 +121,7 @@
 <br>
 <script>
   //var selectedLang = ""
-  function addSelection(){
+  {{!-- function addSelection(){
     // Getting some references
     let langSearchBox = document.getElementById('langSearch')
     let selectedLanguagesBox = document.getElementById('spokenLanguages')
@@ -132,5 +132,5 @@
     if(selectedLanguagesBox.value.length == 0)
     separator = ''    
     selectedLanguagesBox.value = selectedLanguagesBox.value.concat(separator, language)    
-  }
+  } --}}
 </script>
