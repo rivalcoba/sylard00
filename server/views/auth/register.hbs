@@ -89,6 +89,7 @@
 
         <div class="input-field col s12 m6 l6">
           {{!-- <label for="spokenLanguages">Lenguajes Seleccionados</label> --}}
+          <i class="fa fa-minus-square prefix" onclick="formsManager.clearLastSelection()" style="color: rgba(238, 48, 57, 0.924);"></i>
           <input type="text" name="spokenLanguages" id="spokenLanguages" disabled>
         </div>
       </div>
@@ -115,22 +116,7 @@
 
 <datalist id="countries">
   {{#each countries}}
-    <option value="{{name_es}} | {{name_en}}">
+    <option value="{{name_es}} | {{name_en}} | {{code}}">
   {{/each}}
 </datalist>
 <br>
-<script>
-  //var selectedLang = ""
-  {{!-- function addSelection(){
-    // Getting some references
-    let langSearchBox = document.getElementById('langSearch')
-    let selectedLanguagesBox = document.getElementById('spokenLanguages')
-    // Getting values
-    let language = langSearchBox.value
-    
-    let separator = ','
-    if(selectedLanguagesBox.value.length == 0)
-    separator = ''    
-    selectedLanguagesBox.value = selectedLanguagesBox.value.concat(separator, language)    
-  } --}}
-</script>

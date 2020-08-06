@@ -25,7 +25,7 @@ function showFlashMesage (icon, message){
       })
 }
 
-export default function(){
+function flashManager(){
   
   if(document.getElementById("error")){
     showFlashMesage('error',document.getElementById("error").textContent)
@@ -36,4 +36,9 @@ export default function(){
   if(document.getElementById("success")){
     showFlashMesage('success',document.getElementById("success").textContent)
   }
+}
+
+export default {
+  showFlashMesage,
+  flashManager
 }
