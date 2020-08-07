@@ -11,7 +11,6 @@ import flash from 'connect-flash'
 import i18n from 'i18n-express'
 import MongoStore from 'connect-mongo'
 import mongoose from 'mongoose'
-import keys from '@config/keys'
 
 // Import config
 import netConfig from '@config/net'

@@ -2,7 +2,7 @@
 
 // List all the collaborators collections
 // Read and list all the Collaborators Collections
-const index = (req, res, next) => {
+const index = (req, res) => {
     // List all the collections
     res.render('collections/index', { title: 'Contact', content:'Contact the administrator' });
 }

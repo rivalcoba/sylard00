@@ -16,6 +16,5 @@ export default function(){
     // Map Global promise - get ride of warning
     // To use global promises
     mongoose.Promise = global.Promise;
-
     return getConnection()
 }
