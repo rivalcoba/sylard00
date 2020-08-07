@@ -13,7 +13,8 @@ const UserRegistrationSchema = Yup.object().shape({
     email: Yup.string().email().required('Se requiere ingresar un correo valido'),
     role: Yup.string().oneOf(["colaborator","visitor"]).required('Se requiere proporcionar un rol'),
     password: Yup.string().min(6).required('Se requiere ingresar password de al menos 6 caracteres'),
-    confirmationPassword: Yup.string().oneOf([Yup.ref('password')],'Los passwords ingresados no coinciden')
+    confirmationPassword: Yup.string().oneOf([Yup.ref('password')],'Los passwords ingresados no coinciden'),
+    about: Yup.string().max(500,'El texto no debe exceder los 500 carácteres')
 });
 
 export default async (req, res, next)=>{

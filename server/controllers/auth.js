@@ -36,7 +36,16 @@ const register = (req, res)=>{
 // Registering New Users
 const registerUser = async (req, res, next) => {
     // Extracting Data from the request
-    const {name, lastName, secLastName, email, password, role, spokenLanguages, country} = req.body
+    const {
+      name,
+      lastName,
+      secLastName,
+      email,
+      password,
+      role,
+      spokenLanguages,
+      country, terms, about
+    } = req.body
     
     try {
         // Back en Validation
@@ -49,7 +58,9 @@ const registerUser = async (req, res, next) => {
             password,
             role, 
             spokenLanguages, 
-            country
+            country,
+            terms: terms==='on',
+            about
         })
         
         let userModel = user.toJSON()

@@ -14,7 +14,7 @@ import registerValidation from '@validators/registerValidation'
 
 // Auth Controllers
 router.get('/register', authController.register)
-router.post('/register/user',registerValidation, authController.registerUser)
+router.post('/register/user', registerValidation, authController.registerUser)
 router.get('/email/confirm/:token', emailConfirmValidator, authController.emailConfirmed)
 router.get('/login', authController.login)
 router.post('/login/user', authController.loginUser)

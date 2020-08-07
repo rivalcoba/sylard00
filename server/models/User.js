@@ -11,7 +11,7 @@ import colors from 'colors'
 const UserSchema = new Schema({    
     name:{
         type: String,
-        required: true
+        // required: true
     },
     lastName:{
         type: String
@@ -33,21 +33,26 @@ const UserSchema = new Schema({
     }],
     email: {
         type: String,
-        required: true
+        // required: true
     },
     password: {
         type: String,
-        required: true
+        // required: true
     },
     role: {
         type: String,
         default: 'visitor',
-        required: true
+        // required: true
     },
     about : String,  
     image: {
         type: String,
         default: 'https://img.icons8.com/fluent/48/000000/user-male-circle.png'
+    },
+    terms:{
+        type: Boolean,
+        default: false,
+        // required: true
     },
     emailConfirmationToken : String,
     createdAt: Date,
@@ -69,6 +74,7 @@ UserSchema.pre('save', function(){
 // ref: https://mongoosejs.com/docs/middleware.html#post
 // The method retunr a promise
 UserSchema.post('save', async function(){
+    return
     try {
         console.log(`LN68@models/User.js>: Sending email to ${this.email}`.yellow.italic.bgRed)
         await new Mail('confirm-account')
@@ -83,6 +89,7 @@ UserSchema.post('save', async function(){
         console.log(`LN68@models/User.js>: Email send correctly!!!`.yellow.italic.bgBlue)
     } catch (error) {
         console.log(`LN70@models/User.js> ERROR SENDING MAIL: ${error.message}`.red.bold.bgYellow)
+        throw error
     }    
 })
 
