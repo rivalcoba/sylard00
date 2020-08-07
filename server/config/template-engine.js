@@ -1,18 +1,17 @@
 import exphbs from 'express-handlebars'
 import path from 'path'
+import {ifColaborator} from '@hbsHelpers/index'
+
+// Extract
 
 export default (app) => {
     // Registering Template Engine
     app.engine('hbs', exphbs({
         extname: '.hbs',
         defaultLayout: 'main',
-        // helpers:{
-        //     truncate: truncate,
-        //     scriptTags: scriptTags,
-        //     formatDate : formatDate,
-        //     select: select,
-        //     editIcon: editIcon
-        // }
+        helpers:{
+            ifColaborator: ifColaborator
+        }
     }))
 
     // Selecting Template Engine

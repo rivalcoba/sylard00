@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ifColaborator=ifColaborator;function ifColaborator(a,b){return"colaborator"==a.role?b.fn(this):""}

@@ -5,7 +5,7 @@ import path from 'path'
 import jsonReader from '@helpers/jsonReader'
 
 // Show Loginform
-const login = (req, res, next) => {
+const login = (req, res) => {
     res.render('auth/login');
 }
 
@@ -93,7 +93,7 @@ const emailConfirmed = async (req, res)=>{
     }    
 }
 
-const logoutUser = (req, res, next) => { 
+const logoutUser = (req, res) => { 
     // Funcion para salirse
     req.logout()
     req.flash('success_msg', 'Ha cerrado sesión correctamente');

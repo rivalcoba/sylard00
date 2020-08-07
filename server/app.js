@@ -85,8 +85,11 @@ app.use((req, res, next)=>{
   res.locals.error_msg = req.flash('error_msg')
   // Made for passport
   res.locals.passportError= req.flash('error')
-  // To Keep de loged user info
-  res.locals.user = req.user || null;
+  // To Keep de loged user info  
+  // Se requiere parsear de mongoose obj a objeto
+  // json y solo se puede hacer si el user existe
+  // el user existe si se ha logeado el usuario  
+  res.locals.user = req.user ? req.user.toJSON() : null;
   next()
 })
 
@@ -114,7 +117,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

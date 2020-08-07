@@ -5,10 +5,26 @@
         Sylard BT
       </a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars"></i></a>
+      
       {{!-- Rigth Nav --}}
       <ul class="right hide-on-med-and-down">
+        <!-- SI ES UN SUARIO -->
         {{#if user}}
-        <li><a href="/dashboard">{{translation.WELCOME}} {{user.firstName}}</a></li>
+        <li>
+          {{translation.WELCOME}} {{user.name}}!
+        </li>
+        <li>
+          <a href="/dashboard">
+            <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
+          </a>
+        </li>
+        {{#ifColaborator user}}
+        <li>
+          <a href="/collections">
+            <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+          </a>
+        </li>
+        {{/ifColaborator}}
         <li>
           <a href="/auth/logout">
             <i class="fa fa-sign-out"></i>
@@ -16,6 +32,7 @@
           </a>
         </li>
         {{else}}
+
         <li><a href="/auth/login">
             <i class="fa fa-sign-in"></i> {{translation.LOGIN}}</a>
         </li>
@@ -27,11 +44,7 @@
         </li>
         {{/unless}}
         {{/if}}
-        <li>
-          <a href="#">
-            <i class="fa fa-book"></i> {{translation.COLLECTIONS}}
-          </a>
-        </li>
+        
         {{#if es}}
         <li>
           <a href="" onclick="myI18n.setLang('en')">
@@ -64,8 +77,21 @@
 {{!-- SIDE MENU --}}
 <ul class="sidenav" id="mobile-demo">
   {{#if user}}
-  <li><a href="/dashboard"><i class="fa fa-cog"></i> {{translation.DASHBOARD}}</a></li>
+  <li>
+    <a href="/dashboard"><i class="fa fa-table"></i> {{translation.COLLECTIONS}}
+    </a>
+  </li>
+
+  {{#ifColaborator user}}
+    <li>
+      <a href="/collections">
+        <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+      </a>
+    </li>
+  {{/ifColaborator}}
+  
   <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> {{translation.LOGOUT}}</a></li>
+  
   <li class="divider"></li>
   {{else}}
   <li>
@@ -79,11 +105,7 @@
     </a>
   </li>
   {{/if}}
-  <li>
-    <a href="#">
-      <i class="fa fa-book"></i> {{translation.COLLECTIONS}}
-    </a>
-  </li>
+  
   {{#if es}}
   <li>
     <a href="" onclick="myI18n.setLang('en')">

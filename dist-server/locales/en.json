@@ -1,5 +1,6 @@
 {
   "WELCOME_MSG": "Welcome to SYLARD!",
+  "WELCOME": "Welcome",
   "SYLARD_MEANING": "SYLARD is an acronym for <b>S</b>ynchronized <b>L</b>anguage <b>A</b>nnotation <b>R</b>esult <b>D</b>isplay",
   "LOGIN":"Login",
   "LOGOUT":"Logout",
@@ -7,7 +8,9 @@
   "EMAIL":"Email",
   "PASSWORD":"Password",
   "DASHBOARD": "Dashboard",
+  "LIBRARY": "Library",
   "COLLECTIONS": "Collections",
+  "MY_COLLECTIONS": "My Collections",
   "SPEED_UP": "Speeds up development",
   "SPEED_UP_CONTENT": "We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.",
   "USER_EXP":"User Experience Focused",

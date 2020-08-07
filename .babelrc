@@ -18,6 +18,7 @@
                     "@models" : "./server/models",
                     "@routes": "./server/routes",
                     "@helpers": "./server/helpers",
+                    "@hbsHelpers":"./server/helpers/handlebars",
                     "@validators": "./server/validators",
                     "@client": "./client",
                     "@chelpers": "./client/helpers"
