@@ -17,5 +17,5 @@ export default function(){
     // To use global promises
     mongoose.Promise = global.Promise;
 
-    getConnection()
+    return getConnection()
 }

@@ -9,6 +9,9 @@ import session from 'express-session'
 import methodOverride from 'method-override'
 import flash from 'connect-flash'
 import i18n from 'i18n-express'
+import MongoStore from 'connect-mongo'
+import mongoose from 'mongoose'
+import keys from '@config/keys'
 
 // Import config
 import netConfig from '@config/net'
@@ -51,10 +54,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
 // 8. Enabling Sessions for Passport
+var Mongo_Store = MongoStore(session)
 app.use(session({
   secret: 's_|/14rd',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new Mongo_Store({
+    mongooseConnection : mongoose.connection,
+    ttl: 1 * 24 * 60 * 60, // save session 1 days
+  })
 }));
 
 // 9. PASSPORT middleware for used with sessions

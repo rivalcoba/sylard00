@@ -74,7 +74,6 @@ UserSchema.pre('save', function(){
 // ref: https://mongoosejs.com/docs/middleware.html#post
 // The method retunr a promise
 UserSchema.post('save', async function(){
-    return
     try {
         console.log(`LN68@models/User.js>: Sending email to ${this.email}`.yellow.italic.bgRed)
         await new Mail('confirm-account')
