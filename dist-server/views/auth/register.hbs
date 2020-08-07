@@ -131,11 +131,28 @@
           <label for="country">Selecciona tu pais de origen</label>          
         </div>
       </div>
-
-      <button type="submit" class="btn waves-effect waves-light">
-        Submit
-        <i class="fa fa-paper-plane right"></i>
-      </button>
+      <div class="row">
+        <div class="input-field col s12 m8 l8">
+          <label for="about">Acerca de ti</label>
+          <textarea 
+          placeholder="Puedes colocar aca tu short Bio" 
+          class="materialize-textarea" name="about" id="about"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6 l6">
+          <label>
+            <input name="terms" type="checkbox" class="filled-in"/>
+            <span>Aceptar los <a onclick="alert('terminos')">terminos y condiciones</a> </span>
+          </label>        
+        </div>
+        <div class="col s12 m6 l6">
+              <button type="submit" class="btn waves-effect waves-light">
+            Submit
+            <i class="fa fa-paper-plane right"></i>
+          </button>
+        </div>
+      </div>
     </form>
   </div>
 
