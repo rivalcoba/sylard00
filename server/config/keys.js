@@ -10,5 +10,6 @@ export default{
     port: process.env.PORT,
     ip: process.env.IP,
     mailUserName: process.env.MAIL_USERNAME,
-    mailPassword: process.env.MAIL_PASSWORD
+    mailPassword: process.env.MAIL_PASSWORD,
+    authMail: process.env.AUTH_MAIL,
 }

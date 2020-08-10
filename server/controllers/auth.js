@@ -3,6 +3,8 @@ import User from '@models/User'
 import passport from 'passport'
 import path from 'path'
 import jsonReader from '@helpers/jsonReader'
+import Mail from '@fullstackjs/mail'
+import keys from '@config/keys'
 
 // Show Loginform
 const login = (req, res) => {
@@ -34,7 +36,7 @@ const register = (req, res)=>{
 
 // Processing the form for
 // Registering New Users
-const registerUser = async (req, res, next) => {
+const registerUser = async (req, res) => {
     // Extracting Data from the request
     const {
       name,
@@ -80,9 +82,31 @@ const emailConfirmed = async (req, res)=>{
         const user = await User.findOne({
             emailConfirmationToken: req.user.emailConfirmationToken})
             .exec()
-        user.activateUser()
-        // We update the user with the confirmation
-        res.render('auth/confirmedMail', req.user.toJSON())
+            let requestedRole = user.role
+            user.activateUser()
+        // if user is visitor activate if not send their activation request
+        if(requestedRole == "visitor"){
+            // We update the user with the confirmation
+            res.render('auth/confirmedMail', req.user.toJSON())
+        }else{
+            // Send the account upgrade to su (Super User)
+            await new Mail('request-upgradeAccount')
+            .from("yoncece@sylard.com")
+            .to(keys.authMail, "Sylard Auth System")
+            .subject('Sylard, Authorize Collaboration Account')
+            .data({
+                name: user.name,
+                lastName: user.lastName,
+                email: user.email,
+                loginUrl: `${keys.homeUrl}/auth/login`,
+                url: `${keys.homeUrl}/auth/enable/colaborator/${user.email}`
+            })
+            .send()
+            console.log(`authController>emailConfirmed> Correo enviado a ${keys.authMail}`)
+            // We update the user with the confirmation
+            res.render('auth/colabAuthRequested', req.user.toJSON())
+        }
+        
     } catch (error) {
         console.log(`Controllers>auth>emailConfirmed> ${error.message}`)
         res.render("failed",{
@@ -91,6 +115,40 @@ const emailConfirmed = async (req, res)=>{
             message: "Ha ocurrido un desafortunado error en el proceso de Activacion.",
             error: `El usuario con este correo ${req.body.email} no se ha podido Activar.`})
     }    
+}
+
+const enableColaborator = async (req, res)=>{
+    try {
+        // Upgrading account
+        const user = await User.findOne({email: req.user2Validate.email})
+        // Se promociona cuenta
+        user.upGradeToColaborator()
+        // Se notifica al usuario
+        await new Mail('upgradeAccepted')
+          .from('yoncece@sylard.com')
+          .to(user.email, 'Sylard Auth System')
+          .subject('Sylard, Collaboration Account accepted')
+          .data({
+            name: user.name,
+            lastName: user.lastName,
+            email: user.email,
+            url: `${keys.homeUrl}/auth/login`,
+          })
+          .send()
+        // We update the user with the confirmation
+        res.render("result",{
+            title: "Promoción a colaborador",
+            iconTitle: "fa fa-certificate",
+            message: `El usuario con el correo: ${user.email} se ha promocionado correctamente.`,
+            error: ``})
+    } catch (error) {
+        console.log(`Controllers>auth>emailConfirmed> ${error.message}`)
+        res.render("failed",{
+            title: "Promoción a colaborador",
+            iconTitle: "fa fa-frown-o",
+            message: "Ha ocurrido un desafortunado error en el proceso de promoción de la cuenta.",
+            error: `El usuario con este correo ${req.body.email} no se ha podido promocionar a colaborador.`})
+    }
 }
 
 const logoutUser = (req, res) => { 
@@ -106,5 +164,6 @@ export default{
     login,
     loginUser,
     emailConfirmed,
-    logoutUser
+    logoutUser,
+    enableColaborator
 }

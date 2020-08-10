@@ -1,0 +1,19 @@
+<h3 class="pink-text"><i class="{{iconTitle}}"></i> {{title}}</h3>
+<div>
+  {{#if error}}
+    <blockquote>
+      <p>
+        {{message}}
+      </p>
+      <p>
+        {{error}}
+      </p>
+    </blockquote>
+  {{else}}
+    <blockquote>
+      <p>
+        {{message}}
+      </p>
+    </blockquote>
+  {{/if}}  
+</div>

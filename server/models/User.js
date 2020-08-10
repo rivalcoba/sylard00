@@ -93,11 +93,18 @@ UserSchema.post('save', async function(){
 })
 
 // User Methods
-UserSchema.methods.activateUser = async function(){
+UserSchema.methods.activateUser = async function(role = 'visitor'){
     await this.updateOne({
             emailConfirmationToken: null,
             updatedAt: new Date(),
-            emailConfirmedAt: new Date()
+            emailConfirmedAt: new Date(),
+            role: role
+        }).exec()
+}
+UserSchema.methods.upGradeToColaborator = async function(){
+    await this.updateOne({
+            updatedAt: new Date(),
+            role: "colaborator"
         }).exec()
 }
 
