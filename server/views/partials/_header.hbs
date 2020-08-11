@@ -4,15 +4,11 @@
       <a href="/" class="brand-logo">
         Sylard BT
       </a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars"></i></a>
-      
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars"></i></a>      
       {{!-- Rigth Nav --}}
       <ul class="right hide-on-med-and-down">
         <!-- SI ES UN SUARIO -->
         {{#if user}}
-          <li>
-            {{translation.WELCOME}} {{user.name}}!
-          </li>
           <li>
             <a href="/dashboard">
               <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
