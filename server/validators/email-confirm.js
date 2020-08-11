@@ -12,6 +12,7 @@ export default async (req, res, next)=>{
     try {
         // Validates the existence of a valid token
         await EmailConfirmSchema.validate(req.params)
+        console.log(`email-confirmed>Token: ${req.params.token}`)
         
         // Checking if the token is valid!!
         const user = await User.findOne({emailConfirmationToken: req.params.token})
