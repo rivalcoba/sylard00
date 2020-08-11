@@ -10,53 +10,55 @@
       <ul class="right hide-on-med-and-down">
         <!-- SI ES UN SUARIO -->
         {{#if user}}
-        <li>
-          {{translation.WELCOME}} {{user.name}}!
-        </li>
-        <li>
-          <a href="/dashboard">
-            <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
-          </a>
-        </li>
-        {{#ifColaborator user}}
-        <li>
-          <a href="/collections">
-            <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
-          </a>
-        </li>
-        {{/ifColaborator}}
-        <li>
-          <a href="/auth/logout">
-            <i class="fa fa-sign-out"></i>
-            Logout
-          </a>
-        </li>
+          <li>
+            {{translation.WELCOME}} {{user.name}}!
+          </li>
+          <li>
+            <a href="/dashboard">
+              <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
+            </a>
+          </li>
+          {{#ifColaborator user}}
+            <li>
+              <a href="/collections">
+                <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+              </a>
+            </li>
+          {{/ifColaborator}}
+          <li>
+            <a class="dropdown-trigger" href="#!" data-target="settings_dropdown">
+              <div style="padding-left: 50px; padding-right: 50px;" class="chip">
+                <img src="{{user.image}}" alt="Contact Person">
+                {{user.name}}
+              </div>
+              {{!-- {{translation.SETTINGS}}
+              <i class="fa fa-cog"></i> --}}
+            </a>
+          </li>
         {{else}}
-
-        <li><a href="/auth/login">
-            <i class="fa fa-sign-in"></i> {{translation.LOGIN}}</a>
-        </li>
-        {{#unless onRegisterPage}}
-        <li>
-          <a href="/auth/register">
-            <i class="fa fa-user-plus" aria-hidden="true"></i> {{translation.REGISTRATION}}
-          </a>
-        </li>
-        {{/unless}}
-        {{/if}}
-        
-        {{#if es}}
-        <li>
-          <a href="" onclick="myI18n.setLang('en')">
-            <i class="fa fa-globe" aria-hidden="true"></i> ENG
-          </a>
-        </li>
-        {{else}}
-        <li>
-          <a href="" onclick="myI18n.setLang('es')">
-            <i class="fa fa-globe" aria-hidden="true"></i> ESP
-          </a>
-        </li>
+          <li><a href="/auth/login">
+              <i class="fa fa-sign-in"></i> {{translation.LOGIN}}</a>
+          </li>
+          {{#unless onRegisterPage}}
+            <li>
+              <a href="/auth/register">
+                <i class="fa fa-user-plus" aria-hidden="true"></i> {{translation.REGISTRATION}}
+              </a>
+            </li>
+          {{/unless}}
+          {{#if es}}
+            <li>
+              <a href="" onclick="myI18n.setLang('en')">
+                <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
+              </a>
+            </li>
+          {{else}}
+            <li>
+              <a href="" onclick="myI18n.setLang('es')">
+                <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
+              </a>
+            </li>
+          {{/if}}
         {{/if}}
       </ul>
     </div>
@@ -79,6 +81,11 @@
   {{#if user}}
   <li>
     <a href="/dashboard"><i class="fa fa-table"></i> {{translation.COLLECTIONS}}
+    </a>
+  </li>
+  <li>
+    <a href="/user/edit/{{user._id}}">
+      <i class="fa fa-pencil-square"></i> {{translation.EDIT_USER}}
     </a>
   </li>
 
@@ -109,14 +116,59 @@
   {{#if es}}
   <li>
     <a href="" onclick="myI18n.setLang('en')">
-      <i class="fa fa-globe" aria-hidden="true"></i> ENG
+      <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
     </a>
   </li>
   {{else}}
   <li>
     <a href="" onclick="myI18n.setLang('es')">
-      <i class="fa fa-globe" aria-hidden="true"></i> ESP
+      <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
     </a>
   </li>
   {{/if}}
+</ul>
+
+<!-- Dropdown Structure -->
+<ul id="settings_dropdown" class="dropdown-content">
+  <li>
+    <div class="center-align"  style="color: teal;">
+      <i class="fa fa-cog"></i> {{translation.SETTINGS}}
+    </div>
+    <ul>
+      {{#if user}}
+        <li>
+          <a href="/user/edit/{{user._id}}">
+            <i class="fa fa-pencil-square"></i> {{translation.EDIT_USER}}
+          </a>
+        </li>  
+      {{/if}}
+      {{#if es}}
+        <li>
+          <a href="" onclick="myI18n.setLang('en')">
+            <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
+          </a>
+        </li>
+      {{else}}
+        <li>
+          <a href="" onclick="myI18n.setLang('es')">
+            <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
+          </a>
+        </li>
+      {{/if}}
+      <li class="divider"></li>
+      {{#if user}}
+        <li>
+          <a href="/auth/logout">
+            <i class="fa fa-sign-out"></i>
+            {{translation.LOGOUT}}
+          </a>
+        </li>
+      {{else}}
+        <li><a href="/auth/login">
+            <i class="fa fa-sign-in"></i> {{translation.LOGIN}}</a>
+        </li>
+      {{/if}}
+    </ul>
+  </li>
+    
 </ul>

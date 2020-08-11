@@ -1,5 +1,6 @@
 import index from '@routes/index'
 import auth from '@routes/auth'
+import user from '@routes/user'
 import collections from '@routes/collections'
 
 // Importing index router
@@ -9,6 +10,9 @@ export default function(app){
 
     // Auth
     app.use('/auth', auth)
+
+    // Users
+    app.use('/user', user)
 
     // Collections
     app.use('/collections', collections)

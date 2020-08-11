@@ -16,5 +16,7 @@
   "USER_EXP":"Experiencia de Usuario Enfocada",
   "USER_EXP_CONTENT":"Mediante el uso de los elementos y principios del Material Design, fuimos capaces de crear un Marco de trabajo que incorpora componentes y animaciones que proveen mas retroalimentación al usuario.",
   "EASY_WORK":"Fácil de usar",
-  "EASY_WORK_CONTENT":"Hemos provisto de una detallada documentación asi como de ejemplos de código específicos que ayudarán a nuevos desarrolladores a iniciar de manera rápida. Estamos siempre abiertos a retroalimentación y podemos contestar cuialquier duda que tenga acerca de Materialize"
+  "EASY_WORK_CONTENT":"Hemos provisto de una detallada documentación asi como de ejemplos de código específicos que ayudarán a nuevos desarrolladores a iniciar de manera rápida. Estamos siempre abiertos a retroalimentación y podemos contestar cuialquier duda que tenga acerca de Materialize",
+  "EDIT_USER": "Editar Usuario",
+  "SETTINGS": "Configuraciones"
 }
