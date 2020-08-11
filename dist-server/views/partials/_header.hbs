@@ -75,6 +75,12 @@
 {{!-- SIDE MENU --}}
 <ul class="sidenav" id="mobile-demo">
   {{#if user}}
+  <div class="center" style="padding-top: 10px;">
+    <div style="padding-right: 80px; padding-left: 80px;" class="chip">
+      <img src="{{user.image}}" alt="Contact Person">
+      {{user.name}}
+    </div>
+  </div>
   <li>
     <a href="/dashboard"><i class="fa fa-table"></i> {{translation.COLLECTIONS}}
     </a>
