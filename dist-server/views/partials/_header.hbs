@@ -75,59 +75,75 @@
 {{!-- SIDE MENU --}}
 <ul class="sidenav" id="mobile-demo">
   {{#if user}}
-  <div class="center" style="padding-top: 10px;">
-    <div style="padding-right: 80px; padding-left: 80px;" class="chip">
-      <img src="{{user.image}}" alt="Contact Person">
-      {{user.name}}
+    <div class="center" style="padding-top: 10px;">
+      <div style="padding-right: 80px; padding-left: 80px;" class="chip">
+        <img src="{{user.image}}" alt="Contact Person">
+        {{user.name}}
+      </div>
     </div>
-  </div>
-  <li>
-    <a href="/dashboard"><i class="fa fa-table"></i> {{translation.COLLECTIONS}}
-    </a>
-  </li>
-  <li>
-    <a href="/user/edit">
-      <i class="fa fa-pencil-square"></i> {{translation.EDIT_USER}}
-    </a>
-  </li>
-
-  {{#ifColaborator user}}
     <li>
-      <a href="/collections">
-        <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+      <a href="/dashboard"><i class="fa fa-table"></i> {{translation.COLLECTIONS}}
+      </a>
+    </li>  
+
+    {{#ifColaborator user}}
+      <li>
+        <a href="/collections">
+          <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+        </a>
+      </li>
+    {{/ifColaborator}}
+    <li>
+      <a href="/user/edit">
+        <i class="fa fa-pencil-square"></i> {{translation.EDIT_USER}}
       </a>
     </li>
-  {{/ifColaborator}}
+
+    {{#if es}}
+      <li>
+        <a href="" onclick="myI18n.setLang('en')">
+          <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
+        </a>
+      </li>
+    {{else}}
+      <li>
+        <a href="" onclick="myI18n.setLang('es')">
+          <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
+        </a>
+      </li>
+    {{/if}}
+
+    <li class="divider"></li>
   
-  <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> {{translation.LOGOUT}}</a></li>
+    <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> {{translation.LOGOUT}}</a></li>
   
-  <li class="divider"></li>
   {{else}}
-  <li>
-    <a class="waves-effect waves-light btn pink darken-2" href="/auth/login">
-      <i class="fa fa-sign-in fa-inverse" style="color:white"></i> {{translation.LOGIN}}
-    </a>
-  </li>
-  <li>
-    <a href="/auth/register">
-      <i class="fa fa-user-plus" aria-hidden="true"></i> {{translation.REGISTRATION}}
-    </a>
-  </li>
-  {{/if}}
-  
-  {{#if es}}
-  <li>
-    <a href="" onclick="myI18n.setLang('en')">
-      <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
-    </a>
-  </li>
-  {{else}}
-  <li>
-    <a href="" onclick="myI18n.setLang('es')">
-      <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
-    </a>
-  </li>
-  {{/if}}
+
+    <li>
+      <a href="/auth/register">
+        <i class="fa fa-user-plus" aria-hidden="true"></i> {{translation.REGISTRATION}}
+      </a>
+    </li>
+    {{#if es}}
+      <li>
+        <a href="" onclick="myI18n.setLang('en')">
+          <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
+        </a>
+      </li>
+    {{else}}
+      <li>
+        <a href="" onclick="myI18n.setLang('es')">
+          <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
+        </a>
+      </li>
+    {{/if}}
+    <li class="divider"></li>
+    <li>
+      <a class="waves-effect waves-light btn pink darken-2" href="/auth/login">
+        <i class="fa fa-sign-in fa-inverse" style="color:white"></i> {{translation.LOGIN}}
+      </a>
+    </li>
+  {{/if}}  
 </ul>
 
 <!-- Dropdown Structure -->
