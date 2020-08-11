@@ -9,6 +9,6 @@ import userController from '@controllers/user'
 import ensureAuthenticated from '@helpers/ensureAuth'
 
 /* GET users listing. */
-router.get('/edit/:id', ensureAuthenticated, userController.edit);
+router.get('/edit', ensureAuthenticated, userController.edit);
 
 module.exports = router;

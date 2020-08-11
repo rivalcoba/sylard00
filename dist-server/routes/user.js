@@ -1,3 +1,3 @@
 "use strict";var _express=require("express"),_user=_interopRequireDefault(require("../controllers/user")),_ensureAuth=_interopRequireDefault(require("../helpers/ensureAuth"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}// Creating an instance from the express router
 var router=new _express.Router;// Import Controllers
-/* GET users listing. */router.get("/edit/:id",_ensureAuth["default"],_user["default"].edit),module.exports=router;
+/* GET users listing. */router.get("/edit",_ensureAuth["default"],_user["default"].edit),module.exports=router;

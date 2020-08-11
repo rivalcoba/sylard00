@@ -110,10 +110,10 @@ const emailConfirmed = async (req, res)=>{
     } catch (error) {
         console.log(`Controllers>auth>emailConfirmed> ${error.message}`)
         res.render("failed",{
-            title: "Activacion de Cuenta",
+            title: "Editar usuario",
             iconTitle: "fa fa-frown-o",
-            message: "Ha ocurrido un desafortunado error en el proceso de Activacion.",
-            error: `El usuario con este correo ${req.body.email} no se ha podido Activar.`})
+            message: "Error al actualizar usuario.",
+            error: `${req.body.email}`})
     }    
 }
 

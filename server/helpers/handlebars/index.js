@@ -4,7 +4,13 @@ function ifColaborator(item, options){
         return options.fn(this)
     return ""
 }
+function ifVisitor(item, options){
+    if(item.role == 'visitor')
+        return options.fn(this)
+    return ""
+}
 
 export {
-    ifColaborator
+    ifColaborator,
+    ifVisitor
 }

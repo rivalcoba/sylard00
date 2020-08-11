@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ifColaborator=ifColaborator;function ifColaborator(a,b){return"colaborator"==a.role?b.fn(this):""}
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ifColaborator=ifColaborator,exports.ifVisitor=ifVisitor;function ifColaborator(a,b){return"colaborator"==a.role?b.fn(this):""}function ifVisitor(a,b){return"visitor"==a.role?b.fn(this):""}
