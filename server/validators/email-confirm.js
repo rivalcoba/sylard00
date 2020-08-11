@@ -18,6 +18,7 @@ export default async (req, res, next)=>{
         
         // If the user was not found
         if(!user){
+            console.log("email-cofirm> No se encontro usuario")
             throw new Yup.ValidationError(
                 `Invalid Confirmation Code: ${req.params.token}`,
                 req.body,
@@ -26,6 +27,7 @@ export default async (req, res, next)=>{
         }
         // If the user was found
         // We continue with the process
+        console.log("> Token Correcto")
         req.user = user;
         next()
     } catch (error) {
