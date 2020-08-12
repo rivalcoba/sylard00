@@ -19,5 +19,9 @@
   "EASY_WORK_CONTENT":"Hemos provisto de una detallada documentación asi como de ejemplos de código específicos que ayudarán a nuevos desarrolladores a iniciar de manera rápida. Estamos siempre abiertos a retroalimentación y podemos contestar cuialquier duda que tenga acerca de Materialize",
   "EDIT_USER": "Editar Usuario",
   "SETTINGS": "Configuraciones",
-  "SAVE": "Guardar"
+  "SAVE": "Guardar",
+  "EDIT_PASSWORD":"Editar Contraseña",
+  "CONFIRM_PASSWORD": "Confirmar Contraseña",
+  "PASSWORD_PLACEHOLDER" : "Ingrese al menos 6 caracteres",
+  "CONFIRM_PASSWORD_PLACEHOLDER" : "Debe coincidir con el de arriba"
 }

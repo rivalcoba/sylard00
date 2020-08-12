@@ -1,6 +1,9 @@
 import path from 'path'
 import jsonReader from '@helpers/jsonReader'
+import Bcrypt from 'bcryptjs'
 
+
+// DELETE async
 const edit = async(req, res)=>{
     let nativeLanguages = jsonReader.readFileSync(path.join(__dirname,'..','assets','languages.json'))
     let countries = jsonReader.readFileSync(path.join(__dirname,'..','assets','countries.json'))
@@ -12,7 +15,7 @@ const edit = async(req, res)=>{
     });
     spokenLang = spokenLang.trim()
     console.log(spokenLang)   
-    res.render('users/edit',{
+    res.render('user/edit',{
         spokenLang: spokenLang,
         nativeLanguages: nativeLanguages,
         countries : countries
@@ -45,10 +48,27 @@ const editUser = async (req, res)=>{
     // Flash Message
     req.flash('success_msg', 'Sus cambios se han guardado');
     // Get the info from
-    res.redirect('/user/edit')
+    res.redirect('/dashboard')
+}
+
+// Formulario para editar el password
+const editPassword = (req, res)=>{
+    res.render('user/editPassword')
+}
+
+const editUserPassword = async (req, res)=>{
+    const { password } = req.body
+    await req.user.updateOne({
+        password : Bcrypt.hashSync(password),
+        updatedAt : new Date()
+    })
+    req.flash('success_msg', 'Password editado con exito');    
+    res.redirect('/dashboard')
 }
 
 export default{
     edit,
-    editUser
+    editUser,
+    editPassword,
+    editUserPassword
 }
