@@ -23,5 +23,11 @@
   "EDIT_PASSWORD":"Editar Contraseña",
   "CONFIRM_PASSWORD": "Confirmar Contraseña",
   "PASSWORD_PLACEHOLDER" : "Ingrese al menos 6 caracteres",
-  "CONFIRM_PASSWORD_PLACEHOLDER" : "Debe coincidir con el de arriba"
+  "CONFIRM_PASSWORD_PLACEHOLDER" : "Debe coincidir con el de arriba",
+  "RESET_MAIL_PLACEHOLDER" : "Ingresa el correo de tu cuenta",
+  "SUBMIT": "Enviar",
+  "FORGOT_PASSWORD" : "¿Se te olvido tu contraseña?",
+  "EMAIL_PLACEHOLDER": "Ingresa tu correo electrónico",
+  "RESET_PASSWORD_TITLE": "Restablecer Contraseña",
+  "RESET_PASSWORD_MESSAGE": "Ingresa la cuenta de correo de cuenta para enviarte un password provisional a tu correo"
 }

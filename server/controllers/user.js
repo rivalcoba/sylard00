@@ -66,7 +66,9 @@ const resetPassword = (req, res)=>{
 }
 
 const resetUserPassword = async (req, res)=>{
-    req.flash('success_msg', 'Su password provisional se ha enviado a su correo');    
+    // Se busca usuario con el password
+    
+    req.flash('success_msg', 'Su password provisional se ha enviado a su correo');
     res.redirect('/')
 }
 

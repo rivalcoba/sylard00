@@ -10,7 +10,7 @@
       <div class="input-field col s12 m8 l10 center">
         <i class="fa fa-envelope prefix" style="color: grey;" aria-hidden="true"></i>
         <label for="email">{{translation.EMAIL}}</label>
-        <input id="email" placeholder="Ingresa tu correo electrónico" type="email" class="validate" name="email"
+        <input id="email" placeholder="{{translation.EMAIL_PLACEHOLDER}}" type="email" class="validate" name="email"
           required>
       </div>
       <div class="col s0 m2 l1"></div>
@@ -21,13 +21,17 @@
       <div class="input-field col s12 m8 l10 center">
         <i class="fa fa-unlock-alt prefix" style="color: grey;" aria-hidden="true"></i>
         <label for="password">{{translation.PASSWORD}}</label>
-        <input id="password" type="password" name="password" placeholder="Debe ser al menos de 6 caracteres"
+        <input id="password" type="password" name="password" placeholder="{{translation.PASSWORD_PLACEHOLDER}}"
           class="validate">
       </div>
       <div class="col s0 m2 l1"></div>
     </div>
     <div class="center-align">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">{{translation.SUBMIT}}</button>
+    </div>
+    <br>
+    <div class="center-align">
+      <a href="/user/reset/password">{{translation.FORGOT_PASSWORD}}</a>
     </div>
   </form>
   <div class="col s0 m2 l3"></div>

@@ -8,6 +8,7 @@ import userController from '@controllers/user'
 // Validators
 import editUserFormValidation from '@validators/editUserFormValidation'
 import editPasswordFormValidation from '@validators/editPasswordFormValidation'
+import confirmEmailAccount from '@validators/confirmEmailAccount'
 
 // Authorization Check Middleware
 import ensureAuthenticated from '@helpers/ensureAuth'
@@ -18,6 +19,6 @@ router.put('/edit', ensureAuthenticated, editUserFormValidation, userController.
 router.get('/edit/password', ensureAuthenticated, userController.editPassword);
 router.put('/edit/password', ensureAuthenticated, editPasswordFormValidation, userController.editUserPassword);
 router.get('/reset/password', userController.resetPassword);
-router.put('/reset/password', userController.resetUserPassword);
+router.put('/reset/password',confirmEmailAccount, userController.resetUserPassword);
 
 module.exports = router;
