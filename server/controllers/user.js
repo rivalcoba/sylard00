@@ -35,14 +35,14 @@ const editUser = async (req, res)=>{
       } = req.body
       
       // Update user
-      await req.user.updateOne({
-        name : name,
-        lastName: lastName,
-        secLastName: secLastName,
-        email: email,
-        spokenLanguages : spokenLanguages,
-        country: country,
-        about: about
+      await req.user.editUser({
+        name,
+        lastName,
+        secLastName,
+        email,
+        spokenLanguages,
+        country,
+        about
       })
       
     // Flash Message
@@ -58,10 +58,7 @@ const editPassword = (req, res)=>{
 
 const editUserPassword = async (req, res)=>{
     const { password } = req.body
-    await req.user.updateOne({
-        password : Bcrypt.hashSync(password),
-        updatedAt : new Date()
-    })
+    await req.user.editPassword(password)
     req.flash('success_msg', 'Password editado con exito');    
     res.redirect('/dashboard')
 }

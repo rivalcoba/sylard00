@@ -108,5 +108,16 @@ UserSchema.methods.upGradeToColaborator = async function(){
         }).exec()
 }
 
+UserSchema.methods.editUser= async function(data){
+    await this.updateOne(data).exec()
+}
+
+UserSchema.methods.editPassword = async function(password){
+    await this.updateOne({
+        password : Bcrypt.hashSync(password),
+        updatedAt : new Date()
+    }).exec()
+}
+
 // Exporting User Schema
 export default mongoose.model('Users', UserSchema)
