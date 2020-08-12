@@ -1,7 +1,5 @@
 import path from 'path'
 import jsonReader from '@helpers/jsonReader'
-import Bcrypt from 'bcryptjs'
-
 
 // DELETE async
 const edit = async(req, res)=>{
@@ -63,9 +61,20 @@ const editUserPassword = async (req, res)=>{
     res.redirect('/dashboard')
 }
 
+const resetPassword = (req, res)=>{
+    res.render('user/resetPassword')
+}
+
+const resetUserPassword = async (req, res)=>{
+    req.flash('success_msg', 'Su password provisional se ha enviado a su correo');    
+    res.redirect('/')
+}
+
 export default{
     edit,
     editUser,
     editPassword,
-    editUserPassword
+    editUserPassword,
+    resetPassword,
+    resetUserPassword
 }

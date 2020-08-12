@@ -23,5 +23,11 @@
   "EDIT_PASSWORD":"Edit Password",
   "CONFIRM_PASSWORD": "Confirm Password",
   "PASSWORD_PLACEHOLDER" : "Enter at least 6 characters",
-  "CONFIRM_PASSWORD_PLACEHOLDER" : "Must match with the above"
+  "CONFIRM_PASSWORD_PLACEHOLDER" : "Must match with the above",
+  "RESET_MAIL_PLACEHOLDER" : "Enter your email account",
+  "SUBMIT": "Submit",
+  "FORGOT_PASSWORD": "Forgot password?",
+  "EMAIL_PLACEHOLDER": "Enter your email",
+  "RESET_PASSWORD_TITLE": "Reset Password",
+  "RESET_PASSWORD_MESSAGE": "Enter your email account to send you a provisional password"
 }
