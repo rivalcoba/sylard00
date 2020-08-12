@@ -18,5 +18,6 @@
   "EASY_WORK":"Easy to work with",
   "EASY_WORK_CONTENT":"We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.",
   "EDIT_USER": "Edit User",
-  "SETTINGS": "Settings"
+  "SETTINGS": "Settings",
+  "SAVE": "Save"
 }

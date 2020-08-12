@@ -25,10 +25,9 @@ export default async (req, res, next)=>{
         let {spokenLanguages, country} = req.body
         
         // Parsing Spoken languages
-        if(spokenLanguages){
             req.body.spokenLanguages = getSpokenLang(spokenLanguages)
-        }
-        // Parsing Country
+        
+            // Parsing Country
         country = getCountryObj(country)
         if(country)
             req.body.country = country
@@ -55,7 +54,7 @@ export default async (req, res, next)=>{
         // If user was not found, its ok...
         if(!user){
             // We continue with the process
-            req.user = user;
+            // req.user = user; // DELETE
             next()
         }else{
             // Failed be cause a user is attepmting to register

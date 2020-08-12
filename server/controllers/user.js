@@ -19,6 +19,36 @@ const edit = async(req, res)=>{
     })
 }
 
+const editUser = async (req, res)=>{
+    // Get values from req.body
+    const {
+        name,
+        lastName,
+        secLastName,
+        email,
+        spokenLanguages,
+        country, 
+        about
+      } = req.body
+      
+      // Update user
+      await req.user.updateOne({
+        name : name,
+        lastName: lastName,
+        secLastName: secLastName,
+        email: email,
+        spokenLanguages : spokenLanguages,
+        country: country,
+        about: about
+      })
+      
+    // Flash Message
+    req.flash('success_msg', 'Sus cambios se han guardado');
+    // Get the info from
+    res.redirect('/user/edit')
+}
+
 export default{
-    edit
+    edit,
+    editUser
 }

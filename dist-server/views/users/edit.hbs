@@ -35,7 +35,7 @@
         </div>  
       </div>
 
-      <!-- role -->
+      {{!-- <!-- role -->
       <div class="row">        
           <div class="switch col s12 m8 l4">
               <div class="grey-text">Registrarse como</div>
@@ -61,7 +61,7 @@
                   Colaborador
               </label>
           </div>
-      </div>
+      </div> --}}
 
       <!-- email -->
       <div class="row">
@@ -75,32 +75,6 @@
             value="{{user.email}}"
             /*required*/>
           <label for="email">Email</label>
-        </div>
-      </div>
-
-      <!-- password -->
-      <div class="row">
-        <div class="input-field col s12 m7 l6">
-          <i class="fa fa-lock prefix" style="color: grey;" aria-hidden="true"></i>
-          <input 
-            id="password" 
-            type="password" 
-            name="password"
-            placeholder="Debe ser al menos de 6 caracteres"
-            class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12 m7 l6">
-          <i class="fa fa-lock prefix" style="color: grey;" aria-hidden="true"></i>
-          <input 
-          id="confirmationPassword"
-          name="confirmationPassword"
-          placeholder="Debe coincidir con el de arriba"
-          type="password" class="validate">
-          <label for="confirmationPassword">Confirme su Password</label>
         </div>
       </div>
       
@@ -151,9 +125,9 @@
       </div>
       <div class="row">        
         <div class="col s12 m6 l6">
-              <button disabled type="submit" class="btn waves-effect waves-light">
-            Submit
-            <i class="fa fa-paper-plane right"></i>
+              <button type="submit" class="btn waves-effect waves-light">
+            {{translation.SAVE}}
+            <i class="fa fa-floppy-o right"></i>
           </button>
         </div>
       </div>
