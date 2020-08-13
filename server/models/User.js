@@ -5,7 +5,6 @@ import Bcrypt from 'bcryptjs'
 import randomstring from 'randomstring'
 import Mail from '@fullstackjs/mail'
 import keys from '@config/keys'
-import colors from 'colors'
 
 // Creatnig a User Schema
 const UserSchema = new Schema({    
@@ -75,7 +74,7 @@ UserSchema.pre('save', function(){
 // The method retunr a promise
 UserSchema.post('save', async function(){
     try {
-        console.log(`LN68@models/User.js>: Sending email to ${this.email}`.yellow.italic.bgRed)
+        console.log(`LN68@models/User.js>: Sending email to ${this.email}`)
         await new Mail('confirm-account')
         .from("yoncece@sylard.com")
         .to(this.email, this.name)
@@ -85,9 +84,9 @@ UserSchema.post('save', async function(){
             url: `${keys.homeUrl}/auth/email/confirm/${this.emailConfirmationToken}`
         })
         .send()
-        console.log(`LN68@models/User.js>: Email send correctly!!!`.yellow.italic.bgBlue)
+        console.log(`models/User.js>: Email send correctly!!!`)
     } catch (error) {
-        console.log(`LN70@models/User.js> ERROR SENDING MAIL: ${error.message}`.red.bold.bgYellow)
+        console.log(`models/User.js> ERROR SENDING MAIL: ${error.message}`)
         throw error
     }    
 })
@@ -117,6 +116,29 @@ UserSchema.methods.editPassword = async function(password){
         password : Bcrypt.hashSync(password),
         updatedAt : new Date()
     }).exec()
+}
+
+UserSchema.methods.resetPassword = async function () {
+  // Creating a new password
+  let newPassoword = randomstring.generate({
+    length: 12,
+    charset: 'alphanumeric',
+  })
+
+  await this.updateOne({
+    password : Bcrypt.hashSync(newPassoword),
+    updatedAt : new Date()
+  }).exec()
+
+  await new Mail('resetPassword')
+    .from('yoncece@sylard.com')
+    .to(this.email, this.name)
+    .subject('Sylard, Password Reset')
+    .data({
+      name: this.name,
+      password: newPassoword,
+    })
+    .send()
 }
 
 // Exporting User Schema
