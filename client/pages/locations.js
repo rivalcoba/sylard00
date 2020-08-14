@@ -1,5 +1,6 @@
 
 import locationsHelper from '@chelpers/models/locations'
+import Swal from 'sweetalert2'
 
 const fillLocationsById = async (inputId, outputId)=>{
     toogleLoading()
@@ -7,7 +8,13 @@ const fillLocationsById = async (inputId, outputId)=>{
 
     let locations = await locationsHelper.getByNomLoc(nom_loc)
     toogleLoading()
-    //console.log(locations)
+    if(!locations){
+        return Swal.fire(
+            'Error!',
+            'El servidor esta ocupado! intente mas tarde',
+            'info'
+          )
+    }
     //
     let ul = document.getElementById(outputId);
     // Remove all the previous results

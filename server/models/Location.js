@@ -9,7 +9,7 @@ const LocationSchema = new Schema({
   Cve_Mun: String,
   Nom_Mun: String,
   Cve_Loc: String,
-  Nom_Loc: String,
+  Nom_Loc: {type: String, text : true },
   Ambito: String,
   Latitud: String,
   Longitud: String,
@@ -22,6 +22,8 @@ const LocationSchema = new Schema({
   Pob_Femenina: Number,
   'Total De Viviendas Habitadas': Number,
 })
+
+LocationSchema.path('Nom_Loc').index({text : true});
 
 // Exporting User Schema
 export default mongoose.model('Locations', LocationSchema)
