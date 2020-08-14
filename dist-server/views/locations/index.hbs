@@ -1,11 +1,18 @@
 <br>
 <label for="location">Comunidad:</label>
 <input type="text" minlength="3" id="location" name="location">
-<button type="button" onclick="locations.fillLocationsById('location','locations')">BUSCAR</button>
+<button id="searchbtn" type="button" onclick="locations.fillLocationsById('location','loclist')">BUSCAR</button>
 <br>
 <br>
 <label for="locations">Comunidad:</label>
+<div hidden id="loading">
+<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+<span class="sr-only">Loading...</span>
+</div>
 <div id="locations">
+    <ul id="loclist">
+
+    </ul>
 </div>
 
 </br>

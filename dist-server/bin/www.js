@@ -10,4 +10,4 @@
  */function onError(a){if("listen"!==a.syscall)throw a;var b="string"==typeof port?"Pipe "+port:"Port "+port;// handle specific listen errors with friendly messages
 switch(a.code){case"EACCES":console.error(b+" requires elevated privileges"),process.exit(1);break;case"EADDRINUSE":console.error(b+" is already in use"),process.exit(1);break;default:throw a;}}/**
  * Event listener for HTTP server "listening" event.
- */function onListening(){var a=server.address(),b="string"==typeof a?"pipe "+a:"port "+a.port;debug("Listening on "+b),console.log(`Ln79@www.js> Listen @ http://${_app.default.get("ip")}:${a.port}`.info)}
+ */function onListening(){var a=server.address(),b="string"==typeof a?"pipe "+a:"port "+a.port;debug("Listening on "+b),console.log(`bin>www.js> Listen @ http://${_app.default.get("ip")}:${a.port}`.info)}

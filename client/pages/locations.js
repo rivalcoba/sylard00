@@ -2,12 +2,20 @@
 import locationsHelper from '@chelpers/models/locations'
 
 const fillLocationsById = async (inputId, outputId)=>{
+    toogleLoading()
     let nom_loc = document.getElementById(inputId).value
+
     let locations = await locationsHelper.getByNomLoc(nom_loc)
+    toogleLoading()
     //console.log(locations)
     //
-    let ul = document.createElement('ul');
-    document.getElementById(outputId).appendChild(ul);
+    let ul = document.getElementById(outputId);
+    // Remove all the previous results
+    while (ul.firstChild) {
+      ul.removeChild(ul.firstChild)
+    }
+
+    // document.getElementById(outputId).appendChild(ul);
 
     locations.forEach(location => {
         //console.log(location.Nom_Loc)
@@ -17,6 +25,14 @@ const fillLocationsById = async (inputId, outputId)=>{
     });
 }
 
+const toogleLoading = function(id = 'loading'){
+    let button = document.getElementById('searchbtn')
+    let loadingIcon = document.getElementById(id)
+    button.disabled = !button.disabled;
+    loadingIcon.hidden = !loadingIcon.hidden
+}
+
 export default {
-    fillLocationsById
+    fillLocationsById,
+    toogleLoading
 }

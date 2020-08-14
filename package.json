@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./dist-server/bin/www",
     "build": "npm run clean && npm run b:c && npm run b:s",
-    "b:c": "webpack --mode=production",
+    "b:c": "webpack --mode=development",
     "b:s": "babel ./server --out-dir dist-server --copy-files",
     "clean": "rimraf dist-server",
     "dev": "NODE_ENV=development babel-node ./server/bin/www",

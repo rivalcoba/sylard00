@@ -1,17 +1,19 @@
 // Import Model
 import Locations from '@models/Location'
+// Helpers
+import regexhelp from '@helpers/regexhelp'
 
 const index = (req, res)=>{
     res.render("locations/index")
 }
 
 const indexNomLoc = async (req, res) => {
-  console.log(`Nomloc: ${req.params.nom_loc}`)
-  const { nom_loc } = req.params
+  console.log(`> Nomloc: ${req.params.nom_loc}`)
+  let { nom_loc } = req.params
+  nom_loc = regexhelp.diacriticSensitiveRegex(nom_loc)
+  console.log(`> Regex: ${nom_loc}`)
   var regex = new RegExp(nom_loc, 'i')
-
   const locations = await Locations.find({ Nom_Loc: regex }).exec()
-
   let locs = locations.map((location) => location.toJSON())
   return res.json(locs)
 
