@@ -1,5 +1,6 @@
 // Imporntando el Enrutador
 import {Router} from 'express'
+// Import Model
 
 // Creating an instance from the express router
 const router = new Router();
@@ -12,7 +13,8 @@ const router = new Router();
 import locationsController from '@controllers/locations'
 
 // Collections Routes
-// Lista las colecciones del usuario
+router.get('/index',/*ensureAuthenticated, ensureColabUser,*/locationsController.index)
+// API Lista las colecciones del usuario
 router.get('/index/nomloc/:nom_loc',/*ensureAuthenticated, ensureColabUser,*/locationsController.indexNomLoc)
 
 // Se exportan rutas
