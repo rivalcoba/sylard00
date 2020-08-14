@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=_default;function _default(a){var b=[];if(!a)return b;var c=a.split("\r\n");return c.forEach(function(a){b.push({name:a.split(" | ")[0],gid:a.split(" | ")[1]})}),b}
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=_default;function _default(a){let b=[];if(!a)return b;let c=a.split("\r\n");return c.forEach(a=>{b.push({name:a.split(" | ")[0],gid:a.split(" | ")[1]})}),b}

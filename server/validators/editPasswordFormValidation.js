@@ -1,4 +1,4 @@
-import "@babel/polyfill" // DELETE NOT USE
+// import "@babel/polyfill" // DELETE NOT USE
 // Importing validation framework
 import * as Yup from 'yup';
 

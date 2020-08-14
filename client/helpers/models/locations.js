@@ -1,4 +1,3 @@
-import '@babel/polyfill'
 import client from '@client/utils/axios'
 
 const getByNomLoc = async function(nom_loc){

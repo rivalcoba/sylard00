@@ -7,11 +7,14 @@ import flashLib from '@chelpers/flashLib'
 import myI18n from '@chelpers/myI18n'
 // Admin the register form
 import formsManager from '@chelpers/formsManager'
+// Admin for view
+import locations from '@client/pages/locations'
 
 // Loading function to the global variable
 //window.greeting = greeting
 window.myI18n = myI18n
 window.formsManager = formsManager
+window.locations = locations
 
 // Flashea mensaje si lo hay
 flashLib.flashManager()

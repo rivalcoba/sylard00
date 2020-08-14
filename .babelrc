@@ -1,9 +1,20 @@
 {
     "presets": [
         "minify",
-        "@babel/preset-env"
+        ["@babel/preset-env",{
+            "useBuiltIns": "entry", // Allow Babel to use polyfills in the frontend
+            "debug": true,
+            "targets": {
+                "node": "12"
+              }
+            }]
     ],
     "plugins": [
+        // ["@babel/plugin-transform-runtime",
+        //     {
+        //       "regenerator": true
+        //     }
+        //   ],
         [
             "module-resolver",
             {

@@ -1,3 +1,6 @@
+// import 'core-js/stable'
+// import 'regenerator-runtime'
+
 import createError from 'http-errors'
 import express from 'express'
 import path from 'path'
