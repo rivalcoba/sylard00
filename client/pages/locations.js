@@ -8,7 +8,7 @@ const fillLocationsById = async (inputId, outputId)=>{
 
     try {
         let locations = await locationsHelper.getByNomLoc(nom_loc)
-        console.log(locations)
+        
         toogleLoading()
         if(!locations){
             return Swal.fire(
