@@ -25,7 +25,7 @@ const indexNomLoc = async (req, res) => {
       limit = 0
       break;
   }
-  
+  console.log(`limte de query>${limit}`)
   nom_loc = regexhelp.diacriticSensitiveRegex(nom_loc)  
   console.log(`> nom_loc: ${nom_loc}`)
   
