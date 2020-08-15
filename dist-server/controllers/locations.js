@@ -1,9 +1,9 @@
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _Location=_interopRequireDefault(require("../models/Location")),_regexhelp=_interopRequireDefault(require("../helpers/regexhelp"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}// Import Model
 // Helpers
-const index=(a,b)=>{b.render("locations/index")},indexNomLoc=async(a,b)=>{console.log(`> Nomloc: ${a.params.nom_loc}`);let{nom_loc:c}=a.params;c=_regexhelp.default.diacriticSensitiveRegex(c),console.log(`> nom_loc: ${c}`);var d=new RegExp(c,"i");console.log(`> regex: ${d}`);// Working
-// const locations = await Locations.find( { $text: { $search: nom_loc } } ).exec()
-//Working
-const e=await _Location.default.find({Nom_Loc:{$regex:d}}).exec();let f=e.map(a=>a.toJSON());return b.json(f);// List all the collections
+const index=(a,b)=>{b.render("locations/index")},indexNomLoc=async(a,b)=>{// Getting the query parameter
+let{nom_loc:c}=a.params,d=0;// Limiting the values delivered
+switch(c.length){case 0:return b.status(200).json({error:"Necesita ingresar mas de un caracter"});case 1:case 2:case 4:case 5:d=10*c.length;break;default:d=0;}c=_regexhelp.default.diacriticSensitiveRegex(c),console.log(`> nom_loc: ${c}`);var e=new RegExp(c,"i");console.log(`> regex: ${e}`);//Working
+const f=await _Location.default.find({Nom_Loc:{$regex:e}}).limit(d).exec();let g=f.map(a=>a.toJSON());return b.json(g);// List all the collections
 //   res.json({
 //     'Mapa': '010010144',
 //     'Cve_Ent': '01',

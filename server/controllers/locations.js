@@ -8,26 +8,36 @@ const index = (req, res)=>{
 }
 
 const indexNomLoc = async (req, res) => {
-  console.log(`> Nomloc: ${req.params.nom_loc}`)
+  // Getting the query parameter
   let { nom_loc } = req.params
-
-  nom_loc = regexhelp.diacriticSensitiveRegex(nom_loc)
+  let limit = 0
+  // Limiting the values delivered
+  switch (nom_loc.length) {
+    case 0:
+      return res.status(200).json({ error: "Necesita ingresar mas de un caracter" });
+    case 1:
+    case 2:
+    case 4:
+    case 5: 
+      limit = nom_loc.length * 10
+      break
+    default:
+      limit = 0
+      break;
+  }
   
+  nom_loc = regexhelp.diacriticSensitiveRegex(nom_loc)  
   console.log(`> nom_loc: ${nom_loc}`)
   
-  var regex = new RegExp(nom_loc, 'i')
-  
+  var regex = new RegExp(nom_loc, 'i')  
   console.log(`> regex: ${regex}`)
-  
-  // Working
-  // const locations = await Locations.find( { $text: { $search: nom_loc } } ).exec()
 
   //Working
   const locations = await Locations.find({
     Nom_Loc: {
       $regex: regex
     }
-  }).exec()
+  }).limit(limit).exec()
   
   let locs = locations.map((location) => location.toJSON())
   

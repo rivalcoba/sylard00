@@ -6,30 +6,41 @@ const fillLocationsById = async (inputId, outputId)=>{
     toogleLoading()
     let nom_loc = document.getElementById(inputId).value
 
-    let locations = await locationsHelper.getByNomLoc(nom_loc)
-    toogleLoading()
-    if(!locations){
+    try {
+        let locations = await locationsHelper.getByNomLoc(nom_loc)
+        console.log(locations)
+        toogleLoading()
+        if(!locations){
+            return Swal.fire(
+                'Error!',
+                'El servidor esta ocupado! intente mas tarde',
+                'info'
+              )
+        }
+        //
+        let ul = document.getElementById(outputId);
+        // Remove all the previous results
+        while (ul.firstChild) {
+          ul.removeChild(ul.firstChild)
+        }
+    
+        // document.getElementById(outputId).appendChild(ul);
+    
+        locations.forEach(location => {
+            //console.log(location.Nom_Loc)
+            let li = document.createElement('li')
+            ul.appendChild(li)
+            li.innerHTML += `Nombre: ${location.Nom_Loc} - Municipio: ${location.Nom_Mun} - Entidad: ${location.Nom_Ent}`;
+        });
+        
+    } catch (error) {
+        toogleLoading()
         return Swal.fire(
             'Error!',
-            'El servidor esta ocupado! intente mas tarde',
+            error.message,
             'info'
           )
     }
-    //
-    let ul = document.getElementById(outputId);
-    // Remove all the previous results
-    while (ul.firstChild) {
-      ul.removeChild(ul.firstChild)
-    }
-
-    // document.getElementById(outputId).appendChild(ul);
-
-    locations.forEach(location => {
-        //console.log(location.Nom_Loc)
-        let li = document.createElement('li')
-        ul.appendChild(li)
-        li.innerHTML += `Nombre: ${location.Nom_Loc} - Municipio: ${location.Nom_Mun} - Entidad: ${location.Nom_Ent}`;
-    });
 }
 
 const toogleLoading = function(id = 'loading'){
