@@ -17,6 +17,7 @@ const indexNomLoc = async (req, res) => {
       return res.status(200).json({ error: "Necesita ingresar mas de un caracter" });
     case 1:
     case 2:
+    case 3:
     case 4:
     case 5: 
       limit = nom_loc.length * 10

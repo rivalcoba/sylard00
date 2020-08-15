@@ -2,7 +2,7 @@
 // Helpers
 const index=(a,b)=>{b.render("locations/index")},indexNomLoc=async(a,b)=>{// Getting the query parameter
 let{nom_loc:c}=a.params,d=0;// Limiting the values delivered
-switch(c.length){case 0:return b.status(200).json({error:"Necesita ingresar mas de un caracter"});case 1:case 2:case 4:case 5:d=10*c.length;break;default:d=0;}console.log(`limte de query>${d}`),c=_regexhelp.default.diacriticSensitiveRegex(c),console.log(`> nom_loc: ${c}`);var e=new RegExp(c,"i");console.log(`> regex: ${e}`);//Working
+switch(c.length){case 0:return b.status(200).json({error:"Necesita ingresar mas de un caracter"});case 1:case 2:case 3:case 4:case 5:d=10*c.length;break;default:d=0;}console.log(`limte de query>${d}`),c=_regexhelp.default.diacriticSensitiveRegex(c),console.log(`> nom_loc: ${c}`);var e=new RegExp(c,"i");console.log(`> regex: ${e}`);//Working
 const f=await _Location.default.find({Nom_Loc:{$regex:e}}).limit(d).exec();let g=f.map(a=>a.toJSON());return b.json(g);// List all the collections
 //   res.json({
 //     'Mapa': '010010144',
