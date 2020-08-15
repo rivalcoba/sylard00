@@ -9,7 +9,7 @@ const LocationSchema = new Schema({
   Cve_Mun: String,
   Nom_Mun: String,
   Cve_Loc: String,
-  Nom_Loc: {type: String, text : true },
+  Nom_Loc: String,
   Ambito: String,
   Latitud: String,
   Longitud: String,

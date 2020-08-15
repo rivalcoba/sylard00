@@ -11,17 +11,30 @@ const indexNomLoc = async (req, res) => {
   console.log(`> Nomloc: ${req.params.nom_loc}`)
   let { nom_loc } = req.params
 
-  nom_loc = regexhelp.diacriticSensitiveRegex(nom_loc)
+  //nom_loc = regexhelp.diacriticSensitiveRegex(nom_loc)
   
-  console.log(`> Regex: ${nom_loc}`)
+  console.log(`> nom_loc: ${nom_loc}`)
   
   var regex = new RegExp(nom_loc, 'i')
   
+  console.log(`> regex: ${regex}`)
+  
+  // Working
+  // const locations = await Locations.find( { $text: { $search: nom_loc } } ).exec()
+
+  //Working
   const locations = await Locations.find({
     Nom_Loc: {
       $regex: regex
     }
   }).exec()
+  
+  // Working
+  // const locations = await Locations.find({
+  //   Nom_Loc: {
+  //     $regex: regex
+  //   }
+  // }).exec()
   
   let locs = locations.map((location) => location.toJSON())
   
