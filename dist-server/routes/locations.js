@@ -5,5 +5,5 @@ const router=new _express.Router;// Authorization Check Middleware
 // import ensureAuthenticated from '@helpers/ensureAuth'
 // import ensureColabUser from '@validators/ensureColabUser'
 // Import Controllers
-router.get("/index",/*ensureAuthenticated, ensureColabUser,*/_locations.default.index),router.get("/index/nomloc/:nom_loc",/*ensureAuthenticated, ensureColabUser,*/_locations.default.indexNomLoc);// Se exportan rutas
+router.get("/index",/*ensureAuthenticated, ensureColabUser,*/_locations.default.index),router.get("/index/nomloc/:nom_loc",/*ensureAuthenticated, ensureColabUser,*/_locations.default.indexNomLoc),router.get("/index/municipalitiesOf/:nom_ent",/*ensureAuthenticated, ensureColabUser,*/_locations.default.getMunicipalities),router.get("/index/localitiesOf/:nom_ent/:nom_mun",/*ensureAuthenticated, ensureColabUser,*/_locations.default.getLocalities),router.get("/find/:nom_ent/:nom_mun/:nom_loc",/*ensureAuthenticated, ensureColabUser,*/_locations.default.findLocality);// Se exportan rutas
 var _default=router;exports.default=_default;

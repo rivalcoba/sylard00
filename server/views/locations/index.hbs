@@ -1,14 +1,106 @@
-<br>
-<label for="location">Comunidad:</label>
-<input type="text" minlength="3" id="location" name="location">
-<button id="searchbtn" type="button" onclick="locations.fillLocationsById('location','loclist')">BUSCAR</button>
-<br>
-<br>
-<label for="locations">Comunidad:</label>
-<div hidden id="loading">
-<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-<span class="sr-only">Loading...</span>
+<div class="row" style="padding-top:50px">
+    <div class="col s0 m2 l3"></div>
+    <div class="col s12 m8 l6 z-depth-3" style="padding: 20px; border-radius: 15px;">
+
+        <!-- Entidad -->
+        <div class="row">
+            <div class="col s0 m2 l1"></div>
+            <div class="input-field col s12 m8 l10 center">
+                <i class="fa fa-compass prefix" style="color: grey;" aria-hidden="true"></i>
+                <label for="entity">Entidad:</label>
+                <input
+                onblur="locations.fillMunicipalitiesDataList()" 
+                onclick="locations.disableMunicipality();locations.disableLocality()"
+                onchange="locations.fillMunicipalitiesDataList()" list="entities" type="text" id="entity" name="entity">
+                <datalist id="entities">
+                    {{#each entities}}
+                    <option value="{{this}}">
+                        {{/each}}
+                </datalist>
+            </div>
+            <div class="col s0 m2 l1"></div>
+        </div>
+        
+        <!-- Municipio -->
+        <div class="row">
+            <div class="col s0 m2 l1"></div>
+            <div class="input-field col s12 m8 l10 center">
+                <i class="fa fa-compass prefix" style="color: grey;" aria-hidden="true"></i>
+                <label for="municipality">Municipio:</label>
+                <input disabled
+                onblur="locations.fillLocalitiesDataList()"           
+                onclick="locations.disableLocality()"
+                onchange="locations.fillLocalitiesDataList()"
+                type="text" list="municipalities" 
+                id="municipality" name="municipality">
+                <datalist id="municipalities">
+                </datalist>
+            </div>
+        </div>
+
+        <!-- Localidad -->
+        <div class="row">
+            <div class="col s0 m2 l1"></div>
+            <div class="input-field col s12 m8 l10 center">
+                <i class="fa fa-compass prefix" style="color: grey;" aria-hidden="true"></i>
+                <label for="locality">Localidad:</label>
+                <input disabled 
+                type="text" 
+                id="locality"
+                list="localities"
+                name="locality">
+                <datalist id="localities">
+                </datalist>
+            </div>
+
+            <!-- BUTTON -->
+            <div class="center-align">
+                <button id="searchbtn" class="btn btn-primary" type="button"
+                    onclick="locations.findLocation()">MOSTRAR DETALLE</button>
+            </div>
+        </div>
+    </div>
+    <div class="col s0 m2 l3"></div>
 </div>
+
+<div hidden class="row" style="padding-top:50px">
+    <div class="col s0 m2 l3"></div>
+    <div class="col s12 m8 l6">
+        <div class="row">
+            <div class="col s0 m2 l1"></div>
+            <div class="input-field col s12 m8 l10 center">
+                <div id="loading">
+                    <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s0 m2 l3"></div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <table name="tabla" id="tabla" class="centered">
+            <thead>
+                <tr>
+                    <th>Nombre de la Entidad</th>
+                    <th>Nombre del Municipio</th>
+                    <th>Nombre de la localidad</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr id="result">
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
 <div id="locations">
     <ul id="loclist">
 

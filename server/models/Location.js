@@ -23,7 +23,7 @@ const LocationSchema = new Schema({
   'Total De Viviendas Habitadas': Number,
 })
 
-LocationSchema.path('Nom_Loc').index({text : true});
+// LocationSchema.path('Nom_Loc').index({text : true});
 
 // Exporting User Schema
 export default mongoose.model('Locations', LocationSchema)

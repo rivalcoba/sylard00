@@ -16,6 +16,10 @@ import locationsController from '@controllers/locations'
 router.get('/index',/*ensureAuthenticated, ensureColabUser,*/locationsController.index)
 // API Lista las colecciones del usuario
 router.get('/index/nomloc/:nom_loc',/*ensureAuthenticated, ensureColabUser,*/locationsController.indexNomLoc)
+router.get('/index/municipalitiesOf/:nom_ent',/*ensureAuthenticated, ensureColabUser,*/locationsController.getMunicipalities)
+router.get('/index/localitiesOf/:nom_ent/:nom_mun',/*ensureAuthenticated, ensureColabUser,*/locationsController.getLocalities)
+router.get('/find/:nom_ent/:nom_mun/:nom_loc',/*ensureAuthenticated, ensureColabUser,*/locationsController.findLocality)
+
 
 // Se exportan rutas
 export default router
