@@ -3,6 +3,7 @@ import auth from '@routes/auth'
 import user from '@routes/user'
 import collections from '@routes/collections'
 import locations from '@routes/locations'
+import glottolog from '@routes/glottolog'
 
 // Importing index router
 export default function(app){
@@ -20,6 +21,9 @@ export default function(app){
     
     // locations
     app.use('/locations', locations)
+
+    // Glottolog
+    app.use('/glottolog', glottolog)
     
     // Other Routes
     return app
