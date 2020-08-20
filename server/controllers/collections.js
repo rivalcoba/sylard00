@@ -1,23 +1,48 @@
 // Collections Controllers
 
+// Import model
+import Collection from '@models/Collection'
+// import User from '@models/User'
+
 // List all the collaborators collections
 // Read and list all the Collaborators Collections
 const index = (req, res) => {
-    // List all the collections
-    res.render('collections/index', { title: 'Contact', content:'Contact the administrator' });
+  // List all the collections
+  res.render('collections/index', {
+    title: 'Contact',
+    content: 'Contact the administrator',
+  })
 }
 
+const createCollection = (req, res) => {
+  res.render('collections/create')
+}
+
+const addCollection = async (req, res) => {
+  // Grab collections from body
+  const { collection } = req.body
+  collection
+
+  // const collectionDoc = await Collection.create(
+  //   collection
+  // ).exec()
+  const collectionDoc = collection
+  // Se encuentra usuario
+  res.status(200).json(collectionDoc)
+}
 
 export default {
-    index   
-    // List Collections from a particular Colaborator User
-    // Lists Collections from the logged user
-    // Show single Collection
+  // List Collections from a particular Colaborator User
+  index,
+  // Create Add Collection FORM
+  createCollection,
+  // Process ADD Collection FORM
+  addCollection,
+  // Update Collection FORM
 
-    // Create Add Collection FORM
-    // Process ADD Collection FORM
-    // Update ADD Collection FORM
-    // Process ADD Collection FORM
+  // Process Update Collection FORM
 
-    // Process Delete Collection
+  // Lists Collections from the logged user
+  // Show single Collection
+  // Process Delete Collection
 }

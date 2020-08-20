@@ -6,17 +6,39 @@ const CollectionSchema = new Schema({
   description: { type: String },
   languages: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'Glottologs',
-    },
+      gid: String,
+      family_id: String,
+      parent_id: String,
+      name: String,
+      level: String,
+      latitude: Number,
+      longitude: Number,
+      iso639P3code: String,
+      child_family_count: Number,
+      child_language_count: Number,
+      child_dialect_count: Number,
+      country_ids: String,
+    }
   ],
-  communities: [
+  localities: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'Locations',
-    },
+      Cve_Ent: String,
+      Nom_Ent: String,
+      Nom_Abr: String,
+      Cve_Mun: String,
+      Nom_Mun: String,
+      Cve_Loc: String,
+      Nom_Loc: String,
+      Lat_Decimal: Number,
+      Lon_Decimal: Number,
+      Altitud: Number,
+    }
   ],
   license: String,
+  user:{
+    type: Schema.Types.ObjectId,
+    ref: 'Users'
+  }
 })
 
-export default mongoose.model('Collections', CollectionSchema)
+export default mongoose.model('Collection', CollectionSchema)
