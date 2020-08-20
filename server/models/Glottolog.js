@@ -30,10 +30,9 @@ GlottologSchema.methods.getParent = async function(){
   return doc
 }
 
-// Todo refactor deleting ascendants input array
-GlottologSchema.methods.getParentBranch = async function(ascendants){
-  const parent = await this.getParent()
-  if(parent){
+GlottologSchema.methods.getParentBranch = async function(ascendants = []){
+  if(this.parent_id != ''){
+    const parent = await this.getParent()
     ascendants.push(parent)
     return parent.getParentBranch(ascendants)
   }

@@ -1,3 +1,3 @@
 "use strict";var _Glottolog=_interopRequireDefault(require("../models/Glottolog"));Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}// Import Model
 const index=async(a,b)=>{const c=await _Glottolog.default.find({},"gid name parent_id").exec();let d=c.map(a=>{let b={};return b=a.toJSON(),b});b.render("glottolog/index",{languages:d})},parentTree=async(a,b)=>{// Get parent by id of the language
-const{id:c}=a.params,d=await _Glottolog.default.findById(c);let e=[];e=await d.getParentBranch(e),b.status(200).json(e)};var _default={index,parentTree};exports.default=_default;
+const{id:c}=a.params,d=await _Glottolog.default.findById(c);let e=await d.getParentBranch();b.status(200).json(e)};var _default={index,parentTree};exports.default=_default;
