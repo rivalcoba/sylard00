@@ -13,5 +13,6 @@ import glottologController from '@controllers/glottolog'
 
 // Show test form
 router.get('/index', glottologController.index)
+router.get('/parentTree/:id', glottologController.parentTree)
 
 export default router
