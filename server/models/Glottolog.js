@@ -23,13 +23,6 @@ GlottologSchema.virtual('parentTree',{
   justOne: true,
 })
 
-// GlottologSchema.pre('find', async function(){
-//   await this.populate('parentTree')
-// })
-// GlottologSchema.pre('findOne', async function(){
-//   await this.populate('parentTree')
-// })
-
 GlottologSchema.methods.getParent = async function(){
   const doc = await mongoose.model('Glottologs').findOne({
     gid: this.parent_id
@@ -37,9 +30,9 @@ GlottologSchema.methods.getParent = async function(){
   return doc
 }
 
+// Todo refactor deleting ascendants input array
 GlottologSchema.methods.getParentBranch = async function(ascendants){
   const parent = await this.getParent()
-  //console.log(`Parent: ${parent}`)
   if(parent){
     ascendants.push(parent)
     return parent.getParentBranch(ascendants)
@@ -48,7 +41,6 @@ GlottologSchema.methods.getParentBranch = async function(ascendants){
     return ascendants
   }
 }
-
 
 // Exporting User Schema
 export default mongoose.model('Glottologs', GlottologSchema)
