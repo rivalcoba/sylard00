@@ -20,7 +20,10 @@ const createCollection = (req, res) => {
 
 const addCollection = async (req, res) => {
   // Grab collections from body
-  const { collection } = req.body
+  let { collection } = req.body
+  // Add user
+  collection.user = req.user._id
+
   const collectionDoc = await Collection.create(
     collection
   )
@@ -40,19 +43,25 @@ const deleteCollection = async (req,res)=>{
 
 const editCollectionForm = async (req, res)=>{
   const collection_id = req.params.collection_id
-  console.log(`collection_id: ${collection_id}`)
+  
   // Grab the collection to edit
   try {
     let collectionDoc = await Collection.findById(collection_id).exec()
-    console.log(`collectionDoc: ${collectionDoc}`)    
+
+    // Im the collection owner?    
+    if(String(collectionDoc.user) != String(req.user._id)){
+      // You are not the collection owner
+      req.flash('error_msg', 'No eres el propietario de esta colección');
+      return res.redirect('/dashboard')
+    }
+
     // Validaciones
     // Is a valid collection?
     if(!collectionDoc){      
       req.flash('error_msg', 'No se encontro la coleccion solicitada');
       return res.redirect('/dashboard')
     }
-    // Im the collection owner?
-    console.log(`>> USER ID: <{${req.user._id}}>`)
+    
     res.render('collections/edit', {
       collectionDoc : collectionDoc.toJSON()
     })
@@ -63,8 +72,38 @@ const editCollectionForm = async (req, res)=>{
     return res.redirect('/dashboard')
   }
 }
+
 const editCollection = async (req, res)=>{
+  const {collection} = req.body
   const collection_id = req.params.collection_id
+  let collectionDoc
+  try {
+    collectionDoc = await Collection.findById(collection_id).exec()
+
+    // Im the collection owner?    
+    if(String(collectionDoc.user) != String(req.user._id)){
+      // You are not the collection owner
+      req.flash('error_msg', 'No eres el propietario de esta colección');
+      return res.redirect('/dashboard')
+    }
+
+    // Update collection
+    let result = await collectionDoc.updateCollection(collection)
+    
+    return res.status(200).json({
+      collectionDoc : result.toJSON()
+    })
+    
+    res.render('collections/edit', {
+      collectionDoc : collectionDoc.toJSON()
+    })
+
+  } catch (error) {
+    // Flash Message
+    req.flash('error_msg', 'No se ha podido encontrar la coleccion que se desea editar');
+    // Get the info from
+    return res.redirect('/dashboard')
+  }
   //let collection doc
   res.status(200).json(collection_id)
 }

@@ -3,8 +3,6 @@ import * as Yup from 'yup'
 // Model
 import Language from '@models/Glottolog'
 import Location from '@models/Location'
-// TEST SEBORRARA
-import User from '@models/User'
 
 // Validation Schema
 const CollectionValidationSchema = Yup.object().shape({
@@ -19,11 +17,6 @@ const CollectionValidationSchema = Yup.object().shape({
 })
 
 export default async (req, res, next) => {
-  // vvvvv TEST Usuario se borrara
-  let userdoc = await User.findById('5f31d909d49e576715d3f881', '_id').exec()
-  let user = userdoc._id
-  // ^^^^^ TEST Usuario se borrara
-
   // Get Params from req
   let { languages, localities } = req.body
   const { name, description, license } = req.body
@@ -41,7 +34,6 @@ export default async (req, res, next) => {
       languages,
       localities,
       license,
-      user,
     }
 
     // Se validan datos del formulario
