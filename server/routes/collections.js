@@ -13,8 +13,14 @@ import collectionValidator from '@validators/collection'
 // Collections Routes
 // Lista las colecciones del usuario
 router.get('/',ensureAuthenticated, ensureColabUser,collectionsController.index)
+// Show Form to create a collection
 router.get('/create',ensureAuthenticated, ensureColabUser,collectionsController.createCollection)
+// Process a collection creation request
 router.post('/add',/*ensureAuthenticated, ensureColabUser,*/collectionValidator,collectionsController.addCollection)
+// Show the edition of a collection form
+router.get('/edit/:collection_id',ensureAuthenticated, ensureColabUser,collectionsController.editCollectionForm)
+router.put('/edit/:collection_id',ensureAuthenticated, ensureColabUser,collectionsController.editCollectionForm)
+router.delete('/delete/:collection_id',/*ensureAuthenticated, ensureColabUser,*/collectionsController.deleteCollection)
 
 // Se exportan rutas
 export default router

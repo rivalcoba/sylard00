@@ -2,7 +2,7 @@ import path from 'path'
 import jsonReader from '@helpers/jsonReader'
 
 // DELETE async
-const edit = async(req, res)=>{
+const edit = (req, res)=>{
     let nativeLanguages = jsonReader.readFileSync(path.join(__dirname,'..','assets','languages.json'))
     let countries = jsonReader.readFileSync(path.join(__dirname,'..','assets','countries.json'))
     

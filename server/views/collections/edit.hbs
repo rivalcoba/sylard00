@@ -1,0 +1,19 @@
+<ul>
+    <li>Nombre de la colección {{collectionDoc.name}}</li>
+    <li>Descripción: {{collectionDoc.description}}</li>
+    <li> Lenguajes
+        <ul>
+        {{#each collectionDoc.languages}}
+            <li>{{name}} - {{gid}}</li>
+        {{/each}}
+        </ul>
+    </li>
+    <li> Localities
+        <ul>
+        {{#each collectionDoc.localities}}
+            <li>{{Nom_Loc}}</li>
+        {{/each}}
+        </ul>
+    </li>
+    <li>Licencia: {{collectionDoc.license}}</li>
+</ul>

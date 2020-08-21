@@ -41,4 +41,8 @@ const CollectionSchema = new Schema({
   }
 })
 
+CollectionSchema.methods.updateCollection= async function(data){
+  await this.updateOne(data).exec()
+}
+
 export default mongoose.model('Collection', CollectionSchema)
