@@ -29,13 +29,13 @@ export default async (req, res, next) => {
     // ^^^^^ TEST Usuario se borrara
 
     // Get Supported Languages
-    let languageDocuments = await Language.find({},'_id').exec()
+    let languageDocuments = await Language.find({},'_id').limit(10).exec()
     let supportedLanguages = languageDocuments.map((langDoc)=>{
         return langDoc.id
     })
 
     // Get Supported localities
-    let localitiesDocuments = await Location.find({},'_id').exec()
+    let localitiesDocuments = await Location.find({},'_id').limit(10).exec()
     let supportedLocalities = localitiesDocuments.map((locDoc)=>{
         return locDoc.id
     })

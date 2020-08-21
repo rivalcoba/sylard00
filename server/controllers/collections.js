@@ -21,7 +21,6 @@ const createCollection = (req, res) => {
 const addCollection = async (req, res) => {
   // Grab collections from body
   const { collection } = req.body
-  collection
 
   // const collectionDoc = await Collection.create(
   //   collection
