@@ -76,7 +76,7 @@ const editCollectionForm = async (req, res)=>{
 const editCollection = async (req, res)=>{
   const {collection} = req.body
   const collection_id = req.params.collection_id
-  let collectionDoc
+  let collectionDoc  
   try {
     collectionDoc = await Collection.findById(collection_id).exec()
 
@@ -86,26 +86,25 @@ const editCollection = async (req, res)=>{
       req.flash('error_msg', 'No eres el propietario de esta colección');
       return res.redirect('/dashboard')
     }
-
+    
     // Update collection
     let result = await collectionDoc.updateCollection(collection)
-    
-    return res.status(200).json({
-      collectionDoc : result.toJSON()
-    })
-    
-    res.render('collections/edit', {
-      collectionDoc : collectionDoc.toJSON()
-    })
 
+    if(result.ok){
+      return res.status(200).json({
+        collectionDoc: collection,
+        result})
+        // Todo Habilitar collections Edit
+        // res.render('collections/edit', {
+        //   collectionDoc : collectionDoc.toJSON()
+        // })
+    }
   } catch (error) {
     // Flash Message
     req.flash('error_msg', 'No se ha podido encontrar la coleccion que se desea editar');
     // Get the info from
-    return res.redirect('/dashboard')
+    return res.render('index/dashboard')
   }
-  //let collection doc
-  res.status(200).json(collection_id)
 }
 
 export default {

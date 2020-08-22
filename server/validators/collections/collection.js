@@ -88,14 +88,10 @@ export default async (req, res, next) => {
       return obj
     })
     req.body.collection = collection
-    console.log('SIGUE')
     next()
   } catch (error) {
     console.log(`validator>collection> ${error}`)
-    // >>> TEST REMOVER
-    return res.status(400).json(error)
-    // >>>>>>>>>>>>>>>>>>>
     req.flash('error_msg', `Formulario incorrecto: ${error.message}`)
-    res.redirect('/collections/create')
+    res.render('index/dashboard')
   }
 }

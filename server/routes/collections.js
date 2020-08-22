@@ -8,7 +8,7 @@ import ensureColabUser from '@validators/ensureColabUser'
 // Import Controllers
 import collectionsController from '@controllers/collections'
 // Import validators
-import collectionValidator from '@validators/collection'
+import collectionValidator from '@validators/collections/collection'
 
 // Collections Routes
 // Lista las colecciones del usuario
