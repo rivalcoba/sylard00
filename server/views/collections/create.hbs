@@ -1,2 +1,116 @@
-<h2>Formulario Agregar Coleccion</h2>
-<p>Aqui se Daran de alta nuevas colecciones</p>
+<h2 class="center   pink-text">Añadir Colección</h2>
+<p>Llena los campos correctamente</p>
+<form class="col s12" action="/auth/register/user" method="post">
+  <!-- Collection Name -->
+  <div class="row">
+    <div class="input-field col s12 m10 l8">
+      <i class="fa fa-archive prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
+      <label for="name">Nombre de la colección</label>
+      <input id="name" type="text" name="name" {{!-- value="{{name}}" --}} /*required* />
+    </div>
+  </div>
+
+  <!-- Collection Description-->
+  <div class="row">
+    <div class="input-field col s12 m10 l8">
+      <i class="fa fa-archive prefix" style="color: rgba(48, 115, 238, 0.924);"></i>
+      <label for="description">Descripción</label>
+      <textarea type="text" name="description" id="description" class="materialize-textarea"
+        {{!-- style="resize: none;height: 80px;" --}} readonly></textarea>
+    </div>
+  </div>
+
+  <!-- Collections Languages -->
+  <div class="row">
+    <div class="input-field col s12 m10 l4">
+      <i class="fa fa-language prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
+      <input placeholder="Orizaba Nahuatl | oriz1235" id="language" name="language" type="text" value="{{language}}"
+        /*required* />
+      <label for="language">Lengua Terminal</label>
+    </div>
+    <!-- Language Group -->
+    <div class="input-field col s12 m10 l4">
+      <input placeholder="Maijiki | orej1242" id="langGroup" name="langGroup" type="text" value="{{langGroup}}"
+        /*required* />
+      <label for="langGroup">Grupo de Lengua</label>
+      <i class="fa fa-plus-square prefix" style="color: rgba(48, 238, 143, 0.911); cursor: pointer;" aria-hidden="true"
+        onclick="addLanguage()"></i>
+    </div>
+  </div>
+
+  <!-- Tabla de Resultados -->
+  <div class="row">
+    <div class="col s12 m10 l8">
+      <table>
+        <thead>
+         <span style="font-weight: 700;">
+           Lenguas agregadas a la colección
+         </span>           
+        </thead>
+        <tbody id="langTable">
+          {{!-- <tr>
+            <td>Yolo1241</td>
+            <td>Yoloxóchitl Mixtec</td>
+            <td>Amuz1253</td>
+            <td>Amuzgo Mixtecan</td>
+            <td>
+              <i class="fa fa-trash fa-2x" style="color: rgb(241, 63, 32);cursor: pointer;"></i>
+            </td>
+          </tr>         --}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- License-->
+  <div class="row">
+    <div class="input-field col s12 m10 l8">
+      <i class="fa fa-creative-commons prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
+      <label for="license">Licencia del Contenido</label>
+      <input type="text" placeholder="CC-BY-NC-SA" name="license" id="license" list="licenseType"
+        {{!-- value="{{license}}" --}}>
+      <datalist id="licenseType">
+        <option value="CC-BY-NC-SA">
+        <option value="CC BY-SA">
+      </datalist>
+    </div>
+  </div>
+
+</form>
+
+<script>
+  function addLanguageRow(language, groupLanguage){
+    let table = document.getElementById('langTable')
+    let tr = document.createElement('tr')
+    tr.setAttribute('id',`${language.gid}`)
+    tr.onclick = function(){deleteLangRow(`${language.gid}`)}
+    tr.innerHTML = `<td>${language.gid}</td>
+            <td>${language.name}</td>
+            <td>${groupLanguage.gid}</td>
+            <td>${groupLanguage.name}</td>
+            <td>
+              <i class="fa fa-trash fa-2x" style="color: rgb(241, 63, 32);cursor: pointer;"></i>
+            </td>`
+    table.appendChild(tr)
+  }
+  
+  function addLanguage(){    
+    let lang = {
+      _id : "12u7drr4df",
+      gid: 'Yolo1241',
+      name: 'Yoloxóchitl Mixtec'
+    }
+    let groupLanguage = {
+      _id : "2349ixmmt58j",
+      gid: 'Amuz1253',
+      name: 'Amuzgo Mixtecan'
+    }
+    addLanguageRow(lang, groupLanguage)
+  }
+
+  function deleteLangRow(id){
+    var tr = document.getElementById(id)
+    tr.remove()
+  }
+//document.getElementsByTagName("tr")[2].remove();
+</script>
