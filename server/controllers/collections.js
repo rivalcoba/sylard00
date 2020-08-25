@@ -2,6 +2,7 @@
 
 // Import model
 import Collection from '@models/Collection'
+import Glottolog from '@models/Glottolog'
 // import User from '@models/User'
 
 // List all the collaborators collections
@@ -14,8 +15,19 @@ const index = (req, res) => {
   })
 }
 
-const createCollection = (req, res) => {
-  res.render('collections/create')
+const createCollection = async(req, res) => {
+  // Getting languages 
+  const glottologs = await Glottolog.find({},'gid name parent_id').exec()
+
+  let languages = glottologs.map((language)=>{
+    let nlang = {}
+    nlang = language.toJSON()
+    return nlang
+  })
+
+  res.render('collections/create',{
+    languages
+  })
 }
 
 const addCollection = async (req, res) => {

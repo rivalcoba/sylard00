@@ -24,16 +24,30 @@
   <div class="row">
     <div class="input-field col s12 m10 l4">
       <i class="fa fa-language prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
-      <input placeholder="Orizaba Nahuatl | oriz1235" id="language" name="language" type="text" value="{{language}}"
-        /*required* />
       <label for="language">Lengua Terminal</label>
+      <input 
+        placeholder="Orizaba Nahuatl | oriz1235" 
+        id="language" name="language" 
+        type="text"
+        onblur="enableLangGroup()"
+        value="{{language}}" 
+        list="langlist"
+        /*required*/ >
+      <datalist id="langlist">
+        {{#each languages}}
+          <option 
+          id = {{_id}}
+          name="{{name}}"
+          value="{{name}} | {{gid}}">
+        {{/each}}
+      </datalist>
     </div>
     <!-- Language Group -->
     <div class="input-field col s12 m10 l4">
-      <input placeholder="Maijiki | orej1242" id="langGroup" name="langGroup" type="text" value="{{langGroup}}"
+      <input disabled placeholder="Aztec | azte1234" id="langGroup" name="langGroup" type="text" value="{{langGroup}}"
         /*required* />
       <label for="langGroup">Grupo de Lengua</label>
-      <i class="fa fa-plus-square prefix" style="color: rgba(48, 238, 143, 0.911); cursor: pointer;" aria-hidden="true"
+      <i class="fa fa-plus-square prefix" style="color: rgba(48, 238, 143, 0.911); cursor: pointer; display: none;"
         onclick="addLanguage()"></i>
     </div>
   </div>
@@ -46,7 +60,7 @@
          <span style="font-weight: 700;">
            Lenguas agregadas a la colección
          </span>           
-        </thead>
+        </thead
         <tbody id="langTable">
           {{!-- <tr>
             <td>Yolo1241</td>
@@ -79,6 +93,11 @@
 </form>
 
 <script>
+
+  function enableLangGroup(){
+    alert("enabling lang group")
+  }
+
   function addLanguageRow(language, groupLanguage){
     let table = document.getElementById('langTable')
     let tr = document.createElement('tr')
