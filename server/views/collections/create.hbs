@@ -29,7 +29,7 @@
         placeholder="Orizaba Nahuatl | oriz1235" 
         id="language" name="language" 
         type="text"
-        onblur="enableLangGroup()"
+        onblur="scritps.enableLangGroup()"
         value="{{language}}" 
         list="langlist"
         /*required*/ >
@@ -48,7 +48,7 @@
         /*required* />
       <label for="langGroup">Grupo de Lengua</label>
       <i class="fa fa-plus-square prefix" style="color: rgba(48, 238, 143, 0.911); cursor: pointer; display: none;"
-        onclick="addLanguage()"></i>
+        onclick="scritps.addLanguage()"></i>
     </div>
   </div>
 
@@ -89,47 +89,4 @@
       </datalist>
     </div>
   </div>
-
 </form>
-
-<script>
-
-  function enableLangGroup(){
-    alert("enabling lang group")
-  }
-
-  function addLanguageRow(language, groupLanguage){
-    let table = document.getElementById('langTable')
-    let tr = document.createElement('tr')
-    tr.setAttribute('id',`${language.gid}`)
-    tr.onclick = function(){deleteLangRow(`${language.gid}`)}
-    tr.innerHTML = `<td>${language.gid}</td>
-            <td>${language.name}</td>
-            <td>${groupLanguage.gid}</td>
-            <td>${groupLanguage.name}</td>
-            <td>
-              <i class="fa fa-trash fa-2x" style="color: rgb(241, 63, 32);cursor: pointer;"></i>
-            </td>`
-    table.appendChild(tr)
-  }
-  
-  function addLanguage(){    
-    let lang = {
-      _id : "12u7drr4df",
-      gid: 'Yolo1241',
-      name: 'Yoloxóchitl Mixtec'
-    }
-    let groupLanguage = {
-      _id : "2349ixmmt58j",
-      gid: 'Amuz1253',
-      name: 'Amuzgo Mixtecan'
-    }
-    addLanguageRow(lang, groupLanguage)
-  }
-
-  function deleteLangRow(id){
-    var tr = document.getElementById(id)
-    tr.remove()
-  }
-//document.getElementsByTagName("tr")[2].remove();
-</script>

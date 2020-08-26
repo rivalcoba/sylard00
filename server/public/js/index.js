@@ -110,6 +110,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fla
 
 /***/ }),
 
+/***/ "./client/helpers/models/languages.js":
+/*!********************************************!*\
+  !*** ./client/helpers/models/languages.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/axios */ \"./client/utils/axios.js\");\nconst getParentTree=async function(a){const b=await _utils_axios__WEBPACK_IMPORTED_MODULE_0__[\"default\"].get(`/glottolog/parentTree/${a}`);return 200==b.status?b.data:null};/* harmony default export */ __webpack_exports__[\"default\"] = ({getParentTree});\n\n//# sourceURL=webpack:///./client/helpers/models/languages.js?");
+
+/***/ }),
+
 /***/ "./client/helpers/models/locations.js":
 /*!********************************************!*\
   !*** ./client/helpers/models/locations.js ***!
@@ -142,7 +154,19 @@ eval("__webpack_require__.r(__webpack_exports__);\nfunction setLang(a){\"en\"===
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ \"./client/styles/main.css\");\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_main_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _helpers_flashLib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers/flashLib */ \"./client/helpers/flashLib.js\");\n/* harmony import */ var _helpers_myI18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers/myI18n */ \"./client/helpers/myI18n.js\");\n/* harmony import */ var _helpers_formsManager__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers/formsManager */ \"./client/helpers/formsManager.js\");\n/* harmony import */ var _pages_locations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/locations */ \"./client/pages/locations.js\");\n// Importando los estilos\n// Importando Scripts\n//import greeting from '@chelpers/greeting'\n// Setting language helper\n// Admin the register form\n// Admin for view\n// Loading function to the global variable\n//window.greeting = greeting\n// Flashea mensaje si lo hay\nwindow.myI18n=_helpers_myI18n__WEBPACK_IMPORTED_MODULE_2__[\"default\"],window.formsManager=_helpers_formsManager__WEBPACK_IMPORTED_MODULE_3__[\"default\"],window.locations=_pages_locations__WEBPACK_IMPORTED_MODULE_4__[\"default\"],_helpers_flashLib__WEBPACK_IMPORTED_MODULE_1__[\"default\"].flashManager();\n\n//# sourceURL=webpack:///./client/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ \"./client/styles/main.css\");\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_main_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _helpers_flashLib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers/flashLib */ \"./client/helpers/flashLib.js\");\n/* harmony import */ var _helpers_myI18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers/myI18n */ \"./client/helpers/myI18n.js\");\n/* harmony import */ var _helpers_formsManager__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers/formsManager */ \"./client/helpers/formsManager.js\");\n/* harmony import */ var _pages_locations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/locations */ \"./client/pages/locations.js\");\n/* harmony import */ var _pages_collections_create__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/collections/create */ \"./client/pages/collections/create.js\");\n// Importando los estilos\n// Importando Scripts\n//import greeting from '@chelpers/greeting'\n// Setting language helper\n// Admin the register form\n// Admin for view\n// Collections Create Scripts\n// Loading function to the global variable\n//window.greeting = greeting\n// Flashea mensaje si lo hay\nwindow.myI18n=_helpers_myI18n__WEBPACK_IMPORTED_MODULE_2__[\"default\"],window.formsManager=_helpers_formsManager__WEBPACK_IMPORTED_MODULE_3__[\"default\"],window.locations=_pages_locations__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\"http://localhost:3000/collections/create\"==window.location.href&&(window.scritps=_pages_collections_create__WEBPACK_IMPORTED_MODULE_5__[\"default\"]),_helpers_flashLib__WEBPACK_IMPORTED_MODULE_1__[\"default\"].flashManager();\n\n//# sourceURL=webpack:///./client/index.js?");
+
+/***/ }),
+
+/***/ "./client/pages/collections/create.js":
+/*!********************************************!*\
+  !*** ./client/pages/collections/create.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _helpers_models_languages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/models/languages */ \"./client/helpers/models/languages.js\");\n// Import client model functions\nasync function enableLangGroup(){// get selected language\nlet a=document.getElementById(\"language\");if(\"\"==a.value)return void alert(\"Debe selecionar un lenguaje de la lista\");let b=document.querySelector(`option[value='${a.value}']`).id,c=await _helpers_models_languages__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getParentTree(b);// Loading ParetnTree\nc.forEach(a=>{console.log(a.name)})}function addLanguageRow(a,b){let c=document.getElementById(\"langTable\"),d=document.createElement(\"tr\");d.setAttribute(\"id\",`${a.gid}`),d.onclick=function(){deleteLangRow(`${a.gid}`)},d.innerHTML=`<td>${a.gid}</td>\n            <td>${a.name}</td>\n            <td>${b.gid}</td>\n            <td>${b.name}</td>\n            <td>\n              <i class=\"fa fa-trash fa-2x\" style=\"color: rgb(241, 63, 32);cursor: pointer;\"></i>\n            </td>`,c.appendChild(d)}function addLanguage(){addLanguageRow({_id:\"12u7drr4df\",gid:\"Yolo1241\",name:\"Yolox\\xF3chitl Mixtec\"},{_id:\"2349ixmmt58j\",gid:\"Amuz1253\",name:\"Amuzgo Mixtecan\"})}function deleteLangRow(a){var b=document.getElementById(a);b.remove()}//document.getElementsByTagName(\"tr\")[2].remove();\n/* harmony default export */ __webpack_exports__[\"default\"] = ({enableLangGroup,addLanguageRow,addLanguage,deleteLangRow});\n\n//# sourceURL=webpack:///./client/pages/collections/create.js?");
 
 /***/ }),
 

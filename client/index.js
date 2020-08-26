@@ -9,12 +9,18 @@ import myI18n from '@chelpers/myI18n'
 import formsManager from '@chelpers/formsManager'
 // Admin for view
 import locations from '@client/pages/locations'
+// Collections Create Scripts
+import collectionsCreate from '@client/pages/collections/create'
 
 // Loading function to the global variable
 //window.greeting = greeting
 window.myI18n = myI18n
 window.formsManager = formsManager
 window.locations = locations
+
+if(window.location.href == 'http://localhost:3000/collections/create'){
+    window.scritps = collectionsCreate
+}
 
 // Flashea mensaje si lo hay
 flashLib.flashManager()
