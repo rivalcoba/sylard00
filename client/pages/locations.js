@@ -3,6 +3,9 @@ import locationsHelper from '@chelpers/models/locations'
 import Swal from 'sweetalert2'
 
 // Auxiliary Functions
+// Is used twice in the project sugest rewrite as
+// a helper function: used locations and create on 
+// the client
 const clearDataList = (dataList) => {
   // Remove all the previous results
   while (dataList.firstChild) {
@@ -10,6 +13,8 @@ const clearDataList = (dataList) => {
   }
 }
 
+// This is used here an in create on client
+// candidate to be a helper
 function is_valid_datalist_value(idDataList, inputValue) {
   var option = document.querySelector(
     '#' + idDataList + " option[value='" + inputValue + "']"

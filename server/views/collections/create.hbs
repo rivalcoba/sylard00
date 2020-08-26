@@ -29,6 +29,7 @@
         placeholder="Orizaba Nahuatl | oriz1235" 
         id="language" name="language" 
         type="text"
+        onclick="scritps.disableLanguageGroupBox()"
         onblur="scritps.enableLangGroup()"
         value="{{language}}" 
         list="langlist"
@@ -44,9 +45,20 @@
     </div>
     <!-- Language Group -->
     <div class="input-field col s12 m10 l4">
-      <input disabled placeholder="Aztec | azte1234" id="langGroup" name="langGroup" type="text" value="{{langGroup}}"
-        /*required* />
       <label for="langGroup">Grupo de Lengua</label>
+      <input 
+        disabled 
+        placeholder="Aztec | azte1234" 
+        id="langGroup" 
+        name="langGroup"
+        list="groupLanglist"
+        type="text" 
+        value="{{langGroup}}"
+        /*required*/
+      >
+      <datalist id="groupLanglist">
+
+      </datalist>
       <i class="fa fa-plus-square prefix" style="color: rgba(48, 238, 143, 0.911); cursor: pointer; display: none;"
         onclick="scritps.addLanguage()"></i>
     </div>
