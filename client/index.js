@@ -19,7 +19,6 @@ window.formsManager = formsManager
 window.locations = locations
 
 if(window.location.pathname == `/collections/create`){
-    alert('entra')
     window.pageScripts = collectionsCreate
 }
 
