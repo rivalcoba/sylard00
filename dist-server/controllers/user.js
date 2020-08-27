@@ -1,5 +1,5 @@
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _path=_interopRequireDefault(require("path")),_jsonReader=_interopRequireDefault(require("../helpers/jsonReader"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}// DELETE async
-const edit=async(a,b)=>{let c=_jsonReader.default.readFileSync(_path.default.join(__dirname,"..","assets","languages.json")),d=_jsonReader.default.readFileSync(_path.default.join(__dirname,"..","assets","countries.json")),e="";a.user.spokenLanguages.forEach(a=>{e=e.concat(`${a.name} | ${a.gid}\n`)}),e=e.trim(),console.log(e),b.render("user/edit",{spokenLang:e,nativeLanguages:c,countries:d})},editUser=async(a,b)=>{// Get values from req.body
+const edit=(a,b)=>{let c=_jsonReader.default.readFileSync(_path.default.join(__dirname,"..","assets","languages.json")),d=_jsonReader.default.readFileSync(_path.default.join(__dirname,"..","assets","countries.json")),e="";a.user.spokenLanguages.forEach(a=>{e=e.concat(`${a.name} | ${a.gid}\n`)}),e=e.trim(),console.log(e),b.render("user/edit",{spokenLang:e,nativeLanguages:c,countries:d})},editUser=async(a,b)=>{// Get values from req.body
 const{name:c,lastName:d,secLastName:e,email:f,spokenLanguages:g,country:h,about:i}=a.body;// Update user
 // Flash Message
 // Get the info from

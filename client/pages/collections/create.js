@@ -3,9 +3,10 @@ import languageHelper from '@chelpers/models/languages'
 import Swal from 'sweetalert2'
 
 let languageBox = document.getElementById('language')
-let languageGroupBox = document.getElementById('langGroup')
 let langlist = document.getElementById('langlist')
+let languageGroupBox = document.getElementById('langGroup')
 let groupLanglist = document.getElementById('groupLanglist')
+let addBtn = document.getElementById('addBtn')
 
 
 function is_valid_datalist_value(idDataList, inputValue) {
@@ -74,8 +75,14 @@ async function enableLangGroup() {
     let option = document.createElement('option')
     groupLanglist.appendChild(option)
     option.value = `${planguage.name} | ${planguage.gid}`
+    option.setAttribute('data-id',`${planguage._id}`)
+    option.setAttribute('data-name',`${planguage.name}`)
   });
   languageGroupBox.disabled = false
+}
+
+const enableAddButton = function(){
+  addBtn.style.display = 'inline'
 }
 
 function addLanguageRow(language, groupLanguage) {
@@ -95,17 +102,39 @@ function addLanguageRow(language, groupLanguage) {
   table.appendChild(tr)
 }
 
+const getLangData = (inputBox, dataList)=>{
+  let value = inputBox.value
+  let dataListId = dataList.id
+  
+  let option = document.querySelector(
+    '#' + dataListId + " option[value='" + value + "']"
+  )
+  
+  return {
+    _id: option.dataset.id,
+    gid: value.split(' | ')[1],
+    name: option.dataset.name,
+  }
+}
+
 function addLanguage() {
-  let lang = {
-    _id: '12u7drr4df',
-    gid: 'Yolo1241',
-    name: 'Yoloxóchitl Mixtec',
+  let selectedLangGroup = languageGroupBox.value
+  // Check if langGroupBox has a correct option
+  if(
+    selectedLangGroup == "" || 
+    !is_valid_datalist_value(groupLanglist.id,selectedLangGroup)){
+      languageGroupBox.value = ""
+      return Swal.fire(
+        'SYLARD!',
+        'Debe seleccionar una opción de la lista',
+        'info'
+      )
   }
-  let groupLanguage = {
-    _id: '2349ixmmt58j',
-    gid: 'Amuz1253',
-    name: 'Amuzgo Mixtecan',
-  }
+
+  let lang = getLangData(languageBox,langlist)
+
+  let groupLanguage = getLangData(languageGroupBox,groupLanglist)
+  
   addLanguageRow(lang, groupLanguage)
 }
 
@@ -119,5 +148,6 @@ export default{
     addLanguageRow,
     addLanguage,
     deleteLangRow,
-    disableLanguageGroupBox
+    disableLanguageGroupBox,
+    enableAddButton
 }

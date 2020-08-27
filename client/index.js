@@ -19,7 +19,7 @@ window.formsManager = formsManager
 window.locations = locations
 
 if(window.location.href == 'http://localhost:3000/collections/create'){
-    window.scritps = collectionsCreate
+    window.pageScripts = collectionsCreate
 }
 
 // Flashea mensaje si lo hay

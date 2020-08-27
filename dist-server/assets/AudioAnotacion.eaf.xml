@@ -1,0 +1,590 @@
+<!-- http://demca.tacc.utexas.edu/ethno/eaf/eafdetail.php?mediaid=105&collid=0 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<ANNOTATION_DOCUMENT AUTHOR="Rey_Project" DATE="2020-07-16T14:09:06-05:00" FORMAT="3.0" VERSION="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv3.0.xsd">
+    <HEADER MEDIA_FILE="" TIME_UNITS="milliseconds">
+        <MEDIA_DESCRIPTOR MEDIA_URL="file:///C:/Proy-Mixteco-activo/Grab-Trans/Yolo/Sonidos/Botánica/Yolox_Botan_CTB501-EGS505_Acanthaceae-yu1ku1-ko1ndo1_2013-03-28-a.wav" MIME_TYPE="audio/x-wav"/>
+        <PROPERTY NAME="URN">urn:nl-mpi-tools-elan-eaf:a0f2d282-d944-4bdb-bb96-65c173edec86</PROPERTY>
+        <PROPERTY NAME="lastUsedAnnotationId">62</PROPERTY>
+    </HEADER>
+    <TIME_ORDER>
+        <TIME_SLOT TIME_SLOT_ID="ts1" TIME_VALUE="0"/>
+        <TIME_SLOT TIME_SLOT_ID="ts2" TIME_VALUE="0"/>
+        <TIME_SLOT TIME_SLOT_ID="ts3" TIME_VALUE="11846"/>
+        <TIME_SLOT TIME_SLOT_ID="ts4" TIME_VALUE="11846"/>
+        <TIME_SLOT TIME_SLOT_ID="ts5" TIME_VALUE="11846"/>
+        <TIME_SLOT TIME_SLOT_ID="ts6" TIME_VALUE="11846"/>
+        <TIME_SLOT TIME_SLOT_ID="ts7" TIME_VALUE="25756"/>
+        <TIME_SLOT TIME_SLOT_ID="ts8" TIME_VALUE="25756"/>
+        <TIME_SLOT TIME_SLOT_ID="ts9" TIME_VALUE="25756"/>
+        <TIME_SLOT TIME_SLOT_ID="ts10" TIME_VALUE="25756"/>
+        <TIME_SLOT TIME_SLOT_ID="ts11" TIME_VALUE="38152"/>
+        <TIME_SLOT TIME_SLOT_ID="ts12" TIME_VALUE="38152"/>
+        <TIME_SLOT TIME_SLOT_ID="ts13" TIME_VALUE="38152"/>
+        <TIME_SLOT TIME_SLOT_ID="ts14" TIME_VALUE="38152"/>
+        <TIME_SLOT TIME_SLOT_ID="ts15" TIME_VALUE="44114"/>
+        <TIME_SLOT TIME_SLOT_ID="ts16" TIME_VALUE="44114"/>
+        <TIME_SLOT TIME_SLOT_ID="ts17" TIME_VALUE="44114"/>
+        <TIME_SLOT TIME_SLOT_ID="ts18" TIME_VALUE="44114"/>
+        <TIME_SLOT TIME_SLOT_ID="ts19" TIME_VALUE="53220"/>
+        <TIME_SLOT TIME_SLOT_ID="ts20" TIME_VALUE="53220"/>
+        <TIME_SLOT TIME_SLOT_ID="ts21" TIME_VALUE="53220"/>
+        <TIME_SLOT TIME_SLOT_ID="ts22" TIME_VALUE="53220"/>
+        <TIME_SLOT TIME_SLOT_ID="ts23" TIME_VALUE="59980"/>
+        <TIME_SLOT TIME_SLOT_ID="ts24" TIME_VALUE="59980"/>
+        <TIME_SLOT TIME_SLOT_ID="ts25" TIME_VALUE="59980"/>
+        <TIME_SLOT TIME_SLOT_ID="ts26" TIME_VALUE="59980"/>
+        <TIME_SLOT TIME_SLOT_ID="ts27" TIME_VALUE="65914"/>
+        <TIME_SLOT TIME_SLOT_ID="ts28" TIME_VALUE="65914"/>
+        <TIME_SLOT TIME_SLOT_ID="ts29" TIME_VALUE="65914"/>
+        <TIME_SLOT TIME_SLOT_ID="ts30" TIME_VALUE="65914"/>
+        <TIME_SLOT TIME_SLOT_ID="ts31" TIME_VALUE="74764"/>
+        <TIME_SLOT TIME_SLOT_ID="ts32" TIME_VALUE="74764"/>
+        <TIME_SLOT TIME_SLOT_ID="ts33" TIME_VALUE="74764"/>
+        <TIME_SLOT TIME_SLOT_ID="ts34" TIME_VALUE="74764"/>
+        <TIME_SLOT TIME_SLOT_ID="ts35" TIME_VALUE="85204"/>
+        <TIME_SLOT TIME_SLOT_ID="ts36" TIME_VALUE="85204"/>
+        <TIME_SLOT TIME_SLOT_ID="ts37" TIME_VALUE="85204"/>
+        <TIME_SLOT TIME_SLOT_ID="ts38" TIME_VALUE="85204"/>
+        <TIME_SLOT TIME_SLOT_ID="ts39" TIME_VALUE="94426"/>
+        <TIME_SLOT TIME_SLOT_ID="ts40" TIME_VALUE="94426"/>
+        <TIME_SLOT TIME_SLOT_ID="ts41" TIME_VALUE="94426"/>
+        <TIME_SLOT TIME_SLOT_ID="ts42" TIME_VALUE="94426"/>
+        <TIME_SLOT TIME_SLOT_ID="ts43" TIME_VALUE="104298"/>
+        <TIME_SLOT TIME_SLOT_ID="ts44" TIME_VALUE="104298"/>
+        <TIME_SLOT TIME_SLOT_ID="ts45" TIME_VALUE="104298"/>
+        <TIME_SLOT TIME_SLOT_ID="ts46" TIME_VALUE="104298"/>
+        <TIME_SLOT TIME_SLOT_ID="ts47" TIME_VALUE="112044"/>
+        <TIME_SLOT TIME_SLOT_ID="ts48" TIME_VALUE="112044"/>
+        <TIME_SLOT TIME_SLOT_ID="ts49" TIME_VALUE="112044"/>
+        <TIME_SLOT TIME_SLOT_ID="ts50" TIME_VALUE="112044"/>
+        <TIME_SLOT TIME_SLOT_ID="ts51" TIME_VALUE="122118"/>
+        <TIME_SLOT TIME_SLOT_ID="ts52" TIME_VALUE="122118"/>
+        <TIME_SLOT TIME_SLOT_ID="ts53" TIME_VALUE="122118"/>
+        <TIME_SLOT TIME_SLOT_ID="ts54" TIME_VALUE="122118"/>
+        <TIME_SLOT TIME_SLOT_ID="ts55" TIME_VALUE="130768"/>
+        <TIME_SLOT TIME_SLOT_ID="ts56" TIME_VALUE="130768"/>
+        <TIME_SLOT TIME_SLOT_ID="ts57" TIME_VALUE="130768"/>
+        <TIME_SLOT TIME_SLOT_ID="ts58" TIME_VALUE="130768"/>
+        <TIME_SLOT TIME_SLOT_ID="ts59" TIME_VALUE="140430"/>
+        <TIME_SLOT TIME_SLOT_ID="ts60" TIME_VALUE="140430"/>
+        <TIME_SLOT TIME_SLOT_ID="ts61" TIME_VALUE="140430"/>
+        <TIME_SLOT TIME_SLOT_ID="ts62" TIME_VALUE="140430"/>
+        <TIME_SLOT TIME_SLOT_ID="ts63" TIME_VALUE="149530"/>
+        <TIME_SLOT TIME_SLOT_ID="ts64" TIME_VALUE="149530"/>
+        <TIME_SLOT TIME_SLOT_ID="ts65" TIME_VALUE="149530"/>
+        <TIME_SLOT TIME_SLOT_ID="ts66" TIME_VALUE="149530"/>
+        <TIME_SLOT TIME_SLOT_ID="ts67" TIME_VALUE="158408"/>
+        <TIME_SLOT TIME_SLOT_ID="ts68" TIME_VALUE="158408"/>
+        <TIME_SLOT TIME_SLOT_ID="ts69" TIME_VALUE="158408"/>
+        <TIME_SLOT TIME_SLOT_ID="ts70" TIME_VALUE="158408"/>
+        <TIME_SLOT TIME_SLOT_ID="ts71" TIME_VALUE="163779"/>
+        <TIME_SLOT TIME_SLOT_ID="ts72" TIME_VALUE="163779"/>
+        <TIME_SLOT TIME_SLOT_ID="ts73" TIME_VALUE="163779"/>
+        <TIME_SLOT TIME_SLOT_ID="ts74" TIME_VALUE="163779"/>
+        <TIME_SLOT TIME_SLOT_ID="ts75" TIME_VALUE="171213"/>
+        <TIME_SLOT TIME_SLOT_ID="ts76" TIME_VALUE="171213"/>
+        <TIME_SLOT TIME_SLOT_ID="ts77" TIME_VALUE="171213"/>
+        <TIME_SLOT TIME_SLOT_ID="ts78" TIME_VALUE="171213"/>
+        <TIME_SLOT TIME_SLOT_ID="ts79" TIME_VALUE="179963"/>
+        <TIME_SLOT TIME_SLOT_ID="ts80" TIME_VALUE="179963"/>
+        <TIME_SLOT TIME_SLOT_ID="ts81" TIME_VALUE="179963"/>
+        <TIME_SLOT TIME_SLOT_ID="ts82" TIME_VALUE="179963"/>
+        <TIME_SLOT TIME_SLOT_ID="ts83" TIME_VALUE="185563"/>
+        <TIME_SLOT TIME_SLOT_ID="ts84" TIME_VALUE="185563"/>
+        <TIME_SLOT TIME_SLOT_ID="ts85" TIME_VALUE="185563"/>
+        <TIME_SLOT TIME_SLOT_ID="ts86" TIME_VALUE="185563"/>
+        <TIME_SLOT TIME_SLOT_ID="ts87" TIME_VALUE="195427"/>
+        <TIME_SLOT TIME_SLOT_ID="ts88" TIME_VALUE="195427"/>
+        <TIME_SLOT TIME_SLOT_ID="ts89" TIME_VALUE="195427"/>
+        <TIME_SLOT TIME_SLOT_ID="ts90" TIME_VALUE="195427"/>
+        <TIME_SLOT TIME_SLOT_ID="ts91" TIME_VALUE="205509"/>
+        <TIME_SLOT TIME_SLOT_ID="ts92" TIME_VALUE="205509"/>
+        <TIME_SLOT TIME_SLOT_ID="ts93" TIME_VALUE="205509"/>
+        <TIME_SLOT TIME_SLOT_ID="ts94" TIME_VALUE="205509"/>
+        <TIME_SLOT TIME_SLOT_ID="ts95" TIME_VALUE="211689"/>
+        <TIME_SLOT TIME_SLOT_ID="ts96" TIME_VALUE="211689"/>
+        <TIME_SLOT TIME_SLOT_ID="ts97" TIME_VALUE="211689"/>
+        <TIME_SLOT TIME_SLOT_ID="ts98" TIME_VALUE="211689"/>
+        <TIME_SLOT TIME_SLOT_ID="ts99" TIME_VALUE="219021"/>
+        <TIME_SLOT TIME_SLOT_ID="ts100" TIME_VALUE="219021"/>
+        <TIME_SLOT TIME_SLOT_ID="ts101" TIME_VALUE="219021"/>
+        <TIME_SLOT TIME_SLOT_ID="ts102" TIME_VALUE="219021"/>
+        <TIME_SLOT TIME_SLOT_ID="ts103" TIME_VALUE="224771"/>
+        <TIME_SLOT TIME_SLOT_ID="ts104" TIME_VALUE="224771"/>
+        <TIME_SLOT TIME_SLOT_ID="ts105" TIME_VALUE="224771"/>
+        <TIME_SLOT TIME_SLOT_ID="ts106" TIME_VALUE="224771"/>
+        <TIME_SLOT TIME_SLOT_ID="ts107" TIME_VALUE="227413"/>
+        <TIME_SLOT TIME_SLOT_ID="ts108" TIME_VALUE="227413"/>
+    </TIME_ORDER>
+    <TIER DEFAULT_LOCALE="us" LINGUISTIC_TYPE_REF="Transcripción" PARTICIPANT="Esteban Guadalupe Sierra" TIER_ID="Esteban Guadalupe Sierra">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a8" TIME_SLOT_REF1="ts9" TIME_SLOT_REF2="ts11">
+                <ANNOTATION_VALUE>Ba'¹a³ ba³. Yu'¹u¹ ya¹ ji⁴ni²=yu¹ ndi⁴ yu¹ku¹ ko¹ndo¹ ndi⁴, ya¹kan³, mi⁴i⁴, su¹⁴u³ sa¹a³ ku⁴u⁴ xi⁴ña⁴ bi⁴ xi⁴yo¹³=a² ndi⁴ sa³ba³ xi⁴ña⁴ ti⁴ xi⁴yo¹³=a² ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a9" TIME_SLOT_REF1="ts13" TIME_SLOT_REF2="ts15">
+                <ANNOTATION_VALUE>tan⁴² i⁴xa³ tun⁴ ndu¹u⁴chi⁴ ba³ i⁴xa⁽³⁾=e² ndi⁴ ni³na³ mi³i⁴=a² xi⁴yo¹³ tan³, ya¹ ji⁴ni²=yu¹ ba'¹a³=e² ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a10" TIME_SLOT_REF1="ts17" TIME_SLOT_REF2="ts19">
+                <ANNOTATION_VALUE>ja'⁴nda²=na¹ yu¹ku¹ ko¹ndo¹ kan⁴ tan³ ta⁴nde³e³=na⁽²⁾=e² ji¹ni⁴ tia'¹ba⁴ o⁴ra² kwa'⁴a⁴ tia'¹ba⁴ ndo⁴ko³to³=na² pa³san⁴tu² ba³. I³nda¹⁴=e² kan⁴ ba⁴² ji⁴ni²=yu¹ ba'¹a⁽³⁾=e³.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a30" TIME_SLOT_REF1="ts97" TIME_SLOT_REF2="ts99">
+                <ANNOTATION_VALUE>Ko¹⁴o³ ka¹ i³nga⁽²⁾=e² ji⁴ni² bi⁴=² ndi⁴ ni³=a² ya¹ ba'¹a³=e² ta¹tan⁴ kan⁴ ndi⁴ ji¹⁴ni² bi⁴=² ya¹ kan⁴ nu⁴u⁴ tan³, a¹su³ i³nda¹⁴ ya¹,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a31" TIME_SLOT_REF1="ts101" TIME_SLOT_REF2="ts103">
+                <ANNOTATION_VALUE>ka⁴ya²=na¹ yu¹ku¹ kan⁴ kwa¹nda³a³ ji¹ni⁴ tia'¹ba⁴ ba³ o⁴ra² kwa'⁴a⁴ tia'¹ba⁴ pa³san⁴tu² ba³ ya¹ kan⁴ ti⁴ ba³ ba⁴² ji⁴ni²=yu¹.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="Transcripción" PARTICIPANT="Esteban Guadalupe Sierra" TIER_ID="Esteban Guadalupe Sierra Mixteco">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a8_SURFACE2" TIME_SLOT_REF1="ts10" TIME_SLOT_REF2="ts12">
+                <ANNOTATION_VALUE>Ba'¹a³ ba³. Yu'¹u¹ ya¹ ji⁴nĩ²yu¹ ndi⁴ yu¹ku¹ ko¹ndo¹ ndi⁴, ya¹kã³, mĩ⁴ĩ⁴, su¹⁴u³ sa¹a³ ku⁴u⁴ xi⁴ñã⁴ bi⁴ xi⁴ywa¹³² ndi⁴ sa³ba³ xi⁴ñã⁴ ti⁴ xi⁴ywa¹³² ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a9_SURFACE2" TIME_SLOT_REF1="ts14" TIME_SLOT_REF2="ts16">
+                <ANNOTATION_VALUE>tã⁴² i⁴xa³ tũ⁴ ndu¹u⁴chi⁴ ba³ i⁴xe² ndi⁴ nĩ³nã³ mỹã³ã⁴² xi⁴yo¹³ tã³, ya¹ ji⁴nĩ²yu¹ be'¹e³² ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a10_SURFACE2" TIME_SLOT_REF1="ts18" TIME_SLOT_REF2="ts20">
+                <ANNOTATION_VALUE>ja'⁴nda²nã¹ yu¹ku¹ ko¹ndo¹ kã⁴ tã³ ta⁴nde³e³nẽ² ji¹nĩ⁴ tya'¹ba⁴ o⁴ra² kwa'⁴a⁴ tya'¹ba⁴ ndo⁴ko³to³nã² pa³sã⁴tu² ba³, i³nde¹⁴² kã⁴ ba⁴² ji⁴nĩ² be'¹e³.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a30_SURFACE2" TIME_SLOT_REF1="ts98" TIME_SLOT_REF2="ts100">
+                <ANNOTATION_VALUE>Ko¹⁴o³ ka¹ i³nge² ji⁴nĩ² bi⁴² ndi⁴ nỹã³² ya¹ be'¹e³² ta¹tã⁴ kã⁴ ndi⁴ ji¹⁴nĩ² bi⁴² ya¹ kã⁴ nũ⁴ũ⁴ tã³, a¹su³ i³nda¹⁴ ya¹,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a31_SURFACE2" TIME_SLOT_REF1="ts102" TIME_SLOT_REF2="ts104">
+                <ANNOTATION_VALUE>ka⁴ya²nã¹ yu¹ku¹ kã⁴ kwa¹nda³a³ ji¹nĩ⁴ tya'¹ba⁴ ba³ o⁴ra² kwa'⁴a⁴ tya'¹ba⁴ pa³sã⁴tu² ba³ ya¹ kã⁴ ti⁴ ba³ ba⁴² ji⁴nĩ²yu¹.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER DEFAULT_LOCALE="us" LINGUISTIC_TYPE_REF="Transcripción" PARTICIPANT="Constantino Teodoro Bautista" TIER_ID="Constantino Teodoro Bautista">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a6" TIME_SLOT_REF1="ts1" TIME_SLOT_REF2="ts3">
+                <ANNOTATION_VALUE>Yo'⁴o⁴ nda³tu'⁴un⁽⁴⁾=e⁴ xa'¹a⁴ yu¹ku¹ ko¹ndo¹. Nda⁴a⁽²⁾=e² ku⁴u⁽⁴⁾=a² ba'¹a³=e² tan³ nda⁴a⁽²⁾=e² ku⁴u⁴ ta¹tan⁴=e² an⁴ ko³o³,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a7" TIME_SLOT_REF1="ts5" TIME_SLOT_REF2="ts7">
+                <ANNOTATION_VALUE>sa¹a³ i⁴xa⁽³⁾=e² xa'⁴nu⁽³⁾=a² tan³ nda⁴a⁽²⁾=e², nda⁴a² ka¹ ya¹ chi³ñu³ jo⁴ndo¹³=a² ji⁴ni² yo'⁴o¹ tan³ nda³tu'⁴un⁽⁴⁾=e⁴ sa³kan⁴ ndi⁴ ku³ni²=o⁴ nda⁴a⁽²⁾=e² ba⁴² ji⁴ni²=un⁴ tan³ nda⁴a⁽²⁾=e² ba⁴² ji⁴ni²=yu¹ tan³, ya¹ kan⁴ ba⁴² nda³tu'⁴un⁽⁴⁾=e⁴ xa'¹a⁴ bi³tin³.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a11" TIME_SLOT_REF1="ts21" TIME_SLOT_REF2="ts23">
+                <ANNOTATION_VALUE>Ya¹, ya¹ ko⁴ndo³ yu¹ku¹ ko¹ndo¹ kan⁴ ndi⁴ </ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a12" TIME_SLOT_REF1="ts25" TIME_SLOT_REF2="ts27">
+                <ANNOTATION_VALUE>ki¹bi⁴ tiem⁴pu² a¹chi¹ ka¹ ndi⁴ ka⁴na³=ni⁴⁽²⁾=a² mi⁴i⁴ ti⁴ ba⁴² ñu'³u⁴ bi³ta⁴² mi⁴i⁴ ti⁴ ba⁴² nde⁴ta³ tun⁴ xi¹⁴nda⁴ mi⁴i⁴,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a13" TIME_SLOT_REF1="ts29" TIME_SLOT_REF2="ts31">
+                <ANNOTATION_VALUE>mi⁴i⁴ ñu'³u⁴ bi³ta⁴² sa³kan⁴ ka⁴na⁽³⁾=e² tan³ bi³tin³ ndi⁴ ko¹⁴o³ i³tun⁴ ndo³o³ bi⁴ i⁴yo² nda¹⁴³ ta³ñu³ &lt;i&gt;callejón&lt;/i&gt; ku³rra⁴² i³kan⁴ ku³ni²=o⁴ tun⁴ kan⁴ ka⁴na³=run⁴ yu¹u⁴ xa'¹a¹ ba³</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a14" TIME_SLOT_REF1="ts33" TIME_SLOT_REF2="ts35">
+                <ANNOTATION_VALUE>ka⁴na³ tun⁴ yu¹ku¹ ko¹ndo¹ kan⁴ tan³ ka⁴chi² na¹ ta⁴u³ni² ndi⁴ an⁴ ndo'⁴o⁽⁴⁾=e⁴ sa³yu² ndi⁴ yu¹ku¹=run⁴ kan⁴ chio'¹o⁴ ko'³o⁽³⁾=e⁴ ba⁴a²⁴ ni'³ni⁴=ra⁴ tan³ ko'³o⁽³⁾=e⁴=ra⁴ ya¹ kan⁴ ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a15" TIME_SLOT_REF1="ts37" TIME_SLOT_REF2="ts39">
+                <ANNOTATION_VALUE>ndu⁴-ba'¹a³ su¹kun⁽⁴⁾=e⁴ ya¹ ndo'⁴o⁽⁴⁾=e⁴ sa³yu² ka⁴chi² na¹ ta⁴u³ni². Tan³ ya¹ ji⁴ni²=o⁴ ka¹a³ bi³tin³ ya¹ ko¹⁴o³ yu¹ku¹ ko¹⁴o³ i³tun⁴ ka¹ ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a16" TIME_SLOT_REF1="ts41" TIME_SLOT_REF2="ts43">
+                <ANNOTATION_VALUE>xa'⁴nda²=na⁽¹⁾=e¹ tan³ kwa'¹an⁽¹⁾=e¹ tia'¹ba⁴ pa³san⁴tu² ba³ tan³ ndi⁴ tiem⁴pu² a¹chi¹ ka¹ nda⁴-ka'³an⁴ yu'¹u¹ ju¹³-ta³ku² na¹ ta⁴u³ni² a¹chi¹ ka¹ ndi⁴ ...,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a17" TIME_SLOT_REF1="ts45" TIME_SLOT_REF2="ts47">
+                <ANNOTATION_VALUE>na¹kwa⁴chi³ ba⁴li⁴ ndi⁴ xa⁴..., xa'⁴nu¹=na¹ yu¹ku¹=run⁴ tan³, tan³ ti⁴in⁴=na² tia'¹ba⁴ ja⁴si⁴ki²⁴=na² ji'⁴in⁽⁴⁾=a².</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a18" TIME_SLOT_REF1="ts49" TIME_SLOT_REF2="ts51">
+                <ANNOTATION_VALUE>Ya¹ kan⁴ ba⁴² i⁴xa³ na¹ ba⁴li⁴ a¹chi¹ ka¹ tan³ ndi⁴, su¹⁴u³ nda¹ nda⁴a² ka¹ tiem⁴pu² xa'⁴nu³=run⁴ ndi⁴ ki⁴xa³a⁴ yo¹o⁴ mayu ndi³-ki'³in³ chi⁴ñu⁽³⁾=a² ba¹xi³ tiem⁴pu² sa⁴bi⁴ tan³</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a19" TIME_SLOT_REF1="ts53" TIME_SLOT_REF2="ts55">
+                <ANNOTATION_VALUE>sa³kan⁴ xa'⁴nu³=run⁴ tan³ ndi⁴ tun⁴ xa'⁴nu³ ko'⁴o¹ yu¹ku¹ sa⁴si² ba¹⁴³ kwi⁴i⁴ ku³ni²=o⁴ ki³ti⁴ ni³ na⁴tu² kan⁴ ndi⁴ xa'⁴nu³=run⁴ &lt;i&gt;como uno&lt;/i&gt;</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a20" TIME_SLOT_REF1="ts57" TIME_SLOT_REF2="ts59">
+                <ANNOTATION_VALUE>nda⁴a² i³in³ &lt;i&gt;metru&lt;/i&gt; sa³ba³ ka¹a³ xa'⁴nu³=run⁴ ya¹ su⁴kun¹=run⁴ tan³ ta¹nda³a² tiem⁴pu² ya¹ ka⁴chi² yo⁴o⁴ ke³e³ sa¹bi⁴ xi⁴yo¹³ bi³ko⁴ i³ta² kan⁴ ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a21" TIME_SLOT_REF1="ts61" TIME_SLOT_REF2="ts63">
+                <ANNOTATION_VALUE>sa³kan⁴ xa'⁴nda²=na¹=run⁴ kwa'¹an¹=run⁴ tan³ ndi⁴ ya¹ ko¹⁴o³ yu¹ku¹ ku⁴u⁽⁴⁾=a² kan⁴ tan³, tan³ ya¹ ku⁴u⁽⁴⁾=a² ta¹tan⁴ ndi⁴ ta¹tan⁴ ku⁴u⁴ yu¹ku¹=run⁴ ka⁴chi² na¹ ta⁴u³ni²</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a22" TIME_SLOT_REF1="ts65" TIME_SLOT_REF2="ts67">
+                <ANNOTATION_VALUE>tan³ ja⁴si⁴ki²⁴ tu³ na¹ ba⁴li⁴ ji'⁴in⁴ ndi³chi²=run⁴ ya¹ ndi³chi² xi⁴yo¹³ nu¹⁴u³=run⁴ kan⁴ o⁴ra² tiem⁴pu² i⁴chi⁽¹⁾=a¹ ke⁴e⁴ sa¹bi⁴ ka¹a³ ndi⁴ ta⁴an²⁴=na⁽²⁾=e²,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a23" TIME_SLOT_REF1="ts69" TIME_SLOT_REF2="ts71">
+                <ANNOTATION_VALUE>nu¹⁴u³ ta¹kwi⁴² tan³ ta⁴ba⁴=na⁽²⁾=e² tan³ xa¹⁴³ ka'⁴ndi⁽²⁾=a² ndi⁴ nda¹⁴³ tan⁴² ka'⁴ndi² &lt;i&gt;cohete china&lt;/i&gt; ti⁴ ka'⁴ndi⁽²⁾=a² nda⁴ta¹⁴=e².</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a24" TIME_SLOT_REF1="ts73" TIME_SLOT_REF2="ts75">
+                <ANNOTATION_VALUE>Tan³ na⁴ ya¹ ka³xi⁴ tu³ku⁽³⁾=e⁴ ba⁴² ji'⁴in⁴ nu'¹u⁽³⁾=e⁴ ndi⁴ nda⁴ta¹⁴ ba⁽³⁾=e² tan³ ndi⁴ u'¹bi¹ sa⁴ka² ti'⁴nu³ ndi³chi² kan⁴ ja⁴si⁴ki²⁴=na² ji'⁴in⁽⁴⁾=a².</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a25" TIME_SLOT_REF1="ts77" TIME_SLOT_REF2="ts79">
+                <ANNOTATION_VALUE>Tan³ ya¹ i³nga² ka⁽¹⁾=e¹ ya¹ ku⁴u⁽⁴⁾=a² ba'¹a³ bi⁴=a² an⁴ ko¹⁴o³ nda⁴a⁽²⁾=e² ku⁴u⁽⁴⁾=a² i⁴xa³ bi⁴=a² ndi⁴ ko¹⁴o⁽³⁾=a² ba'¹a³ bi⁴=a² ndi⁴ ya¹ xa'⁴an² bi¹xi¹=ni⁴² ba³ ku⁴u⁽⁴⁾=a³.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a26" TIME_SLOT_REF1="ts81" TIME_SLOT_REF2="ts83">
+                <ANNOTATION_VALUE>Ya yu¹ku¹ ko¹ndo¹ kan⁴ ndi⁴ ya¹ xa'⁴an² bi¹xi¹=ni⁴² ba⁴² tan³ na⁴tu² ni¹-chio'¹o⁴=a² ko'³o⁽³⁾=e⁴ ya¹ ka⁴ta⁴ su¹kun⁽⁴⁾=e⁴ ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a27" TIME_SLOT_REF1="ts85" TIME_SLOT_REF2="ts87">
+                <ANNOTATION_VALUE>ya¹ ba⁴a²⁴ ti⁴ u¹ba⁽¹⁾=e¹ tan³ ya¹ yu¹ku¹ bi¹xi¹ ba⁴² ndi⁴ ya¹ ko⁴ndo³ ta¹kwi⁴² chio'⁴o¹⁴ xi'⁴i⁽⁴⁾=o⁴ ji'⁴in⁴ sa³yu² kan⁴ ndi⁴ ba⁴a²⁴ ba⁴a²⁴ bi¹xi¹ ma'³a³ ma'³a³ ku⁴mi³i⁴ ta¹kwi⁴⁽²⁾=a².</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a28" TIME_SLOT_REF1="ts89" TIME_SLOT_REF2="ts91">
+                <ANNOTATION_VALUE>Tan³ ni³ ko¹⁴o³ ka¹, ko¹⁴o³ ka¹ i³nga⁽²⁾=e² chi⁴ka²=na¹ ji'⁴in⁽⁴⁾=a² an⁴ i¹in⁴ kwa'¹an¹ ke¹ta³ ji'⁴in⁴=ra⁴ an⁴ ko¹⁴o³ an⁴ ya¹ bi¹xi¹ kwa'¹an¹ ke¹ta³ ji'⁴in⁴=ra⁴ ndi⁴ ni³na³ mi³i⁴ ba⁽³⁾=e² chio'⁴o¹⁴ ji⁴ni²=yu¹, an⁴ ko¹⁴o³ i⁴yo² ka⁽¹⁾=e¹ ji⁴ni² yo'⁴o¹ nda⁴tu'⁴un⁴ ka¹ na¹ ta⁴u³ni² ji'⁴in⁽⁴⁾=un⁴.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a29" TIME_SLOT_REF1="ts93" TIME_SLOT_REF2="ts95">
+                <ANNOTATION_VALUE>Tan³ ya¹ kan⁴ ba⁴² nda⁴tu'⁴un⁽⁴⁾=e⁴ xa'¹a⁴ yo'⁴o⁴ tan³, nda⁴a² kwa⁴ñu³ ji⁴ni² ka¹ yo'⁴o¹ i³nga² ka⁽¹⁾=e¹.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a32" TIME_SLOT_REF1="ts105" TIME_SLOT_REF2="ts107">
+                <ANNOTATION_VALUE>Ba'¹a³ ba³.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="Transcripción" PARTICIPANT="Constantino Teodoro Bautista" TIER_ID="Constantino Teodoro Bautista Mixteco">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a6_SURFACE2" TIME_SLOT_REF1="ts2" TIME_SLOT_REF2="ts4">
+                <ANNOTATION_VALUE>Yo'⁴o⁴ nda³twe'⁴e⁴ xa'¹a⁴ yu¹ku¹ ko¹ndo¹. Nde⁴e² kwa⁴a² be'¹e³² tã³ nde⁴e² ku⁴u⁴ ta¹tẽ⁴² ã⁴ ko³o³,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a7_SURFACE2" TIME_SLOT_REF1="ts6" TIME_SLOT_REF2="ts8">
+                <ANNOTATION_VALUE>sa¹a³ i⁴xe² xa'⁴nw̃ã² tã³ nde⁴e², nda⁴a² ka¹ ya¹ chi³ñũ³ jo⁴ndwa¹³² ji⁴nĩ² yo'⁴o¹ tã³ nda³twe'⁴e⁴ sa³kã⁴ ndi⁴ ku³ndyo²⁴ nde⁴e² ba⁴² ji⁴nỹũ²⁴ tã³ nde⁴e² ba⁴² ji⁴nĩ²yu¹ tã³, ya¹ kã⁴ ba⁴² nda³twe'⁴e⁴ xa'¹a⁴ bi³tĩ³.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a11_SURFACE2" TIME_SLOT_REF1="ts22" TIME_SLOT_REF2="ts24">
+                <ANNOTATION_VALUE>ya¹, ya¹ ko⁴ndo³ yu¹ku¹ ko¹ndo¹ kã⁴ ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a12_SURFACE2" TIME_SLOT_REF1="ts26" TIME_SLOT_REF2="ts28">
+                <ANNOTATION_VALUE>ki¹bi⁴ tyem⁴pu² a¹chi¹ ka¹ ndi⁴ ka⁴nã³nỹã⁴² mĩ⁴ĩ⁴ ti⁴ ba⁴² ñũ'³ũ⁴ bi³ta⁴² mĩ⁴ĩ⁴ ti⁴ ba⁴² nde⁴ta³ tũ⁴ xi¹⁴nda⁴ mĩ⁴ĩ⁴,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a13_SURFACE2" TIME_SLOT_REF1="ts30" TIME_SLOT_REF2="ts32">
+                <ANNOTATION_VALUE>mĩ⁴ĩ⁴ ñũ'³ũ⁴ bi³ta⁴² sa³kã⁴ ka⁴nẽ² tã³ bi³tĩ³ ndi⁴ ko¹⁴o³ i³tũ⁴ ndo³o³ bi⁴ i⁴yo² nda¹⁴³ ta³ñũ³ &lt;i&gt;callejón&lt;/i&gt; ku³rra⁴² i³kã⁴ ku³ndyo²⁴ tũ⁴ kã⁴ ka⁴nã³rũ⁴ yu¹u⁴ xa'¹a¹ ba³</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a14_SURFACE2" TIME_SLOT_REF1="ts34" TIME_SLOT_REF2="ts36">
+                <ANNOTATION_VALUE>ka⁴nã³ tũ⁴ yu¹ku¹ ko¹ndo¹ kã⁴ tã³ ka⁴chi² nã¹ ta⁴u³nĩ² ndi⁴ ã⁴ ndwe'⁴e⁴ sa³yu² ndi⁴ yu¹ku¹rũ⁴ kã⁴ chyo'¹o⁴ kwe'³e⁴ ba⁴a²⁴ nĩ'³nĩ⁴ra⁴ tã³ kwe'³e⁴ra⁴ ya¹ kã⁴ ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a15_SURFACE2" TIME_SLOT_REF1="ts38" TIME_SLOT_REF2="ts40">
+                <ANNOTATION_VALUE>ndu⁴ba'¹a³ su¹kwe⁴ ya¹ ndwe'⁴e⁴ sa³yu² ka⁴chi² nã¹ ta⁴u³nĩ². Tã³ ya¹ ji⁴ndyo²⁴ ka¹a³ bi³tĩ³ ko¹⁴o³ yu¹ku¹ ko¹⁴o³ i³tũ⁴ ka¹ ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a16_SURFACE2" TIME_SLOT_REF1="ts42" TIME_SLOT_REF2="ts44">
+                <ANNOTATION_VALUE>xa'⁴nda²nẽ¹ tã³ kwẽ'¹ẽ¹ tya'¹ba⁴ pa³sã⁴tu² ba³ tã³ ndi⁴ tyem⁴pu² a¹chi¹ ka¹ nda⁴kã'³ã⁴ yu'¹u¹ ju¹³ta³ku² nã¹ ta⁴u³nĩ² a¹chi¹ ka¹ ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a17_SURFACE2" TIME_SLOT_REF1="ts46" TIME_SLOT_REF2="ts48">
+                <ANNOTATION_VALUE>nã¹kwa⁴chi³ ba⁴li⁴ ndi⁴ xa⁴..., xa'⁴nũ¹nã¹ yu¹ku¹rũ⁴ tã³, tã³ tĩ⁴ĩ⁴nã² tya'¹ba⁴ ja⁴si⁴ki²⁴nã² jỹã'⁴ã².</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a18_SURFACE2" TIME_SLOT_REF1="ts50" TIME_SLOT_REF2="ts52">
+                <ANNOTATION_VALUE>Ya¹ kã⁴ ba⁴² i⁴xa³ nã¹ ba⁴li⁴ a¹chi¹ ka¹ tã³ ndi⁴, su¹⁴u³ nda¹ nda⁴a² ka¹ tyem⁴pu² xa'⁴nũ³rũ⁴ ndi⁴ ki⁴xa³a⁴ yo¹o⁴ mayu ndi³kĩ'³ĩ³ chi⁴ñw̃ã² ba¹xi³ tyem⁴pu² sa⁴bi⁴ tã³</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a19_SURFACE2" TIME_SLOT_REF1="ts54" TIME_SLOT_REF2="ts56">
+                <ANNOTATION_VALUE>sa³kã⁴ xa'⁴nũ³rũ⁴ tã³ ndi⁴ tũ⁴ xa'⁴nũ³ ko'⁴o¹ yu¹ku¹ sa⁴si² ba¹⁴³ kwi⁴i⁴ ku³ndyo²⁴ ki³ti⁴ nĩ³ nã⁴tu² kã⁴ ndi⁴ xa'⁴nũ³rũ⁴ &lt;i&gt;como uno&lt;/i&gt;</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a20_SURFACE2" TIME_SLOT_REF1="ts58" TIME_SLOT_REF2="ts60">
+                <ANNOTATION_VALUE>nda⁴a² ĩ³ĩ³ &lt;i&gt;metru&lt;/i&gt; sa³ba³ ka¹a³ xa'⁴nũ³rũ⁴ ya¹ su⁴kũ¹rũ⁴ tã³ ta¹nda³a² tyem⁴pu² ya¹ ka⁴chi² yo⁴o⁴ ke³e³ sa¹bi⁴ xi⁴yo¹³ bi³ko⁴ i³ta² kã⁴ ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a21_SURFACE2" TIME_SLOT_REF1="ts62" TIME_SLOT_REF2="ts64">
+                <ANNOTATION_VALUE>sa³kã⁴ xa'⁴nda²nã¹rũ⁴ kwã'¹ã¹rũ⁴ tã³ ndi⁴ ya¹ ko¹⁴o³ yu¹ku¹ kwa⁴a² kã⁴ tã³, tã³ ya¹ kwa⁴a² ta¹tã⁴ ndi⁴ ta¹tã⁴ ku⁴u⁴ yu¹ku¹rũ⁴ ka⁴chi² nã¹ ta⁴u³nĩ²</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a22_SURFACE2" TIME_SLOT_REF1="ts66" TIME_SLOT_REF2="ts68">
+                <ANNOTATION_VALUE>tã³ ja⁴si⁴ki²⁴ tu³ nã¹ ba⁴li⁴ jĩ'⁴ĩ⁴ ndi³chi²rũ⁴ ya¹ ndi³chi² xi⁴yo¹³ nũ¹⁴ũ³rũ⁴ kã⁴ o⁴ra² tyem⁴pu² i⁴chya¹ ke⁴e⁴ sa¹bi⁴ ka¹a³ ndi⁴ tã⁴ã²⁴nẽ²,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a23_SURFACE2" TIME_SLOT_REF1="ts70" TIME_SLOT_REF2="ts72">
+                <ANNOTATION_VALUE>nũ¹⁴ũ³ ta¹kwi⁴² tã³ ta⁴ba⁴nẽ² tã³ xa¹⁴³ ka'⁴ndya² ndi⁴ nda¹⁴³ tã⁴² ka'⁴ndi² &lt;i&gt;cohete china&lt;/i&gt; ti⁴ ka'⁴ndya² nda⁴te¹⁴².</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a24_SURFACE2" TIME_SLOT_REF1="ts74" TIME_SLOT_REF2="ts76">
+                <ANNOTATION_VALUE>Tã³ nã⁴ ya¹ ka³xi⁴ tu³kwe⁴ ba⁴² jĩ'⁴ĩ⁴ ndwe'¹e⁴ ndi⁴ nda⁴ta¹⁴ be² tã³ ndi⁴ u'¹bi¹ sa⁴ka² ti'⁴nũ³ ndi³chi² kã⁴ ja⁴si⁴ki²⁴nã² jỹã'⁴ã².</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a25_SURFACE2" TIME_SLOT_REF1="ts78" TIME_SLOT_REF2="ts80">
+                <ANNOTATION_VALUE>Tã³ ya¹ i³nga² ke¹ ya¹ kwa⁴a² ba'¹a³ bya⁴² ã⁴ ko¹⁴o³ nde⁴e² kwa⁴a² i⁴xa³ bya⁴² ndi⁴ kwa¹⁴a² ba'¹a³ bya⁴² ndi⁴ya¹ xã'⁴ã² bi¹xi¹nĩ⁴² ba³ kwa⁴a³.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a26_SURFACE2" TIME_SLOT_REF1="ts82" TIME_SLOT_REF2="ts84">
+                <ANNOTATION_VALUE>Ya¹ yu¹ku¹ ko¹ndo¹ kã⁴ ndi⁴ ya¹ xã'⁴ã² bi¹xi¹nĩ⁴² ba⁴² tã³ nã⁴tu² nĩ¹chwa'¹a⁴² kwe'³e⁴ ya¹ ka⁴ta⁴ su¹kwe⁴ ndi⁴</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a27_SURFACE2" TIME_SLOT_REF1="ts86" TIME_SLOT_REF2="ts88">
+                <ANNOTATION_VALUE>ya¹ ba⁴a²⁴ ti⁴ u¹be¹ tã³ ya¹ yu¹ku¹ bi¹xi¹ ba⁴² ndi⁴ ya¹ ko⁴ndo³ ta¹kwi⁴² chyo'⁴o¹⁴ xyo'⁴o⁴ jĩ'⁴ĩ⁴ sa³yu² kã⁴ ndi⁴ ba⁴a²⁴ ba⁴a²⁴ bi¹xi¹ mã'³ã³ mã'³ã³ ku⁴mĩ³ĩ⁴ ta¹kwya⁴².</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a28_SURFACE2" TIME_SLOT_REF1="ts90" TIME_SLOT_REF2="ts92">
+                <ANNOTATION_VALUE>Tã³ nĩ³ ko¹⁴o³ ka¹, ko¹⁴o³ ka¹ i³nge² chi⁴ka²nã¹ jỹã'⁴ã² ã⁴ ĩ¹ĩ⁴ kwã'¹ã¹ ke¹ta³ jĩ'⁴ĩ⁴ra⁴ ã⁴ ko¹⁴o³ ã⁴ ya¹ bi¹xi¹ kwã'¹ã¹ ke¹ta³ jĩ'⁴ĩ⁴ra⁴ ndi⁴ nĩ³nã³ mĩ³ĩ⁴ be² chyo'⁴o¹⁴ ji⁴nĩ²yu¹, ã⁴ ko¹⁴o³ i⁴yo² ke¹ ji⁴nĩ² yo'⁴o¹ nda⁴tũ'⁴ũ⁴ ka¹ nã¹ ta⁴u³nĩ² jỹũ'⁴ũ⁴.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a29_SURFACE2" TIME_SLOT_REF1="ts94" TIME_SLOT_REF2="ts96">
+                <ANNOTATION_VALUE>Tã³ ya¹ kã⁴ ba⁴² nda⁴twe'⁴e⁴ xa'¹a⁴ yo'⁴o⁴ tã³, nda⁴a² kwa⁴ñũ³ ji⁴nĩ² ka¹ yo'⁴o¹ i³nga² ke¹.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a32_SURFACE2" TIME_SLOT_REF1="ts106" TIME_SLOT_REF2="ts108">
+                <ANNOTATION_VALUE>Ba'¹a³ ba³.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="Traducción" PARENT_REF="Esteban Guadalupe Sierra" PARTICIPANT="Esteban Guadalupe Sierra" TIER_ID="EGS Traducción">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a33" ANNOTATION_REF="a8">
+                <ANNOTATION_VALUE>Está bien. Yo lo que sé es que &lt;i&gt;yu¹ku¹ ko¹ndo¹&lt;/i&gt;, este, no hay en todas partes sino sólo en algunas partes.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a36" ANNOTATION_REF="a9">
+                <ANNOTATION_VALUE>Son como la escobilla porque crecen en abundancia, yo sé que sirve para ....</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a37" ANNOTATION_REF="a10">
+                <ANNOTATION_VALUE>Lo cortan y lo usan para hacer enramadas cuando ofrendan en todos santos en el panteón. Sólo para eso sé que sirve.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a60" ANNOTATION_REF="a30">
+                <ANNOTATION_VALUE>No sé otras cosas ni sabía que era remedio casero. Solamente</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a61" ANNOTATION_REF="a31">
+                <ANNOTATION_VALUE>(yo sabía) que cortaban las hojas para las enramadas en el panteón. Sólo sabía eso.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="Traducción" PARENT_REF="Constantino Teodoro Bautista" PARTICIPANT="Constantino Teodoro Bautista" TIER_ID="CTB Traducción">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a34" ANNOTATION_REF="a6">
+                <ANNOTATION_VALUE>Aquí vamos a platicar acerca de la planta llamada &lt;i&gt;yu¹ku¹ ko¹ndo¹&lt;/i&gt;. Para qué sirve y qué cura,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a35" ANNOTATION_REF="a7">
+                <ANNOTATION_VALUE>cómo crece y para qué otra cosa sirve según lo que sabes, platiquemos para ver lo que sabes y lo que yo sé y, sobre eso vamos a platicar ahora.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a38" ANNOTATION_REF="a11">
+                <ANNOTATION_VALUE>Ese &lt;i&gt;yu¹ku¹ko¹ndo¹&lt;/i&gt;</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a39" ANNOTATION_REF="a12">
+                <ANNOTATION_VALUE>en los tiempos anteriores nacían en tierras fértiles donde había parotas (&lt;i&gt;Enterolobium cyclocarpum&lt;/i&gt; (Jacq.) Griseb.) o</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a43" ANNOTATION_REF="a13">
+                <ANNOTATION_VALUE>en tierras fértiles nacían. Hoy en dia ya no hay árboles grandes y lo encontramos en los callejones o donde hay peñascos</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a44" ANNOTATION_REF="a14">
+                <ANNOTATION_VALUE>ahí nace ese &lt;i&gt;yu¹ku¹ ko¹ndo¹&lt;/i&gt;. Dicen los señores grandes que cuando uno tiene gripa las hojas se hierven y se toma tibia como té para que</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a45" ANNOTATION_REF="a15">
+                <ANNOTATION_VALUE>nos curemos de la garganta con la gripa, así dicen los ancianos. Pero lo que sabemos ahora que ya no hay árboles.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a46" ANNOTATION_REF="a16">
+                <ANNOTATION_VALUE>Lo cortan (el &lt;i&gt;yu¹ku¹ ko¹ndo¹&lt;/i&gt;) y lo llevan para enrramada en el panteón. Pero anteriormente yo me acuerdo que los señores de antes ...,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a47" ANNOTATION_REF="a17">
+                <ANNOTATION_VALUE>los niños cortaban las hojas de esta planta y hacían enrramada para jugar.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a48" ANNOTATION_REF="a18">
+                <ANNOTATION_VALUE>Eso hacían los niños antes. Pero no crece en cualquier tiempo (estación) sino en los primeros dias de mayo cuando empieza el tiempo de lluvia y </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a49" ANNOTATION_REF="a19">
+                <ANNOTATION_VALUE>es cuando crecen. Crecen frondosos, tapan a los animales (si se meten entre ellas) crecen tanto como,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a50" ANNOTATION_REF="a20">
+                <ANNOTATION_VALUE>como un metro y medio crece de alto. Para cuando llega el tiempo que ya deja de llover en fiesta de todos santos,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a51" ANNOTATION_REF="a21">
+                <ANNOTATION_VALUE>entonces lo cortan y lo llevan. Pero eso es porque no hay hojas (de otras plantas para la enramada). Además la hoja (del &lt;i&gt;yu¹ku¹ ko¹ndo¹&lt;/i&gt;) es curativa según cuentan los ancianos.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a52" ANNOTATION_REF="a22">
+                <ANNOTATION_VALUE>Y los niños juegan con su vaina que se da al concluir la lluvia. Los meten</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a53" ANNOTATION_REF="a23">
+                <ANNOTATION_VALUE>al agua y cuando los sacan truenan como cohete de china al reventarse.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a54" ANNOTATION_REF="a24">
+                <ANNOTATION_VALUE>Y si lo mordemos con los dientes truena al partirse pero su vaina pica contra (el labio) dolorosamente cuando se juega (mordiéndolo).</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a55" ANNOTATION_REF="a25">
+                <ANNOTATION_VALUE>Pero no podemos decir que sirve para otra cosa. No, sólo que es muy aromática.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a56" ANNOTATION_REF="a26">
+                <ANNOTATION_VALUE>Ese &lt;i&gt;yu¹ku¹ko¹ndo¹&lt;/i&gt; tiene una aroma muy agradable y cuando se hierve para que lo tomemos contra la tos</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a57" ANNOTATION_REF="a27">
+                <ANNOTATION_VALUE>sabe entre un poco amargo y un poco dulce. Asi sabe el agua (que resulta de hervirlo), entre dulce y simple.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a58" ANNOTATION_REF="a28">
+                <ANNOTATION_VALUE>No le echan otras cosas ni sal ni lo endulzan sino que se hierven las puras hojas. O si tú sabes algo más que te han contado los señores grandes.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a59" ANNOTATION_REF="a29">
+                <ANNOTATION_VALUE>Sobre eso estamos platicando aquí y quizás tu sabes un poco más.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a62" ANNOTATION_REF="a32">
+                <ANNOTATION_VALUE>Está bien.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="Traducción" PARENT_REF="Esteban Guadalupe Sierra" PARTICIPANT="Esteban Guadalupe Sierra" TIER_ID="EGS Translation"/>
+    <TIER DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="Traducción" PARENT_REF="Constantino Teodoro Bautista" PARTICIPANT="Constantino Teodoro Bautista" TIER_ID="CTB Translation"/>
+    <LINGUISTIC_TYPE GRAPHIC_REFERENCES="false" LINGUISTIC_TYPE_ID="Transcripción" TIME_ALIGNABLE="true"/>
+    <LINGUISTIC_TYPE GRAPHIC_REFERENCES="false" LINGUISTIC_TYPE_ID="Comentarios" TIME_ALIGNABLE="true"/>
+    <LINGUISTIC_TYPE CONSTRAINTS="Symbolic_Association" GRAPHIC_REFERENCES="false" LINGUISTIC_TYPE_ID="Traducción" TIME_ALIGNABLE="false"/>
+    <LOCALE COUNTRY_CODE="EN" LANGUAGE_CODE="us"/>
+    <LOCALE COUNTRY_CODE="US" LANGUAGE_CODE="en"/>
+    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00130975-001" LANG_ID="und" LANG_LABEL="undetermined (und)"/>
+    <CONSTRAINT DESCRIPTION="Time subdivision of parent annotation's time interval, no time gaps allowed within this interval" STEREOTYPE="Time_Subdivision"/>
+    <CONSTRAINT DESCRIPTION="Symbolic subdivision of a parent annotation. Annotations refering to the same parent are ordered" STEREOTYPE="Symbolic_Subdivision"/>
+    <CONSTRAINT DESCRIPTION="1-1 association with a parent annotation" STEREOTYPE="Symbolic_Association"/>
+    <CONSTRAINT DESCRIPTION="Time alignable annotations within the parent annotation's time interval, gaps are allowed" STEREOTYPE="Included_In"/>
+    <CONTROLLED_VOCABULARY CV_ID="TurnModeCV">
+        <DESCRIPTION LANG_REF="und">All values that are allowed for Transcriber Turn.mode attribute</DESCRIPTION>
+        <CV_ENTRY_ML CVE_ID="cveid0">
+            <CVE_VALUE LANG_REF="und">spontaneous</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid1">
+            <CVE_VALUE LANG_REF="und">planned</CVE_VALUE>
+        </CV_ENTRY_ML>
+    </CONTROLLED_VOCABULARY>
+    <CONTROLLED_VOCABULARY CV_ID="TurnFidelityCV">
+        <DESCRIPTION LANG_REF="und">All values that are allowed for Transcriber Turn.fidelity attribute</DESCRIPTION>
+        <CV_ENTRY_ML CVE_ID="cveid0">
+            <CVE_VALUE LANG_REF="und">high</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid1">
+            <CVE_VALUE LANG_REF="und">medium</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid2">
+            <CVE_VALUE LANG_REF="und">low</CVE_VALUE>
+        </CV_ENTRY_ML>
+    </CONTROLLED_VOCABULARY>
+    <CONTROLLED_VOCABULARY CV_ID="SectionTypeCV">
+        <DESCRIPTION LANG_REF="und">All values that are allowed for Transcriber Section.type attribute</DESCRIPTION>
+        <CV_ENTRY_ML CVE_ID="cveid0">
+            <CVE_VALUE LANG_REF="und">report</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid1">
+            <CVE_VALUE LANG_REF="und">nontrans</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid2">
+            <CVE_VALUE LANG_REF="und">filler</CVE_VALUE>
+        </CV_ENTRY_ML>
+    </CONTROLLED_VOCABULARY>
+    <CONTROLLED_VOCABULARY CV_ID="TurnChannelCV">
+        <DESCRIPTION LANG_REF="und">All values that are allowed for Transcriber Turn.channel attribute</DESCRIPTION>
+        <CV_ENTRY_ML CVE_ID="cveid0">
+            <CVE_VALUE LANG_REF="und">telephone</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid1">
+            <CVE_VALUE LANG_REF="und">studio</CVE_VALUE>
+        </CV_ENTRY_ML>
+    </CONTROLLED_VOCABULARY>
+</ANNOTATION_DOCUMENT>
