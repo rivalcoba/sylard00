@@ -18,7 +18,8 @@ window.myI18n = myI18n
 window.formsManager = formsManager
 window.locations = locations
 
-if(window.location.href == 'http://localhost:3000/collections/create'){
+if(window.location.pathname == `/collections/create`){
+    alert('entra')
     window.pageScripts = collectionsCreate
 }
 
