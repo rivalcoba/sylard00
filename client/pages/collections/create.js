@@ -10,9 +10,9 @@ let addBtn = document.getElementById('addBtn')
 
 
 function is_valid_datalist_value(idDataList, inputValue) {
-  var option = document.querySelector(
-    '#' + idDataList + " option[value='" + inputValue + "']"
-  )
+
+  // console.log('#' + idDataList + " option[value='" + inputValue + "']")
+  var option = document.querySelector(`#${idDataList} option[value="${inputValue}"]`)
   if (option != null) {
     return option.value.length > 0
   }
@@ -45,7 +45,7 @@ async function enableLangGroup() {
     )
   }
 
-  let selectedLanguageId = document.querySelector(`option[value='${languageBox.value}']`).id
+  let selectedLanguageId = document.querySelector(`option[value="${languageBox.value}"]`).id
   let parents = []
   try {
     // Loading ParetnTree
@@ -90,9 +90,18 @@ function addLanguageRow(language, groupLanguage) {
   let tr = document.createElement('tr')
   tr.setAttribute('id', `${language.gid}`)
   tr.onclick = function () {
-    deleteLangRow(`${language.gid}`)
+    deleteLangRow(language)
   }
-  tr.innerHTML = `<td>${language.gid}</td>
+  // checK: https://stackoverflow.com/questions/24775725/loop-through-childnodes
+  // Ref: https://stackoverflow.com/questions/48755661/remove-item-from-datalist-dynamically
+
+  tr.innerHTML = `
+            <input 
+              type="text" 
+              style="display:none;" 
+              name="lang${language._id}" 
+              value="${language._id}|${groupLanguage._id}">
+            <td>${language.gid}</td>
             <td>${language.name}</td>
             <td>${groupLanguage.gid}</td>
             <td>${groupLanguage.name}</td>
@@ -106,10 +115,11 @@ const getLangData = (inputBox, dataList)=>{
   let value = inputBox.value
   let dataListId = dataList.id
   
+  // console.log('#' + dataListId + " option[value='" + value + "']")
   let option = document.querySelector(
-    '#' + dataListId + " option[value='" + value + "']"
+    `#${dataListId} option[value="${value}"]`
   )
-  
+
   return {
     _id: option.dataset.id,
     gid: value.split(' | ')[1],
@@ -132,15 +142,36 @@ function addLanguage() {
   }
 
   let lang = getLangData(languageBox,langlist)
-
   let groupLanguage = getLangData(languageGroupBox,groupLanglist)
+
+  // Reset language input values
+  languageBox.value = ""
+  languageGroupBox.value = ""
+  languageGroupBox.disabled = true
+  addBtn.style.display ="none"
+  
+  // Delete selected language from the datalist
+  var options = Array.from(langlist.children)
+  options.forEach(option => {
+    if(option.id == lang._id){
+      option.remove()
+    }
+  });
   
   addLanguageRow(lang, groupLanguage)
 }
 
-function deleteLangRow(id) {
+function deleteLangRow(language) {
+  let id = `${language.gid}`
   var tr = document.getElementById(id)
   tr.remove()
+  // add language to the data list
+  let option = document.createElement('option')
+  option.setAttribute('id',`${language._id}`)
+  option.setAttribute('data-id',`${language._id}`)
+  option.setAttribute('data-name',`${language.name}`)
+  option.setAttribute('value',`${language.name} | ${language.gid}`)
+  langlist.appendChild(option)
 }
 //document.getElementsByTagName("tr")[2].remove();
 export default{
