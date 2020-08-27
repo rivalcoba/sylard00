@@ -17,7 +17,10 @@ const index = (req, res) => {
 
 const createCollection = async(req, res) => {
   // Getting languages 
-  const glottologs = await Glottolog.find({},'gid name parent_id').exec()
+  const glottologs = await Glottolog.find(
+    { $or: [{ country_ids: /MX/ }, { country_ids: /US/ }] },
+    'gid name parent_id'
+  ).exec()
 
   let languages = glottologs.map((language)=>{
     let nlang = {}
