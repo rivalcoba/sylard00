@@ -99,7 +99,7 @@ function addLanguageRow(language, groupLanguage) {
             <input 
               type="text" 
               style="display:none;" 
-              name="lang${language._id}" 
+              name="${language.gid}" 
               value="${language._id}|${groupLanguage._id}">
             <td>${language.gid}</td>
             <td>${language.name}</td>

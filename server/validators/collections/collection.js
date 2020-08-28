@@ -17,6 +17,11 @@ const CollectionValidationSchema = Yup.object().shape({
 })
 
 export default async (req, res, next) => {
+  let props = []
+  for(let prop in req.body){
+    props.push(prop)
+  }
+  return res.send(JSON.stringify(props))
   // Get Params from req
   let { languages, localities } = req.body
   const { name, description, license } = req.body
