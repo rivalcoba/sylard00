@@ -1,46 +1,8 @@
 
-import locationsHelper from '@chelpers/models/locations'
-import Swal from 'sweetalert2'
-
-let municipalitiesDatalist = document.getElementById('municipalities')
-let localitiesList = document.getElementById('localities')
-let addLocBtn = document.getElementById('addLocBtn')
-let entityBox = document.getElementById('entity')
-let municipalityBox = document.getElementById('municipality')
-let localityBox = document.getElementById('locality')
-
-
-const addLocality = async function(){
-  let selectedEntity = entityBox.value;
-  let selectedMunicipality = municipalityBox.value;
-  let selectedLocality = localityBox.value;
-
-  // Check if Locality s valid
-  if( selectedLocality == "" || 
-    !is_valid_datalist_value(localitiesList.id, selectedLocality)){
-      localityBox.value = ""
-      return Swal.fire(
-        'SYLARD!',
-        'Debe seleccionar una opción de la lista',
-        'info'
-      )
-  }
-  // Get the locality
-  var location = await locationsHelper.getLocality(
-    selectedEntity,
-    selectedMunicipality,
-    selectedLocality
-  ) 
-  
-  // TODO Agregar a la tabla info de location
-  console.log(JSON.stringify(location))
-
-}
+/*import locationsHelper from '@chelpers/models/locations'
+import Swal from 'sweetalert2'*/
 
 // Auxiliary Functions
-// Is used twice in the project sugest rewrite as
-// a helper function: used locations and create on 
-// the client
 const clearDataList = (dataList) => {
   // Remove all the previous results
   while (dataList.firstChild) {
@@ -48,8 +10,7 @@ const clearDataList = (dataList) => {
   }
 }
 
-// This is used here an in create on client
-// candidate to be a helper
+  
 function is_valid_datalist_value(idDataList, inputValue) {
   var option = document.querySelector(
     '#' + idDataList + " option[value='" + inputValue + "']"
@@ -128,50 +89,70 @@ const toogleLoading = function(id = 'loading'){
 }
 
 // Fill datalist
-const fillMunicipalitiesDataList = async function () {
-  try {
-    disableMunicipality()
+const fillMunicipalitiesDataList = async function(){    
+    try {
+        disableMunicipality()
+        // Get Datalist reference
+        let entityBox = document.getElementById('entity')
+        let dataList = document.getElementById('municipalities')
+        let municipalityBox = document.getElementById('municipality')
 
-    // Check correct selection of previous box
-    if (!is_valid_datalist_value('entities', entityBox.value)) {
-      return Swal.fire(
-        'SYLARD!',
-        'Debe seleccionar una opción de la lista',
-        'info'
-      )
+        // Check correct selection of previous box
+        if(!is_valid_datalist_value('entities',entityBox.value)){
+            return Swal.fire(
+                'SYLARD!',
+                'Debe seleccionar una opción de la lista',
+                'info'
+              ) 
+        }
+        
+        // Remove all the previous results
+        clearDataList(dataList)
+
+        const nom_ent = entityBox.value
+
+        // Get municipalities from server
+        let municipalities = await locationsHelper.getMunicipalitiesByEntity(nom_ent)
+        
+        // Fill datalist
+        if(!municipalities){
+            return Swal.fire(
+                'SYLARD!',
+                'El servidor no respondio',
+                'info'
+              ) 
+            } else if(municipalities.length == 0){
+                return Swal.fire(
+                    'SYLARD!',
+                    'No se encontraron Municipios',
+                    'info'
+                  )
+        }
+        
+        municipalities.forEach(municipality => {
+            let option = document.createElement('option')
+            dataList.appendChild(option)
+            option.value = municipality
+        });
+        municipalityBox.disabled = false;      
+    } catch (error) {
+        return Swal.fire(
+            'Error!',
+            error.message,
+            'info'
+          )        
     }
-
-    // Remove all the previous results
-    clearDataList(municipalitiesDatalist)
-
-    const nom_ent = entityBox.value
-
-    // Get municipalities from server
-    let municipalities = await locationsHelper.getMunicipalitiesByEntity(
-      nom_ent
-    )
-
-    // Fill datalist
-    if (!municipalities) {
-      return Swal.fire('SYLARD!', 'El servidor no respondio', 'info')
-    } else if (municipalities.length == 0) {
-      return Swal.fire('SYLARD!', 'No se encontraron Municipios', 'info')
-    }
-
-    municipalities.forEach((municipality) => {
-      let option = document.createElement('option')
-      municipalitiesDatalist.appendChild(option)
-      option.value = municipality
-    })
-    municipalityBox.disabled = false
-  } catch (error) {
-    return Swal.fire('Error: fillMunicipalitiesDataList!', error.message, 'info')
-  }
 }
 
 const fillLocalitiesDataList = async function(){
     try {
         disableLocality()
+        // Get Datalist reference
+        let entityBox = document.getElementById('entity')
+        let municipalityBox = document.getElementById('municipality')
+        let localityBox = document.getElementById('locality')
+        let dataList = document.getElementById('localities')
+
         // Check correct selection of previous box
         if(!is_valid_datalist_value('municipalities',municipalityBox.value)){
             return Swal.fire(
@@ -181,7 +162,7 @@ const fillLocalitiesDataList = async function(){
               ) 
         }
         // Remove all the previous results
-        clearDataList(localitiesList)
+        clearDataList(dataList)
         // Get params values
         const nom_ent = entityBox.value
         const nom_mun = municipalityBox.value
@@ -205,11 +186,10 @@ const fillLocalitiesDataList = async function(){
         // Fill datalist
         localities.forEach(locality => {
             let option = document.createElement('option')
-            localitiesList.appendChild(option)
+            dataList.appendChild(option)
             option.value = locality
         });
         localityBox.disabled = false;
-        addLocBtn.style.display = "inline"
 
     } catch (error) {
         return Swal.fire(
@@ -221,24 +201,22 @@ const fillLocalitiesDataList = async function(){
 }
 
 const disableMunicipality = ()=>{
+    let municipalityBox = document.getElementById('municipality')
     municipalityBox.value = ""
     municipalityBox.disabled = true;
-    addLocBtn.style.display = "none"
 }
 
 const disableLocality = ()=>{
+    let localityBox = document.getElementById('locality')
     localityBox.value = ""
     localityBox.disabled = true;
-    addLocBtn.style.display = "none"
 }
 
-
 export default {
-    findLocation,
-    toogleLoading,
-    fillMunicipalitiesDataList,
-    disableMunicipality,
-    fillLocalitiesDataList,
-    disableLocality,
-    addLocality
+  findLocation,
+  toogleLoading,
+  fillMunicipalitiesDataList,
+  disableMunicipality,
+  fillLocalitiesDataList,
+  disableLocality,
 }

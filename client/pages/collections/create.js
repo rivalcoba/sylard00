@@ -19,10 +19,18 @@ let entityBox = document.getElementById('entity')
 let municipalityBox = document.getElementById('municipality')
 let localityBox = document.getElementById('locality')
 
+// Memory
+let locSelectedMemory = []
+let langSelectedMemory = []
+
+function deleteTableRow(element){
+  let id = `${element._id}`
+  let tr = document.getElementById(id)
+  tr.remove()
+}
 
 function is_valid_datalist_value(idDataList, inputValue) {
 
-  // console.log('#' + idDataList + " option[value='" + inputValue + "']")
   var option = document.querySelector(`#${idDataList} option[value="${inputValue}"]`)
   if (option != null) {
     return option.value.length > 0
@@ -101,33 +109,76 @@ function addLanguageRow(language, groupLanguage) {
   let table = document.getElementById('langTable')
   let tr = document.createElement('tr')
   tr.setAttribute('id', `${language.gid}`)
-  tr.onclick = function () {
-    deleteLangRow(language)
-  }
-  // checK: https://stackoverflow.com/questions/24775725/loop-through-childnodes
-  // Ref: https://stackoverflow.com/questions/48755661/remove-item-from-datalist-dynamically
 
   tr.innerHTML = `
             <input 
               type="text" 
               style="display:none;" 
-              name="${language.gid}" 
-              value="${language._id}|${groupLanguage._id}">
+              name="languages" 
+              value="${language._id}">
+            <input 
+              type="text" 
+              style="display:none;" 
+              name="language" 
+              value="${groupLanguage._id}">
             <td>${language.gid}</td>
             <td>${language.name}</td>
             <td>${groupLanguage.gid}</td>
             <td>${groupLanguage.name}</td>
             <td>
-              <i class="fa fa-trash fa-2x" style="color: rgb(241, 63, 32);cursor: pointer;"></i>
+              <i 
+                class="fa fa-trash fa-2x"
+                id="tr${language._id}"
+                style="color: rgb(241, 63, 32);cursor: pointer;"></i>
             </td>`
+
   table.appendChild(tr)
+
+  let langDelBtn = document.getElementById(`tr${language._id}`)
+  langDelBtn.onclick = ()=>{
+    langSelectedMemory = langSelectedMemory.filter(lanId => lanId !== language._id)
+    deleteLangRow(language)
+  }
+}
+
+function addLocalityRow(locality){
+  let table = document.getElementById('locTable')
+  let tr = document.createElement('tr')
+  tr.setAttribute('id',`${locality._id}`)
+  // Adding element to the table
+  tr.innerHTML = `
+    <input
+      type="text"
+      style="display:none;"
+      name="loc"
+      value="${locality._id}">
+    <td>${locality.Nom_Loc}</td>
+    <td>${locality.Nom_Mun}</td>
+    <td>${locality.Nom_Ent}</td>
+    <td>Mexico</td>
+    <td>${locality.Lat_Decimal}</td>
+    <td>${locality.Lon_Decimal}</td>
+    <td>
+      <i
+        id="${locality._id}" 
+        class="fa fa-trash fa-2x"
+        style="color: rgb(241, 63, 32);cursor: pointer;"></i>
+    </td>`
+    
+  table.appendChild(tr)
+
+  let locDelBtn = document.getElementById(locality._id)
+
+  locDelBtn.onclick = () => {
+    locSelectedMemory = locSelectedMemory.filter(locId => locId !== locality._id)
+    deleteTableRow(locality)
+  }
 }
 
 const getLangData = (inputBox, dataList)=>{
   let value = inputBox.value
   let dataListId = dataList.id
   
-  // console.log('#' + dataListId + " option[value='" + value + "']")
   let option = document.querySelector(
     `#${dataListId} option[value="${value}"]`
   )
@@ -156,19 +207,32 @@ function addLanguage() {
   let lang = getLangData(languageBox,langlist)
   let groupLanguage = getLangData(languageGroupBox,groupLanglist)
 
+  // Check if previous selected
+  if(langSelectedMemory.indexOf(lang._id) >= 0){
+    return Swal.fire(
+      'SYLARD!',
+      'Combinacion de lenguas ya seleccionado',
+      'info'
+    )
+  }
+  langSelectedMemory.push(lang._id)
+
   // Reset language input values
   languageBox.value = ""
   languageGroupBox.value = ""
   languageGroupBox.disabled = true
   addLangBtn.style.display ="none"
   
-  // Delete selected language from the datalist
-  var options = Array.from(langlist.children)
-  options.forEach(option => {
-    if(option.id == lang._id){
-      option.remove()
-    }
-  });
+  // --->BORRAR
+  // // Delete selected language from the datalist
+  // var options = Array.from(langlist.children)
+  
+  // options.forEach(option => {
+  //   if(option.id == lang._id){
+  //     option.remove()
+  //   }
+  // });
+  // --->BORRAR
   
   addLanguageRow(lang, groupLanguage)
 }
@@ -177,13 +241,15 @@ function deleteLangRow(language) {
   let id = `${language.gid}`
   var tr = document.getElementById(id)
   tr.remove()
+  // ---> BORRAR
   // add language to the data list
-  let option = document.createElement('option')
-  option.setAttribute('id',`${language._id}`)
-  option.setAttribute('data-id',`${language._id}`)
-  option.setAttribute('data-name',`${language.name}`)
-  option.setAttribute('value',`${language.name} | ${language.gid}`)
-  langlist.appendChild(option)
+  // let option = document.createElement('option')
+  // option.setAttribute('id',`${language._id}`)
+  // option.setAttribute('data-id',`${language._id}`)
+  // option.setAttribute('data-name',`${language.name}`)
+  // option.setAttribute('value',`${language.name} | ${language.gid}`)
+  // langlist.appendChild(option)
+  // ----> BORRAR
 }
 
 const addLocality = async function(){
@@ -206,11 +272,24 @@ const addLocality = async function(){
     selectedEntity,
     selectedMunicipality,
     selectedLocality
-  ) 
+  )
   
-  // TODO Agregar a la tabla info de location
-  console.log(JSON.stringify(location))
+  if(locSelectedMemory.indexOf(location._id) >= 0){
+    return Swal.fire(
+      'SYLARD!',
+      'Opcion ya seleccionada',
+      'info'
+    ) 
+  }
 
+  locSelectedMemory.push(location._id)
+
+  localityBox.value = ""
+  municipalityBox.value = ""
+  entityBox.value = ""
+  addLocBtn.style.display = "none"
+
+  addLocalityRow(location)
 }
 
 // Main Functions
@@ -256,12 +335,6 @@ const findLocation = async ()=>{
         td_lat_decimal.innerHTML = location.Lat_Decimal
         td_lon_decimal.innerHTML = location.Lon_Decimal
 
-        // location.forEach(location => {
-        //     //console.log(location.Nom_Loc)
-        //     let li = document.createElement('li')
-        //     tr.appendChild(li)
-        //     li.innerHTML += `Nombre: ${location.Nom_Loc} - Municipio: ${location.Nom_Mun} - Entidad: ${location.Nom_Ent}`;
-        // });        
     } catch (error) {
         toogleLoading()
         return Swal.fire(
