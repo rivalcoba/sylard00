@@ -114,7 +114,7 @@ function addLanguageRow(language, groupLanguage) {
             <input 
               type="text" 
               style="display:none;" 
-              name="languages" 
+              name="language" 
               value="${language._id}">
             <input 
               type="text" 
