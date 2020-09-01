@@ -1,11 +1,11 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _Collection=_interopRequireDefault(require("../models/Collection")),_Glottolog=_interopRequireDefault(require("../models/Glottolog"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}// Collections Controllers
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _Collection=_interopRequireDefault(require("../models/Collection")),_Glottolog=_interopRequireDefault(require("../models/Glottolog")),_Location=_interopRequireDefault(require("../models/Location"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}// Collections Controllers
 // Import model
 // import User from '@models/User'
 // List all the collaborators collections
 // Read and list all the Collaborators Collections
 const index=(a,b)=>{// List all the collections
 b.render("collections/index",{title:"Contact",content:"Contact the administrator"})},createCollection=async(a,b)=>{// Getting languages 
-const c=await _Glottolog.default.find({$or:[{country_ids:/MX/},{country_ids:/US/}]},"gid name parent_id").exec();let d=c.map(a=>{let b={};return b=a.toJSON(),b});b.render("collections/create",{languages:d})},addCollection=async(a,b)=>{// Grab collections from body
+const c=await _Glottolog.default.find({$or:[{country_ids:/MX/},{country_ids:/US/}]},"gid name parent_id").exec();let d=c.map(a=>{let b={};return b=a.toJSON(),b});const e=await _Location.default.distinct("Nom_Ent");b.render("collections/create",{languages:d,entities:e})},addCollection=async(a,b)=>{// Grab collections from body
 let{collection:c}=a.body;// Add user
 c.user=a.user._id;const d=await _Collection.default.create(c);// Se encuentra usuario
 b.status(200).json(d)},deleteCollection=async(a,b)=>{const c=a.params.collection_id;try{const a=await _Collection.default.deleteOne({_id:c}).exec();return b.status(200).json(a)}catch(a){return b.status(400).json(a)}},editCollectionForm=async(a,b)=>{const c=a.params.collection_id;// Grab the collection to edit

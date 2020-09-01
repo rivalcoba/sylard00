@@ -20,6 +20,11 @@
     </div>
   </div>
 
+  <div class="row">
+    <span style="font-weight: 700;">
+      Lenguas de la coleccion
+    </span>
+  </div>
   <!-- Collections Languages -->
   <div class="row">
     <div class="input-field col s12 m10 l4">
@@ -27,7 +32,7 @@
       <label for="language">Lengua Terminal</label>
       <input 
         placeholder="Orizaba Nahuatl | oriz1235" 
-        id="language" name="language" 
+        id="language" 
         type="text"
         onclick="pageScripts.disableLanguageGroupBox()"
         onblur="pageScripts.enableLangGroup()"
@@ -62,7 +67,7 @@
       </datalist>
       <i 
         class="fa fa-plus-square prefix" 
-        id="addBtn"
+        id="addLangBtn"
         style="color: rgba(48, 238, 143, 0.911); cursor: pointer; display:none;"
         onclick="pageScripts.addLanguage()"></i>
     </div>
@@ -73,12 +78,98 @@
     <div class="col s12 m10 l8">
       <table>
         <thead>
-         <span style="font-weight: 700;">
+         <span 
+         style="font-weight: 700; color:darksalmon">
            Lenguas agregadas a la colección
          </span>           
         </thead>
-        <tbody id="langTable">
-          
+        <tbody id="langTable">          
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Comunidades -->
+  <div class="row">
+    <span style="font-weight: 700;">
+      Comunidades de la colección
+    </span>
+  </div>
+  <!-- ENTIDAD -->
+  <div class="row">
+    <div class="input-field col s12 m10 l4">
+      <i 
+        class="fa fa-compass prefix" 
+        style="color: rgba(48, 115, 238, 0.924);"
+        aria-hidden="true"></i>
+      <label for="entity">Entidad:</label>
+      <input 
+      onblur="locations.fillMunicipalitiesDataList()"
+        onclick="locations.disableMunicipality();locations.disableLocality()"
+        onchange="locations.fillMunicipalitiesDataList()" list="entities" type="text" id="entity" name="entity">
+      <datalist id="entities">
+        {{#each entities}}
+          <option value="{{this}}">
+        {{/each}}
+      </datalist>
+    </div>
+  </div>
+  <!-- Municipio -->
+  <div class="row">
+    <div class="input-field col s12 m10 l4">
+      <i 
+      class="fa fa-compass prefix" 
+      style="color: rgba(48, 115, 238, 0.924);"
+      aria-hidden="true"></i>
+      <label for="municipality">Municipio:</label>
+      <input 
+        disabled 
+        onblur="locations.fillLocalitiesDataList()" 
+        onclick="locations.disableLocality()"
+        onchange="locations.fillLocalitiesDataList()" 
+        type="text" list="municipalities" id="municipality"
+        name="municipality">
+      <datalist id="municipalities">
+      </datalist>
+    </div>
+  </div>
+  <!-- Localidad -->
+  <div class="row">
+    <div class="input-field col s10 m10 l4">
+      <i 
+      class="fa fa-compass prefix" 
+      style="color: rgba(48, 115, 238, 0.924);"
+      aria-hidden="true"></i>
+      <label for="locality">Localidad:</label>
+      <input 
+      disabled 
+      type="text" 
+      id="locality" list="localities" 
+      name="locality">
+      
+      <datalist id="localities">
+      </datalist>
+    </div>
+    <div class="col s2 m2 l2">
+      <i 
+        class="fa fa-plus-square fa-2x" 
+        id="addLocBtn"
+        style="color: rgba(48, 238, 143, 0.911); cursor: pointer; display:none;"
+        onclick=""></i>
+    </div>
+  </div>
+
+  <!-- Tabla de Resultados -->
+  <div class="row">
+    <div class="col s12 m10 l8">
+      <table>
+        <thead>
+         <span 
+         style="font-weight: 700; color:darksalmon">
+           Comunidades agregadas a la colección
+         </span>           
+        </thead>
+        <tbody id="locTable">          
         </tbody>
       </table>
     </div>
@@ -86,10 +177,14 @@
 
   <!-- License-->
   <div class="row">
-    <div class="input-field col s12 m10 l8">
+    <div class="input-field col s12 m10 l4">
       <i class="fa fa-creative-commons prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
       <label for="license">Licencia del Contenido</label>
-      <input type="text" placeholder="CC-BY-NC-SA" name="license" id="license" list="licenseType"
+      <input type="text" 
+      placeholder="CC-BY-NC-SA" 
+      name="license" 
+      id="license"
+      list="licenseType"
         {{!-- value="{{license}}" --}}>
       <datalist id="licenseType">
         <option value="CC-BY-NC-SA">
@@ -98,7 +193,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col s12 m6 l6">
+    <div class="col s12 m10 l8">
       <button 
       type="submit" 
       class="btn waves-effect waves-light">

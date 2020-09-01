@@ -16,7 +16,10 @@ import collectionsCreate from '@client/pages/collections/create'
 //window.greeting = greeting
 window.myI18n = myI18n
 window.formsManager = formsManager
-window.locations = locations
+
+if (window.location.pathname == `/locations/index`) {
+  window.locations = locations
+}
 
 if(window.location.pathname == `/collections/create`){
     window.pageScripts = collectionsCreate

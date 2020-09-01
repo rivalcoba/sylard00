@@ -17,18 +17,29 @@ const CollectionValidationSchema = Yup.object().shape({
 })
 
 export default async (req, res, next) => {
-  let props = []
-  for(let prop in req.body){
-    props.push(prop)
-  }
-  return res.send(JSON.stringify(props))
-  // Get Params from req
-  let { languages, localities } = req.body
+
   const { name, description, license } = req.body
+  let languages = []
+  
+  // Extract name keys of params
+  let objBodyKeys = Object.keys(req.body)
+  
+  // Validar que sea mayor que 'n'
+
+  // Extract the languages
+  for (let index = 2; index < objBodyKeys.length-1; index++) {
+    let langs = req.body[objBodyKeys[index]].split('|')
+    let lang = langs[0]
+    let groupLang = langs[1]
+    languages.push(lang,groupLang)
+  }
+
+  return res.send(JSON.stringify(languages))
+
+  // Get Params from req
+  // let { languages, localities } = req.body
 
   try {
-    // Parse languages
-    languages = languages.split('|')
     // parse localities
     localities = localities.split('|')
 
