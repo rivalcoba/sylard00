@@ -114,12 +114,12 @@ function addLanguageRow(language, groupLanguage) {
             <input 
               type="text" 
               style="display:none;" 
-              name="language" 
+              name="languages" 
               value="${language._id}">
             <input 
               type="text" 
               style="display:none;" 
-              name="language" 
+              name="languages" 
               value="${groupLanguage._id}">
             <td>${language.gid}</td>
             <td>${language.name}</td>
@@ -150,7 +150,7 @@ function addLocalityRow(locality){
     <input
       type="text"
       style="display:none;"
-      name="loc"
+      name="localities"
       value="${locality._id}">
     <td>${locality.Nom_Loc}</td>
     <td>${locality.Nom_Mun}</td>

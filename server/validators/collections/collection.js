@@ -18,31 +18,14 @@ const CollectionValidationSchema = Yup.object().shape({
 
 export default async (req, res, next) => {
 
-  const { name, description, license } = req.body
-  let languages = []
+  const { 
+    name, 
+    description, 
+    languages, 
+    localities, 
+    license } = req.body
   
-  // Extract name keys of params
-  let objBodyKeys = Object.keys(req.body)
-  
-  // Validar que sea mayor que 'n'
-
-  // Extract the languages
-  // for (let index = 2; index < objBodyKeys.length-1; index++) {
-  //   let langs = req.body[objBodyKeys[index]].split('|')
-  //   let lang = langs[0]
-  //   let groupLang = langs[1]
-  //   languages.push(lang,groupLang)
-  // }
-
-  return res.send(JSON.stringify(req.body))
-
-  // Get Params from req
-  // let { languages, localities } = req.body
-
   try {
-    // parse localities
-    localities = localities.split('|')
-
     // Form collection document
     let collection = {
       name,
@@ -54,7 +37,7 @@ export default async (req, res, next) => {
 
     // Se validan datos del formulario
     await CollectionValidationSchema.validate(collection, { abortEarly: false })
-
+    
     // Se Buscan los lenguajes
     // Get collections
     let languagesDocs = await Language.find(
@@ -80,6 +63,18 @@ export default async (req, res, next) => {
       return obj
     })
 
+    //Building languages array
+    let langArray = []
+    
+    for(let i = 0; i < collection.languages.length; i+=2){
+      let obj = {}
+      obj['language'] = collection.languages[i] 
+      obj['LanguageGroup'] = collection.languages[i+1]
+      langArray.push(obj)
+    }
+
+    collection.languages = langArray
+
     let localitiesDocs = await Location.find(
       {
         '_id': {
@@ -103,7 +98,12 @@ export default async (req, res, next) => {
       delete obj._id
       return obj
     })
+
     req.body.collection = collection
+
+    // Todo continuar
+    return res.send(JSON.stringify(req.body.collection))
+
     next()
   } catch (error) {
     console.log(`validator>collection> ${error}`)
