@@ -8,11 +8,18 @@ import Locations from '@models/Location'
 
 // List all the collaborators collections
 // Read and list all the Collaborators Collections
-const index = (req, res) => {
+const index = async (req, res) => {
+  // Get Collecionts
+  const collectionsDocs = await Collection.find().populate('user').exec()
+
+  // Collections to JSON
+  let collections = collectionsDocs.map(collection=>{
+    return collection.toJSON()
+  })
+
   // List all the collections
   res.render('collections/index', {
-    title: 'Contact',
-    content: 'Contact the administrator',
+    collections
   })
 }
 
@@ -44,15 +51,17 @@ const addCollection = async (req, res) => {
   collection.user = req.user._id
 
   const collectionDoc = await Collection.create(collection)
+  console.log(`addCollection> Colection Created: ${collectionDoc.name}`)
   // Se encuentra usuario
-  res.status(200).json(collectionDoc)
+  res.redirect('/collections')
 }
 
 const deleteCollection = async (req, res) => {
   const collection_id = req.params.collection_id
   try {
     const result = await Collection.deleteOne({ _id: collection_id }).exec()
-    return res.status(200).json(result)
+    console.log(`deleteCollection> Result: ${result}`)
+    res.redirect('/collections')
   } catch (error) {
     return res.status(400).json(error)
   }

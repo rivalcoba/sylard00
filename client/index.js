@@ -5,6 +5,8 @@ import './styles/main.css';
 import flashLib from '@chelpers/flashLib'
 // Setting language helper
 import myI18n from '@chelpers/myI18n'
+// Modals
+import syModals from '@chelpers/modals'
 // Admin the register form
 import formsManager from '@chelpers/formsManager'
 // Admin for view
@@ -16,6 +18,7 @@ import collectionsCreate from '@client/pages/collections/create'
 //window.greeting = greeting
 window.myI18n = myI18n
 window.formsManager = formsManager
+window.syModals = syModals
 
 if (window.location.pathname == `/locations/index`) {
   window.locations = locations
