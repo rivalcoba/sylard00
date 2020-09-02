@@ -17,4 +17,5 @@ b.languages=f.map(a=>{let b;return i.forEach(c=>{c._id==a&&(b=c,delete b._id)}),
 // })
 //Building languages array
 let j=[];for(let a,c=0;c<b.languages.length;c+=2)a={},a.language=b.languages[c],a.LanguageGroup=b.languages[c+1],j.push(a);b.languages=j;let k=await _Location.default.find({_id:{$in:g}},"Cve_Ent Nom_Ent Nom_Abr Cve_Mun Nom_Mun Cve_Loc Nom_Loc Lat_Decimal Lon_Decimal Altitud").exec();if(0==k.length)throw new Yup.ValidationError(`Localidades Incorrectas`,a.body.localities,"No se proporcionaron localidades correctas");// Se puede refactorar y hacer desde el modelo
-b.localities=k.map(a=>{let b=a.toJSON();return delete b._id,b}),a.body.collection=b,c()}catch(c){console.log(`validator>collection> ${c}`),a.flash("error_msg",`Formulario incorrecto: ${c.message}`),b.render("index/dashboard")}};exports.default=_default;
+b.localities=k.map(a=>{let b=a.toJSON();return delete b._id,b}),a.body.collection=b,c()}catch(c){//res.render('index/dashboard')
+console.log(`validator>collection> ${c}`),console.log(JSON.stringify(c.errors)),a.flash("error_msg",`Error al crear coleccion: ${c.message}`),b.redirect("/dashboard")}};exports.default=_default;

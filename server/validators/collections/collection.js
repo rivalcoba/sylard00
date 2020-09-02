@@ -117,7 +117,9 @@ export default async (req, res, next) => {
     next()
   } catch (error) {
     console.log(`validator>collection> ${error}`)
-    req.flash('error_msg', `Formulario incorrecto: ${error.message}`)
-    res.render('index/dashboard')
+    console.log(JSON.stringify(error.errors))
+    req.flash('error_msg', `Error al crear coleccion: ${error.message}`)
+    //res.render('index/dashboard')
+    res.redirect('/dashboard')
   }
 }

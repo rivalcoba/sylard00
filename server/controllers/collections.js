@@ -25,23 +25,31 @@ const index = async (req, res) => {
 
 const createCollection = async(req, res) => {
   // Getting languages 
-  const glottologs = await Glottolog.find(
-    { $or: [{ country_ids: /MX/ }, { country_ids: /US/ }] },
-    'gid name parent_id'
-  ).exec()
-
-  let languages = glottologs.map((language)=>{
-    let nlang = {}
-    nlang = language.toJSON()
-    return nlang
-  })
-
-  const entities = await Locations.distinct('Nom_Ent')
-
-  res.render('collections/create',{
-    languages,
-    entities
-  })
+  try {
+    const glottologs = await Glottolog.find(
+      {
+        $or: [{ country_ids: /MX/ }, { country_ids: /US/ }],
+        parent_id: { $ne: "" }
+      },
+      'gid name parent_id'
+    ).exec()
+    
+    const entities = await Locations.distinct('Nom_Ent')
+    
+    let languages = glottologs.map((language)=>{
+      let nlang = {}
+      nlang = language.toJSON()
+      return nlang
+    })
+  
+    res.render('collections/create',{
+      languages,
+      entities
+    })
+  } catch (error) {
+    req.flash('error_msg', 'El servidor no esta disponible, intente mas tarde')
+    return res.redirect('/dashboard')
+  }
 }
 
 const addCollection = async (req, res) => {
