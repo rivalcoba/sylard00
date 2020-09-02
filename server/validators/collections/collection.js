@@ -31,7 +31,7 @@ export default async (req, res, next) => {
       name,
       description,
       languages,
-      localities,
+      localities : typeof(localities) == 'string'?[localities]:localities,
       license,
     }
 
@@ -56,12 +56,25 @@ export default async (req, res, next) => {
         'No se proporcionaron lenguajes correctos'
       )
     }
-    // Se puede refactorar y hacer desde el modelo
-    collection.languages = languagesDocs.map((doc) => {
-      let obj = doc.toJSON()
-      delete obj._id
+    
+    // Populate the language array
+    collection.languages = languages.map((lang_id) => {
+      let obj
+      languagesDocs.forEach((doc) => {
+        if (doc._id == lang_id) {
+          obj = doc
+          delete obj._id
+        }
+      })
       return obj
     })
+
+    // Se puede refactorar y hacer desde el modelo
+    // collection.languages = languagesDocs.map((doc) => {
+    //   let obj = doc.toJSON()
+    //   delete obj._id
+    //   return obj
+    // })
 
     //Building languages array
     let langArray = []
@@ -100,10 +113,7 @@ export default async (req, res, next) => {
     })
 
     req.body.collection = collection
-
-    // Todo continuar
-    return res.send(JSON.stringify(req.body.collection))
-
+    
     next()
   } catch (error) {
     console.log(`validator>collection> ${error}`)

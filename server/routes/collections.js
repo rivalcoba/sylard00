@@ -16,7 +16,7 @@ router.get('/',ensureAuthenticated, ensureColabUser,collectionsController.index)
 // Show Form to create a collection
 router.get('/create',ensureAuthenticated, ensureColabUser,collectionsController.createCollection)
 // Process a collection creation request
-router.post('/add',ensureAuthenticated, ensureColabUser,collectionValidator,collectionsController.addCollection)
+router.post('/add',ensureAuthenticated, ensureColabUser,collectionValidator, collectionsController.addCollection)
 // Show the edition of a collection form
 router.get('/edit/:collection_id',ensureAuthenticated, ensureColabUser,collectionsController.editCollectionForm)
 // Update a Collection
