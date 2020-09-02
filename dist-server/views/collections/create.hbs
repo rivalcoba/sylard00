@@ -34,7 +34,7 @@
         placeholder="Orizaba Nahuatl | oriz1235" 
         id="language" 
         type="text"
-        onclick="pageScripts.disableLanguageGroupBox()"
+        onfocus="pageScripts.disableLanguageGroupBox()"
         onblur="pageScripts.enableLangGroup()"
         value="{{language}}" 
         list="langlist"
@@ -59,7 +59,7 @@
         name="langGroup"
         list="groupLanglist"
         type="text"
-        onclick="pageScripts.enableAddButton()"
+        onfocus="pageScripts.enableAddButton()"
         value="{{langGroup}}"
         /*required*/
       >
@@ -81,7 +81,14 @@
          <span 
          style="font-weight: 700; color:darksalmon">
            Lenguas agregadas a la colección
-         </span>           
+         </span>
+         <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>ID Grupo de Lengua</th>
+            <th>Nombre Grupo de Lengua</th>
+            <th>Accion</th>
+          </tr>
         </thead>
         <tbody id="langTable">          
         </tbody>
@@ -104,12 +111,16 @@
         aria-hidden="true"></i>
       <label for="entity">Entidad:</label>
       <input 
-      onblur="locations.fillMunicipalitiesDataList()"
-        onclick="locations.disableMunicipality();locations.disableLocality()"
-        onchange="locations.fillMunicipalitiesDataList()" list="entities" type="text" id="entity" name="entity">
+        onblur="pageScripts.fillMunicipalitiesDataList()"
+        onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()"
+        {{!-- onchange="pageScripts.fillMunicipalitiesDataList()"  --}}
+        list="entities" type="text" 
+        id="entity">
       <datalist id="entities">
         {{#each entities}}
-          <option value="{{this}}">
+          <option 
+            data-id = '{{_id}}'
+            value="{{this}}">
         {{/each}}
       </datalist>
     </div>
@@ -124,11 +135,10 @@
       <label for="municipality">Municipio:</label>
       <input 
         disabled 
-        onblur="locations.fillLocalitiesDataList()" 
-        onclick="locations.disableLocality()"
-        onchange="locations.fillLocalitiesDataList()" 
-        type="text" list="municipalities" id="municipality"
-        name="municipality">
+        onblur="pageScripts.fillLocalitiesDataList()" 
+        onfocus="pageScripts.disableLocality()"
+        {{!-- onchange="pageScripts.fillLocalitiesDataList()"  --}}
+        type="text" list="municipalities" id="municipality">
       <datalist id="municipalities">
       </datalist>
     </div>
@@ -144,8 +154,8 @@
       <input 
       disabled 
       type="text" 
-      id="locality" list="localities" 
-      name="locality">
+      id="locality" 
+      list="localities">
       
       <datalist id="localities">
       </datalist>
@@ -155,19 +165,27 @@
         class="fa fa-plus-square fa-2x" 
         id="addLocBtn"
         style="color: rgba(48, 238, 143, 0.911); cursor: pointer; display:none;"
-        onclick=""></i>
+        onclick="pageScripts.addLocality()"></i>
     </div>
   </div>
 
-  <!-- Tabla de Resultados -->
+  <!-- Tabla de Resultados Locality -->
   <div class="row">
     <div class="col s12 m10 l8">
       <table>
         <thead>
-         <span 
-         style="font-weight: 700; color:darksalmon">
-           Comunidades agregadas a la colección
-         </span>           
+          <span style="font-weight: 700; color:darksalmon">
+            Comunidades agregadas a la colección
+          </span>
+          <tr>
+            <th>Comunidad</th>
+            <th>Municipio</th>
+            <th>Entidad</th>
+            <th>País</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Accion</th>
+          </tr>
         </thead>
         <tbody id="locTable">          
         </tbody>
