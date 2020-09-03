@@ -10,7 +10,9 @@ import Locations from '@models/Location'
 // Read and list all the Collaborators Collections
 const index = async (req, res) => {
   // Get Collecionts
-  const collectionsDocs = await Collection.find().populate('user').exec()
+  // console.log(`collections>index>USER: ${req.user}`)
+  const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
+  console.log(`collections>index>collectionsDocs: ${collectionsDocs}`)
 
   // Collections to JSON
   let collections = collectionsDocs.map(collection=>{
@@ -28,7 +30,7 @@ const createCollection = async(req, res) => {
   try {
     const glottologs = await Glottolog.find(
       {
-        $or: [{ country_ids: /MX/ }, { country_ids: /US/ }],
+        $or: [{ country_ids: "MX" }, { country_ids: "US" }],
         parent_id: { $ne: "" }
       },
       'gid name parent_id'
