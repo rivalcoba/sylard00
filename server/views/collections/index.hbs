@@ -48,6 +48,7 @@
           <div class="divider"></div>
         {{/each}}        
       </td>
+      
       <td>
         <i 
           class="fa fa-info-circle fa-2x" 
@@ -62,34 +63,33 @@
 
         </a>
         <!-- Dropdown Trigger -->
-        <span class='dropdown-trigger' href='#' data-target='dropdown1'>
+        <span class='dropdown-trigger' href='#' data-target='dropdown{{_id}}'>
           <i 
             class="fa fa-ellipsis-v fa-2x" 
             aria-hidden="true" 
             style="color: rgb(21, 193, 209);"></i>
         </span>&nbsp;&nbsp;&nbsp;
         <!-- Dropdown Structure -->
-        <ul id='dropdown1' class='dropdown-content'>
+        <ul id='dropdown{{_id}}' class='dropdown-content'>          
           <li>
             <a href="#!">
               <i 
                 class="fa fa-plus-circle"
                 aria-hidden="true" 
                 style="color:rgb(21, 193, 209);"></i> 
-              Añadir
+                Añadir AuAn
             </a>
           </li>
-          <li>
-            <a href="#!">
-              <i 
-                class="fa fa-pencil-square-o"
-                aria-hidden="true" 
-                style="color:rgb(21, 193, 209);"></i> 
+          <li>            
+            <a 
+              href="/collections/edit/{{_id}}">
+              <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:rgb(21, 193, 209);"></i>
               Editar
             </a>
           </li>
           <li>
             <form 
+            class="center"
               action="/collections/delete/{{_id}}?_method=DELETE" method="POST">
               <input type="hidden" name="_method" value="DELETE">
               <a
@@ -102,7 +102,7 @@
               </a>
             </form>
           </li>
-        </ul>        
+        </ul>    
       </td>
     </tr>    
     {{/each}}    

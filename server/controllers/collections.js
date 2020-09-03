@@ -1,5 +1,4 @@
 // Collections Controllers
-
 // Import model
 import Collection from '@models/Collection'
 import Glottolog from '@models/Glottolog'
@@ -75,8 +74,10 @@ const deleteCollection = async (req, res) => {
   }
 }
 
+// Working
 const editCollectionForm = async (req, res) => {
   const collection_id = req.params.collection_id
+  console.log(`controllers>collections> COL ID: ${collection_id}`)
 
   // Grab the collection to edit
   try {
@@ -86,7 +87,7 @@ const editCollectionForm = async (req, res) => {
     if (String(collectionDoc.user) != String(req.user._id)) {
       // You are not the collection owner
       req.flash('error_msg', 'No eres el propietario de esta colección')
-      return res.redirect('/dashboard')
+      return res.redirect('/collections')
     }
 
     // Validaciones
@@ -99,11 +100,12 @@ const editCollectionForm = async (req, res) => {
     res.render('collections/edit', {
       collectionDoc: collectionDoc.toJSON(),
     })
+
     //res.status(200).json(collectionDoc)
   } catch (error) {
     console.log(`controller>collections> Error: ${error.message}`)
     req.flash('error_msg', error.message)
-    return res.redirect('/dashboard')
+    return res.redirect('/collections')
   }
 }
 
@@ -135,6 +137,7 @@ const editCollection = async (req, res) => {
       'error_msg',
       'No se ha podido encontrar la coleccion que se desea editar'
     )
+    // Se flashea Exito
     // Get the info from
     return res.render('index/dashboard')
   }

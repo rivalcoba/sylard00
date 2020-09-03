@@ -40,6 +40,7 @@ router.get(
   ensureColabUser,
   collectionsController.editCollectionForm
 )
+
 // Update a Collection
 router.put(
   '/edit/:collection_id',

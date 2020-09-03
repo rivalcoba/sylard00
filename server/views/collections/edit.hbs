@@ -1,10 +1,17 @@
+<h2 class="center" style="color: palevioletred;">Editar Colección</h2>
+<h3 style="color: darkcyan;">Llena los campos correctamente</h3>
+
+{{!-- <form class="center" action="/collections/edit/{{_id}}?_method=PUT" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+</form> --}}
+
 <ul>
     <li>Nombre de la colección {{collectionDoc.name}}</li>
     <li>Descripción: {{collectionDoc.description}}</li>
     <li> Lenguajes
         <ul>
         {{#each collectionDoc.languages}}
-            <li>{{name}} - {{gid}}</li>
+            <li>{{language.name}}  {{language.gid}} # {{LanguageGroup.name}} - {{LanguageGroup.gid}}</li>
         {{/each}}
         </ul>
     </li>
