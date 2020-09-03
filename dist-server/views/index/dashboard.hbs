@@ -1,1 +1,61 @@
-<h3>{{translation.DASHBOARD}}</h3>
+{{!-- <div class="row" style="background-color: rgb(91, 72, 132);">
+  <div class="col s5">
+    <h5 style="color: white;">Mis Colecciones</h5>
+  </div>
+  <div class="col s3" style="margin-top: 8px;">
+    <a href="/collections/create" class="waves-effect waves-light btn"><i class="fa fa-plus-circle right"
+        aria-hidden="true"></i> Crear Coleccion</a>
+  </div>
+  <div class="col s4" style="margin-top: 8px;">
+    <a onclick="alert('under construction')" class="waves-effect waves-light btn"><i class="fa fa-upload right"
+        aria-hidden="true"></i>Cargar Audio Anotiacion</a>
+  </div>
+</div> --}}
+<h3 style="color: teal;">Biblioteca General de Colecciones</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Lengua Terminal</th>
+      <th>Grupo de lenguas</th>
+      <th>Comunidades</th>
+      <th>Usuario</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each collections}}
+    <tr>
+      <td> <h6>{{name}}</h6> </td>
+      <td>
+        {{#each languages}}
+          <h5>{{language.gid}}</h5>
+          <p>{{language.name}}</p>
+          <div class="divider"></div>
+        {{/each}}
+      </td>
+      <td>
+        {{#each languages}}
+          <h5>{{LanguageGroup.gid}}</h5>
+          <p>{{LanguageGroup.name}}</p>
+          <div class="divider"></div>
+        {{/each}}
+      </td>
+      <td>
+        {{#each localities}}
+          <h5>{{Nom_Loc}}</h5>
+          <p>{{Nom_Mun}} {{Nom_Mun}} </p>
+          <p>{{Lat_Decimal}} {{Lon_Decimal}}</p>
+          <div class="divider"></div>
+        {{/each}}        
+      </td>
+      <td>
+        <i 
+          class="fa fa-user-circle-o" 
+          style="color: rgb(21, 193, 209);" 
+          aria-hidden="true"></i> {{user.name}}
+      </td>
+    </tr>    
+    {{/each}}    
+  </tbody>
+</table>

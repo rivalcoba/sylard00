@@ -10,9 +10,7 @@ import Locations from '@models/Location'
 // Read and list all the Collaborators Collections
 const index = async (req, res) => {
   // Get Collecionts
-  // console.log(`collections>index>USER: ${req.user}`)
   const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
-  console.log(`collections>index>collectionsDocs: ${collectionsDocs}`)
 
   // Collections to JSON
   let collections = collectionsDocs.map(collection=>{

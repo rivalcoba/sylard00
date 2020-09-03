@@ -4,10 +4,10 @@
 // List all the collaborators collections
 // Read and list all the Collaborators Collections
 const index=async(a,b)=>{// Get Collecionts
-const c=await _Collection.default.find().populate("user").exec();// Collections to JSON
+const c=await _Collection.default.find({user:a.user._id}).populate("user").exec();// Collections to JSON
 let d=c.map(a=>a.toJSON());// List all the collections
 b.render("collections/index",{collections:d})},createCollection=async(a,b)=>{// Getting languages 
-try{const a=await _Glottolog.default.find({$or:[{country_ids:/MX/},{country_ids:/US/}],parent_id:{$ne:""}},"gid name parent_id").exec(),c=await _Location.default.distinct("Nom_Ent");let d=a.map(a=>{let b={};return b=a.toJSON(),b});b.render("collections/create",{languages:d,entities:c})}catch(c){return a.flash("error_msg","El servidor no esta disponible, intente mas tarde"),b.redirect("/dashboard")}},addCollection=async(a,b)=>{// Grab collections from body
+try{const a=await _Glottolog.default.find({$or:[{country_ids:"MX"},{country_ids:"US"}],parent_id:{$ne:""}},"gid name parent_id").exec(),c=await _Location.default.distinct("Nom_Ent");let d=a.map(a=>{let b={};return b=a.toJSON(),b});b.render("collections/create",{languages:d,entities:c})}catch(c){return a.flash("error_msg","El servidor no esta disponible, intente mas tarde"),b.redirect("/dashboard")}},addCollection=async(a,b)=>{// Grab collections from body
 let{collection:c}=a.body;// Add user
 c.user=a.user._id;const d=await _Collection.default.create(c);// Se encuentra usuario
 console.log(`addCollection> Colection Created: ${d.name}`),b.redirect("/collections")},deleteCollection=async(a,b)=>{const c=a.params.collection_id;try{const a=await _Collection.default.deleteOne({_id:c}).exec();console.log(`deleteCollection> Result: ${a}`),b.redirect("/collections")}catch(a){return b.status(400).json(a)}},editCollectionForm=async(a,b)=>{const c=a.params.collection_id;// Grab the collection to edit
