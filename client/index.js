@@ -13,6 +13,8 @@ import formsManager from '@chelpers/formsManager'
 import locations from '@client/pages/locations'
 // Collections Create Scripts
 import collectionsCreate from '@client/pages/collections/create'
+// Collections Edit Scripts
+import editCollectionScripts from '@client/pages/collections/edit'
 
 // Loading function to the global variable
 //window.greeting = greeting
@@ -27,6 +29,9 @@ if (window.location.pathname == `/locations/index`) {
 if(window.location.pathname == `/collections/create`){
     window.pageScripts = collectionsCreate
 }
+
+// No se puede cargar script condicionalmente
+window.editCollectionScripts = editCollectionScripts
 
 // Flashea mensaje si lo hay
 flashLib.flashManager()

@@ -9,6 +9,33 @@ const getParentTree = async function(
     return null
 }
 
+const getLanguageList = async ()=>{
+    try {
+        const response = await client.get('/glottolog/getLanguageList')
+        if(response.status == 200){
+            return response.data
+        }
+        return null
+    } catch (error) {
+        console.log(`client/helpers/models/languages> ${error}` )
+        return null
+    }
+}
+const getLanguageListByName = async (name='a')=>{
+    try {
+        const response = await client.get(`/glottolog/getLanguageList/${name}`)
+        if(response.status == 200){
+            return response.data
+        }
+        return null
+    } catch (error) {
+        console.log(`client/helpers/models/languages> ${error}` )
+        return null
+    }
+}
+
 export default {
-    getParentTree
+    getParentTree,
+    getLanguageList,
+    getLanguageListByName
 }

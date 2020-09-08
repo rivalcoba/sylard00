@@ -1,26 +1,287 @@
 <h2 class="center" style="color: palevioletred;">Editar Colección</h2>
 <h3 style="color: darkcyan;">Llena los campos correctamente</h3>
 
-{{!-- <form class="center" action="/collections/edit/{{_id}}?_method=PUT" method="POST">
-    <input type="hidden" name="_method" value="PUT">
-</form> --}}
+<form
+	id="app" class="center" action="/collections/edit/{{_id}}?_method=PUT" method="POST">
+	<input type="hidden" name="_method" value="PUT">
+	<!-- Collection Name -->
+  <div class="row">
+    <div class="input-field col s12 m10 l8">
+      <i class="fa fa-archive prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
+      <label for="name">Nombre de la colección</label>
+      <input 
+				id="name" 
+				type="text"
+				name="name" 
+			value="{{collectionDoc.name}}">
+    </div>
+  </div>
 
-<ul>
-    <li>Nombre de la colección {{collectionDoc.name}}</li>
-    <li>Descripción: {{collectionDoc.description}}</li>
-    <li> Lenguajes
-        <ul>
-        {{#each collectionDoc.languages}}
-            <li>{{language.name}}  {{language.gid}} # {{LanguageGroup.name}} - {{LanguageGroup.gid}}</li>
+	<!-- Collection Description-->
+  <div class="row">
+    <div class="input-field col s12 m10 l8">
+      <i class="fa fa-archive prefix" style="color: rgba(48, 115, 238, 0.924);"></i>
+      <label for="description">Descripción</label>
+      <textarea type="text" name="description" id="description" class="materialize-textarea"
+        {{!-- style="resize: none;height: 80px;" --}} >{{collectionDoc.description}}</textarea>
+    </div>
+  </div>
+
+	<div class="row">
+    <span class="center" style="font-weight: 700;">
+      Lenguas de la coleccion
+    </span>
+  </div>
+
+	<!-- Collections Languages -->
+  <div class="row">
+    <div class="input-field col s12 m10 l4">
+      <i class="fa fa-language prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
+      <label for="language">Lengua Terminal</label>
+      <input 
+        placeholder="Orizaba Nahuatl | oriz1235" 
+        id="language" 
+        type="text"
+				onfocus="editCollectionScripts.fillLangList(app)"
+        {{!-- onblur="editCollectionScripts.fillLangGroupList(app)" --}}
+        {{!-- value="" --}}
+        list="langlist">
+      <datalist id="langlist">
+        {{!-- {{#each languages}}
+          <option 
+          id = '{{_id}}'
+          data-id = '{{_id}}'
+          data-name = "{{name}}"
+          value = "{{name}} | {{gid}}">
+        {{/each}} --}}
+				<option 
+					v-for="language in languages"
+					:id="language._id"
+					:value="language.name + ' | ' + language.gid"
+					>
+      </datalist>
+    </div>
+    <!-- Language Group -->
+    <div class="input-field col s12 m10 l4">
+      <label for="langGroup">Grupo de Lengua</label>
+      <input 
+        disabled 
+        placeholder="Aztec | azte1234" 
+        id="langGroup" 
+        name="langGroup"
+        list="groupLanglist"
+        type="text"
+        onfocus="pageScripts.enableAddButton()"
+        value="{{langGroup}}"
+      >
+      <datalist id="groupLanglist">				
+      </datalist>
+      <i 
+        class="fa fa-plus-square prefix" 
+        id="addLangBtn"
+        style="color: rgba(48, 238, 143, 0.911); cursor: pointer; display:none;"
+        onclick="pageScripts.addLanguage()"></i>
+    </div>
+  </div>
+
+	<!-- Tabla de Resultados -->
+	<div class="row">
+		<div class="col s12 m10 l8">
+			<table>
+				<thead>
+					<span style="font-weight: 700; color:darksalmon">
+						Lenguas agregadas a la colección
+					</span>
+					<tr>
+						<th>ID</th>
+						<th>Nombre</th>
+						<th>ID Grupo de Lengua</th>
+						<th>Nombre Grupo de Lengua</th>
+						<th>Accion</th>
+					</tr>
+				</thead>
+				<tbody id="langTable">
+					{{#each collectionDoc.languages}}
+					<tr id="{{language.gid}}">
+						<input 
+						type="text" 
+						style="display: none;"
+						name="languages" 
+						value="{{language.gid}}">
+						<input 
+						type="text" 
+						style="display: none;"
+						name="languages" 
+						value="{{LanguageGroup.gid}}">
+						<td>{{language.gid}}</td>
+            <td>{{language.name}}</td>
+            <td>{{LanguageGroup.gid}}</td>
+            <td>{{LanguageGroup.name}}</td>
+						<td>
+              <i 
+                class="fa fa-trash fa-2x"
+                id="tr{{language.gid}}"
+                style="color: rgb(241, 63, 32);cursor: pointer;"></i>
+            </td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- Comunidades -->
+  <div class="row">
+    <span style="font-weight: 700;">
+      Comunidades de la colección
+    </span>
+  </div>
+
+	<!-- ENTIDAD -->
+  <div class="row">
+    <div class="input-field col s12 m10 l4">
+      <i 
+        class="fa fa-compass prefix" 
+        style="color: rgba(48, 115, 238, 0.924);"
+        aria-hidden="true"></i>
+      <label for="entity">Entidad:</label>
+      <input 
+        onblur="pageScripts.fillMunicipalitiesDataList()"
+        onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()"
+        {{!-- onchange="pageScripts.fillMunicipalitiesDataList()"  --}}
+        list="entities" type="text" 
+        id="entity">
+      <datalist id="entities">
+        {{#each entities}}
+          <option 
+            data-id = '{{_id}}'
+            value="{{this}}">
         {{/each}}
-        </ul>
-    </li>
-    <li> Localities
-        <ul>
-        {{#each collectionDoc.localities}}
-            <li>{{Nom_Loc}}</li>
-        {{/each}}
-        </ul>
-    </li>
-    <li>Licencia: {{collectionDoc.license}}</li>
-</ul>
+      </datalist>
+    </div>
+  </div>
+
+	<!-- Municipio -->
+  <div class="row">
+    <div class="input-field col s12 m10 l4">
+      <i 
+      class="fa fa-compass prefix" 
+      style="color: rgba(48, 115, 238, 0.924);"
+      aria-hidden="true"></i>
+      <label for="municipality">Municipio:</label>
+      <input 
+        disabled 
+        onblur="pageScripts.fillLocalitiesDataList()" 
+        onfocus="pageScripts.disableLocality()"
+        {{!-- onchange="pageScripts.fillLocalitiesDataList()"  --}}
+        type="text" list="municipalities" id="municipality">
+      <datalist id="municipalities">
+      </datalist>
+    </div>
+  </div>
+
+	<!-- Localidad -->
+  <div class="row">
+    <div class="input-field col s10 m10 l4">
+      <i 
+      class="fa fa-compass prefix" 
+      style="color: rgba(48, 115, 238, 0.924);"
+      aria-hidden="true"></i>
+      <label for="locality">Localidad:</label>
+      <input 
+      disabled 
+      type="text" 
+      id="locality" 
+      list="localities">
+      
+      <datalist id="localities">
+      </datalist>
+    </div>
+    <div class="col s2 m2 l2">
+      <i 
+        class="fa fa-plus-square fa-2x" 
+        id="addLocBtn"
+        style="color: rgba(48, 238, 143, 0.911); cursor: pointer; display:none;"
+        onclick="pageScripts.addLocality()"></i>
+    </div>
+  </div>
+
+	<!-- Tabla de Resultados Locality -->
+  <div class="row">
+    <div class="col s12 m10 l8">
+      <table>
+        <thead>
+          <span style="font-weight: 700; color:darksalmon">
+            Comunidades agregadas a la colección
+          </span>
+          <tr>
+            <th>Comunidad</th>
+            <th>Municipio</th>
+            <th>Entidad</th>
+            <th>País</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody id="locTable">
+					{{#each collectionDoc.localities}}
+					<tr id="{{_id}}">
+						<input 
+						type="text"
+						style="display:none;"
+						name="localities"
+						value="{{_id}}">
+						<td>{{Nom_Loc}}</td>
+						<td>{{Nom_Mun}}</td>
+						<td>{{Nom_Ent}}</td>
+						<td>Mexico</td>
+						<td>{{Lat_Decimal}}</td>
+						<td>{{Lon_Decimal}}</td>
+						<td>
+							<i id="{{_id}}" class="fa fa-trash fa-2x" style="color: rgb(241, 63, 32);cursor: pointer;"></i>
+						</td>
+					</tr>
+					{{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+	<div class="row">
+		<div class="input-field col s12 m10 l4">
+			<i 
+			class="fa fa-creative-commons prefix"
+			style="color: rgba(48, 115, 238, 0.924);" 
+			aria-hidden="true"></i>
+			<label for="license">Licencia del Contenido</label>
+			<input type="text" placeholder="CC-BY-NC-SA"
+			name="license" id="license" list="licenseType"
+			value="{{collectionDoc.license}}">
+			<datalist id="licenseType">
+				<option value="CC-BY-NC-SA">
+				<option value="CC BY-SA">
+			</datalist>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m10 l8">
+			<button type="submit" class="btn waves-effect waves-light">
+				Guardar
+				<i class="fa fa-floppy-o right"></i>
+			</button>
+		</div>
+	</div>
+</form>
+
+</div>
+
+<script>
+	var app = new Vue({
+		el: '#app',
+		data: {
+			languages : [],
+		}
+	})
+	
+</script>
