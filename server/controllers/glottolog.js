@@ -23,6 +23,16 @@ const parentTree = async (req, res)=>{
     res.status(200).json(parentTree)
 }
 
+const parentTreeByGid = async (req, res)=>{
+    // Get parent by id of the language
+    const {gid} = req.params
+    const language = await Glottolog.findOne({
+        gid : gid
+    })
+    let parentTree = await language.getParentBranch()
+    res.status(200).json(parentTree)
+}
+
 const getLanguageList = async (req, res)=>{
     // Get Param from URL    
     const languages = await Glottolog.find({
@@ -50,5 +60,6 @@ export default {
     index,
     parentTree,
     getLanguageList,
-    getLanguageListByName
+    getLanguageListByName,
+    parentTreeByGid
 }

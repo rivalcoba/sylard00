@@ -25,8 +25,17 @@ const getLocalities = async (nom_ent, nom_mun)=>{
     return null
 }
 
+const getEntities = async ()=>{
+    const response = await client.get(`/locations/entities`)
+    if(response.status == 200){
+        return response.data
+    }
+    return null
+}
+
 export default{
     getLocality,
     getMunicipalitiesByEntity,
-    getLocalities
+    getLocalities,
+    getEntities
 }

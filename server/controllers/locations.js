@@ -71,6 +71,15 @@ const indexNomLoc = async (req, res) => {
   //   })
 }
 
+const getEntities = async (req, res)=>{
+  try {
+    const entities = await Locations.distinct('Nom_Ent')
+    return res.status(200).json(entities)
+  } catch (error) {
+    return res.status(404).json({error:"no se encontraron entidades"})
+  }  
+}
+
 const getMunicipalities = async (req, res)=>{
   // Getting the fielName
   const { nom_ent } = req.params
@@ -112,5 +121,6 @@ export default {
   index,
   getMunicipalities,
   getLocalities,
-  findLocality
+  findLocality,
+  getEntities
 }

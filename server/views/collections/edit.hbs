@@ -12,8 +12,8 @@
       <input 
 				id="name" 
 				type="text"
-				name="name" 
-			value="{{collectionDoc.name}}">
+				name="name"
+        v-model="name">
     </div>
   </div>
 
@@ -22,8 +22,12 @@
     <div class="input-field col s12 m10 l8">
       <i class="fa fa-archive prefix" style="color: rgba(48, 115, 238, 0.924);"></i>
       <label for="description">Descripción</label>
-      <textarea type="text" name="description" id="description" class="materialize-textarea"
-        {{!-- style="resize: none;height: 80px;" --}} >{{collectionDoc.description}}</textarea>
+      <textarea 
+      type="text" 
+      name="description" 
+      id="description" 
+      class="materialize-textarea"
+      v-model="description"></textarea>
     </div>
   </div>
 
@@ -42,18 +46,9 @@
         placeholder="Orizaba Nahuatl | oriz1235" 
         id="language" 
         type="text"
-				onfocus="editCollectionScripts.fillLangList(app)"
-        {{!-- onblur="editCollectionScripts.fillLangGroupList(app)" --}}
-        {{!-- value="" --}}
+				onchange="editCollectionScripts.fillLangGroupList(app)"
         list="langlist">
       <datalist id="langlist">
-        {{!-- {{#each languages}}
-          <option 
-          id = '{{_id}}'
-          data-id = '{{_id}}'
-          data-name = "{{name}}"
-          value = "{{name}} | {{gid}}">
-        {{/each}} --}}
 				<option 
 					v-for="language in languages"
 					:id="language._id"
@@ -65,21 +60,27 @@
     <div class="input-field col s12 m10 l4">
       <label for="langGroup">Grupo de Lengua</label>
       <input 
-        disabled 
+        :disabled = "!languagesGroup.length > 0"
         placeholder="Aztec | azte1234" 
         id="langGroup" 
         name="langGroup"
         list="groupLanglist"
         type="text"
-        onfocus="pageScripts.enableAddButton()"
         value="{{langGroup}}"
       >
+
       <datalist id="groupLanglist">				
+      <option 
+					v-for="languageG in languagesGroup"
+					:id="languageG._id"
+					:value="languageG.name + ' | ' + languageG.gid"
+					>
       </datalist>
+      
       <i 
         class="fa fa-plus-square prefix" 
         id="addLangBtn"
-        style="color: rgba(48, 238, 143, 0.911); cursor: pointer; display:none;"
+        :style="{color: 'rgba(48, 238, 143, 0.911)', cursor: 'pointer', display: languagesGroup.length > 0 ? 'inline' : 'none'}"
         onclick="pageScripts.addLanguage()"></i>
     </div>
   </div>
@@ -101,32 +102,32 @@
 					</tr>
 				</thead>
 				<tbody id="langTable">
-					{{#each collectionDoc.languages}}
-					<tr id="{{language.gid}}">
-						<input 
-						type="text" 
-						style="display: none;"
-						name="languages" 
-						value="{{language.gid}}">
-						<input 
-						type="text" 
-						style="display: none;"
-						name="languages" 
-						value="{{LanguageGroup.gid}}">
-						<td>{{language.gid}}</td>
-            <td>{{language.name}}</td>
-            <td>{{LanguageGroup.gid}}</td>
-            <td>{{LanguageGroup.name}}</td>
-						<td>
+          <tr v-for="(langs, index) in colLanguages">
+            <td>\{{ langs.language.gid }}</td>
+            <td>\{{ langs.language.name }}</td>
+            <td>\{{ langs.LanguageGroup.name }}</td>
+            <td>\{{ langs.LanguageGroup.name }}</td>
+            <td>
               <i 
                 class="fa fa-trash fa-2x"
-                id="tr{{language.gid}}"
+                @click="removeLangs(index)"
                 style="color: rgb(241, 63, 32);cursor: pointer;"></i>
             </td>
-					</tr>
-					{{/each}}
-				</tbody>
+          </tr>
+          </tbody>
 			</table>
+      <div v-for="(langs, index) in colLanguages">
+        <input 
+        style="display: none;"
+        name="languages" 
+        type="text" 
+        v-model="langs.language.gid">
+        <input 
+        style="display: none;"
+        name="languages" 
+        type="text" 
+        v-model="langs.LanguageGroup.gid">
+      </div>
 		</div>
 	</div>
 
@@ -146,17 +147,23 @@
         aria-hidden="true"></i>
       <label for="entity">Entidad:</label>
       <input 
-        onblur="pageScripts.fillMunicipalitiesDataList()"
-        onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()"
-        {{!-- onchange="pageScripts.fillMunicipalitiesDataList()"  --}}
-        list="entities" type="text" 
-        id="entity">
-      <datalist id="entities">
-        {{#each entities}}
+        :disabled= "!entitiesList.length > 0"
+				onchange="editCollectionScripts.fillMunicipalitiesList(app)"
+        {{!-- onblur="pageScripts.fillMunicipalitiesDataList()" --}}
+        {{!-- onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()" --}}
+				id="entity"
+        list="entitiesList" type="text" 
+        >
+      <datalist id="entitiesList">
+        {{!-- {{#each entities}}
           <option 
             data-id = '{{_id}}'
             value="{{this}}">
-        {{/each}}
+        {{/each}} --}}
+        <option 
+        v-for="entity in entitiesList"
+				:value="entity"
+        >
       </datalist>
     </div>
   </div>
@@ -170,12 +177,15 @@
       aria-hidden="true"></i>
       <label for="municipality">Municipio:</label>
       <input 
-        disabled 
-        onblur="pageScripts.fillLocalitiesDataList()" 
-        onfocus="pageScripts.disableLocality()"
-        {{!-- onchange="pageScripts.fillLocalitiesDataList()"  --}}
+        :disabled = "!municipalitiesList.length > 0"
+        {{!-- onblur="pageScripts.fillLocalitiesDataList()"  --}}
+        {{!-- onfocus="pageScripts.disableLocality()" --}}
         type="text" list="municipalities" id="municipality">
       <datalist id="municipalities">
+				<option 
+        v-for="municipality in municipalitiesList"
+				:value="municipality"
+        >
       </datalist>
     </div>
   </div>
@@ -225,26 +235,39 @@
           </tr>
         </thead>
         <tbody id="locTable">
-					{{#each collectionDoc.localities}}
-					<tr id="{{_id}}">
-						<input 
-						type="text"
-						style="display:none;"
-						name="localities"
-						value="{{_id}}">
-						<td>{{Nom_Loc}}</td>
-						<td>{{Nom_Mun}}</td>
-						<td>{{Nom_Ent}}</td>
-						<td>Mexico</td>
-						<td>{{Lat_Decimal}}</td>
-						<td>{{Lon_Decimal}}</td>
-						<td>
-							<i id="{{_id}}" class="fa fa-trash fa-2x" style="color: rgb(241, 63, 32);cursor: pointer;"></i>
+          <tr v-for="(loc, index) in localities">
+            <td>\{{loc.Nom_Loc}} </td>
+            <td>\{{loc.Nom_Mun}} </td>
+            <td>\{{loc.Nom_Ent}} </td>
+            <td>Mexico</td>
+            <td>\{{loc.Lat_Decimal}} </td>
+            <td>\{{loc.Lon_Decimal}} </td>
+            <td>
+							<i 
+              @click="removeLocs(index)"
+              class="fa fa-trash fa-2x" 
+              style="color: rgb(241, 63, 32);cursor: pointer;"></i>
 						</td>
-					</tr>
-					{{/each}}
+          </tr>
         </tbody>
       </table>
+      <div v-for="(loc, index) in localities">
+        <input 
+        type="text"
+        style="display:none;"
+        name="localities" 
+        v-model="loc.Nom_Ent">
+        <input 
+        type="text" 
+        style="display:none;"
+        name="localities" 
+        v-model="loc.Nom_Mun">
+        <input 
+        type="text" 
+        style="display:none;"
+        name="localities" 
+        v-model="loc.Nom_Loc">
+      </div>
     </div>
   </div>
 
@@ -255,9 +278,13 @@
 			style="color: rgba(48, 115, 238, 0.924);" 
 			aria-hidden="true"></i>
 			<label for="license">Licencia del Contenido</label>
-			<input type="text" placeholder="CC-BY-NC-SA"
-			name="license" id="license" list="licenseType"
-			value="{{collectionDoc.license}}">
+			<input 
+      type="text" 
+      placeholder="CC-BY-NC-SA"
+			name="license" 
+      id="license" 
+      list="licenseType"
+			v-model="license">
 			<datalist id="licenseType">
 				<option value="CC-BY-NC-SA">
 				<option value="CC BY-SA">
@@ -280,8 +307,25 @@
 	var app = new Vue({
 		el: '#app',
 		data: {
+      name: '{{collectionDoc.name}}',
+      description: '{{collectionDoc.description}}',
 			languages : [],
-		}
+      languagesGroup : [],
+      colLanguages: {{{collectionDoc.languages}}},
+      localities : {{{collectionDoc.localities}}},
+      entitiesList : [],
+      municipalitiesList: [],
+      localitiesList: [],
+      license: '{{collectionDoc.license}}'
+		},
+    methods:{
+      removeLangs : function(idx){
+        this.colLanguages.splice(idx, 1)
+      },
+      removeLocs : function(idx){
+        this.localities.splice(idx, 1)
+      }
+    }
 	})
 	
 </script>

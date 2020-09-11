@@ -96,9 +96,15 @@ const editCollectionForm = async (req, res) => {
       req.flash('error_msg', 'No se encontro la coleccion solicitada')
       return res.redirect('/dashboard')
     }
+    
+    collectionDoc = collectionDoc.toJSON()
+    // parsing Lanugages
+    collectionDoc.languages = JSON.stringify(collectionDoc.languages)
+    collectionDoc.localities = JSON.stringify(collectionDoc.localities)
 
+    // ---- TESTING
     res.render('collections/edit', {
-      collectionDoc: collectionDoc.toJSON(),
+      collectionDoc
     })
 
     //res.status(200).json(collectionDoc)

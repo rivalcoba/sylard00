@@ -13,8 +13,8 @@ import glottologController from '@controllers/glottolog'
 
 // Show test form
 router.get('/index', glottologController.index)
-router.get('/parentTree/:id', glottologController.parentTree)
 router.get('/getLanguageList', glottologController.getLanguageList)
+router.get('/parentTree/gid/:gid', glottologController.parentTreeByGid)
 router.get('/getLanguageList/:name', glottologController.getLanguageListByName)
 
 export default router

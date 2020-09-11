@@ -31,7 +31,11 @@ if(window.location.pathname == `/collections/create`){
 }
 
 // No se puede cargar script condicionalmente
-window.editCollectionScripts = editCollectionScripts
+if(window.location.pathname.match(/\/collections\/edit\//)){
+  window.editCollectionScripts = editCollectionScripts
+  window.editCollectionScripts.fillLangList(app)
+  window.editCollectionScripts.fillEntitiesList(app)
+}
 
 // Flashea mensaje si lo hay
 flashLib.flashManager()
