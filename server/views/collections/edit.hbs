@@ -43,10 +43,11 @@
       <i class="fa fa-language prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
       <label for="language">Lengua Terminal</label>
       <input 
-        placeholder="Orizaba Nahuatl | oriz1235" 
+        placeholder="Orizaba Nahuatl | oriz1235"
         id="language" 
         type="text"
 				onchange="editCollectionScripts.fillLangGroupList(app)"
+        v-model = "selectedLanguage"
         list="langlist">
       <datalist id="langlist">
 				<option 
@@ -66,7 +67,7 @@
         name="langGroup"
         list="groupLanglist"
         type="text"
-        value="{{langGroup}}"
+        v-model = "selectedLanguageGroup"
       >
 
       <datalist id="groupLanglist">				
@@ -81,7 +82,7 @@
         class="fa fa-plus-square prefix" 
         id="addLangBtn"
         :style="{color: 'rgba(48, 238, 143, 0.911)', cursor: 'pointer', display: languagesGroup.length > 0 ? 'inline' : 'none'}"
-        onclick="pageScripts.addLanguage()"></i>
+        @click="addLanguages()"></i>
     </div>
   </div>
 
@@ -150,7 +151,8 @@
         :disabled= "!entitiesList.length > 0"
 				onchange="editCollectionScripts.fillMunicipalitiesList(app)"
 				id="entity"
-        list="entitiesList" type="text" 
+        list="entitiesList" type="text"
+        v-model="selectedEntity" 
         >
       <datalist id="entitiesList">
         <option 
@@ -204,10 +206,15 @@
       </datalist>
     </div>
     <div class="col s2 m2 l2">
+      <!-- TODO FALTA ESTE -->
       <i 
         class="fa fa-plus-square fa-2x" 
         id="addLocBtn"
-        style="color: rgba(48, 238, 143, 0.911); cursor: pointer; display:none;"
+        :style="{
+          color: 'rgba(48, 238, 143, 0.911)', 
+          cursor : 'pointer', 
+          display: localitiesList.length > 0 ? 'inline' : 'none'
+        }"
         onclick="pageScripts.addLocality()"></i>
     </div>
   </div>
@@ -289,7 +296,7 @@
 	</div>
 	<div class="row">
 		<div class="col s12 m10 l8">
-			<button type="submit" class="btn waves-effect waves-light">
+			<button disabled type="submit" class="btn waves-effect waves-light">
 				Guardar
 				<i class="fa fa-floppy-o right"></i>
 			</button>
@@ -305,10 +312,13 @@
 		data: {
       name: '{{collectionDoc.name}}',
       description: '{{collectionDoc.description}}',
+      selectedLanguage : "",
 			languages : [],
+      selectedLanguageGroup : "",
       languagesGroup : [],
       colLanguages: {{{collectionDoc.languages}}},
       localities : {{{collectionDoc.localities}}},
+      selectedEntity : "",
       entitiesList : [],
       municipalitiesList: [],
       localitiesList: [],
@@ -320,6 +330,9 @@
       },
       removeLocs : function(idx){
         this.localities.splice(idx, 1)
+      },
+      addLanguages : function(){
+        console.log('Agrega')
       }
     }
 	})
