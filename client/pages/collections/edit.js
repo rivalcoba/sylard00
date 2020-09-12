@@ -3,7 +3,10 @@ import locationsModel from '@chelpers/models/locations'
 
 // Getting Ui Controls references
 const languageBox = document.getElementById('language')
+
 const entityBox = document.getElementById('entity')
+const municipalityBox = document.getElementById('municipality')
+const localityBox = document.getElementById('locality')
 
 const fillLangList = async (app) => {
   try {    
@@ -55,21 +58,52 @@ const fillMunicipalitiesList = async(app)=>{
   
   if(app.entitiesList.indexOf(selectedEntity) >= 0){
     // Se procede a buscar los municipios de la entidad seleccionada
-
     let municipalities = await locationsModel.getMunicipalitiesByEntity(selectedEntity)
-    if(selectedEntity){
+    
+    if (municipalities) {
       app.municipalitiesList = municipalities
-    }else{
-      alert("fillMunicipalitiesList> Error: No se encontraron municipios")
+    } else {
+      alert('fillMunicipalitiesList> Error: No se encontraron municipios')
+      app.municipalitiesList = []
+      app.localitiesList = []
+      entityBox.value = ''
+      municipalityBox.value = ''
+      localityBox.value = ''
     }
+
   }else{
     alert("fillMunicipalitiesList> Error: Debe seleccionar una entidad del menu")
     app.municipalitiesList = []
+    app.localitiesList = []
+    entityBox.value = ""
+    municipalityBox.value = ""
+    localityBox.value = ""
   }
 }
 
 const fillLocalitiesList = async(app)=>{
+  // Todo falta esta
+  let selectedEntity = entityBox.value
+  let selectedMunicipality = municipalityBox.value
+  //  is valid Selected Municipality
+  if(app.municipalitiesList.indexOf(selectedMunicipality) >= 0){
+    // Get the list of locations based on entity and municipality
+    let localities = await locationsModel.getLocalities(selectedEntity, selectedMunicipality)
 
+    if(localities){
+      app.localitiesList = localities
+    }else{
+      alert("fillLocalitiesList> Error: No se encontraron Localidades")
+      app.localitiesList = []
+      municipalityBox.value = ""
+      localityBox.value = ""
+    }
+  }else{
+    alert("fillLocalitiesList> Error: Debe seleccionar un Municipio valido de la lista")
+    app.localitiesList = []
+    municipalityBox.value = ""
+    localityBox.value = ""
+  }
 }
 
 export default {

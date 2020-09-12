@@ -76,7 +76,7 @@
 					:value="languageG.name + ' | ' + languageG.gid"
 					>
       </datalist>
-      
+      <!-- TODO FALTA ESTE -->
       <i 
         class="fa fa-plus-square prefix" 
         id="addLangBtn"
@@ -149,17 +149,10 @@
       <input 
         :disabled= "!entitiesList.length > 0"
 				onchange="editCollectionScripts.fillMunicipalitiesList(app)"
-        {{!-- onblur="pageScripts.fillMunicipalitiesDataList()" --}}
-        {{!-- onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()" --}}
 				id="entity"
         list="entitiesList" type="text" 
         >
       <datalist id="entitiesList">
-        {{!-- {{#each entities}}
-          <option 
-            data-id = '{{_id}}'
-            value="{{this}}">
-        {{/each}} --}}
         <option 
         v-for="entity in entitiesList"
 				:value="entity"
@@ -178,10 +171,11 @@
       <label for="municipality">Municipio:</label>
       <input 
         :disabled = "!municipalitiesList.length > 0"
-        {{!-- onblur="pageScripts.fillLocalitiesDataList()"  --}}
-        {{!-- onfocus="pageScripts.disableLocality()" --}}
-        type="text" list="municipalities" id="municipality">
-      <datalist id="municipalities">
+        onchange="editCollectionScripts.fillLocalitiesList(app)"
+        type="text" 
+        id="municipality"
+        list="municipalitiesList">
+      <datalist id="municipalitiesList">
 				<option 
         v-for="municipality in municipalitiesList"
 				:value="municipality"
@@ -199,12 +193,14 @@
       aria-hidden="true"></i>
       <label for="locality">Localidad:</label>
       <input 
-      disabled 
+      :disabled = "!localitiesList.length  > 0"
       type="text" 
       id="locality" 
-      list="localities">
-      
-      <datalist id="localities">
+      list="localitiesList">
+      <datalist id="localitiesList">
+        <option 
+        v-for="locality in localitiesList"
+        :value="locality">
       </datalist>
     </div>
     <div class="col s2 m2 l2">
