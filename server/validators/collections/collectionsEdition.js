@@ -34,14 +34,15 @@ export default async (req, res, next) => {
       localities : typeof(localities) == 'string'?[localities]:localities,
       license,
     }
+
     // Se validan datos del formulario
     await CollectionValidationSchema.validate(collection, { abortEarly: false })
-    
+
     // Se Buscan los lenguajes
     // Get collections
     let languagesDocs = await Language.find(
       {
-        '_id': {
+        'gid': {
           $in: languages,
         },
       },
@@ -55,14 +56,18 @@ export default async (req, res, next) => {
         'No se proporcionaron lenguajes correctos'
       )
     }
-    
+
+
     // Populate the language array
-    collection.languages = languages.map((lang_id) => {
+    collection.languages = languages.map((gid) => {
       let obj
       languagesDocs.forEach((doc) => {
-        if (doc._id == lang_id) {
-          obj = doc
-          delete obj._id
+        // if(doc.gid == gid){
+        //   obj = doc.toJSON()
+        //   delete obj._id
+        // }
+        if(doc.gid == gid){
+            obj = doc
         }
       })
       return obj
@@ -87,10 +92,24 @@ export default async (req, res, next) => {
 
     collection.languages = langArray
 
+    // Extracting localities signarures (Ent, mun, loc)
+    let entArr = [], munArr = [], locArr = []
+    for (let index = 0; index < localities.length; index+= 3) {
+        entArr.push(localities[index]);
+        munArr.push(localities[index+1]);
+        locArr.push(localities[index+2]);
+    }
+
     let localitiesDocs = await Location.find(
       {
-        '_id': {
-          $in: localities,
+        'Nom_Ent': {
+          $in: entArr,
+        },
+        'Nom_Mun': {
+          $in: munArr,
+        },
+        'Nom_Loc': {
+          $in: locArr,
         },
       },
       'Cve_Ent Nom_Ent Nom_Abr Cve_Mun Nom_Mun Cve_Loc Nom_Loc Lat_Decimal Lon_Decimal Altitud'
@@ -105,14 +124,15 @@ export default async (req, res, next) => {
     }
 
     // Se puede refactorar y hacer desde el modelo
-    collection.localities = localitiesDocs.map((doc) => {
-      let obj = doc.toJSON()
-      delete obj._id
-      return obj
-    })
+    // collection.localities = localitiesDocs.map((doc) => {
+    //   let obj = doc.toJSON()
+    //   delete obj._id
+    //   return obj
+    // })
+    collection.localities = localitiesDocs
 
     req.body.collection = collection
-    
+
     next()
   } catch (error) {
     console.log(`validator>collection> ${error}`)

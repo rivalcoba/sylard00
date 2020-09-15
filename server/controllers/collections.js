@@ -133,10 +133,17 @@ const editCollection = async (req, res) => {
     let result = await collectionDoc.updateCollection(collection)
 
     if (result.ok) {
-      res.render('collections/edit', {
-        collectionDoc: collectionDoc.toJSON(),
-      })
+      req.flash(
+        'success_msg',
+        'La coleccion se ha actualziado con exito'
+      )
+    }else{
+      req.flash(
+        'error_msg',
+        'No se ha podido actualizar la colección'
+      )
     }
+    res.redirect('/collections')
   } catch (error) {
     // Flash Message
     req.flash(

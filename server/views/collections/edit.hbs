@@ -2,7 +2,7 @@
 <h3 style="color: darkcyan;">Llena los campos correctamente</h3>
 
 <form
-	id="app" class="center" action="/collections/edit/{{_id}}?_method=PUT" method="POST">
+	id="app" class="center" action="/collections/edit/{{collectionDoc._id}}?_method=PUT" method="POST">
 	<input type="hidden" name="_method" value="PUT">
 	<!-- Collection Name -->
   <div class="row">
@@ -289,7 +289,7 @@
 	</div>
 	<div class="row">
 		<div class="col s12 m10 l8">
-			<button disabled type="submit" class="btn waves-effect waves-light">
+			<button type="submit" class="btn waves-effect waves-light">
 				Guardar
 				<i class="fa fa-floppy-o right"></i>
 			</button>
@@ -332,7 +332,19 @@
       addLanguages : function(){
         let lang = getLangObj(document.getElementById('language').value) 
         let langGroup = getLangObj(document.getElementById('langGroup').value)
-        
+
+        // Check if langGeoup is valid
+        let validLangGroup = this.languagesGroup.map(function(langOption){
+          return langOption.name == langGroup.name && langOption.gid == langGroup.gid
+        }).reduce(function(acc, current){
+          return acc || current
+        })
+
+        if(!validLangGroup){
+          return alert("Grupo de lengia Invalido")
+          document.getElementById('langGroup').value = ""
+        }
+
         // Check if language have been choosed previously
         let areadySelected = false
         for(let index = 0; index < this.colLanguages.length; index++){

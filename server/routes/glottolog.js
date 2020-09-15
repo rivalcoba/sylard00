@@ -15,6 +15,7 @@ import glottologController from '@controllers/glottolog'
 router.get('/index', glottologController.index)
 router.get('/getLanguageList', glottologController.getLanguageList)
 router.get('/parentTree/gid/:gid', glottologController.parentTreeByGid)
+router.get('/parentTree/:id', glottologController.parentTree)
 router.get('/getLanguageList/:name', glottologController.getLanguageListByName)
 
 export default router

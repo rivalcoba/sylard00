@@ -9,6 +9,7 @@ import ensureColabUser from '@validators/ensureColabUser'
 import collectionsController from '@controllers/collections'
 // Import validators
 import collectionValidator from '@validators/collections/collection'
+import collectionEditionValidator from '@validators/collections/collectionsEdition'
 
 // Collections Routes
 // Lista las colecciones del usuario
@@ -46,7 +47,7 @@ router.put(
   '/edit/:collection_id',
   ensureAuthenticated,
   ensureColabUser,
-  collectionValidator,
+  collectionEditionValidator,
   collectionsController.editCollection
 )
 // Delete a Collection
