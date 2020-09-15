@@ -21,7 +21,7 @@ const f=await _Location.default.find({Nom_Loc:{$regex:e}}).limit(d).exec();let g
 //     'Lon_Decimal': -102.168225,
 //     'Altitud': 2023,
 //   })
-},getMunicipalities=async(a,b)=>{// Getting the fielName
+},getEntities=async(a,b)=>{try{const a=await _Location.default.distinct("Nom_Ent");return b.status(200).json(a)}catch(a){return b.status(404).json({error:"no se encontraron entidades"})}},getMunicipalities=async(a,b)=>{// Getting the fielName
 const{nom_ent:c}=a.params,d=await _Location.default.distinct("Nom_Mun",{Nom_Ent:c});return b.status(200).json(d)},getLocalities=async(a,b)=>{// Getting the fielName
 const{nom_ent:c,nom_mun:d}=a.params,e=await _Location.default.distinct("Nom_Loc",{Nom_Ent:c,Nom_Mun:d});return b.status(200).json(e)},findLocality=async(a,b)=>{// Getting the fielName
-const{nom_ent:c,nom_mun:d,nom_loc:e}=a.params,f=await _Location.default.findOne({Nom_Ent:c,Nom_Mun:d,Nom_Loc:e},"Nom_Ent Nom_Mun Nom_Loc Lat_Decimal Lon_Decimal").exec();f?b.status(200).json(f):b.status(404).send("Not Found")};var _default={indexNomLoc,index,getMunicipalities,getLocalities,findLocality};exports.default=_default;
+const{nom_ent:c,nom_mun:d,nom_loc:e}=a.params,f=await _Location.default.findOne({Nom_Ent:c,Nom_Mun:d,Nom_Loc:e},"Nom_Ent Nom_Mun Nom_Loc Lat_Decimal Lon_Decimal").exec();f?b.status(200).json(f):b.status(404).send("Not Found")};var _default={indexNomLoc,index,getMunicipalities,getLocalities,findLocality,getEntities};exports.default=_default;

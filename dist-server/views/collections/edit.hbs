@@ -1,19 +1,404 @@
-<ul>
-    <li>Nombre de la colección {{collectionDoc.name}}</li>
-    <li>Descripción: {{collectionDoc.description}}</li>
-    <li> Lenguajes
-        <ul>
-        {{#each collectionDoc.languages}}
-            <li>{{name}} - {{gid}}</li>
-        {{/each}}
-        </ul>
-    </li>
-    <li> Localities
-        <ul>
-        {{#each collectionDoc.localities}}
-            <li>{{Nom_Loc}}</li>
-        {{/each}}
-        </ul>
-    </li>
-    <li>Licencia: {{collectionDoc.license}}</li>
-</ul>
+<h2 class="center" style="color: palevioletred;">Editar Colección</h2>
+<h3 style="color: darkcyan;">Llena los campos correctamente</h3>
+
+<form
+	id="app" class="center" action="/collections/edit/{{collectionDoc._id}}?_method=PUT" method="POST">
+	<input type="hidden" name="_method" value="PUT">
+	<!-- Collection Name -->
+  <div class="row">
+    <div class="input-field col s12 m10 l8">
+      <i class="fa fa-archive prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
+      <label for="name">Nombre de la colección</label>
+      <input 
+				id="name" 
+				type="text"
+				name="name"
+        v-model="name">
+    </div>
+  </div>
+
+	<!-- Collection Description-->
+  <div class="row">
+    <div class="input-field col s12 m10 l8">
+      <i class="fa fa-archive prefix" style="color: rgba(48, 115, 238, 0.924);"></i>
+      <label for="description">Descripción</label>
+      <textarea 
+      type="text" 
+      name="description" 
+      id="description" 
+      class="materialize-textarea"
+      v-model="description"></textarea>
+    </div>
+  </div>
+
+	<div class="row">
+    <span class="center" style="font-weight: 700;">
+      Lenguas de la coleccion
+    </span>
+  </div>
+
+	<!-- Collections Languages -->
+  <div class="row">
+    <div class="input-field col s12 m10 l4">
+      <i class="fa fa-language prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
+      <label for="language">Lengua Terminal</label>
+      <input 
+        placeholder="Orizaba Nahuatl | oriz1235"
+        id="language" 
+        type="text"
+				onchange="editCollectionScripts.fillLangGroupList(app)"
+        list="langlist">
+      <datalist id="langlist">
+				<option 
+					v-for="language in languages"
+					:id="language._id"
+					:value="language.name + ' | ' + language.gid"
+					>
+      </datalist>
+    </div>
+    <!-- Language Group -->
+    <div class="input-field col s12 m10 l4">
+      <label for="langGroup">Grupo de Lengua</label>
+      <input 
+        :disabled = "!languagesGroup.length > 0"
+        placeholder="Aztec | azte1234" 
+        id="langGroup" 
+        name="langGroup"
+        list="groupLanglist"
+        type="text"
+      >
+      <i 
+        class="fa fa-plus-square prefix" 
+        id="addLangBtn"
+        :style="{color: 'rgba(48, 238, 143, 0.911)', cursor: 'pointer', display: languagesGroup.length > 0 ? 'inline' : 'none'}"
+        @click="addLanguages()"></i>
+
+      <datalist id="groupLanglist">				
+      <option 
+					v-for="languageG in languagesGroup"
+					:id="languageG._id"
+					:value="languageG.name + ' | ' + languageG.gid"
+					>
+      </datalist>
+    </div>
+  </div>
+
+	<!-- Tabla de Resultados -->
+	<div class="row">
+		<div class="col s12 m10 l8">
+			<table>
+				<thead>
+					<span style="font-weight: 700; color:darksalmon">
+						Lenguas agregadas a la colección
+					</span>
+					<tr>
+						<th>ID</th>
+						<th>Nombre</th>
+						<th>ID Grupo de Lengua</th>
+						<th>Nombre Grupo de Lengua</th>
+						<th>Accion</th>
+					</tr>
+				</thead>
+				<tbody id="langTable">
+          <tr v-for="(langs, index) in colLanguages">
+            <td>\{{ langs.language.gid }}</td>
+            <td>\{{ langs.language.name }}</td>
+            <td>\{{ langs.LanguageGroup.gid }}</td>
+            <td>\{{ langs.LanguageGroup.name }}</td>
+            <td>
+              <i 
+                class="fa fa-trash fa-2x"
+                @click="removeLangs(index)"
+                style="color: rgb(241, 63, 32);cursor: pointer;"></i>
+            </td>
+          </tr>
+          </tbody>
+			</table>
+      <div v-for="(langs, index) in colLanguages">
+        <input 
+        style="display: none;"
+        name="languages" 
+        type="text" 
+        v-model="langs.language.gid">
+        <input 
+        style="display: none;"
+        name="languages" 
+        type="text" 
+        v-model="langs.LanguageGroup.gid">
+      </div>
+		</div>
+	</div>
+
+	<!-- Comunidades -->
+  <div class="row">
+    <span style="font-weight: 700;">
+      Comunidades de la colección
+    </span>
+  </div>
+
+	<!-- ENTIDAD -->
+  <div class="row">
+    <div class="input-field col s12 m10 l4">
+      <i 
+        class="fa fa-compass prefix" 
+        style="color: rgba(48, 115, 238, 0.924);"
+        aria-hidden="true"></i>
+      <label for="entity">Entidad:</label>
+      <input 
+        :disabled= "!entitiesList.length > 0"
+				onchange="editCollectionScripts.fillMunicipalitiesList(app)"
+				id="entity"
+        list="entitiesList" type="text"
+        >
+      <datalist id="entitiesList">
+        <option 
+        v-for="entity in entitiesList"
+				:value="entity"
+        >
+      </datalist>
+    </div>
+  </div>
+
+	<!-- Municipio -->
+  <div class="row">
+    <div class="input-field col s12 m10 l4">
+      <i 
+      class="fa fa-compass prefix" 
+      style="color: rgba(48, 115, 238, 0.924);"
+      aria-hidden="true"></i>
+      <label for="municipality">Municipio:</label>
+      <input 
+        :disabled = "!municipalitiesList.length > 0"
+        onchange="editCollectionScripts.fillLocalitiesList(app)"
+        type="text" 
+        id="municipality"
+        list="municipalitiesList">
+      <datalist id="municipalitiesList">
+				<option 
+        v-for="municipality in municipalitiesList"
+				:value="municipality"
+        >
+      </datalist>
+    </div>
+  </div>
+
+	<!-- Localidad -->
+  <div class="row">
+    <div class="input-field col s10 m10 l4">
+      <i 
+      class="fa fa-compass prefix" 
+      style="color: rgba(48, 115, 238, 0.924);"
+      aria-hidden="true"></i>
+      <label for="locality">Localidad:</label>
+      <input 
+      :disabled = "!localitiesList.length  > 0"
+      type="text" 
+      id="locality" 
+      list="localitiesList">
+      <i 
+        class="fa fa-plus-square fa-2x" 
+        id="addLocBtn"
+        :style="{
+          color: 'rgba(48, 238, 143, 0.911)', 
+          cursor : 'pointer', 
+          display: localitiesList.length > 0 ? 'inline' : 'none'
+        }"
+        @click="addLocality()"></i>
+      <datalist id="localitiesList">
+        <option 
+        v-for="locality in localitiesList"
+        :value="locality">
+      </datalist>
+    </div>
+  </div>
+
+	<!-- Tabla de Resultados Locality -->
+  <div class="row">
+    <div class="col s12 m10 l8">
+      <table>
+        <thead>
+          <span style="font-weight: 700; color:darksalmon">
+            Comunidades agregadas a la colección
+          </span>
+          <tr>
+            <th>Comunidad</th>
+            <th>Municipio</th>
+            <th>Entidad</th>
+            <th>País</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody id="locTable">
+          <tr v-for="(loc, index) in localities">
+            <td>\{{loc.Nom_Loc}} </td>
+            <td>\{{loc.Nom_Mun}} </td>
+            <td>\{{loc.Nom_Ent}} </td>
+            <td>Mexico</td>
+            <td>\{{loc.Lat_Decimal}} </td>
+            <td>\{{loc.Lon_Decimal}} </td>
+            <td>
+							<i 
+              @click="removeLocs(index)"
+              class="fa fa-trash fa-2x" 
+              style="color: rgb(241, 63, 32);cursor: pointer;"></i>
+						</td>
+          </tr>
+        </tbody>
+      </table>
+      <div v-for="(loc, index) in localities">
+        <input 
+        type="text"
+        style="display:none;"
+        name="localities" 
+        v-model="loc.Nom_Ent">
+        <input 
+        type="text" 
+        style="display:none;"
+        name="localities" 
+        v-model="loc.Nom_Mun">
+        <input 
+        type="text" 
+        style="display:none;"
+        name="localities" 
+        v-model="loc.Nom_Loc">
+      </div>
+    </div>
+  </div>
+
+	<div class="row">
+		<div class="input-field col s12 m10 l4">
+			<i 
+			class="fa fa-creative-commons prefix"
+			style="color: rgba(48, 115, 238, 0.924);" 
+			aria-hidden="true"></i>
+			<label for="license">Licencia del Contenido</label>
+			<input 
+      type="text" 
+      placeholder="CC-BY-NC-SA"
+			name="license" 
+      id="license" 
+      list="licenseType"
+			v-model="license">
+			<datalist id="licenseType">
+				<option value="CC-BY-NC-SA">
+				<option value="CC BY-SA">
+			</datalist>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m10 l8">
+			<button type="submit" class="btn waves-effect waves-light">
+				Guardar
+				<i class="fa fa-floppy-o right"></i>
+			</button>
+		</div>
+	</div>
+</form>
+
+</div>
+
+<script>
+
+  const getLangObj = function(stringVal){
+    return {
+      gid: stringVal.split(' | ')[1],
+      name: stringVal.split(' | ')[0]
+    }
+  }
+
+	var app = new Vue({
+		el: '#app',
+		data: {
+      name: '{{collectionDoc.name}}',
+      description: '{{collectionDoc.description}}',
+			languages : [],
+      languagesGroup : [],
+      colLanguages: {{{collectionDoc.languages}}},
+      localities : {{{collectionDoc.localities}}},
+      entitiesList : [],
+      municipalitiesList: [],
+      localitiesList: [],
+      license: '{{collectionDoc.license}}'
+		},
+    methods:{
+      removeLangs : function(idx){
+        this.colLanguages.splice(idx, 1)
+      },
+      removeLocs : function(idx){
+        this.localities.splice(idx, 1)
+      },
+      addLanguages : function(){
+        let lang = getLangObj(document.getElementById('language').value) 
+        let langGroup = getLangObj(document.getElementById('langGroup').value)
+
+        // Check if langGeoup is valid
+        let validLangGroup = this.languagesGroup.map(function(langOption){
+          return langOption.name == langGroup.name && langOption.gid == langGroup.gid
+        }).reduce(function(acc, current){
+          return acc || current
+        })
+
+        if(!validLangGroup){
+          return alert("Grupo de lengia Invalido")
+          document.getElementById('langGroup').value = ""
+        }
+
+        // Check if language have been choosed previously
+        let areadySelected = false
+        for(let index = 0; index < this.colLanguages.length; index++){
+          areadySelected = this.colLanguages[index].language.name == lang.name
+          if (areadySelected){
+            break
+          }
+        }
+        if(areadySelected){
+          alert("Ya se ha seleccionado esta lengua")
+        }else{
+          this.colLanguages.push({
+            language : lang,
+            LanguageGroup : langGroup
+          })
+        }
+        document.getElementById('language').value = ""
+        document.getElementById('langGroup').value = ""
+      },
+      addLocality : function(){
+        let ent = document.getElementById('entity').value
+        let mun = document.getElementById('municipality').value
+        let loc = document.getElementById('locality').value
+
+        let locationsOk = this.localitiesList.map(function(locality){
+          return locality == loc
+        })
+        .reduce((res, current)=>{
+          return res || current
+        })
+        
+        if(!locationsOk){
+          alert('Seleccionar una localidad de la lista')
+          return document.getElementById('locality').value  = ""
+        }
+
+        editCollectionScripts.getLocality(ent, mun, loc).then((locality)=>{
+          // Check if location was already chosen
+          let areadySelected = this.localities.map(function(loc){
+            return loc.Nom_Ent == locality.Nom_Ent && loc.Nom_Mun == locality.Nom_Mun && loc.Nom_Loc == locality.Nom_Loc
+          }).reduce((res, current)=>{
+            return res || current
+          })
+
+          if(areadySelected){
+            alert("Ya se ha seleccionado esa lengua")
+          }else{
+            this.localities.push(locality)
+          }
+          document.getElementById('entity').value = ""
+          document.getElementById('municipality').value = ""
+          document.getElementById('locality').value = ""
+        })
+      }
+    }
+	})	
+</script>
