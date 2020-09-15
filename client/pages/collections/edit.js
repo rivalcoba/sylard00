@@ -1,5 +1,6 @@
 import languageModel from '@chelpers/models/languages'
 import locationsModel from '@chelpers/models/locations'
+import Swal from 'sweetalert2'
 
 // Getting Ui Controls references
 const languageBox = document.getElementById('language')
@@ -106,10 +107,29 @@ const fillLocalitiesList = async(app)=>{
   }
 }
 
+const getLocality = async (ent, mun, loc)=>{
+
+  try {
+    let location = await locationsModel.getLocality(ent, mun, loc)
+
+    if (!location) {
+      Swal.fire('Error!', 'El servidor esta ocupado! intente mas tarde', 'info')
+      return null
+    }
+
+    return location
+
+  } catch (error) {
+     Swal.fire('Error!', error.message, 'info')
+    return null
+  }
+}
+
 export default {
   fillLangList,
   fillLangGroupList,
   fillEntitiesList,
   fillMunicipalitiesList,
-  fillLocalitiesList
+  fillLocalitiesList,
+  getLocality
 }

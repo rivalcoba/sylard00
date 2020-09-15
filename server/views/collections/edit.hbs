@@ -47,7 +47,6 @@
         id="language" 
         type="text"
 				onchange="editCollectionScripts.fillLangGroupList(app)"
-        v-model = "selectedLanguage"
         list="langlist">
       <datalist id="langlist">
 				<option 
@@ -67,8 +66,12 @@
         name="langGroup"
         list="groupLanglist"
         type="text"
-        v-model = "selectedLanguageGroup"
       >
+      <i 
+        class="fa fa-plus-square prefix" 
+        id="addLangBtn"
+        :style="{color: 'rgba(48, 238, 143, 0.911)', cursor: 'pointer', display: languagesGroup.length > 0 ? 'inline' : 'none'}"
+        @click="addLanguages()"></i>
 
       <datalist id="groupLanglist">				
       <option 
@@ -77,12 +80,6 @@
 					:value="languageG.name + ' | ' + languageG.gid"
 					>
       </datalist>
-      <!-- TODO FALTA ESTE -->
-      <i 
-        class="fa fa-plus-square prefix" 
-        id="addLangBtn"
-        :style="{color: 'rgba(48, 238, 143, 0.911)', cursor: 'pointer', display: languagesGroup.length > 0 ? 'inline' : 'none'}"
-        @click="addLanguages()"></i>
     </div>
   </div>
 
@@ -106,7 +103,7 @@
           <tr v-for="(langs, index) in colLanguages">
             <td>\{{ langs.language.gid }}</td>
             <td>\{{ langs.language.name }}</td>
-            <td>\{{ langs.LanguageGroup.name }}</td>
+            <td>\{{ langs.LanguageGroup.gid }}</td>
             <td>\{{ langs.LanguageGroup.name }}</td>
             <td>
               <i 
@@ -152,7 +149,6 @@
 				onchange="editCollectionScripts.fillMunicipalitiesList(app)"
 				id="entity"
         list="entitiesList" type="text"
-        v-model="selectedEntity" 
         >
       <datalist id="entitiesList">
         <option 
@@ -199,14 +195,6 @@
       type="text" 
       id="locality" 
       list="localitiesList">
-      <datalist id="localitiesList">
-        <option 
-        v-for="locality in localitiesList"
-        :value="locality">
-      </datalist>
-    </div>
-    <div class="col s2 m2 l2">
-      <!-- TODO FALTA ESTE -->
       <i 
         class="fa fa-plus-square fa-2x" 
         id="addLocBtn"
@@ -215,7 +203,12 @@
           cursor : 'pointer', 
           display: localitiesList.length > 0 ? 'inline' : 'none'
         }"
-        onclick="pageScripts.addLocality()"></i>
+        @click="addLocality()"></i>
+      <datalist id="localitiesList">
+        <option 
+        v-for="locality in localitiesList"
+        :value="locality">
+      </datalist>
     </div>
   </div>
 
@@ -307,18 +300,23 @@
 </div>
 
 <script>
+
+  const getLangObj = function(stringVal){
+    return {
+      gid: stringVal.split(' | ')[1],
+      name: stringVal.split(' | ')[0]
+    }
+  }
+
 	var app = new Vue({
 		el: '#app',
 		data: {
       name: '{{collectionDoc.name}}',
       description: '{{collectionDoc.description}}',
-      selectedLanguage : "",
 			languages : [],
-      selectedLanguageGroup : "",
       languagesGroup : [],
       colLanguages: {{{collectionDoc.languages}}},
       localities : {{{collectionDoc.localities}}},
-      selectedEntity : "",
       entitiesList : [],
       municipalitiesList: [],
       localitiesList: [],
@@ -332,9 +330,63 @@
         this.localities.splice(idx, 1)
       },
       addLanguages : function(){
-        console.log('Agrega')
+        let lang = getLangObj(document.getElementById('language').value) 
+        let langGroup = getLangObj(document.getElementById('langGroup').value)
+        
+        // Check if language have been choosed previously
+        let areadySelected = false
+        for(let index = 0; index < this.colLanguages.length; index++){
+          areadySelected = this.colLanguages[index].language.name == lang.name
+          if (areadySelected){
+            break
+          }
+        }
+        if(areadySelected){
+          alert("Ya se ha seleccionado esta lengua")
+        }else{
+          this.colLanguages.push({
+            language : lang,
+            LanguageGroup : langGroup
+          })
+        }
+        document.getElementById('language').value = ""
+        document.getElementById('langGroup').value = ""
+      },
+      addLocality : function(){
+        let ent = document.getElementById('entity').value
+        let mun = document.getElementById('municipality').value
+        let loc = document.getElementById('locality').value
+
+        let locationsOk = this.localitiesList.map(function(locality){
+          return locality == loc
+        })
+        .reduce((res, current)=>{
+          return res || current
+        })
+        
+        if(!locationsOk){
+          alert('Seleccionar una localidad de la lista')
+          return document.getElementById('locality').value  = ""
+        }
+
+        editCollectionScripts.getLocality(ent, mun, loc).then((locality)=>{
+          // Check if location was already chosen
+          let areadySelected = this.localities.map(function(loc){
+            return loc.Nom_Ent == locality.Nom_Ent && loc.Nom_Mun == locality.Nom_Mun && loc.Nom_Loc == locality.Nom_Loc
+          }).reduce((res, current)=>{
+            return res || current
+          })
+
+          if(areadySelected){
+            alert("Ya se ha seleccionado esa lengua")
+          }else{
+            this.localities.push(locality)
+          }
+          document.getElementById('entity').value = ""
+          document.getElementById('municipality').value = ""
+          document.getElementById('locality').value = ""
+        })
       }
     }
-	})
-	
+	})	
 </script>
