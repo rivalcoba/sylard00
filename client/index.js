@@ -16,6 +16,8 @@ import collectionsCreate from '@client/pages/collections/create'
 // Collections Edit Scripts
 import editCollectionScripts from '@client/pages/collections/edit'
 
+import Vue from '../node_modules/vue/dist/vue'
+
 // Loading function to the global variable
 //window.greeting = greeting
 window.myI18n = myI18n
@@ -28,6 +30,16 @@ if (window.location.pathname == `/locations/index`) {
 
 if(window.location.pathname == `/collections/create`){
     window.pageScripts = collectionsCreate
+}
+
+if(window.location.pathname == `/test`){
+    // window.Vue = Vue
+    window.app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
 }
 
 // No se puede cargar script condicionalmente

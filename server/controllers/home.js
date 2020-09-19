@@ -53,6 +53,10 @@ const terms = (req, res) => {
   })
 }
 
+const test = (req, res)=>{
+  res.render('index/test')
+}
+
 // Exporting Controllers
 export default {
   index,
@@ -62,4 +66,5 @@ export default {
   documentation,
   usermanual,
   terms,
+  test
 }
