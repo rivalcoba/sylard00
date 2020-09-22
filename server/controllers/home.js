@@ -57,6 +57,10 @@ const test = (req, res)=>{
   res.render('index/test')
 }
 
+const vuetest = (req, res)=>{
+  res.render('index/vuetest')
+}
+
 // Exporting Controllers
 export default {
   index,
@@ -66,5 +70,6 @@ export default {
   documentation,
   usermanual,
   terms,
-  test
+  test,
+  vuetest
 }

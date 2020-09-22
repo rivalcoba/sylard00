@@ -4,6 +4,8 @@ require('dotenv').config();
 // Package to handle paths
 // const path = require('path');
 import path from 'path'
+// Vue loading plugin
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 // Import Webpack
 // import webpack from 'webpack'
@@ -33,6 +35,12 @@ module.exports = {
                 },
             },
             {
+                test: /\.vue$/,
+                use: {
+                    loader: 'vue-loader',
+                },
+            },
+            {
                 test: /\.css$/,
                 use: [
                     MiniExtractCssPlugin.loader, // Extrae css
@@ -50,6 +58,7 @@ module.exports = {
         //         };
         //     })
         // }),
+        new VueLoaderPlugin(),
         new MiniExtractCssPlugin({
             filename: 'styles/index.css',
         }),

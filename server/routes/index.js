@@ -19,5 +19,6 @@ router.get('/documentation', homeController.documentation)
 router.get('/usermanual', homeController.usermanual)
 router.get('/terms', homeController.terms)
 router.get('/test', homeController.test)
+router.get('/vuetest', homeController.vuetest)
 
 export default router

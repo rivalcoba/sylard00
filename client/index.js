@@ -16,7 +16,11 @@ import collectionsCreate from '@client/pages/collections/create'
 // Collections Edit Scripts
 import editCollectionScripts from '@client/pages/collections/edit'
 
-import Vue from '../node_modules/vue/dist/vue'
+import App from '@client/templates/main.vue'
+
+// import Vue from '../node_modules/vue/dist/vue'
+
+import Vue from 'vue'
 
 // Loading function to the global variable
 //window.greeting = greeting
@@ -34,11 +38,18 @@ if(window.location.pathname == `/collections/create`){
 
 if(window.location.pathname == `/test`){
     // window.Vue = Vue
-    window.app = new Vue({
+    // window.app = new Vue({
+    //   el: '#app',
+    //   data: {
+    //     message: 'Hello Vue!'
+    //   }
+    // })
+}
+if(window.location.pathname == `/vuetest`){
+    // window.Vue = Vue
+    window.vm = new Vue({
       el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      }
+      render: h => h(App)
     })
 }
 
