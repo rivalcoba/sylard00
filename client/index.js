@@ -10,7 +10,7 @@ import syModals from '@chelpers/modals'
 // Admin the register form
 import formsManager from '@chelpers/formsManager'
 // Admin for view
-import locations from '@client/pages/locations'
+import locations_index from '@client/pages/locations/index'
 // Collections Create Scripts
 import collectionsCreate from '@client/pages/collections/create'
 // Collections Edit Scripts
@@ -18,7 +18,7 @@ import editCollectionScripts from '@client/pages/collections/edit'
 
 import App from '@client/templates/main.vue'
 
-// import Vue from '../node_modules/vue/dist/vue'
+import VueCdn from '../node_modules/vue/dist/vue'
 
 import Vue from 'vue'
 
@@ -29,7 +29,7 @@ window.formsManager = formsManager
 window.syModals = syModals
 
 if (window.location.pathname == `/locations/index`) {
-  window.locations = locations
+  window.locations = locations_index
 }
 
 if(window.location.pathname == `/collections/create`){
@@ -37,13 +37,13 @@ if(window.location.pathname == `/collections/create`){
 }
 
 if(window.location.pathname == `/test`){
-    // window.Vue = Vue
-    // window.app = new Vue({
-    //   el: '#app',
-    //   data: {
-    //     message: 'Hello Vue!'
-    //   }
-    // })
+    //window.VueCdn = VueCdn
+    window.app = new VueCdn({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
 }
 if(window.location.pathname == `/vuetest`){
     // window.Vue = Vue

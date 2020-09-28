@@ -11,7 +11,7 @@
 export default {
   name: "App",
   data: ()=>({
-    message: "Al Toño le gustan los machos"
+    message: "Vue con Componentes"
   })
 }
 </script>
