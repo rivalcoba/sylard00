@@ -1,4 +1,4 @@
-body {
+/* body {
   padding: 50px;
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
@@ -15,5 +15,9 @@ p {
 .logo {
   width: 130px;
   margin: auto;
+} */
+
+[v-cloak] {
+  display: none;
 }
 

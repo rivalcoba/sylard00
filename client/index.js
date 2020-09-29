@@ -15,10 +15,11 @@ import locations_index from '@client/pages/locations/index'
 import collectionsCreate from '@client/pages/collections/create'
 // Collections Edit Scripts
 import editCollectionScripts from '@client/pages/collections/edit'
+// ./Test scripts
+import indexTestScripts from '@client/pages/index/test'
 
 import App from '@client/templates/main.vue'
 
-import VueCdn from '../node_modules/vue/dist/vue'
 
 import Vue from 'vue'
 
@@ -38,12 +39,7 @@ if(window.location.pathname == `/collections/create`){
 
 if(window.location.pathname == `/test`){
     //window.VueCdn = VueCdn
-    window.app = new VueCdn({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      }
-    })
+    window.app = indexTestScripts.getVueApp()
 }
 if(window.location.pathname == `/vuetest`){
     // window.Vue = Vue
