@@ -72,11 +72,22 @@ const resetUserPassword = async (req, res)=>{
     res.redirect('/')
 }
 
+const index = (req, res)=>{
+    res.send('user list')
+}
+
+const api_getUsers = (req, res)=>{
+    
+    res.status(200).json({name: "Ivan Rivalcoba"})
+}
+
 export default{
     edit,
     editUser,
     editPassword,
     editUserPassword,
     resetPassword,
-    resetUserPassword
+    resetUserPassword,
+    index,
+    api_getUsers
 }
