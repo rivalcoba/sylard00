@@ -17,6 +17,9 @@ import collectionsCreate from '@client/pages/collections/create'
 import editCollectionScripts from '@client/pages/collections/edit'
 
 import App from '@client/templates/main.vue'
+import axios from "axios";
+import VueAxios from "vue-axios";
+import LecturaEAF from "@client/templates/components/LecturaEAF.vue";
 
 // import Vue from '../node_modules/vue/dist/vue'
 
@@ -47,11 +50,24 @@ if(window.location.pathname == `/test`){
 }
 if(window.location.pathname == `/vuetest`){
     // window.Vue = Vue
+    Vue.use(VueAxios, axios);
+    Vue.component("LecturaEAF", LecturaEAF);
     window.vm = new Vue({
       el: '#app',
       render: h => h(App)
     })
 }
+
+if(window.location.pathname == `/audioannotations`){
+    // window.Vue = Vue
+ //   Vue.use(VueAxios, axios);
+ //   Vue.component("LecturaEAF", LecturaEAF);
+ //   window.vm = new Vue({
+ //     el: '#app',
+ //     render: h => h(App)
+ //   })
+}
+
 
 // No se puede cargar script condicionalmente
 if(window.location.pathname.match(/\/collections\/edit\//)){

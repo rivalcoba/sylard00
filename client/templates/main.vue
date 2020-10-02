@@ -1,17 +1,16 @@
 <template>
-  <div id ="app">
-    <br>
-    <a class="waves-effect waves-light btn">{{message}}</a>
-    <br>
-    <br>
-  </div>
+<div id="app">
+    <ReproduceEAF></ReproduceEAF>
+</div>
 </template>
 
 <script>
+import ReproduceEAF from "./components/ReproduceEAF.vue";
+
 export default {
-  name: "App",
-  data: ()=>({
-    message: "Al Toño le gustan los machos"
-  })
-}
+    name: "App",
+    components: {
+        ReproduceEAF,
+    },
+};
 </script>

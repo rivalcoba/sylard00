@@ -8,6 +8,7 @@ import ensureAuthenticated from '@helpers/ensureAuth'
 // Import Controllers
 import homeController from '@controllers/home'
 
+
 /* GET home page. */
 // Index Controllers
 router.get('/', homeController.index);
@@ -20,5 +21,6 @@ router.get('/usermanual', homeController.usermanual)
 router.get('/terms', homeController.terms)
 router.get('/test', homeController.test)
 router.get('/vuetest', homeController.vuetest)
+//router.get('/audioannotations',homeController.audioannotations)
 
 export default router
