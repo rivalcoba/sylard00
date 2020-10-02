@@ -1,5 +1,6 @@
 import path from 'path'
 import jsonReader from '@helpers/jsonReader'
+import User from '@models/User'
 
 // DELETE async
 const edit = (req, res)=>{
@@ -76,9 +77,9 @@ const index = (req, res)=>{
     res.send('user list')
 }
 
-const api_getUsers = (req, res)=>{
-    
-    res.status(200).json({name: "Ivan Rivalcoba"})
+const api_getUsers = async (req, res)=>{
+    const usersDocuments = await User.find().exec()
+    res.status(200).json(usersDocuments)
 }
 
 export default{
