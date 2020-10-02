@@ -1,6 +1,6 @@
 
-/*import locationsHelper from '@chelpers/models/locations'
-import Swal from 'sweetalert2'*/
+import locationsHelper from '@chelpers/models/locations'
+import Swal from 'sweetalert2'
 
 // Auxiliary Functions
 const clearDataList = (dataList) => {

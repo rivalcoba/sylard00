@@ -26,7 +26,8 @@
                     "@hbsHelpers":"./server/helpers/handlebars",
                     "@validators": "./server/validators",
                     "@client": "./client",
-                    "@chelpers": "./client/helpers"
+                    "@chelpers": "./client/helpers",
+                    "@node_modules" : "./node_modules"
                 }
             }
         ]
