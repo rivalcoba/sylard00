@@ -29,7 +29,7 @@ const addAudioannotation = async (req, res) => {
     genero,
     mp3_url
   }
-
+ audioannotations.user = req.user._id
 
   //const audioannotations = new Audioannotations({
   //  titulo: req.body.titulo,
@@ -64,7 +64,8 @@ const addAudioannotation = async (req, res) => {
   console.log(`addAudioannotation> Audioannotation Created: ${AudioannotationDoc}`)
   // Se encuentra usuario  
   console.log(req.body);
-  //console.log(res);
+  console.log('Aqui')
+  console.log(res);
   res.send('POST request to the homepage')
 
   // res.redirect('/collections')

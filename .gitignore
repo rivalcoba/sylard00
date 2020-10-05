@@ -64,3 +64,4 @@ typings/
 
 # eslint
 .eslintrc.json
+server/public/js/index.js
