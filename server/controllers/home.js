@@ -53,6 +53,18 @@ const terms = (req, res) => {
   })
 }
 
+const test = (req, res)=>{
+  res.render('index/test')
+}
+
+const vuetest = (req, res)=>{
+  res.render('index/vuetest')
+}
+
+const audioannotations = (req, res)=>{
+  res.render('index/audioannotations')
+}
+
 // Exporting Controllers
 export default {
   index,
@@ -62,4 +74,7 @@ export default {
   documentation,
   usermanual,
   terms,
+  test,
+  vuetest,
+  audioannotations,
 }

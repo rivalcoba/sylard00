@@ -4,6 +4,7 @@ import user from '@routes/user'
 import collections from '@routes/collections'
 import locations from '@routes/locations'
 import glottolog from '@routes/glottolog'
+ import audioannotations from '@routes/audioannotations'
 
 // Importing index router
 export default function(app){
@@ -24,6 +25,9 @@ export default function(app){
 
     // Glottolog
     app.use('/glottolog', glottolog)
+   
+   // audioannotations
+   app.use('/audioannotations',audioannotations)
     
     // Other Routes
     return app

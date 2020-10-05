@@ -1,0 +1,29 @@
+<div> Crear audioannotations</div>
+<form class="col s12" action="/audioannotations/add" method="post">
+<!--
+<input type="file"
+       id="eaf" name="eaf"
+       accept="eaf/eaf">
+       <br><br>
+
+       a_id:String,
+  eaf:String,
+  titulo:String,
+  description: { type: String },
+  genero:String,
+  duracion:String,
+  mp3_url:String,
+  https://code.tutsplus.com/es/tutorials/file-upload-with-multer-in-node--cms-32088  -->    
+
+ <label for="titulo">Titulo:</label>
+  <input type="text" id="titulo" name="titulo"><br><br>
+  <label for="descripcion">Descripcion:</label>
+  <input type="text" id="descripcion" name="descripcion"><br><br>
+
+  <label for="genero">Genero:</label>
+  <input type="text" id="genero" name="genero"><br><br>
+  <label for="duracion">Duracion</label>
+  <label for="mp3_url">MP3</label>
+  <input type="text" id="mp3_url" name="mp3_url"><br><br>
+<button type="submit">Submit</button>
+</form>

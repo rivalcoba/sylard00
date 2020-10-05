@@ -1,0 +1,3173 @@
+{
+    "ANNOTATION_DOCUMENT": {
+        "AUTHOR": [
+            "Rey_Project"
+        ],
+        "DATE": [
+            "2019-10-24T20:22:53-06:00"
+        ],
+        "FORMAT": [
+            "2.8"
+        ],
+        "VERSION": [
+            "2.8"
+        ],
+        "xmlns:xsi": [
+            "http://www.w3.org/2001/XMLSchema-instance"
+        ],
+        "xsi:noNamespaceSchemaLocation": [
+            "http://www.mpi.nl/tools/elan/EAFv2.8.xsd"
+        ],
+        "HEADER": [
+            {
+                "MEDIA_FILE": [
+                    ""
+                ],
+                "TIME_UNITS": [
+                    "milliseconds"
+                ],
+                "MEDIA_DESCRIPTOR": [
+                    {
+                        "MEDIA_URL": [
+                            "file:///C:/Proy-Mixteco-activo/Grab-Trans/Yolo/Sonidos/Botánica/Yolox_Botan_RFM525_Amaranthaceae-i3ta2-sa3in4-ta3ta2_2013-03-27-m.wav"
+                        ],
+                        "MIME_TYPE": [
+                            "audio/x-wav"
+                        ],
+                        "RELATIVE_MEDIA_URL": [
+                            "../../../Proy-Mixteco-activo/Grab-Trans/Yolo/Sonidos/Botánica/Yolox_Botan_RFM525_Amaranthaceae-i3ta2-sa3in4-ta3ta2_2013-03-27-m.wav"
+                        ]
+                    }
+                ],
+                "PROPERTY": [
+                    {
+                        "_": "urn:nl-mpi-tools-elan-eaf:32241c94-b950-4b99-9b2d-01d208a26fdf",
+                        "NAME": [
+                            "URN"
+                        ]
+                    },
+                    {
+                        "_": "83",
+                        "NAME": [
+                            "lastUsedAnnotationId"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "TIME_ORDER": [
+            {
+                "TIME_SLOT": [
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts1"
+                        ],
+                        "TIME_VALUE": [
+                            "0"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts2"
+                        ],
+                        "TIME_VALUE": [
+                            "0"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts3"
+                        ],
+                        "TIME_VALUE": [
+                            "7100"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts4"
+                        ],
+                        "TIME_VALUE": [
+                            "7100"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts5"
+                        ],
+                        "TIME_VALUE": [
+                            "7100"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts6"
+                        ],
+                        "TIME_VALUE": [
+                            "7100"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts7"
+                        ],
+                        "TIME_VALUE": [
+                            "11972"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts8"
+                        ],
+                        "TIME_VALUE": [
+                            "11972"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts9"
+                        ],
+                        "TIME_VALUE": [
+                            "11972"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts10"
+                        ],
+                        "TIME_VALUE": [
+                            "11972"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts11"
+                        ],
+                        "TIME_VALUE": [
+                            "16909"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts12"
+                        ],
+                        "TIME_VALUE": [
+                            "16909"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts13"
+                        ],
+                        "TIME_VALUE": [
+                            "16909"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts14"
+                        ],
+                        "TIME_VALUE": [
+                            "16909"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts15"
+                        ],
+                        "TIME_VALUE": [
+                            "24331"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts16"
+                        ],
+                        "TIME_VALUE": [
+                            "24331"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts17"
+                        ],
+                        "TIME_VALUE": [
+                            "24331"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts18"
+                        ],
+                        "TIME_VALUE": [
+                            "24331"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts19"
+                        ],
+                        "TIME_VALUE": [
+                            "31243"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts20"
+                        ],
+                        "TIME_VALUE": [
+                            "31243"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts21"
+                        ],
+                        "TIME_VALUE": [
+                            "31243"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts22"
+                        ],
+                        "TIME_VALUE": [
+                            "31243"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts23"
+                        ],
+                        "TIME_VALUE": [
+                            "40327"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts24"
+                        ],
+                        "TIME_VALUE": [
+                            "40327"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts25"
+                        ],
+                        "TIME_VALUE": [
+                            "40327"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts26"
+                        ],
+                        "TIME_VALUE": [
+                            "40327"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts27"
+                        ],
+                        "TIME_VALUE": [
+                            "46041"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts28"
+                        ],
+                        "TIME_VALUE": [
+                            "46041"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts29"
+                        ],
+                        "TIME_VALUE": [
+                            "46041"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts30"
+                        ],
+                        "TIME_VALUE": [
+                            "46041"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts31"
+                        ],
+                        "TIME_VALUE": [
+                            "53917"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts32"
+                        ],
+                        "TIME_VALUE": [
+                            "53917"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts33"
+                        ],
+                        "TIME_VALUE": [
+                            "53917"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts34"
+                        ],
+                        "TIME_VALUE": [
+                            "53917"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts35"
+                        ],
+                        "TIME_VALUE": [
+                            "57621"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts36"
+                        ],
+                        "TIME_VALUE": [
+                            "57621"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts37"
+                        ],
+                        "TIME_VALUE": [
+                            "57621"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts38"
+                        ],
+                        "TIME_VALUE": [
+                            "57621"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts39"
+                        ],
+                        "TIME_VALUE": [
+                            "58351"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts40"
+                        ],
+                        "TIME_VALUE": [
+                            "58351"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts41"
+                        ],
+                        "TIME_VALUE": [
+                            "58351"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts42"
+                        ],
+                        "TIME_VALUE": [
+                            "58351"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts43"
+                        ],
+                        "TIME_VALUE": [
+                            "64875"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts44"
+                        ],
+                        "TIME_VALUE": [
+                            "64875"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts45"
+                        ],
+                        "TIME_VALUE": [
+                            "64875"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts46"
+                        ],
+                        "TIME_VALUE": [
+                            "64875"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts47"
+                        ],
+                        "TIME_VALUE": [
+                            "65885"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts48"
+                        ],
+                        "TIME_VALUE": [
+                            "65885"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts49"
+                        ],
+                        "TIME_VALUE": [
+                            "65885"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts50"
+                        ],
+                        "TIME_VALUE": [
+                            "65885"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts51"
+                        ],
+                        "TIME_VALUE": [
+                            "70611"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts52"
+                        ],
+                        "TIME_VALUE": [
+                            "70611"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts53"
+                        ],
+                        "TIME_VALUE": [
+                            "70611"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts54"
+                        ],
+                        "TIME_VALUE": [
+                            "70611"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts55"
+                        ],
+                        "TIME_VALUE": [
+                            "75889"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts56"
+                        ],
+                        "TIME_VALUE": [
+                            "75889"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts57"
+                        ],
+                        "TIME_VALUE": [
+                            "75889"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts58"
+                        ],
+                        "TIME_VALUE": [
+                            "75889"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts59"
+                        ],
+                        "TIME_VALUE": [
+                            "79697"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts60"
+                        ],
+                        "TIME_VALUE": [
+                            "79697"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts61"
+                        ],
+                        "TIME_VALUE": [
+                            "79697"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts62"
+                        ],
+                        "TIME_VALUE": [
+                            "79697"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts63"
+                        ],
+                        "TIME_VALUE": [
+                            "79697"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts64"
+                        ],
+                        "TIME_VALUE": [
+                            "79697"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts65"
+                        ],
+                        "TIME_VALUE": [
+                            "86903"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts66"
+                        ],
+                        "TIME_VALUE": [
+                            "86903"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts67"
+                        ],
+                        "TIME_VALUE": [
+                            "86903"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts68"
+                        ],
+                        "TIME_VALUE": [
+                            "86903"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts69"
+                        ],
+                        "TIME_VALUE": [
+                            "86903"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts70"
+                        ],
+                        "TIME_VALUE": [
+                            "86903"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts71"
+                        ],
+                        "TIME_VALUE": [
+                            "96045"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts72"
+                        ],
+                        "TIME_VALUE": [
+                            "96045"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts73"
+                        ],
+                        "TIME_VALUE": [
+                            "96045"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts74"
+                        ],
+                        "TIME_VALUE": [
+                            "96045"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts75"
+                        ],
+                        "TIME_VALUE": [
+                            "96045"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts76"
+                        ],
+                        "TIME_VALUE": [
+                            "96045"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts77"
+                        ],
+                        "TIME_VALUE": [
+                            "104113"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts78"
+                        ],
+                        "TIME_VALUE": [
+                            "104113"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts79"
+                        ],
+                        "TIME_VALUE": [
+                            "104113"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts80"
+                        ],
+                        "TIME_VALUE": [
+                            "104113"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts81"
+                        ],
+                        "TIME_VALUE": [
+                            "104113"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts82"
+                        ],
+                        "TIME_VALUE": [
+                            "104113"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts83"
+                        ],
+                        "TIME_VALUE": [
+                            "111448"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts84"
+                        ],
+                        "TIME_VALUE": [
+                            "111448"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts85"
+                        ],
+                        "TIME_VALUE": [
+                            "111448"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts86"
+                        ],
+                        "TIME_VALUE": [
+                            "111448"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts87"
+                        ],
+                        "TIME_VALUE": [
+                            "111448"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts88"
+                        ],
+                        "TIME_VALUE": [
+                            "111448"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts89"
+                        ],
+                        "TIME_VALUE": [
+                            "113478"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts90"
+                        ],
+                        "TIME_VALUE": [
+                            "113478"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts91"
+                        ],
+                        "TIME_VALUE": [
+                            "113478"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts92"
+                        ],
+                        "TIME_VALUE": [
+                            "113478"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts93"
+                        ],
+                        "TIME_VALUE": [
+                            "113478"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts94"
+                        ],
+                        "TIME_VALUE": [
+                            "113478"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts95"
+                        ],
+                        "TIME_VALUE": [
+                            "117752"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts96"
+                        ],
+                        "TIME_VALUE": [
+                            "117752"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts97"
+                        ],
+                        "TIME_VALUE": [
+                            "117752"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts98"
+                        ],
+                        "TIME_VALUE": [
+                            "117752"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts99"
+                        ],
+                        "TIME_VALUE": [
+                            "124140"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts100"
+                        ],
+                        "TIME_VALUE": [
+                            "124140"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts101"
+                        ],
+                        "TIME_VALUE": [
+                            "124140"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts102"
+                        ],
+                        "TIME_VALUE": [
+                            "124140"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts103"
+                        ],
+                        "TIME_VALUE": [
+                            "124140"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts104"
+                        ],
+                        "TIME_VALUE": [
+                            "124140"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts105"
+                        ],
+                        "TIME_VALUE": [
+                            "127012"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts106"
+                        ],
+                        "TIME_VALUE": [
+                            "127012"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts107"
+                        ],
+                        "TIME_VALUE": [
+                            "127012"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts108"
+                        ],
+                        "TIME_VALUE": [
+                            "127012"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts109"
+                        ],
+                        "TIME_VALUE": [
+                            "127012"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts110"
+                        ],
+                        "TIME_VALUE": [
+                            "127012"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts111"
+                        ],
+                        "TIME_VALUE": [
+                            "127012"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts112"
+                        ],
+                        "TIME_VALUE": [
+                            "127012"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts113"
+                        ],
+                        "TIME_VALUE": [
+                            "130175"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts114"
+                        ],
+                        "TIME_VALUE": [
+                            "130175"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts115"
+                        ],
+                        "TIME_VALUE": [
+                            "130175"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts116"
+                        ],
+                        "TIME_VALUE": [
+                            "130175"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts117"
+                        ],
+                        "TIME_VALUE": [
+                            "130175"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts118"
+                        ],
+                        "TIME_VALUE": [
+                            "130175"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts119"
+                        ],
+                        "TIME_VALUE": [
+                            "130175"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts120"
+                        ],
+                        "TIME_VALUE": [
+                            "130175"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts121"
+                        ],
+                        "TIME_VALUE": [
+                            "131876"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts122"
+                        ],
+                        "TIME_VALUE": [
+                            "132305"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts123"
+                        ],
+                        "TIME_VALUE": [
+                            "132305"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts124"
+                        ],
+                        "TIME_VALUE": [
+                            "132313"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts125"
+                        ],
+                        "TIME_VALUE": [
+                            "132313"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts126"
+                        ],
+                        "TIME_VALUE": [
+                            "132313"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts127"
+                        ],
+                        "TIME_VALUE": [
+                            "134468"
+                        ]
+                    },
+                    {
+                        "TIME_SLOT_ID": [
+                            "ts128"
+                        ],
+                        "TIME_VALUE": [
+                            "134468"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "TIER": [
+            {
+                "DEFAULT_LOCALE": [
+                    "us"
+                ],
+                "LINGUISTIC_TYPE_REF": [
+                    "Transcripción"
+                ],
+                "PARTICIPANT": [
+                    "Rey Castillo García"
+                ],
+                "TIER_ID": [
+                    "Rey Castillo García"
+                ],
+                "ANNOTATION": [
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a18"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts1"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts3"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Nda³tu'⁴un⁴ lu³chi'⁴i²=un⁴ ji'⁴in⁴=ndu² xa'¹a⁴ i³ta² sa³in⁴ ta³ta² chi¹."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a19"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts5"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts7"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Sa¹a³ nu¹⁴u³ ba⁴² i⁴yo² tan³ sa¹a³, nda⁴a² ba⁴² chi'⁴i⁴=na⁽²⁾=e² nda⁴a² tiem⁴pu² chi'⁴i⁴=na⁽²⁾=e²"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a20"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts9"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts11"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "na⁴chu³ jo⁴ndo¹³=a² ji'⁴in⁴=na², sa¹a³ i⁴in⁽⁴⁾=a² chi¹ tan³ na⁴chu³ jo⁴ndo¹³=a² chi¹."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a27"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts37"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts39"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿An⁴ ki⁴ku¹³=na⁽³⁾=e³?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a29"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts45"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts47"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿An⁴ xa'⁴an² bi¹xi⁽¹⁾=a¹?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a33"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts61"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts65"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "An⁴ sa³kan⁴ ba³. Tan⁴² i⁴yo², ya¹ ba⁴li⁴ ba⁴² kan⁴. Tan³ ki⁴ku¹³=na⁽²⁾=e² tan³, ya¹kan³, tan³ ¿sa¹a³ i⁴xa³=na² nda⁴-ka³ya²=na¹ ta³ta² tin³?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a36"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts73"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts77"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Tan³ ¿an⁴ a¹su³ in³ka⁴chi¹ chi'⁴i⁴=na⁽²⁾=e² ji'⁴in⁴, ya¹kan³ ...? I³in³ tiem⁴pu². An⁴ sa³kan⁴ ba³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a39"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts85"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts89"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ba¹⁴³ xi⁴yo¹³=a² yu³mi⁴."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a42"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts97"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts99"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "An⁴ sa³kan⁴ ba³ te¹. Tan³ ya¹kan³, sa³kan⁴ ku⁴u⁴ ndi'³i³ ba⁽³⁾=e² ran⁴. Ba'¹a³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a43"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts101"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts105"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Sa¹a³ na³ni⁽⁴⁾=un⁴?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a45"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts109"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts113"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Sa¹a³ kwi¹ya⁽¹⁾=on⁴?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a47"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts117"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts122"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Sa¹a³ na³ni⁴ ñu³u²=un⁴?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a49"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts123"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts127"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ba'¹a³ ba³."
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "DEFAULT_LOCALE": [
+                    "en"
+                ],
+                "LINGUISTIC_TYPE_REF": [
+                    "Transcripción"
+                ],
+                "PARTICIPANT": [
+                    "Rey Castillo García"
+                ],
+                "TIER_ID": [
+                    "Rey Castillo García Surface-2"
+                ],
+                "ANNOTATION": [
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a18_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts2"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts4"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Nda³tũ'⁴ũ⁴ lu³chỹũ'⁴ũ²⁴ jĩ'⁴ĩ⁴ndu² xa'¹a⁴ i³ta² sã³ĩ⁴ ta³ta² chi¹."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a19_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts6"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts8"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Sa¹a³ nũ¹⁴ũ³ ba⁴² i⁴yo² tã³ sa¹a³, nda⁴a² ba⁴² chi'⁴i⁴nẽ² nda⁴a² tyem⁴pu² chi'⁴i⁴nẽ²."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a20_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts10"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts12"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "nã⁴chu³ jo⁴ndwa¹³² jĩ'⁴ĩ⁴nã², sa¹a³ ỹã⁴ã² chi¹ tã³ nã⁴chu³ jo⁴ndwa¹³² chi¹."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a27_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts38"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts40"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿An⁴ ki⁴ku¹³nẽ³?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a29_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts46"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts48"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿An⁴ xã'⁴ã² bi¹xya¹?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a33_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts62"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts66"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "An⁴ sa³kã⁴ ba³. Tã⁴² i⁴yo² ya¹ ba⁴li⁴ ba⁴² kã⁴. Tã³ ki⁴ku¹³nẽ² tã³, ya¹kã³, tã³ ¿sa¹a³ i⁴xa³nã² nda⁴ka³ya²nã¹ ta³ta² tĩ³?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a36_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts74"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts78"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Tã³ ¿ã⁴ a¹su³ ĩ³ka⁴chi¹ chi'⁴i⁴nẽ² jĩ'⁴ĩ⁴, ya¹kã³ ...?  I³ĩ³ tyem⁴pu². An⁴ sa³kã⁴ ba³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a39_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts86"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts90"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ba¹⁴³ xi⁴ywa¹³² yu³mĩ⁴."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a42_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts98"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts100"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "An⁴ sa³kã⁴ ba³ te¹. Tã³ ya¹kã³, sa³kã⁴ ku⁴u⁴ ndi'³i³ be² rã⁴. Ba'¹a³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a43_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts102"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts106"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Sa¹a³ nã³nỹũ⁴?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a45_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts110"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts114"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Sa¹a³ kwi¹ỹõ⁴?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a47_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts118"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts124"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Sa¹a³ nã³nĩ⁴ ñũ³ũ²⁴?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a49_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts125"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts128"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ba'¹a³ ba³."
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "DEFAULT_LOCALE": [
+                    "us"
+                ],
+                "LINGUISTIC_TYPE_REF": [
+                    "Transcripción"
+                ],
+                "PARTICIPANT": [
+                    "Raúl Felipe Margarito"
+                ],
+                "TIER_ID": [
+                    "Raúl Felipe Margarito"
+                ],
+                "ANNOTATION": [
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a21"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts13"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts15"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "I³ta² sa³in⁴ ta³ta² kan⁴ ba⁴² ya¹, ya¹ ka⁴chi²=o⁴ ndo⁴ko³to⁽³⁾=e⁴ ji'⁴in⁴ i³ta² kwa¹on⁴ ka⁴chi²=o⁴ ya¹ bi³ko⁴ i³ta²,"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a22"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts17"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts19"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "ya¹ chi'⁴i⁴=na⁽²⁾=e² kan⁴ ndi⁴ a¹su³ tiem⁴pu² ka³ta²=e⁴ tun⁴ i³ta² kwa¹on⁴ i³kan⁴ ba⁴² chi³..., ka³ta² tu⁽³⁾=e⁴ ya¹ kan⁴ ndi³kin⁴=a² kan⁴ tan³"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a23"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts21"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts23"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Xi¹⁴in³=ni⁴² bi⁴=a² ko³o⁽³⁾=a² ñu³u²=e⁴ ka¹a³ ndi⁴ ba³ ba¹⁴³ ndu⁴ta'³an⁽²⁾=e² ko³o⁽³⁾=a² ka¹a³ ndi⁴ ñu³u² ja¹, an⁴ ñu³u² sa'⁴an⁴ ba⁴² an⁴ ñu³u² bi¹xin³ ka¹ i³kan⁴ ba⁴² la³tun⁴ xi⁴yo¹³=a² tan³ ñu³u²=e⁴ ka¹a³ ndi⁴ kwa⁴chi³=ni⁴² xa'⁴nu³=run⁴ tu⁴u²=yu¹."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a24"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts25"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts27"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "So'³o³ so'³o³ ti⁴ ba³ xa'⁴nu³=run⁴ tan³ i⁴yo² i³ta²=run⁴, ba⁴li⁴=ni⁴² nu¹⁴u⁽³⁾=a² so'³o³ so'³o³ ti⁴ ba⁴li⁴ nu¹⁴u⁽³⁾=a² tan³"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a25"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts29"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts31"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "ya¹ kan⁴ ba⁴² kwa'¹an¹ ji'⁴in⁽⁴⁾=o⁴ pa³san⁴tu² ndo³ko³to⁽³⁾=e⁴ ji'⁴in⁴ i³ta² kwa¹on⁴ na⁴tu² i⁴yo⁽²⁾=a² xa³ku⁴=ni⁴² ba⁴² xi⁴yo¹³=a² ñu³u² ka¹a³. Ko¹⁴o³ ba'¹a³ ba'¹a³=e² kan⁴ ñu³u² ka¹a³ ndi⁴,"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a26"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts33"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts35"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "an⁴ ba¹⁴³ chi'⁴i⁴=na⁽²⁾=e² an⁴ ko¹⁴o³ ni³ mi³i⁴=² tan³ ba¹⁴³ chi'⁴i⁽⁴⁾=a² a¹chi¹ ndi⁴ ta³ta⁽²⁾=e² ku⁴ni⁽²⁾=a²."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a28"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts41"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts43"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ki⁴ku¹³=na⁽²⁾=e² ji'⁴in⁴ yo'³o⁴ ki⁴ku¹³=na⁽³⁾=e³. Ni⁴i²⁴ chi'⁴i² so'³o³ so'³o³ ti⁴ yo'³o⁴=a² ya¹ sa³kan⁴ ku⁴u⁽⁴⁾=a² ya¹ i³ta² ba⁴li⁴=ni⁴² ba⁴³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a30"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts49"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts51"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Xa'⁴an² bi¹xi¹ ta'³an⁽²⁾=e², xa'⁴an² bi¹xi⁽¹⁾=a¹ ba'¹a³ xi³ko² ba⁽³⁾=e² ku'¹un¹ ji'⁴in⁽⁴⁾=o⁴ ndo³ko³to⁽³⁾=e⁴."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a31"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts53"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts55"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "I³ta² ndi¹⁴i² ba⁴² kan⁴, i⁴yo⁽²⁾=a² ndi¹⁴i² i⁴yo⁽²⁾=a² kwa'⁴a¹, u¹bi¹ nu¹⁴u³ tu³ ba⁴² kan⁴ ba³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a32"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts57"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts59"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Tan⁴² ku⁴ni² ko³o³ yu¹ku¹ tun⁴ i³ta² <i>pastora</i> sa³kan⁴ ku⁴ni² ko³o³ tu³ yu¹ku¹ tun⁴ kan⁴ ba³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a34"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts63"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts67"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "A¹be³, sa³kan⁴ i⁴in⁽⁴⁾=a² ya¹ kwi⁴i²⁴ ba⁴li⁴ ba⁴² kan⁴."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a35"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts69"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts71"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ndi³kin⁴=a² kan⁴ nda⁴-ka³ya²=na¹ tu⁴u²=yu¹ a¹chi¹ ndi⁴ ta'¹⁴an² chi'³i⁽³⁾=a². A¹chi¹ ndi⁴ ya¹ i⁴yo² ndi³kin⁴ ba⁴² mi⁴i⁴ i⁴yo², mi⁴i⁴ i⁴yo² i³ta⁽²⁾=e² kan⁴ i³kan⁴ ndo⁴o¹³=a² i⁴chi⁽¹⁾=a¹ tan³ i³kan⁴ nda³-ka³ya²=na⁽¹⁾=e¹ ko⁴..., ko⁴ndo⁽³⁾=a² ta³ta²=na¹."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a37"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts75"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts79"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "In³ka⁴chi¹ chi'⁴i⁴=na⁽²⁾=e² ji'⁴in⁴ tun⁴ i³ta² kwa¹on⁴ ba³ tu⁴u²=yu¹, i³in³ tiem⁴pu²."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a38"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts81"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts83"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "I³in³ tiem⁴pu² ya¹ kan⁴ ndi⁴ ndu⁴ta⁽¹⁾=e¹ tan³ ja⁴chiu⁴un⁽⁴⁾=a² ji'⁴in⁴=na² ya¹, ya¹ bi³ko⁴ i³ta² ka⁴chi²=o⁴ kan⁴ a¹chi¹, sa³kan⁴ ba⁴² ji⁴ni² yu'¹u¹ ba⁽³⁾=e² ran⁴, ko¹⁴o⁽³⁾=a² ji⁴ni²=yu¹ tiem⁴pu² bi³tin³ ndi⁴,"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a40"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts87"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts91"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ba¹⁴³ xi⁴yo¹³=a² yu³mi⁴."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a41"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts93"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts95"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ji¹⁴ni²=o⁴ sa¹a³ a³sa⁽³⁾=e² na⁴ i⁴yo² ndi³kin⁴=a² tan³ chi'³i⁽³⁾=o⁴=e² ndi⁴ xa³ku⁴=ni⁴² xi⁴yo¹³=a² ñu³u²=e⁴ ka¹a³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a44"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts103"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts107"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Raúl na³ni⁴=²."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a46"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts111"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts115"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "U¹bi¹ xi³ko³ i¹ñu¹ kwi¹ya¹ ku⁴u⁽⁴⁾=²."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a48"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts119"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts126"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Yoloxóchitl ku⁴u⁴ ñu³u²=yu¹."
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "DEFAULT_LOCALE": [
+                    "en"
+                ],
+                "LINGUISTIC_TYPE_REF": [
+                    "Transcripción"
+                ],
+                "PARTICIPANT": [
+                    "Raúl Felipe Margarito"
+                ],
+                "TIER_ID": [
+                    "Raúl Felipe Margarito Surface-2"
+                ],
+                "ANNOTATION": [
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a21_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts14"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts16"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "I³ta² sã³ĩ⁴ ta³ta² kã⁴ ba⁴² ya¹, ya¹ ka⁴chyo²⁴ ndo⁴ko³twe⁴ jĩ'⁴ĩ⁴ i³ta² kwã¹õ⁴ ka⁴chyo²⁴ ya¹ bi³ko⁴ i³ta²,"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a22_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts18"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts20"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "ya¹ chi'⁴i⁴nẽ² kã⁴ ndi⁴ a¹su³ tyem⁴pu² ka³te²⁴ tũ⁴ i³ta² kwã¹õ⁴ i³kã⁴ ba⁴² chi³..., ka³ta² twe⁴ ya¹ kã⁴ ndi³kỹã⁴² kã⁴ tã³"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a23_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts22"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts24"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Xĩ¹⁴ĩn³=ni⁴² bya⁴² kwa³a² nywe³e²⁴ ka¹a³ ndi⁴ ba³ ba¹⁴³ ndu⁴tẽ'³ẽ² kwa³a² ka¹a³ ndi⁴ ñũ³ũ² ja¹, ã⁴ ñũ³ũ² sã'⁴ã⁴ ba⁴² ã⁴ ñũ³ũ² bi¹xĩ³ ka¹ i³kã⁴ ba⁴² la³tũ⁴ xi⁴ywa¹³² tã³ nywe³e²⁴ ka¹a³ ndi⁴ kwa⁴chi³nĩ⁴² xa'⁴nũ³rũ⁴ tu⁴u²yu¹."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a24_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts26"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts28"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "So'³o³ so'³o³ ti⁴ ba³ xa'⁴nũ³rũ⁴ tã³ i⁴yo² i³ta²rũ⁴, ba⁴li⁴nĩ⁴² nw̃ã¹⁴ã² so'³o³ so'³o³ ti⁴ ba⁴li⁴ nw̃ã¹⁴ã² tã³"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a25_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts30"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts32"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "ya¹ kã⁴ ba⁴² kwã'¹ã¹ jyo'⁴o⁴ pa³sã⁴tu² ndo³ko³twe⁴ jĩ'⁴ĩ⁴ i³ta² kwã¹õ⁴ nã⁴tu² i⁴ywa² xa³ku⁴nĩ⁴² ba⁴² xi⁴ywa¹³² ñũ³ũ² ka¹a³. Ko¹⁴o³ ba'¹a³ be'¹e³² kã⁴ ñũ³ũ² ka¹a³ ndi⁴,"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a26_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts34"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts36"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "ã⁴ ba¹⁴³ chi'⁴i⁴nẽ² ã⁴ ko¹⁴o³ nĩ³ mĩ³ĩ⁴² tã³ ba¹⁴³ chya'⁴a² a¹chi¹ ndi⁴ ta³te² ku⁴nỹã²."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a28_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts42"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts44"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ki⁴ku¹³nẽ² jĩ'⁴ĩ⁴ yo'³o⁴ ki⁴ku¹³nẽ³. Ni⁴i²⁴ chi'⁴i² so'³o³ so'³o³ ti⁴ ywa'³a⁴² ya¹ sa³kã⁴ kwa⁴a² ya¹ i³ta² ba⁴li⁴nĩ⁴² ba⁴³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a30_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts50"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts52"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Xã'⁴ã² bi¹xi¹ tẽ'³ẽ², xã'⁴ã² bi¹xya¹ ba'¹a³ xi³ko² be² kũ'¹ũ¹ jyo'⁴o⁴ ndo³ko³twe⁴."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a31_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts54"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts56"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "I³ta² ndi¹⁴i² ba⁴² kã⁴, i⁴ywa² ndi¹⁴i² i⁴ywa² kwa'⁴a¹, u¹bi¹ nũ¹⁴ũ³ tu³ ba⁴² kã⁴ ba³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a32_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts58"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts60"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Tã⁴² ku⁴nĩ² ko³o³ yu¹ku¹ tũ⁴ i³ta² <i>pastora</i> sa³kã⁴ ku⁴nĩ² ko³o³ tu³ yu¹ku¹ tũ⁴ kã⁴ ba³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a34_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts64"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts68"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "A¹be³, sa³kã⁴ ỹã⁴ã² ya¹ kwi⁴i²⁴ ba⁴li⁴ ba⁴² kã⁴."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a35_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts70"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts72"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ndi³kỹã⁴² kã⁴ nda⁴ka³ya²nã¹ tu⁴u²yu¹ a¹chi¹ ndi⁴ tã'¹⁴ã² chya'³a². A¹chi¹ ndi⁴ ya¹ i⁴yo² ndi³kĩ⁴ ba⁴² mĩ⁴ĩ⁴ i⁴yo², mĩ⁴ĩ⁴ i⁴yo² i³te² kã⁴ i³kã⁴ ndwa⁴a¹³² i⁴chya¹ tã³ i³kã⁴ nda³ka³ya²nẽ¹ ko⁴..., ko⁴ndwa² ta³ta²nã¹."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a37_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts76"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts80"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "In³ka⁴chi¹ chi'⁴i⁴nẽ² jĩ'⁴ĩ⁴ tũ⁴ i³ta² kwã¹õ⁴ ba³ tu⁴u²yu¹ ĩ³ĩ³ tyem⁴pu²."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a38_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts82"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts84"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "I³ĩ³ tyem⁴pu² ya¹ kã⁴ ndi⁴ ndu⁴te¹ tã³ ja⁴chw̃ã⁴ã² jĩ'⁴ĩ⁴nã² ya¹, ya¹ bi³ko⁴ i³ta² ka⁴chyo²⁴ kã⁴ a¹chi¹, sa³kã⁴ ba⁴² ji⁴nĩ² yu'¹u¹ be² rã⁴, kwa¹⁴a² ji⁴nĩ²yu¹ tyem⁴pu² bi³tĩ³ ndi⁴,"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a40_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts88"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts92"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ba¹⁴³ xi⁴ywa¹³² yu³mĩ⁴."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a41_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts94"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts96"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Ji¹⁴ndyo²⁴ sa¹a³ a³se² nã⁴ i⁴yo² ndi³kỹã⁴² tã³ chye'³e⁴² ndi⁴ xa³ku⁴nĩ⁴² xi⁴ywa¹³² nywe³e²⁴ ka¹a³."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a44_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts104"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts108"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Raúl nã³nĩ⁴²."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a46_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts112"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts116"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "U¹bi¹ xi³ko³ i¹ñũ¹ kwi¹ya¹ ku⁴u²."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ALIGNABLE_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a48_SURFACE2"
+                                ],
+                                "TIME_SLOT_REF1": [
+                                    "ts120"
+                                ],
+                                "TIME_SLOT_REF2": [
+                                    "ts121"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Yoloxóchitl ku⁴u⁴ ñũ³ũ²yu¹."
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "DEFAULT_LOCALE": [
+                    "en"
+                ],
+                "LINGUISTIC_TYPE_REF": [
+                    "Traducción"
+                ],
+                "PARENT_REF": [
+                    "Rey Castillo García"
+                ],
+                "PARTICIPANT": [
+                    "Rey Castillo García"
+                ],
+                "TIER_ID": [
+                    "RCG Traducción"
+                ],
+                "ANNOTATION": [
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a50"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a18"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Cuéntanos un poco sobre la flor de olote doméstica."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a51"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a19"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Cuántos tipos hay, dónde hay, y en qué tiempo lo siembran."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a52"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a20"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Para qué lo utilizan, cómo son, y para qué se utilizan."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a53"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a27"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Lo cosen en guirnaldas?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a54"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a29"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Y huele bien?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a55"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a33"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Ah, sí? Son como, son pequeños.  Y los cosen y, este, y cómo recogen las semillas para sembrar?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a56"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a36"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Y ¿los siembran juntos con el cempazúchitl? Al mismo tiempo. ¿Ah, sí?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a57"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a39"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿No se da en temporada de seca?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a58"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a42"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Ah, sí? Y, este, eso es todo, pues. Bueno."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a59"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a43"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Cómo te llamas?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a60"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a45"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Cuántos años tienes?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a61"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a47"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "¿Cómo se llama tu pueblo?"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a62"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a49"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Sí, está bien."
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "DEFAULT_LOCALE": [
+                    "en"
+                ],
+                "LINGUISTIC_TYPE_REF": [
+                    "Traducción"
+                ],
+                "PARENT_REF": [
+                    "Raúl Felipe Margarito"
+                ],
+                "PARTICIPANT": [
+                    "Raúl Felipe Margarito"
+                ],
+                "TIER_ID": [
+                    "RFM Traducción"
+                ],
+                "ANNOTATION": [
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a63"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a21"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "La flor de olote doméstica es la que se ocupa en las ofrendas en los altares junto con la flor de cempazúchitl en todo santo,"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a64"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a22"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "las siembran en el tiempo en el que se siembran las semillas de cempazúchitl."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a65"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a23"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Aquí en el pueblo no se dan muy bien, en otros lugares, quizá más fríos se dan las flores muy bonitas, pero aquí en el pueblo se dan las flores muy pequeñas, creo."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a66"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a24"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Crece apenas así, sus flores son muy pequeñas, apenas así y"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a67"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a25"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "esas flores son las que se llevan en los ofrendas junto con las flores de cempazúchitl en el tiempo de todo santo, se dan muy poco aquí en el pueblo. No se da bien en este pueblo."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a68"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a26"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Quizá no lo siembran, ni yo no lo siembro porque para eso se necesitan las semillas."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a69"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a28"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Sí, los cosen con un hilo delgado. Sus guirnaldas son delgadas porque sus flores son muy pequeñas."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a70"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a30"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Sí tiene olor, huelen, sirven para llevarlas a ofrendar en los altares."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a71"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a31"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Sus flores son rosas, hay rosas y rojas, esas también son de dos tipos."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a72"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a32"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Se parecen a las hojas de la flor de pastora las hojas de ésa planta."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a73"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a34"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Sí asi son verdes, son pequeñas."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a74"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a35"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Recogen las semillas de esas flores creo, porque yo no la he sembrado. Porque tienen semillas, donde tiene sus flores las secan para recoger las semillas para sembrar."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a75"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a37"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Sí los siembran al mismo tiempo que el cempazúchitl."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a76"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a38"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Al mismo tiempo se da, porque se ocupa en todo santo, sé que se da en ese tiempo, no hay en esta temporada que yo sepa."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a77"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a40"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "No se da en temporada de seca."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a78"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a41"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "No sabemos si al sembrarla se va dar en este pueblo porque aqui se da muy poco."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a79"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a44"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Me llamo Raúl."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a80"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a46"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Tengo 46 años."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "REF_ANNOTATION": [
+                            {
+                                "ANNOTATION_ID": [
+                                    "a81"
+                                ],
+                                "ANNOTATION_REF": [
+                                    "a48"
+                                ],
+                                "ANNOTATION_VALUE": [
+                                    "Mi pueblo es Yoloxóchitl."
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "DEFAULT_LOCALE": [
+                    "en"
+                ],
+                "LINGUISTIC_TYPE_REF": [
+                    "Traducción"
+                ],
+                "PARENT_REF": [
+                    "Rey Castillo García"
+                ],
+                "PARTICIPANT": [
+                    "Rey Castillo García"
+                ],
+                "TIER_ID": [
+                    "RCG Translation"
+                ]
+            },
+            {
+                "DEFAULT_LOCALE": [
+                    "en"
+                ],
+                "LINGUISTIC_TYPE_REF": [
+                    "Traducción"
+                ],
+                "PARENT_REF": [
+                    "Raúl Felipe Margarito"
+                ],
+                "PARTICIPANT": [
+                    "Raúl Felipe Margarito"
+                ],
+                "TIER_ID": [
+                    "RFM Translation"
+                ]
+            }
+        ],
+        "LINGUISTIC_TYPE": [
+            {
+                "GRAPHIC_REFERENCES": [
+                    "false"
+                ],
+                "LINGUISTIC_TYPE_ID": [
+                    "Transcripción"
+                ],
+                "TIME_ALIGNABLE": [
+                    "true"
+                ]
+            },
+            {
+                "CONSTRAINTS": [
+                    "Symbolic_Association"
+                ],
+                "GRAPHIC_REFERENCES": [
+                    "false"
+                ],
+                "LINGUISTIC_TYPE_ID": [
+                    "Traducción"
+                ],
+                "TIME_ALIGNABLE": [
+                    "false"
+                ]
+            }
+        ],
+        "LOCALE": [
+            {
+                "COUNTRY_CODE": [
+                    "EN"
+                ],
+                "LANGUAGE_CODE": [
+                    "us"
+                ]
+            },
+            {
+                "COUNTRY_CODE": [
+                    "US"
+                ],
+                "LANGUAGE_CODE": [
+                    "en"
+                ]
+            }
+        ],
+        "LANGUAGE": [
+            {
+                "LANG_DEF": [
+                    "http://cdb.iso.org/lg/CDB-00130975-001"
+                ],
+                "LANG_ID": [
+                    "und"
+                ],
+                "LANG_LABEL": [
+                    "undetermined (und)"
+                ]
+            }
+        ],
+        "CONSTRAINT": [
+            {
+                "DESCRIPTION": [
+                    "Time subdivision of parent annotation's time interval, no time gaps allowed within this interval"
+                ],
+                "STEREOTYPE": [
+                    "Time_Subdivision"
+                ]
+            },
+            {
+                "DESCRIPTION": [
+                    "Symbolic subdivision of a parent annotation. Annotations refering to the same parent are ordered"
+                ],
+                "STEREOTYPE": [
+                    "Symbolic_Subdivision"
+                ]
+            },
+            {
+                "DESCRIPTION": [
+                    "1-1 association with a parent annotation"
+                ],
+                "STEREOTYPE": [
+                    "Symbolic_Association"
+                ]
+            },
+            {
+                "DESCRIPTION": [
+                    "Time alignable annotations within the parent annotation's time interval, gaps are allowed"
+                ],
+                "STEREOTYPE": [
+                    "Included_In"
+                ]
+            }
+        ],
+        "CONTROLLED_VOCABULARY": [
+            {
+                "CV_ID": [
+                    "TurnModeCV"
+                ],
+                "DESCRIPTION": [
+                    {
+                        "_": "All values that are allowed for Transcriber Turn.mode attribute",
+                        "LANG_REF": [
+                            "und"
+                        ]
+                    }
+                ],
+                "CV_ENTRY_ML": [
+                    {
+                        "CVE_ID": [
+                            "cveid0"
+                        ],
+                        "CVE_VALUE": [
+                            {
+                                "_": "spontaneous",
+                                "DESCRIPTION": [
+                                    ""
+                                ],
+                                "LANG_REF": [
+                                    "und"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "CVE_ID": [
+                            "cveid1"
+                        ],
+                        "CVE_VALUE": [
+                            {
+                                "_": "planned",
+                                "DESCRIPTION": [
+                                    ""
+                                ],
+                                "LANG_REF": [
+                                    "und"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "CV_ID": [
+                    "TurnFidelityCV"
+                ],
+                "DESCRIPTION": [
+                    {
+                        "_": "All values that are allowed for Transcriber Turn.fidelity attribute",
+                        "LANG_REF": [
+                            "und"
+                        ]
+                    }
+                ],
+                "CV_ENTRY_ML": [
+                    {
+                        "CVE_ID": [
+                            "cveid0"
+                        ],
+                        "CVE_VALUE": [
+                            {
+                                "_": "high",
+                                "DESCRIPTION": [
+                                    ""
+                                ],
+                                "LANG_REF": [
+                                    "und"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "CVE_ID": [
+                            "cveid1"
+                        ],
+                        "CVE_VALUE": [
+                            {
+                                "_": "medium",
+                                "DESCRIPTION": [
+                                    ""
+                                ],
+                                "LANG_REF": [
+                                    "und"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "CVE_ID": [
+                            "cveid2"
+                        ],
+                        "CVE_VALUE": [
+                            {
+                                "_": "low",
+                                "DESCRIPTION": [
+                                    ""
+                                ],
+                                "LANG_REF": [
+                                    "und"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "CV_ID": [
+                    "SectionTypeCV"
+                ],
+                "DESCRIPTION": [
+                    {
+                        "_": "All values that are allowed for Transcriber Section.type attribute",
+                        "LANG_REF": [
+                            "und"
+                        ]
+                    }
+                ],
+                "CV_ENTRY_ML": [
+                    {
+                        "CVE_ID": [
+                            "cveid0"
+                        ],
+                        "CVE_VALUE": [
+                            {
+                                "_": "report",
+                                "DESCRIPTION": [
+                                    ""
+                                ],
+                                "LANG_REF": [
+                                    "und"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "CVE_ID": [
+                            "cveid1"
+                        ],
+                        "CVE_VALUE": [
+                            {
+                                "_": "nontrans",
+                                "DESCRIPTION": [
+                                    ""
+                                ],
+                                "LANG_REF": [
+                                    "und"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "CVE_ID": [
+                            "cveid2"
+                        ],
+                        "CVE_VALUE": [
+                            {
+                                "_": "filler",
+                                "DESCRIPTION": [
+                                    ""
+                                ],
+                                "LANG_REF": [
+                                    "und"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "CV_ID": [
+                    "TurnChannelCV"
+                ],
+                "DESCRIPTION": [
+                    {
+                        "_": "All values that are allowed for Transcriber Turn.channel attribute",
+                        "LANG_REF": [
+                            "und"
+                        ]
+                    }
+                ],
+                "CV_ENTRY_ML": [
+                    {
+                        "CVE_ID": [
+                            "cveid0"
+                        ],
+                        "CVE_VALUE": [
+                            {
+                                "_": "telephone",
+                                "DESCRIPTION": [
+                                    ""
+                                ],
+                                "LANG_REF": [
+                                    "und"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "CVE_ID": [
+                            "cveid1"
+                        ],
+                        "CVE_VALUE": [
+                            {
+                                "_": "studio",
+                                "DESCRIPTION": [
+                                    ""
+                                ],
+                                "LANG_REF": [
+                                    "und"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
