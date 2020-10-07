@@ -19,11 +19,27 @@
   <input type="text" id="titulo" name="titulo"><br><br>
   <label for="descripcion">Descripcion:</label>
   <input type="text" id="descripcion" name="descripcion"><br><br>
-
-  <label for="genero">Genero:</label>
+   <label for="coleccion">Coleccion:</label>
+     <div>
+  <datalist id="collections"></datalist>
+  <select id="collections">
+     {{#each collections}}
+          <option 
+          id = '{{_id}}'
+          value = "{{name}}">
+        {{name}}
+        </option>
+        {{/each}}
+        </select>
+ </datalist>
+ </div>
+ <label for="genero">Genero:</label>
   <input type="text" id="genero" name="genero"><br><br>
-  <label for="duracion">Duracion</label>
+  <label for="duracion">Duracion</label><br><br>
   <label for="mp3_url">MP3</label>
   <input type="text" id="mp3_url" name="mp3_url"><br><br>
+
+ 
+  
 <button type="submit">Submit</button>
 </form>

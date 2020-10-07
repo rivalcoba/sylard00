@@ -1,6 +1,31 @@
 <div>Audio annotatios 1 uno </div>
 <table>
+ <thead>
     <tr>
-        <td></td>
+      <th>Titulo</th>
+      <th>Lengua Terminal</th>
+      <th>Gpo de Lenguas</th>
+      <th>Comunidad</th>
+      <th>Hablantes</th>
+      <th>Genero y Duración</th>
+       <th>Acciones</th>
     </tr>
+  </thead>
+  <tbody>
+      {{#each audioannotations}}
+  <tr>
+
+        <td> {{titulo}} </td>
+        <td> {{genero}} </td>
+   <td> </td>
+      <td> </td>
+         <td> </td>
+            <td> </td>
+              <td>acciones </td>
+
+
+       </tr>
+      {{/each}}    
+  </tbody>
 </table>
+

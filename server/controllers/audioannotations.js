@@ -5,13 +5,29 @@ import Audioannotations from '@models/AudioAnnotations'
 
 
 const index = async (req, res) => {
+  // Get Collecionts
+  //const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
+const audioannotationsDocs = await Audioannotations.find({user: req.user._id}).populate('user').exec()
+let audioannotations  = audioannotationsDocs.map(audioannotation=>{
+    return audioannotation.toJSON()
+  })
   res.render('audioannotations/index', {
-    
+   //enviar 
+   audioannotations 
+
   })
 }
 
+
 const createAudioannotation = async (req, res) => {
+ const collectionsDocs = await Collection.find({user:req.user._id}).populate('user').exec()
+ let collections  = collectionsDocs.map(collection=>{
+    return collection.toJSON()
+  })
+  console.log('Aqui')
+  console.log(collections)
   res.render('audioannotations/create', {
+collections
     
   })
 }
@@ -30,6 +46,8 @@ const addAudioannotation = async (req, res) => {
     mp3_url
   }
  audioannotations.user = req.user._id
+
+
 
   //const audioannotations = new Audioannotations({
   //  titulo: req.body.titulo,
@@ -60,15 +78,17 @@ const addAudioannotation = async (req, res) => {
   //   name : "IvanAA",
   //   titulo : "GamEaf"
   // }
+  
   const AudioannotationDoc = await Audioannotations.create(audioannotations)
-  console.log(`addAudioannotation> Audioannotation Created: ${AudioannotationDoc}`)
+  //console.log(`addAudioannotation> Audioannotation Created: ${AudioannotationDoc}`)
   // Se encuentra usuario  
-  console.log(req.body);
-  console.log('Aqui')
-  console.log(res);
-  res.send('POST request to the homepage')
+  //console.log(req.body);
+  //console.log('Aqui')
 
-  // res.redirect('/collections')
+
+  //res.send('POST request to the homepage')
+
+  res.redirect('/audioannotations')
 }
 const editAudioannotation = async (req, res) => {
   res.render('audioannotations/edit', {
