@@ -18,15 +18,16 @@
  <label for="titulo">Titulo:</label>
   <input type="text" id="titulo" name="titulo"><br><br>
   <label for="descripcion">Descripcion:</label>
-  <input type="text" id="descripcion" name="descripcion"><br><br>
+  <input type="text" id="description" name="description"><br><br>
    <label for="coleccion">Coleccion:</label>
      <div>
-  <datalist id="collections"></datalist>
-  <select id="collections">
+  <datalist id="colection"></datalist>
+  <select id="colection">
      {{#each collections}}
           <option 
           id = '{{_id}}'
-          value = "{{name}}">
+          value = "{{name}}" 
+          name= "{{name}}">
         {{name}}
         </option>
         {{/each}}

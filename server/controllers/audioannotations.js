@@ -36,17 +36,22 @@ const addAudioannotation = async (req, res) => {
     titulo,
     description,
     genero,
-    mp3_url
+    mp3_url,
+    colection
+
   } = req.body
 
   let audioannotations = {
     titulo,
     description,
     genero,
-    mp3_url
+    mp3_url,
+    colection
   }
+ console.log('Aqui') 
+ console.log(audioannotations) 
  audioannotations.user = req.user._id
-
+//audioannotations.colection=req.colection._id
 
 
   //const audioannotations = new Audioannotations({

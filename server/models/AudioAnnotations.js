@@ -6,7 +6,7 @@ const AudioAnnotationsSchema = new Schema({
  // a_id:String,
   eaf:String,
   titulo:String,
-  description: { type: String },
+  description: String,
   genero:String,
   duracion:String,
   mp3_url:String,
