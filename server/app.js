@@ -15,6 +15,9 @@ import i18n from 'i18n-express'
 import MongoStore from 'connect-mongo'
 import mongoose from 'mongoose'
 
+import multer from 'multer'
+import bodyparser from 'body-parser'
+
 // Import config
 import netConfig from '@config/net'
 import templateEngine from '@config/template-engine'
@@ -129,6 +132,25 @@ app.use(function(err, req, res) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//multer
+app.use(bodyparser.urlencoded({extended: true}));
+//app.use(multer({ dest: './uploads/'}).single('myFile')); // added the single() method
+app.use(multer({ dest: './uploads/'}).single('myFile'));
+//app.use(function(req, res, next) {
+
+//var storage = multer.diskStorage({
+//  destination: function (req, file, cb) {
+//    cb(null, 'uploads')
+//  },
+//  filename: function (req, file, cb) {
+//    cb(null, file.fieldname + '-' + Date.now())
+//  }
+//})
+ 
+//var upload = multer({ storage: storage })
+
+//})
 
 //module.exports = app;
 export default app;

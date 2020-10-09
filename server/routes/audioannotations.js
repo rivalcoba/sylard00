@@ -23,6 +23,13 @@ router.post(
  audioannotationsController.addAudioannotation
 )
 
+router.post(
+  '/uploadfile',
+   ensureAuthenticated,
+  ensureColabUser,
+audioannotationsController.uploadfileAudioannotation
+)
+
 // Show Form to create a audioannotation
 router.get(
   '/create',

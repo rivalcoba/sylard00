@@ -3,7 +3,7 @@ import Glottolog from '@models/Glottolog'
 import Locations from '@models/Location'
 import Audioannotations from '@models/AudioAnnotations'
 
-
+import multer from 'multer'
 const index = async (req, res) => {
   // Get Collecionts
   //const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
@@ -41,6 +41,7 @@ const addAudioannotation = async (req, res) => {
 
   } = req.body
 
+  
   let audioannotations = {
     titulo,
     description,
@@ -48,8 +49,8 @@ const addAudioannotation = async (req, res) => {
     mp3_url,
     colection
   }
- console.log('Aqui') 
- console.log(audioannotations) 
+ //console.log('Aqui') 
+ //console.log(audioannotations) 
  audioannotations.user = req.user._id
 //audioannotations.colection=req.colection._id
 
@@ -95,6 +96,37 @@ const addAudioannotation = async (req, res) => {
 
   res.redirect('/audioannotations')
 }
+//uploadfile
+//aqui me quede
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/uploads/profilePics')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+var upload = multer({ storage: storage }).single('myFile');
+
+const uploadfileAudioannotation = async (req, res ,err) => {
+  var profilePicUrl = '';
+ 
+    if (err) {
+            // An error occurred when uploading
+             console.log('Error de File')
+             console.log(req.file)
+
+        } else {
+            console.log(req.file);
+            profilePicUrl = req.file.filename;
+
+            User.update({username: req.user.username}, {'profilePic.uploaded': true, 'profilePic.link': profilePicUrl}, function(err, doc){
+            console.log('THIS IS DONE')
+            });
+        }
+
+}
 const editAudioannotation = async (req, res) => {
   res.render('audioannotations/edit', {
     
@@ -109,5 +141,6 @@ export default {
   createAudioannotation,
   editAudioannotation,
   deleteAudioannotaion, 
-  addAudioannotation
+  addAudioannotation,
+  uploadfileAudioannotation
 }

@@ -1,4 +1,15 @@
 <div> Crear audioannotations</div>
+<!--
+<form action="/audioannotations/uploadfile" enctype="multipart/form-data" method="POST"> 
+   <input type="file" name="myFile" />
+   <input type="submit" value="Upload a file"/>
+</form>-->
+<form action="/audioannotations/uploadfile" method="post" id="form" enctype="multipart/form-data">
+            <label for="profilePic"></label>
+            <input id=profilePic type='file' name='myFile'  />
+            <input type="submit">
+        </form>
+
 <form class="col s12" action="/audioannotations/add" method="post">
 <!--
 <input type="file"
@@ -15,6 +26,7 @@
   mp3_url:String,
   https://code.tutsplus.com/es/tutorials/file-upload-with-multer-in-node--cms-32088  -->    
 
+
  <label for="titulo">Titulo:</label>
   <input type="text" id="titulo" name="titulo"><br><br>
   <label for="descripcion">Descripcion:</label>
@@ -22,11 +34,11 @@
    <label for="coleccion">Coleccion:</label>
      <div>
   <datalist id="colection"></datalist>
-  <select id="colection">
+  <select id="colection" name="colection">
      {{#each collections}}
           <option 
-          id = '{{_id}}'
-          value = "{{name}}" 
+          {{!-- id = '{{_id}}' --}}
+          value = "{{_id}}" 
           name= "{{name}}">
         {{name}}
         </option>
