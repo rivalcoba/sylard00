@@ -18,6 +18,9 @@
       <th>Lengua Terminal</th>
       <th>Grupo de lenguas</th>
       <th>Comunidades</th>
+      {{#ifSu user}}
+      <th>Propietario</th>
+      {{/ifSu}}
       <th>Acciones</th>
     </tr>
   </thead>
@@ -48,6 +51,15 @@
           <div class="divider"></div>
         {{/each}}        
       </td>
+
+      {{#ifSu ../user}}
+        <td>
+            <i 
+              class="fa fa-user-circle-o" 
+              style="color: rgb(21, 193, 209);" 
+              aria-hidden="true"></i> {{user.name}}
+        </td>
+      {{/ifSu}}
       
       <td>
         <i 

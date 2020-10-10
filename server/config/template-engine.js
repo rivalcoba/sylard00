@@ -2,6 +2,9 @@ import exphbs from 'express-handlebars'
 import path from 'path'
 import {ifColaborator} from '@hbsHelpers/index'
 import {ifVisitor} from '@hbsHelpers/index'
+import {ifSu} from '@hbsHelpers/index'
+import {hideIfSu} from '@hbsHelpers/index'
+
 
 // Extract
 
@@ -12,7 +15,9 @@ export default (app) => {
         defaultLayout: 'main',
         helpers:{
             ifColaborator: ifColaborator,
-            ifVisitor: ifVisitor
+            ifVisitor: ifVisitor,
+            ifSu: ifSu,
+            hideIfSu: hideIfSu
         }
     }))
 

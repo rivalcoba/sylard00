@@ -8,8 +8,11 @@ import Locations from '@models/Location'
 // List all the collaborators collections
 // Read and list all the Collaborators Collections
 const index = async (req, res) => {
+
+  // Query
+  let query = res.locals.user.role == 'su' ? {} : {user : req.user._id}
   // Get Collecionts
-  const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
+  const collectionsDocs = await Collection.find(query).populate('user').exec()
 
   // Collections to JSON
   let collections = collectionsDocs.map(collection=>{
@@ -23,7 +26,7 @@ const index = async (req, res) => {
 }
 
 const createCollection = async(req, res) => {
-  // Getting languages 
+  // Getting languages
   try {
     const glottologs = await Glottolog.find(
       {
@@ -32,15 +35,15 @@ const createCollection = async(req, res) => {
       },
       'gid name parent_id'
     ).exec()
-    
+
     const entities = await Locations.distinct('Nom_Ent')
-    
+
     let languages = glottologs.map((language)=>{
       let nlang = {}
       nlang = language.toJSON()
       return nlang
     })
-  
+
     res.render('collections/create',{
       languages,
       entities
@@ -66,6 +69,18 @@ const addCollection = async (req, res) => {
 const deleteCollection = async (req, res) => {
   const collection_id = req.params.collection_id
   try {
+
+    // Owner Validation
+    let collectionDoc = await Collection.findById(collection_id).exec()
+    // Am I the collection owner or su?
+    if (
+      String(collectionDoc.user) != String(req.user._id) && 
+      String(req.user.role) != 'su') {
+      // You are not the collection owner
+      req.flash('error_msg', 'No eres el propietario de esta colección')
+      return res.redirect('/collections')
+    }
+
     const result = await Collection.deleteOne({ _id: collection_id }).exec()
     console.log(`deleteCollection> Result: ${result}`)
     res.redirect('/collections')
@@ -83,8 +98,10 @@ const editCollectionForm = async (req, res) => {
   try {
     let collectionDoc = await Collection.findById(collection_id).exec()
 
-    // Im the collection owner?
-    if (String(collectionDoc.user) != String(req.user._id)) {
+    // Am I the collection owner or su?
+    if (
+      String(collectionDoc.user) != String(req.user._id) && 
+      String(req.user.role) != 'su') {
       // You are not the collection owner
       req.flash('error_msg', 'No eres el propietario de esta colección')
       return res.redirect('/collections')
@@ -96,7 +113,7 @@ const editCollectionForm = async (req, res) => {
       req.flash('error_msg', 'No se encontro la coleccion solicitada')
       return res.redirect('/dashboard')
     }
-    
+
     collectionDoc = collectionDoc.toJSON()
     // parsing Lanugages
     collectionDoc.languages = JSON.stringify(collectionDoc.languages)
@@ -121,9 +138,11 @@ const editCollection = async (req, res) => {
   let collectionDoc
   try {
     collectionDoc = await Collection.findById(collection_id).exec()
-
-    // Im the collection owner?
-    if (String(collectionDoc.user) != String(req.user._id)) {
+    
+    // am I the collection owner or su?
+    if (
+      String(collectionDoc.user) != String(req.user._id) && 
+      String(req.user.role) != 'su') {
       // You are not the collection owner
       req.flash('error_msg', 'No eres el propietario de esta colección')
       return res.redirect('/dashboard')
