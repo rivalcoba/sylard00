@@ -57,10 +57,30 @@
 <button type="submit">Submit</button>
 </form>
 <script> 
-   //const $form    =document.querySelector('#form')
-   //$form.addEventListener('submit', (event) =>  {
-    //  event.preventDefault()
-   //   const formData  =new FormData (event.currentTarget)
-      //debugger
+   const $form    =document.querySelector('#form')
+   $form.addEventListener('submit', (event) =>  {
+     event.preventDefault()
+      const formData  =new FormData (event.currentTarget)
+   //debugger
+   longitudmp3();
    })  
+
+function longitudmp3(mp3file){ 
+const mp3file = 'https://raw.githubusercontent.com/prof3ssorSt3v3/media-sample-files/master/doorbell.mp3'
+const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+const request = new XMLHttpRequest()
+request.open('GET', mp3file, true)const mp3file = 'https://raw.githubusercontent.com/prof3ssorSt3v3/media-sample-files/master/doorbell.mp3'
+
+request.responseType = 'arraybuffer'
+request.onload = function() {
+    audioContext.decodeAudioData(request.response,
+        function(buffer) {
+            let duration = buffer.duration
+            console.log(duration)
+            document.write(duration)
+        }
+    )
+}
+request.send()
+}
 </script>
