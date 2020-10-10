@@ -27,10 +27,11 @@ router.post(
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads')
+   // cb(null, 'uploads')
+   cb(null, 'server/public/eaf')
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now()+'.eaf')
+    cb(null,file.originalname+'-' + Date.now()+'.eaf')
   }
 })
 var upload = multer({ storage: storage })
