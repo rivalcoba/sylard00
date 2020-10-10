@@ -4,13 +4,13 @@
    <input type="file" name="myFile" />
    <input type="submit" value="Upload a file"/>
 </form>-->
-<form action="/audioannotations/uploadfile" method="post" id="form" enctype="multipart/form-data">
+<form action="/audioannotations/uploadfile" method="POST" id="form" enctype="multipart/form-data">
             <label for="profilePic"></label>
             <input id=profilePic type='file' name='myFile'  />
             <input type="submit">
         </form>
 
-<form class="col s12" action="/audioannotations/add" method="post">
+<form class="col s12" action="/audioannotations/add" method="post" id='form2'>
 <!--
 <input type="file"
        id="eaf" name="eaf"
@@ -56,3 +56,11 @@
   
 <button type="submit">Submit</button>
 </form>
+<script> 
+   //const $form    =document.querySelector('#form')
+   //$form.addEventListener('submit', (event) =>  {
+    //  event.preventDefault()
+   //   const formData  =new FormData (event.currentTarget)
+      //debugger
+   })  
+</script>
