@@ -6,7 +6,7 @@
 </form>-->
 <form action="/audioannotations/uploadfile" method="POST" id="form" enctype="multipart/form-data">
             <label for="profilePic"></label>
-            <input id=profilePic type='file' name='myFile'  />
+            <input id="file" type='file' name="myFile"  />         
             <input type="submit">
         </form>
 
@@ -26,7 +26,7 @@
   mp3_url:String,
   https://code.tutsplus.com/es/tutorials/file-upload-with-multer-in-node--cms-32088  -->    
 
-
+   <input type="text" id="eaf" name="eaf">
  <label for="titulo">Titulo:</label>
   <input type="text" id="titulo" name="titulo"><br><br>
   <label for="descripcion">Descripcion:</label>
@@ -47,10 +47,11 @@
  </datalist>
  </div>
  <label for="genero">Genero:</label>
-  <input type="text" id="genero" name="genero"><br><br>
-  <label for="duracion">Duracion</label><br><br>
+  <input type="text" id="genero" name="genero"><br><br> 
   <label for="mp3_url">MP3</label>
   <input type="text" id="mp3_url" name="mp3_url"><br><br>
+   <label for="duracion">Duracion</label><br><br>
+    <input type="text" id="duracion" name="duracion" ><br><br>
 
  
   
@@ -62,25 +63,36 @@
      event.preventDefault()
       const formData  =new FormData (event.currentTarget)
    //debugger
-   longitudmp3();
+  // var longitud = "hola";
+   longitudmp3()
+   //formData.set('duration',longitud)
+   //console.log("longitud Final")
+   //console.log(longitudmp3())
    })  
 
-function longitudmp3(mp3file){ 
+
+function longitudmp3(){ 
+var duration;
 const mp3file = 'https://raw.githubusercontent.com/prof3ssorSt3v3/media-sample-files/master/doorbell.mp3'
 const audioContext = new (window.AudioContext || window.webkitAudioContext)()
 const request = new XMLHttpRequest()
-request.open('GET', mp3file, true)const mp3file = 'https://raw.githubusercontent.com/prof3ssorSt3v3/media-sample-files/master/doorbell.mp3'
-
+request.open('GET', mp3file, true)
 request.responseType = 'arraybuffer'
 request.onload = function() {
     audioContext.decodeAudioData(request.response,
         function(buffer) {
-            let duration = buffer.duration
+            var duration = buffer.duration
+            console.log("longitud")
             console.log(duration)
-            document.write(duration)
+            longitud = duration
+            var inputDuration = document.getElementById("duracion");
+            inputDuration.value = duration;
+            
+            //document.write(duration)
         }
     )
 }
 request.send()
+//return duration
 }
 </script>

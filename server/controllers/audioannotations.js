@@ -33,24 +33,31 @@ collections
 }
 const addAudioannotation = async (req, res) => {
   const {
-    titulo,
+    eaf,
+     titulo,
     description,
     genero,
     mp3_url,
-    colection
+    colection,
+    duracion
 
   } = req.body
 
   
   let audioannotations = {
+    eaf,
     titulo,
     description,
     genero,
     mp3_url,
-    colection
+    colection,
+    duracion
   }
- //console.log('Aqui') 
+ console.log('Duracion')
+ console.log(req.body) 
  //console.log(audioannotations) 
+ //audioannotations.eaf= req.file.filename
+ console.log(req.file)
  audioannotations.user = req.user._id
 //audioannotations.colection=req.colection._id
 
