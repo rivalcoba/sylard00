@@ -73,13 +73,36 @@ const resetUserPassword = async (req, res)=>{
     res.redirect('/')
 }
 
-const index = (req, res)=>{
-    res.send('user list')
+const index = async (req, res) => {
+  const usersIdsDocs = await User.find().exec()
+
+  // Collections to JSON
+  let usersIds = usersIdsDocs.map(userId => {
+    return userId.toJSON()
+  })
+
+  res.render('user/index', { usersIds })
 }
 
 const api_getUsers = async (req, res)=>{
     const usersDocuments = await User.find().exec()
     res.status(200).json(usersDocuments)
+}
+
+const api_delUsers = async (req, res)=>{
+    let { usersIds } = req.body;
+    let query = { _id : { $in : typeof(usersIds) == 'string' ? [usersIds] : usersIds}}
+    // let Id = typeof(usersIds) == 'string' ? [usersIds] : usersIds
+    console.log(`Id: ${typeof(usersIds)}`)
+    console.log(`Id: ${usersIds}`)
+    try {
+        // let deletedUsers = await User.find({query}).exec()
+        let deletedUsers = await User.find(query).exec()
+        res.status(200).json({deletedUsers})
+    } catch (error) {
+        res.status(200).json({error})
+    }
+    // TODO: usar find y luego remove REf: https://intellipaat.com/community/27863/how-do-i-remove-documents-using-node-js-mongoose
 }
 
 export default{
@@ -90,5 +113,6 @@ export default{
     resetPassword,
     resetUserPassword,
     index,
-    api_getUsers
+    api_getUsers,
+    api_delUsers
 }

@@ -26,6 +26,7 @@ router.get('/reset/password', userController.resetPassword);
 router.put('/reset/password',confirmEmailAccount, userController.resetUserPassword);
 
 // API
-router.get('/api/getusers', userController.api_getUsers)
+router.get('/api/getusers', userController.api_getUsers);
+router.delete('/api/delusers', userController.api_delUsers);
 
 module.exports = router;
