@@ -74,6 +74,7 @@ const resetUserPassword = async (req, res)=>{
 }
 
 const index = async (req, res) => {
+    // TODO: Terminar esta sección
   const usersIdsDocs = await User.find().exec()
 
   // Collections to JSON
