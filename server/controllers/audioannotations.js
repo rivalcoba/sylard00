@@ -4,6 +4,8 @@ import Locations from '@models/Location'
 import Audioannotations from '@models/AudioAnnotations'
 
 import multer from 'multer'
+
+
 const index = async (req, res) => {
   // Get Collecionts
   //const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
@@ -53,11 +55,11 @@ const addAudioannotation = async (req, res) => {
     colection,
     duracion
   }
- console.log('Duracion')
- console.log(req.body) 
- //console.log(audioannotations) 
- //audioannotations.eaf= req.file.filename
- console.log(req.file)
+ //console.log('Duracion')
+ //console.log(req.body)
+  console.log('File')
+
+
  audioannotations.user = req.user._id
 //audioannotations.colection=req.colection._id
 
@@ -116,6 +118,7 @@ const file = req.file
     error.httpStatusCode = 400
     return next(error)
   }
+    
     res.send(file)
          
 
@@ -127,8 +130,17 @@ const editAudioannotation = async (req, res) => {
 }
 
 const deleteAudioannotaion = async (req, res) => {
-
+  const audioannotation_id = req.params.audioannotation_id
+  try {
+    const result = await Audioannotations.deleteOne({ _id: audioannotation_id }).exec()
+    console.log(`deleteAudioannotation> Result: ${result}`)
+    res.redirect('/audioannotations')
+  } catch (error) {
+    return res.status(400).json(error)
+  }
 }
+
+
 export default {
   index,
   createAudioannotation,

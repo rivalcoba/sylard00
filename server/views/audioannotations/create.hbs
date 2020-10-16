@@ -26,7 +26,7 @@
   mp3_url:String,
   https://code.tutsplus.com/es/tutorials/file-upload-with-multer-in-node--cms-32088  -->    
 
-   <input type="text" id="eaf" name="eaf">
+ <input type="text" id="eaf" name="eaf"><br><br>
  <label for="titulo">Titulo:</label>
   <input type="text" id="titulo" name="titulo"><br><br>
   <label for="descripcion">Descripcion:</label>
@@ -73,7 +73,10 @@
 
 function longitudmp3(){ 
 var duration;
-const mp3file = 'https://raw.githubusercontent.com/prof3ssorSt3v3/media-sample-files/master/doorbell.mp3'
+//const mp3file = 'https://raw.githubusercontent.com/prof3ssorSt3v3/media-sample-files/master/doorbell.mp3'
+//const mp3_f=document.getElementById("mp3_url");
+const mp3file = document.getElementById("mp3_url").value;
+//console.log(mp3file.value)
 const audioContext = new (window.AudioContext || window.webkitAudioContext)()
 const request = new XMLHttpRequest()
 request.open('GET', mp3file, true)

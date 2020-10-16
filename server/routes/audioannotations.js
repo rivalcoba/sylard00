@@ -10,6 +10,10 @@ import audioannotationsController from '@controllers/audioannotations'
 
 import multer from 'multer'
 
+var cors = require('cors')
+
+
+
 router.get(
   '/',
     ensureAuthenticated,
@@ -32,11 +36,13 @@ var storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     cb(null,file.originalname+'-' + Date.now()+'.eaf')
+   // save this on the app object as a configuration
+       
   }
 })
 var upload = multer({ storage: storage })
 router.post(
-  '/uploadfile',upload.single('myFile'),
+  '/uploadfile',upload.single('myFile'),cors(),
    ensureAuthenticated,
   ensureColabUser,
 audioannotationsController.uploadfileAudioannotation
@@ -45,7 +51,7 @@ audioannotationsController.uploadfileAudioannotation
 // Show Form to create a audioannotation
 router.get(
   '/create',
-  ensureAuthenticated,
+  ensureAuthenticated,cors(),
   ensureColabUser,
   audioannotationsController.createAudioannotation
 )
@@ -71,6 +77,16 @@ router.delete(
   ensureColabUser,
    audioannotationsController.deleteAudioannotaion
 )
+
+// Configurar cabeceras y cors https://filesamples.com/formats/mp3 //no funciona marca error en cors
+//router.get('/', function(req, res) {
+//    res.setHeader('Access-Control-Allow-Origin', '*');
+//    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+//    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+//    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+
+//    res.send('cors problem fixed:)');
+//});
 
 // Se exportan rutas
 export default router
