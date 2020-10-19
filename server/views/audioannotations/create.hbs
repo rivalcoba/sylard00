@@ -4,11 +4,17 @@
    <input type="file" name="myFile" />
    <input type="submit" value="Upload a file"/>
 </form>-->
+{{#unless filename}}
 <form action="/audioannotations/uploadfile" method="POST" id="form" enctype="multipart/form-data">
-            <label for="profilePic"></label>
-            <input id="file" type='file' name="myFile"  />         
-            <input type="submit">
-        </form>
+   <label for="profilePic"></label>
+   <input id="file" type='file' name="myFile" />
+   <input type="submit">
+</form>
+{{/unless}}
+
+
+{{#if filename}}
+<div>Archivo Cargado: {{filename}}</div>
 
 <form class="col s12" action="/audioannotations/add" method="post" id='form2'>
 <!--
@@ -24,9 +30,13 @@
   genero:String,
   duracion:String,
   mp3_url:String,
-  https://code.tutsplus.com/es/tutorials/file-upload-with-multer-in-node--cms-32088  -->    
+  https://code.tutsplus.com/es/tutorials/file-upload-with-multer-in-node--cms-32088  -->
 
- <input type="text" id="eaf" name="eaf"><br><br>
+<input value="{{filename}}" type="hidden" id="eaf" name="eaf" ><br><br>
+
+<label for="mp3_url">MP3</label>
+  <input type="text" id="mp3_url" name="mp3_url"><br><br>
+ 
  <label for="titulo">Titulo:</label>
   <input type="text" id="titulo" name="titulo"><br><br>
   <label for="descripcion">Descripcion:</label>
@@ -46,19 +56,60 @@
         </select>
  </datalist>
  </div>
- <label for="genero">Genero:</label>
-  <input type="text" id="genero" name="genero"><br><br> 
-  <label for="mp3_url">MP3</label>
-  <input type="text" id="mp3_url" name="mp3_url"><br><br>
-   <label for="duracion">Duracion</label><br><br>
+<div>
+  <div>
+        <label>Lengua Terminal</label>
+      <datalist id="languages"></datalist>
+  <select id="languages" name="lengua">
+     {{#each collections}}
+        {{#languages}}
+        {{#language}}
+          <option 
+          {{!-- id = '{{_id}}' --}}
+          value = "{{gid}}" 
+          name= "{{name}}">
+        {{name}}
+        </option>
+        {{/language}}
+         {{/languages}}
+        {{/each}}
+        </select>
+ </datalist>
+    </div>
+
+      <label>Comunidad a la que pertenece</label>
+       <div>
+  <datalist id="entities"></datalist>
+  <select id="colection" name="comunidad">
+     {{#each entities}}
+          <option 
+          {{!-- id = '{{_id}}' --}}
+          value = "{{_id}}" 
+          name= "{{name}}">
+        {{name}}
+        </option>
+        {{/each}}
+        </select>
+ </datalist>
+ </div>
+  
+
+    <label>Género a la que pertenece</label>
+     <input type="text" id="genero" name="genero"><br><br> 
+</div>
+
+
+  
+   <label for="duracion">Duracion</label>
     <input type="text" id="duracion" name="duracion" ><br><br>
 
  
   
 <button type="submit">Submit</button>
 </form>
+{{/if}}
 <script> 
-   const $form    =document.querySelector('#form')
+   const $form    =document.querySelector('#form5')
    $form.addEventListener('submit', (event) =>  {
      event.preventDefault()
       const formData  =new FormData (event.currentTarget)

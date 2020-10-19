@@ -21,31 +21,21 @@ let audioannotations  = audioannotationsDocs.map(audioannotation=>{
 }
 
 
-const createAudioannotation = async (req, res) => {
- const collectionsDocs = await Collection.find({user:req.user._id}).populate('user').exec()
- let collections  = collectionsDocs.map(collection=>{
-    return collection.toJSON()
-  })
-  console.log('Aqui')
-  console.log(collections)
-  res.render('audioannotations/create', {
-collections
-    
-  })
+const createAudioannotation =  (req, res) => {
+  // Getting languages
+  res.render('audioannotations/create')
 }
 const addAudioannotation = async (req, res) => {
   const {
     eaf,
-     titulo,
+    titulo,
     description,
     genero,
     mp3_url,
     colection,
     duracion
-
   } = req.body
 
-  
   let audioannotations = {
     eaf,
     titulo,
@@ -112,6 +102,7 @@ const addAudioannotation = async (req, res) => {
 
 
 const uploadfileAudioannotation = async (req, res ,next) => {
+
 const file = req.file
   if (!file) {
     const error = new Error('Please upload a file')
@@ -119,9 +110,16 @@ const file = req.file
     return next(error)
   }
     
-    res.send(file)
-         
-
+  try {
+    // Obtenuendo datos de las collections
+    const collectionsDocs = await Collection.find({user:req.user._id}).populate('user').exec()
+      let collections  = collectionsDocs.map(collection=>{
+         return collection.toJSON()
+       })
+      res.render("audioannotations/create",{ filename : file.filename, collections})
+  } catch (error) {
+    
+  }
 }
 const editAudioannotation = async (req, res) => {
   res.render('audioannotations/edit', {

@@ -35,7 +35,9 @@ var storage = multer.diskStorage({
    cb(null, 'server/public/eaf')
   },
   filename: function (req, file, cb) {
-    cb(null,file.originalname+'-' + Date.now()+'.eaf')
+    let fileName = file.originalname+'-' + Date.now()+'.eaf'
+    req.fname = fileName;
+    cb(null,fileName)
    // save this on the app object as a configuration
        
   }
