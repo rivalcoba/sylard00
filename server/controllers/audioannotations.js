@@ -33,7 +33,9 @@ const addAudioannotation = async (req, res) => {
     genero,
     mp3_url,
     colection,
-    duracion
+    duracion,
+    glottolog,
+    siglas,
   } = req.body
 
   let audioannotations = {
@@ -43,7 +45,9 @@ const addAudioannotation = async (req, res) => {
     genero,
     mp3_url,
     colection,
-    duracion
+    duracion,
+    glottolog,
+    siglas,
   }
  //console.log('Duracion')
  //console.log(req.body)
@@ -130,11 +134,11 @@ const editAudioannotation = async (req, res) => {
 const deleteAudioannotaion = async (req, res) => {
   const audioannotation_id = req.params.audioannotation_id
   try {
-    console.log("Borrar este")
+    //console.log("Borrar este")
     //console.log(req.)
     let audioannotationsDocs = await Audioannotations.findById(audioannotation_id).exec()
     const file =audioannotationsDocs.eaf
-    console.log(file);
+    //console.log(file);
     const result = await Audioannotations.deleteOne({ _id: audioannotation_id }).exec()
     console.log(`deleteAudioannotation> Result: ${result}`)
     //Borrado del archivo fisicamente

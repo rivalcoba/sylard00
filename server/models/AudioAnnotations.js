@@ -10,9 +10,11 @@ const AudioAnnotationsSchema = new Schema({
   genero:String,
   duracion:String,
   mp3_url:String,
-  location: { type: Schema.ObjectId, ref:"Locations" },
+  //location: { type: Schema.ObjectId, ref:"Locations" },
+  location:String,
   colection: { type: Schema.ObjectId, ref:"Collection" },
-  glottolog:{type:Schema.ObjectId,ref:"Glottologs"},
+  //glottolog:{type:Schema.ObjectId,ref:"Glottologs"},
+  glottolog:String,
   siglas:String,
     user:{ type: Schema.Types.ObjectId,ref: 'Users'},
   TIER: [

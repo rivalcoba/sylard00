@@ -60,13 +60,14 @@
   <div>
         <label>Lengua Terminal</label>
       <datalist id="languages"></datalist>
-  <select id="languages" name="lengua">
+  <select id="glottolog" name="glottolog">
      {{#each collections}}
         {{#languages}}
+        <option 
+        
         {{#language}}
-          <option 
-          {{!-- id = '{{_id}}' --}}
-          value = "{{gid}}" 
+         {{!-- id = '{{_id}}' --}}
+         value = "{{gid}}" 
           name= "{{name}}">
         {{name}}
         </option>
@@ -80,8 +81,8 @@
       <label>Comunidad a la que pertenece</label>
        <div>
   <datalist id="entities"></datalist>
-  <select id="colection" name="comunidad">
-     {{#each entities}}
+  <select id="colection" name="location">
+     {{#each collections}}
           <option 
           {{!-- id = '{{_id}}' --}}
           value = "{{_id}}" 
@@ -96,6 +97,8 @@
 
     <label>Género a la que pertenece</label>
      <input type="text" id="genero" name="genero"><br><br> 
+       <label>Siglas de Hablante</label>
+     <input type="text" id="siglas" name="siglas"><br><br> 
 </div>
 
 
