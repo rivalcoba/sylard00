@@ -1,26 +1,3 @@
-/* body {
-  padding: 50px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00b7ff;
-}
-h1 {
-  color: darkslategrey;
-}
-p {
-  color: mediumturquoise;
-}
-.logo {
-  width: 130px;
-  margin: auto;
-} */
-
-[v-cloak] {
-  display: none;
-}
-
 @charset "UTF-8";
 /* CSS Document */
 
@@ -3274,4 +3251,3 @@ h6.canal_hijo_compacto {
 #cabezal_audioanotaciones_superusuario {
 	background-color: var(--color-primario-principal-oscuro);
 }
-
