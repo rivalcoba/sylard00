@@ -16,10 +16,17 @@
   <tr>
 
         <td> {{titulo}} </td>
-        <td> {{genero}} </td>
-   <td> </td>
-      <td> </td>
-         <td> </td>
+        <td>  </td>
+   <td>{{gid}} </td>
+     <!--
+      <td>{{location}} </td>
+       <td>{{collection}} </td>
+-->    
+
+{{#each collections}}
+<td>Aqui {{name}}</td>
+{{/each}}
+         <td>{{genero}} </td>
             <td>{{duracion}} </td>
               <td>
                  <form class="center"
@@ -37,6 +44,10 @@
                 
 
               </td>
+              <td>
+                <a href="/audioannotations/create" class="waves-effect waves-light btn"><i class="fa fa-upload right"
+        aria-hidden="true"></i>Añadir Audioannotations</a> 
+                 </td>
 
 
        </tr>

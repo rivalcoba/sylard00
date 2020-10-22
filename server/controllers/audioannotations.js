@@ -8,14 +8,20 @@ import multer from 'multer'
 
 const index = async (req, res) => {
   // Get Collecionts
-  //const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
+const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
 const audioannotationsDocs = await Audioannotations.find({user: req.user._id}).populate('user').exec()
+// Collections to JSON
+  let collections = collectionsDocs.map(collection=>{
+    return collection.toJSON()
+  })
 let audioannotations  = audioannotationsDocs.map(audioannotation=>{
     return audioannotation.toJSON()
   })
+  // console.log("Aqui")
+ //console.log(collections)
   res.render('audioannotations/index', {
    //enviar 
-   audioannotations 
+   audioannotations,collections 
 
   })
 }
@@ -34,7 +40,8 @@ const addAudioannotation = async (req, res) => {
     mp3_url,
     colection,
     duracion,
-    glottolog,
+    location,
+    gid,
     siglas,
   } = req.body
 
@@ -46,7 +53,8 @@ const addAudioannotation = async (req, res) => {
     mp3_url,
     colection,
     duracion,
-    glottolog,
+    location,
+    gid,
     siglas,
   }
  //console.log('Duracion')

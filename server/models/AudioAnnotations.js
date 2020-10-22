@@ -14,7 +14,7 @@ const AudioAnnotationsSchema = new Schema({
   location:String,
   colection: { type: Schema.ObjectId, ref:"Collection" },
   //glottolog:{type:Schema.ObjectId,ref:"Glottologs"},
-  glottolog:String,
+  gid:String,//cambiar por L_gid
   siglas:String,
     user:{ type: Schema.Types.ObjectId,ref: 'Users'},
   TIER: [

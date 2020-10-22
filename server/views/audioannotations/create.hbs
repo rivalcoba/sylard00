@@ -58,9 +58,9 @@
  </div>
 <div>
   <div>
-        <label>Lengua Terminal</label>
+        <label>Lengua Terminal y Grupo de lenguas</label>
       <datalist id="languages"></datalist>
-  <select id="glottolog" name="glottolog">
+  <select id="glottolog" name="gid">
      {{#each collections}}
         {{#languages}}
         <option 
@@ -69,9 +69,12 @@
          {{!-- id = '{{_id}}' --}}
          value = "{{gid}}" 
           name= "{{name}}">
-        {{name}}
-        </option>
-        {{/language}}
+        {{name}}       
+        {{/language}}     
+            {{#LanguageGroup}}
+          --- {{name}} 
+          </option>
+           {{/LanguageGroup}}                   
          {{/languages}}
         {{/each}}
         </select>
@@ -83,12 +86,14 @@
   <datalist id="entities"></datalist>
   <select id="colection" name="location">
      {{#each collections}}
+     {{#localities}}
           <option 
           {{!-- id = '{{_id}}' --}}
           value = "{{_id}}" 
           name= "{{name}}">
-        {{name}}
+        {{Nom_Mun}} {{Nom_Ent}}
         </option>
+        {{/localities}}
         {{/each}}
         </select>
  </datalist>
