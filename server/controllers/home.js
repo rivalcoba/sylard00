@@ -9,7 +9,7 @@ const index = (req, res) => {
   if (res.locals.user) {
     res.redirect('/dashboard')
   } else {
-    res.render('index/welcome', {})
+    res.render('index/home', {})
   }
 }
 const contact = (req, res) => {
