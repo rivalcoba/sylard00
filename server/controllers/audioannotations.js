@@ -8,20 +8,63 @@ import multer from 'multer'
 
 const index = async (req, res) => {
   // Get Collecionts
-const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
-const audioannotationsDocs = await Audioannotations.find({user: req.user._id}).populate('user').exec()
+//const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
+
+
 // Collections to JSON
-  let collections = collectionsDocs.map(collection=>{
-    return collection.toJSON()
-  })
+// const audioannotationsDocs2 = await Audioannotations.aggregate([
+//    { "$match": { "user": req.user._id } },
+   
+//   {
+//     $lookup:
+//     {
+//       from: "Collection",
+//       localField:"location",
+//       foreignField:"localities._id",
+//       as:"localidades"
+
+//     }    
+//   }
+// ]).exec(function(err, results){
+//     console.log(results);
+//  })
+
+console.log("Aqui")
+
+const audioannotationsDocs = await Audioannotations.find({user: req.user._id}).populate('user').populate('colection').exec()
+
+let locality_found;
 let audioannotations  = audioannotationsDocs.map(audioannotation=>{
     return audioannotation.toJSON()
   })
+
+audioannotationsDocs.forEach((audioannotation,index) =>{
+  let loc_id = audioannotation.location;
+  audioannotation.colection.localities.forEach(location => {
+    console.log(`>ln40> loc_id: ${loc_id} - ${location._id} - ${index} - ${location.Nom_Loc}`);
+    if(String(loc_id) === String(location._id)){
+    console.log(`>>>>> ENCONTRADO: ln40> loc_id: ${loc_id} - ${location._id} - ${index} - ${location.Nom_Loc}`);
+      console.log("Antes de asignar")
+      console.log(location)
+      audioannotationsDocs[index].location =JSON.stringify(location);
+      console.log("Asignado")
+      console.log(JSON.parse(audioannotationsDocs[index].location))
+
+    }
+  });
+});
+
+// let collections = collectionsDocs.map(collection=>{
+//   return collection.toJSON()
+// })
+
+return res.status(200).json(audioannotationsDocs);
+
   // console.log("Aqui")
  //console.log(collections)
   res.render('audioannotations/index', {
    //enviar 
-   audioannotations,collections 
+   audioannotations
 
   })
 }
