@@ -80,6 +80,12 @@ router.delete(
    audioannotationsController.deleteAudioannotaion
 )
 
+router.get(
+  '/vuetest',
+   ensureAuthenticated,
+  ensureColabUser,
+   audioannotationsController.vuetestAudioannotaion
+   )
 // Configurar cabeceras y cors https://filesamples.com/formats/mp3 //no funciona marca error en cors
 //router.get('/', function(req, res) {
 //    res.setHeader('Access-Control-Allow-Origin', '*');

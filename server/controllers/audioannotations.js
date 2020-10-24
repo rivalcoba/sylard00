@@ -206,11 +206,18 @@ const deleteAudioannotaion = async (req, res) => {
 }
 
 
+const vuetestAudioannotaion = async (req, res) => {
+  res.render('audioannotations/vuetest', {
+    
+  })
+}
+
 export default {
   index,
   createAudioannotation,
   editAudioannotation,
   deleteAudioannotaion, 
   addAudioannotation,
-  uploadfileAudioannotation
+  uploadfileAudioannotation,
+  vuetestAudioannotaion
 }
