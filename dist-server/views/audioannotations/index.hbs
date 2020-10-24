@@ -1,6 +1,54 @@
-<div>Audio annotatios 1 uno </div>
+<div>Audio annotatios  </div>
 <table>
+ <thead>
     <tr>
-        <td></td>
+      <th>Titulo</th>
+      <th>Lengua Terminal</th>
+      <th>Gpo de Lenguas</th>
+      <th>Comunidad</th>
+      <th>Hablantes</th>
+      <th>Genero y Duración</th>
+       <th>Acciones</th>
     </tr>
+  </thead>
+  <tbody>
+      {{#each audioannotations}}
+  <tr>
+
+        <td> {{titulo}} </td>
+        <td>  </td>
+   <td>{{gid}} </td>
+     <!--
+      <td>{{location}} </td>
+       <td>{{collection}} </td>
+-->    
+         <td>Aqui {{localidades.Nom_Ent}} </td> 
+         <td>{{genero}} </td>
+            <td>{{duracion}} </td>
+              <td>
+                 <form class="center"
+              action="/audioannotations/delete/{{_id}}?_method=DELETE" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <a
+                onclick="this.parentNode.submit()">
+                <i 
+                  class="fa fa-trash-o"
+                  aria-hidden="true" 
+                  style="color: red;"></i> 
+                Eliminar
+              </a>
+            </form>
+                
+
+              </td>
+              <td>
+                <a href="/audioannotations/create" class="waves-effect waves-light btn"><i class="fa fa-upload right"
+        aria-hidden="true"></i>Añadir Audioannotations</a> 
+                 </td>
+
+
+       </tr>
+      {{/each}}    
+  </tbody>
 </table>
+
