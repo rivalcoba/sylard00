@@ -11,7 +11,8 @@ const AudioAnnotationsSchema = new Schema({
   duracion:String,
   mp3_url:String,
   //location: { type: Schema.ObjectId, ref:"Locations" },
-  location:String,
+   location:{type: Object},
+  //location:String,
   colection: { type: Schema.ObjectId, ref:"Collection" },
   //glottolog:{type:Schema.ObjectId,ref:"Glottologs"},
   gid:String,//cambiar por L_gid

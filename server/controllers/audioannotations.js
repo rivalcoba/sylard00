@@ -34,9 +34,6 @@ console.log("Aqui")
 const audioannotationsDocs = await Audioannotations.find({user: req.user._id}).populate('user').populate('colection').exec()
 
 let locality_found;
-let audioannotations  = audioannotationsDocs.map(audioannotation=>{
-    return audioannotation.toJSON()
-  })
 
 audioannotationsDocs.forEach((audioannotation,index) =>{
   let loc_id = audioannotation.location;
@@ -46,19 +43,23 @@ audioannotationsDocs.forEach((audioannotation,index) =>{
     console.log(`>>>>> ENCONTRADO: ln40> loc_id: ${loc_id} - ${location._id} - ${index} - ${location.Nom_Loc}`);
       console.log("Antes de asignar")
       console.log(location)
-      audioannotationsDocs[index].location =JSON.stringify(location);
+      audioannotationsDocs[index].location =location;
       console.log("Asignado")
-      console.log(JSON.parse(audioannotationsDocs[index].location))
+      console.log(audioannotationsDocs[index].location)
 
     }
   });
 });
 
+let audioannotations  = audioannotationsDocs.map(audioannotation=>{
+    return audioannotation.toJSON()
+  })
+
 // let collections = collectionsDocs.map(collection=>{
 //   return collection.toJSON()
 // })
 
-return res.status(200).json(audioannotationsDocs);
+//return res.status(200).json(audioannotationsDocs);
 
   // console.log("Aqui")
  //console.log(collections)
