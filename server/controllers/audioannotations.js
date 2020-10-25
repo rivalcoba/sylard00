@@ -49,6 +49,19 @@ audioannotationsDocs.forEach((audioannotation,index) =>{
 
     }
   });
+  let glotid=audioannotation.gid;
+    audioannotation.colection.languages.forEach(gid => {
+    //console.log(`>ln40> loc_id: ${loc_id} - ${gid._id} - ${index} - ${gid.Nom_Loc}`);
+    if(String(glotid) === String(gid._id)){
+    //console.log(`>>>>> ENCONTRADO: ln40> loc_id: ${loc_id} - ${gid._id} - ${index} - ${gid.Nom_Loc}`);
+      //console.log("Antes de asignar")
+      //console.log(gid)
+      audioannotationsDocs[index].gid =gid;
+      //console.log("Asignado")
+      //console.log(audioannotationsDocs[index].gid)
+
+    }
+  });
 });
 
 let audioannotations  = audioannotationsDocs.map(audioannotation=>{
