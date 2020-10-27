@@ -1,215 +1,38 @@
-<nav class="blue darken-4">
-  <div class="container">
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo">
-        Sylard BT
-      </a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-bars"></i></a>      
-      {{!-- Rigth Nav --}}
-      <ul class="right hide-on-med-and-down">
-        <!-- SI ES UN SUARIO -->
-        {{#if user}}
-          {{#hideIfSu user}}
-            <li>
-              <a href="/dashboard">
-                <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
-              </a>
-            </li>
-          {{/hideIfSu}}
-          {{#ifColaborator user}}
-            <li>
-              <a href="/collections">
-                <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
-              </a>
-            </li>
-          {{/ifColaborator}}
-          {{#ifSu user}}
-            <li>
-              <a href="/collections">
-                <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
-              </a>
-          </li>
-          {{/ifSu}}
-          <li>
-            <a class="dropdown-trigger" href="#!" data-target="settings_dropdown">
-              <div style="padding-left: 50px; padding-right: 50px;" class="chip">
-                <img src="{{user.image}}" alt="Contact Person">
-                {{user.name}}
-              </div>
-              {{!-- {{translation.SETTINGS}}
-              <i class="fa fa-cog"></i> --}}
-            </a>
-          </li>
-        {{else}}
-          <li><a href="/auth/login">
-              <i class="fa fa-sign-in"></i> {{translation.LOGIN}}</a>
-          </li>
-          {{#unless onRegisterPage}}
-            <li>
-              <a href="/auth/register">
-                <i class="fa fa-user-plus" aria-hidden="true"></i> {{translation.REGISTRATION}}
-              </a>
-            </li>
-          {{/unless}}
-          {{#if es}}
-            <li>
-              <a href="" onclick="myI18n.setLang('en')">
-                <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
-              </a>
-            </li>
-          {{else}}
-            <li>
-              <a href="" onclick="myI18n.setLang('es')">
-                <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
-              </a>
-            </li>
-          {{/if}}
-        {{/if}}
-      </ul>
+<div class="container-fluid back_aqua">
+  <!--INICIA barra de navegacion superior-->
+  <nav class="container contenedor_ancho_area_principal">
+    <div class="contenedor_switch float_left">
+      <label class="texto" for="checkbox">
+        ESP
+      </label>
+      <label class="switch">
+        <input type="checkbox" />
+        <span class="slider round"></span>
+      </label>
+      <label class="texto" for="checkbox">
+        ENG
+      </label>
     </div>
-  </div>
-</nav>
-
-{{!-- breadcrumb --}}
-{{!-- <nav>
-  <div class="nav-wrapper">
-    <div class="col s12">
-      <a href="#!" class="breadcrumb">First</a>
-      <a href="#!" class="breadcrumb">Second</a>
-      <a href="#!" class="breadcrumb">Third</a>
-    </div>
-  </div>
-</nav> --}}
-
-{{!-- SIDE MENU --}}
-<ul class="sidenav" id="mobile-demo">
-  {{#if user}}
-    <div class="center" style="padding-top: 10px;">
-      <div style="padding-right: 80px; padding-left: 80px;" class="chip">
-        <img src="{{user.image}}" alt="Contact Person">
-        {{user.name}}
-      </div>
-    </div>
-    {{#hideIfSu user}}
-    <li>
-      <a href="/dashboard"><i class="fa fa-table"></i>{{translation.COLLECTIONS}}
+    <div class="barra_superior_elemento float_left active">
+      <a href="/">
+        <span class="icono icon-home1"></span>
+        SYLARD
       </a>
-    </li>
-    {{/hideIfSu}}
-
-    {{#ifColaborator user}}
-      <li>
-        <a href="/collections">
-          <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
-        </a>
-      </li>
-    {{/ifColaborator}}
-    {{#ifSu user}}
-      <li>
-        <a href="/collections">
-          <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
-        </a>
-      </li>
-    {{/ifSu}}
-    <li>
-      <a href="/user/edit">
-        <i class="fa fa-pencil-square"></i> {{translation.EDIT_USER}}
+    </div>
+    <!-- la clase "ACTIVE" se usa en la sección que esta activa-->
+    <!-- En el caso de HOME este elemento desaparece, ya que hay un icono en la barra publico-->
+    <div class="barra_superior_elemento float_right">
+      <a class="" href="/auth/login">
+        ACCESAR
+        <span class="icono icon-login"></span>
       </a>
-    </li>
-
-    {{#if es}}
-      <li>
-        <a href="" onclick="myI18n.setLang('en')">
-          <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
-        </a>
-      </li>
-    {{else}}
-      <li>
-        <a href="" onclick="myI18n.setLang('es')">
-          <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
-        </a>
-      </li>
-    {{/if}}
-
-    <li class="divider"></li>
-  
-    <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> {{translation.LOGOUT}}</a></li>
-  
-  {{else}}
-
-    <li>
+    </div>
+    <div class="barra_superior_elemento float_right">
       <a href="/auth/register">
-        <i class="fa fa-user-plus" aria-hidden="true"></i> {{translation.REGISTRATION}}
+        REGISTRO
+        <span class="icono icon-person"></span>
       </a>
-    </li>
-    {{#if es}}
-      <li>
-        <a href="" onclick="myI18n.setLang('en')">
-          <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
-        </a>
-      </li>
-    {{else}}
-      <li>
-        <a href="" onclick="myI18n.setLang('es')">
-          <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
-        </a>
-      </li>
-    {{/if}}
-    <li class="divider"></li>
-    <li>
-      <a class="waves-effect waves-light btn pink darken-2" href="/auth/login">
-        <i class="fa fa-sign-in fa-inverse" style="color:white"></i> {{translation.LOGIN}}
-      </a>
-    </li>
-  {{/if}}  
-</ul>
-
-<!-- Dropdown Structure -->
-<ul id="settings_dropdown" class="dropdown-content">
-  <li>
-    <div class="center-align"  style="color: teal;">
-      <i class="fa fa-cog"></i> {{translation.SETTINGS}}
     </div>
-    <ul>
-      {{#if user}}
-        <li>
-          <a href="/user/edit">
-            <i class="fa fa-pencil-square"></i> {{translation.EDIT_USER}}
-          </a>
-        </li>
-        <li>
-          <a href="/user/edit/password">
-            <i class="fa fa-unlock"></i> {{translation.EDIT_PASSWORD}}
-          </a>
-        </li>  
-      {{/if}}
-      {{#if es}}
-        <li>
-          <a href="" onclick="myI18n.setLang('en')">
-            <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
-          </a>
-        </li>
-      {{else}}
-        <li>
-          <a href="" onclick="myI18n.setLang('es')">
-            <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
-          </a>
-        </li>
-      {{/if}}
-      <li class="divider"></li>
-      {{#if user}}
-        <li>
-          <a href="/auth/logout">
-            <i class="fa fa-sign-out"></i>
-            {{translation.LOGOUT}}
-          </a>
-        </li>
-      {{else}}
-        <li><a href="/auth/login">
-            <i class="fa fa-sign-in"></i> {{translation.LOGIN}}</a>
-        </li>
-      {{/if}}
-    </ul>
-  </li>
-    
-</ul>
+  </nav>
+  <!--TERMINA barra de navegacion superior-->
+</div>
