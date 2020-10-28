@@ -16,10 +16,14 @@
   <tr>
 
         <td> {{titulo}} </td>
-        <td> {{genero}} </td>
-   <td> </td>
-      <td> </td>
-         <td> </td>
+
+   <td>{{gid.language.gid}} {{gid.language.name}}</td>
+   
+     
+       <td>{{gid.LanguageGroup.gid}} {{gid.LanguageGroup.name}} </td>
+    
+         <td>{{location.Nom_Loc}} {{location.Nom_Mun}} {{location.Nom_Ent}} {{location.Lat_Decimal}} {{location.Lon_Decimal}} </td> 
+         <td>{{genero}} </td>
             <td>{{duracion}} </td>
               <td>
                  <form class="center"
@@ -37,7 +41,14 @@
                 
 
               </td>
-
+              <td>
+                <a href="/audioannotations/create" class="waves-effect waves-light btn"><i class="fa fa-upload right"
+        aria-hidden="true"></i>Añadir Audioannotations</a> 
+                 </td>
+              <td>
+                 <a href="/audioannotations/vuetest" class="waves-effect waves-light btn"><i class="fa fa-upload right"
+        aria-hidden="true"></i>Reproducir Audioannotations</a> 
+              </td>
 
        </tr>
       {{/each}}    

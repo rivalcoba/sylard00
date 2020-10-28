@@ -35,7 +35,9 @@ var storage = multer.diskStorage({
    cb(null, 'server/public/eaf')
   },
   filename: function (req, file, cb) {
-    cb(null,file.originalname+'-' + Date.now()+'.eaf')
+    let fileName = file.originalname+'-' + Date.now()+'.eaf'
+    req.fname = fileName;
+    cb(null,fileName)
    // save this on the app object as a configuration
        
   }
@@ -78,6 +80,12 @@ router.delete(
    audioannotationsController.deleteAudioannotaion
 )
 
+router.get(
+  '/vuetest',
+   ensureAuthenticated,
+  ensureColabUser,
+   audioannotationsController.vuetestAudioannotaion
+   )
 // Configurar cabeceras y cors https://filesamples.com/formats/mp3 //no funciona marca error en cors
 //router.get('/', function(req, res) {
 //    res.setHeader('Access-Control-Allow-Origin', '*');
