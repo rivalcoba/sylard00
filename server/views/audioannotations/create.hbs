@@ -1,3 +1,7 @@
+<h1>Audio Annotations Play</h1>
+<div id="app2">
+    <LecturaTierEAF></LecturaTierEAF>
+</div>
 <div> Crear audioannotations</div>
 <!--
 <form action="/audioannotations/uploadfile" enctype="multipart/form-data" method="POST"> 
@@ -14,6 +18,7 @@
 
 
 {{#if filename}}
+
 <div>Archivo Cargado: {{filename}}</div>
 
 <form class="col s12" action="/audioannotations/add" method="post" id='form2'>
@@ -129,6 +134,9 @@
    //console.log(longitudmp3())
    })  
 
+function leer_eaf(){
+   var leer = require('./converteaftojson');
+}
 
 function longitudmp3(){ 
 var duration;
