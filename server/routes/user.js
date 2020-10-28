@@ -14,11 +14,18 @@ import confirmEmailAccount from '@validators/confirmEmailAccount'
 import ensureAuthenticated from '@helpers/ensureAuth'
 
 /* GET users listing. */
+router.get('/',ensureAuthenticated, userController.index)
+
 router.get('/edit', ensureAuthenticated, userController.edit);
 router.put('/edit', ensureAuthenticated, editUserFormValidation, userController.editUser);
+
 router.get('/edit/password', ensureAuthenticated, userController.editPassword);
 router.put('/edit/password', ensureAuthenticated, editPasswordFormValidation, userController.editUserPassword);
+
 router.get('/reset/password', userController.resetPassword);
 router.put('/reset/password',confirmEmailAccount, userController.resetUserPassword);
+
+// API
+router.get('/api/getusers', userController.api_getUsers)
 
 module.exports = router;

@@ -9,11 +9,13 @@
       <ul class="right hide-on-med-and-down">
         <!-- SI ES UN SUARIO -->
         {{#if user}}
-          <li>
-            <a href="/dashboard">
-              <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
-            </a>
-          </li>
+          {{#hideIfSu user}}
+            <li>
+              <a href="/dashboard">
+                <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
+              </a>
+            </li>
+          {{/hideIfSu}}
           {{#ifColaborator user}}
             <li>
               <a href="/collections">
@@ -21,6 +23,13 @@
               </a>
             </li>
           {{/ifColaborator}}
+          {{#ifSu user}}
+            <li>
+              <a href="/collections">
+                <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+              </a>
+          </li>
+          {{/ifSu}}
           <li>
             <a class="dropdown-trigger" href="#!" data-target="settings_dropdown">
               <div style="padding-left: 50px; padding-right: 50px;" class="chip">
@@ -81,10 +90,12 @@
         {{user.name}}
       </div>
     </div>
+    {{#hideIfSu user}}
     <li>
-      <a href="/dashboard"><i class="fa fa-table"></i> {{translation.COLLECTIONS}}
+      <a href="/dashboard"><i class="fa fa-table"></i>{{translation.COLLECTIONS}}
       </a>
-    </li>  
+    </li>
+    {{/hideIfSu}}
 
     {{#ifColaborator user}}
       <li>
@@ -93,6 +104,13 @@
         </a>
       </li>
     {{/ifColaborator}}
+    {{#ifSu user}}
+      <li>
+        <a href="/collections">
+          <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+        </a>
+      </li>
+    {{/ifSu}}
     <li>
       <a href="/user/edit">
         <i class="fa fa-pencil-square"></i> {{translation.EDIT_USER}}
