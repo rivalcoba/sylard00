@@ -1,5 +1,6 @@
-const xml2js = require('xml2js');
-const fs = require('fs');
+import path from 'path'
+import xml2js from 'xml2js'
+import fs from 'fs';
 //var objson ;
 var tiempo_ids = "";
 var tiempo_buscado = 0;
@@ -136,8 +137,19 @@ function buscar_time_slot(ts){
  { 
   // console.log(obj_tier) 
  }
-// read XML from a file
-const xml = fs.readFileSync('../public/asset01.eaf');
+ export default  function (nombreEaf) {
+let url =path.join(__dirname,'..','public','eaf','asset01.eaf')
+console.log(url)
+console.log("Aqui esta el error")
+let xml=""
+try {
+     xml = fs.readFileSync(path.join(__dirname,'..','public','eaf','asset01.eaf'));
+} catch (error) {
+    console.trace(error)
+    
+}
+
+
 //const xml = fs.readFileSync('../public/eaf/asset01.eaf-1603583874596.eaf');
 // convert XML to JSON
 xml2js.parseString(xml, { mergeAttrs: true }, (err, result) => {
@@ -150,12 +162,14 @@ xml2js.parseString(xml, { mergeAttrs: true }, (err, result) => {
     leer_Tier_Json();
    // add_Tier_Json();
     //console.log(obj);
-    // save JSON in a file
-    fs.writeFileSync('../public/eaf/eaf.json', json);   
+    // save JSON in a file 
+   // fs.writeFileSync('../public/eaf/eaf.json', json);   
+   fs.writeFileSync(path.join(__dirname,'..','public','eaf','eaf.json'), json);  
 }); 
 //console.log(objson)
-var objson = require('../public/eaf/eaf.json');
-const { Console } = require('console');
+//var objson = require('../public/eaf/eaf.json');
+var objson = require(path.join(__dirname,'..','public','eaf','eaf.json'));
+//const { Console } = require('console');
 leer_Author_Json(objson.ANNOTATION_DOCUMENT.AUTHOR[0])
 //leer_Tier_Json(objson)
 
@@ -241,9 +255,16 @@ console.log("Imprime el nuevo json");
 console.log(obj);
    // add_Tier_Json();
     // save JSON in a file
-    const jsonobj = JSON.stringify(obj, null, 4);   
-fs.writeFileSync('../public/eaf/Nuevoeaf.json', jsonobj);
+    const jsonobj = JSON.stringify(obj, null, 4); 
+   // path.join(__dirname,'..','public','eaf','eaf.json')  
+//fs.writeFileSync('../public/eaf/Nuevoeaf.json', jsonobj);
+fs.writeFileSync(path.join(__dirname,'..','public','eaf','Nuevoeaf.json') , jsonobj);
+
 console.log("Grabo obj a JSON");
+
+ } 
+// read XML from a file
+
 
 
  //console.log(objson.ANNOTATION_DOCUMENT.AUTHOR[0]);

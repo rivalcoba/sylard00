@@ -66,8 +66,7 @@ typings/
 *.mp3
 *.eaf
 
-#archivos de distserver
-dist-server
+
 
 # eslint
 .eslintrc.json

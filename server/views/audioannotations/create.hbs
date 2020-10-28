@@ -1,7 +1,5 @@
 <h1>Audio Annotations Play</h1>
-<div id="app2">
-    <LecturaTierEAF></LecturaTierEAF>
-</div>
+
 <div> Crear audioannotations</div>
 <!--
 <form action="/audioannotations/uploadfile" enctype="multipart/form-data" method="POST"> 
@@ -19,6 +17,9 @@
 
 {{#if filename}}
 
+<div id="app2">
+    <LecturaTierEAF></LecturaTierEAF>
+</div>
 <div>Archivo Cargado: {{filename}}</div>
 
 <form class="col s12" action="/audioannotations/add" method="post" id='form2'>

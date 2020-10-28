@@ -2,6 +2,7 @@ import Collection from '@models/Collection'
 import Glottolog from '@models/Glottolog'
 import Locations from '@models/Location'
 import Audioannotations from '@models/AudioAnnotations'
+import convertEaf2json from '@helpers/converteaftojson' 
 
 
 import multer from 'multer'
@@ -179,6 +180,8 @@ const file = req.file
     error.httpStatusCode = 400
     return next(error)
   }
+   //convertir nuevoJSON Aqui
+   convertEaf2json("")
     
   try {
     // Obtenuendo datos de las collections
@@ -188,7 +191,7 @@ const file = req.file
        })
       res.render("audioannotations/create",{ filename : file.filename, collections})
   } catch (error) {
-    
+    res.status(500).json(error)
   }
 }
 const editAudioannotation = async (req, res) => {
