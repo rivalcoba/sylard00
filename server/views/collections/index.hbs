@@ -7,8 +7,8 @@
         aria-hidden="true"></i> Crear Coleccion</a>
   </div>
   <div class="col s4" style="margin-top: 8px;">
-    <a onclick="alert('under construction')" class="waves-effect waves-light btn"><i class="fa fa-upload right"
-        aria-hidden="true"></i>Cargar Audio Anotiacion</a>
+    <a href="/audioannotations/create" class="waves-effect waves-light btn"><i class="fa fa-upload right"
+        aria-hidden="true"></i>Cargar Audio Anotacion</a>
   </div>
 </div>
 <table>
@@ -46,7 +46,7 @@
       <td>
         {{#each localities}}
           <h5>{{Nom_Loc}}</h5>
-          <p>{{Nom_Mun}} {{Nom_Mun}} </p>
+          <p>{{Nom_Mun}} {{Nom_Ent}} </p>
           <p>{{Lat_Decimal}} {{Lon_Decimal}}</p>
           <div class="divider"></div>
         {{/each}}        
@@ -84,7 +84,7 @@
         <!-- Dropdown Structure -->
         <ul id='dropdown{{_id}}' class='dropdown-content'>          
           <li>
-            <a href="#!">
+            <a href="/audioannotations/">
               <i 
                 class="fa fa-plus-circle"
                 aria-hidden="true" 

@@ -8,6 +8,12 @@ import ensureColabUser from '@validators/ensureColabUser'
 
 import audioannotationsController from '@controllers/audioannotations'
 
+import multer from 'multer'
+
+var cors = require('cors')
+
+
+
 router.get(
   '/',
     ensureAuthenticated,
@@ -23,10 +29,31 @@ router.post(
  audioannotationsController.addAudioannotation
 )
 
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+   // cb(null, 'uploads')
+   cb(null, 'server/public/eaf')
+  },
+  filename: function (req, file, cb) {
+    let fileName = file.originalname+'-' + Date.now()+'.eaf'
+    req.fname = fileName;
+    cb(null,fileName)
+   // save this on the app object as a configuration
+       
+  }
+})
+var upload = multer({ storage: storage })
+router.post(
+  '/uploadfile',upload.single('myFile'),cors(),
+   ensureAuthenticated,
+  ensureColabUser,
+audioannotationsController.uploadfileAudioannotation
+)
+
 // Show Form to create a audioannotation
 router.get(
   '/create',
-  ensureAuthenticated,
+  ensureAuthenticated,cors(),
   ensureColabUser,
   audioannotationsController.createAudioannotation
 )
@@ -52,6 +79,22 @@ router.delete(
   ensureColabUser,
    audioannotationsController.deleteAudioannotaion
 )
+
+router.get(
+  '/vuetest',
+   ensureAuthenticated,
+  ensureColabUser,
+   audioannotationsController.vuetestAudioannotaion
+   )
+// Configurar cabeceras y cors https://filesamples.com/formats/mp3 //no funciona marca error en cors
+//router.get('/', function(req, res) {
+//    res.setHeader('Access-Control-Allow-Origin', '*');
+//    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+//    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+//    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+
+//    res.send('cors problem fixed:)');
+//});
 
 // Se exportan rutas
 export default router
