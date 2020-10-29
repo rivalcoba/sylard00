@@ -19,7 +19,8 @@ const GenreValidationSchema = Yup.object().shape({
 //     return str.charAt(0).toUpperCase() + str.slice(1)
 // }
 
-export default async (req, res, next)=>{
+
+const genrePost = async (req, res, next)=>{
     let { name, description } = req.body
 
     // Normalize genreName
@@ -57,4 +58,10 @@ export default async (req, res, next)=>{
         console.trace(`LN50>Errores: ${error}`)
         res.status(400).json(error)
     }
+}
+
+
+
+export default {
+    genrePost
 }

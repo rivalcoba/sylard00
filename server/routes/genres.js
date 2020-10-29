@@ -12,7 +12,7 @@ import genreValidator from '@validators/genres/genre'
 // Assing Routers
 
 // CREATE - POST
-router.post('/api/create', genreValidator, genreController.api_postGenres)
+router.post('/api/create', genreValidator.genrePost, genreController.api_postGenres)
 // READ - GET
 router.get('/api/index', genreController.api_getGenres)
 router.get('/api', genreController.api_getGenres)
