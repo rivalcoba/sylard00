@@ -25,29 +25,29 @@ const genrePost = async (req, res, next)=>{
 
     // Normalize genreName
     name = name.toUpperCase();
-    console.log(name)
+    // console.log(name)
 
-    let genere = {
+    let genre = {
         name,
         description,
     }
 
     // Validating Schema
     try {
-        await GenreValidationSchema.validate(genere, { abortEarly: false })
+        await GenreValidationSchema.validate(genre, { abortEarly: false })
     } catch (error) {
         console.trace(`Errores: ${error}`)
         res.status(400).json(error)
     }
 
     // Checking Duplicates
-    let genereDocument;
+    let genreDocument;
     try {
-        genereDocument = await Genre.findOne({name: genere.name})
+        genreDocument = await Genre.findOne({name: genre.name})
         // If genre was not found, its ok, there is no duplicated content...
-        if (!genereDocument) {
+        if (!genreDocument) {
           // Loading
-          req.genere = genere
+          req.genre = genre
           next()
         } else {
           console.trace(`LN50>This Genre aready exist in the DB`)
@@ -60,8 +60,47 @@ const genrePost = async (req, res, next)=>{
     }
 }
 
+const genrePut = async (req, res, next)=>{
+    // Find doc by id
+    const genreId = req.params.genre_id
+    let genreDoc = {};
+    
+    // Check document existence
+    try {
+        genreDoc =  await Genre.findById(genreId)
+    } catch(error) {
+        error.reason = `Document with id ${genreId} not found`;
+        return res.status(404).json(error)
+    }
 
+    // Validating update
+    let { name, description } = req.body
+    // Normalizing
+    name = name.toUpperCase();
+
+    let genre = {
+        name,
+        description,
+    }
+
+    // Validating Schema
+    try {
+        await GenreValidationSchema.validate(genre, { abortEarly: false })
+    } catch (error) {
+        console.trace(`Errores: ${error}`)
+        res.status(400).json(error)
+    }
+    // Storing Document in req
+    // Updating
+    genreDoc.name = genre.name
+    genreDoc.description = genre.description
+    
+    req.genreDoc = genreDoc
+    // Next middleware
+    next() 
+}
 
 export default {
-    genrePost
+    genrePost,
+    genrePut
 }
