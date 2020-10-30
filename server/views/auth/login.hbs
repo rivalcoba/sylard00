@@ -1,8 +1,3 @@
-<script>
-//aqui se activa el elemento con el id indicado
-var elemento_link = document.getElementById('login');
-elemento_link.setAttribute("class", "active");
-</script>
 
 <div class="container-fluid" id="contenedor_login">
 			<div class="extension_fondo_blanco d-sm-none d-md-block"></div>
@@ -13,32 +8,32 @@ elemento_link.setAttribute("class", "active");
 				</div>
 				<div class="col-md-7 pt-3" id="columna_derecha_login">
 					<div class="" id="columna_derecha_login_anidada">
-						<h1>Ingresar</h1>
-						<h2 class="llamada" id="llamada_login">¡Bienvenido!</h2>
-						<h3>Teclea tu usuario y contraseña</h3>
+						<h1>{{translation.LOGIN}}</h1>
+						<h2 class="llamada" id="llamada_login">{{translation.WELCOME}}</h2>
+						<h3>{{translation.TYPE_YOUR_USERNAME_AND_PASSWORD}}</h3>
 						<br>						
 					<form method="post" action="#" role="form" class="formulario_contenedor_login">
 							
 							
 							<div class="contenedor_inputs_login">
-								<label class="label" for="email"><span class="icon-email"></span> Correo electrónico:</label>
-								<input class="" type="email" id="email_login" placeholder="Escribe tu correo" required>
+								<label class="label" for="email"><span class="icon-email"></span>{{translation.EMAIL}} </label>
+								<input class="" type="email" id="email_login" placeholder=" {{translation.EMAIL_PLACEHOLDER}}" required>
 								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
 								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
 							</div>
 							<div class="contenedor_inputs_login ">
-								<label class="label " id="label_pass_login" for="password"><span class="icon-lock"></span> Contraseña:</label>
-								<input type="password" id="password_login" placeholder="Escribe la contraseña" minlength="6" required>
+								<label class="label " id="label_pass_login" for="password"><span class="icon-lock"></span> {{translation.PASSWORD}}</label>
+								<input type="password" name="password" id="password" placeholder="{{translation.PASSWORD_PLACEHOLDER}}" minlength="6" required>
 								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
 								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-								<button type="button" class="btn btn-predeterminado btn_input_derecha ml-2"><span class="icon-eye"></span></button>
+								<button type="button" onclick="showPassword()" class="btn btn-predeterminado btn_input_derecha ml-2"><span class="icon-eye"></span></button>
 								<br>
 								
 							</div>
 							
 							<div class="contenedor_botones_login">
-								<a class="" href="restablecer_contrasena.html">¿Olvidaste la contraseña?</a>
-								<button type="submit" class="btn btn-primario" id="boton_login">Login</button>
+								<a class="" href="/user/reset/password">{{translation.FORGOT_PASSWORD}}</a>
+								<button type="submit" class="btn btn-primario" id="boton_login">{{translation.SUBMIT}}</button>
 							</div>
 							
 						</form>
