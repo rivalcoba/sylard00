@@ -1,10 +1,11 @@
 {
   "WELCOME_MSG": "¡Bienvenido a SYLARD!",
-  "WELCOME": "¡Bienvenido",
+  "WELCOME": "¡Bienvenido!",
   "SYLARD_MEANING": "SYLARD viene del inglés y significa <b>S</b>ynchronized <b>L</b>anguage <b>A</b>nnotation <b>R</b>esult <b>D</b>isplay",
-  "LOGIN":"Ingresar",
+  "LOGIN":"Accesar",
   "LOGOUT":"Salir",
-  "REGISTRATION":"Registrarse",
+  "REGISTER":"Registro",
+  "REG":"Registrar",
   "EMAIL":"Correo Electrónico",
   "PASSWORD":"Contraseña",
   "DASHBOARD": "Panel",
@@ -29,5 +30,17 @@
   "FORGOT_PASSWORD" : "¿Se te olvido tu contraseña?",
   "EMAIL_PLACEHOLDER": "Ingresa tu correo electrónico",
   "RESET_PASSWORD_TITLE": "Restablecer Contraseña",
-  "RESET_PASSWORD_MESSAGE": "Ingresa la cuenta de correo de cuenta para enviarte un password provisional a tu correo"
+  "RESET_PASSWORD_MESSAGE": "Ingresa la cuenta de correo de cuenta para enviarte un password provisional a tu correo",
+  "TYPE_YOUR_USERNAME_AND_PASSWORD" : "Teclea tu usuario y contraseña",
+  "CATALOGUE" : "Ver catálogo",
+  "DOCUMENTATION" : "Documentación",
+  "USER_MANUAL" : "Manual de usuario",
+  "CONTACT" : "Contacto",
+  "DOWNLOADS" : "Descargas",
+  "TERMS" : "Términos y condiciones",
+  "CREDITS" : "Creditos",
+  "READ_MORE" : "Saber más",
+  "CONTENT_ONE" : "Es una plataforma que recopila audios y transcripciones en lenguas indigenas sobre tópicos que dominan las distintas etnias de mesoamerica.",
+  "CONTENT_TWO" : "Accede a nuestro catálogo de audiotranscripciones, o bien, puedes ser un colaborador que contribuya con información bajo licencia Creative Commons.",
+  "REGISTER_CONTENT" : "¡Sólo tienes que registrarte!"
 }
