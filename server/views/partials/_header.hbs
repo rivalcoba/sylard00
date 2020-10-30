@@ -2,6 +2,15 @@
   <!--INICIA barra de navegacion superior-->
   <nav class="container contenedor_ancho_area_principal">
     <div class="contenedor_switch float_left">
+        {{#if es}}
+              <a href="" onclick="myI18n.setLang('en')">
+                <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
+              </a>
+          {{else}}
+              <a href="" onclick="myI18n.setLang('es')">
+                <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
+              </a>
+          {{/if}}
       <label class="texto" for="checkbox">
         ESP
       </label>
@@ -13,6 +22,7 @@
         ENG
       </label>
     </div>
+
     <div class="barra_superior_elemento float_left active">
       <a href="/">
         <span class="icono icon-home1"></span>
@@ -22,7 +32,7 @@
     <!-- la clase "ACTIVE" se usa en la sección que esta activa-->
     <!-- En el caso de HOME este elemento desaparece, ya que hay un icono en la barra publico-->
     <div class="barra_superior_elemento float_right">
-      <a class="" href="/auth/login">
+      <!--<a class="" href="/auth/login">
         ACCESAR
         <span class="icono icon-login"></span>
       </a>
@@ -31,7 +41,43 @@
       <a href="/auth/register">
         REGISTRO
         <span class="icono icon-person"></span>
-      </a>
+      </a>-->
+        <!-- SI ES UN SUARIO -->
+        {{#if user}}
+          {{#hideIfSu user}}
+              <a href="/dashboard">
+                <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
+              </a>
+          {{/hideIfSu}}
+          {{#ifColaborator user}}
+              <a href="/collections">
+                <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+              </a>
+          {{/ifColaborator}}
+          {{#ifSu user}}
+              <a href="/collections">
+                <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+              </a>
+          {{/ifSu}}
+            <a class="dropdown-trigger" href="#!" data-target="settings_dropdown">
+              <div style="padding-left: 50px; padding-right: 50px;" class="chip">
+                <img src="{{user.image}}" alt="Contact Person">
+                {{user.name}}
+              </div>
+              {{!-- {{translation.SETTINGS}}
+              <i class="fa fa-cog"></i> --}}
+            </a>
+        {{else}}
+          <a href="/auth/login">
+               <span class="icono icon-login"></span> {{translation.LOGIN}}</a>
+                </div>
+          <div class="barra_superior_elemento float_right">
+          {{#unless onRegisterPage}}
+              <a href="/auth/register">
+                 <span class="icono icon-person"></span> {{translation.REGISTER}}
+              </a>
+          {{/unless}}  
+        {{/if}}
     </div>
   </nav>
   <!--TERMINA barra de navegacion superior-->
