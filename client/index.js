@@ -56,7 +56,8 @@ if(window.location.pathname == `/audioannotations/vuetest`){
     })
 }
 
-if(window.location.pathname == `/audioannotations/uploadfile`){
+if(window.location.pathname == `/audioannotations/create`){  
+//if(window.location.pathname == `/audioannotations/uploadfile`){
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("LecturaTierEAF", LecturaTierEAF);
