@@ -14,7 +14,9 @@ import confirmEmailAccount from '@validators/confirmEmailAccount'
 import ensureAuthenticated from '@helpers/ensureAuth'
 
 /* GET users listing. */
-router.get('/',ensureAuthenticated, userController.index)
+router.get('/', ensureAuthenticated, userController.index)
+// DELETE
+router.delete('/', userController.delUsers);
 
 router.get('/edit', ensureAuthenticated, userController.edit);
 router.put('/edit', ensureAuthenticated, editUserFormValidation, userController.editUser);
