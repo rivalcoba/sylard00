@@ -2,15 +2,15 @@
   <!--INICIA barra de navegacion superior-->
   <nav class="container contenedor_ancho_area_principal">
     <div class="contenedor_switch float_left">
-        {{#if es}}
-              <a href="" onclick="myI18n.setLang('en')">
-                <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
-              </a>
-          {{else}}
-              <a href="" onclick="myI18n.setLang('es')">
-                <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
-              </a>
-          {{/if}}
+    {{#if es}}
+      <a href="" onclick="myI18n.setLang('en')">
+        <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
+      </a>
+      {{else}}
+      <a href="" onclick="myI18n.setLang('es')">
+        <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
+      </a>
+      {{/if}}
       <label class="texto" for="checkbox">
         ESP
       </label>
@@ -42,43 +42,61 @@
         REGISTRO
         <span class="icono icon-person"></span>
       </a>-->
-        <!-- SI ES UN SUARIO -->
-        {{#if user}}
-          {{#hideIfSu user}}
-              <a href="/dashboard">
-                <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
-              </a>
-          {{/hideIfSu}}
-          {{#ifColaborator user}}
-              <a href="/collections">
-                <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
-              </a>
-          {{/ifColaborator}}
-          {{#ifSu user}}
-              <a href="/collections">
-                <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
-              </a>
-          {{/ifSu}}
-            <a class="dropdown-trigger" href="#!" data-target="settings_dropdown">
-              <div style="padding-left: 50px; padding-right: 50px;" class="chip">
-                <img src="{{user.image}}" alt="Contact Person">
-                {{user.name}}
-              </div>
-              {{!-- {{translation.SETTINGS}}
+      <!-- SI ES UN SUARIO -->
+      {{#if user}}
+      {{#hideIfSu user}}
+      <a href="/dashboard">
+        <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
+      </a>
+      {{/hideIfSu}}
+      {{#ifColaborator user}}
+      <a href="/collections">
+        <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+      </a>
+      {{/ifColaborator}}
+      {{#ifSu user}}
+      <a href="/collections">
+        <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+      </a>
+      {{/ifSu}}
+      <div class="barra_superior_elemento dropdown_menu_usuario float_right">
+        <button class="dropbtn_barra_superior">
+          <div class="contenedor_icono_usuario">
+            <img src="{{user.image}}" alt="Contact Person" class="imagen_icono_usuario"> </div>
+          {{user.name}}
+          <span class="icono icon-angle-down" id="flecha_dropdow_barra_superior"></span>
+        </button>
+        <div class="contenido_dropdown_menu_usuario">
+          {{#if user}}
+          <a href="/user/edit"><span class="icono_dropdown_menu_usuario_item icon-edit"></span>
+            {{translation.EDIT_USER}}</a>
+          <a href="/user/edit/password"><span class="icono_dropdown_menu_usuario_item icon-key1"></span>
+            {{translation.EDIT_PASSWORD}}</a>
+          {{/if}}
+          <a href="/collections"><span class="icono_dropdown_menu_usuario_item icon-folder-open-o"></span> {{translation.MY_COLLECTIONS}}</a>
+          <a href="#">Link 1 </a>
+          <a href="#">Link 2</a>
+          <a class="dropdown_menu_usuario_logout" href="/auth/logout"><span
+              class="icono_dropdown_menu_usuario_item icon-log-out"></span> {{translation.LOGOUT}}</a>
+        </div>
+
+        {{!-- {{translation.SETTINGS}}
               <i class="fa fa-cog"></i> --}}
-            </a>
+
         {{else}}
-          <a href="/auth/login">
-               <span class="icono icon-login"></span> {{translation.LOGIN}}</a>
-                </div>
-          <div class="barra_superior_elemento float_right">
-          {{#unless onRegisterPage}}
-              <a href="/auth/register">
-                 <span class="icono icon-person"></span> {{translation.REGISTER}}
-              </a>
-          {{/unless}}  
+        <a href="/auth/login">
+          <span class="icono icon-login"></span> {{translation.LOGIN}}</a>
+      </div>
+      <div class="barra_superior_elemento float_right">
+        {{#unless onRegisterPage}}
+        <a href="/auth/register">
+          <span class="icono icon-person"></span> {{translation.REGISTER}}
+        </a>
+        {{/unless}}
         {{/if}}
-    </div>
+      </div>
+
+
   </nav>
   <!--TERMINA barra de navegacion superior-->
 </div>
