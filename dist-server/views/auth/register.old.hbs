@@ -1,0 +1,173 @@
+<h1 class="center pink-text">Registro</h1>
+<div class="row" style="padding-top:30px">
+    <form class="col s12" action="/auth/register/user" method="post">
+           
+      <div class="row">
+         <!-- name -->
+        <div class="input-field col s12 m6 l4">
+          <i class="fa fa-user prefix" style="color: grey;" aria-hidden="true"></i>
+          <input
+            placeholder="Tim"
+            id="name" 
+            name="name" type="text" class="validate"
+            value="{{name}}" /*required*/>
+          <label for="nombre">Nombre</label>
+        </div>
+        <!-- lastName -->
+        <div class="input-field col s12 m6 l4">
+          <i class="fa fa-user prefix" style="color: grey;" aria-hidden="true"></i>
+          <input 
+            placeholder="Berners" 
+            id="lastName" 
+            name="lastName" type="text" class="validate"
+            value="{{lastName}}" /*required*/>
+          <label for="lastName">Apellido</label>
+        </div>
+
+        <!-- secLastName -->
+        <div class="input-field col s12 m6 l4">
+          <i class="fa fa-user prefix" style="color: grey;" aria-hidden="true"></i>
+          <input 
+            placeholder="Lee" 
+            id="secLastName" 
+            name="secLastName" type="text" class="validate"
+            value="{{secLastName}}">
+          <label for="lastName">Apellido Materno</label>
+        </div>  
+      </div>
+
+      <!-- role -->
+      <div class="row">        
+          <div class="switch col s12 m8 l4">
+              <div class="grey-text">Registrarse como</div>
+                  <i class="fa fa-address-card fa-2x prefix" style="color: grey;" aria-hidden="true"></i>
+              <label>
+                  Visitante
+                  <input 
+                      id="role"
+                      name="role"
+                      type="checkbox"
+                      {{!-- disabled --}}
+                      >
+                  <span class="lever"></span>
+                  Colaborador
+              </label>
+          </div>
+      </div>
+
+      <!-- email -->
+      <div class="row">
+        <div class="input-field col s12 m7 l6">
+          <i class="fa fa-envelope prefix" style="color: grey;" aria-hidden="true"></i>
+          <input 
+            id="email" 
+            type="email" 
+            class="validate"
+            name="email"
+            value="{{email}}"
+            /*required*/>
+          <label for="email">Email</label>
+        </div>
+      </div>
+
+      <!-- password -->
+      <div class="row">
+        <div class="input-field col s12 m7 l6">
+          <i class="fa fa-lock prefix" style="color: grey;" aria-hidden="true"></i>
+          <input 
+            id="password" 
+            type="password" 
+            name="password"
+            placeholder="Debe ser al menos de 6 caracteres"
+            class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 m7 l6">
+          <i class="fa fa-lock prefix" style="color: grey;" aria-hidden="true"></i>
+          <input 
+          id="confirmationPassword"
+          name="confirmationPassword"
+          placeholder="Debe coincidir con el de arriba"
+          type="password" class="validate">
+          <label for="confirmationPassword">Confirme su Password</label>
+        </div>
+      </div>
+      
+      <!-- spokenLanguages -->
+      <div class="row">
+        <div class="input-field col s12 m7 l7">
+          <i class="fa fa-plus-square prefix" onclick="formsManager.addSelection()" style="color: rgba(4, 219, 119, 0.924);"></i>          
+          <label for="langSearch">Selecciona que idiomas hablas:</label>
+          <input type="search" id="langSearch" list="languages">
+        </div>
+
+        <div class="input-field col s12 m7 l7">
+          {{!-- <label for="spokenLanguages">Lenguajes Seleccionados</label> --}}
+          <i class="fa fa-minus-square prefix" onclick="formsManager.clearLastSelection()" style="color: rgba(238, 48, 57, 0.924);"></i>
+          <textarea 
+            type="text" 
+            name="spokenLanguages" 
+            id="spokenLanguages"
+            style="resize: none;height: 80px;"
+            readonly
+            ></textarea>
+        </div>
+      </div>
+
+      <!-- country -->
+      <div class="row">
+        <div class="input-field col s12 m6 l6">
+          <i class="fa fa-globe prefix" style="color: grey;" aria-hidden="true"></i>
+          <input 
+            type="text" 
+            name="country"
+            id="country" 
+            list="countries"
+            value="{{country}}">
+          <label for="country">Selecciona tu pais de origen</label>          
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m8 l8">
+          <label for="about">Acerca de ti</label>
+          <textarea 
+          placeholder="Puedes colocar aca tu short Bio" 
+          class="materialize-textarea" name="about" id="about"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6 l6">
+          <label>
+            <input name="terms" type="checkbox" class="filled-in"/>
+            <span>Aceptar los <a onclick="alert('terminos')">terminos y condiciones</a> </span>
+          </label>        
+        </div>
+        <div class="col s12 m6 l6">
+              <button type="submit" class="btn waves-effect waves-light">
+            Submit
+            <i class="fa fa-paper-plane right"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+<datalist id="languages">
+  {{#each nativeLanguages}}
+    <option value="{{name}} | {{gid}}">
+  {{/each}}
+</datalist>
+
+<datalist id="countries">
+  {{#each countries}}
+    {{#if ../es}}
+      <option value="{{name_es}}">
+    {{else}}
+      <option value="{{name_en}}">
+    {{/if}}
+  {{/each}}
+</datalist>
+<br>

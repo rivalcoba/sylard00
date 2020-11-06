@@ -1,38 +1,49 @@
+<script>
+//aqui se activa el elemento con el id indicado
+var elemento_link = document.getElementById('login');
+elemento_link.setAttribute("class", "active");
+</script>
 
-
-<h2 class="center pink-text">{{translation.LOGIN}}</h2>
-<div class="row" style="padding-top:0px">
-  <div class="col s0 m2 l3"></div>
-  <form class="col s12 m8 l6 z-depth-3" style="padding: 20px; border-radius: 15px;" action="/auth/login/user" method="post">
-    
-    <div class="row">
-      <div class="col s0 m2 l1"></div>
-      <div class="input-field col s12 m8 l10 center">
-        <i class="fa fa-envelope prefix" style="color: grey;" aria-hidden="true"></i>
-        <label for="email">{{translation.EMAIL}}</label>
-        <input id="email" placeholder="{{translation.EMAIL_PLACEHOLDER}}" type="email" class="validate" name="email"
-          required>
-      </div>
-      <div class="col s0 m2 l1"></div>
-    </div>
-
-    <div class="row">
-      <div class="col s0 m2 l1"></div>
-      <div class="input-field col s12 m8 l10 center">
-        <i class="fa fa-unlock-alt prefix" style="color: grey;" aria-hidden="true"></i>
-        <label for="password">{{translation.PASSWORD}}</label>
-        <input id="password" type="password" name="password" placeholder="{{translation.PASSWORD_PLACEHOLDER}}"
-          class="validate">
-      </div>
-      <div class="col s0 m2 l1"></div>
-    </div>
-    <div class="center-align">
-      <button type="submit" class="btn btn-primary">{{translation.SUBMIT}}</button>
-    </div>
-    <br>
-    <div class="center-align">
-      <a href="/user/reset/password">{{translation.FORGOT_PASSWORD}}</a>
-    </div>
-  </form>
-  <div class="col s0 m2 l3"></div>
-</div>
+<div class="container-fluid" id="contenedor_login">
+			<div class="extension_fondo_blanco d-sm-none d-md-block"></div>
+		<div class="container">
+			<div class="row contenedor-90vh" id="Fila1_login">
+				<div class="col-md-5 px-4" id="columna_izquierda_login">
+					<img class="wdt-75" src="/images/elotes_huichol_login.svg" id="huichol_img_login" alt="Arte Huichol maíz">	
+				</div>
+				<div class="col-md-7 pt-3" id="columna_derecha_login">
+					<div class="" id="columna_derecha_login_anidada">
+						<h1>Ingresar</h1>
+						<h2 class="llamada" id="llamada_login">¡Bienvenido!</h2>
+						<h3>Teclea tu usuario y contraseña</h3>
+						<br>						
+					<form method="post" action="#" role="form" class="formulario_contenedor_login">
+							
+							
+							<div class="contenedor_inputs_login">
+								<label class="label" for="email"><span class="icon-email"></span> Correo electrónico:</label>
+								<input class="" type="email" id="email_login" placeholder="Escribe tu correo" required>
+								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
+								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
+							</div>
+							<div class="contenedor_inputs_login ">
+								<label class="label " id="label_pass_login" for="password"><span class="icon-lock"></span> Contraseña:</label>
+								<input type="password" id="password_login" placeholder="Escribe la contraseña" minlength="6" required>
+								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
+								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
+								<button type="button" class="btn btn-predeterminado btn_input_derecha ml-2"><span class="icon-eye"></span></button>
+								<br>
+								
+							</div>
+							
+							<div class="contenedor_botones_login">
+								<a class="" href="restablecer_contrasena.html">¿Olvidaste la contraseña?</a>
+								<button type="submit" class="btn btn-primario" id="boton_login">Login</button>
+							</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

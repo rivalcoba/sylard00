@@ -1,5 +1,8 @@
 // Importando los estilos
 import './styles/main.css';
+import './styles/estilos_menu.css'
+import './styles/bootstrap-grid.css'
+import './styles/simple-scrollbar.css'
 // Importando Scripts
 //import greeting from '@chelpers/greeting'
 import flashLib from '@chelpers/flashLib'
