@@ -62,5 +62,12 @@ typings/
 # next.js build output
 .next
 
+#files eaf y mp3
+*.mp3
+*.eaf
+
+
+
 # eslint
 .eslintrc.json
+server/public/js/index.js

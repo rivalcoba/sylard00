@@ -25,6 +25,8 @@ import App from '@client/templates/main.vue'
 import axios from "axios";
 import VueAxios from "vue-axios";
 import LecturaEAF from "@client/templates/components/LecturaEAF.vue";
+import LecturaTierEAF from "@client/templates/components/LecturaTierEAF.vue";
+import App2 from '@client/templates/main2.vue'
 
 
 import Vue from 'vue'
@@ -47,7 +49,7 @@ if(window.location.pathname == `/test`){
     //window.VueCdn = VueCdn
     window.app = indexTestScripts.getVueApp()
 }
-if(window.location.pathname == `/vuetest`){
+if(window.location.pathname == `/audioannotations/vuetest`){
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("LecturaEAF", LecturaEAF);
@@ -56,6 +58,20 @@ if(window.location.pathname == `/vuetest`){
       render: h => h(App)
     })
 }
+
+if(window.location.pathname == `/audioannotations/uploadfile`){
+    // window.Vue = Vue
+    Vue.use(VueAxios, axios);
+    Vue.component("LecturaTierEAF", LecturaTierEAF);
+    window.vm = new Vue({
+      el: '#app2',
+      render: h => h(App2)
+      //aqui
+     //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+     //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
+    })
+}
+
 
 if(window.location.pathname == `/audioannotations`){
     // window.Vue = Vue
