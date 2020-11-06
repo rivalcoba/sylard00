@@ -1,119 +1,253 @@
-<main>
-		<div class="container-fluid" id="contenedor_registro">
-			<div class="extension_fondo_blanco d-sm-none d-md-block"></div>
-		<div class="container ">
-			<div class="row contenedor-90vh" id="Fila1_registro">
-				<div class="col-md-5 px-4" id="columna_izquierda_registro">
-					<div class="" id="columna_izquierda_registro_anidada">
-						<img class="wdt-50 mx-auto mb-5" src="/images/huichol_registro-01.svg" id="huichol_img_registro" alt="Arte Huichol Peyote">
-						<div class="contenedor_textos_abajo">
-							<h6 class="blanco">Si decides ser colaborador</h6>
-							<p class="secundario_blanco">Te brindaremos los privilegios para administrar colecciones de audioanotaciones y las herramientas para cargar y compartir tu información con la condición de que cumplas con los <a href="#">términos y condiciones</a> y, con el criterio editorial del fundador de la plataforma: <strong>Jonathan Amith</strong>.</p>
-							<h6 class="blanco">Si decides ser visitante</h6>
-							<p class="secundario_blanco">Deberas registrarte y aceptar los <a href="#">términos y condiciones.</a> El registro es con el propósito de que puedas compartir información y proteger los derechos de los colaboradores.</p>
-						</div>	
-					</div>
-				</div>
-
-				<div class="col-md-7" id="columna_derecha_registro">
-					<div class="" id="columna_derecha_registro_anidada">
-						<h1>{{translation.REGISTER}}</h1>
-						<h3>Llena los campos correctamente</h3>
-						
-						
-						<p class="parrafo_grande">Elige tus privilegios de usuario</p>
-						<form method="post" action="#" role="form" class="formulario_contenedor">
-							<div id="selector_colaborador">	
-								<p class="label">¿Qué quieres ser?</p>
-								<div class="contenedor_switch_formularios">
-									<label class="swich_etiqueta_opcion1" for="checkbox" id="switch_usuario_visitante">Visitante</label>
-									<label class="switch_general">
-									<input type="checkbox"  class="checkbox_colaborador" requiered>
-                   					<span class="slider_general round"></span></label>
-									<label class="swich_etiqueta_opcion2" for="checkbox" id="switch_usuario_colaborador">Colaborador</label>
-								</div>
-							</div>	
-							<div class="contenedor_inputs">
-								<label class="label" for="name">Nombre:</label>
-								<input type="text" id="name" placeholder="Emiliano" required>
-								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-							</div>
-							<div class="contenedor_inputs">
-								<label class="label" for="last_name">Apellido paterno:</label>
-								<input type="text" id="last_name" placeholder="Zapata" required>
-								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-							</div>
-							<div class="contenedor_inputs">
-								<label class="label" for="mothers_last_name">Apellido materno:</label>
-								<input type="text" id="mothers_last_name" placeholder="Salazar" required>
-								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-							</div>
-							<div class="contenedor_inputs">
-								<label class="label" for="email"><span class="icon-email"></span> Correo electrónico:</label>
-								<input type="email" id="email" placeholder="Email" required>
-								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-							</div>
-							<div class="contenedor_inputs">
-								<label class="label" for="password"><span class="icon-lock"></span> Contraseña:</label>
-								<input type="password" id="password" placeholder="Al menos de 6 caracteres" minlength="6" required>
-								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-							</div>
-							<div class="contenedor_inputs">
-								<label class="label" for="password_confirmation"><span class="icon-lock"></span> Confirma la contraseña:</label>
-								<input type="password" id="password_confirmation" placeholder="Debe de coincidir con la contraseña" minlength="6" required>
-								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-							</div>
-							
-							<div class="contenedor_inputs">
-								<label class="label" for="country">País de origen</label>
-								<input type="search" id="country" list="countries" placeholder="Selecciona tu país de origen" role="listbox" required>
-								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-								<datalist id="countries">
-									<option value="" disabled selected>Selecciona país</option>
-									<option value="México">México</option>
-									<option value="Estados Unidos">Estados Unidos</option>
-									<option value="Panama">Panama</option>
-								</datalist>
-							</div>
-							<div class="contenedor_inputs" id="lenguas_habladas_input">
-								<label class="label" for="lenguas_habladas">Lenguas habladas</label>
-								<input type="search" class="input_con_boton_derecha" id="langSearch" list="languages" placeholder="Selecciona la lengua y agrega" role="listbox">
-								<datalist id="languages">
-									<option value="" disabled selected>Selecciona lengua</option>
-									<option value="Mixteco">Mixteco</option>
-									<option value="Yoloxochitl">Yoloxochitl</option>
-									<option value="Amuzgo">Amuzgo</option>
-									</datalist>
-								<button class="btn btn-predeterminado btn_input_derecha" id="boton_agregar"><span class="icon-plus"></span></button>
-							</div>
-							<div class="contenedor_inputs" id="contenedor_inputs_con_boton">
-								<label class="label" for="about_you">Cuentanos acerca de ti</label>
-								<textarea id="about_you" name="aboutyou" placeholder="¿A qué te dedicas? ¿Para qué usarías SYLARD?" rows="3"></textarea>
-							</div>
-							<div class="contenedor_inputs" id="lenguas_agregadas_input_seleccionadas">
-								<label class="label" for="lenguas_agregadas">Lenguas agregadas</label>
-								<textarea id="lenguas_agregadas_input" name="lenguas_agregadas" class="" placeholder="Aquí aparecen las lenguas que agregaste" rows="3"></textarea>
-							</div>
-							<div class="">
-							<button class="btn btn_input_derecha" id="boton_quitar"><span class="icon-minus"></span></button>
-							</div>
-							<div class="contenedor_botones_registro">
-								<button type="submit" class="btn btn-primario float_right">{{translation.REG}}</button>
-								<!--<button type="reset" class="btn btn-secundario float_right">Restablecer</button>-->
-								
-							</div>
-							
-						</form>
+<div class="container-fluid" id="contenedor_registro">
+	<div class="extension_fondo_blanco d-sm-none d-md-block"></div>
+	<div class="container">
+		<div class="row contenedor-90vh" id="Fila1_registro">
+			<div class="col-md-5 px-4" id="columna_izquierda_registro">
+				<div class="" id="columna_izquierda_registro_anidada">
+					<img class="wdt-50 mx-auto mb-5" src="/images/huichol_registro-01.svg" id="huichol_img_registro"
+						alt="Arte Huichol Peyote" />
+					<div class="contenedor_textos_abajo">
+						<h6 class="blanco">
+							Si decides ser colaborador
+						</h6>
+						<p class="secundario_blanco">
+							Te brindaremos los privilegios para administrar colecciones de audioanotaciones y las
+							herramientas para cargar y compartir tu información con la condición de que cumplas con los
+							<a href="#">
+								términos y condiciones
+							</a>
+							y, con el criterio editorial del fundador de la plataforma:
+							<strong>
+								Jonathan Amith
+							</strong>
+							.
+						</p>
+						<h6 class="blanco">
+							Si decides ser visitante
+						</h6>
+						<p class="secundario_blanco">
+							Deberas registrarte y aceptar los
+							<a href="#">
+								términos y condiciones.
+							</a>
+							El registro es con el propósito de que puedas compartir información y proteger los derechos
+							de los colaboradores.
+						</p>
 					</div>
 				</div>
 			</div>
+			<div class="col-md-7" id="columna_derecha_registro">
+				<div class="" id="columna_derecha_registro_anidada">
+					<h1>
+						{{translation.REGISTER}}
+					</h1>
+					<h3>
+						Llena los campos correctamente
+					</h3>
+					<p class="parrafo_grande">
+						Elige tus privilegios de usuario
+					</p>
+					<form action="/auth/register/user" method="post" role="form" class="formulario_contenedor">
+						<div id="selector_colaborador">
+							<p class="label">
+								¿Qué quieres ser?
+							</p>
+							<div class="contenedor_switch_formularios">
+								<label class="swich_etiqueta_opcion1" for="checkbox" id="switch_usuario_visitante">
+									Visitante
+								</label>
+								<label class="switch_general">
+									<input type="checkbox" name="role" class="checkbox_colaborador" requiered />
+									<span class="slider_general round"></span>
+								</label>
+								<label class="swich_etiqueta_opcion2" for="checkbox" id="switch_usuario_colaborador">
+									Colaborador
+								</label>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="name">
+								Nombre:
+							</label>
+							<input id="name" name="name" type="text" value="{{name}}" placeholder="Tim" required />
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="last_name">
+								Apellido paterno:
+							</label>
+							<input placeholder="Berners" id="lastName" name="lastName" type="text" value="{{lastName}}"
+								required />
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="mothers_last_name">
+								Apellido materno:
+							</label>
+							<input placeholder="Lee" id="secLastName" name="secLastName" type="text"
+								value="{{secLastName}}" required />
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="email">
+								<span class="icon-email"></span>
+								Correo electrónico:
+							</label>
+							<input id="email" type="email" placeholder="micorreo@dominio.com" name="email"
+								value="{{email}}" *required* />
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="password">
+								<span class="icon-lock"></span>
+								Contraseña:
+							</label>
+							<input id="password" type="password" name="password"
+								placeholder="Debe ser al menos de 6 caracteres" minlength="6" required />
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="password_confirmation">
+								<span class="icon-lock"></span>
+								Confirma la contraseña:
+							</label>
+							<input id="confirmationPassword" name="confirmationPassword" type="password"
+								placeholder="Debe de coincidir con la contraseña" minlength="6" required />
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="country">
+								País de origen
+							</label>
+							<input
+							  type="text" 
+           					 name="country"
+           					 id="country" 
+						     placeholder="Selecciona tu país de origen"
+           					 list="countries"
+            				value="{{country}}">
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs" id="lenguas_habladas_input">
+							<label class="label" for="lenguas_habladas">
+								Lenguas habladas
+							</label>
+							<input type="search" class="input_con_boton_derecha" id="langSearch" list="languages"
+								placeholder="Selecciona la lengua y agrega" role="listbox" />
+							<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar" onclick="formsManager.addSelection()">
+								<span class="icon-plus"></span>
+							</i>
+						</div>
+						<div class="contenedor_inputs" id="contenedor_inputs_con_boton">
+							<label class="label" for="about_you">
+								Cuentanos acerca de ti
+							</label>
+							<textarea name="about" placeholder="¿A qué te dedicas? ¿Para qué usarías SYLARD?" id="about" rows="3"></textarea>
+						</div>
+						<div class="contenedor_inputs" id="lenguas_agregadas_input_seleccionadas">
+							<label class="label" for="lenguas_agregadas">
+								Lenguas agregadas
+							</label>
+							<textarea 
+							type="text" 
+							id="spokenLanguages" 
+							name="lenguas_agregadas" 
+							class=""
+							placeholder="Aquí aparecen las lenguas que agregaste"
+							 rows="3"></textarea>
+						</div>
+						<div class="">
+							<i class="btn btn_input_derecha" id="boton_quitar" onclick="formsManager.clearLastSelection()" >
+								<span class="icon-minus"></span>
+							</i>
+						</div>
+						<div class="contenedor_botones_registro">
+							<button type="submit" class="btn btn-primario float_right">
+								{{translation.REG}}
+							</button>
+							<!--<button type="reset" class="btn btn-secundario float_right">Restablecer</button>-->
+						</div>
+					</form>
+				</div>
+				<datalist id="languages">
+					{{#each nativeLanguages}}
+					<option value="{{name}} | {{gid}}">
+						{{/each}}
+				</datalist>
+
+				<datalist id="countries">
+					{{#each countries}}
+					{{#if ../es}}
+					<option value="{{name_es}}">
+						{{else}}
+					<option value="{{name_en}}">
+						{{/if}}
+						{{/each}}
+				</datalist>
+			</div>
 		</div>
 	</div>
-	</main>
+</div>
