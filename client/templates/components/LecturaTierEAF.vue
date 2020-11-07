@@ -21,26 +21,26 @@
                             <option value="A" selected>On-Line-Display</option>
                         </select>
                     </td>
-                    <td><input type="text" :id="item2" value="#000000"></td>
+                    <td><input type="text" :id="item2" value="#000000" @change="seleccion_todos_color($event)"></td>
                 </tr>
                 <div v-for="(item, index) in tier_acomodado" :key="'item' + index">
                     <tr v-if="item2==item.PARTICIPANT && item.Visible">
                         <td>{{item.TIER_ID}} </td>
                         <td><input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" /></td>
                         <td>
-                          <!--  <select :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
+                            <select :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
                                 <option value="B">Scrolling</option>
                                 <option value="A" selected>On-Line-Display</option>
-                            </select>-->
-                        <select v-model="tier_acomodado.value">
+                            </select>
+                            <!--No funciona (no actualiza de manera automatica )<select v-model="tier_acomodado.value">
                             <option  v-bind:value="item.value" v-for="(c, index) in display" :key="index" :id="item.TIER_ID">{{ c.name }}</option>
-                        </select>
+                        </select>-->
                         </td>
-                        <td><input type="text" :id="item.TIER_ID" value="#000000"></td>
+                        <td><input type="text" :id="item.TIER_ID" value="#000000" @change="seleccion_color($event)"></td>
 
                     </tr>
                 </div>
-              <!--  <tr> https://codepen.io/anon/pen/gBWWmM
+                <!--  <tr> https://codepen.io/anon/pen/gBWWmM
               https://forum.vuejs.org/t/how-to-work-with-objects-as-select-option-values/45490/4
                     <td><select v-model="display">
                             <option v-for="(c, index) in display" :key="index" :id="c.value" :value="c.value">{{ c.name }}</option>
@@ -251,14 +251,47 @@ export default {
                 this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = false;
                 console.log("si lo off");
             }
-            //console.log(
-            //"Lo dejo en " +
-            //event.target.id +
-            //" " +
-            //this.options.find((x) => x.tier_id == e.target.id).Visible
-            //);
-        },
 
+        },
+        seleccion_color: function (e) {
+            console.log("--------------------------------");
+            console.log(
+                "valor original es " +
+                this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color
+            );
+            console.log(e.target.value);
+            console.log(event.target.id);
+            if (
+                this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color !=
+                event.target.value
+            ) {
+                //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
+                this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color =
+                    event.target.value;
+            }
+            console.log(
+                "Cambio el valor a " +
+                this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color
+            );
+            //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
+        },
+        seleccion_todos_color: function (e) {
+            console.log("--------------------------------");
+            console.log(
+                "valor original es " +
+                this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color
+            );
+            console.log(e.target.value);
+            console.log(event.target.id);
+             for (var indice in this.tier_acomodado) {
+                    if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
+                        console.log("Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice)
+                        this.tier_acomodado[indice].Color = e.target.value;
+                    }
+
+                }
+            //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
+        }
     },
 
     activated() {
