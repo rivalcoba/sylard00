@@ -256,6 +256,7 @@ export default {
                     tier_participant: this.otro[j][0].PARTICIPANT[0],
                     value: "A",
                     Visible: true,
+                    Color: "#000000",
                 });
             }
             //return true;
