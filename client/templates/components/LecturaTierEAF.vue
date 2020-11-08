@@ -1,9 +1,8 @@
 <template>
 <div>
-    Hola vue
 
-    <button v-on:click="agregar_tier_acomodado()"></button>
-    <div v-if="this.info.data">
+     <div v-if="this.info.data">
+      <!--  <button v-on:click="agregar_tier_acomodado()"></button>-->
         <table>
             <tr>
                 <th> Canal Hablante </th>
@@ -301,9 +300,14 @@ export default {
         //this.leerTier();
     },
     mounted() {
+        var self = this;
         this.axios
             .get("/eaf/Nuevoeaf.json")
-            .then((response) => (this.info = response));
+            //.then((response) => (this.info = response));
+            .then((response) => {this.info = response;
+            self.agregar_tier_acomodado();
+            });
+            //this.agregar_tier_acomodado();
 
     }
 }

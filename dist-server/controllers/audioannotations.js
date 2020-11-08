@@ -6,9 +6,7 @@
 //console.log(collections)
 b.render("audioannotations/index",{//enviar 
 audioannotations:d})},createAudioannotation=(a,b)=>{// Getting languages
-b.render("audioannotations/create")},addAudioannotation=async(a,b)=>{const{eaf:c,titulo:d,description:e,genero:f,mp3_url:g,colection:h,duracion:i,location:j,gid:k,siglas:l}=a.body;let m={eaf:c,titulo:d,description:e,genero:f,mp3_url:g,colection:h,duracion:i,location:j,gid:k,siglas:l};//console.log('Duracion')
-//console.log(req.body)
-console.log("File"),m.user=a.user._id;//audioannotations.colection=req.colection._id
+b.render("audioannotations/create")},addAudioannotation=async(a,b)=>{const{eaf:c,titulo:d,description:e,genero:f,mp3_url:g,colection:h,duracion:i,location:j,gid:k,siglas:l}=a.body;let m={eaf:c,titulo:d,description:e,genero:f,mp3_url:g,colection:h,duracion:i,location:j,gid:k,siglas:l};console.log("-------------------Aqui"),m.user=a.user._id;//audioannotations.colection=req.colection._id
 //const audioannotations = new Audioannotations({
 //  titulo: req.body.titulo,
 //  description: req.body.description,
@@ -42,7 +40,9 @@ await _AudioAnnotations.default.create(m);//console.log(`addAudioannotation> Aud
 //console.log('Aqui')
 //res.send('POST request to the homepage')
 b.redirect("/audioannotations")},uploadfileAudioannotation=async(a,b,c)=>{const d=a.file;if(!d){const a=new Error("Please upload a file");return a.httpStatusCode=400,c(a)}//convertir nuevoJSON Aqui
-(0,_converteaftojson.default)("");try{// Obtenuendo datos de las collections
+//console.log("-----------aqui----------")
+//console.log(file)
+(0,_converteaftojson.default)(d.filename);try{// Obteniendo datos de las collections
 const c=await _Collection.default.find({user:a.user._id}).populate("user").exec();let e=c.map(a=>a.toJSON());b.render("audioannotations/create",{filename:d.filename,collections:e})}catch(a){b.status(500).json(a)}},editAudioannotation=async(a,b)=>{b.render("audioannotations/edit",{})},deleteAudioannotaion=async(a,b)=>{const c=a.params.audioannotation_id;try{//console.log("Borrar este")
 //console.log(req.)
 let a=await _AudioAnnotations.default.findById(c).exec();const d=a.eaf,e=await _AudioAnnotations.default.deleteOne({_id:c}).exec();//console.log(file);
