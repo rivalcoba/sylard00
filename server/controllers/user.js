@@ -85,9 +85,8 @@ const index = async (req, res) => {
   res.render('user/index', { usersIdsDocs })
 }
 
-const delUsers = async(req, res)=>{
-	
-	let { usersIds } = req.body
+const delUsers = async(req, res)=>{	
+  let { usersIds } = req.body
   // Normalizing 
   usersIds = typeof usersIds == 'string' ? [usersIds] : usersIds
   // TODO: DELETE USER AUDIOANNOTATIONS
@@ -120,12 +119,14 @@ const delUsers = async(req, res)=>{
   // Delete all users
   result = {}
   try {
-		result = await User.find(query,{name:true, role: true}).remove().exec()
+    result = await User.find(query,{name:true, role: true}).remove().exec()
+    console.log(JSON.stringify(result))
 		req.flash(
-			'success_msg',
-			`Se han borrado ${result.deletedUsers.deletedCount} usuarios con exito`
-		)
+      'success_msg',
+			`Usuarios borrados con exito: ${result.deletedCount}`
+      )
   } catch (error) {
+    console.log(error)
 		req.flash(
 			'error_msg',
 			'No se ha podido actualizar la colección'

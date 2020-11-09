@@ -1,15 +1,64 @@
-<br>
-<table>
-<tr>
-	<th>User Name</th>
-	<th>Id</th>
-</tr>
-{{#each usersIdsDocs}}
-<tr>
-	<td>{{name}}</td>
-	<td>{{_id}}</td>
-</tr>
-{{/each}}
-	
-</table>
-<br>
+<br />
+<form action="/user?_method=DELETE" method="POST">
+  <input type="hidden" name="_method" value="DELETE" />
+  <table>
+    <tr>
+      <th>
+        Action
+      </th>
+      <th>
+        User Name
+      </th>
+      <th>
+        Rol
+      </th>
+      <th>
+        Id
+      </th>
+    </tr>
+    <tr>
+      <td style="font-size: x-large; color:red;">
+        <button>
+          &#128465;
+        </button>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    {{#each usersIdsDocs}}
+      <tr>
+        <td>
+          <label>
+            <input
+              name="usersIds"
+              id="{{_id}}"
+              value="{{_id}}"
+              type="checkbox"
+              class="filled-in"
+            />
+            <span></span>
+          </label>
+        </td>
+        <td>
+          {{name}}
+        </td>
+        <td>
+					{{!-- TODO: CONDICIONAR SEGUN ROL --}}
+          <div class="switch">
+            <label>
+              Colaborador
+              <input type="checkbox" />
+              <span class="lever"></span>
+              Visitante
+            </label>
+          </div>
+        </td>
+        <td>
+          {{_id}}
+        </td>
+      </tr>
+    {{/each}}
+  </table>
+</form>
+<br />
