@@ -1,5 +1,6 @@
 import path from 'path'
 import jsonReader from '@helpers/jsonReader'
+import User from '@models/User'
 
 // DELETE async
 const edit = (req, res)=>{
@@ -72,11 +73,22 @@ const resetUserPassword = async (req, res)=>{
     res.redirect('/')
 }
 
+const index = (req, res)=>{
+    res.send('user list')
+}
+
+const api_getUsers = async (req, res)=>{
+    const usersDocuments = await User.find().exec()
+    res.status(200).json(usersDocuments)
+}
+
 export default{
     edit,
     editUser,
     editPassword,
     editUserPassword,
     resetPassword,
-    resetUserPassword
+    resetUserPassword,
+    index,
+    api_getUsers
 }

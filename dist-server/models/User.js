@@ -2,7 +2,8 @@
 const UserSchema=new _mongoose.Schema({name:{type:String// required: true
 },lastName:{type:String},secLastName:{type:String},shortBio:{type:String},country:{name_en:String,name_es:String,code:String},spokenLanguages:[{name:String,gid:String}],email:{type:String// required: true
 },password:{type:String// required: true
-},role:{type:String,default:"visitor"// required: true
+},role:{type:String,default:"visitor"// visitor | colaborator | su
+// required: true
 },about:String,image:{type:String,default:"https://img.icons8.com/fluent/48/000000/user-male-circle.png"},terms:{type:Boolean,default:// error
 // error
 // error

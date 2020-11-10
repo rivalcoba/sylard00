@@ -3,10 +3,13 @@ import Collection from '@models/Collection'
 // Home Controllers
 const index = (req, res) => {
   // Check if the user is logged
+  if(res.locals.user && res.locals.user.role){
+    res.redirect(`/collections`)
+  }else
   if (res.locals.user) {
     res.redirect('/dashboard')
   } else {
-    res.render('index/welcome', {})
+    res.render('index/home', {})
   }
 }
 const contact = (req, res) => {

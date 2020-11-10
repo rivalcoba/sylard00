@@ -1,113 +1,207 @@
-<div class="row" style="background-color: rgb(91, 72, 132);">
-  <div class="col s5">
-    <h5 style="color: white;">Mis Colecciones</h5>
-  </div>
-  <div class="col s3" style="margin-top: 8px;">
-    <a href="/collections/create" class="waves-effect waves-light btn"><i class="fa fa-plus-circle right"
-        aria-hidden="true"></i> Crear Coleccion</a>
-  </div>
-  <div class="col s4" style="margin-top: 8px;">
-    <a href="/audioannotations/create" class="waves-effect waves-light btn"><i class="fa fa-upload right"
-        aria-hidden="true"></i>Cargar Audio Anotacion</a>
-  </div>
-</div>
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Lengua Terminal</th>
-      <th>Grupo de lenguas</th>
-      <th>Comunidades</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
+<main>
+		<div class="container-fluid" id="contenedor_mis_colecciones">
+			<div class="container-fluid" id="cabezal_mis_colecciones">
+				<div class="container">
+					<div class="col-sm-12" id="contenedor_items_cabezal_mis_colecciones">
+						<div  class="" id="contenedor_titulos_cabezal_mis_colecciones">
+							<h1 id="titulo_mis_colecciones"><span class="icono_cabezal icon-folder-open-o"></span> Mis colecciones</h1>
+							<h2 class="llamada" id="llamada_mis_colecciones">¡Hola!</h2>
+							<h3 class="blanco">{{user.name}} {{user.lastName}}</h3>
+						</div>	
+						<div class="" id="contenedor_botones_cabezal">
+							<button class="btn btn-predeterminado">Agregar colección <span class="icono_boton icon-create_new_folder"></span></button>
+							<button class="btn btn-primario">Cargar audioanotacion <span class="icono_boton icon-file_upload"></span></button>
+						</div>	
+					</div>	
+				</div>
+			</div>
+			<section class="container">
+				<div class="col-sm-12 contenedor-90vh " id="contenedor_general_mis_colecciones">
+					<!--<div class="contenedor_barras_de_busqueda">
+						<div class="barra_de_busqueda_item" id="barra_busq_coleccion">
+							<div class="contenedor_etiquetas_barras_busqueda" >
+								<label class="label label_junto_flechas">Colección</label>
+								<button class="flecha_orden_ascendente active"><span class="icon-arrow-up"></span></button>
+								<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+							</div>
+							<input class="input_busqueda" type="search" placeholder="Búsqueda">
+						</div>	
+						<div class="barra_de_busqueda_item">
+							<div class="contenedor_etiquetas_barras_busqueda">
+								<label class="label label_junto_flechas">Lengua Terminal</label>
+								<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+								<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+							</div>
+							<input class="input_busqueda" type="search" placeholder="Búsqueda">
+						</div>
+						<div class="barra_de_busqueda_item">
+							<div class="contenedor_etiquetas_barras_busqueda">
+								<label class="label label_junto_flechas">Gpo. de lenguas</label>
+								<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+								<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+							</div>
+							<input class="input_busqueda" type="search" placeholder="Búsqueda">
+						</div>
+						<div class="barra_de_busqueda_item">
+							<div class="contenedor_etiquetas_barras_busqueda">
+								<label class="label label_junto_flechas">Comunidades</label>
+								<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+								<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+							</div>
+							<input class="input_busqueda" type="search" placeholder="Búsqueda">
+						</div>
+						<div class="barra_de_busqueda_item" id="item_vacio_barra_busqueda">
+						</div>
+					</div> barras de busqueda por divs-->
+					<div class="contenedor_tabla_mis_colecciones">
+						<table class="tabla_mis_colecciones">
+       					 	<thead>
+                				<th class="cabezal_columnas_th" id="th_coleccion">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Colección</label>
+										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input class="input_busqueda" type="search" placeholder="Búsqueda">
+								</th>
+								<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Lengua terminal</label>
+										<button class="flecha_orden_ascendente active"><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input class="input_busqueda" type="search" placeholder="Búsqueda">
+								</th>
+								<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Gpos. de lenguas</label>
+										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input class="input_busqueda" type="search" placeholder="Búsqueda">
+								</th>
+								<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Comunidades</label>
+										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input class="input_busqueda" type="search" placeholder="Búsqueda">
+								</th>
+								<th class="" id="th_acciones">
+									
+								</th>
+                				
+        					</thead>
+    					    <tr>
+            					<td>
+									<strong><i>Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</i></strong><p class="primeras_palabras_descripcion_collect"></p>
+									<div id="modal_info" class="modal">
+										<div class="contenido_modal">
+											<span class="icono_cerrar_modal icon-close"></span>
+											<h1><span class="icono_modal"></span></h1>	
+											<h2 class="titulo_modal">Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</h2>
+											<p class=" p_2columnas">Este proyecto representa un esfuerzo por documentar la riqueza florística del municipio de San Luis Acatlán y la nomenclatura, clasificación y uso económico y simbólico de las plantas en las cuatro comunidades de habla mixteco principal dentro de este municipio: Yoloxóchitl, Cuanacaxtitlán, Arroyo Cumiapa y Buena Vista. Incluye la colaboración de botánicos y lingüistas: Kenia Velasco Gutiérrez (botánica) se encargó de la mayor parte de las colectas en las cuatro comunidades; Rey Castillo García (un lingüista y hablante nativo de Yoloxóchitl) se encargó de la escritura tanto de nomenclatura como de transcripción y traducción de audio grabados. Hasta la fecha se ha hecho un total de 1,428 colectas que representan un total de 126 familias y 502 géneros.  Todavía se están identificando las colectas a especies pero se calcula llegar a aproximadamente 900 a 1,000 especies distintas.  La mayoría de las colectas son Magnoliophyta (1,381) pero también incluye Pteridophyta (39), Cycadophyta (3) y Coniferophyta (2). En cuanto a distribución geográfica se llevaron a cabo colectas en las siguientes comunidades: Yoloxóchitl (1,274), Buena Vista (68), Arroyo Cumiapa (43), Cuanacaxtitlán (40) y San Luis Acatlán (3). Se contó con el apoyo de más de 35 asesores locales los principales siendo Esteban Guadalupe Sierra y Constantino Teodoro Bautista de Yoloxóchitl. Para las identificación a especie también apoyaron más de 75 taxónomos expertos.</p>
+										</div>
+									</div>
+								</td>
+            					<td class="" data-label="Lengua terminal (glottocode)">
+									yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
+								</td>
+            					<td class="" data-label="Grupo de lenguas (glottocode)">
+									amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span><br>amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span>
+								</td>
+            					<td class="comunidades"><span class="pais">
+									México</span><span class="estado">Guerrero</span><span class="comunidad">Yoloxóchitl</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Cuanacaxtitlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Arroyo Cumiapa</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Buena Vista</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
+								</td>
+								<td class="td_acciones ">
+									<div class="contenedor_botones_accion">
+										<button class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
+										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
+										<button class="btn_accion_tabla"><span class="icono_accion_tabla icon-ellipsis-v"></span></button>
+									</div>
+								</td>
+        					</tr>
+							<tr>
+            					<td>
+									<strong><i>Estudio Florístico y Etnobotánico de Comunidades de habla Náhuat de la Sierra Nororiental de Puebla</i></strong><p class="primeras_palabras_descripcion_collect"></p>
+								</td>
+            					<td class="" data-label="Lengua terminal (glottocode)">
+									high1278<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Highland Puebla Nahuat</span><br><!--yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span-->
+								</td>
+            					<td class="" data-label="Grupo de lenguas (glottocode)">
+									azte1234<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Aztec</span><br><!--amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span-->
+								</td>
+            					<td class="comunidades"><span class="pais">
+									México</span><span class="estado">Guerrero</span><span class="comunidad">San Miguel Tzinacapan</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Tacuapan</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Arroyo Cumiapa</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Buena Vista</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
+							  </td>
+								<td class="td_acciones ">
+									<div class="contenedor_botones_accion ">
+									<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-info1"></span></button>
+									<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
+										<button class="btn_accion_tabla"><span class="icono_accion_tabla icon-ellipsis-v"></span></button>
+									</div>
+								</td>
+        					</tr>
+							<tr>
+            					<td>
+									<strong><i>Estudio Florissas de Comunidades Totonacas de la Sierra Nororiental y Norte de Puebla</i></strong><p class="primeras_palabras_descripcion_collect"></p>
+								</td>
+            					<td class="" data-label="Lengua terminal (glottocode)">
+									toto1252<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br><!--yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span-->
+								</td>
+            					<td class="" data-label="Grupo de lenguas (glottocode)">
+									toto1251<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" ><!--Amuzgo-mixtecan</span><br>amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span-->
+								</td>
+            					<td class="comunidades"><span class="pais">
+									México</span><span class="estado">Guerrero</span><span class="comunidad">Zongozotla</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Ecatlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Nanacatlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Tonalixco</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
+								</td>
+								<td class="td_acciones">
+									<div class="contenedor_botones_accion">
+										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-info1"></span></button>
+										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
+										<button id="elipsis1" class="btn_accion_tabla"><span class="icono_accion_tabla icon-ellipsis-v"></span></button>
+										<div id="modal_elipsis1" class="contenido_modal_elipsis">
+											<span class="icono_cerrar_modal_elipsis icon-close "></span>
+											<div class="contenedor_opciones_elipsis">
+												<a class="btn_opciones_ellipsis_mis_colecciones" href="#"><span class="icono_opcion_elipsis icon-file_upload"></span> Cargar audioanotación</a>
+												<a class="btn_opciones_ellipsis_mis_colecciones" href="#"><span class="icono_opcion_elipsis icon-edit"></span> Editar metadatos</a>
+												<a class="btn_opciones_ellipsis_mis_colecciones" href="#"><span class="icono_opcion_elipsis icon-delete"></span> Eliminar</a>
+											</div>	
+										</div>	
+									</div>
+								</td>
+        					</tr>
+        					
+        					
+						</table>
+						<div class="contenedor_paginacion">
+							<div class="contenedor_input_paginacion">
+								<input class="" id="busqueda_paginacion" type="text" placeholder="Pag.">
+								<button class="btn_lateral_input" for="busqueda_paginacion"><span class="icono_pagina_busqueda  icon-chevron-right"></span></button>
 
-  <tbody>
-    {{#each collections}}
-    <tr>
-      <td> <h6>{{name}}</h6> </td>
-      <td>
-        {{#each languages}}
-          <h5>{{language.gid}}</h5>
-          <p>{{language.name}}</p>
-          <div class="divider"></div>
-        {{/each}}
-      </td>
-      <td>
-        {{#each languages}}
-          <h5>{{LanguageGroup.gid}}</h5>
-          <p>{{LanguageGroup.name}}</p>
-          <div class="divider"></div>
-        {{/each}}
-      </td>
-      <td>
-        {{#each localities}}
-          <h5>{{Nom_Loc}}</h5>
-          <p>{{Nom_Mun}} {{Nom_Ent}} </p>
-          <p>{{Lat_Decimal}} {{Lon_Decimal}}</p>
-          <div class="divider"></div>
-        {{/each}}        
-      </td>
-      
-      <td>
-        <i 
-          class="fa fa-info-circle fa-2x" 
-          style="color: rgb(21, 193, 209);" 
-          onclick="syModals.show('{{name}}','{{description}}')"
-          aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-        <a href="">
-        <i 
-          class="fa fa-expand fa-2x" 
-          aria-hidden="true" 
-          style="color: rgb(21, 193, 209);"></i>&nbsp;&nbsp;&nbsp;
-
-        </a>
-        <!-- Dropdown Trigger -->
-        <span class='dropdown-trigger' href='#' data-target='dropdown{{_id}}'>
-          <i 
-            class="fa fa-ellipsis-v fa-2x" 
-            aria-hidden="true" 
-            style="color: rgb(21, 193, 209);"></i>
-        </span>&nbsp;&nbsp;&nbsp;
-        <!-- Dropdown Structure -->
-        <ul id='dropdown{{_id}}' class='dropdown-content'>          
-          <li>
-            <a href="/audioannotations/">
-              <i 
-                class="fa fa-plus-circle"
-                aria-hidden="true" 
-                style="color:rgb(21, 193, 209);"></i> 
-                Añadir AuAn
-            </a>
-          </li>
-          <li>            
-            <a 
-              href="/collections/edit/{{_id}}">
-              <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:rgb(21, 193, 209);"></i>
-              Editar
-            </a>
-          </li>
-          <li>
-            <form 
-            class="center"
-              action="/collections/delete/{{_id}}?_method=DELETE" method="POST">
-              <input type="hidden" name="_method" value="DELETE">
-              <a
-                onclick="this.parentNode.submit()">
-                <i 
-                  class="fa fa-trash-o"
-                  aria-hidden="true" 
-                  style="color: red;"></i> 
-                Eliminar
-              </a>
-            </form>
-          </li>
-        </ul>    
-      </td>
-    </tr>    
-    {{/each}}    
-  </tbody>
-</table>
+							</div>
+							<div class="contenedor_numeros_paginacion">
+								<a class="icono_paginacion" href="#"><span class="icon-first_page"></span></a>
+								<a class="icono_paginacion" href="#"><span class="icon-angle-left"></span></a>
+								<a class="numero_paginacion" href="#">2</a>
+								<a class="numero_paginacion" href="#">3</a>
+								<a class="numero_paginacion" href="#">4</a>
+								<a class="numero_paginacion active" href="#">5</a>
+								<a class="numero_paginacion" href="#">6</a>
+								<a class="numero_paginacion" href="#">7</a>
+								<a class="ultima_pagina" href="#">...29</a>
+								<a class="icono_paginacion" href="#"><span class="icon-angle-right"></span></a>
+								<a class="icono_paginacion" href="#"><span class=" icon-last_page"></span></a>
+							</div>
+							
+						</div>	
+					</div>
+				</div>
+				
+			</section>
+		</div>
+	</main>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {

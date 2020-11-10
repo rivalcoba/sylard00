@@ -3,21 +3,24 @@
 // import User from '@models/User'
 // List all the collaborators collections
 // Read and list all the Collaborators Collections
-const index=async(a,b)=>{// Get Collecionts
-const c=await _Collection.default.find({user:a.user._id}).populate("user").exec();// Collections to JSON
-let d=c.map(a=>a.toJSON());// List all the collections
-b.render("collections/index",{collections:d})},createCollection=async(a,b)=>{// Getting languages 
+const index=async(a,b)=>{// Query
+let c="su"==b.locals.user.role?{}:{user:a.user._id};// Get Collecionts
+const d=await _Collection.default.find(c).populate("user").exec();// Collections to JSON
+let e=d.map(a=>a.toJSON());// List all the collections
+b.render("collections/index",{collections:e})},createCollection=async(a,b)=>{// Getting languages
 try{const a=await _Glottolog.default.find({$or:[{country_ids:"MX"},{country_ids:"US"}],parent_id:{$ne:""}},"gid name parent_id").exec(),c=await _Location.default.distinct("Nom_Ent");let d=a.map(a=>{let b={};return b=a.toJSON(),b});b.render("collections/create",{languages:d,entities:c})}catch(c){return a.flash("error_msg","El servidor no esta disponible, intente mas tarde"),b.redirect("/dashboard")}},addCollection=async(a,b)=>{// Grab collections from body
 let{collection:c}=a.body;// Add user
 c.user=a.user._id;const d=await _Collection.default.create(c);// Se encuentra usuario
-console.log(`addCollection> Colection Created: ${d.name}`),b.redirect("/collections")},deleteCollection=async(a,b)=>{const c=a.params.collection_id;try{const a=await _Collection.default.deleteOne({_id:c}).exec();console.log(`deleteCollection> Result: ${a}`),b.redirect("/collections")}catch(a){return b.status(400).json(a)}},editCollectionForm=async(a,b)=>{const c=a.params.collection_id;console.log(`controllers>collections> COL ID: ${c}`);// Grab the collection to edit
-try{let d=await _Collection.default.findById(c).exec();// Im the collection owner?
-if(d.user+""!=a.user._id+"")return a.flash("error_msg","No eres el propietario de esta colecci\xF3n"),b.redirect("/collections");// Validaciones
+console.log(`addCollection> Colection Created: ${d.name}`),b.redirect("/collections")},deleteCollection=async(a,b)=>{const c=a.params.collection_id;try{// Owner Validation
+let d=await _Collection.default.findById(c).exec();// Am I the collection owner or su?
+if(d.user+""!=a.user._id+""&&"su"!=a.user.role+"")return a.flash("error_msg","No eres el propietario de esta colecci\xF3n"),b.redirect("/collections");const e=await _Collection.default.deleteOne({_id:c}).exec();console.log(`deleteCollection> Result: ${e}`),b.redirect("/collections")}catch(a){return b.status(400).json(a)}},editCollectionForm=async(a,b)=>{const c=a.params.collection_id;console.log(`controllers>collections> COL ID: ${c}`);// Grab the collection to edit
+try{let d=await _Collection.default.findById(c).exec();// Am I the collection owner or su?
+if(d.user+""!=a.user._id+""&&"su"!=a.user.role+"")return a.flash("error_msg","No eres el propietario de esta colecci\xF3n"),b.redirect("/collections");// Validaciones
 // Is a valid collection?
 if(!d)return a.flash("error_msg","No se encontro la coleccion solicitada"),b.redirect("/dashboard");// parsing Lanugages
 // ---- TESTING
-d=d.toJSON(),d.languages=JSON.stringify(d.languages),d.localities=JSON.stringify(d.localities),b.render("collections/edit",{collectionDoc:d})}catch(c){return console.log(`controller>collections> Error: ${c.message}`),a.flash("error_msg",c.message),b.redirect("/collections")}},editCollection=async(a,b)=>{const{collection:c}=a.body,d=a.params.collection_id;let e;try{// Im the collection owner?
-if(e=await _Collection.default.findById(d).exec(),e.user+""!=a.user._id+"")return a.flash("error_msg","No eres el propietario de esta colecci\xF3n"),b.redirect("/dashboard");// Update collection
+d=d.toJSON(),d.languages=JSON.stringify(d.languages),d.localities=JSON.stringify(d.localities),b.render("collections/edit",{collectionDoc:d})}catch(c){return console.log(`controller>collections> Error: ${c.message}`),a.flash("error_msg",c.message),b.redirect("/collections")}},editCollection=async(a,b)=>{const{collection:c}=a.body,d=a.params.collection_id;let e;try{// am I the collection owner or su?
+if(e=await _Collection.default.findById(d).exec(),e.user+""!=a.user._id+""&&"su"!=a.user.role+"")return a.flash("error_msg","No eres el propietario de esta colecci\xF3n"),b.redirect("/dashboard");// Update collection
 let f=await e.updateCollection(c);f.ok?a.flash("success_msg","La coleccion se ha actualziado con exito"):a.flash("error_msg","No se ha podido actualizar la colecci\xF3n"),b.redirect("/collections")}catch(c){// Se flashea Exito
 // Get the info from
 return a.flash("error_msg","No se ha podido encontrar la coleccion que se desea editar"),b.render("index/dashboard")}};var _default={// List Collections from a particular Colaborator User

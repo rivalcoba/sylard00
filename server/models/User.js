@@ -39,7 +39,7 @@ const UserSchema = new Schema({
     },
     role: {
         type: String,
-        default: 'visitor',
+        default: 'visitor', // visitor | colaborator | su
         // required: true
     },
     about : String,  
