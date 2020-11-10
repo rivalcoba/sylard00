@@ -66,8 +66,9 @@ typings/
 *.mp3
 *.eaf
 
-
-
 # eslint
 .eslintrc.json
 server/public/js/index.js
+
+# VSCODE configurations
+.vscode
