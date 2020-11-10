@@ -138,12 +138,12 @@ function buscar_time_slot(ts){
   // console.log(obj_tier) 
  }
  export default  function (nombreEaf) {
-let url =path.join(__dirname,'..','public','eaf','asset01.eaf')
+let url =path.join(__dirname,'..','public','eaf',nombreEaf)
 console.log(url)
 console.log("Aqui esta el error")
 let xml=""
 try {
-     xml = fs.readFileSync(path.join(__dirname,'..','public','eaf','asset01.eaf'));
+     xml = fs.readFileSync(path.join(__dirname,'..','public','eaf',nombreEaf));
 } catch (error) {
     console.trace(error)
     

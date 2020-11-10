@@ -116,9 +116,12 @@ const addAudioannotation = async (req, res) => {
     gid,
     siglas,
   }
+
+  console.log("-------------------Aqui")
+  //console.log(req)
  //console.log('Duracion')
  //console.log(req.body)
-  console.log('File')
+  //console.log('File')
 
 
  audioannotations.user = req.user._id
@@ -181,10 +184,12 @@ const file = req.file
     return next(error)
   }
    //convertir nuevoJSON Aqui
-   convertEaf2json("")
+   //console.log("-----------aqui----------")
+   //console.log(file)
+   convertEaf2json(file.filename)
     
   try {
-    // Obtenuendo datos de las collections
+    // Obteniendo datos de las collections
     const collectionsDocs = await Collection.find({user:req.user._id}).populate('user').exec()
       let collections  = collectionsDocs.map(collection=>{
          return collection.toJSON()
