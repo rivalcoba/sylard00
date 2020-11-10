@@ -70,5 +70,9 @@ typings/
 .eslintrc.json
 server/public/js/index.js
 
-# VSCODE configurations
-.vscode
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

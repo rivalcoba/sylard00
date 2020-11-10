@@ -12,8 +12,6 @@ import multer from 'multer'
 
 var cors = require('cors')
 
-
-
 router.get(
   '/',
     ensureAuthenticated,
@@ -23,10 +21,9 @@ router.get(
 
 router.post(
   '/add',
-    ensureAuthenticated,
+  ensureAuthenticated,
   ensureColabUser,
-  //me quede aqui guardando este error 
- audioannotationsController.addAudioannotation
+  audioannotationsController.addAudioannotation
 )
 
 var storage = multer.diskStorage({
@@ -42,6 +39,7 @@ var storage = multer.diskStorage({
        
   }
 })
+
 var upload = multer({ storage: storage })
 router.post(
   '/uploadfile',upload.single('myFile'),cors(),
