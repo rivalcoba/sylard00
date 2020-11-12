@@ -122,6 +122,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var swee
 
 /***/ }),
 
+/***/ "./client/helpers/models/collections.js":
+/*!**********************************************!*\
+  !*** ./client/helpers/models/collections.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/axios */ \"./client/utils/axios.js\");\nconst getCollectionById=async a=>{const b=await _utils_axios__WEBPACK_IMPORTED_MODULE_0__[\"default\"].get(`/collections/api/read/${a}`);return console.log(`REsponse: ${JSON.stringify(b)}`),200==b.status?b.data:null};/* harmony default export */ __webpack_exports__[\"default\"] = ({getCollectionById});\n\n//# sourceURL=webpack:///./client/helpers/models/collections.js?");
+
+/***/ }),
+
 /***/ "./client/helpers/models/languages.js":
 /*!********************************************!*\
   !*** ./client/helpers/models/languages.js ***!
@@ -178,7 +190,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// Fill asynchronously Glottolog Select at Front End\nconst fillGlottologSelect=()=>{alert(\"fillGlottologSelect Function\")};/* harmony default export */ __webpack_exports__[\"default\"] = ({fillGlottologSelect});\n\n//# sourceURL=webpack:///./client/pages/audioannotations/create.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _helpers_models_collections__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/models/collections */ \"./client/helpers/models/collections.js\");\n// Auxiliary Functions\nconst disableElementById=a=>{const b=document.getElementById(a);b.disabled=!0},cleanSelectElementByID=a=>{for(const b=document.getElementById(a);b.firstChild;)b.removeChild(b.firstChild)},fillGlottologSelect=async()=>{disableElementById(\"glottologSelect\"),disableElementById(\"localitiesSelect\");// Getting Collections Id\nconst a=document.getElementById(\"colectionSelect\"),b=a.value;cleanSelectElementByID(\"glottologSelect\"),cleanSelectElementByID(\"localitiesSelect\"),console.log(\"collectionID: \"+b);let c=await _helpers_models_collections__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getCollectionById(b);// Getting Collection Data\nconsole.log(`Collection: ${JSON.stringify(c)}`)};/* harmony default export */ __webpack_exports__[\"default\"] = ({fillGlottologSelect});\n\n//# sourceURL=webpack:///./client/pages/audioannotations/create.js?");
 
 /***/ }),
 
