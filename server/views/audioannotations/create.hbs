@@ -29,7 +29,7 @@
 <div>Archivo Cargado: {{filename}}</div>
 
 <form class="col s12" action="/audioannotations/add" method="post" id='form2'>
-<!--
+   <!--
 <input type="file"
        id="eaf" name="eaf"
        accept="eaf/eaf">
@@ -44,96 +44,87 @@
   mp3_url:String,
   https://code.tutsplus.com/es/tutorials/file-upload-with-multer-in-node--cms-32088  -->
 
-<input value="{{filename}}" type="hidden" id="eaf" name="eaf" ><br><br>
+   <input value="{{filename}}" type="hidden" id="eaf" name="eaf"><br><br>
 
-<label for="mp3_url">MP3</label>
-  <input type="text" id="mp3_url" name="mp3_url"><br><br>
- 
- <label for="titulo">Titulo:</label>
-  <input type="text" id="titulo" name="titulo"><br><br>
-  <label for="descripcion">Descripcion:</label>
-  <input type="text" id="description" name="description"><br><br>
+   <label for="mp3_url">MP3</label>
+   <input type="text" id="mp3_url" name="mp3_url"><br><br>
+
+   <label for="titulo">Titulo:</label>
+   <input type="text" id="titulo" name="titulo"><br><br>
+   <label for="descripcion">Descripcion:</label>
+   <input type="text" id="description" name="description"><br><br>
    <label for="coleccion">Coleccion:</label>
-     <div>
-  <datalist id="colection"></datalist>
-  <select id="colection" name="colection">
-     {{#each collections}}
-          <option 
-          {{!-- id = '{{_id}}' --}}
-          value = "{{_id}}" 
-          name= "{{name}}">
-        {{name}}
-        </option>
-        {{/each}}
-        </select>
- </datalist>
- </div>
-<div>
-  <div>
-        <label>Lengua Terminal y Grupo de lenguas</label>
-      <datalist id="languages"></datalist>
-  <select id="glottolog" name="gid">
-     {{#each collections}}
-        {{#languages}}
-        <option 
-         value = "{{_id}}" 
-        {{#language}}
-         {{!-- id = '{{_id}}' --}}
-        
-          name= "{{name}}">
-        {{name}}       
-        {{/language}}     
-            {{#LanguageGroup}}
-          --- {{name}} 
-          </option>
-           {{/LanguageGroup}}                   
-         {{/languages}}
-        {{/each}}
-        </select>
- </datalist>
-    </div>
+   <div>
+      <datalist id="colection"></datalist>
+      <select onblur="pageScripts.fillGlottologSelect()" id="colection" name="colection">
+         {{#each collections}}
+         <option {{!-- id = '{{_id}}' --}} value="{{_id}}" name="{{name}}">
+            {{name}}
+         </option>
+         {{/each}}
+      </select>
+      </datalist>
+   </div>
+   <div>
+      <div>
+         <label>Lengua Terminal y Grupo de lenguas</label>
+         <datalist id="languages"></datalist>
+         <select id="glottolog" name="gid">
+            {{#each collections}}
+            {{#languages}}
+            <option value="{{_id}}" {{#language}} {{!-- id = '{{_id}}' --}} name="{{name}}">
+               {{name}}
+               {{/language}}
+               {{#LanguageGroup}}
+               --- {{name}}
+            </option>
+            {{/LanguageGroup}}
+            {{/languages}}
+            {{/each}}
+         </select>
+         </datalist>
+      </div>
 
       <label>Comunidad a la que pertenece</label>
-       <div>
-  <datalist id="entities"></datalist>
-  <select id="colection" name="location">
-     {{#each collections}}
-     {{#localities}}
-          <option 
-          {{!-- id = '{{_id}}' --}}
-          value = "{{_id}}" 
-          name= "{{name}}">
-        {{Nom_Loc}} {{Nom_Mun}} {{Nom_Ent}}
-        </option>
-        {{/localities}}
-        {{/each}}
-        </select>
- </datalist>
- </div>
-  
-
-    <label>Género a la que pertenece</label>
-     <input type="text" id="genero" name="genero"><br><br> 
-       <label>Siglas de Hablante</label>
-     <input type="text" id="siglas" name="siglas"><br><br> 
-</div>
+      <div>
+         <datalist id="entities"></datalist>
+         <select id="colection" name="location">
+            {{#each collections}}
+            {{#localities}}
+            <option {{!-- id = '{{_id}}' --}} value="{{_id}}" name="{{name}}">
+               {{Nom_Loc}} {{Nom_Mun}} {{Nom_Ent}}
+            </option>
+            {{/localities}}
+            {{/each}}
+         </select>
+         </datalist>
+      </div>
 
 
-<div id="app2">
-    <LecturaTierEAF>
-     </LecturaTierEAF>
-</div>
-  
+      <label>Género a la que pertenece</label>
+      <input type="text" id="genero" name="genero"><br><br>
+      <label>Siglas de Hablante</label>
+      <input type="text" id="siglas" name="siglas"><br><br>
+   </div>
+
+
+   <div id="app2">
+      <LecturaTierEAF>
+      </LecturaTierEAF>
+   </div>
+
    <label for="duracion">Duracion</label>
-    <input type="text" id="duracion" name="duracion" ><br><br>
+   <input type="text" id="duracion" name="duracion"><br><br>
 
- 
-  
-<button type="submit">Submit</button>
+
+
+   <button type="submit">Submit</button>
 </form>
 {{/if}}
-<script> 
-   const $form    =document.querySelector('#form5')
+<script>
+   /*
+   const $form    = document.querySelector('#form5')
+
    $form.addEventListener('submit', (event) =>  {
      event.preventDefault()
       const formData  =new FormData (event.currentTarget)
@@ -143,37 +134,37 @@
    //formData.set('duration',longitud)
    //console.log("longitud Final")
    //console.log(longitudmp3())
-   })  
+   })*/
 
-function leer_eaf(){
-   var leer = require('./converteaftojson');
-}
+   function leer_eaf() {
+      var leer = require('./converteaftojson');
+   }
 
-function longitudmp3(){ 
-var duration;
-//const mp3file = 'https://raw.githubusercontent.com/prof3ssorSt3v3/media-sample-files/master/doorbell.mp3'
-//const mp3_f=document.getElementById("mp3_url");
-const mp3file = document.getElementById("mp3_url").value;
-//console.log(mp3file.value)
-const audioContext = new (window.AudioContext || window.webkitAudioContext)()
-const request = new XMLHttpRequest()
-request.open('GET', mp3file, true)
-request.responseType = 'arraybuffer'
-request.onload = function() {
-    audioContext.decodeAudioData(request.response,
-        function(buffer) {
-            var duration = buffer.duration
-            console.log("longitud")
-            console.log(duration)
-            longitud = duration
-            var inputDuration = document.getElementById("duracion");
-            inputDuration.value = duration;
-            
-            //document.write(duration)
-        }
-    )
-}
-request.send()
-//return duration
-}
+   function longitudmp3() {
+      var duration;
+      //const mp3file = 'https://raw.githubusercontent.com/prof3ssorSt3v3/media-sample-files/master/doorbell.mp3'
+      //const mp3_f=document.getElementById("mp3_url");
+      const mp3file = document.getElementById("mp3_url").value;
+      //console.log(mp3file.value)
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+      const request = new XMLHttpRequest()
+      request.open('GET', mp3file, true)
+      request.responseType = 'arraybuffer'
+      request.onload = function () {
+         audioContext.decodeAudioData(request.response,
+            function (buffer) {
+               var duration = buffer.duration
+               console.log("longitud")
+               console.log(duration)
+               longitud = duration
+               var inputDuration = document.getElementById("duracion");
+               inputDuration.value = duration;
+
+               //document.write(duration)
+            }
+         )
+      }
+      request.send()
+      //return duration
+   }
 </script>

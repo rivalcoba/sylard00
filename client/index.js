@@ -20,6 +20,8 @@ import collectionsCreate from '@client/pages/collections/create'
 import editCollectionScripts from '@client/pages/collections/edit'
 // ./Test scripts
 import indexTestScripts from '@client/pages/index/test'
+// Audioannotations Scripts
+import createAudioAnnotationsScripts from '@client/pages/audioannotations/create'
 
 import App from '@client/templates/main.vue'
 import axios from "axios";
@@ -27,7 +29,6 @@ import VueAxios from "vue-axios";
 import LecturaEAF from "@client/templates/components/LecturaEAF.vue";
 import LecturaTierEAF from "@client/templates/components/LecturaTierEAF.vue";
 import App2 from '@client/templates/main2.vue'
-
 
 import Vue from 'vue'
 
@@ -49,6 +50,11 @@ if(window.location.pathname == `/test`){
     //window.VueCdn = VueCdn
     window.app = indexTestScripts.getVueApp()
 }
+
+if(window.location.pathname == `/audioannotations/uploadfile`){
+  window.pageScripts = createAudioAnnotationsScripts
+}
+
 if(window.location.pathname == `/audioannotations/vuetest`){
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
