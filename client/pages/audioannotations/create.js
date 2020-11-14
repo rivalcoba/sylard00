@@ -33,17 +33,24 @@ const fillGlottologSelect = async ()=>{
 
   let collection = await CollectionModel.getCollectionById(collectionID)
 
-  // Fill glottologSelect and localitiesSelect
+  // Fill glottologSelect 
   const glottologSelect = document.getElementById('glottologSelect')
   collection.languages.forEach(languagesMates => {
     const option = document.createElement('option')
     glottologSelect.appendChild(option)
     option.value = `${languagesMates._id}`
     option.innerHTML = `${languagesMates.language.name} - ${languagesMates.LanguageGroup.name}`
-    enableElementById('glottologSelect')
-    // TODO: CONTINUAR DESDE AQUI
-
   });
+  enableElementById('glottologSelect')
+  // Fill localitiesSelect
+  const localitiesSelect = document.getElementById('localitiesSelect')
+  collection.localities.forEach(locality => {
+    const option = document.createElement('option')
+    localitiesSelect.appendChild(option)
+    option.value = `${locality._id}`
+    option.innerHTML = `${locality.Nom_Loc} - ${locality.Nom_Mun} - ${locality.Nom_Ent}`
+  });
+  enableElementById('localitiesSelect')
 }
 
 export default {

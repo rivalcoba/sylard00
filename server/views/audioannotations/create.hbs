@@ -70,9 +70,10 @@
          <label>Lengua Terminal y Grupo de lenguas</label>
          <datalist id="languages"></datalist>
          <select id="glottologSelect" name="gid">
+{{!-- 
             {{#each collections}}
             {{#languages}}
-            <option value="{{_id}}" {{#language}} {{!-- id = '{{_id}}' --}} name="{{name}}">
+            <option value="{{_id}}" {{#language}} name="{{name}}">
                {{name}}
                {{/language}}
                {{#LanguageGroup}}
@@ -81,6 +82,7 @@
             {{/LanguageGroup}}
             {{/languages}}
             {{/each}}
+             --}}
          </select>
          </datalist>
       </div>
@@ -89,13 +91,15 @@
       <div>
          <datalist id="entities"></datalist>
          <select id="localitiesSelect" name="location">
+{{!-- 
             {{#each collections}}
             {{#localities}}
-            <option {{!-- id = '{{_id}}' --}} value="{{_id}}" name="{{name}}">
+            <option value="{{_id}}" name="{{name}}">
                {{Nom_Loc}} {{Nom_Mun}} {{Nom_Ent}}
             </option>
             {{/localities}}
             {{/each}}
+             --}}
          </select>
          </datalist>
       </div>
