@@ -5,6 +5,10 @@ const disableElementById = (elementId)=>{
   const element = document.getElementById(elementId)
   element.disabled = true
 }
+const enableElementById = (elementId)=>{
+  const element = document.getElementById(elementId)
+  element.disabled = false
+}
 
 const cleanSelectElementByID = (elementId)=>{
   const element = document.getElementById(elementId)
@@ -29,11 +33,17 @@ const fillGlottologSelect = async ()=>{
 
   let collection = await CollectionModel.getCollectionById(collectionID)
 
-  // Getting Collection Data
-  console.log(`Collection: ${JSON.stringify(collection)}`);
-
-  // TODO: CONTINUAR DESDE AQUI
   // Fill glottologSelect and localitiesSelect
+  const glottologSelect = document.getElementById('glottologSelect')
+  collection.languages.forEach(languagesMates => {
+    const option = document.createElement('option')
+    glottologSelect.appendChild(option)
+    option.value = `${languagesMates._id}`
+    option.innerHTML = `${languagesMates.language.name} - ${languagesMates.LanguageGroup.name}`
+    enableElementById('glottologSelect')
+    // TODO: CONTINUAR DESDE AQUI
+
+  });
 }
 
 export default {
