@@ -55,7 +55,6 @@
    <input type="text" id="description" name="description"><br><br>
    <label for="coleccion">Coleccion:</label>
    <div>
-      <datalist id="colection"></datalist>
       <select onblur="pageScripts.fillGlottologSelect()" id="colectionSelect" name="colection">
          {{#each collections}}
          <option value="{{_id}}" name="{{name}}">
@@ -63,12 +62,10 @@
          </option>
          {{/each}}
       </select>
-      </datalist>
    </div>
    <div>
       <div>
-         <label>Lengua Terminal y Grupo de lenguas</label>
-         <datalist id="languages"></datalist>
+         <label for="glottologSelect">Lengua Terminal y Grupo de lenguas</label>
          <select id="glottologSelect" name="gid">
 {{!-- 
             {{#each collections}}
@@ -84,12 +81,10 @@
             {{/each}}
              --}}
          </select>
-         </datalist>
       </div>
 
-      <label>Comunidad a la que pertenece</label>
       <div>
-         <datalist id="entities"></datalist>
+         <label for="localitiesSelect">Comunidad a la que pertenece</label>
          <select id="localitiesSelect" name="location">
 {{!-- 
             {{#each collections}}
@@ -101,16 +96,20 @@
             {{/each}}
              --}}
          </select>
-         </datalist>
       </div>
 
+      <label for="genreSelect">Género a la que pertenece</label>
+      <select name="genre" id="genreSelect">
+         {{#each genreArray}}
+         <option value="{{_id}}" name="{{name}}">
+            {{name}}
+         </option>
+         {{/each}}
+      </select>
 
-      <label>Género a la que pertenece</label>
-      <input type="text" id="genero" name="genero"><br><br>
-      <label>Siglas de Hablante</label>
-      <input type="text" id="siglas" name="siglas"><br><br>
+      {{!-- <label>Siglas de Hablante</label>
+      <input type="text" id="siglas" name="siglas"><br><br> --}}
    </div>
-
 
    <div id="app2">
       <LecturaTierEAF>
