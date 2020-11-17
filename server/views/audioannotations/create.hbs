@@ -51,9 +51,11 @@
 
    <label for="titulo">Titulo:</label>
    <input type="text" id="titulo" name="titulo"><br><br>
+   
    <label for="descripcion">Descripcion:</label>
    <input type="text" id="description" name="description"><br><br>
-   <label for="coleccion">Coleccion:</label>
+   
+   <label for="colectionSelect">Coleccion:</label>
    <div>
       <select onblur="pageScripts.fillGlottologSelect()" id="colectionSelect" name="colection">
          {{#each collections}}

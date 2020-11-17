@@ -1,18 +1,17 @@
 <template>
 <div>
-
-     <div v-if="this.info.data">
-      <!--  <button v-on:click="agregar_tier_acomodado()"></button>-->
-        <table>
-            <tr>
-                <th> Canal Hablante </th>
-                <th>Mostrar</th>
-                <th>Visualiza en</th>
-                <th>Color de Tipográfia</th>
-            </tr>
-            <div v-for="(item2, index) in tier_participante" :key="'item' + index">
+    <div v-if="this.info.data">
+        <!--  <button v-on:click="agregar_tier_acomodado()"></button>-->
+        <div v-for="(item2, index) in tier_participante" :key="'item' + index">
+            <table style="width:100%">
                 <tr>
-                    <td>Canal de Hablante {{item2}}</td>
+                    <th> Canal Hablante </th>
+                    <th>Mostrar</th>
+                    <th>Visualiza en</th>
+                    <th>Color de Tipográfia</th>
+                </tr>
+                <tr>
+                    <td> ✔ Canal de Hablante: {{item2}}</td>
                     <td><input type="checkbox" :id="item2" checked @change="selecion_todos_onoff($event)" /></td>
                     <td>
                         <select :id="item2" @change="selecion_todos_visualizacion_options($event)">
@@ -22,23 +21,24 @@
                     </td>
                     <td><input type="text" :id="item2" value="#000000" @change="seleccion_todos_color($event)"></td>
                 </tr>
-                <div v-for="(item, index) in tier_acomodado" :key="'item' + index">
-                    <tr v-if="item2==item.PARTICIPANT && item.Visible">
-                        <td>{{item.TIER_ID}} </td>
-                        <td><input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" /></td>
-                        <td>
-                            <select :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
-                                <option value="B">Scrolling</option>
-                                <option value="A" selected>On-Line-Display</option>
-                            </select>
-                            <!--No funciona (no actualiza de manera automatica )<select v-model="tier_acomodado.value">
-                            <option  v-bind:value="item.value" v-for="(c, index) in display" :key="index" :id="item.TIER_ID">{{ c.name }}</option>
-                        </select>-->
-                        </td>
-                        <td><input type="text" :id="item.TIER_ID" value="#000000" @change="seleccion_color($event)"></td>
-
-                    </tr>
-                </div>
+            
+            <div v-for="(item, index) in tier_acomodado" :key="'item' + index">
+                <tr v-if="item2==item.PARTICIPANT && item.Visible">
+                    <td>{{item.TIER_ID}} </td>
+                    <td><input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" /></td>
+                    <td>
+                        <select :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
+                            <option value="B">Scrolling</option>
+                            <option value="A" selected>On-Line-Display</option>
+                        </select>
+                        <!--No funciona (no actualiza de manera automatica )<select v-model="tier_acomodado.value">
+                        <option  v-bind:value="item.value" v-for="(c, index) in display" :key="index" :id="item.TIER_ID">{{ c.name }}</option>
+                    </select>-->
+                    </td>
+                    <td><input type="text" :id="item.TIER_ID" value="#000000" @change="seleccion_color($event)"></td>
+                </tr>
+            </div>
+            
                 <!--  <tr> https://codepen.io/anon/pen/gBWWmM
               https://forum.vuejs.org/t/how-to-work-with-objects-as-select-option-values/45490/4
                     <td><select v-model="display">
@@ -46,11 +46,9 @@
                         </select>
                     </td>
                 </tr>-->
-            </div>
-
-        </table>
+            </table>
+        </div>
     </div>
-
 </div>
 </template>
 
@@ -166,7 +164,6 @@ export default {
                         console.log("Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice)
                         this.tier_acomodado[indice].value = "B";
                     }
-
                 }
             }
 
