@@ -95,18 +95,18 @@ const createAudioannotation = (req, res) => {
 }
 const addAudioannotation = async (req, res) => {
   const {
-    eaf,
-    titulo,
-    description,
-    genero,
-    mp3_url,
-    colection,
-    duracion,
-    location,
-    gid,
-    siglas,
+    eaf, // ok
+    titulo, // ok
+    description, // ok
+    genre : genero, // ok
+    mp3_url, // ok
+    colection, // ok
+    duracion, //ok
+    location, // ok
+    gid, // ok
   } = req.body
 
+  
   let audioannotations = {
     eaf,
     titulo,
@@ -117,8 +117,8 @@ const addAudioannotation = async (req, res) => {
     duracion,
     location,
     gid,
-    siglas,
   }
+  return res.status(200).json(req.body)
 
   console.log('-------------------Aqui')
   //console.log(req)

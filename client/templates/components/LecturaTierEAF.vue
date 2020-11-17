@@ -3,7 +3,7 @@
     <div v-if="this.info.data">
         <!--  <button v-on:click="agregar_tier_acomodado()"></button>-->
         <div v-for="(item2, index) in tier_participante" :key="'item' + index">
-            <table style="width:100%">
+            <table>
                 <tr>
                     <th> Canal Hablante </th>
                     <th>Mostrar</th>
