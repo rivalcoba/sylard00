@@ -2,58 +2,42 @@
   <!--INICIA barra de navegacion superior-->
   <nav class="container contenedor_ancho_area_principal">
     <div class="contenedor_switch float_left">
-    {{#if es}}
-      <a href="" onclick="myI18n.setLang('en')">
-        <i class="fa fa-globe" aria-hidden="true"></i> ENGLISH
-      </a>
-      {{else}}
-      <a href="" onclick="myI18n.setLang('es')">
-        <i class="fa fa-globe" aria-hidden="true"></i> ESPAÑOL
-      </a>
-      {{/if}}
+      {{#if es}}
       <label class="texto" for="checkbox">
         ESP
       </label>
-      <label class="switch">
-        <input type="checkbox" />
-        <span class="slider round"></span>
+      <a href="" onclick="myI18n.setLang('en')">
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"></span></a>
       </label>
       <label class="texto" for="checkbox">
         ENG
       </label>
+      {{else}}
+      <label class="texto" for="checkbox">
+        ESP
+      </label>
+      <a href="" onclick="myI18n.setLang('es')">
+        <label class="switch">
+          <input type="checkbox" checked />
+          <span class="slider round"></span></a>
+      </label>
+      <label class="texto" for="checkbox">
+        ENG
+      </label>
+      {{/if}}
     </div>
 
     <div class="barra_superior_elemento float_left active">
-      <a href="/">
+      <a id="home" href="/">
         <span class="icono icon-home1"></span>
         SYLARD
       </a>
     </div>
-    <!-- la clase "ACTIVE" se usa en la sección que esta activa-->
-    <!-- En el caso de HOME este elemento desaparece, ya que hay un icono en la barra publico-->
     <div class="barra_superior_elemento float_right">
-      <!--<a class="" href="/auth/login">
-        ACCESAR
-        <span class="icono icon-login"></span>
-      </a>
-    </div>
-    <div class="barra_superior_elemento float_right">
-      <a href="/auth/register">
-        REGISTRO
-        <span class="icono icon-person"></span>
-      </a>-->
       <!-- SI ES UN SUARIO -->
       {{#if user}}
-      {{#hideIfSu user}}
-      <a href="/dashboard">
-        <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
-      </a>
-      {{/hideIfSu}}
-      {{#ifColaborator user}}
-      <a href="/collections">
-        <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
-      </a>
-      {{/ifColaborator}}
       {{#ifSu user}}
       <a href="/collections">
         <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
@@ -63,7 +47,7 @@
         <button class="dropbtn_barra_superior">
           <div class="contenedor_icono_usuario">
             <img src="{{user.image}}" alt="Contact Person" class="imagen_icono_usuario"> </div>
-          {{user.name}}
+          {{user.name}} {{user.lastName}}
           <span class="icono icon-angle-down" id="flecha_dropdow_barra_superior"></span>
         </button>
         <div class="contenido_dropdown_menu_usuario">
@@ -73,30 +57,32 @@
           <a href="/user/edit/password"><span class="icono_dropdown_menu_usuario_item icon-key1"></span>
             {{translation.EDIT_PASSWORD}}</a>
           {{/if}}
-          <a href="/collections"><span class="icono_dropdown_menu_usuario_item icon-folder-open-o"></span> {{translation.MY_COLLECTIONS}}</a>
-          <a href="#">Link 1 </a>
-          <a href="#">Link 2</a>
+          <a href="#"><span class="icono_dropdown_menu_usuario_item icon-folder-open-o"></span>
+            {{translation.EXPLORE}}</a>
+          {{#ifColaborator user}}
+          <a href="/collections">
+            <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+          </a>
+          {{/ifColaborator}}
+          {{#hideIfSu user}}
+          <a href="/dashboard">
+            <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
+          </a>
+          {{/hideIfSu}}
           <a class="dropdown_menu_usuario_logout" href="/auth/logout"><span
               class="icono_dropdown_menu_usuario_item icon-log-out"></span> {{translation.LOGOUT}}</a>
         </div>
-
-        {{!-- {{translation.SETTINGS}}
-              <i class="fa fa-cog"></i> --}}
-
         {{else}}
-        <a href="/auth/login">
-          <span class="icono icon-login"></span> {{translation.LOGIN}}</a>
+        <a id="login" href="/auth/login">
+          {{translation.LOGIN}} <span class="icono icon-login"></span></a>
       </div>
       <div class="barra_superior_elemento float_right">
-        {{#unless onRegisterPage}}
-        <a href="/auth/register">
-          <span class="icono icon-person"></span> {{translation.REGISTER}}
+        {{!-- {{#unless onRegisterPage}}--}}
+        <a id="register" href="/auth/register">
+          {{translation.REGISTER}} <span class="icono icon-person"></span>
         </a>
-        {{/unless}}
+        {{!-- {{/unless}} PERMITE OCULTAR LE BARRA DE NAVEGACIÓN DE REGISTRO--}}
         {{/if}}
       </div>
-
-
   </nav>
-  <!--TERMINA barra de navegacion superior-->
 </div>
