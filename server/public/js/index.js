@@ -154,7 +154,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _uti
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nfunction setLang(a){\"en\"===a?document.cookie=\"langbisquet=en\":\"es\"===a?document.cookie=\"langbisquet=es\":void 0;location.reload()}/* harmony default export */ __webpack_exports__[\"default\"] = ({setLang});\n\n//# sourceURL=webpack:///./client/helpers/myI18n.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nfunction setLang(a){\"en\"===a?document.cookie=\"langbisquet=en;path=/\":\"es\"===a?document.cookie=\"langbisquet=es;path=/\":void 0;location.reload()}/* harmony default export */ __webpack_exports__[\"default\"] = ({setLang});\n\n//# sourceURL=webpack:///./client/helpers/myI18n.js?");
 
 /***/ }),
 
