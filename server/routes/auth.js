@@ -16,7 +16,6 @@ import validateEmailUpgrade from '@validators/validateEmailUpgrade'
 
 // Auth Controllers
 router.get('/register', authController.register)
-router.get('/registerold', authController.registerold) //VISUALIZAR LA ANTIGUA VISTA DE REGISTRO//
 router.post('/register/user', registerValidation, authController.registerUser)
 router.get('/email/confirm/:token', emailConfirmValidator, authController.emailConfirmed)
 router.get('/enable/colaborator/:email', ensureAuthenticated, ensureSuAuthenticated, validateEmailUpgrade, authController.enableColaborator)
