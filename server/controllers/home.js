@@ -3,7 +3,7 @@ import Collection from '@models/Collection'
 // Home Controllers
 const index = (req, res) => {
   // Check if the user is logged
-  if(res.locals.user && res.locals.user.role){
+  if(res.locals.user && res.locals.user.role == "colaborator"){
     res.redirect(`/collections`)
   }else
   if (res.locals.user) {
