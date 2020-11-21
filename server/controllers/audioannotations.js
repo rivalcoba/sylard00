@@ -9,28 +9,6 @@ import multer from 'multer'
 
 
 const index = async (req, res) => {
-  // Get Collecionts
-//const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
-
-
-// Collections to JSON
-// const audioannotationsDocs2 = await Audioannotations.aggregate([
-//    { "$match": { "user": req.user._id } },
-   
-//   {
-//     $lookup:
-//     {
-//       from: "Collection",
-//       localField:"location",
-//       foreignField:"localities._id",
-//       as:"localidades"
-
-//     }    
-//   }
-// ]).exec(function(err, results){
-//     console.log(results);
-//  })
-
 console.log("Aqui")
 
 const audioannotationsDocs = await Audioannotations.find({user: req.user._id}).populate('user').populate('colection').exec()
@@ -55,12 +33,9 @@ audioannotationsDocs.forEach((audioannotation,index) =>{
     audioannotation.colection.languages.forEach(gid => {
     //console.log(`>ln40> loc_id: ${loc_id} - ${gid._id} - ${index} - ${gid.Nom_Loc}`);
     if(String(glotid) === String(gid._id)){
-    //console.log(`>>>>> ENCONTRADO: ln40> loc_id: ${loc_id} - ${gid._id} - ${index} - ${gid.Nom_Loc}`);
-      //console.log("Antes de asignar")
-      //console.log(gid)
+   
       audioannotationsDocs[index].gid =gid;
-      //console.log("Asignado")
-      //console.log(audioannotationsDocs[index].gid)
+    
 
     }
   });
@@ -83,8 +58,34 @@ let audioannotations  = audioannotationsDocs.map(audioannotation=>{
    audioannotations
 
   })
+}     
+const filtrarAudioannotation=async (req,res)=>  {
+console.log("Aqui")
+//Aqui me quede le quite el await
+try {  
+const audioannotationsDocs =await  Audioannotations.find({user: req.user._id}).populate('user').populate('colection').exec()
+ res.json(audioannotationsDocs);
+} catch (error) {
+  return res.status(400).json({
+      mensaje: 'Ocurrio un error',
+      error
+    })
 }
 
+// let collections = collectionsDocs.map(collection=>{
+//   return collection.toJSON()
+// })
+
+
+
+  // console.log("Aqui")
+ //console.log(collections)
+ // res.sender('audioannotations/filter', {
+   //enviar 
+   //audioannotations
+
+ // })
+}
 
 const createAudioannotation =  (req, res) => {
   // Getting languages
@@ -241,5 +242,6 @@ export default {
   deleteAudioannotaion, 
   addAudioannotation,
   uploadfileAudioannotation,
-  vuetestAudioannotaion
+  vuetestAudioannotaion,
+  filtrarAudioannotation
 }
