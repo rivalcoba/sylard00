@@ -3,6 +3,7 @@
     <div v-if="this.info.data">
         <!--  <button v-on:click="agregar_tier_acomodado()"></button>-->
         <div v-for="(item2, index) in tier_participante" :key="'item' + index">
+            <input hidden type="text" name="hablante" :value="item2">
             <table>
                 <tr>
                     <th> Canal Hablante </th>
@@ -12,14 +13,14 @@
                 </tr>
                 <tr>
                     <td> ✔ Canal de Hablante: {{item2}}</td>
-                    <td><input type="checkbox" :id="item2" checked @change="selecion_todos_onoff($event)" /></td>
+                    <td><input type="checkbox" name="showTrack" :id="item2" checked @change="selecion_todos_onoff($event)" /></td>
                     <td>
-                        <select :id="item2" @change="selecion_todos_visualizacion_options($event)">
+                        <select name="displayMode" :id="item2" @change="selecion_todos_visualizacion_options($event)">
                             <option value="B">Scrolling</option>
                             <option value="A" selected>On-Line-Display</option>
                         </select>
                     </td>
-                    <td><input type="text" :id="item2" value="#000000" @change="seleccion_todos_color($event)"></td>
+                    <td><input name="color" type="text" :id="item2" value="#000000" @change="seleccion_todos_color($event)"></td>
                 </tr>
             
             <div v-for="(item, index) in tier_acomodado" :key="'item' + index">
@@ -287,7 +288,7 @@ export default {
 
                 }
             //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
-        }
+        },
     },
 
     activated() {

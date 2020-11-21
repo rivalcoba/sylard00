@@ -43,20 +43,27 @@
   duracion:String,
   mp3_url:String,
   https://code.tutsplus.com/es/tutorials/file-upload-with-multer-in-node--cms-32088  -->
-
-   <input value="{{filename}}" type="hidden" id="eaf" name="eaf"><br><br>
-
-   <label for="mp3_url">MP3</label>
-   <input type="text" id="mp3_url" name="mp3_url"><br><br>
-
-   <label for="titulo">Titulo:</label>
-   <input type="text" id="titulo" name="titulo"><br><br>
-   
-   <label for="descripcion">Descripcion:</label>
-   <input type="text" id="description" name="description"><br><br>
-   
-   <label for="colectionSelect">Coleccion:</label>
    <div>
+      <input value="{{filename}}" type="hidden" id="eaf" name="eaf"><br><br>
+   </div>
+
+   <div>
+      <label for="mp3_url">MP3</label>
+      <input type="text" id="mp3_url" name="mp3_url"><br><br>
+   </div>
+
+   <div>
+      <label for="titulo">Titulo:</label>
+      <input type="text" id="titulo" name="titulo"><br><br>
+   </div>
+   
+   <div>
+      <label for="descripcion">Descripcion:</label>
+      <input type="text" id="description" name="description"><br><br>
+   </div>
+
+   <div>
+      <label for="colectionSelect">Coleccion:</label>
       <select onblur="pageScripts.fillGlottologSelect()" id="colectionSelect" name="colection">
          {{#each collections}}
          <option value="{{_id}}" name="{{name}}">
@@ -64,42 +71,21 @@
          </option>
          {{/each}}
       </select>
-   </div>
+   </div>   
+   
    <div>
-      <div>
-         <label for="glottologSelect">Lengua Terminal y Grupo de lenguas</label>
-         <select id="glottologSelect" name="gid">
-{{!-- 
-            {{#each collections}}
-            {{#languages}}
-            <option value="{{_id}}" {{#language}} name="{{name}}">
-               {{name}}
-               {{/language}}
-               {{#LanguageGroup}}
-               --- {{name}}
-            </option>
-            {{/LanguageGroup}}
-            {{/languages}}
-            {{/each}}
-             --}}
-         </select>
-      </div>
+      <label for="glottologSelect">Lengua Terminal y Grupo de lenguas</label>
+      <select id="glottologSelect" name="gid">
+      </select>
+   </div>
 
-      <div>
-         <label for="localitiesSelect">Comunidad a la que pertenece</label>
-         <select id="localitiesSelect" name="location">
-{{!-- 
-            {{#each collections}}
-            {{#localities}}
-            <option value="{{_id}}" name="{{name}}">
-               {{Nom_Loc}} {{Nom_Mun}} {{Nom_Ent}}
-            </option>
-            {{/localities}}
-            {{/each}}
-             --}}
-         </select>
-      </div>
+   <div>
+      <label for="localitiesSelect">Comunidad a la que pertenece</label>
+      <select id="localitiesSelect" name="location">
+      </select>
+   </div>
 
+   <div>
       <label for="genreSelect">Género a la que pertenece</label>
       <select name="genre" id="genreSelect">
          {{#each genreArray}}
@@ -108,9 +94,11 @@
          </option>
          {{/each}}
       </select>
+   </div>
 
-      {{!-- <label>Siglas de Hablante</label>
-      <input type="text" id="siglas" name="siglas"><br><br> --}}
+   <div>
+      <label for="duracion">Duracion</label>
+      <input type="text" id="duracion" name="duracion"><br><br>   
    </div>
 
    <div id="app2">
@@ -118,15 +106,14 @@
       </LecturaTierEAF>
    </div>
 
-   <label for="duracion">Duracion</label>
-   <input type="text" id="duracion" name="duracion"><br><br>
-
-
-
-   <button type="submit">Submit</button>
+   <div >
+      <button type="submit">Submit</button>
+   </div>
+   
 </form>
 {{/if}}
 <script>
+   
    /*
    const $form    = document.querySelector('#form5')
 

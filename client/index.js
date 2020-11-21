@@ -51,10 +51,6 @@ if(window.location.pathname == `/test`){
     window.app = indexTestScripts.getVueApp()
 }
 
-if(window.location.pathname == `/audioannotations/uploadfile`){
-  window.pageScripts = createAudioAnnotationsScripts
-}
-
 if(window.location.pathname == `/audioannotations/vuetest`){
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
@@ -77,6 +73,9 @@ if(window.location.pathname == `/audioannotations/uploadfile`){
      //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
      //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
     })
+    
+    // Desde aqui poder ejecutar createAudioAnotation() del componente "LecturaTierEAF"
+    window.pageScripts = createAudioAnnotationsScripts
 }
 
 

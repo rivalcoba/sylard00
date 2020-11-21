@@ -53,6 +53,20 @@ const fillGlottologSelect = async ()=>{
   enableElementById('localitiesSelect')
 }
 
+// No se usa
+function processForm(e){
+  e.preventDefault();
+  // Form actions
+  return false
+}
+
+// No se usa
+function interceptSubmit(){
+  var createCollectionform = document.getElementById('form2')
+  createCollectionform.addEventListener("submit", processForm);
+}
+
 export default {
-  fillGlottologSelect
+  fillGlottologSelect,
+  interceptSubmit
 }
