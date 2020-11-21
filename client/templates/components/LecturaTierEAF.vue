@@ -24,11 +24,15 @@
                 </tr>
             
             <div v-for="(item, index) in tier_acomodado" :key="'item' + index">
+
                 <tr v-if="item2==item.PARTICIPANT && item.Visible">
+                    <input hidden type="text" name="hablante" :value="item.TIER_ID">
                     <td>{{item.TIER_ID}} </td>
-                    <td><input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" /></td>
+
+                    <td><input name="showTrack" type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" /></td>
+                    
                     <td>
-                        <select :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
+                        <select  name="displayMode" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
                             <option value="B">Scrolling</option>
                             <option value="A" selected>On-Line-Display</option>
                         </select>
@@ -36,7 +40,9 @@
                         <option  v-bind:value="item.value" v-for="(c, index) in display" :key="index" :id="item.TIER_ID">{{ c.name }}</option>
                     </select>-->
                     </td>
-                    <td><input type="text" :id="item.TIER_ID" value="#000000" @change="seleccion_color($event)"></td>
+
+                    <td><input name="color" type="text" :id="item.TIER_ID" value="#000000" @change="seleccion_color($event)"></td>
+
                 </tr>
             </div>
             

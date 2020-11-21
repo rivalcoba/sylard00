@@ -164,6 +164,12 @@ xml2js.parseString(xml, { mergeAttrs: true }, (err, result) => {
     //console.log(obj);
     // save JSON in a file 
    // fs.writeFileSync('../public/eaf/eaf.json', json);   
+   try {
+    fs.unlinkSync(path.join(__dirname,'..','public','eaf','eaf.json'))
+    console.log(">> Se borro eaf.json.");
+   } catch (error) {
+       console.log(">> No se borro eaf.json por que existe.")
+   }
    fs.writeFileSync(path.join(__dirname,'..','public','eaf','eaf.json'), json);  
 }); 
 //console.log(objson)
@@ -258,6 +264,12 @@ console.log(obj);
     const jsonobj = JSON.stringify(obj, null, 4); 
    // path.join(__dirname,'..','public','eaf','eaf.json')  
 //fs.writeFileSync('../public/eaf/Nuevoeaf.json', jsonobj);
+try {
+    fs.unlinkSync(path.join(__dirname,'..','public','eaf','Nuevoeaf.json'))
+    console.log(">> Se borro Nuevoeaf.json.");
+} catch (error) {
+    console.log(">>>>> NO se encontro Nuevoeaf.json para borrar")
+}
 fs.writeFileSync(path.join(__dirname,'..','public','eaf','Nuevoeaf.json') , jsonobj);
 
 console.log("Grabo obj a JSON");
