@@ -27,7 +27,8 @@ import VueAxios from "vue-axios";
 import LecturaEAF from "@client/templates/components/LecturaEAF.vue";
 import LecturaTierEAF from "@client/templates/components/LecturaTierEAF.vue";
 import App2 from '@client/templates/main2.vue'
-
+import  FiltroAudioannotations  from "@client/templates/components/FiltroAudioannotations.vue";
+import App3 from '@client/templates/main3.vue'
 
 import Vue from 'vue'
 
@@ -73,16 +74,19 @@ if(window.location.pathname == `/audioannotations/uploadfile`){
     })
 }
 
-
 if(window.location.pathname == `/audioannotations`){
     // window.Vue = Vue
- //   Vue.use(VueAxios, axios);
- //   Vue.component("LecturaEAF", LecturaEAF);
- //   window.vm = new Vue({
- //     el: '#app',
- //     render: h => h(App)
- //   })
+    Vue.use(VueAxios, axios);
+    Vue.component("FiltroAudioannotations", FiltroAudioannotations);
+    window.vm = new Vue({
+      el: '#app3',
+      render: h => h(App3)
+      //aqui
+     //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+     //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
+    })
 }
+
 
 
 // No se puede cargar script condicionalmente
