@@ -67,9 +67,9 @@ function buscar_time_slot(ts){
     obj_datos_tier.DEFAULT_LOCALE=tier.DEFAULT_LOCALE;
     tier_arreglo.push(obj_datos_tier);
     //depurar sin participante
-    console.log("------------------")
-    console.log(obj_datos_tier)
-    console.log("------------------")
+    //+console.log("------------------")
+    //+console.log(obj_datos_tier)
+    //+console.log("------------------")
     //
  }
  function add_REF_ANNOTATION(id_tier)
@@ -139,43 +139,11 @@ function buscar_time_slot(ts){
  }
  export default  function (nombreEaf) {
 let url =path.join(__dirname,'..','public','eaf',nombreEaf)
-console.log(url)
-console.log("Aqui esta el error")
-let xml=""
-try {
-     xml = fs.readFileSync(path.join(__dirname,'..','public','eaf',nombreEaf));
-} catch (error) {
-    console.trace(error)
-    
-}
 
-
-//const xml = fs.readFileSync('../public/eaf/asset01.eaf-1603583874596.eaf');
-// convert XML to JSON
-xml2js.parseString(xml, { mergeAttrs: true }, (err, result) => {
-    if (err) {
-        throw err;
-    }
-    // `result` is a JavaScript object
-    // convert it to a JSON string
-    const json = JSON.stringify(result, null, 4);
-    leer_Tier_Json();
-   // add_Tier_Json();
-    //console.log(obj);
-    // save JSON in a file 
-   // fs.writeFileSync('../public/eaf/eaf.json', json);   
-   try {
-    fs.unlinkSync(path.join(__dirname,'..','public','eaf','eaf.json'))
-    console.log(">> Se borro eaf.json.");
-   } catch (error) {
-       console.log(">> No se borro eaf.json por que existe.")
-   }
-   fs.writeFileSync(path.join(__dirname,'..','public','eaf','eaf.json'), json);  
-}); 
 //console.log(objson)
 //var objson = require('../public/eaf/eaf.json');
 var objson = require(path.join(__dirname,'..','public','eaf','eaf.json'));
-//const { Console } = require('console');
+
 leer_Author_Json(objson.ANNOTATION_DOCUMENT.AUTHOR[0])
 //leer_Tier_Json(objson)
 
@@ -184,7 +152,7 @@ leer_Author_Json(objson.ANNOTATION_DOCUMENT.AUTHOR[0])
 //tiempo
 for (var t = 0; t < objson.ANNOTATION_DOCUMENT.TIME_ORDER[0].TIME_SLOT.length; t++){
     var tiempo=objson.ANNOTATION_DOCUMENT.TIME_ORDER[0].TIME_SLOT[t];
-    console.log(tiempo);
+    //+console.log(tiempo);
     add_tiempo(tiempo);
     
 }//se envia todos los tiempos a un vector para filtrar y se encuentra uno por uno
@@ -200,7 +168,7 @@ for (var t = 0; t < objson.ANNOTATION_DOCUMENT.TIME_ORDER[0].TIME_SLOT.length; t
 for (var i = 0; i < objson.ANNOTATION_DOCUMENT.TIER.length; i++) {
    
     if(objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION == undefined ) {
-        console.log("tier sin anotaciones")
+       //+ console.log("tier sin anotaciones")
         bandera_grabar= false;
     }
     else
@@ -217,12 +185,12 @@ for (var i = 0; i < objson.ANNOTATION_DOCUMENT.TIER.length; i++) {
          //"Comentarios"
          //"Traducción"
          //checar tier 7 vs tier 1
-         console.log("Tier "+i+" Annotation"+j)
-         console.log(typeof(objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION)); 
-         console.log(objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION); 
+         //+console.log("Tier "+i+" Annotation"+j)
+         //+console.log(typeof(objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION)); 
+         //+console.log(objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION); 
         if  (objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION == undefined )
         { 
-         console.log("Estoy entrando a EGS Traducción");
+         //++console.log("Estoy entrando a EGS Traducción");
          for (var k=0; k<objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].REF_ANNOTATION.length;k++)
          {
              var REF_ANNOTATION = objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].REF_ANNOTATION[k];
@@ -231,7 +199,7 @@ for (var i = 0; i < objson.ANNOTATION_DOCUMENT.TIER.length; i++) {
              //me quede mejorando el json y haciendo un nivel superior que se llama "TIER_ID" para los tipos de traduccion
              //add_Tier_Json(REF_ANNOTATION)
              add_REF_ANNOTATION(REF_ANNOTATION);
-             console.log("Si esta añadiendo")
+             //+console.log("Si esta añadiendo")
              bandera_grabar= true;
          }
         }  
@@ -242,7 +210,7 @@ for (var i = 0; i < objson.ANNOTATION_DOCUMENT.TIER.length; i++) {
             //console.log("Uno por uno "+j)
             //console.log(ALIGNABLE_ANNOTATION);
             add_Tier_Json(ALIGNABLE_ANNOTATION)
-            console.log("Si esta añadiendo")
+            //+console.log("Si esta añadiendo")
             bandera_grabar= true;
         }
     }
@@ -258,22 +226,32 @@ for (var i = 0; i < objson.ANNOTATION_DOCUMENT.TIER.length; i++) {
     tier_arreglo=[];
 }
 console.log("Imprime el nuevo json");
-console.log(obj);
+//+console.log(obj);
    // add_Tier_Json();
     // save JSON in a file
-    const jsonobj = JSON.stringify(obj, null, 4); 
+    var jsonobj = JSON.stringify(obj, null, 4); 
    // path.join(__dirname,'..','public','eaf','eaf.json')  
-//fs.writeFileSync('../public/eaf/Nuevoeaf.json', jsonobj);
+
 try {
     fs.unlinkSync(path.join(__dirname,'..','public','eaf','Nuevoeaf.json'))
     console.log(">> Se borro Nuevoeaf.json.");
 } catch (error) {
     console.log(">>>>> NO se encontro Nuevoeaf.json para borrar")
 }
-fs.writeFileSync(path.join(__dirname,'..','public','eaf','Nuevoeaf.json') , jsonobj);
+//fs.writeFileSync('../public/eaf/Nuevoeaf.json', jsonobj);
+const fs2 = require('fs');
+try {
+    fs2.writeFileSync(path.join(__dirname,'..','public','eaf','Nuevoeaf.json') , jsonobj);
+    console.log("Grabo obj a JSON");
+    console.log("==============================")
+} catch (error) {
+    console.error(err); 
 
-console.log("Grabo obj a JSON");
-
+}
+//fs.close('Nuevoeaf.json')
+obj=null;
+jsonobj=null;
+//console.log("Se Borro el  obj a JSON");
  } 
 // read XML from a file
 

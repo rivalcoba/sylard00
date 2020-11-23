@@ -3,6 +3,7 @@ import Glottolog from '@models/Glottolog'
 import Locations from '@models/Location'
 import Audioannotations from '@models/AudioAnnotations'
 import convertEaf2json from '@helpers/converteaftojson'
+import eaftojson from '@helpers/converteaf'
 import Genre from '@models/Genre'
 
 import multer from 'multer'
@@ -180,9 +181,16 @@ const uploadfileAudioannotation = async (req, res, next) => {
     return next(error)
   }
   //convertir nuevoJSON Aqui
-  //console.log("-----------aqui----------")
+  //console.log("-----------aqui--Convierte----------")
   //console.log(file)
-  convertEaf2json(file.filename)
+  try {
+     eaftojson(file.filename) 
+     convertEaf2json(file.filename)
+  } catch (error) {
+    //console.log("Erorroesss al convertir EAF2JSON")
+    //console.log(error)
+  }
+ 
 
   try {
     // Obteniendo datos de las collections
