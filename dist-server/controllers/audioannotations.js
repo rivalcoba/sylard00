@@ -18,7 +18,9 @@ gid:k// ok
 }=a.body;let l={eaf:c,titulo:d,description:e,genero:f,mp3_url:g,colection:h,duracion:i,location:j,gid:k};return b.status(200).json(a.body)},uploadfileAudioannotation=async(a,b,c)=>{const d=a.file;if(!d){const a=new Error("Please upload a file");return a.httpStatusCode=400,c(a)}//convertir nuevoJSON Aqui
 //console.log("-----------aqui--Convierte----------")
 //console.log(file)
-try{(0,_converteaf.default)(d.filename),(0,_converteaftojson.default)(d.filename)}catch(a){console.log("Erorroesss al convertir EAF2JSON"),console.log(a)}try{// Obteniendo datos de las collections
+try{(0,_converteaf.default)(d.filename),(0,_converteaftojson.default)(d.filename)}catch(a){//console.log("Erorroesss al convertir EAF2JSON")
+//console.log(error)
+}try{// Obteniendo datos de las collections
 const c=await _Collection.default.find({user:a.user._id}).populate("user").exec();let e=c.map(a=>a.toJSON());// Getting genere
 const f=await _Genre.default.find().exec();let g=f.map(a=>a.toJSON());b.render("audioannotations/create",{filename:d.filename,collections:e,genreArray:g})}catch(a){b.status(500).json(a)}},editAudioannotation=async(a,b)=>{b.render("audioannotations/edit",{})},deleteAudioannotaion=async(a,b)=>{const c=a.params.audioannotation_id;try{//console.log("Borrar este")
 //console.log(req.)

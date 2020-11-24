@@ -24,8 +24,8 @@
                 </tr>
             
             <div v-for="(item, index) in tier_acomodado" :key="'item' + index">
-
-                <tr v-if="item2==item.PARTICIPANT && item.Visible">
+                <!-- <tr v-if="item2==item.PARTICIPANT && item.Visible"> -->
+                <tr v-if="item2==item.PARTICIPANT ">
                     <input hidden type="text" name="hablante" :value="item.TIER_ID">
                     <td>{{item.TIER_ID}} </td>
 
