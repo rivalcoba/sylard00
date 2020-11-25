@@ -175,6 +175,17 @@ const editCollection = async (req, res) => {
   }
 }
 
+const api_getCollectionById = async(req, res)=>{
+  const collection_id = req.params.collection_id
+  let collectionDoc = {}  
+  try {
+    collectionDoc = await Collection.findById(collection_id).exec()
+    res.status(200).json(collectionDoc)
+  } catch (error) {
+    res.status(404).json(error)
+  }
+}
+
 export default {
   // List Collections from a particular Colaborator User
   index,
@@ -191,4 +202,5 @@ export default {
   // Lists Collections from the logged user
   // Show single Collection
   // Process Delete Collection
+  api_getCollectionById,
 }

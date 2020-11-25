@@ -9,7 +9,7 @@
     "b:s": "babel ./server --out-dir dist-server --copy-files",
     "clean": "rimraf dist-server",
     "dev": "NODE_ENV=development babel-node ./server/bin/www",
-    "w:d": "NODE_ENV=development nodemon --ignore './client' --exec babel-node ./server/bin/www",
+    "w:d": "NODE_ENV=development nodemon --ignore './client' --ignore './server/public/eaf' --exec babel-node ./server/bin/www",
     "ww:d": "SET NODE_ENV=development && nodemon --ignore './client' --exec babel-node ./server/bin/www",
     "b:r:p": "NODE_ENV=production npm run build && node ./dist-server/bin/www",
     "p": "node ./dist-server/bin/www"
