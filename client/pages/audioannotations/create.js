@@ -53,6 +53,21 @@ const fillGlottologSelect = async ()=>{
   enableElementById('localitiesSelect')
 }
 
+const loadMp3 = ()=>{
+  // url test: https://www.kozco.com/tech/piano2.wav
+  let mp3InputText = document.getElementById('mp3_url')
+
+  // Loading Audio
+  let audio = new Audio(mp3InputText.value);
+  audio.onerror = function(){
+    console.log("Audio not loaded properly")
+  }
+  audio.onloadeddata = function(){
+    const durationBoc = document.getElementById('duracion')
+    durationBoc.value = audio.duration
+  }
+}
+
 // No se usa
 function processForm(e){
   e.preventDefault();
@@ -68,5 +83,6 @@ function interceptSubmit(){
 
 export default {
   fillGlottologSelect,
-  interceptSubmit
+  interceptSubmit,
+  loadMp3,
 }

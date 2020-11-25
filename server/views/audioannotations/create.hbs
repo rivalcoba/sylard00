@@ -49,7 +49,13 @@
 
    <div>
       <label for="mp3_url">MP3</label>
-      <input type="text" id="mp3_url" name="mp3_url"><br><br>
+      <input type="text" id="mp3_url" name="mp3_url" value="https://cdn.glitch.com/31e1c313-9473-4a67-b370-cbebc80a47b2%2FWhatsApp%20Audio%202020-11-09%20at%2020.55.02.mpeg"><br><br>
+      <a href="#" onclick="pageScripts.loadMp3()">LOAD AUDIO</a>
+   </div>
+
+   <div>
+      <label for="duracion">Duracion</label>
+      <input readonly type="text" id="duracion" name="duracion"><br><br>   
    </div>
 
    <div>
@@ -64,7 +70,8 @@
 
    <div>
       <label for="colectionSelect">Coleccion:</label>
-      <select onblur="pageScripts.fillGlottologSelect()" id="colectionSelect" name="colection">
+      <select onchange="pageScripts.fillGlottologSelect()" id="colectionSelect" name="colection">
+         <option value="" disabled selected>Seleccione una opción</option>
          {{#each collections}}
          <option value="{{_id}}" name="{{name}}">
             {{name}}
@@ -96,10 +103,7 @@
       </select>
    </div>
 
-   <div>
-      <label for="duracion">Duracion</label>
-      <input type="text" id="duracion" name="duracion"><br><br>   
-   </div>
+   
 
    <div id="app2">
       <LecturaTierEAF>
