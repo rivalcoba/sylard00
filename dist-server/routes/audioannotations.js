@@ -2,7 +2,13 @@
 // Creating an instance from the express router
 const router=new _express.Router;// Authorization Check Middleware
 var cors=require("cors");router.get("/",_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.index),router.post("/add",_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.addAudioannotation);var storage=_multer.default.diskStorage({destination:function(a,b,c){// cb(null, 'uploads')
-c(null,"server/public/eaf")},filename:function(a,b,c){let d=b.originalname+"-"+Date.now()+".eaf";a.fname=d,c(null,d)}}),upload=(0,_multer.default)({storage:storage});router.post("/uploadfile",upload.single("myFile"),cors(),_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.uploadfileAudioannotation),router.get("/create",_ensureAuth.default,cors(),_ensureColabUser.default,_audioannotations.default.createAudioannotation),router.get("/edit/:audioannotation_id",_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.editAudioannotation),router.put("/edit/:audioannotation_id",_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.editAudioannotation),router.delete("/delete/:audioannotation_id",_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.deleteAudioannotaion),router.get("/vuetest",_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.vuetestAudioannotaion);// Configurar cabeceras y cors https://filesamples.com/formats/mp3 //no funciona marca error en cors
+c(null,"server/public/eaf")},filename:function(a,b,c){let d=b.originalname+"-"+Date.now()+".eaf";a.fname=d,c(null,d)}}),upload=(0,_multer.default)({storage:storage});router.post("/uploadfile",upload.single("myFile"),cors(),_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.uploadfileAudioannotation),router.get("/create",_ensureAuth.default,cors(),_ensureColabUser.default,_audioannotations.default.createAudioannotation),router.get("/edit/:audioannotation_id",_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.editAudioannotation),router.put("/edit/:audioannotation_id",_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.editAudioannotation),router.delete("/delete/:audioannotation_id",_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.deleteAudioannotaion),router.get("/vuetest",_ensureAuth.default,_ensureColabUser.default,_audioannotations.default.vuetestAudioannotaion);/*
+router.get(
+  '/filter',
+  ensureAuthenticated,
+  ensureColabUser,
+  audioannotationsController.filtrarAudioannotation
+)*/ // Configurar cabeceras y cors https://filesamples.com/formats/mp3 //no funciona marca error en cors
 //router.get('/', function(req, res) {
 //    res.setHeader('Access-Control-Allow-Origin', '*');
 //    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed

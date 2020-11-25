@@ -43,11 +43,11 @@ b.ANNOTATION_ID=a.ANNOTATION_ID[0],tiempo_ids=a.TIME_SLOT_REF1[0],b.TIME_SLOT_RE
 // convert XML to JSON
 _xml2js.default.parseString(c,{mergeAttrs:!0},(a,b)=>{if(a)throw a;// `result` is a JavaScript object
 // convert it to a JSON string
-const c=JSON.stringify(b,null,4);// add_Tier_Json();
+const c=JSON.stringify(b,null,4);leer_Tier_Json();// add_Tier_Json();
 //console.log(obj);
 // save JSON in a file 
 // fs.writeFileSync('../public/eaf/eaf.json', json);   
-leer_Tier_Json(),_fs.default.writeFileSync(_path.default.join(__dirname,"..","public","eaf","eaf.json"),c)});//console.log(objson)
+try{_fs.default.unlinkSync(_path.default.join(__dirname,"..","public","eaf","eaf.json")),console.log(">> Se borro eaf.json.")}catch(a){console.log(">> No se borro eaf.json por que existe.")}_fs.default.writeFileSync(_path.default.join(__dirname,"..","public","eaf","eaf.json"),c)});//console.log(objson)
 //var objson = require('../public/eaf/eaf.json');
 var d=require(_path.default.join(__dirname,"..","public","eaf","eaf.json"));//const { Console } = require('console');
 leer_Author_Json(d.ANNOTATION_DOCUMENT.AUTHOR[0]);//leer_Tier_Json(objson)
@@ -76,6 +76,6 @@ bandera_grabar&&obj.tier.push(tier_arreglo),tier_arreglo=[]}console.log("Imprime
 // save JSON in a file
 const q=JSON.stringify(obj,null,4);// path.join(__dirname,'..','public','eaf','eaf.json')  
 //fs.writeFileSync('../public/eaf/Nuevoeaf.json', jsonobj);
-_fs.default.writeFileSync(_path.default.join(__dirname,"..","public","eaf","Nuevoeaf.json"),q),console.log("Grabo obj a JSON")}// read XML from a file
+try{_fs.default.unlinkSync(_path.default.join(__dirname,"..","public","eaf","Nuevoeaf.json")),console.log(">> Se borro Nuevoeaf.json.")}catch(a){console.log(">>>>> NO se encontro Nuevoeaf.json para borrar")}_fs.default.writeFileSync(_path.default.join(__dirname,"..","public","eaf","Nuevoeaf.json"),q),console.log("Grabo obj a JSON")}// read XML from a file
 //console.log(objson.ANNOTATION_DOCUMENT.AUTHOR[0]);
 //console.log(objson.ANNOTATION_DOCUMENT.TIER[0]);

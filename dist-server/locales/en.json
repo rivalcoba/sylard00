@@ -33,6 +33,7 @@
   "RESET_PASSWORD_MESSAGE": "Enter your email account to send you a provisional password",
   "TYPE_YOUR_USERNAME_AND_PASSWORD": "Type your username and password",
   "CATALOGUE" : "Catalogue",
+  "SEE_CATALOGUE": "See catalogue",
   "DOCUMENTATION" : "Documentation",
   "USER_MANUAL" : "User manual",
   "CONTACT" : "Contact",
