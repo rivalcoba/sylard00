@@ -60,6 +60,7 @@ let audioannotations  = audioannotationsDocs.map(audioannotation=>{
   })
 }     
 const filtrarAudioannotation=async (req,res)=>  {
+  
 console.log("Aqui")
 //Aqui me quede le quite el await
 try {  
