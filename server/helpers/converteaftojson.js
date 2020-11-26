@@ -138,7 +138,7 @@ function buscar_time_slot(ts){
   // console.log(obj_tier) 
  }
  export default  function (nombreEaf) {
-let url =path.join(__dirname,'..','public','eaf',nombreEaf)
+let url = path.join(__dirname,'..','public','eaf',nombreEaf)
 console.log(url)
 console.log("Aqui esta el error")
 let xml=""
@@ -146,12 +146,11 @@ try {
      xml = fs.readFileSync(path.join(__dirname,'..','public','eaf',nombreEaf));
 } catch (error) {
     console.trace(error)
-    
 }
-
 
 //const xml = fs.readFileSync('../public/eaf/asset01.eaf-1603583874596.eaf');
 // convert XML to JSON
+console.log(">>>> CONVIRTIENDO A XML <<<<<<<<<<<<<<");
 xml2js.parseString(xml, { mergeAttrs: true }, (err, result) => {
     if (err) {
         throw err;

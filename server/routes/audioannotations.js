@@ -1,5 +1,7 @@
 // Imporntando el Enrutador
 import { Router } from 'express'
+// IMporntando Path
+import path from 'path'
 // Creating an instance from the express router
 const router = new Router()
 // Authorization Check Middleware
@@ -28,8 +30,9 @@ router.post(
 
 var storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    // cb(null, 'uploads')
-    cb(null, 'server/public/eaf')
+    // resolving temp path
+    let eafPath = path.join(__dirname,'..','public','eaf')
+    cb(null, eafPath)
   },
   filename: function(req, file, cb) {
     let fileName = file.originalname + '-' + Date.now() + '.eaf'

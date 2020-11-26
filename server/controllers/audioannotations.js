@@ -180,8 +180,8 @@ const uploadfileAudioannotation = async (req, res, next) => {
     return next(error)
   }
   //convertir nuevoJSON Aqui
-  //console.log("-----------aqui----------")
-  //console.log(file)
+  // console.log("-----------ARCHIVO CARGADO EN SERVER----------")
+  // console.log(file.filename)
   convertEaf2json(file.filename)
 
   try {
