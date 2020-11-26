@@ -32,6 +32,7 @@ var storage = multer.diskStorage({
   destination: function(req, file, cb) {
     // resolving temp path
     let eafPath = path.join(__dirname,'..','public','eaf')
+    console.log(`>> eafPath: ${eafPath}`);
     cb(null, eafPath)
   },
   filename: function(req, file, cb) {

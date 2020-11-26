@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import Collection from '@models/Collection'
 
 // Home Controllers
@@ -68,6 +70,19 @@ const audioannotations = (req, res)=>{
   res.render('index/audioannotations')
 }
 
+const cleanEaf = (req,res)=>{
+  let eafPath = path.join(__dirname,'..','public','eaf')
+  fs.readdir(eafPath,(err, files)=>{
+    if(err) {return res.json(err)}
+    for(const file of files){
+      fs.unlink(path.join(eafPath, file), err=>{
+        if(err) {return res.json(err)}
+      })
+    }
+    res.json({"return":"ok"})
+  })
+}
+
 // Exporting Controllers
 export default {
   index,
@@ -80,4 +95,5 @@ export default {
   test,
   vuetest,
   audioannotations,
+  cleanEaf,
 }

@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import Collection from '@models/Collection'
 import Glottolog from '@models/Glottolog'
 import Locations from '@models/Location'
@@ -96,31 +98,39 @@ const createAudioannotation = (req, res) => {
 const addAudioannotation = async (req, res) => {
   const {
     eaf, // ok
+    mp3_url, // ok
+    duracion, //ok
     titulo, // ok
     description, // ok
-    genre : genero, // ok
-    mp3_url, // ok
     colection, // ok
-    duracion, //ok
-    location, // ok
     gid, // ok
+    location, // ok
+    genre : genero, // ok
+    hablante,
+    showTrack,
+    displayMode,
+    color,
   } = req.body
 
   
   let audioannotations = {
     eaf,
+    mp3_url,
+    duracion,
     titulo,
     description,
-    genero,
-    mp3_url,
     colection,
-    duracion,
-    location,
     gid,
+    location,
+    genero,
+    hablante,
+    showTrack,
+    displayMode,
+    color,
   }
-  return res.status(200).json(req.body)
+  return res.status(200).json(audioannotations)
 
-  console.log('-------------------Aqui')
+  // console.log('-------------------Aqui')
   //console.log(req)
   //console.log('Duracion')
   //console.log(req.body)
@@ -189,7 +199,8 @@ const uploadfileAudioannotation = async (req, res, next) => {
     const collectionsDocs = await Collection.find({ user: req.user._id })
       .populate('user')
       .exec()
-    let collections = collectionsDocs.map(collection => {
+    
+      let collections = collectionsDocs.map(collection => {
       return collection.toJSON()
     })
 
@@ -205,6 +216,8 @@ const uploadfileAudioannotation = async (req, res, next) => {
       genreArray,
     })
   } catch (error) {
+    // Borrar eaf cargado
+    fs.unlinkSync(path.join(__dirname, '..', 'public', 'eaf', file.filename))
     res.status(500).json(error)
   }
 }
