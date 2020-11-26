@@ -65,7 +65,10 @@ typings/
 #files eaf y mp3
 *.mp3
 *.eaf
+server/public/eaf/
 server/public/eaf
+dist-server/public/eaf/
+dist-server/public/eaf
 
 # eslint
 .eslintrc.json
