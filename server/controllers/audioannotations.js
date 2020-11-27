@@ -8,6 +8,7 @@ import convertEaf2json from '@helpers/converteaftojson'
 import Genre from '@models/Genre'
 
 import multer from 'multer'
+import { json } from 'express'
 
 const index = async (req, res) => {
   // Get Collecionts
@@ -147,74 +148,33 @@ const addAudioannotation = async (req, res) => {
     }
   });
 
-  return res.json({
-    body: req.body,
-    tiers: tiers
-  })
-  
   // Building audioannotation
-
+  let genreDoc = await Genre.findById(genre).exec()
   
-  let audioannotations = {
+  let audioannotation = {
     eaf, // ok
-    mp3_url, // ok
-    duration,// ok
     title, // ok
     description, //
+    genre: genreDoc, // ok - ARMAR
+    duration,// ok
+    mp3_url, // ok
+    location, // ok
     collection_id, // ok
     gid, // ok
-    location, // ok
-    genre, // ok - ARMAR
-    hablante,
-    showTrack,
-    displayMode,
-    color,
+    user: req.user._id,
+    TIER: tiers,
   }
-  return res.status(200).json(audioannotations)
 
-  audioannotations.user = req.user._id
-  audioannotations.colection=req.colection._id
-
-  //const audioannotations = new Audioannotations({
-  //  titulo: req.body.titulo,
-  //  description: req.body.description,
-  //  genero :  req.body.genero,
-  //  mp3_url: req.body.mp3_url,
-  //});
-  //let { audioannotations } = req.body
-
-  //Audioannotations
-  //.create(audioannotations)
-  //.then(data => {
-  //   console.log('Aqui');
-  //   console.log(data);
-  //   res.send(data);
-  // })
-  // .catch(err => {
-  //   res.status(500).send({
-  //     message:
-  //       err.message || "Some error occurred while creating the Tutorial."
-  //  });
-  //});
-
-  // Add user
-  //audioannotations.user = req.user._id
-  //checar https://bezkoder.com/node-express-mongodb-crud-rest-api/
-  // audioannotations = {
-  //   name : "IvanAA",
-  //   titulo : "GamEaf"
-  // }
-
-  const AudioannotationDoc = await Audioannotations.create(audioannotations)
-  //console.log(`addAudioannotation> Audioannotation Created: ${AudioannotationDoc}`)
-  // Se encuentra usuario
-  //console.log(req.body);
-  //console.log('Aqui')
-
-  //res.send('POST request to the homepage')
-
-  res.redirect('/audioannotations')
+  try {
+    const audioannotationDoc = await Audioannotations.create(audioannotation);
+    console.log("> Audioanotations Created: " + JSON.stringify(audioannotationDoc))
+    return res.status(200).json(audioannotationDoc)
+    // res.redirect('/audioannotations') //TODO: Descomentar tan pronto toño acomple esto con index de audioanot
+  } catch (error) {
+    return res.status(200).json({error, from: "controller/audioannotations/addAudioannotation"})
+  }
 }
+
 //uploadfile
 //aqui me quede
 
