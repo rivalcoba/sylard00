@@ -246,7 +246,7 @@ const deleteAudioannotaion = async (req, res) => {
     res.redirect('/audioannotations')
   } catch (error) {
     //error de borrado
-    console.error(err)
+    console.error(error)
     return res.status(400).json(error)
   }
 }
