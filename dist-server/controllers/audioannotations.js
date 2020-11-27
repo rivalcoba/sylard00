@@ -30,4 +30,4 @@ _fs.default.unlinkSync(_path.default.join(__dirname,"..","public","eaf",d.filena
 //console.log(req.)
 let a=await _AudioAnnotations.default.findById(c).exec();const d=a.eaf,e=await _AudioAnnotations.default.deleteOne({_id:c}).exec();//console.log(file);
 console.log(`deleteAudioannotation> Result: ${e}`);//Borrado del archivo fisicamente
-const f=require("fs");f.unlinkSync("server/public/eaf/"+d),b.redirect("/audioannotations")}catch(a){return console.error(err),b.status(400).json(a)}},vuetestAudioannotaion=async(a,b)=>{b.render("audioannotations/vuetest",{})};var _default={index,createAudioannotation,editAudioannotation,deleteAudioannotaion,addAudioannotation,uploadfileAudioannotation,vuetestAudioannotaion};exports.default=_default;
+const f=require("fs");f.unlinkSync("server/public/eaf/"+d),b.redirect("/audioannotations")}catch(a){return console.error(err),b.status(400).json(a)}},vuetestAudioannotaion=async(a,b)=>{b.render("audioannotations/vuetest",{})};var _default={index,createAudioannotation,editAudioannotation,deleteAudioannotaion,addAudioannotation,uploadfileAudioannotation,vuetestAudioannotaion,filtrarAudioannotation};exports.default=_default;

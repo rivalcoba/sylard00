@@ -91,10 +91,25 @@ const index = async (req, res) => {
   })
 }
 
+const filtrarAudioannotation=async (req,res)=>{
+  console.log("Aqui")
+  // Aqui me quede le quite el await
+  try {
+    const audioannotationsDocs =await  Audioannotations.find({user: req.user._id}).populate('user').populate('colection').exec()
+    res.json(audioannotationsDocs);
+  } catch (error) {
+      return res.status(400).json({
+          mensaje: 'Ocurrio un error',
+          error
+        })
+  }
+}
+  
 const createAudioannotation = (req, res) => {
   // Getting languages
   res.render('audioannotations/create')
 }
+
 const addAudioannotation = async (req, res) => {
   const {
     eaf, // ok
@@ -263,4 +278,5 @@ export default {
   addAudioannotation,
   uploadfileAudioannotation,
   vuetestAudioannotaion,
+  filtrarAudioannotation
 }
