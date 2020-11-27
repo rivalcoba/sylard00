@@ -111,6 +111,7 @@ const createAudioannotation = (req, res) => {
 }
 
 const addAudioannotation = async (req, res) => {
+ return res.json(req.body)
   let {
     eaf, // ok
     mp3_url, // ok

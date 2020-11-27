@@ -7,21 +7,7 @@
 b.render("audioannotations/index",{//enviar
 audioannotations:d})},filtrarAudioannotation=async(a,b)=>{console.log("Aqui");// Aqui me quede le quite el await
 try{const c=await _AudioAnnotations.default.find({user:a.user._id}).populate("user").populate("colection").exec();b.json(c)}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
-b.render("audioannotations/create")},addAudioannotation=async(a,b)=>{const{eaf:c,// ok
-mp3_url:d,// ok
-duracion:e,//ok
-titulo:f,// ok
-description:g,// ok
-colection:h,// ok
-gid:i,// ok
-location:j,// ok
-genre:k,// ok
-hablante:l,showTrack:m,displayMode:n,color:o}=a.body;let p={eaf:c,mp3_url:d,duracion:e,titulo:f,description:g,colection:h,gid:i,location:j,genero:k,hablante:l,showTrack:m,displayMode:n,color:o};return b.status(200).json(p);// console.log('-------------------Aqui')
-//console.log(req)
-//console.log('Duracion')
-//console.log(req.body)
-//console.log('File')
-},uploadfileAudioannotation=async(a,b,c)=>{const d=a.file;if(!d){const a=new Error("Please upload a file");return a.httpStatusCode=400,c(a)}//convertir nuevoJSON Aqui
+b.render("audioannotations/create")},addAudioannotation=async(a,b)=>{return b.json(a.body)},uploadfileAudioannotation=async(a,b,c)=>{const d=a.file;if(!d){const a=new Error("Please upload a file");return a.httpStatusCode=400,c(a)}//convertir nuevoJSON Aqui
 // console.log("-----------ARCHIVO CARGADO EN SERVER----------")
 // console.log(file.filename)
 (0,_converteaftojson.default)(d.filename);try{// Obteniendo datos de las collections
