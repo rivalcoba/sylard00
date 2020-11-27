@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import { Schema } from 'mongoose'
 
 const AudioAnnotationsSchema = new Schema({
-  name: String,
+  //name: String,
   // a_id:String,
   eaf: String,
   title: String,
@@ -25,7 +25,7 @@ const AudioAnnotationsSchema = new Schema({
   TIER: [
     {
       TIER_ID: String,
-      type: String,
+      //type: String,
       participant: String,
       Display: String,
       color: String,

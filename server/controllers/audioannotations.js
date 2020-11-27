@@ -111,33 +111,35 @@ const createAudioannotation = (req, res) => {
 }
 
 const addAudioannotation = async (req, res) => {
-  const {
+  let {
     eaf, // ok
     mp3_url, // ok
-    duracion, //ok
-    titulo, // ok
+    duration, //ok
+    title, // ok
     description, // ok
-    colection, // ok
+    colection : collection_id, // ok
     gid, // ok
     location, // ok
-    genre : genero, // ok
+    genre, // ok
     hablante,
     showTrack,
     displayMode,
     color,
   } = req.body
 
+  // Building audioannotation
+
   
   let audioannotations = {
-    eaf,
-    mp3_url,
-    duracion,
-    titulo,
-    description,
-    colection,
-    gid,
-    location,
-    genero,
+    eaf, // ok
+    mp3_url, // ok
+    duration,// ok
+    title, // ok
+    description, //
+    collection_id, // ok
+    gid, // ok
+    location, // ok
+    genre, // ok - ARMAR
     hablante,
     showTrack,
     displayMode,
@@ -145,14 +147,8 @@ const addAudioannotation = async (req, res) => {
   }
   return res.status(200).json(audioannotations)
 
-  // console.log('-------------------Aqui')
-  //console.log(req)
-  //console.log('Duracion')
-  //console.log(req.body)
-  //console.log('File')
-
   audioannotations.user = req.user._id
-  //audioannotations.colection=req.colection._id
+  audioannotations.colection=req.colection._id
 
   //const audioannotations = new Audioannotations({
   //  titulo: req.body.titulo,
