@@ -5,7 +5,8 @@
 // console.log("Aqui")
 //console.log(collections)
 b.render("audioannotations/index",{//enviar
-audioannotations:d})},createAudioannotation=(a,b)=>{// Getting languages
+audioannotations:d})},filtrarAudioannotation=async(a,b)=>{console.log("Aqui");// Aqui me quede le quite el await
+try{const c=await _AudioAnnotations.default.find({user:a.user._id}).populate("user").populate("colection").exec();b.json(c)}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
 b.render("audioannotations/create")},addAudioannotation=async(a,b)=>{const{eaf:c,// ok
 mp3_url:d,// ok
 duracion:e,//ok
@@ -30,4 +31,4 @@ _fs.default.unlinkSync(_path.default.join(__dirname,"..","public","eaf",d.filena
 //console.log(req.)
 let a=await _AudioAnnotations.default.findById(c).exec();const d=a.eaf,e=await _AudioAnnotations.default.deleteOne({_id:c}).exec();//console.log(file);
 console.log(`deleteAudioannotation> Result: ${e}`);//Borrado del archivo fisicamente
-const f=require("fs");f.unlinkSync("server/public/eaf/"+d),b.redirect("/audioannotations")}catch(a){return console.error(err),b.status(400).json(a)}},vuetestAudioannotaion=async(a,b)=>{b.render("audioannotations/vuetest",{})};var _default={index,createAudioannotation,editAudioannotation,deleteAudioannotaion,addAudioannotation,uploadfileAudioannotation,vuetestAudioannotaion,filtrarAudioannotation};exports.default=_default;
+const f=require("fs");f.unlinkSync("server/public/eaf/"+d),b.redirect("/audioannotations")}catch(a){return console.error(a),b.status(400).json(a)}},vuetestAudioannotaion=async(a,b)=>{b.render("audioannotations/vuetest",{})};var _default={index,createAudioannotation,editAudioannotation,deleteAudioannotaion,addAudioannotation,uploadfileAudioannotation,vuetestAudioannotaion,filtrarAudioannotation};exports.default=_default;
