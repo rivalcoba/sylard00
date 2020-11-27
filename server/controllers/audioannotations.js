@@ -111,7 +111,6 @@ const createAudioannotation = (req, res) => {
 }
 
 const addAudioannotation = async (req, res) => {
- return res.json(req.body)
   let {
     eaf, // ok
     mp3_url, // ok
@@ -122,12 +121,37 @@ const addAudioannotation = async (req, res) => {
     gid, // ok
     location, // ok
     genre, // ok
-    hablante,
-    showTrack,
-    displayMode,
+    PARTICIPANT,
+    Visible,
+    value,
     color,
+    LINGUISTIC_TYPE_REF,
+    TIER_ID
   } = req.body
 
+  let tiers = []
+  let numberOfTiersPerParticipant = Visible.length / PARTICIPANT.length 
+  PARTICIPANT.forEach((participant, indexp) => {
+    for (let index = 0; index < numberOfTiersPerParticipant; index++) {
+      // Se calcula indice absoluto
+      let absIndex = index + indexp * numberOfTiersPerParticipant
+      console.log(`absIndex: ${absIndex} - `)
+      tiers.push({
+        PARTICIPANT: participant,
+        Visible: Visible[absIndex],
+        value: value[absIndex],
+        color: color[absIndex],
+        LINGUISTIC_TYPE_REF: LINGUISTIC_TYPE_REF[absIndex],
+        TIER_ID: TIER_ID[absIndex],
+      })
+    }
+  });
+
+  return res.json({
+    body: req.body,
+    tiers: tiers
+  })
+  
   // Building audioannotation
 
   

@@ -24,11 +24,12 @@ const AudioAnnotationsSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'Users' },
   TIER: [
     {
-      TIER_ID: String,
-      //type: String,
-      participant: String,
-      Display: String,
+      PARTICIPANT: String,
+      Visible : String,
+      value: String,
       color: String,
+      LINGUISTIC_TYPE_REF: String,
+      TIER_ID: String,
     },
   ],
 })

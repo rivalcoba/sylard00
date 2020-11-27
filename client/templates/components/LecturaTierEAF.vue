@@ -21,6 +21,8 @@
                         </select>
                     </td>
                     <td><input name="color" type="text" :id="item2" value="#000000" @change="seleccion_todos_color($event)"></td>
+                    <td><input type="text" name="LINGUISTIC_TYPE_REF" value="header" hidden></td>
+                    <td><input type="text" name="TIER_ID" value="header" hidden></td>
                 </tr>
             
             <div v-for="(item, index) in tier_acomodado" :key="'item' + index">
