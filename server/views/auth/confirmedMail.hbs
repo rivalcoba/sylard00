@@ -1,13 +1,34 @@
-<h3 class="pink-text">Cuenta Activa <i class="fa fa-id-badge"></i></h3>
-<div class="row">
-  <div class="col s12">
-      Apreciable {{name}} {{lastName}}:
+<div class="container-fluid" id="contenedor_mensaje_cuenta_activa">
+  <div class="container">
+    <div class="row contenedor-90vh Fila1_mensaje" id="">
+      <div class="contenedor_mensaje col-md-8">
+        <h1 class="">
+          <span
+            class="icono_principal_mensaje icon-check-square-o"
+            id="icono_principal_mensaje_cuenta_activa"
+          ></span>
+        </h1>
+        <h1 class="cabeza_mensaje" id="cabeza_mensaje_cuenta_activa">
+          ¡Cuenta activa!
+        </h1>
+        <h2 class="llamada" id="llamada_cuenta_activa">
+          Apreciable "{{name}}
+          {{lastName}}":
+        </h2>
+        <h3 id="mensaje_cuenta_activa">
+          Hemos activado su cuenta. Recuerde que accederá con el correo
+          <span class="correo_usuario_mensaje_cuenta_activa">
+            {{email}}
+          </span>
+        </h3>
+      </div>
+      <div class="contenedor_imagen_mensaje_fondo">
+        <img
+          class="wdt-75"
+          src="/images/planta_cuenta_activa.svg"
+          alt="Flor, motivo textil"
+        />
+      </div>
+    </div>
   </div>
-</div>
-<div>
-  <blockquote>
-    Hemos activado tu cuenta recuerda que accederas con
-    el siguiente correo: <em>{{email}}</em>. <br>
-    Y el password que proporcionaste.
-  </blockquote>
 </div>

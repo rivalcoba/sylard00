@@ -1,61 +1,177 @@
-{{!-- <div class="row" style="background-color: rgb(91, 72, 132);">
-  <div class="col s5">
-    <h5 style="color: white;">Mis Colecciones</h5>
-  </div>
-  <div class="col s3" style="margin-top: 8px;">
-    <a href="/collections/create" class="waves-effect waves-light btn"><i class="fa fa-plus-circle right"
-        aria-hidden="true"></i> Crear Coleccion</a>
-  </div>
-  <div class="col s4" style="margin-top: 8px;">
-    <a onclick="alert('under construction')" class="waves-effect waves-light btn"><i class="fa fa-upload right"
-        aria-hidden="true"></i>Cargar Audio Anotiacion</a>
-  </div>
-</div> --}}
-<h3 style="color: teal;">Biblioteca General de Colecciones</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Lengua Terminal</th>
-      <th>Grupo de lenguas</th>
-      <th>Comunidades</th>
-      <th>Usuario</th>
-    </tr>
-  </thead>
+{{> _publicNavBar}}
+<div class="container-fluid" id="contenedor_catalogo">
+				<div class="container">
+					<div class="col-sm-12 contenedor_cabezal_catalogo" id="">
+						<img src="images/leon_catalogo.svg" alt="Imagen ornamental de textil de Huichapan" class="" id="imagen_de_catalogo">
+						<div class="" id="contenedor_texto_cabezal_catalogo">
+							<h1 class="">Bienvenido a nuestro catálogo</h1>
+							<h2 class="llamada " id="llamada_catalogo">¡Disfruta de la diversidad de nuestras audioanotaciones!</h2>
+						</div>
+					</div>	
+				
+			
+			<section class="container contenedor-90vh" id="contenedor_listado_catalogo">
+				<div class="contenedor_switch_visualizar_por_en_catalogo">
+								<label class="label" for="" id="">Visualizar por:</label>
+								<div class="contenedor_switch_visualizacion_catalogo">
+									<label class="swich_etiqueta_opcion1" for="checkbox_coleccion" id="switch_visualizar_por_audioanotacion">Audioanotacion</label>
+									<label class="switch_general">
+									<input type="checkbox"  class="checkbox_coleccion" id="checbox_coleccion" checked>
+                   					<span class="slider_general round"></span></label>
+									<label class="swich_etiqueta_opcion2" for="checkbox_coleccion" id="switch_visualizar_por_coleccion">Colección</label>
+								</div>
+				<div class="contenedor_tabla_catalogo_colecciones">
+						<table class="tabla_catalogo_colecciones">
+       					 	<thead>
+                				<th class="cabezal_columnas_th" id="th_coleccion">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Colección</label>
+										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input class="input_busqueda" type="search" placeholder="Búsqueda">
+								</th>
+								<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Lengua terminal</label>
+										<button class="flecha_orden_ascendente active"><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input class="input_busqueda" type="search" placeholder="Búsqueda">
+								</th>
+								<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Gpos. de lenguas</label>
+										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input class="input_busqueda" type="search" placeholder="Búsqueda">
+								</th>
+								<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Comunidades</label>
+										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input class="input_busqueda" type="search" placeholder="Búsqueda">
+								</th>
+								<th class="" id="th_acciones">
+									
+								</th>
+                				
+        					</thead>
+    					    <tr>
+            					<td>
+									<strong><i>Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</i></strong><p class="primeras_palabras_descripcion_collect"></p>
+									<div id="modal_info" class="modal">
+										<div class="contenido_modal">
+											<span class="icono_cerrar_modal icon-close"></span>
+											<h1><span class="icono_modal"></span></h1>	
+											<h2 class="titulo_modal">Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</h2>
+											<p class=" p_2columnas">Este proyecto representa un esfuerzo por documentar la riqueza florística del municipio de San Luis Acatlán y la nomenclatura, clasificación y uso económico y simbólico de las plantas en las cuatro comunidades de habla mixteco principal dentro de este municipio: Yoloxóchitl, Cuanacaxtitlán, Arroyo Cumiapa y Buena Vista. Incluye la colaboración de botánicos y lingüistas: Kenia Velasco Gutiérrez (botánica) se encargó de la mayor parte de las colectas en las cuatro comunidades; Rey Castillo García (un lingüista y hablante nativo de Yoloxóchitl) se encargó de la escritura tanto de nomenclatura como de transcripción y traducción de audio grabados. Hasta la fecha se ha hecho un total de 1,428 colectas que representan un total de 126 familias y 502 géneros.  Todavía se están identificando las colectas a especies pero se calcula llegar a aproximadamente 900 a 1,000 especies distintas.  La mayoría de las colectas son Magnoliophyta (1,381) pero también incluye Pteridophyta (39), Cycadophyta (3) y Coniferophyta (2). En cuanto a distribución geográfica se llevaron a cabo colectas en las siguientes comunidades: Yoloxóchitl (1,274), Buena Vista (68), Arroyo Cumiapa (43), Cuanacaxtitlán (40) y San Luis Acatlán (3). Se contó con el apoyo de más de 35 asesores locales los principales siendo Esteban Guadalupe Sierra y Constantino Teodoro Bautista de Yoloxóchitl. Para las identificación a especie también apoyaron más de 75 taxónomos expertos.</p>
+										</div>
+									</div>
+								</td>
+            					<td class="" data-label="Lengua terminal (glottocode)">
+									yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
+								</td>
+            					<td class="" data-label="Grupo de lenguas (glottocode)">
+									amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span><br>amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span>
+								</td>
+            					<td class="comunidades"><span class="pais">
+									México</span><span class="estado">Guerrero</span><span class="comunidad">Yoloxóchitl</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Cuanacaxtitlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Arroyo Cumiapa</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Buena Vista</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
+								</td>
+								<td class="td_acciones ">
+									<div class="contenedor_botones_accion">
+										<button class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
+										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
+									</div>
+								</td>
+        					</tr>
+							  <tr>
+            					<td>
+									<strong><i>Estudio Florístico y Etnobotánico de Comunidades de habla Náhuat de la Sierra Nororiental de Puebla</i></strong><p class="primeras_palabras_descripcion_collect"></p>
+									<div id="modal_info" class="modal">
+										<div class="contenido_modal">
+											<span class="icono_cerrar_modal icon-close"></span>
+											<h1><span class="icono_modal"></span></h1>	
+											<h2 class="titulo_modal">Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</h2>
+											<p class=" p_2columnas">Este proyecto representa un esfuerzo por documentar la riqueza florística del municipio de San Luis Acatlán y la nomenclatura, clasificación y uso económico y simbólico de las plantas en las cuatro comunidades de habla mixteco principal dentro de este municipio: Yoloxóchitl, Cuanacaxtitlán, Arroyo Cumiapa y Buena Vista. Incluye la colaboración de botánicos y lingüistas: Kenia Velasco Gutiérrez (botánica) se encargó de la mayor parte de las colectas en las cuatro comunidades; Rey Castillo García (un lingüista y hablante nativo de Yoloxóchitl) se encargó de la escritura tanto de nomenclatura como de transcripción y traducción de audio grabados. Hasta la fecha se ha hecho un total de 1,428 colectas que representan un total de 126 familias y 502 géneros.  Todavía se están identificando las colectas a especies pero se calcula llegar a aproximadamente 900 a 1,000 especies distintas.  La mayoría de las colectas son Magnoliophyta (1,381) pero también incluye Pteridophyta (39), Cycadophyta (3) y Coniferophyta (2). En cuanto a distribución geográfica se llevaron a cabo colectas en las siguientes comunidades: Yoloxóchitl (1,274), Buena Vista (68), Arroyo Cumiapa (43), Cuanacaxtitlán (40) y San Luis Acatlán (3). Se contó con el apoyo de más de 35 asesores locales los principales siendo Esteban Guadalupe Sierra y Constantino Teodoro Bautista de Yoloxóchitl. Para las identificación a especie también apoyaron más de 75 taxónomos expertos.</p>
+										</div>
+									</div>
+								</td>
+            					<td class="" data-label="Lengua terminal (glottocode)">
+									high1278<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Highland Puebla Nahuat</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
+								</td>
+            					<td class="" data-label="Grupo de lenguas (glottocode)">
+									azte1234<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Aztec</span><br>
+									amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span>
+								</td>
+            					<td class="comunidades"><span class="pais">
+									México</span><span class="estado">Guerrero</span><span class="comunidad">San Miguel Tzinacapan</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Tacuapan</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Xaltipan</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Buena Vista</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
+								</td>
+								<td class="td_acciones ">
+									<div class="contenedor_botones_accion">
+										<button class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
+										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
+									</div>
+								</td>
+        					</tr>
+							  <tr>
+            					<td>
+									<strong><i>Estudio Floristas de Comunidades Totonacas de la Sierra Nororiental y Norte de Puebla</i></strong><p class="primeras_palabras_descripcion_collect"></p>
+									<div id="modal_info" class="modal">
+										<div class="contenido_modal">
+											<span class="icono_cerrar_modal icon-close"></span>
+											<h1><span class="icono_modal"></span></h1>	
+											<h2 class="titulo_modal">Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</h2>
+											<p class=" p_2columnas">Este proyecto representa un esfuerzo por documentar la riqueza florística del municipio de San Luis Acatlán y la nomenclatura, clasificación y uso económico y simbólico de las plantas en las cuatro comunidades de habla mixteco principal dentro de este municipio: Yoloxóchitl, Cuanacaxtitlán, Arroyo Cumiapa y Buena Vista. Incluye la colaboración de botánicos y lingüistas: Kenia Velasco Gutiérrez (botánica) se encargó de la mayor parte de las colectas en las cuatro comunidades; Rey Castillo García (un lingüista y hablante nativo de Yoloxóchitl) se encargó de la escritura tanto de nomenclatura como de transcripción y traducción de audio grabados. Hasta la fecha se ha hecho un total de 1,428 colectas que representan un total de 126 familias y 502 géneros.  Todavía se están identificando las colectas a especies pero se calcula llegar a aproximadamente 900 a 1,000 especies distintas.  La mayoría de las colectas son Magnoliophyta (1,381) pero también incluye Pteridophyta (39), Cycadophyta (3) y Coniferophyta (2). En cuanto a distribución geográfica se llevaron a cabo colectas en las siguientes comunidades: Yoloxóchitl (1,274), Buena Vista (68), Arroyo Cumiapa (43), Cuanacaxtitlán (40) y San Luis Acatlán (3). Se contó con el apoyo de más de 35 asesores locales los principales siendo Esteban Guadalupe Sierra y Constantino Teodoro Bautista de Yoloxóchitl. Para las identificación a especie también apoyaron más de 75 taxónomos expertos.</p>
+										</div>
+									</div>
+								</td>
+            					<td class="" data-label="Lengua terminal (glottocode)">
+									toto1252<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
+								</td>
+            					<td class="" data-label="Grupo de lenguas (glottocode)">
+									toto1251<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Totonacan</span><br>amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span>
+								</td>
+            					<td class="comunidades"><span class="pais">
+									México</span><span class="estado">Guerrero</span><span class="comunidad">Zongozotla</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Ecatlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Nanacatlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Tonalixco</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
+								</td>
+								<td class="td_acciones ">
+									<div class="contenedor_botones_accion">
+										<button class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
+										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
+									</div>
+								</td>
+        					</tr>
+							        					
+        					
+						</table>
+						<div class="contenedor_paginacion">
+							<div class="contenedor_input_paginacion">
+								<input class="" id="busqueda_paginacion" type="text" placeholder="Pag.">
+								<button class="btn_lateral_input" for="busqueda_paginacion"><span class="icono_pagina_busqueda  icon-chevron-right"></span></button>
 
-  <tbody>
-    {{#each collections}}
-    <tr>
-      <td> <h6>{{name}}</h6> </td>
-      <td>
-        {{#each languages}}
-          <h5>{{language.gid}}</h5>
-          <p>{{language.name}}</p>
-          <div class="divider"></div>
-        {{/each}}
-      </td>
-      <td>
-        {{#each languages}}
-          <h5>{{LanguageGroup.gid}}</h5>
-          <p>{{LanguageGroup.name}}</p>
-          <div class="divider"></div>
-        {{/each}}
-      </td>
-      <td>
-        {{#each localities}}
-          <h5>{{Nom_Loc}}</h5>
-          <p>{{Nom_Mun}} {{Nom_Mun}} </p>
-          <p>{{Lat_Decimal}} {{Lon_Decimal}}</p>
-          <div class="divider"></div>
-        {{/each}}        
-      </td>
-      <td>
-        <i 
-          class="fa fa-user-circle-o" 
-          style="color: rgb(21, 193, 209);" 
-          aria-hidden="true"></i> {{user.name}}
-      </td>
-    </tr>    
-    {{/each}}    
-  </tbody>
-</table>
+							</div>
+							<div class="contenedor_numeros_paginacion">
+								<a class="icono_paginacion" href="#"><span class="icon-first_page"></span></a>
+								<a class="icono_paginacion" href="#"><span class="icon-angle-left"></span></a>
+								<a class="numero_paginacion" href="#">2</a>
+								<a class="numero_paginacion" href="#">3</a>
+								<a class="numero_paginacion" href="#">4</a>
+								<a class="numero_paginacion active" href="#">5</a>
+								<a class="numero_paginacion" href="#">6</a>
+								<a class="numero_paginacion" href="#">7</a>
+								<a class="ultima_pagina" href="#">...29</a>
+								<a class="icono_paginacion" href="#"><span class="icon-angle-right"></span></a>
+								<a class="icono_paginacion" href="#"><span class=" icon-last_page"></span></a>
+							</div>
+							
+						</div>	
+					</div>
+				</div>
+				
+			</section>			
+		</div>
+	</div>		

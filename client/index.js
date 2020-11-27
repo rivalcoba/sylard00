@@ -20,7 +20,10 @@ import collectionsCreate from '@client/pages/collections/create'
 import editCollectionScripts from '@client/pages/collections/edit'
 // ./Test scripts
 import indexTestScripts from '@client/pages/index/test'
+// Audioannotations Scripts
+import createAudioAnnotationsScripts from '@client/pages/audioannotations/create'
 
+import Vue from 'vue'
 import App from '@client/templates/main.vue'
 import axios from "axios";
 import VueAxios from "vue-axios";
@@ -30,7 +33,6 @@ import App2 from '@client/templates/main2.vue'
 import  FiltroAudioannotations  from "@client/templates/components/FiltroAudioannotations.vue";
 import App3 from '@client/templates/main3.vue'
 
-import Vue from 'vue'
 
 // Loading function to the global variable
 //window.greeting = greeting
@@ -50,6 +52,7 @@ if(window.location.pathname == `/test`){
     //window.VueCdn = VueCdn
     window.app = indexTestScripts.getVueApp()
 }
+
 if(window.location.pathname == `/audioannotations/vuetest`){
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
@@ -72,6 +75,9 @@ if(window.location.pathname == `/audioannotations/uploadfile`){
      //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
      //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
     })
+    
+    // Desde aqui poder ejecutar createAudioAnotation() del componente "LecturaTierEAF"
+    window.pageScripts = createAudioAnnotationsScripts
 }
 
 if(window.location.pathname == `/audioannotations`){

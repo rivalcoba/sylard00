@@ -1,3 +1,7 @@
+<script>
+    var elemento_link = document.getElementById('register');
+  elemento_link.setAttribute("class", "active_a");
+</script>
 <div class="container-fluid" id="contenedor_registro">
 	<div class="extension_fondo_blanco d-sm-none d-md-block"></div>
 	<div class="container">
@@ -120,8 +124,8 @@
 								<span class="icon-email"></span>
 								Correo electrónico:
 							</label>
-							<input id="email" type="email" placeholder="micorreo@dominio.com" name="email"
-								value="{{email}}" *required* />
+							<input id="email" type="email" placeholder="Email" name="email"
+								value="{{email}}" required/>
 							<div class="contenedor_icono_correcto_input">
 								<p>
 									<span class="icono_correcto_input icon-check_circle"></span>
@@ -139,7 +143,7 @@
 								Contraseña:
 							</label>
 							<input id="password" type="password" name="password"
-								placeholder="Debe ser al menos de 6 caracteres" minlength="6" required />
+								placeholder="Al menos de 6 caracteres" minlength="6" required />
 							<div class="contenedor_icono_correcto_input">
 								<p>
 									<span class="icono_correcto_input icon-check_circle"></span>
@@ -179,7 +183,7 @@
            					 id="country" 
 						     placeholder="Selecciona tu país de origen"
            					 list="countries"
-            				value="{{country}}">
+            				value="{{country}}" required/>
 							<div class="contenedor_icono_correcto_input">
 								<p>
 									<span class="icono_correcto_input icon-check_circle"></span>

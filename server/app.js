@@ -4,6 +4,7 @@
 import createError from 'http-errors'
 import express from 'express'
 import path from 'path'
+import fs from 'fs'
 import cookieParser from 'cookie-parser'
 import morgan from 'morgan'
 import passportConfig from '@config/passport'
@@ -23,10 +24,17 @@ import netConfig from '@config/net'
 import templateEngine from '@config/template-engine'
 import dbConnection from '@database/odmconnect'
 
-// -2. Importing Routes
+// -4 Creatting eaf path
+let eafPath = path.join(__dirname,'public','eaf')
+if (!fs.existsSync(eafPath)){
+  console.log(">> Creating eafpath");
+  fs.mkdirSync(eafPath);
+}
+
+// -3. Importing Routes
 import addAppRoutes from '@routes/routes'
 
-// -3 Passport Config
+// -2 Passport Config
 passportConfig(passport)
 
 // -1 Creating an instance of express

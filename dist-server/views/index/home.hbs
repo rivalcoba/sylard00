@@ -1,4 +1,8 @@
 {{> _publicNavBar}}
+<script>
+    var elemento_link = document.getElementById('home');
+  elemento_link.setAttribute("class", "active_a");
+</script>
 <main>
   <div class="container-fluid contenedor_carrusel">
     <div class="contenedor_elementos_paginacion_carrusel">
@@ -7,11 +11,6 @@
           <li class="indicador_carrusel_item" onclick="currentSlide(1)"></li>
           <li class="indicador_carrusel_item" onclick="currentSlide(2)"></li>
           <li class="indicador_carrusel_item" onclick="currentSlide(3)"></li>
-          <!-- active -->
-          <!--	<li class="indicador_carrusel_item" onclick="currentSlide(4)"></li>
-								<li class="indicador_carrusel_item" onclick="currentSlide(5)"></li>
-								<li class="indicador_carrusel_item" onclick="currentSlide(6)"></li>
-								<li class="indicador_carrusel_item" onclick="currentSlide(7)"></li>-->
         </ol>
       </div>
       <nav class="contenedor_botones_carrusel">
@@ -27,13 +26,13 @@
           <h1>SYLARD</h1>
           <h3>Synchronized Language Annotation Result Display</h3>
           <div class="" id="contenedor_parrafo_lamina1">
-            <p class="parrafo_grande"> {{translation.CONTENT_ONE}}</p>
-            <p class="parrafo_grande">{{translation.CONTENT_TWO}}</p>
+            <p class="parrafo_grande">{{{translation.CONTENT_ONE}}}</p>
+            <p class="parrafo_grande">{{{translation.CONTENT_TWO}}}</p>
           </div>
           <h2 class="llamada color_principal">{{translation.REGISTER_CONTENT}}</h2>
           <div>
             <a href="#" class="btn btn-predeterminado">{{translation.READ_MORE}}</a>
-            <a href="#" class="btn btn-predeterminado">{{translation.CATALOGUE}}</a>
+            <a href="#" class="btn btn-predeterminado">{{translation.SEE_CATALOGUE}}</a>
             <a href="auth/register" class="btn btn-primario">{{translation.REGISTER}}</a>
           </div>
         </div>

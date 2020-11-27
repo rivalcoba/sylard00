@@ -63,8 +63,8 @@ typings/
 .next
 
 #files eaf y mp3
-*.mp3
-*.eaf
+.mp3
+.eaf
 
 # eslint
 .eslintrc.json

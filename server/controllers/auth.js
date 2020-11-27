@@ -24,27 +24,15 @@ const loginUser = (req, res, next) => {
 
 // Register User
 const register = (req, res) => {
-        let languages = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'languages.json'))
-        let countries = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'countries.json'))
+    let languages = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'languages.json'))
+    let countries = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'countries.json'))
 
-        res.render('auth/register', {
-            onRegisterPage: true,
-            nativeLanguages: languages,
-            countries: countries
-        });
-    }
-    //ANTIGUA VISTA DE REGISTRO//
-const registerold = (req, res) => {
-        let languages = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'languages.json'))
-        let countries = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'countries.json'))
-
-        res.render('auth/register.old.hbs', {
-            onRegisterPage: true,
-            nativeLanguages: languages,
-            countries: countries
-        });
-    }
-    //ANTIGUA VISTA DE REGISTRO//
+    res.render('auth/register', {
+        onRegisterPage: true,
+        nativeLanguages: languages,
+        countries: countries
+    });
+}
 
 // Processing the form for
 // Registering New Users
@@ -184,5 +172,5 @@ export default {
     emailConfirmed,
     logoutUser,
     enableColaborator,
-    registerold //Antigua vista de registro//
+
 }
