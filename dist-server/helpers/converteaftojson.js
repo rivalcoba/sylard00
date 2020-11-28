@@ -39,7 +39,7 @@ let b={},c={};//obj_tier.TIME_SLOT_REF1=id_tier.TIME_SLOT_REF1[0];
 b.ANNOTATION_ID=a.ANNOTATION_ID[0],tiempo_ids=a.TIME_SLOT_REF1[0],b.TIME_SLOT_REF1=convertir_tiempo(arreglo_tiempo.find(buscar_time_slot).TIME_VALUE[0]),tiempo_ids=a.TIME_SLOT_REF2[0],b.TIME_SLOT_REF2=convertir_tiempo(arreglo_tiempo.find(buscar_time_slot).TIME_VALUE[0]),b.ANNOTATION_VALUE=a.ANNOTATION_VALUE[0],tier_arreglo.push(b),c.ANNOTATION_ID=b.ANNOTATION_ID,c.TIME_SLOT_REF1=b.TIME_SLOT_REF1,c.TIME_SLOT_REF2=b.TIME_SLOT_REF2,arreglo_ref_tiempo.push(c)}function leer_Author_Json(){//console.log(this.objson.ANNOTATION_DOCUMENT.AUTHOR[0]);
 // console.log(obj);
 }function leer_Tier_Json(){// console.log(obj_tier) 
-}function _default(a){_path.default.join(__dirname,"..","public","eaf",a);tier_arreglo=[],objson=null,jsonobj=null,obj_datos_tier=null,objson=require(_path.default.join(__dirname,"..","public","eaf",a+"eaf.json"));//console.log("+++++++++++++++++leyendo el archivo+++++++++ ")
+}function _default(a){_path.default.join(__dirname,"..","public","eaf",a);tier_arreglo=[],objson=null,jsonobj=null,obj_datos_tier=null,objson=require(_path.default.join(__dirname,"..","public","eaf","tmp",a+".json"));//console.log("+++++++++++++++++leyendo el archivo+++++++++ ")
 //console.log(nombreEaf+'eaf.json')
 //++leer_Author_Json(objson.ANNOTATION_DOCUMENT.AUTHOR[0])
 //leer_Tier_Json(objson)
@@ -85,7 +85,7 @@ a=objson.ANNOTATION_DOCUMENT.TIER[b].ANNOTATION[c].ALIGNABLE_ANNOTATION[d],add_a
 //leer_Tier_Json(counter)
 bandera_grabar&&obj.tier.push(tier_arreglo),tier_arreglo=[],bandera_grabar=!1}console.log("Imprime el nuevo json"),jsonobj=JSON.stringify(obj,null,4);// path.join(__dirname,'..','public','eaf','eaf.json')  
 //fs.writeFileSync('../public/eaf/Nuevoeaf.json', jsonobj);
-const b=require("fs");try{b.writeFileSync(_path.default.join(__dirname,"..","public","eaf","Nuevoeaf.json"),jsonobj),console.log("Grabo obj a JSON"),console.log("==============================")}catch(a){console.error(err)}//fs.close('Nuevoeaf.json')
+const b=require("fs");try{b.writeFileSync(_path.default.join(__dirname,"..","public","eaf","tmp","Nuevoeaf.json"),jsonobj),console.log("Grabo obj a JSON"),console.log("==============================")}catch(a){console.error(err)}//fs.close('Nuevoeaf.json')
 //  obj=null;
 obj={tier:[]}}//console.log("(((((((((((((((((((((((((((((((((((Aqui esta entrando ")
 // read XML from a file

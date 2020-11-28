@@ -10,4 +10,4 @@ const d=JSON.stringify(c,null,4);//+leer_Tier_Json();
 //console.log(obj);
 // save JSON in a file 
 // fs.writeFileSync('../public/eaf/eaf.json', json);   
-_fs.default.writeFileSync(_path.default.join(__dirname,"..","public","eaf",a+"eaf.json"),d),console.log("Aqui graba "+a+"eaf.json")})}
+_fs.default.writeFileSync(_path.default.join(__dirname,"..","public","eaf","tmp",a+".json"),d),console.log("Aqui graba "+a+"eaf.json")})}

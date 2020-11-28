@@ -46,7 +46,7 @@ xml2js.parseString(xml, { mergeAttrs: true }, (err, result) => {
     //console.log(obj);
     // save JSON in a file 
    // fs.writeFileSync('../public/eaf/eaf.json', json);   
-   fs.writeFileSync(path.join(__dirname,'..','public','eaf',nombreEaf+'eaf.json'), json);  
+   fs.writeFileSync(path.join(__dirname,'..','public','eaf','tmp',nombreEaf+'.json'), json);  
    console.log("Aqui graba "+nombreEaf+'eaf.json')
 }); 
  }

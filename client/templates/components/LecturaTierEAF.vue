@@ -313,7 +313,7 @@ export default {
     mounted() {
         var self = this;
         this.axios
-            .get("/eaf/Nuevoeaf.json")
+            .get("/eaf/tmp/Nuevoeaf.json")
             //.then((response) => (this.info = response));
             .then((response) => {this.info = response;
             self.agregar_tier_acomodado();

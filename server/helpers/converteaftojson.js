@@ -152,7 +152,7 @@ objson=null
 jsonobj=null;
 obj_datos_tier=null;
 //var objson = require('../public/eaf/eaf.json');
- objson = require(path.join(__dirname,'..','public','eaf',nombreEaf+'eaf.json'));
+ objson = require(path.join(__dirname,'..','public','eaf','tmp',nombreEaf+'.json'));
 //console.log("+++++++++++++++++leyendo el archivo+++++++++ ")
 //console.log(nombreEaf+'eaf.json')
 //++leer_Author_Json(objson.ANNOTATION_DOCUMENT.AUTHOR[0])
@@ -259,7 +259,7 @@ console.log("Imprime el nuevo json");
 //fs.writeFileSync('../public/eaf/Nuevoeaf.json', jsonobj);
 const fs2 = require('fs');
 try {
-    fs2.writeFileSync(path.join(__dirname,'..','public','eaf','Nuevoeaf.json') , jsonobj);
+    fs2.writeFileSync(path.join(__dirname,'..','public','eaf','tmp','Nuevoeaf.json') , jsonobj);
     console.log("Grabo obj a JSON");
     console.log("==============================")
     
