@@ -12,7 +12,8 @@ console.log(arreglo_ref_tiempo.find(b=>b.ANNOTATION_ID===a).TIME_SLOT_REF1),cons
 //    return tiempo_buscado
 //}
 return a.TIME_SLOT_ID[0]===tiempo_ids}function add_tiempo(a){arreglo_tiempo.push(a)}function add_datos_tier(a){var b={};// sin participante
-b.PARTICIPANT=null==a.PARTICIPANT?"":a.PARTICIPANT,b.TIER_ID=a.TIER_ID,b.LINGUISTIC_TYPE_REF=a.LINGUISTIC_TYPE_REF,b.DEFAULT_LOCALE=a.DEFAULT_LOCALE,tier_arreglo.push(b)}function add_REF_ANNOTATION(a){var b={};//añadir el tiempo inicial de la ref1
+//depurar sin participante
+b.PARTICIPANT=null==a.PARTICIPANT?"":a.PARTICIPANT,b.TIER_ID=a.TIER_ID,b.LINGUISTIC_TYPE_REF=a.LINGUISTIC_TYPE_REF,b.DEFAULT_LOCALE=a.DEFAULT_LOCALE,tier_arreglo.push(b),console.log("------------------"),console.log(b),console.log("------------------")}function add_REF_ANNOTATION(a){var b={};//añadir el tiempo inicial de la ref1
 //console.log(buscar_referencia_tier(tiempo_ids))
 //console.log(arreglo_ref_tiempo.find(x=>x.ANNOTATION_ID===tiempo_ids).TIME_SLOT_REF1)
 //console.log(arreglo_ref_tiempo.find(x=>x.ANNOTATION_ID===tiempo_ids).TIME_SLOT_REF2)
@@ -74,8 +75,7 @@ m=c.ANNOTATION_DOCUMENT.TIER[f].ANNOTATION[l].REF_ANNOTATION[n],add_REF_ANNOTATI
 //console.log(ALIGNABLE_ANNOTATION);
 o=c.ANNOTATION_DOCUMENT.TIER[f].ANNOTATION[l].ALIGNABLE_ANNOTATION[n],add_Tier_Json(o),console.log("Si esta a\xF1adiendo"),bandera_grabar=!0}//Tier console.log(objson.ANNOTATION_DOCUMENT.TIER[i]);
 //leer_Tier_Json(counter)
-bandera_grabar&&obj.tier.push(tier_arreglo),tier_arreglo=[]}console.log("Imprime el nuevo json");//+console.log(obj);
-// add_Tier_Json();
+bandera_grabar&&obj.tier.push(tier_arreglo),tier_arreglo=[]}console.log("Imprime el nuevo json"),console.log(obj);// add_Tier_Json();
 // save JSON in a file
 const p=JSON.stringify(obj,null,4);// Borrando
 // try {
