@@ -3,11 +3,11 @@ var tiempo_ids="",tiempo_buscado=0,tier_arreglo=[],bandera_grabar=!0,arreglo_tie
 };function _default(a){_path.default.join(__dirname,"..","public","eaf",a);//+console.log(url)
 console.log("=============================="),console.log("Aqui lee el eaf "+a);let b="";try{b=_fs.default.readFileSync(_path.default.join(__dirname,"..","public","eaf",a))}catch(a){console.log("error xml"),console.trace(a)}//const xml = fs.readFileSync('../public/eaf/asset01.eaf-1603583874596.eaf');
 // convert XML to JSON
-_xml2js.default.parseString(b,{mergeAttrs:!0},(a,b)=>{if(a)throw a;// `result` is a JavaScript object
+_xml2js.default.parseString(b,{mergeAttrs:!0},(b,c)=>{if(b)throw b;// `result` is a JavaScript object
 // convert it to a JSON string
-const c=JSON.stringify(b,null,4);//+leer_Tier_Json();
+const d=JSON.stringify(c,null,4);//+leer_Tier_Json();
 // add_Tier_Json();
 //console.log(obj);
 // save JSON in a file 
 // fs.writeFileSync('../public/eaf/eaf.json', json);   
-try{_fs.default.unlinkSync(_path.default.join(__dirname,"..","public","eaf","eaf.json")),console.log(">> Se borro eaf.json.")}catch(a){console.log(">> No se borro eaf.json por que existe.")}_fs.default.writeFileSync(_path.default.join(__dirname,"..","public","eaf","eaf.json"),c),console.log("Aqui graba eaf.json")})}
+_fs.default.writeFileSync(_path.default.join(__dirname,"..","public","eaf",a+"eaf.json"),d),console.log("Aqui graba "+a+"eaf.json")})}

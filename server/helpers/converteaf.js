@@ -46,13 +46,7 @@ xml2js.parseString(xml, { mergeAttrs: true }, (err, result) => {
     //console.log(obj);
     // save JSON in a file 
    // fs.writeFileSync('../public/eaf/eaf.json', json);   
-   try {
-    fs.unlinkSync(path.join(__dirname,'..','public','eaf','eaf.json'))
-    console.log(">> Se borro eaf.json.");
-   } catch (error) {
-       console.log(">> No se borro eaf.json por que existe.")
-   }
-   fs.writeFileSync(path.join(__dirname,'..','public','eaf','eaf.json'), json);  
-   console.log("Aqui graba "+'eaf.json')
+   fs.writeFileSync(path.join(__dirname,'..','public','eaf',nombreEaf+'eaf.json'), json);  
+   console.log("Aqui graba "+nombreEaf+'eaf.json')
 }); 
  }
