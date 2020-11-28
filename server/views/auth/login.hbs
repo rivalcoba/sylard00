@@ -1,3 +1,7 @@
+<script>
+  var elemento_link = document.getElementById('login');
+  elemento_link.setAttribute("class", "active_a");
+</script>
 <div class="container-fluid" id="contenedor_login">
   <div class="extension_fondo_blanco d-sm-none d-md-block"></div>
   <div class="container">
@@ -13,7 +17,7 @@
       <div class="col-md-7 pt-3" id="columna_derecha_login">
         <div class="" id="columna_derecha_login_anidada">
           <h1>
-            {{translation.LOGIN}}
+            {{translation.LOGIN_AUTH}}
           </h1>
           <h2 class="llamada" id="llamada_login">
             {{translation.WELCOME}}
@@ -59,7 +63,7 @@
                 id="password"
                 type="password"
                 name="password"
-                placeholder="{{translation.PASSWORD_PLACEHOLDER}}"
+                placeholder="{{translation.PASSWORD_INTRODUCE}}"
                 minlength="6"
                 required
               />

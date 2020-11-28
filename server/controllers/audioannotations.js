@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import Collection from '@models/Collection'
 import Glottolog from '@models/Glottolog'
 import Locations from '@models/Location'
@@ -7,6 +9,7 @@ import eaftojson from '@helpers/converteaf'
 import Genre from '@models/Genre'
 
 import multer from 'multer'
+import { json } from 'express'
 
 const index = async (req, res) => {
   // Get Collecionts
@@ -90,86 +93,89 @@ const index = async (req, res) => {
   })
 }
 
+const filtrarAudioannotation=async (req,res)=>{
+  console.log("Aqui")
+  // Aqui me quede le quite el await
+  try {
+    const audioannotationsDocs =await  Audioannotations.find({user: req.user._id}).populate('user').populate('colection').exec()
+    res.json(audioannotationsDocs);
+  } catch (error) {
+      return res.status(400).json({
+          mensaje: 'Ocurrio un error',
+          error
+        })
+  }
+}
+  
 const createAudioannotation = (req, res) => {
   // Getting languages
   res.render('audioannotations/create')
 }
+
 const addAudioannotation = async (req, res) => {
-  const {
+  let {
     eaf, // ok
-    titulo, // ok
-    description, // ok
-    genre : genero, // ok
     mp3_url, // ok
-    colection, // ok
-    duracion, //ok
-    location, // ok
+    duration, //ok
+    title, // ok
+    description, // ok
+    colection : collection_id, // ok
     gid, // ok
+    location, // ok
+    genre, // ok
+    PARTICIPANT,
+    Visible,
+    value,
+    color,
+    LINGUISTIC_TYPE_REF,
+    TIER_ID
   } = req.body
 
+  let tiers = []
+  let numberOfTiersPerParticipant = Visible.length / PARTICIPANT.length 
+  PARTICIPANT.forEach((participant, indexp) => {
+    for (let index = 0; index < numberOfTiersPerParticipant; index++) {
+      // Se calcula indice absoluto
+      let absIndex = index + indexp * numberOfTiersPerParticipant
+      console.log(`absIndex: ${absIndex} - `)
+      tiers.push({
+        PARTICIPANT: participant,
+        Visible: Visible[absIndex],
+        value: value[absIndex],
+        color: color[absIndex],
+        LINGUISTIC_TYPE_REF: LINGUISTIC_TYPE_REF[absIndex],
+        TIER_ID: TIER_ID[absIndex],
+      })
+    }
+  });
+
+  // Building audioannotation
+  let genreDoc = await Genre.findById(genre).exec()
   
-  let audioannotations = {
-    eaf,
-    titulo,
-    description,
-    genero,
-    mp3_url,
-    colection,
-    duracion,
-    location,
-    gid,
+  let audioannotation = {
+    eaf, // ok
+    title, // ok
+    description, //
+    genre: genreDoc, // ok - ARMAR
+    duration,// ok
+    mp3_url, // ok
+    location, // ok
+    collection_id, // ok
+    gid, // ok
+    user: req.user._id,
+    TIER: tiers,
   }
-  return res.status(200).json(req.body)
 
-  console.log('-------------------Aqui')
-  //console.log(req)
-  //console.log('Duracion')
-  //console.log(req.body)
-  //console.log('File')
-
-  audioannotations.user = req.user._id
-  //audioannotations.colection=req.colection._id
-
-  //const audioannotations = new Audioannotations({
-  //  titulo: req.body.titulo,
-  //  description: req.body.description,
-  //  genero :  req.body.genero,
-  //  mp3_url: req.body.mp3_url,
-  //});
-  //let { audioannotations } = req.body
-
-  //Audioannotations
-  //.create(audioannotations)
-  //.then(data => {
-  //   console.log('Aqui');
-  //   console.log(data);
-  //   res.send(data);
-  // })
-  // .catch(err => {
-  //   res.status(500).send({
-  //     message:
-  //       err.message || "Some error occurred while creating the Tutorial."
-  //  });
-  //});
-
-  // Add user
-  //audioannotations.user = req.user._id
-  //checar https://bezkoder.com/node-express-mongodb-crud-rest-api/
-  // audioannotations = {
-  //   name : "IvanAA",
-  //   titulo : "GamEaf"
-  // }
-
-  const AudioannotationDoc = await Audioannotations.create(audioannotations)
-  //console.log(`addAudioannotation> Audioannotation Created: ${AudioannotationDoc}`)
-  // Se encuentra usuario
-  //console.log(req.body);
-  //console.log('Aqui')
-
-  //res.send('POST request to the homepage')
-
-  res.redirect('/audioannotations')
+  try {
+    const audioannotationDoc = await Audioannotations.create(audioannotation);
+    console.log("> Audioanotations Created: " + JSON.stringify(audioannotationDoc))
+    return res.status(200).json(audioannotationDoc)
+    // res.redirect('/audioannotations') //TODO: Descomentar tan pronto toño acomple esto con index de audioanot
+  } catch (error) {
+    return res.status(200).json({error, from: "controller/audioannotations/addAudioannotation"})
+  }
 }
+
 //uploadfile
 //aqui me quede
 
@@ -181,23 +187,17 @@ const uploadfileAudioannotation = async (req, res, next) => {
     return next(error)
   }
   //convertir nuevoJSON Aqui
-  //console.log("-----------aqui--Convierte----------")
-  //console.log(file)
-  try {
-     eaftojson(file.filename) 
-     convertEaf2json(file.filename)
-  } catch (error) {
-    //console.log("Erorroesss al convertir EAF2JSON")
-    //console.log(error)
-  }
- 
+  // console.log("-----------ARCHIVO CARGADO EN SERVER----------")
+  // console.log(file.filename)
+  convertEaf2json(file.filename)
 
   try {
     // Obteniendo datos de las collections
     const collectionsDocs = await Collection.find({ user: req.user._id })
       .populate('user')
       .exec()
-    let collections = collectionsDocs.map(collection => {
+    
+      let collections = collectionsDocs.map(collection => {
       return collection.toJSON()
     })
 
@@ -213,6 +213,8 @@ const uploadfileAudioannotation = async (req, res, next) => {
       genreArray,
     })
   } catch (error) {
+    // Borrar eaf cargado
+    fs.unlinkSync(path.join(__dirname, '..', 'public', 'eaf', file.filename))
     res.status(500).json(error)
   }
 }
@@ -241,7 +243,7 @@ const deleteAudioannotaion = async (req, res) => {
     res.redirect('/audioannotations')
   } catch (error) {
     //error de borrado
-    console.error(err)
+    console.error(error)
     return res.status(400).json(error)
   }
 }
@@ -258,4 +260,5 @@ export default {
   addAudioannotation,
   uploadfileAudioannotation,
   vuetestAudioannotaion,
+  filtrarAudioannotation
 }
