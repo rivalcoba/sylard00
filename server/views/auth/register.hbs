@@ -1,173 +1,257 @@
-<h1 class="center pink-text">Registro</h1>
-<div class="row" style="padding-top:30px">
-    <form class="col s12" action="/auth/register/user" method="post">
-           
-      <div class="row">
-         <!-- name -->
-        <div class="input-field col s12 m6 l4">
-          <i class="fa fa-user prefix" style="color: grey;" aria-hidden="true"></i>
-          <input
-            placeholder="Tim"
-            id="name" 
-            name="name" type="text" class="validate"
-            value="{{name}}" /*required*/>
-          <label for="nombre">Nombre</label>
-        </div>
-        <!-- lastName -->
-        <div class="input-field col s12 m6 l4">
-          <i class="fa fa-user prefix" style="color: grey;" aria-hidden="true"></i>
-          <input 
-            placeholder="Berners" 
-            id="lastName" 
-            name="lastName" type="text" class="validate"
-            value="{{lastName}}" /*required*/>
-          <label for="lastName">Apellido</label>
-        </div>
+<script>
+    var elemento_link = document.getElementById('register');
+  elemento_link.setAttribute("class", "active_a");
+</script>
+<div class="container-fluid" id="contenedor_registro">
+	<div class="extension_fondo_blanco d-sm-none d-md-block"></div>
+	<div class="container">
+		<div class="row contenedor-90vh" id="Fila1_registro">
+			<div class="col-md-5 px-4" id="columna_izquierda_registro">
+				<div class="" id="columna_izquierda_registro_anidada">
+					<img class="wdt-50 mx-auto mb-5" src="/images/huichol_registro-01.svg" id="huichol_img_registro"
+						alt="Arte Huichol Peyote" />
+					<div class="contenedor_textos_abajo">
+						<h6 class="blanco">
+							Si decides ser colaborador
+						</h6>
+						<p class="secundario_blanco">
+							Te brindaremos los privilegios para administrar colecciones de audioanotaciones y las
+							herramientas para cargar y compartir tu información con la condición de que cumplas con los
+							<a href="#">
+								términos y condiciones
+							</a>
+							y, con el criterio editorial del fundador de la plataforma:
+							<strong>
+								Jonathan Amith
+							</strong>
+							.
+						</p>
+						<h6 class="blanco">
+							Si decides ser visitante
+						</h6>
+						<p class="secundario_blanco">
+							Deberas registrarte y aceptar los
+							<a href="#">
+								términos y condiciones.
+							</a>
+							El registro es con el propósito de que puedas compartir información y proteger los derechos
+							de los colaboradores.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7" id="columna_derecha_registro">
+				<div class="" id="columna_derecha_registro_anidada">
+					<h1>
+						{{translation.REGISTER}}
+					</h1>
+					<h3>
+						Llena los campos correctamente
+					</h3>
+					<p class="parrafo_grande">
+						Elige tus privilegios de usuario
+					</p>
+					<form action="/auth/register/user" method="post" role="form" class="formulario_contenedor">
+						<div id="selector_colaborador">
+							<p class="label">
+								¿Qué quieres ser?
+							</p>
+							<div class="contenedor_switch_formularios">
+								<label class="swich_etiqueta_opcion1" for="checkbox" id="switch_usuario_visitante">
+									Visitante
+								</label>
+								<label class="switch_general">
+									<input type="checkbox" name="role" class="checkbox_colaborador" requiered />
+									<span class="slider_general round"></span>
+								</label>
+								<label class="swich_etiqueta_opcion2" for="checkbox" id="switch_usuario_colaborador">
+									Colaborador
+								</label>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="name">
+								Nombre:
+							</label>
+							<input id="name" name="name" type="text" value="{{name}}" placeholder="Tim" required />
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="last_name">
+								Apellido paterno:
+							</label>
+							<input placeholder="Berners" id="lastName" name="lastName" type="text" value="{{lastName}}"
+								required />
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="mothers_last_name">
+								Apellido materno:
+							</label>
+							<input placeholder="Lee" id="secLastName" name="secLastName" type="text"
+								value="{{secLastName}}" required />
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="email">
+								<span class="icon-email"></span>
+								Correo electrónico:
+							</label>
+							<input id="email" type="email" placeholder="Email" name="email"
+								value="{{email}}" required/>
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="password">
+								<span class="icon-lock"></span>
+								Contraseña:
+							</label>
+							<input id="password" type="password" name="password"
+								placeholder="Al menos de 6 caracteres" minlength="6" required />
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="password_confirmation">
+								<span class="icon-lock"></span>
+								Confirma la contraseña:
+							</label>
+							<input id="confirmationPassword" name="confirmationPassword" type="password"
+								placeholder="Debe de coincidir con la contraseña" minlength="6" required />
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs">
+							<label class="label" for="country">
+								País de origen
+							</label>
+							<input
+							  type="text" 
+           					 name="country"
+           					 id="country" 
+						     placeholder="Selecciona tu país de origen"
+           					 list="countries"
+            				value="{{country}}" required/>
+							<div class="contenedor_icono_correcto_input">
+								<p>
+									<span class="icono_correcto_input icon-check_circle"></span>
+								</p>
+							</div>
+							<div class="contenedor_icono_error_input">
+								<p>
+									<span class="icono_error_input icon-error"></span>
+								</p>
+							</div>
+						</div>
+						<div class="contenedor_inputs" id="lenguas_habladas_input">
+							<label class="label" for="lenguas_habladas">
+								Lenguas habladas
+							</label>
+							<input type="search" class="input_con_boton_derecha" id="langSearch" list="languages"
+								placeholder="Selecciona la lengua y agrega" role="listbox" />
+							<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar" onclick="formsManager.addSelection()">
+								<span class="icon-plus"></span>
+							</i>
+						</div>
+						<div class="contenedor_inputs" id="contenedor_inputs_con_boton">
+							<label class="label" for="about_you">
+								Cuentanos acerca de ti
+							</label>
+							<textarea name="about" placeholder="¿A qué te dedicas? ¿Para qué usarías SYLARD?" id="about" rows="3"></textarea>
+						</div>
+						<div class="contenedor_inputs" id="lenguas_agregadas_input_seleccionadas">
+							<label class="label" for="lenguas_agregadas">
+								Lenguas agregadas
+							</label>
+							<textarea 
+							type="text" 
+							id="spokenLanguages" 
+							name="lenguas_agregadas" 
+							class=""
+							placeholder="Aquí aparecen las lenguas que agregaste"
+							 rows="3"></textarea>
+						</div>
+						<div class="">
+							<i class="btn btn_input_derecha" id="boton_quitar" onclick="formsManager.clearLastSelection()" >
+								<span class="icon-minus"></span>
+							</i>
+						</div>
+						<div class="contenedor_botones_registro">
+							<button type="submit" class="btn btn-primario float_right">
+								{{translation.REG}}
+							</button>
+							<!--<button type="reset" class="btn btn-secundario float_right">Restablecer</button>-->
+						</div>
+					</form>
+				</div>
+				<datalist id="languages">
+					{{#each nativeLanguages}}
+					<option value="{{name}} | {{gid}}">
+						{{/each}}
+				</datalist>
 
-        <!-- secLastName -->
-        <div class="input-field col s12 m6 l4">
-          <i class="fa fa-user prefix" style="color: grey;" aria-hidden="true"></i>
-          <input 
-            placeholder="Lee" 
-            id="secLastName" 
-            name="secLastName" type="text" class="validate"
-            value="{{secLastName}}">
-          <label for="lastName">Apellido Materno</label>
-        </div>  
-      </div>
-
-      <!-- role -->
-      <div class="row">        
-          <div class="switch col s12 m8 l4">
-              <div class="grey-text">Registrarse como</div>
-                  <i class="fa fa-address-card fa-2x prefix" style="color: grey;" aria-hidden="true"></i>
-              <label>
-                  Visitante
-                  <input 
-                      id="role"
-                      name="role"
-                      type="checkbox"
-                      {{!-- disabled --}}
-                      >
-                  <span class="lever"></span>
-                  Colaborador
-              </label>
-          </div>
-      </div>
-
-      <!-- email -->
-      <div class="row">
-        <div class="input-field col s12 m7 l6">
-          <i class="fa fa-envelope prefix" style="color: grey;" aria-hidden="true"></i>
-          <input 
-            id="email" 
-            type="email" 
-            class="validate"
-            name="email"
-            value="{{email}}"
-            /*required*/>
-          <label for="email">Email</label>
-        </div>
-      </div>
-
-      <!-- password -->
-      <div class="row">
-        <div class="input-field col s12 m7 l6">
-          <i class="fa fa-lock prefix" style="color: grey;" aria-hidden="true"></i>
-          <input 
-            id="password" 
-            type="password" 
-            name="password"
-            placeholder="Debe ser al menos de 6 caracteres"
-            class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12 m7 l6">
-          <i class="fa fa-lock prefix" style="color: grey;" aria-hidden="true"></i>
-          <input 
-          id="confirmationPassword"
-          name="confirmationPassword"
-          placeholder="Debe coincidir con el de arriba"
-          type="password" class="validate">
-          <label for="confirmationPassword">Confirme su Password</label>
-        </div>
-      </div>
-      
-      <!-- spokenLanguages -->
-      <div class="row">
-        <div class="input-field col s12 m7 l7">
-          <i class="fa fa-plus-square prefix" onclick="formsManager.addSelection()" style="color: rgba(4, 219, 119, 0.924);"></i>          
-          <label for="langSearch">Selecciona que idiomas hablas:</label>
-          <input type="search" id="langSearch" list="languages">
-        </div>
-
-        <div class="input-field col s12 m7 l7">
-          {{!-- <label for="spokenLanguages">Lenguajes Seleccionados</label> --}}
-          <i class="fa fa-minus-square prefix" onclick="formsManager.clearLastSelection()" style="color: rgba(238, 48, 57, 0.924);"></i>
-          <textarea 
-            type="text" 
-            name="spokenLanguages" 
-            id="spokenLanguages"
-            style="resize: none;height: 80px;"
-            readonly
-            ></textarea>
-        </div>
-      </div>
-
-      <!-- country -->
-      <div class="row">
-        <div class="input-field col s12 m6 l6">
-          <i class="fa fa-globe prefix" style="color: grey;" aria-hidden="true"></i>
-          <input 
-            type="text" 
-            name="country"
-            id="country" 
-            list="countries"
-            value="{{country}}">
-          <label for="country">Selecciona tu pais de origen</label>          
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12 m8 l8">
-          <label for="about">Acerca de ti</label>
-          <textarea 
-          placeholder="Puedes colocar aca tu short Bio" 
-          class="materialize-textarea" name="about" id="about"></textarea>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12 m6 l6">
-          <label>
-            <input name="terms" type="checkbox" class="filled-in"/>
-            <span>Aceptar los <a onclick="alert('terminos')">terminos y condiciones</a> </span>
-          </label>        
-        </div>
-        <div class="col s12 m6 l6">
-              <button type="submit" class="btn waves-effect waves-light">
-            Submit
-            <i class="fa fa-paper-plane right"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
-
-<datalist id="languages">
-  {{#each nativeLanguages}}
-    <option value="{{name}} | {{gid}}">
-  {{/each}}
-</datalist>
-
-<datalist id="countries">
-  {{#each countries}}
-    {{#if ../es}}
-      <option value="{{name_es}}">
-    {{else}}
-      <option value="{{name_en}}">
-    {{/if}}
-  {{/each}}
-</datalist>
-<br>
+				<datalist id="countries">
+					{{#each countries}}
+					{{#if ../es}}
+					<option value="{{name_es}}">
+						{{else}}
+					<option value="{{name_en}}">
+						{{/if}}
+						{{/each}}
+				</datalist>
+			</div>
+		</div>
+	</div>
+</div>

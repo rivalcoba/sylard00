@@ -23,13 +23,13 @@ d=d.toJSON(),d.languages=JSON.stringify(d.languages),d.localities=JSON.stringify
 if(e=await _Collection.default.findById(d).exec(),e.user+""!=a.user._id+""&&"su"!=a.user.role+"")return a.flash("error_msg","No eres el propietario de esta colecci\xF3n"),b.redirect("/dashboard");// Update collection
 let f=await e.updateCollection(c);f.ok?a.flash("success_msg","La coleccion se ha actualziado con exito"):a.flash("error_msg","No se ha podido actualizar la colecci\xF3n"),b.redirect("/collections")}catch(c){// Se flashea Exito
 // Get the info from
-return a.flash("error_msg","No se ha podido encontrar la coleccion que se desea editar"),b.render("index/dashboard")}};var _default={// List Collections from a particular Colaborator User
+return a.flash("error_msg","No se ha podido encontrar la coleccion que se desea editar"),b.render("index/dashboard")}},api_getCollectionById=async(a,b)=>{const c=a.params.collection_id;let d={};try{d=await _Collection.default.findById(c).exec(),b.status(200).json(d)}catch(a){b.status(404).json(a)}};var _default={// List Collections from a particular Colaborator User
 index,// Create Add Collection FORM
 createCollection,// Process ADD Collection FORM
 addCollection,// Delete Collection
 deleteCollection,// Update Collection FORM
 editCollectionForm,// Process Update Collection FORM
-editCollection// Lists Collections from the logged user
+editCollection,// Lists Collections from the logged user
 // Show single Collection
 // Process Delete Collection
-};exports.default=_default;
+api_getCollectionById};exports.default=_default;

@@ -1,12 +1,35 @@
-<h3 class="pink-text">Confirmación de Correo <i class="fa fa-envelope"></i></h3>
-<div class="row">
-  <div class="col s12">
-      Apreciable {{name}} {{lastName}}:
+<div class="container-fluid" id="contenedor_mensaje_correo">
+  <div class="container">
+    <div class="row contenedor-90vh Fila1_mensaje" id="">
+      <div class="contenedor_mensaje col-md-8">
+        <h1 class="">
+          <span
+            class="icono_principal_mensaje icon-email"
+            id="icono_principal_mensaje_correo"
+          ></span>
+        </h1>
+        <h1 class="cabeza_mensaje" id="">
+          Confirmación de correo
+        </h1>
+        <h2 class="llamada" id="llamada_mensaje_correo">
+          Apreciable
+          "{{name}}
+          {{lastName}}"
+          :
+        </h2>
+        <h3 class="blanco">
+          Hemos enviado un correo a:
+          <span class="correo_usuario_mensaje_correo"></span>
+          {{email}}, haga click en el enlace para activar su cuenta.
+        </h3>
+        <p class="secundario_blanco parrafo_secundario_mensaje" id="">
+          *Es importante concluir el proceso para poder
+          visualizar el contenido, el correo se debe de confirmar.
+        </p>
+      </div>
+      <div class="contenedor_imagen_mensaje_fondo">
+        <img class="" src="/images/florviento.svg" alt="Flor de viento" />
+      </div>
+    </div>
   </div>
-</div>
-<div>
-  <blockquote>
-    Hemos enviado un correo a: {{email}}, favor de hacer clic en el
-    enlace para activar su cuenta.
-  </blockquote>
 </div>

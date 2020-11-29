@@ -6,10 +6,10 @@
     <div id="app">
         <!--  {{ info }} -->
         <div v-if="this.info.data">
-            Si hay datos Linea por Linea
+            <!--Si hay datos Linea por Linea
             {{$attrs.tiempo_parametro}} {{$attrs.longitud_tiempo}}
             <button v-on:click="leerTier">Saludar</button>
-            <br />
+            <br />-->
             {{recorrer_todo($attrs.longitud_tiempo)}}
             <div v-for="(item, index) in options" :key="'item' + index">
                 Canal {{ index + 1 }}
@@ -256,6 +256,7 @@ export default {
                     tier_participant: this.otro[j][0].PARTICIPANT[0],
                     value: "A",
                     Visible: true,
+                    Color: "#000000",
                 });
             }
             //return true;
@@ -305,11 +306,12 @@ export default {
 
         //this.axios.get('/eaf/asset01.eaf')
         //       .then(response =>  (this.info = response)          );
-
+        var self = this;
         this.axios
             .get("/eaf/Nuevoeaf.json")
-            .then((response) => (this.info = response));
-
+            .then((response) => {this.info = response;
+            self.leerTier();
+            });
         //this.saveFileJSon();
         //console.log("Aqui se esta añadiendo al json");
         //this.add("hola");

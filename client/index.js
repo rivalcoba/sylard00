@@ -1,5 +1,8 @@
 // Importando los estilos
 import './styles/main.css';
+import './styles/estilos_menu.css'
+import './styles/bootstrap-grid.css'
+import './styles/simple-scrollbar.css'
 // Importando Scripts
 //import greeting from '@chelpers/greeting'
 import flashLib from '@chelpers/flashLib'
@@ -17,14 +20,19 @@ import collectionsCreate from '@client/pages/collections/create'
 import editCollectionScripts from '@client/pages/collections/edit'
 // ./Test scripts
 import indexTestScripts from '@client/pages/index/test'
+// Audioannotations Scripts
+import createAudioAnnotationsScripts from '@client/pages/audioannotations/create'
 
+import Vue from 'vue'
 import App from '@client/templates/main.vue'
 import axios from "axios";
 import VueAxios from "vue-axios";
 import LecturaEAF from "@client/templates/components/LecturaEAF.vue";
+import LecturaTierEAF from "@client/templates/components/LecturaTierEAF.vue";
+import App2 from '@client/templates/main2.vue'
+import  FiltroAudioannotations  from "@client/templates/components/FiltroAudioannotations.vue";
+import App3 from '@client/templates/main3.vue'
 
-
-import Vue from 'vue'
 
 // Loading function to the global variable
 //window.greeting = greeting
@@ -44,7 +52,8 @@ if(window.location.pathname == `/test`){
     //window.VueCdn = VueCdn
     window.app = indexTestScripts.getVueApp()
 }
-if(window.location.pathname == `/vuetest`){
+
+if(window.location.pathname == `/audioannotations/vuetest`){
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("LecturaEAF", LecturaEAF);
@@ -54,15 +63,36 @@ if(window.location.pathname == `/vuetest`){
     })
 }
 
+//if(window.location.pathname == `/audioannotations/create`){  
+if(window.location.pathname == `/audioannotations/uploadfile`){
+    // window.Vue = Vue
+    Vue.use(VueAxios, axios);
+    Vue.component("LecturaTierEAF", LecturaTierEAF);
+    window.vm = new Vue({
+      el: '#app2',
+      render: h => h(App2)
+      //aqui
+     //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+     //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
+    })
+    
+    // Desde aqui poder ejecutar createAudioAnotation() del componente "LecturaTierEAF"
+    window.pageScripts = createAudioAnnotationsScripts
+}
+
 if(window.location.pathname == `/audioannotations`){
     // window.Vue = Vue
- //   Vue.use(VueAxios, axios);
- //   Vue.component("LecturaEAF", LecturaEAF);
- //   window.vm = new Vue({
- //     el: '#app',
- //     render: h => h(App)
- //   })
+    Vue.use(VueAxios, axios);
+    Vue.component("FiltroAudioannotations", FiltroAudioannotations);
+    window.vm = new Vue({
+      el: '#app3',
+      render: h => h(App3)
+      //aqui
+     //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+     //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
+    })
 }
+
 
 
 // No se puede cargar script condicionalmente

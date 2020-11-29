@@ -1,0 +1,122 @@
+{{> _publicNavBar}}
+<script>
+    var elemento_link = document.getElementById('home');
+  elemento_link.setAttribute("class", "active_a");
+</script>
+<main>
+  <div class="container-fluid contenedor_carrusel">
+    <div class="contenedor_elementos_paginacion_carrusel">
+      <div class="contendor_indicadores_carrusel" id="">
+        <ol class="indicadores_carrusel">
+          <li class="indicador_carrusel_item" onclick="currentSlide(1)"></li>
+          <li class="indicador_carrusel_item" onclick="currentSlide(2)"></li>
+          <li class="indicador_carrusel_item" onclick="currentSlide(3)"></li>
+        </ol>
+      </div>
+      <nav class="contenedor_botones_carrusel">
+        <a class="btn-anterior_lamina" onclick="plusSlides(-1)"><span
+            class="icono_carrusel icon-navigate_before"></span></a>
+        <a class="btn-siguiente_lamina" onclick="plusSlides(1)"><span
+            class="icono_carrusel icon-navigate_next"></span></a>
+      </nav>
+    </div>
+    <div class="container-fluid lamina_carrusel animacion_lamina " id="lamina1">
+      <div class="container contendor_hijo_lamina " id="contenedor_hijo_lamina1">
+        <div class="columna_fb_60 " id="columna_izquierda_lamina1">
+          <h1>SYLARD</h1>
+          <h3>Synchronized Language Annotation Result Display</h3>
+          <div class="" id="contenedor_parrafo_lamina1">
+            <p class="parrafo_grande">{{{translation.CONTENT_ONE}}}</p>
+            <p class="parrafo_grande">{{{translation.CONTENT_TWO}}}</p>
+          </div>
+          <h2 class="llamada color_principal">{{translation.REGISTER_CONTENT}}</h2>
+          <div>
+            <a href="#" class="btn btn-predeterminado">{{translation.READ_MORE}}</a>
+            <a href="#" class="btn btn-predeterminado">{{translation.SEE_CATALOGUE}}</a>
+            <a href="auth/register" class="btn btn-primario">{{translation.REGISTER}}</a>
+          </div>
+        </div>
+        <div class="columna_fb_40 " id="columna_derecha_lamina1">
+          <img class="imagen_lamina1" src="images/ave_huicahapan-01.svg" alt="Ave de Huichapan">
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid lamina_carrusel animacion_lamina" id="lamina2">
+      <div class="container contendor_hijo_lamina" id="contenedor_hijo_lamina2">
+        <div class="columna_fb_55 " id="columna_izquierda_lamina2">
+          <h1 class="blanco">Proyecto SYLARD</h1>
+          <h3 class="blanco">Nuestro objetivo</h3>
+          <div id="contenedor_parrafo_lamina2">
+            <p class="parrafo_grande_blanco">SYLARD es una plataforma en desarrollo para la presentación e intercambio
+              de audiotranscripciones en lenguas indigenas de mesoamerica.</p>
+            <p class="parrafo_grande_blanco">Cada audiotranscripción permite visualizar y sincronizar las
+              transcripciones y traducciones con un audio alojado en otro portal.</p>
+            <p class="parrafo_grande_blanco">En está fase estamos nutriendo la plataforma con conversaciones referentes
+              al conocimiento ecológico, en particular, la nomenclatura, clasificación, el simbolismo y el uso económico
+              de la flora y la fauna en las comunidades indigenas de México. </p>
+          </div>
+        </div>
+        <div class="columna_fb_45 " id="columna_derecha_lamina2">
+          <img class="imagen_lamina2" src="images/venado_huchapan-01.svg" alt="Venado de Huichapan">
+          <div>
+            <h2 class="llamada_blanco">¡SYLARD para todos!</h2>
+            <p class="parrafo_grande_blanco">Ponemos a tu disposición nuestra App para que puedas emplearlos en otro
+              portal. No olvides darnos crédito y que es Creative Commons.</p>
+            <a href="#" class="btn btn-predeterminado">Github <span class="icon-github"></span></a>
+            <a href="#" class="btn btn-predeterminado">Descargas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid lamina_carrusel animacion_lamina" id="lamina3">
+      <div class="container contendor_hijo_lamina" id="contenedor_hijo_lamina3">
+        <div class="columna_fb_45 " id="columna_izquierda_lamina3">
+          <img id="imagen_lamina3" src="images/cabra_huichapan.svg" alt="Cabra de Huichapan">
+        </div>
+        <div class="columna_fb_55 " id="columna_derecha_lamina3">
+          <h1 class="color_principal">¿Para que el registro?</h1>
+          <h3>Las responsabilidades...</h3>
+          <p class="parrafo_grande">Creemos en acceso al conocimiento y en el buen uso del mismo. </p>
+          <h2 class="llamada" id="llamada_lamina3">¡Tu registro enriquece<br> nuestra plataforma!*</h2>
+          <a href="auth/register" class="btn btn-primario">Registro</a>
+          <p class="secundario" id="leyenda_legal_lamina3"><br>*Nosotros manejaremos tu información de acuerdo a la ley
+            federal de protección de datos personales.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{{!-- SCRIPTS DE PAGINA --}}
+{{!-- TODO: MONDRAGON: Poner estos scripts en el webpack --}}
+
+<script>
+	var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("lamina_carrusel");
+  var dots = document.getElementsByClassName("indicador_carrusel_item");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+	</script>

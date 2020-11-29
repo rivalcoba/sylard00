@@ -4,6 +4,7 @@
 import createError from 'http-errors'
 import express from 'express'
 import path from 'path'
+import fs from 'fs'
 import cookieParser from 'cookie-parser'
 import morgan from 'morgan'
 import passportConfig from '@config/passport'
@@ -15,15 +16,25 @@ import i18n from 'i18n-express'
 import MongoStore from 'connect-mongo'
 import mongoose from 'mongoose'
 
+import multer from 'multer'
+// import bodyparser from 'body-parser'
+
 // Import config
 import netConfig from '@config/net'
 import templateEngine from '@config/template-engine'
 import dbConnection from '@database/odmconnect'
 
-// -2. Importing Routes
+// -4 Creatting eaf path
+let eafPath = path.join(__dirname,'public','eaf')
+if (!fs.existsSync(eafPath)){
+  console.log(">> Creating eafpath");
+  fs.mkdirSync(eafPath);
+}
+
+// -3. Importing Routes
 import addAppRoutes from '@routes/routes'
 
-// -3 Passport Config
+// -2 Passport Config
 passportConfig(passport)
 
 // -1 Creating an instance of express
@@ -129,6 +140,26 @@ app.use(function(err, req, res) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//multer
+// app.use(bodyparser.urlencoded({extended: true}));
+//app.use(multer({ dest: './uploads/'}).single('myFile')); // added the single() method
+app.use(multer({ dest: './uploads/'}).single('myFile'));
+//app.use(function(req, res, next) {
+
+//var storage = multer.diskStorage({
+//  destination: function (req, file, cb) {
+//    cb(null, 'uploads')
+//  },
+//  filename: function (req, file, cb) {
+//    cb(null, file.fieldname + '-' + Date.now())
+//  }
+//})
+ 
+//var upload = multer({ storage: storage })
+
+//})
+
 
 //module.exports = app;
 export default app;
