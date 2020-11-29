@@ -79,19 +79,12 @@ const resetUserPassword = async (req, res) => {
 }
 
 const index = async (req, res) => {
-    // TODO: Terminar esta sección
-  // const usersDocs = await User.find().exec()
-
-  // // Collections to JSON
-  // let usersObjs = usersDocs.map(userObj => {
-  //   return userObj.toJSON()
-  // })
-
+  // TODO: Terminar esta sección
   // res.render('user/index', { usersObjs })
-  const usersDocs = await User.find()
+  const usersObjs = await User.find()
     .lean()
     .exec()
-  res.render('user/index', { usersDocs })
+  res.render('user/index', { usersObjs })
 }
 
 const delUsers = async(req, res)=>{	
