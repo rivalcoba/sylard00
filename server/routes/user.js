@@ -16,7 +16,9 @@ import ensureAuthenticated from '@helpers/ensureAuth'
 /* GET users listing. */
 // SU Views
 // //TODO: @AlbertoMondragon Ruta para visualizar vista #20
-router.get('/',ensureAuthenticated, userController.index)
+router.get('/', ensureAuthenticated, userController.index)
+// DELETE
+router.delete('/', userController.delUsers);
 
 router.get('/edit', ensureAuthenticated, userController.edit);
 router.put('/edit', ensureAuthenticated, editUserFormValidation, userController.editUser);
