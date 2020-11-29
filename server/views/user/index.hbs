@@ -1,15 +1,533 @@
-<br>
-<table>
-<tr>
-	<th>User Name</th>
-	<th>Id</th>
-</tr>
-{{#each usersIds}}
-<tr>
-	<td>{{name}}</td>
-	<td>{{_id}}</td>
-</tr>
-{{/each}}
-	
-</table>
-<br>
+<main>
+  <div class="container-fluid" id="contenedor_administrador_usuarios">
+    <div class="container-fluid" id="cabezal_administrador_usuarios">
+      <div class="container">
+        <div
+          class="col-sm-12"
+          id="contenedor_items_cabezal_administrador_usuarios"
+        >
+          <div class="" id="contenedor_titulos_cabezal_administrador_usuarios">
+            <h1 id="titulo_administrador_usuarios">
+              <span class="icono_cabezal icon-group1"></span>
+              Usuarios
+            </h1>
+            <h2 class="llamada" id="llamada_administrador_usuarios">
+              Aquí están los colaboradores y consumidores de SYLARD
+            </h2>
+            <h3 class="blanco">
+              ¡Recuerde revisar y tener cuidado al editar!
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="container">
+      <div
+        class="col-sm-12 contenedor-90vh"
+        id="contenedor_general_todos_los_usuarios"
+      >
+        <div class="contenedor_tabla_todos_los_usuarios">
+          <table class="tabla_todos_los_usuarios">
+            <thead>
+              <th class="cabezal_columnas_th" id="th_acciones_generales">
+                <div class="contenedor_acciones_generales">
+                  <input
+                    type="checkbox"
+                    class="input_checkbox_cabezal_columna"
+                  />
+                  <button class="btn-eliminar_seleccionados">
+                    <span
+                      class="icono_boton_eliminar_audioanotaciones icon-delete"
+                    ></span>
+                  </button>
+                </div>
+              </th>
+              <th class="cabezal_columnas_th" id="th_usuario" colspan="2">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Usuario
+                  </label>
+                  <button class="flecha_orden_ascendente">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  placeholder="Búsqueda"
+                />
+              </th>
+              <th class="cabezal_columnas_th" id="th_lenguas_habladas">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Lenguas habladas
+                  </label>
+                  <button class="flecha_orden_ascendente">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  placeholder="Búsqueda"
+                />
+              </th>
+              <th
+                class="cabezal_columnas_th"
+                id="privilegios_administrador_usuarios"
+              >
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Privilegios
+                  </label>
+                  <button class="flecha_orden_ascendente active">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  list="usuarios_privilegios"
+                  name="privilegios_usuario"
+                  id="input_selector_ privilegios_usuario"
+                  placeholder="N. D."
+                  disabled
+                />
+                <datalist id="usuarios_privilegios">
+                  <option value="Colaborador"></option>
+                  <option value="Invitado"></option>
+                </datalist>
+              </th>
+              <th class="cabezal_columnas_th">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Descripción del usuario
+                  </label>
+                </div>
+                <input
+                  class="input_busqueda_invisible"
+                  type="search"
+                  placeholder="No disponible"
+                  disabled
+                />
+              </th>
+              <th class="cabezal_columnas_th">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Colecciones
+                  </label>
+                  <button class="flecha_orden_ascendente">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  placeholder="Búsqueda"
+                />
+              </th>
+              <th class="" id="th_acciones_administrador_usuarios"></th>
+            </thead>
+            <tr>
+              <!--class="selected"-->
+              <td>
+                <label class="contenedor_checkbox">
+                  <input type="checkbox" class="checkbox_personalizada" />
+                  <span class="marca_check"></span>
+                </label>
+              </td>
+              <td class="td_icono_usuario_administrador_usuarios">
+                <div class="contenedor_icono_usuario_administrador_usuarios">
+                  <img
+                    src="images/iconousuario.svg"
+                    class="imagen_icono_usuario_administrador_usuarios"
+                    alt="Ícono de venado usuario"
+                  />
+                </div>
+              </td>
+              <td class="">
+                Jorge Pérez Mejia
+                <span class="correo_de_usuario" data-label="Correo de usuario">
+                  jorge.mejia.perez@servidor.com.mx
+                </span>
+              </td>
+              <td>
+                yolo1241
+                <span
+                  class="lengua_term_comun"
+                  data-label="Lengua terminal (nombre común)"
+                >
+                  Yoloxóchitl Mixtec
+                </span>
+                <br />
+                high1278
+                <span
+                  class="lengua_term_comun"
+                  data-label="Lengua terminal (nombre común)"
+                >
+                  Highland Puebla Nahuat
+                </span>
+                <br />
+                Glottocode
+                <span
+                  class="lengua_term_comun"
+                  data-label="Lengua terminal (nombre común)"
+                >
+                  Nombre común
+                </span>
+              </td>
+              <td class="tipo_de_colaborador_administrador_usuarios" id="">
+                <div class="contenedor_switch_canal_audioanotacion_hijo">
+                  <label class="switch_general">
+                    <input
+                      type="checkbox"
+                      class="checkbox_canal1"
+                      id="checbox_canal_1"
+                      checked
+                    />
+                    <span class="slider_general round"></span>
+                  </label>
+                  <br />
+                  <label
+                    class="swich_etiqueta_opcion2"
+                    for="checbox_canal_1"
+                    id="switch_usuario_canal1_on"
+                  ></label>
+                </div>
+              </td>
+              <td class="td_descripcion_usuario_administrador_usuarios">
+                Biologo con gusto por las lenguas indigenas. Interesado por las ranas de México y como se relacionan con la gastronomía de Michoacán
+              </td>
+              <td class="td_colecciones_administrador_usuarios">
+                <ul>
+                  <li class="colecciones_usuario_lista">
+                    <a href="#">
+                      Los anfibios en la mitología prehispanica
+                    </a>
+                  </li>
+                  <li class="colecciones_usuario_lista">
+                    <a href="#">
+                      Gastronomia indigena en regiones humedas, las ranas el manjar de los habitantes
+                    </a>
+                  </li>
+                </ul>
+              </td>
+              <td class="td_acciones">
+                <div class="contenedor_botones_accion_administrador_usuarios">
+                  <button id="elipsis1" class="btn_accion_tabla">
+                    <span class="icono_accion_tabla icon-ellipsis-v"></span>
+                  </button>
+                  <div id="modal_elipsis1" class="contenido_modal_elipsis">
+                    <span class="icono_cerrar_modal_elipsis icon-close"></span>
+                    <div class="contenedor_opciones_elipsis">
+                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
+                        <span class="icono_opcion_elipsis icon-edit"></span>
+                        Editar usuario
+                      </a>
+                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
+                        <span class="icono_opcion_elipsis icon-delete"></span>
+                        Eliminar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr class="selected">
+              <td>
+                <label class="contenedor_checkbox">
+                  <input
+                    type="checkbox"
+                    class="checkbox_personalizada"
+                    checked
+                  />
+                  <span class="marca_check"></span>
+                </label>
+              </td>
+              <td class="td_icono_usuario_administrador_usuarios">
+                <span
+                  class="icono_usuario_administrador_usuarios icon-user"
+                ></span>
+              </td>
+              <td class="">
+                Bruno Edipo Pérez Sánchez
+                <span class="correo_de_usuario" data-label="Correo de usuario">
+                  bruno.perez.ch@servidor.com.mx
+                </span>
+              </td>
+              <td>
+                Glottocode
+                <span
+                  class="lengua_term_comun"
+                  data-label="Lengua terminal (nombre común)"
+                >
+                  Nombre común
+                </span>
+              </td>
+              <td class="tipo_de_colaborador_administrador_usuarios" id="">
+                <div class="contenedor_switch_canal_audioanotacion_hijo">
+                  <label class="switch_general">
+                    <input
+                      type="checkbox"
+                      class="checkbox_canal1"
+                      id="checbox_canal_1"
+                      unchecked
+                    />
+                    <span class="slider_general round"></span>
+                  </label>
+                  <label
+                    class="swich_etiqueta_opcion2"
+                    for="checbox_canal_1"
+                    id="switch_usuario_canal1_on"
+                  ></label>
+                </div>
+              </td>
+              <td class="td_descripcion_usuario_administrador_usuarios">
+                Estudiante de lenguas originarias de Ámerica Latina
+              </td>
+              <td class="td_colecciones"></td>
+              <td class="td_acciones">
+                <div class="contenedor_botones_accion_administrador_usuarios">
+                  <button id="elipsis1" class="btn_accion_tabla">
+                    <span class="icono_accion_tabla icon-ellipsis-v"></span>
+                  </button>
+                  <div id="modal_elipsis1" class="contenido_modal_elipsis">
+                    <span class="icono_cerrar_modal_elipsis icon-close"></span>
+                    <div class="contenedor_opciones_elipsis">
+                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
+                        <span class="icono_opcion_elipsis icon-edit"></span>
+                        Editar usuario
+                      </a>
+                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
+                        <span class="icono_opcion_elipsis icon-delete"></span>
+                        Eliminar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr class="">
+              <td>
+                <label class="contenedor_checkbox">
+                  <input type="checkbox" class="checkbox_personalizada" />
+                  <span class="marca_check"></span>
+                </label>
+              </td>
+              <td class="td_icono_usuario_administrador_usuarios">
+                <span
+                  class="icono_usuario_administrador_usuarios icon-user"
+                ></span>
+              </td>
+              <td class="">
+                Juan K. Maney
+                <span class="correo_de_usuario" data-label="Correo de usuario">
+                  Juanito234@servidor.com.mx
+                </span>
+              </td>
+              <td>
+                Glottocode
+                <span
+                  class="lengua_term_comun"
+                  data-label="Lengua terminal (nombre común)"
+                >
+                  Nombre común
+                </span>
+              </td>
+              <td class="tipo_de_colaborador_administrador_usuarios" id="">
+                <div class="contenedor_switch_canal_audioanotacion_hijo">
+                  <label
+                    class="swich_etiqueta_opcion1"
+                    for="checkbox"
+                    id="switch_canal1_off"
+                  ></label>
+                  <label class="switch_general">
+                    <input
+                      type="checkbox"
+                      class="checkbox_canal1"
+                      id="checbox_canal_1"
+                      unchecked
+                    />
+                    <span class="slider_general round"></span>
+                  </label>
+                  <label
+                    class="swich_etiqueta_opcion2"
+                    for="checbox_canal_1"
+                    id="switch_usuario_canal1_on"
+                  ></label>
+                </div>
+              </td>
+              <td class="td_descripcion_usuario_administrador_usuarios">
+                Researcher leader
+              </td>
+              <td class="td_colecciones"></td>
+              <td class="td_acciones">
+                <div class="contenedor_botones_accion_administrador_usuarios">
+                  <button id="elipsis1" class="btn_accion_tabla">
+                    <span class="icono_accion_tabla icon-ellipsis-v"></span>
+                  </button>
+                  <div id="modal_elipsis1" class="contenido_modal_elipsis">
+                    <span class="icono_cerrar_modal_elipsis icon-close"></span>
+                    <div class="contenedor_opciones_elipsis">
+                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
+                        <span class="icono_opcion_elipsis icon-edit"></span>
+                        Editar usuario
+                      </a>
+                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
+                        <span class="icono_opcion_elipsis icon-delete"></span>
+                        Eliminar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <div class="contenedor_paginacion">
+            <div class="contenedor_input_paginacion">
+              <input
+                class=""
+                id="busqueda_paginacion"
+                type="text"
+                placeholder="Pag."
+              />
+              <button class="btn_lateral_input" for="busqueda_paginacion">
+                <span class="icono_pagina_busqueda  icon-chevron-right"></span>
+              </button>
+            </div>
+            <div class="contenedor_numeros_paginacion">
+              <a class="icono_paginacion" href="#">
+                <span class="icon-first_page"></span>
+              </a>
+              <a class="icono_paginacion" href="#">
+                <span class="icon-angle-left"></span>
+              </a>
+              <a class="numero_paginacion" href="#">
+                2
+              </a>
+              <a class="numero_paginacion" href="#">
+                3
+              </a>
+              <a class="numero_paginacion" href="#">
+                4
+              </a>
+              <a class="numero_paginacion active" href="#">
+                5
+              </a>
+              <a class="numero_paginacion" href="#">
+                6
+              </a>
+              <a class="numero_paginacion" href="#">
+                7
+              </a>
+              <a class="ultima_pagina" href="#">
+                ...29
+              </a>
+              <a class="icono_paginacion" href="#">
+                <span class="icon-angle-right"></span>
+              </a>
+              <a class="icono_paginacion" href="#">
+                <span class="icon-last_page"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<script>
+		// Get the modal
+var modal_info = document.getElementById("modal_info");
+
+// Get the button that opens the modal
+var btn_coleccion_info = document.getElementById("coleccion_info");
+
+// Get the <span> element that closes the modal
+var icono_cerrar_modal = document.getElementsByClassName("icono_cerrar_modal")[0];
+
+// When the user clicks on the button, open the modal
+btn_coleccion_info.onclick = function() {
+  modal_info.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+icono_cerrar_modal.onclick = function() {
+  modal_info.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal_info.style.display = "none";
+  }
+}
+	</script>
+	<script>
+		// Get the modal
+var modal = document.getElementById("modal_elipsis1");
+
+// Get the button that opens the modal
+var btn = document.getElementById("elipsis1");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("icono_cerrar_modal_elipsis")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+	</script>
+<div>
+  <h1 style="margin: 0px auto;">
+    Ejemplo de Acceso a Datos de Usuarios
+  </h1>
+</div>
+<div>
+  <br />
+  <table>
+    <tr>
+      <th>
+        User Name
+      </th>
+      <th>
+        Id
+      </th>
+    </tr>
+    {{#each usersObjs}}
+      <tr>
+        <td>
+          {{name}}
+        </td>
+        <td>
+          {{_id}}
+        </td>
+      </tr>
+    {{/each}}
+  </table>
+  <br />
+</div>

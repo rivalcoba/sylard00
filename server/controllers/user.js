@@ -75,14 +75,14 @@ const resetUserPassword = async (req, res)=>{
 
 const index = async (req, res) => {
     // TODO: Terminar esta sección
-  const usersIdsDocs = await User.find().exec()
+  const usersDocs = await User.find().exec()
 
   // Collections to JSON
-  let usersIds = usersIdsDocs.map(userId => {
-    return userId.toJSON()
+  let usersObjs = usersDocs.map(userObj => {
+    return userObj.toJSON()
   })
 
-  res.render('user/index', { usersIds })
+  res.render('user/index', { usersObjs })
 }
 
 const api_getUsers = async (req, res)=>{

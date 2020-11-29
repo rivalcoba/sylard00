@@ -14,6 +14,8 @@ import confirmEmailAccount from '@validators/confirmEmailAccount'
 import ensureAuthenticated from '@helpers/ensureAuth'
 
 /* GET users listing. */
+// SU Views
+// //TODO: @AlbertoMondragon Ruta para visualizar vista #20
 router.get('/',ensureAuthenticated, userController.index)
 
 router.get('/edit', ensureAuthenticated, userController.edit);
