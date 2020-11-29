@@ -1,7 +1,8 @@
 import path from 'path'
 import xml2js from 'xml2js'
 import fs from 'fs';
-//var objson ;
+var jsonobj=null;
+var objson=null;
 var tiempo_ids = "";
 var tiempo_buscado = 0;
 var tier_arreglo = [];
@@ -13,6 +14,7 @@ var obj_datos_tier={
     TIER_ID:"",
     LINGUISTIC_TYPE_REF:"",
     DEFAULT_LOCALE:""}
+    
 var obj = {
     tier: [],
    //datos_tier:[]
@@ -53,7 +55,7 @@ function buscar_time_slot(ts){
  }
 
  function add_datos_tier(tier){
-    var obj_datos_tier = new Object();
+     obj_datos_tier = new Object();
     // sin participante
     if (tier.PARTICIPANT==undefined){
         obj_datos_tier.PARTICIPANT="";
@@ -67,14 +69,14 @@ function buscar_time_slot(ts){
     obj_datos_tier.DEFAULT_LOCALE=tier.DEFAULT_LOCALE;
     tier_arreglo.push(obj_datos_tier);
     //depurar sin participante
-    //+console.log("------------------")
-    //+console.log(obj_datos_tier)
-    //+console.log("------------------")
+    //console.log("--------Tier----------")
+    //console.log(obj_datos_tier)
+    //console.log("------------------")
     //
  }
  function add_REF_ANNOTATION(id_tier)
  {
-    var obj_tier = new Object();
+    let obj_tier = new Object();
     obj_tier.ANNOTATION_ID=id_tier.ANNOTATION_ID[0];
     obj_tier.ANNOTATION_REF=id_tier.ANNOTATION_REF[0];
     obj_tier.ANNOTATION_VALUE=id_tier.ANNOTATION_VALUE[0];
@@ -91,16 +93,19 @@ function buscar_time_slot(ts){
     //añadir el tiempo inicial de la ref2
     //tiempo_ids=id_tier.TIME_SLOT_REF2[0];
     obj_tier.TIME_SLOT_REF2=arreglo_ref_tiempo.find(x=>x.ANNOTATION_ID===tiempo_ids).TIME_SLOT_REF2
-    tier_arreglo.push(obj_tier);  
+    tier_arreglo.push(obj_tier);
+    //console.log("Agregando al tier arreglo por add_REF_ANNOTATION ")  
+    //console.log(obj_tier)
+    //console.log("Agregando al tier arreglo por add_REF_ANNOTATION ")  
 
  }
- function add_Tier_Json(id_tier)
+ function add_alignable_annotation(id_tier)
  {   
      //1 de Agosto
 // me quede modificando el objeto con  tier0 y tier1  y  falta buscar y remplazar TIME_SLOT_REF1
 // me quede por guardar el json y leerlo en vue tmb cambiar el archivo eaf a ver si funciona el codigo con cualquier eaf
-    var obj_tier = new Object();
-    var obj_ref_tier = new Object();
+    let obj_tier = new Object();
+    let obj_ref_tier = new Object();
     obj_tier.ANNOTATION_ID=id_tier.ANNOTATION_ID[0];
     //obj_tier.TIME_SLOT_REF1=id_tier.TIME_SLOT_REF1[0];
     tiempo_ids=id_tier.TIME_SLOT_REF1[0];  
@@ -110,7 +115,10 @@ function buscar_time_slot(ts){
     obj_tier.TIME_SLOT_REF2=convertir_tiempo(arreglo_tiempo.find(buscar_time_slot).TIME_VALUE[0]);   
     obj_tier.ANNOTATION_VALUE=id_tier.ANNOTATION_VALUE[0];    
      //obj.table.push(id_tier); 
+     //console.log("---------add_alignable_annotation")
      tier_arreglo.push(obj_tier);
+     //console.log(obj_tier)
+     //console.log("---------add_alignable_annotation")
      //añade a vector todos las anotaciones con tiempo para poder buscar referencias
      obj_ref_tier.ANNOTATION_ID=obj_tier.ANNOTATION_ID;
      obj_ref_tier.TIME_SLOT_REF1= obj_tier.TIME_SLOT_REF1;
@@ -139,19 +147,22 @@ function buscar_time_slot(ts){
  }
  export default  function (nombreEaf) {
 let url =path.join(__dirname,'..','public','eaf',nombreEaf)
-
-//console.log(objson)
+tier_arreglo=[];
+objson=null
+jsonobj=null;
+obj_datos_tier=null;
 //var objson = require('../public/eaf/eaf.json');
-var objson = require(path.join(__dirname,'..','public','eaf','eaf.json'));
-
-leer_Author_Json(objson.ANNOTATION_DOCUMENT.AUTHOR[0])
+ objson = require(path.join(__dirname,'..','public','eaf','tmp',nombreEaf+'.json'));
+//console.log("+++++++++++++++++leyendo el archivo+++++++++ ")
+//console.log(nombreEaf+'eaf.json')
+//++leer_Author_Json(objson.ANNOTATION_DOCUMENT.AUTHOR[0])
 //leer_Tier_Json(objson)
 
     //var jsonData_tier = JSON.parse(obj_tier);
   
 //tiempo
-for (var t = 0; t < objson.ANNOTATION_DOCUMENT.TIME_ORDER[0].TIME_SLOT.length; t++){
-    var tiempo=objson.ANNOTATION_DOCUMENT.TIME_ORDER[0].TIME_SLOT[t];
+for (let t = 0; t < objson.ANNOTATION_DOCUMENT.TIME_ORDER[0].TIME_SLOT.length; t++){
+    let tiempo=objson.ANNOTATION_DOCUMENT.TIME_ORDER[0].TIME_SLOT[t];
     //+console.log(tiempo);
     add_tiempo(tiempo);
     
@@ -162,10 +173,13 @@ for (var t = 0; t < objson.ANNOTATION_DOCUMENT.TIME_ORDER[0].TIME_SLOT.length; t
 //    tiempo_ids="ts54";  
 //console.log(arreglo_tiempo.find(buscar_time_slot).TIME_VALUE[0]);
 //console.log(arreglo_tiempo);
-
+let longitud_tier=0;
+longitud_tier=objson.ANNOTATION_DOCUMENT.TIER.length
+//console.log("++++++++++++++++++++++++");
+//console.log("Longitud del tier "+longitud_tier )
 //tiempo = leer_Author_Json(objson.ANNOTATION_DOCUMENT.TIME_ORDER[0].TIME_SLOT.length);
 //
-for (var i = 0; i < objson.ANNOTATION_DOCUMENT.TIER.length; i++) {
+for (let i = 0; i < objson.ANNOTATION_DOCUMENT.TIER.length; i++) {
    
     if(objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION == undefined ) {
        //+ console.log("tier sin anotaciones")
@@ -175,42 +189,47 @@ for (var i = 0; i < objson.ANNOTATION_DOCUMENT.TIER.length; i++) {
     {
      //va la información de cada tier objson.ANNOTATION_DOCUMENT.TIER.DEFAULT_LOCALE
      add_datos_tier(objson.ANNOTATION_DOCUMENT.TIER[i]);
-     var counter = objson.ANNOTATION_DOCUMENT.TIER[i];    
-    for (var j = 0;j < objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION.length; j++)
+     bandera_grabar= false;
+     let counter = objson.ANNOTATION_DOCUMENT.TIER[i];  
+     //console.log("++++++++++++++++Datos ANNOTATION_DOCUMENT.TIER+++++++++++++++++++++")  
+    // console.log(counter)
+    // console.log("Cantidad de Annotaciones"+objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION.length)
+    for (let j = 0;j < objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION.length; j++)
     {
-        var annotation = objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j];
+        let annotation = objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j];
        //04 08 2020 me quede unas capas tiene REF_ANNOTATION es donde me marca error y otras ALIGNABLE_ANNOTATION que es la que funciona
          //filtrar por LINGUISTIC_TYPE son 3 tipos y cada uno tiene su estructura 
          //Transcripción
          //"Comentarios"
          //"Traducción"
          //checar tier 7 vs tier 1
+         
          //+console.log("Tier "+i+" Annotation"+j)
          //+console.log(typeof(objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION)); 
          //+console.log(objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION); 
         if  (objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION == undefined )
         { 
          //++console.log("Estoy entrando a EGS Traducción");
-         for (var k=0; k<objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].REF_ANNOTATION.length;k++)
+         for (let k=0; k<objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].REF_ANNOTATION.length;k++)
          {
-             var REF_ANNOTATION = objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].REF_ANNOTATION[k];
-             //console.log("Uno por uno "+j)
-             //console.log(ALIGNABLE_ANNOTATION);
+             let REF_ANNOTATION = objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].REF_ANNOTATION[k];
+             //console.log("1 por 1 ",j+1)
+             //+console.log(REF_ANNOTATION);
              //me quede mejorando el json y haciendo un nivel superior que se llama "TIER_ID" para los tipos de traduccion
              //add_Tier_Json(REF_ANNOTATION)
              add_REF_ANNOTATION(REF_ANNOTATION);
-             //+console.log("Si esta añadiendo")
+             //console.log("Si esta añadiendo")
              bandera_grabar= true;
          }
         }  
         else { 
-        for (var k=0; k<objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION.length;k++)
+        for (let l=0; l<objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION.length;l++)
         {
-            var ALIGNABLE_ANNOTATION = objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION[k];
-            //console.log("Uno por uno "+j)
+            let ALIGNABLE_ANNOTATION = objson.ANNOTATION_DOCUMENT.TIER[i].ANNOTATION[j].ALIGNABLE_ANNOTATION[l];
+            //console.log("Uno por uno ",j+1)
             //console.log(ALIGNABLE_ANNOTATION);
-            add_Tier_Json(ALIGNABLE_ANNOTATION)
-            //+console.log("Si esta añadiendo")
+            add_alignable_annotation(ALIGNABLE_ANNOTATION)
+            //console.log("Si esta añadiendo")
             bandera_grabar= true;
         }
     }
@@ -220,42 +239,45 @@ for (var i = 0; i < objson.ANNOTATION_DOCUMENT.TIER.length; i++) {
     //leer_Tier_Json(counter)
     if (bandera_grabar){
     obj.tier.push(tier_arreglo);
+    //console.log("----------------Añadiendo bandera grabar---------")
+    //console.log(tier_arreglo)
+    //console.log("----------------Añadiendo bandera grabar---------")
     //agregar al arreglo obj_datos_tier obj.
      //obj.datos_tier.push(tier_arreglo) //06 de agosto verificando el archivo json 
     }
     tier_arreglo=[];
+    bandera_grabar= false;
 }
 console.log("Imprime el nuevo json");
 //+console.log(obj);
    // add_Tier_Json();
     // save JSON in a file
-    var jsonobj = JSON.stringify(obj, null, 4); 
+     jsonobj = JSON.stringify(obj, null, 4); 
+   
    // path.join(__dirname,'..','public','eaf','eaf.json')  
 
-try {
-    fs.unlinkSync(path.join(__dirname,'..','public','eaf','Nuevoeaf.json'))
-    console.log(">> Se borro Nuevoeaf.json.");
-} catch (error) {
-    console.log(">>>>> NO se encontro Nuevoeaf.json para borrar")
-}
 //fs.writeFileSync('../public/eaf/Nuevoeaf.json', jsonobj);
 const fs2 = require('fs');
 try {
-    fs2.writeFileSync(path.join(__dirname,'..','public','eaf','Nuevoeaf.json') , jsonobj);
+    fs2.writeFileSync(path.join(__dirname,'..','public','eaf','tmp','Nuevoeaf.json') , jsonobj);
     console.log("Grabo obj a JSON");
     console.log("==============================")
+    
 } catch (error) {
     console.error(err); 
 
 }
 //fs.close('Nuevoeaf.json')
-obj=null;
-jsonobj=null;
-//console.log("Se Borro el  obj a JSON");
+//  obj=null;
+obj = {
+    tier: [],
+ };
+//  jsonobj=null;
+//  tier_arreglo=[];
+// console.log("Se Inicializo el  obj a JSON");
  } 
+ //console.log("(((((((((((((((((((((((((((((((((((Aqui esta entrando ")
 // read XML from a file
-
-
 
  //console.log(objson.ANNOTATION_DOCUMENT.AUTHOR[0]);
  //console.log(objson.ANNOTATION_DOCUMENT.TIER[0]);
