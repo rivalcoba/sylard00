@@ -8,7 +8,9 @@ import keys from '@config/keys'
 
 // Show Loginform
 const login = (req, res) => {
-    res.render('auth/login');
+    res.render('auth/login', {
+        title: 'SYLARD Login',
+    });
 }
 
 // Processes login form
@@ -28,6 +30,7 @@ const register = (req, res) => {
     let countries = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'countries.json'))
 
     res.render('auth/register', {
+        title: 'SYLARD Registro',
         onRegisterPage: true,
         nativeLanguages: languages,
         countries: countries
