@@ -5,7 +5,7 @@
         <div class="" id="contenedor_titulos_cabezal_agregar_coleccion">
           <h1 id="titulo_agregar_coleccion">
             <span class="icono_cabezal icon-create_new_folder"></span>
-            Agregar Colección
+            {{{translation.ADD_COLLECTION}}}
           </h1>
           <h2 class="llamada" id="llamada_agregar_coleccion">
             Llena los campos correctamente
@@ -228,15 +228,28 @@
                 <label class="label label_al_100">
                   Entidad:
                 </label>
-                 <input 
+                <select
+                onblur="pageScripts.fillMunicipalitiesDataList()" 
+                onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()"
+                id="entity"
+                class="input_flexible"
+                required>
+                <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}
+                 {{#each entities}}
+                  <option 
+                    data-id = '{{_id}}'
+                    value="{{this}}">{{this}}
+                {{/each}}  
+                </select>
+               {{!-- <input 
                   onblur="pageScripts.fillMunicipalitiesDataList()"
                   onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()"
-                  {{!-- onchange="pageScripts.fillMunicipalitiesDataList()"  --}}
+                  onchange="pageScripts.fillMunicipalitiesDataList()"  
                   list="entities" 
                   type="text" 
                   id="entity"
                   class="input_flexible"
-                  />
+                  /> --}}
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -259,12 +272,20 @@
                 <label class="label label_al_100">
                   Municipio:
                 </label>
-                 <input 
+               {{!-- <select  disabled 
+                class="input_flexible" 
+                onblur="pageScripts.fillLocalitiesDataList()" 
+                onfocus="pageScripts.disableLocality()"
+                id="municipality">
+             	<option value="" disabled selected>{{translation.SELECT_AN_OPTION}}</option>
+              --}}
+                </select>
+                <input 
                   disabled 
                   class="input_flexible"
                   onblur="pageScripts.fillLocalitiesDataList()" 
                   onfocus="pageScripts.disableLocality()"
-                  {{!-- onchange="pageScripts.fillLocalitiesDataList()"  --}}
+                  {{!--onchange="pageScripts.fillLocalitiesDataList()"--}}
                   type="text" list="municipalities" id="municipality">
                 <div class="contenedor_icono_correcto_input">
                   <p>
@@ -468,11 +489,11 @@
             <label class="label" for="licencia">
               Licencia del contenido
             </label>
-          <input type="text" 
-      placeholder="CC-BY-NC-SA" 
-      name="license" 
-      id="license"
-      list="licenseType">
+            <select name="license" id="license" required/>
+            <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}
+            <option value="CC-BY-NC-SA">CC-BY-NC-SA
+            <option value="CC BY-SA">CC BY-SA
+            </select>
             <div class="contenedor_icono_correcto_input">
               <p>
                 <span class="icono_correcto_input icon-check_circle"></span>
@@ -483,10 +504,6 @@
                 <span class="icono_error_input icon-error"></span>
               </p>
             </div>
-                  <datalist id="licenseType">
-                  <option value="CC-BY-NC-SA">
-                  <option value="CC BY-SA">
-            </datalist>
           </div>
           <div class="contenedor_botones">
             <button
