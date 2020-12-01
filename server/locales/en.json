@@ -46,6 +46,7 @@
     "CONTENT_TWO": "Please join as a User for full access to all SYLARD materials, or as a Contributor to put your own recorded, transcribed, and translated materials online.<br>All material is by default licensed as <a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/2.0/'>CC-BY-NC-SA</a>",
     "REGISTER_CONTENT": "I want to register!",
     "SELECT_AN_OPTION": "Select your option",
-    "ADD_COLLECTION": "Add Collection"
+    "ADD_COLLECTION": "Add Collection",
+    "COMPLETE_FIELDS": "Fill in the fields correctly"
 
 }
