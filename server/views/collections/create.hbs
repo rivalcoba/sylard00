@@ -5,10 +5,10 @@
         <div class="" id="contenedor_titulos_cabezal_agregar_coleccion">
           <h1 id="titulo_agregar_coleccion">
             <span class="icono_cabezal icon-create_new_folder"></span>
-            {{{translation.ADD_COLLECTION}}}
+            {{translation.ADD_COLLECTION}}
           </h1>
           <h2 class="llamada" id="llamada_agregar_coleccion">
-            Llena los campos correctamente
+            {{translation.COMPLETE_FIELDS}}
           </h2>
         </div>
       </div>
@@ -19,7 +19,7 @@
       class="col-sm-12 contenedor-90vh"
       id="contenedor_general_agregar_coleccion"
     >
-      <form action="/collections/add" method="post">
+      <form class="">
         <div class="contenedor_input_agregar_coleccion">
           <label
             class="label"
@@ -31,8 +31,7 @@
           <input
             class="input_ancho_completo"
             type="text"
-            id="name"
-            name="name"
+            id="nombre_coleccion_input"
             placeholder="Titulo breve (max 120 carácteres)"
             maxlength="120"
             required
@@ -59,8 +58,7 @@
           <textarea
             class="input_ancho_completo"
             type="textarea"
-            id="description"
-            name="description"
+            id="descripcion_coleccion_input"
             placeholder="Breve descripcion (max 200 carácteres)"
             maxlength="200"
             rows="5"
@@ -76,16 +74,7 @@
               <label class="label label_al_100">
                 Lengua terminal:
               </label>
-              <input
-                id="language" 
-                type="text"
-                onfocus="pageScripts.disableLanguageGroupBox()"
-                onblur="pageScripts.enableLangGroup()"
-                value="{{language}}" 
-                list="langlist"
-                class="input_flexible"
-                required 
-              />
+              <input type="text" class="input_flexible" required />
               <div class="contenedor_icono_correcto_input">
                 <p>
                   <span class="icono_correcto_input icon-check_circle"></span>
@@ -96,30 +85,12 @@
                   <span class="icono_error_input icon-error"></span>
                 </p>
               </div>
-               <datalist id="langlist">
-              {{#each languages}}
-                <option 
-                id = '{{_id}}'
-                data-id = '{{_id}}'
-                data-name = "{{name}}"
-                value = "{{name}} | {{gid}}">
-              {{/each}}
-      </datalist>
             </div>
             <div class="modulo_inputs_lengua">
               <label class="label label_al_100">
                 Grupo de lenguas:
               </label>
-              <input 
-               disabled 
-                id="langGroup" 
-                name="langGroup"
-                list="groupLanglist"
-                type="text"
-                onfocus="pageScripts.enableAddButton()"
-                value="{{langGroup}}"
-                class="input_flexible"
-                required/>
+              <input type="text" class="input_flexible" required />
               <div class="contenedor_icono_correcto_input">
                 <p>
                   <span class="icono_correcto_input icon-check_circle"></span>
@@ -130,12 +101,10 @@
                   <span class="icono_error_input icon-error"></span>
                 </p>
               </div>
-               <datalist id="groupLanglist">
-             </datalist>
             </div>
             <div class="modulo_boton_lengua">
               <button class="btn_lateral_input_agregar_lengua">
-                <i class="icono_boton_lateral icon-plus"></i>
+                <span class="icono_boton_lateral icon-plus"></span>
               </button>
             </div>
           </div>
@@ -212,7 +181,7 @@
                 <label class="label label_al_100">
                   País:
                 </label>
-                <input type="text" class="input_flexible" readonly/>
+                <input type="text" class="input_flexible" required />
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -228,28 +197,7 @@
                 <label class="label label_al_100">
                   Entidad:
                 </label>
-                <select
-                onblur="pageScripts.fillMunicipalitiesDataList()" 
-                onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()"
-                id="entity"
-                class="input_flexible"
-                required>
-                <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}
-                 {{#each entities}}
-                  <option 
-                    data-id = '{{_id}}'
-                    value="{{this}}">{{this}}
-                {{/each}}  
-                </select>
-               {{!-- <input 
-                  onblur="pageScripts.fillMunicipalitiesDataList()"
-                  onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()"
-                  onchange="pageScripts.fillMunicipalitiesDataList()"  
-                  list="entities" 
-                  type="text" 
-                  id="entity"
-                  class="input_flexible"
-                  /> --}}
+                <input type="text" class="input_flexible" required />
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -260,33 +208,12 @@
                     <span class="icono_error_input icon-error"></span>
                   </p>
                 </div>
-                <datalist id="entities">
-                {{#each entities}}
-                  <option 
-                    data-id = '{{_id}}'
-                    value="{{this}}">
-                {{/each}}
-              </datalist>
               </div>
               <div class="modulo_inputs_comunidad2">
                 <label class="label label_al_100">
                   Municipio:
                 </label>
-               {{!-- <select  disabled 
-                class="input_flexible" 
-                onblur="pageScripts.fillLocalitiesDataList()" 
-                onfocus="pageScripts.disableLocality()"
-                id="municipality">
-             	<option value="" disabled selected>{{translation.SELECT_AN_OPTION}}</option>
-              --}}
-                </select>
-                <input 
-                  disabled 
-                  class="input_flexible"
-                  onblur="pageScripts.fillLocalitiesDataList()" 
-                  onfocus="pageScripts.disableLocality()"
-                  {{!--onchange="pageScripts.fillLocalitiesDataList()"--}}
-                  type="text" list="municipalities" id="municipality">
+                <input type="text" class="input_flexible" required />
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -297,19 +224,12 @@
                     <span class="icono_error_input icon-error"></span>
                   </p>
                 </div>
-                 <datalist id="municipalities">
-      </datalist>
               </div>
               <div class="modulo_inputs_comunidad2">
                 <label class="label label_al_100">
                   Localidad:
                 </label>
-                 <input 
-                  disabled 
-                  class="input_flexible"
-                  type="text" 
-                  id="locality" 
-                  list="localities">
+                <input type="text" class="input_flexible" required />
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -320,13 +240,6 @@
                     <span class="icono_error_input icon-error"></span>
                   </p>
                 </div>
-                  <datalist id="localities">
-                  </datalist>
-                   <i 
-                    class="fa fa-plus-square fa-2x" 
-                    id="addLocBtn"
-                    style="color: rgba(48, 238, 143, 0.911); cursor: pointer; display:none;"
-                    onclick="pageScripts.addLocality()"></i>
               </div>
               <div class="modulo_inputs_comunidad2" id="">
                 <label class="label label_al_100">
@@ -489,10 +402,13 @@
             <label class="label" for="licencia">
               Licencia del contenido
             </label>
-            <select name="license" id="license" required/>
-            <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}
-            <option value="CC-BY-NC-SA">CC-BY-NC-SA
-            <option value="CC BY-SA">CC BY-SA
+            <select class="" name="licencia" id="licencia_cc">
+              <option value="CC-BY-NC-SA">
+                CC-BY-NC-SA
+              </option>
+              <option value="CC BY-SA">
+                CC BY-SA
+              </option>
             </select>
             <div class="contenedor_icono_correcto_input">
               <p>
