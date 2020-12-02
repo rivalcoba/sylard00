@@ -132,6 +132,8 @@ const addAudioannotation = async (req, res) => {
     TIER_ID
   } = req.body
 
+  return res.json(req.body)
+
   let tiers = []
   let numberOfTiersPerParticipant = Visible.length / PARTICIPANT.length 
   PARTICIPANT.forEach((participant, indexp) => {

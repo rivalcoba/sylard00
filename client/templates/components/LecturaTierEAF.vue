@@ -13,16 +13,16 @@
                 </tr>
                 <tr>
                     <td> ✔ Canal de Hablante: {{item2}}  </td>
-                    <td><input type="checkbox" name="Visible" :id="item2" checked @change="selecion_todos_onoff($event)" /></td>
+                    <td><input type="checkbox" :id="item2" checked @change="selecion_todos_onoff($event)" /></td>
                     <td>
-                        <select name="value" :id="item2" @change="selecion_todos_visualizacion_options($event)">
+                        <select :id="item2" @change="selecion_todos_visualizacion_options($event)">
                             <option value="B">Scrolling</option>
                             <option value="A" selected>On-Line-Display</option>
                         </select>
                     </td>
-                    <td><input name="color" type="text" :id="item2" value="#000000" @change="seleccion_todos_color($event)"></td>
-                    <td><input type="text" name="LINGUISTIC_TYPE_REF" value="header" hidden></td>
-                    <td><input type="text" name="TIER_ID" value="header" hidden></td>
+                    <td><input type="text" :id="item2" value="#000000" @change="seleccion_todos_color($event)"></td>
+                    <td><input type="text" value="header" hidden></td>
+                    <td><input type="text" value="header" hidden></td>
                 </tr>
             
             <div v-for="(item, index) in tier_acomodado" :key="'item' + index">
@@ -33,7 +33,9 @@
                     
                     <td>{{item.TIER_ID}} </td>
 
-                    <td><input name="Visible" type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" /></td>
+                    <td><input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
+                    <input hidden type="text" :value="item.Visible" name="Visible" />
+                    </td>
                     
                     <td>
                         <select  name="value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
