@@ -23,94 +23,94 @@ let localityBox = document.getElementById('locality')
 let locSelectedMemory = []
 let langSelectedMemory = []
 
-function deleteTableRow(element){
-  let id = `${element._id}`
-  let tr = document.getElementById(id)
-  tr.remove()
+function deleteTableRow(element) {
+    let id = `${element._id}`
+    let tr = document.getElementById(id)
+    tr.remove()
 }
 
 function is_valid_datalist_value(idDataList, inputValue) {
 
-  var option = document.querySelector(`#${idDataList} option[value="${inputValue}"]`)
-  if (option != null) {
-    return option.value.length > 0
-  }
-  return false
+    var option = document.querySelector(`#${idDataList} option[value="${inputValue}"]`)
+    if (option != null) {
+        return option.value.length > 0
+    }
+    return false
 }
 
 const clearDataList = (dataList) => {
-  // Remove all the previous results
-  while (dataList.firstChild) {
-    dataList.removeChild(dataList.firstChild)
-  }
+    // Remove all the previous results
+    while (dataList.firstChild) {
+        dataList.removeChild(dataList.firstChild)
+    }
 }
 
-const disableLanguageGroupBox = ()=>{
-  languageGroupBox.value = ""
-  languageGroupBox.disabled = true
-  addLangBtn.style.display = "none"
-  clearDataList(groupLanglist)
+const disableLanguageGroupBox = () => {
+    languageGroupBox.value = ""
+    languageGroupBox.disabled = true
+        /*addLangBtn.style.display = "none*/
+    clearDataList(groupLanglist)
 }
 
 async function enableLangGroup() {
-  let selectedLanguage = languageBox.value
-  // Checking if is empty
-  if(selectedLanguage == "" || 
-  !is_valid_datalist_value(langlist.id, selectedLanguage)){
-    languageBox.value = ""
-    return Swal.fire(
-      'SYLARD!',
-      'Debe seleccionar una opción de la lista',
-      'info'
-    )
-  }
+    let selectedLanguage = languageBox.value
+        // Checking if is empty
+    if (selectedLanguage == "" ||
+        !is_valid_datalist_value(langlist.id, selectedLanguage)) {
+        languageBox.value = ""
+        return Swal.fire(
+            'SYLARD!',
+            'Debe seleccionar una opción de la lista',
+            'info'
+        )
+    }
 
-  let selectedLanguageId = document.querySelector(`option[value="${languageBox.value}"]`).id
-  let parents = []
-  try {
-    // Loading ParetnTree
-    parents = await languageHelper.getParentTree(selectedLanguageId)
-    if(!parents){
-      return Swal.fire(
-        'SYLARD!',
-        'El servidor no respondio',
-        'info'
-      )
-    } else if( parents.length == 0){
-      return Swal.fire(
-        'SYLARD!',
-        'No se encontraron ancenstros de la lengua',
-        'info'
-      )
-    }  
-  } catch (error) {
-    return Swal.fire(
-      'SYLARD!',
-      'Get Parent Tree: No respondio el servidor intente mas tarde',
-      'error'
-    )
-  }
-  // 
-  parents.forEach(planguage => {
-    let option = document.createElement('option')
-    groupLanglist.appendChild(option)
-    option.value = `${planguage.name} | ${planguage.gid}`
-    option.setAttribute('data-id',`${planguage._id}`)
-    option.setAttribute('data-name',`${planguage.name}`)
-  });
-  languageGroupBox.disabled = false
+    let selectedLanguageId = document.querySelector(`option[value="${languageBox.value}"]`).id
+    let parents = []
+    try {
+        // Loading ParetnTree
+        parents = await languageHelper.getParentTree(selectedLanguageId)
+        if (!parents) {
+            return Swal.fire(
+                'SYLARD!',
+                'El servidor no respondio',
+                'info'
+            )
+        } else if (parents.length == 0) {
+            return Swal.fire(
+                'SYLARD!',
+                'No se encontraron ancenstros de la lengua',
+                'info'
+            )
+        }
+    } catch (error) {
+        return Swal.fire(
+            'SYLARD!',
+            'Get Parent Tree: No respondio el servidor intente mas tarde',
+            'error'
+        )
+    }
+    // 
+    parents.forEach(planguage => {
+        let option = document.createElement('option')
+        groupLanglist.appendChild(option)
+        option.value = `${planguage.name} | ${planguage.gid}`
+        option.setAttribute('data-id', `${planguage._id}`)
+        option.setAttribute('data-name', `${planguage.name}`)
+    });
+    languageGroupBox.disabled = false
 }
 
-const enableAddButton = function(){
-  addLangBtn.style.display = 'inline'
+const enableAddButton = function() {
+    addLangBtn.style.display = 'inline'
 }
 
 function addLanguageRow(language, groupLanguage) {
-  let table = document.getElementById('langTable')
-  let tr = document.createElement('tr')
-  tr.setAttribute('id', `${language.gid}`)
+    let table = document.getElementById('langTable')
+    let tr = document.createElement('tr')
+    tr.setAttribute('id', `${language.gid}`)
 
-  tr.innerHTML = `
+    tr.innerHTML = `
             <input 
               type="text" 
               style="display:none;" 
@@ -121,32 +121,33 @@ function addLanguageRow(language, groupLanguage) {
               style="display:none;" 
               name="languages" 
               value="${groupLanguage._id}">
-            <td>${language.gid}</td>
+            <td class="lengua_terminal_glottocode_agregar_coleccion">${language.gid}</td>
             <td>${language.name}</td>
-            <td>${groupLanguage.gid}</td>
+            <td class="grupo_terminal_glottocode_agregar_coleccion">${groupLanguage.gid}</td>
             <td>${groupLanguage.name}</td>
             <td>
-              <i 
-                class="fa fa-trash fa-2x"
-                id="tr${language._id}"
-                style="color: rgb(241, 63, 32);cursor: pointer;"></i>
+            <div class="contenedor_botones_accion_lengua">
+                    <button  id="tr${language._id}" class="btn_accion_tabla float_right">
+                      <span class="icono_accion_tabla  icon-delete"></span>
+                    </button>
+                  </div>
             </td>`
 
-  table.appendChild(tr)
+    table.appendChild(tr)
 
-  let langDelBtn = document.getElementById(`tr${language._id}`)
-  langDelBtn.onclick = ()=>{
-    langSelectedMemory = langSelectedMemory.filter(lanId => lanId !== language._id)
-    deleteLangRow(language)
-  }
+    let langDelBtn = document.getElementById(`tr${language._id}`)
+    langDelBtn.onclick = () => {
+        langSelectedMemory = langSelectedMemory.filter(lanId => lanId !== language._id)
+        deleteLangRow(language)
+    }
 }
 
-function addLocalityRow(locality){
-  let table = document.getElementById('locTable')
-  let tr = document.createElement('tr')
-  tr.setAttribute('id',`${locality._id}`)
-  // Adding element to the table
-  tr.innerHTML = `
+function addLocalityRow(locality) {
+    let table = document.getElementById('locTable')
+    let tr = document.createElement('tr')
+    tr.setAttribute('id', `${locality._id}`)
+        // Adding element to the table
+    tr.innerHTML = `
     <input
       type="text"
       style="display:none;"
@@ -159,162 +160,163 @@ function addLocalityRow(locality){
     <td>${locality.Lat_Decimal}</td>
     <td>${locality.Lon_Decimal}</td>
     <td>
-      <i
-        id="${locality._id}" 
-        class="fa fa-trash fa-2x"
-        style="color: rgb(241, 63, 32);cursor: pointer;"></i>
+    <div class="contenedor_botones_accion_lengua">
+                    <button  id="tr${locality._id}" class="btn_accion_tabla float_right">
+                      <span class="icono_accion_tabla  icon-delete"></span>
+                    </button>
+                  </div>
     </td>`
-    
-  table.appendChild(tr)
 
-  let locDelBtn = document.getElementById(locality._id)
+    table.appendChild(tr)
 
-  locDelBtn.onclick = () => {
-    locSelectedMemory = locSelectedMemory.filter(locId => locId !== locality._id)
-    deleteTableRow(locality)
-  }
+    let locDelBtn = document.getElementById(`tr${locality._id}`)
+
+    locDelBtn.onclick = () => {
+        locSelectedMemory = locSelectedMemory.filter(locId => locId !== locality._id)
+        deleteTableRow(locality)
+    }
 }
 
-const getLangData = (inputBox, dataList)=>{
-  let value = inputBox.value
-  let dataListId = dataList.id
-  
-  let option = document.querySelector(
-    `#${dataListId} option[value="${value}"]`
-  )
+const getLangData = (inputBox, dataList) => {
+    let value = inputBox.value
+    let dataListId = dataList.id
 
-  return {
-    _id: option.dataset.id,
-    gid: value.split(' | ')[1],
-    name: option.dataset.name,
-  }
+    let option = document.querySelector(
+        `#${dataListId} option[value="${value}"]`
+    )
+
+    return {
+        _id: option.dataset.id,
+        gid: value.split(' | ')[1],
+        name: option.dataset.name,
+    }
 }
 
 function addLanguage() {
-  let selectedLangGroup = languageGroupBox.value
-  // Check if langGroupBox has a correct option
-  if(
-    selectedLangGroup == "" || 
-    !is_valid_datalist_value(groupLanglist.id,selectedLangGroup)){
-      languageGroupBox.value = ""
-      return Swal.fire(
-        'SYLARD!',
-        'Debe seleccionar una opción de la lista',
-        'info'
-      )
-  }
+    let selectedLangGroup = languageGroupBox.value
+        // Check if langGroupBox has a correct option
+    if (
+        selectedLangGroup == "" ||
+        !is_valid_datalist_value(groupLanglist.id, selectedLangGroup)) {
+        languageGroupBox.value = ""
+        return Swal.fire(
+            'SYLARD!',
+            'Debe seleccionar una opción de la lista',
+            'info'
+        )
+    }
 
-  let lang = getLangData(languageBox,langlist)
-  let groupLanguage = getLangData(languageGroupBox,groupLanglist)
+    let lang = getLangData(languageBox, langlist)
+    let groupLanguage = getLangData(languageGroupBox, groupLanglist)
 
-  // Check if previous selected
-  if(langSelectedMemory.indexOf(lang._id) >= 0){
-    return Swal.fire(
-      'SYLARD!',
-      'Combinacion de lenguas ya seleccionado',
-      'info'
-    )
-  }
-  langSelectedMemory.push(lang._id)
+    // Check if previous selected
+    if (langSelectedMemory.indexOf(lang._id) >= 0) {
+        return Swal.fire(
+            'SYLARD!',
+            'Combinacion de lenguas ya seleccionado',
+            'info'
+        )
+    }
+    langSelectedMemory.push(lang._id)
 
-  // Reset language input values
-  languageBox.value = ""
-  languageGroupBox.value = ""
-  languageGroupBox.disabled = true
-  addLangBtn.style.display ="none"
-  
-  // --->BORRAR
-  // // Delete selected language from the datalist
-  // var options = Array.from(langlist.children)
-  
-  // options.forEach(option => {
-  //   if(option.id == lang._id){
-  //     option.remove()
-  //   }
-  // });
-  // --->BORRAR
-  
-  addLanguageRow(lang, groupLanguage)
+    // Reset language input values
+    languageBox.value = ""
+    languageGroupBox.value = ""
+    languageGroupBox.disabled = true
+        /*addLangBtn.style.display = "none"*/
+
+    // --->BORRAR
+    // // Delete selected language from the datalist
+    // var options = Array.from(langlist.children)
+
+    // options.forEach(option => {
+    //   if(option.id == lang._id){
+    //     option.remove()
+    //   }
+    // });
+    // --->BORRAR
+
+    addLanguageRow(lang, groupLanguage)
 }
 
 function deleteLangRow(language) {
-  let id = `${language.gid}`
-  var tr = document.getElementById(id)
-  tr.remove()
-  // ---> BORRAR
-  // add language to the data list
-  // let option = document.createElement('option')
-  // option.setAttribute('id',`${language._id}`)
-  // option.setAttribute('data-id',`${language._id}`)
-  // option.setAttribute('data-name',`${language.name}`)
-  // option.setAttribute('value',`${language.name} | ${language.gid}`)
-  // langlist.appendChild(option)
-  // ----> BORRAR
+    let id = `${language.gid}`
+    var tr = document.getElementById(id)
+    tr.remove()
+        // ---> BORRAR
+        // add language to the data list
+        // let option = document.createElement('option')
+        // option.setAttribute('id',`${language._id}`)
+        // option.setAttribute('data-id',`${language._id}`)
+        // option.setAttribute('data-name',`${language.name}`)
+        // option.setAttribute('value',`${language.name} | ${language.gid}`)
+        // langlist.appendChild(option)
+        // ----> BORRAR
 }
 
-const addLocality = async function(){
-  let selectedEntity = entityBox.value;
-  let selectedMunicipality = municipalityBox.value;
-  let selectedLocality = localityBox.value;
+const addLocality = async function() {
+    let selectedEntity = entityBox.value;
+    let selectedMunicipality = municipalityBox.value;
+    let selectedLocality = localityBox.value;
 
-  // Check if Locality s valid
-  if( selectedLocality == "" || 
-    !is_valid_datalist_value(localitiesList.id, selectedLocality)){
-      localityBox.value = ""
-      return Swal.fire(
-        'SYLARD!',
-        'Debe seleccionar una opción de la lista',
-        'info'
-      )
-  }
-  // Get the locality
-  var location = await locationsHelper.getLocality(
-    selectedEntity,
-    selectedMunicipality,
-    selectedLocality
-  )
-  
-  if(locSelectedMemory.indexOf(location._id) >= 0){
-    return Swal.fire(
-      'SYLARD!',
-      'Opcion ya seleccionada',
-      'info'
-    ) 
-  }
+    // Check if Locality s valid
+    if (selectedLocality == "" ||
+        !is_valid_datalist_value(localitiesList.id, selectedLocality)) {
+        localityBox.value = ""
+        return Swal.fire(
+            'SYLARD!',
+            'Debe seleccionar una opción de la lista',
+            'info'
+        )
+    }
+    // Get the locality
+    var location = await locationsHelper.getLocality(
+        selectedEntity,
+        selectedMunicipality,
+        selectedLocality
+    )
 
-  locSelectedMemory.push(location._id)
+    if (locSelectedMemory.indexOf(location._id) >= 0) {
+        return Swal.fire(
+            'SYLARD!',
+            'Opcion ya seleccionada',
+            'info'
+        )
+    }
 
-  localityBox.value = ""
-  municipalityBox.value = ""
-  entityBox.value = ""
-  addLocBtn.style.display = "none"
+    locSelectedMemory.push(location._id)
 
-  addLocalityRow(location)
+    localityBox.value = ""
+    municipalityBox.value = ""
+    entityBox.value = ""
+        /*addLocBtn.style.display = "none"*/
+
+    addLocalityRow(location)
 }
 
 // Main Functions
-const findLocation = async ()=>{
+const findLocation = async() => {
     toogleLoading()
     let nom_ent = document.getElementById('entity').value
     let nom_mun = document.getElementById('municipality').value
     let nom_loc = document.getElementById('locality').value
     try {
         let location = await locationsHelper.getLocality(nom_ent, nom_mun, nom_loc)
-        
+
         toogleLoading()
-        if(!location){
+        if (!location) {
             return Swal.fire(
                 'Error!',
                 'El servidor esta ocupado! intente mas tarde',
                 'info'
-              )
+            )
         }
         //
         let tr = document.getElementById('result');
-        
+
         // Remove all the previous results
         while (tr.firstChild) {
-          tr.removeChild(tr.firstChild)
+            tr.removeChild(tr.firstChild)
         }
         // Making the table data elments
         let td_nom_ent = document.createElement('td')
@@ -341,11 +343,11 @@ const findLocation = async ()=>{
             'Error!',
             error.message,
             'info'
-          )
+        )
     }
 }
 
-const toogleLoading = function(id = 'loading'){
+const toogleLoading = function(id = 'loading') {
     let button = document.getElementById('searchbtn')
     let loadingIcon = document.getElementById(id)
     button.disabled = !button.disabled;
@@ -353,79 +355,79 @@ const toogleLoading = function(id = 'loading'){
 }
 
 // Fill datalist
-const fillMunicipalitiesDataList = async function () {
-  try {
-    disableMunicipality()
-
-    // Check correct selection of previous box
-    if (!is_valid_datalist_value('entities', entityBox.value)) {
-      return Swal.fire(
-        'SYLARD!',
-        'Debe seleccionar una opción de la lista',
-        'info'
-      )
-    }
-
-    // Remove all the previous results
-    clearDataList(municipalitiesDatalist)
-
-    const nom_ent = entityBox.value
-
-    // Get municipalities from server
-    let municipalities = await locationsHelper.getMunicipalitiesByEntity(
-      nom_ent
-    )
-
-    // Fill datalist
-    if (!municipalities) {
-      return Swal.fire('SYLARD!', 'El servidor no respondio', 'info')
-    } else if (municipalities.length == 0) {
-      return Swal.fire('SYLARD!', 'No se encontraron Municipios', 'info')
-    }
-
-    municipalities.forEach((municipality) => {
-      let option = document.createElement('option')
-      municipalitiesDatalist.appendChild(option)
-      option.value = municipality
-    })
-    municipalityBox.disabled = false
-  } catch (error) {
-    return Swal.fire('Error: fillMunicipalitiesDataList!', error.message, 'info')
-  }
-}
-
-const fillLocalitiesDataList = async function(){
+const fillMunicipalitiesDataList = async function() {
     try {
-        disableLocality()
+        disableMunicipality()
+
         // Check correct selection of previous box
-        if(!is_valid_datalist_value('municipalities',municipalityBox.value)){
+        if (!is_valid_datalist_value('entities', entityBox.value)) {
             return Swal.fire(
                 'SYLARD!',
                 'Debe seleccionar una opción de la lista',
                 'info'
-              ) 
+            )
+        }
+
+        // Remove all the previous results
+        clearDataList(municipalitiesDatalist)
+
+        const nom_ent = entityBox.value
+
+        // Get municipalities from server
+        let municipalities = await locationsHelper.getMunicipalitiesByEntity(
+            nom_ent
+        )
+
+        // Fill datalist
+        if (!municipalities) {
+            return Swal.fire('SYLARD!', 'El servidor no respondio', 'info')
+        } else if (municipalities.length == 0) {
+            return Swal.fire('SYLARD!', 'No se encontraron Municipios', 'info')
+        }
+
+        municipalities.forEach((municipality) => {
+            let option = document.createElement('option')
+            municipalitiesDatalist.appendChild(option)
+            option.value = municipality
+        })
+        municipalityBox.disabled = false
+    } catch (error) {
+        return Swal.fire('Error: fillMunicipalitiesDataList!', error.message, 'info')
+    }
+}
+
+const fillLocalitiesDataList = async function() {
+    try {
+        disableLocality()
+            // Check correct selection of previous box
+        if (!is_valid_datalist_value('municipalities', municipalityBox.value)) {
+            return Swal.fire(
+                'SYLARD!',
+                'Debe seleccionar una opción de la lista',
+                'info'
+            )
         }
         // Remove all the previous results
         clearDataList(localitiesList)
-        // Get params values
+            // Get params values
         const nom_ent = entityBox.value
         const nom_mun = municipalityBox.value
-        // Get localities from server
+            // Get localities from server
         let localities = await locationsHelper.getLocalities(nom_ent, nom_mun)
-        
+
         // Check for errors
-        if(!localities){
+        if (!localities) {
             return Swal.fire(
                 'SYLARD!',
                 'El servidor no respondio',
                 'info'
-              ) 
-            } else if(localities.length == 0){
-                return Swal.fire(
-                    'SYLARD!',
-                    'No se encontraron localidades',
-                    'info'
-                  )
+            )
+        } else if (localities.length == 0) {
+            return Swal.fire(
+                'SYLARD!',
+                'No se encontraron localidades',
+                'info'
+            )
         }
         // Fill datalist
         localities.forEach(locality => {
@@ -441,24 +443,24 @@ const fillLocalitiesDataList = async function(){
             'Error!',
             error.message,
             'info'
-          )
+        )
     }
 }
 
-const disableMunicipality = ()=>{
+const disableMunicipality = () => {
     municipalityBox.value = ""
     municipalityBox.disabled = true;
-    addLocBtn.style.display = "none"
+    /*addLocBtn.style.display = "none"*/
 }
 
-const disableLocality = ()=>{
+const disableLocality = () => {
     localityBox.value = ""
     localityBox.disabled = true;
-    addLocBtn.style.display = "none"
+    /*addLocBtn.style.display = "none"*/
 }
 
 //document.getElementsByTagName("tr")[2].remove();
-export default{
+export default {
     enableLangGroup,
     addLanguageRow,
     addLanguage,
