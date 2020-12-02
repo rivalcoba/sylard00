@@ -19,7 +19,7 @@
       class="col-sm-12 contenedor-90vh"
       id="contenedor_general_agregar_coleccion"
     >
-      <form class="">
+      <form action="/collections/add" method="post">
         <div class="contenedor_input_agregar_coleccion">
           <label
             class="label"
@@ -31,10 +31,12 @@
           <input
             class="input_ancho_completo"
             type="text"
-            id="nombre_coleccion_input"
+            id="name"
+            name="name"
             placeholder="Titulo breve (max 120 carácteres)"
             maxlength="120"
             required
+            
           />
           <div class="contenedor_icono_correcto_input">
             <p>
@@ -58,11 +60,13 @@
           <textarea
             class="input_ancho_completo"
             type="textarea"
-            id="descripcion_coleccion_input"
+            name="description"
+            id="description"
             placeholder="Breve descripcion (max 200 carácteres)"
             maxlength="200"
             rows="5"
             required
+            
           ></textarea>
         </div>
         <p class="label" id="lenguas_de_la_coleccion">
@@ -74,7 +78,15 @@
               <label class="label label_al_100">
                 Lengua terminal:
               </label>
-              <input type="text" class="input_flexible" required />
+              <input 
+              id="language" 
+              type="text" 
+              class="input_flexible"
+              onfocus="pageScripts.disableLanguageGroupBox()"
+              onblur="pageScripts.enableLangGroup()"
+              value="{{language}}" 
+              list="langlist" 
+               />
               <div class="contenedor_icono_correcto_input">
                 <p>
                   <span class="icono_correcto_input icon-check_circle"></span>
@@ -85,12 +97,30 @@
                   <span class="icono_error_input icon-error"></span>
                 </p>
               </div>
+               <datalist id="langlist">
+             {{#each languages}}
+             <option 
+             id = '{{_id}}'
+             data-id = '{{_id}}'
+             data-name = "{{name}}"
+            value = "{{name}} | {{gid}}">
+            {{/each}}
+            </datalist>
             </div>
             <div class="modulo_inputs_lengua">
               <label class="label label_al_100">
                 Grupo de lenguas:
               </label>
-              <input type="text" class="input_flexible" required />
+              <input 
+              disabled 
+              id="langGroup" 
+              name="langGroup"
+              list="groupLanglist"
+              type="text"
+              onfocus="pageScripts.enableAddButton()"
+              value="{{langGroup}}" 
+              class="input_flexible" 
+              />
               <div class="contenedor_icono_correcto_input">
                 <p>
                   <span class="icono_correcto_input icon-check_circle"></span>
@@ -101,10 +131,12 @@
                   <span class="icono_error_input icon-error"></span>
                 </p>
               </div>
+               <datalist id="groupLanglist">
+             </datalist>
             </div>
             <div class="modulo_boton_lengua">
-              <button class="btn_lateral_input_agregar_lengua">
-                <span class="icono_boton_lateral icon-plus"></span>
+              <button class="btn_lateral_input_agregar_lengua" disabled>
+                <i id="addLangBtn" onclick="pageScripts.addLanguage()" class="icono_boton_lateral icon-plus"></i>
               </button>
             </div>
           </div>
@@ -114,60 +146,8 @@
             </p>
             <table class="tabla_lenguas_agregadas">
               <thead></thead>
-              <tr class="row_lenguas_agregadas">
-                <td class="lengua_terminal_glottocode_agregar_coleccion">
-                  Yolo1241
-                </td>
-                <td class="">
-                  Yoloxóchitl Mixtec
-                </td>
-                <td class="grupo_terminal_glottocode_agregar_coleccion">
-                  amuz1253
-                </td>
-                <td class="">
-                  Amuzgo-mixtecan
-                </td>
-                <td class="">
-                  <div class="contenedor_botones_accion_lengua">
-                    <button class="btn_accion_tabla float_right">
-                      <span class="icono_accion_tabla  icon-delete"></span>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="row_lenguas_agregadas">
-                <td class="lengua_terminal_glottocode_agregar_coleccion">
-                  high1278
-                </td>
-                <td class="">
-                  Highland Puebla Nahuat
-                </td>
-                <td class="grupo_terminal_glottocode_agregar_coleccion">
-                  azte1234
-                </td>
-                <td class="">
-                  Aztec
-                </td>
-                <td class="">
-                  <div class="contenedor_botones_accion_lengua">
-                    <button class="btn_accion_tabla">
-                      <span class="icono_accion_tabla  icon-delete"></span>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <!--tr class="row_lenguas_agregadas">
-											<td class="lengua_terminal_glottocode_agregar_coleccion">Yolo1241</td>
-											<td class="">Yoloxóchitl Mixtec</td>
-											<td class="grupo_terminal_glottocode_agregar_coleccion">amuz1253</td>
-											<td class="">Amuzgo-mixtecan</td>
-											<td class="">
-												<div class="contenedor_botones_accion_lengua">
-													<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-delete"></span></button>
-													
-												</div>
-											</td>	
-										</tr-->
+               <tbody id="langTable">          
+              </tbody>
             </table>
           </div>
         </div>
@@ -181,7 +161,7 @@
                 <label class="label label_al_100">
                   País:
                 </label>
-                <input type="text" class="input_flexible" required />
+                <input type="text" class="input_flexible" disabled/>
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -197,7 +177,15 @@
                 <label class="label label_al_100">
                   Entidad:
                 </label>
-                <input type="text" class="input_flexible" required />
+                <input 
+                type="text" 
+                class="input_flexible"
+                onblur="pageScripts.fillMunicipalitiesDataList()"
+                onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()"
+                  {{!-- onchange="pageScripts.fillMunicipalitiesDataList()"  --}}
+                list="entities"
+                id="entity"
+                 />
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -208,12 +196,24 @@
                     <span class="icono_error_input icon-error"></span>
                   </p>
                 </div>
+                 <datalist id="entities">
+        {{#each entities}}
+          <option 
+            data-id = '{{_id}}'
+            value="{{this}}">
+        {{/each}}
+      </datalist>
               </div>
               <div class="modulo_inputs_comunidad2">
                 <label class="label label_al_100">
                   Municipio:
                 </label>
-                <input type="text" class="input_flexible" required />
+                <input 
+                disabled 
+                onblur="pageScripts.fillLocalitiesDataList()" 
+                onfocus="pageScripts.disableLocality()"
+                type="text" list="municipalities" id="municipality"
+                class="input_flexible"  />
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -224,12 +224,20 @@
                     <span class="icono_error_input icon-error"></span>
                   </p>
                 </div>
+                <datalist id="municipalities">
+               </datalist>
               </div>
               <div class="modulo_inputs_comunidad2">
                 <label class="label label_al_100">
                   Localidad:
                 </label>
-                <input type="text" class="input_flexible" required />
+                <input  
+                disabled
+                type="text" 
+                class="input_flexible" 
+                id="locality" 
+                list="localities"
+                 />
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -240,12 +248,14 @@
                     <span class="icono_error_input icon-error"></span>
                   </p>
                 </div>
+                <datalist id="localities">
+               </datalist>
               </div>
               <div class="modulo_inputs_comunidad2" id="">
                 <label class="label label_al_100">
                   Latitud:
                 </label>
-                <input type="text" class="input_flexible" required />
+                <input type="text" class="input_flexible"  />
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -261,7 +271,7 @@
                 <label class="label label_al_100">
                   Longitud:
                 </label>
-                <input type="text" class="input_flexible" required />
+                <input type="text" class="input_flexible"  />
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -275,8 +285,8 @@
               </div>
             </div>
             <div class="modulo_boton_comunidad">
-              <button class="btn_lateral_input_agregar_comunidad">
-                <span class="icono_boton_lateral icon-plus"></span>
+              <button class="btn_lateral_input_agregar_comunidad" disabled>
+                <i id="addLocBtn" onclick="pageScripts.addLocality()" class="icono_boton_lateral icon-plus"></i>
               </button>
             </div>
           </div>
@@ -286,114 +296,8 @@
             </p>
             <table class="tabla_comunidades_agregadas">
               <thead></thead>
-              <tr class="row_comunidades_agregadas">
-                <td class="comunidad_agregar_coleccion">
-                  Yoloxóchitl
-                </td>
-                <td class="municipio_agregar_coleccion">
-                  San Luis Acatlán
-                </td>
-                <td class="entidad_agregar_coleccion">
-                  Guerrero
-                </td>
-                <td class="pais_agregar_coleccion">
-                  México
-                </td>
-                <td class="latitud_agregar_coleccion">
-                  16.816020
-                </td>
-                <td class="longitud_agregar_coleccion">
-                  -98.685990
-                </td>
-                <td class="">
-                  <div class="contenedor_botones_accion_lengua">
-                    <button class="btn_accion_tabla float_right">
-                      <span class="icono_accion_tabla  icon-delete"></span>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="row_comunidades_agregadas">
-                <td class="comunidad_agregar_coleccion">
-                  Cuanacaxtitlán
-                </td>
-                <td class="municipio_agregar_coleccion">
-                  San Luis Acatlán
-                </td>
-                <td class="entidad_agregar_coleccion">
-                  Guerrero
-                </td>
-                <td class="pais_agregar_coleccion">
-                  México
-                </td>
-                <td class="latitud_agregar_coleccion">
-                  16.79802
-                </td>
-                <td class="longitud_agregar_coleccion">
-                  -98.64009
-                </td>
-                <td class="">
-                  <div class="contenedor_botones_accion_lengua">
-                    <button class="btn_accion_tabla float_right">
-                      <span class="icono_accion_tabla  icon-delete"></span>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="row_comunidades_agregadas">
-                <td class="comunidad_agregar_coleccion">
-                  Arroyo Cumiapa
-                </td>
-                <td class="municipio_agregar_coleccion">
-                  San Luis Acatlán
-                </td>
-                <td class="entidad_agregar_coleccion">
-                  Guerrero
-                </td>
-                <td class="pais_agregar_coleccion">
-                  México
-                </td>
-                <td class="latitud_agregar_coleccion">
-                  16.87525
-                </td>
-                <td class="longitud_agregar_coleccion">
-                  -98.61539
-                </td>
-                <td class="">
-                  <div class="contenedor_botones_accion_lengua">
-                    <button class="btn_accion_tabla float_right">
-                      <span class="icono_accion_tabla  icon-delete"></span>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr class="row_comunidades_agregadas">
-                <td class="comunidad_agregar_coleccion">
-                  Buena Vista
-                </td>
-                <td class="municipio_agregar_coleccion">
-                  San Luis Acatlán
-                </td>
-                <td class="entidad_agregar_coleccion">
-                  Guerrero
-                </td>
-                <td class="pais_agregar_coleccion">
-                  México
-                </td>
-                <td class="latitud_agregar_coleccion">
-                  16.96221
-                </td>
-                <td class="longitud_agregar_coleccion">
-                  -98.58086
-                </td>
-                <td class="">
-                  <div class="contenedor_botones_accion_lengua">
-                    <button class="btn_accion_tabla float_right">
-                      <span class="icono_accion_tabla  icon-delete"></span>
-                    </button>
-                  </div>
-                </td>
-              </tr>
+             <tbody id="locTable">          
+            </tbody>
             </table>
           </div>
         </div>
@@ -402,13 +306,10 @@
             <label class="label" for="licencia">
               Licencia del contenido
             </label>
-            <select class="" name="licencia" id="licencia_cc">
-              <option value="CC-BY-NC-SA">
-                CC-BY-NC-SA
-              </option>
-              <option value="CC BY-SA">
-                CC BY-SA
-              </option>
+            <select name="license" id="license" required/>
+               <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}</option>
+               <option value="CC-BY-NC-SA">CC-BY-NC-SA
+               <option value="CC BY-SA">CC BY-SA
             </select>
             <div class="contenedor_icono_correcto_input">
               <p>
