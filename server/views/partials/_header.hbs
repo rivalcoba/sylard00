@@ -30,10 +30,17 @@
     </div>
 
     <div class="barra_superior_elemento float_left active">
+      {{#if user}}
+      <a id="home" href="/dashboard">
+        <span class="icono icon-home1"></span>
+        SYLARD
+      </a>
+      {{else}}
       <a id="home" href="/">
         <span class="icono icon-home1"></span>
         SYLARD
       </a>
+      {{/if}}
     </div>
     <div class="barra_superior_elemento float_right">
       <!-- SI ES UN SUARIO -->
@@ -66,7 +73,7 @@
           {{/ifColaborator}}
           {{#hideIfSu user}}
           <a href="/dashboard">
-            <i class="fa fa-table"></i> {{translation.COLLECTIONS}}
+            <i class="fa fa-table"></i> {{translation.CATALOGUE}}
           </a>
           {{/hideIfSu}}
           <a class="dropdown_menu_usuario_logout" href="/auth/logout"><span
