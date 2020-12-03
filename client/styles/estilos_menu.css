@@ -1485,7 +1485,7 @@ input:checked+.slider_general:before {
     flex-basis: 40%;
 }
 
-#lenguas_agregadas_input {
+#spokenLanguages {
     width: 98%;
 }
 
