@@ -804,7 +804,6 @@ textarea:invalid~.contenedor_icono_error_input
 {
     display: inline-block;
     color: var(--color-error)!important;
-    border: 1px dashed red;
 }
 
 
@@ -845,7 +844,6 @@ select:invalid~.contenedor_icono_error_input
 {
     display: inline-block;
     color: var(--color-error)!important;
-    border: 1px dashed red;
 }
 
 
@@ -3737,6 +3735,7 @@ h6.canal_hijo_compacto {
     color: #006844;
     font-weight: 500;
 }
+
 /*!
  * Bootstrap Grid v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
