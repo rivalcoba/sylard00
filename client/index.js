@@ -53,7 +53,10 @@ if(window.location.pathname == `/test`){
     window.app = indexTestScripts.getVueApp()
 }
 
-if(window.location.pathname == `/audioannotations/vuetest`){
+
+//if(window.location.pathname == `/audioannotations/vuetest/:id`){
+  if(window.location.pathname.match(/\/audioannotations\/vuetest\//)){
+ //if(window.location.pathname == `/audioannotations/vuetest`){ 
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("LecturaEAF", LecturaEAF);

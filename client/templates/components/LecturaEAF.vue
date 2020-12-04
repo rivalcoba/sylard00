@@ -100,13 +100,16 @@ export default {
     data() {
         return {
             info: [],
+            audioannotations_info: [],
             otro: [],
             selected: "A",
             tier_temp: "",
             options: [],
             results: [],
             tempdata: [],
-            contador: 0
+            contador: 0,
+            audioannotations: [],
+            mp3Audio:""
             //tiempo_parametro:"8"
         };
     },
@@ -118,6 +121,7 @@ export default {
         mensaje_al_player: function (tiempo) {
             console.log("Se envia un msg al player " + tiempo)
             this.$emit('mensaje_scroll', tiempo)
+            //this.$emit('nombre_mp3',this.mp3Audio)
         },
         recorrer_todo: function (longitud) {
 
@@ -126,7 +130,7 @@ export default {
 
             }
             //this.recorrer(7)
-            console.log("Este el  ultimo contador" + this.contador)
+           //+ console.log("Este el  ultimo contador" + this.contador)
         },
         recorrer: function (item) {
 
@@ -155,11 +159,11 @@ export default {
                             // valor: "valor " + indice
                         }
 
-                        console.log("+++++rrrrr+++" + this.otro[indice][0].TIER_ID)
-                        console.log("anotatio id" + x.ANNOTATION_ID)
-                        console.log("value " + x.ANNOTATION_VALUE)
-                        console.log("value TIME_SLOT_REF1 y 2:" + x.TIME_SLOT_REF1 + " " + x.TIME_SLOT_REF2)
-                        console.log("-----Este es el contador" + this.contador + "-----")
+                       //+ console.log("+++++rrrrr+++" + this.otro[indice][0].TIER_ID)
+                       //+ console.log("anotatio id" + x.ANNOTATION_ID)
+                       //+ console.log("value " + x.ANNOTATION_VALUE)
+                       //+ console.log("value TIME_SLOT_REF1 y 2:" + x.TIME_SLOT_REF1 + " " + x.TIME_SLOT_REF2)
+                       //+ console.log("-----Este es el contador" + this.contador + "-----")
                         this.contador++
                         //this.results.push(tempdata)
                         //console.log("el valor " + this.otro[indice][0].TIER_ID[0])
@@ -180,10 +184,10 @@ export default {
         sincronizar: function (item) {
             // me quede
             //chechar https://www.geeksforgeeks.org/indexof-method-in-an-object-array-in-javascript/
-            console.log("--Aqui--" + item)
+            //+console.log("--Aqui--" + item)
             var valor = this.otro[1].find(((x) => x.TIME_SLOT_REF1 >= item) && ((x) => x.TIME_SLOT_REF2 <= item));
             //var valor = this.otro[1].find((x) => x.TIME_SLOT_REF1 >= item);
-            console.log("--Aqui--" + valor)
+            //+console.log("--Aqui--" + valor)
             return valor;
         },
         buscar_option_value: function (item) {
@@ -193,31 +197,31 @@ export default {
             return valor;
         },
         seleccion_onoff: function (e) {
-            console.log(e.target.value);
-            console.log(event.target.id);
-            console.log(e.target.checked);
+            //+console.log(e.target.value);
+            //+console.log(event.target.id);
+            //+console.log(e.target.checked);
             if (e.target.checked) {
-                console.log("si esta en on");
+                //+console.log("si esta en on");
                 this.options.find((x) => x.tier_id == e.target.id).Visible = true;
             } else {
                 this.options.find((x) => x.tier_id == e.target.id).Visible = false;
-                console.log("si lo off");
+                //+console.log("si lo off");
             }
-            console.log(
-                "Lo dejo en " +
-                event.target.id +
-                " " +
-                this.options.find((x) => x.tier_id == e.target.id).Visible
-            );
+          //+  console.log(
+           //+     "Lo dejo en " +
+            //+       event.target.id +
+             //+      " " +
+             //+      this.options.find((x) => x.tier_id == e.target.id).Visible
+            //+   );
         },
         seleccion_visualizacion_options: function (e) {
-            console.log("--------------------------------");
-            console.log(
-                "valor original es " +
-                this.options.find((x) => x.tier_id == event.target.id).value
-            );
-            console.log(e.target.value);
-            console.log(event.target.id);
+             //+  console.log("--------------------------------");
+            //+   console.log(
+            //+       "valor original es " +
+             //+      this.options.find((x) => x.tier_id == event.target.id).value
+           //+    );
+           //+    console.log(e.target.value);
+          //+     console.log(event.target.id);
             // console.log(arreglo_ref_tiempo.find(x=>x.ANNOTATION_ID===ts).TIME_SLOT_REF1)
             //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
             if (
@@ -228,23 +232,31 @@ export default {
                 this.options.find((x) => x.tier_id == event.target.id).value =
                     event.target.value;
             }
-            console.log(
-                "Cambio el valor a " +
-                this.options.find((x) => x.tier_id == event.target.id).value
-            );
+            //+   console.log(
+             //+      "Cambio el valor a " +
+              //+     this.options.find((x) => x.tier_id == event.target.id).value
+           //+    );
             //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
+        },//audioannotations
+        leerAudioannotationsMp3: function () {
+            // var i=0;
+            console.log("esta leyendo la mp3");
+            
+            this.mp3Audio=this.audioannotations_info.data.mp3_url
+            console.log(this.mp3Audio)
+            //return true;
         },
         leerTier: function () {
             // var i=0;
             console.log("esta leyendo la tier");
             for (var i in this.info.data.tier) {
-                console.log("aqui si entro 1");
+                //+   console.log("aqui si entro 1");
                 //console.log(this.info.data.tier[i]);
-                console.log("aqui si entro 2");
+                //+   console.log("aqui si entro 2");
                 //7/08/2020 aqui no puedo quitar infinite loop
                 this.otro.push(this.info.data.tier[i]);
                 //console.log("aqui si entro 3")
-                console.log("Tier num " + i);
+               //+    console.log("Tier num " + i);
                 // console.log(this.info.data.ANNOTATION_DOCUMENT.tier[1]);
                 //console.log(this.info.data);
             }
@@ -282,8 +294,8 @@ export default {
                 first: "1",
                 lastn: "3"
             });
-            console.log(valor);
-            console.log(1);
+            //+   console.log(valor);
+            //+   console.log(1);
         },
     },
     created() {
@@ -308,10 +320,17 @@ export default {
         //       .then(response =>  (this.info = response)          );
         var self = this;
         this.axios
-            .get("/eaf/Nuevoeaf.json")
+            .get("/eaf/tmp/Nuevoeaf.json")
             .then((response) => {this.info = response;
             self.leerTier();
             });
+         this.axios
+            .get("/audioannotations/index/5fc97a8ecf27910d01982fc2")
+            .then((response) => {this.audioannotations_info = response;
+            //falta hacer algo self.leerTier();
+            self.leerAudioannotationsMp3();
+            self.$root.$emit("valor_mp3",self.mp3Audio)
+            });   
         //this.saveFileJSon();
         //console.log("Aqui se esta añadiendo al json");
         //this.add("hola");

@@ -196,7 +196,9 @@ const addAudioannotation = async (req, res) => {
     const audioannotationDoc = await Audioannotations.create(audioannotation);
     console.log("> Audioanotations Created: " + JSON.stringify(audioannotationDoc))
     // return res.status(200).json(audioannotationDoc)
-    res.redirect(`/audioannotations/index/${audioannotationDoc._id}`)
+    //res.redirect(`/audioannotations/index/${audioannotationDoc._id}`)
+    //enviar a visualizar audioanootation con parametro
+     res.redirect(`/audioannotations/vuetest/${audioannotationDoc._id}`)
   } catch (error) {
     return res.status(200).json({error, from: "controller/audioannotations/addAudioannotation"})
   }
@@ -284,7 +286,10 @@ const deleteAudioannotaion = async (req, res) => {
 }
 
 const vuetestAudioannotaion = async (req, res) => {
-  res.render('audioannotations/vuetest', {})
+  const audioannotId = req.params.audioannotationId
+  console.log("--------------Aqui--------------")
+  console.log(audioannotId)
+  res.render('audioannotations/vuetest', {audioannotId2:"audioannotId"})
 }
 
 export default {
