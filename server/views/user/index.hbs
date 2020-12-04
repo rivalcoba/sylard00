@@ -140,14 +140,18 @@
               </th>
               <th class="" id="th_acciones_administrador_usuarios"></th>
             </thead>
-            <tr>
+
+            <!-- INICIA TABLE ROW -->
+            {{#each usersObjs}}
+            <tr id="{{_id}}" class="">
               <!--class="selected"-->
               <td>
                 <label class="contenedor_checkbox">
-                  <input type="checkbox" class="checkbox_personalizada" />
+                  <input onclick="toggleSelection('{{_id}}')" type="checkbox" class="checkbox_personalizada" />
                   <span class="marca_check"></span>
                 </label>
               </td>
+              
               <td class="td_icono_usuario_administrador_usuarios">
                 <div class="contenedor_icono_usuario_administrador_usuarios">
                   <img
@@ -245,155 +249,8 @@
                 </div>
               </td>
             </tr>
-            <tr class="selected">
-              <td>
-                <label class="contenedor_checkbox">
-                  <input
-                    type="checkbox"
-                    class="checkbox_personalizada"
-                    checked
-                  />
-                  <span class="marca_check"></span>
-                </label>
-              </td>
-              <td class="td_icono_usuario_administrador_usuarios">
-                <span
-                  class="icono_usuario_administrador_usuarios icon-user"
-                ></span>
-              </td>
-              <td class="">
-                Bruno Edipo Pérez Sánchez
-                <span class="correo_de_usuario" data-label="Correo de usuario">
-                  bruno.perez.ch@servidor.com.mx
-                </span>
-              </td>
-              <td>
-                Glottocode
-                <span
-                  class="lengua_term_comun"
-                  data-label="Lengua terminal (nombre común)"
-                >
-                  Nombre común
-                </span>
-              </td>
-              <td class="tipo_de_colaborador_administrador_usuarios" id="">
-                <div class="contenedor_switch_canal_audioanotacion_hijo">
-                  <label class="switch_general">
-                    <input
-                      type="checkbox"
-                      class="checkbox_canal1"
-                      id="checbox_canal_1"
-                      unchecked
-                    />
-                    <span class="slider_general round"></span>
-                  </label>
-                  <label
-                    class="swich_etiqueta_opcion2"
-                    for="checbox_canal_1"
-                    id="switch_usuario_canal1_on"
-                  ></label>
-                </div>
-              </td>
-              <td class="td_descripcion_usuario_administrador_usuarios">
-                Estudiante de lenguas originarias de Ámerica Latina
-              </td>
-              <td class="td_colecciones"></td>
-              <td class="td_acciones">
-                <div class="contenedor_botones_accion_administrador_usuarios">
-                  <button id="elipsis1" class="btn_accion_tabla">
-                    <span class="icono_accion_tabla icon-ellipsis-v"></span>
-                  </button>
-                  <div id="modal_elipsis1" class="contenido_modal_elipsis">
-                    <span class="icono_cerrar_modal_elipsis icon-close"></span>
-                    <div class="contenedor_opciones_elipsis">
-                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
-                        <span class="icono_opcion_elipsis icon-edit"></span>
-                        Editar usuario
-                      </a>
-                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
-                        <span class="icono_opcion_elipsis icon-delete"></span>
-                        Eliminar
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr class="">
-              <td>
-                <label class="contenedor_checkbox">
-                  <input type="checkbox" class="checkbox_personalizada" />
-                  <span class="marca_check"></span>
-                </label>
-              </td>
-              <td class="td_icono_usuario_administrador_usuarios">
-                <span
-                  class="icono_usuario_administrador_usuarios icon-user"
-                ></span>
-              </td>
-              <td class="">
-                Juan K. Maney
-                <span class="correo_de_usuario" data-label="Correo de usuario">
-                  Juanito234@servidor.com.mx
-                </span>
-              </td>
-              <td>
-                Glottocode
-                <span
-                  class="lengua_term_comun"
-                  data-label="Lengua terminal (nombre común)"
-                >
-                  Nombre común
-                </span>
-              </td>
-              <td class="tipo_de_colaborador_administrador_usuarios" id="">
-                <div class="contenedor_switch_canal_audioanotacion_hijo">
-                  <label
-                    class="swich_etiqueta_opcion1"
-                    for="checkbox"
-                    id="switch_canal1_off"
-                  ></label>
-                  <label class="switch_general">
-                    <input
-                      type="checkbox"
-                      class="checkbox_canal1"
-                      id="checbox_canal_1"
-                      unchecked
-                    />
-                    <span class="slider_general round"></span>
-                  </label>
-                  <label
-                    class="swich_etiqueta_opcion2"
-                    for="checbox_canal_1"
-                    id="switch_usuario_canal1_on"
-                  ></label>
-                </div>
-              </td>
-              <td class="td_descripcion_usuario_administrador_usuarios">
-                Researcher leader
-              </td>
-              <td class="td_colecciones"></td>
-              <td class="td_acciones">
-                <div class="contenedor_botones_accion_administrador_usuarios">
-                  <button id="elipsis1" class="btn_accion_tabla">
-                    <span class="icono_accion_tabla icon-ellipsis-v"></span>
-                  </button>
-                  <div id="modal_elipsis1" class="contenido_modal_elipsis">
-                    <span class="icono_cerrar_modal_elipsis icon-close"></span>
-                    <div class="contenedor_opciones_elipsis">
-                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
-                        <span class="icono_opcion_elipsis icon-edit"></span>
-                        Editar usuario
-                      </a>
-                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
-                        <span class="icono_opcion_elipsis icon-delete"></span>
-                        Eliminar
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+            <!-- FINALIZA TABLE ROW -->
+            {{/each}}            
           </table>
           <div class="contenedor_paginacion">
             <div class="contenedor_input_paginacion">
@@ -448,6 +305,13 @@
     </section>
   </div>
 </main>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <script>
 		// Get the modal
 var modal_info = document.getElementById("modal_info");
@@ -501,33 +365,20 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-	</script>
-<div>
-  <h1 style="margin: 0px auto;">
-    Ejemplo de Acceso a Datos de Usuarios
-  </h1>
-</div>
-<div>
-  <br />
-  <table>
-    <tr>
-      <th>
-        User Name
-      </th>
-      <th>
-        Id
-      </th>
-    </tr>
-    {{#each usersObjs}}
-      <tr>
-        <td>
-          {{name}}
-        </td>
-        <td>
-          {{_id}}
-        </td>
-      </tr>
-    {{/each}}
-  </table>
-  <br />
-</div>
+let selectedUsers = [];
+
+let toggleSelection = function(id){
+  
+  let isSelected = selectedUsers.findIndex(userId => userId === id)
+  
+  let userTableRow = document.getElementById(id)
+
+  if(isSelected === -1){
+    selectedUsers.push(id)
+    userTableRow.classList.add('selected')
+  }else{
+    userTableRow.classList.remove('selected')
+    selectedUsers.splice(isSelected, 1)
+  }
+}
+</script>
