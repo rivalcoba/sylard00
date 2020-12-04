@@ -32,6 +32,7 @@
               <th class="cabezal_columnas_th" id="th_acciones_generales">
                 <div class="contenedor_acciones_generales">
                   <input
+                    onclick="toggleAllCheckBoxes()"
                     type="checkbox"
                     class="input_checkbox_cabezal_columna"
                   />
@@ -380,5 +381,10 @@ let toggleSelection = function(id){
     userTableRow.classList.remove('selected')
     selectedUsers.splice(isSelected, 1)
   }
+}
+
+let toggleAllCheckBoxes = function(){
+  alert("Toggole Al checkboxes")
+  // TODO: Append all check boxes
 }
 </script>
