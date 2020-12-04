@@ -781,7 +781,6 @@ textarea:invalid~.contenedor_icono_error_input
 {
     display: inline-block;
     color: var(--color-error)!important;
-    border: 1px dashed red;
 }
 
 
@@ -822,7 +821,6 @@ select:invalid~.contenedor_icono_error_input
 {
     display: inline-block;
     color: var(--color-error)!important;
-    border: 1px dashed red;
 }
 
 
@@ -1487,7 +1485,7 @@ input:checked+.slider_general:before {
     flex-basis: 40%;
 }
 
-#lenguas_agregadas_input {
+#spokenLanguages {
     width: 98%;
 }
 

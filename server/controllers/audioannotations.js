@@ -94,7 +94,28 @@ const index = async (req, res) => {
   })
 }
 
-const filtrarAudioannotation=async (req,res)=>{
+// Visualize Audio Annotations By Id
+const indexById = async (req, res) => {
+  const audioannotId = req.params.audioannotationId
+  console.log(`>finding ${audioannotId}`)
+  // Find audio annotation to visualize
+  try {
+    let audioannotationDoc = await Audioannotations.findById(audioannotId)
+    .populate('collection_id')
+    .populate('user').exec()
+    // TODO: TOÑO
+    // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    // >>>>>>>>>>>>>>>>>>>>>>>>> AQUI ESTA EL JSON DE LA AUDIO ANNOTACION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    res.json(audioannotationDoc)
+    // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  } catch (error) {
+    res.json(error)
+  }
+}
+
+const filtrarAudioannotation = async (req,res)=>{
   console.log("Aqui")
   // Aqui me quede le quite el await
   try {
@@ -132,6 +153,7 @@ const addAudioannotation = async (req, res) => {
     TIER_ID
   } = req.body
 
+  
   let tiers = []
   let numberOfTiersPerParticipant = Visible.length / PARTICIPANT.length 
   PARTICIPANT.forEach((participant, indexp) => {
@@ -149,9 +171,12 @@ const addAudioannotation = async (req, res) => {
       })
     }
   });
-
+  
   // Building audioannotation
   let genreDoc = await Genre.findById(genre).exec()
+  let collectionDoc = await Collection.findById(collection_id).exec()
+  let gidDoc = collectionDoc.languages.id(gid)
+  let locationDoc = collectionDoc.localities.id(location)
   
   let audioannotation = {
     eaf, // ok
@@ -160,18 +185,18 @@ const addAudioannotation = async (req, res) => {
     genre: genreDoc, // ok - ARMAR
     duration,// ok
     mp3_url, // ok
-    location, // ok
+    location: locationDoc, // ok
     collection_id, // ok
-    gid, // ok
+    gid: gidDoc, // ok
     user: req.user._id,
     TIER: tiers,
   }
-
+  
   try {
     const audioannotationDoc = await Audioannotations.create(audioannotation);
     console.log("> Audioanotations Created: " + JSON.stringify(audioannotationDoc))
-    return res.status(200).json(audioannotationDoc)
-    // res.redirect('/audioannotations') //TODO: Descomentar tan pronto toño acomple esto con index de audioanot
+    // return res.status(200).json(audioannotationDoc)
+    res.redirect(`/audioannotations/index/${audioannotationDoc._id}`)
   } catch (error) {
     return res.status(200).json({error, from: "controller/audioannotations/addAudioannotation"})
   }
@@ -270,5 +295,6 @@ export default {
   addAudioannotation,
   uploadfileAudioannotation,
   vuetestAudioannotaion,
-  filtrarAudioannotation
+  filtrarAudioannotation,
+  indexById
 }

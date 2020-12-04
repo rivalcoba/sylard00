@@ -5,7 +5,12 @@
 // console.log("Aqui")
 //console.log(collections)
 b.render("audioannotations/index",{//enviar
-audioannotations:d})},filtrarAudioannotation=async(a,b)=>{console.log("Aqui");// Aqui me quede le quite el await
+audioannotations:d})},indexById=async(a,b)=>{const c=a.params.audioannotationId;console.log(`>finding ${c}`);// Find audio annotation to visualize
+try{let a=await _AudioAnnotations.default.findById(c).populate("collection_id").populate("user").exec();// TODO: TOÑO
+// >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+// >>>>>>>>>>>>>>>>>>>>>>>>> AQUI ESTA EL JSON DE LA AUDIO ANNOTACION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+// >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+b.json(a)}catch(a){b.json(a)}},filtrarAudioannotation=async(a,b)=>{console.log("Aqui");// Aqui me quede le quite el await
 try{const c=await _AudioAnnotations.default.find({user:a.user._id}).populate("user").populate("colection").exec();b.json(c)}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
 b.render("audioannotations/create")},addAudioannotation=async(a,b)=>{let{eaf:c,// ok
 mp3_url:d,// ok
@@ -18,17 +23,17 @@ location:j,// ok
 genre:k,// ok
 PARTICIPANT:l,Visible:m,value:n,color:o,LINGUISTIC_TYPE_REF:p,TIER_ID:q}=a.body,r=[],s=m.length/l.length;l.forEach((a,b)=>{for(let c,d=0;d<s;d++)// Se calcula indice absoluto
 c=d+b*s,console.log(`absIndex: ${c} - `),r.push({PARTICIPANT:a,Visible:m[c],value:n[c],color:o[c],LINGUISTIC_TYPE_REF:p[c],TIER_ID:q[c]})});// Building audioannotation
-let t=await _Genre.default.findById(k).exec(),u={eaf:c,// ok
+let t=await _Genre.default.findById(k).exec(),u=await _Collection.default.findById(h).exec(),v=u.languages.id(i),w=u.localities.id(j),x={eaf:c,// ok
 title:f,// ok
 description:g,//
 genre:t,// ok - ARMAR
 duration:e,// ok
 mp3_url:d,// ok
-location:j,// ok
+location:w,// ok
 collection_id:h,// ok
-gid:i,// ok
-user:a.user._id,TIER:r};try{const a=await _AudioAnnotations.default.create(u);return console.log("> Audioanotations Created: "+JSON.stringify(a)),b.status(200).json(a);// res.redirect('/audioannotations') //TODO: Descomentar tan pronto toño acomple esto con index de audioanot
-}catch(a){return b.status(200).json({error:a,from:"controller/audioannotations/addAudioannotation"})}},uploadfileAudioannotation=async(a,b,c)=>{const d=a.file;if(!d){const a=new Error("Please upload a file");return a.httpStatusCode=400,c(a)}//convertir nuevoJSON Aqui
+gid:v,// ok
+user:a.user._id,TIER:r};try{const a=await _AudioAnnotations.default.create(x);// return res.status(200).json(audioannotationDoc)
+console.log("> Audioanotations Created: "+JSON.stringify(a)),b.redirect(`/audioannotations/index/${a._id}`)}catch(a){return b.status(200).json({error:a,from:"controller/audioannotations/addAudioannotation"})}},uploadfileAudioannotation=async(a,b,c)=>{const d=a.file;if(!d){const a=new Error("Please upload a file");return a.httpStatusCode=400,c(a)}//convertir nuevoJSON Aqui
 // console.log("-----------ARCHIVO CARGADO EN SERVER----------")
 // console.log(file.filename)
 try{(0,_deletejson.default)(d.filename),(0,_converteaf.default)(d.filename),(0,_converteaftojson.default)(d.filename)}catch(a){console.log("Erorroesss al convertir EAF2JSON"),console.log(a)}try{// Obteniendo datos de las collections
@@ -38,4 +43,5 @@ _fs.default.unlinkSync(_path.default.join(__dirname,"..","public","eaf",d.filena
 //console.log(req.)
 let a=await _AudioAnnotations.default.findById(c).exec();const d=a.eaf,e=await _AudioAnnotations.default.deleteOne({_id:c}).exec();//console.log(file);
 console.log(`deleteAudioannotation> Result: ${e}`);//Borrado del archivo fisicamente
-const f=require("fs");f.unlinkSync("server/public/eaf/"+d),b.redirect("/audioannotations")}catch(a){return console.error(a),b.status(400).json(a)}},vuetestAudioannotaion=async(a,b)=>{b.render("audioannotations/vuetest",{})};var _default={index,createAudioannotation,editAudioannotation,deleteAudioannotaion,addAudioannotation,uploadfileAudioannotation,vuetestAudioannotaion,filtrarAudioannotation};exports.default=_default;
+const f=require("fs");f.unlinkSync("server/public/eaf/"+d),b.redirect("/audioannotations")}catch(a){return console.error(a),b.status(400).json(a)}},vuetestAudioannotaion=async(a,b)=>{b.render("audioannotations/vuetest",{})};// Visualize Audio Annotations By Id
+var _default={index,createAudioannotation,editAudioannotation,deleteAudioannotaion,addAudioannotation,uploadfileAudioannotation,vuetestAudioannotaion,filtrarAudioannotation,indexById};exports.default=_default;

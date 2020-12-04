@@ -21,6 +21,13 @@ router.get(
   audioannotationsController.index
 )
 
+router.get(
+  '/index/:audioannotationId',
+  ensureAuthenticated,
+  ensureColabUser,
+  audioannotationsController.indexById
+)
+
 router.post(
   '/add',
   ensureAuthenticated,
