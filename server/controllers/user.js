@@ -79,12 +79,25 @@ const resetUserPassword = async (req, res) => {
 }
 
 const index = async (req, res) => {
-  // TODO: Terminar esta sección
   // res.render('user/index', { usersObjs })
-  const usersObjs = await User.find()
-    .lean()
-    .exec()
-  res.render('user/index', { usersObjs })
+  const usersObjs = await User.find({role : {$ne: "su"}})
+  .lean()
+  .exec()
+  
+  let usersDocs = usersObjs.map((usr)=>{
+    usr.role = usr.role==="colaborator"?"checked":""
+    // Attach user collections
+    // let collectionsDocs = await Collection.find({"user": usr._id})
+    // TODO: Terminar esta sección NO SE PUEDE LLENAR COLECCIONES
+     usr.collections = [{"name":usr._id},{"name":usr._id}]
+    return usr
+  })
+
+  return res.json(usersDocs)
+  // Buscando las colecciones de este usuario
+  //let collectionsDoc = Collection.find({"user":})
+
+  res.render('user/index', { usersObjs: usersDocs })
 }
 
 const delUsers = async(req, res)=>{	

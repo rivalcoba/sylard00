@@ -153,46 +153,34 @@
                   <span class="marca_check"></span>
                 </label>
               </td>
-              
+
               <td class="td_icono_usuario_administrador_usuarios">
                 <div class="contenedor_icono_usuario_administrador_usuarios">
                   <img
-                    src="images/iconousuario.svg"
+                    src="{{image}}"
                     class="imagen_icono_usuario_administrador_usuarios"
                     alt="Ícono de venado usuario"
                   />
                 </div>
               </td>
+
               <td class="">
-                Jorge Pérez Mejia
+                <div>{{name}}</div>
                 <span class="correo_de_usuario" data-label="Correo de usuario">
-                  jorge.mejia.perez@servidor.com.mx
+                  {{email}}
                 </span>
               </td>
               <td>
-                yolo1241
-                <span
-                  class="lengua_term_comun"
-                  data-label="Lengua terminal (nombre común)"
-                >
-                  Yoloxóchitl Mixtec
-                </span>
-                <br />
-                high1278
-                <span
-                  class="lengua_term_comun"
-                  data-label="Lengua terminal (nombre común)"
-                >
-                  Highland Puebla Nahuat
-                </span>
-                <br />
-                Glottocode
-                <span
-                  class="lengua_term_comun"
-                  data-label="Lengua terminal (nombre común)"
-                >
-                  Nombre común
-                </span>
+                {{#each spokenLanguages}}
+                <div>
+                  {{gid}}
+                  <span
+                    class="lengua_term_comun"
+                    data-label="Lengua terminal (nombre común)">
+                    {{name}}
+                  </span>
+                </div>
+                {{/each}}
               </td>
               <td class="tipo_de_colaborador_administrador_usuarios" id="">
                 <div class="contenedor_switch_canal_audioanotacion_hijo">
@@ -201,7 +189,7 @@
                       type="checkbox"
                       class="checkbox_canal1"
                       id="checbox_canal_1"
-                      checked
+                      {{role}}
                     />
                     <span class="slider_general round"></span>
                   </label>
@@ -214,20 +202,17 @@
                 </div>
               </td>
               <td class="td_descripcion_usuario_administrador_usuarios">
-                Biologo con gusto por las lenguas indigenas. Interesado por las ranas de México y como se relacionan con la gastronomía de Michoacán
+                {{about}}
               </td>
               <td class="td_colecciones_administrador_usuarios">
                 <ul>
+                  {{each collections}}
                   <li class="colecciones_usuario_lista">
                     <a href="#">
-                      Los anfibios en la mitología prehispanica
+                      {{name}}
                     </a>
-                  </li>
-                  <li class="colecciones_usuario_lista">
-                    <a href="#">
-                      Gastronomia indigena en regiones humedas, las ranas el manjar de los habitantes
-                    </a>
-                  </li>
+                  </li>                
+                  {{/each}}
                 </ul>
               </td>
               <td class="td_acciones">
@@ -252,7 +237,7 @@
               </td>
             </tr>
             <!-- FINALIZA TABLE ROW -->
-            {{/each}}            
+            {{/each}}
           </table>
           <div class="contenedor_paginacion">
             <div class="contenedor_input_paginacion">
@@ -370,9 +355,9 @@ window.onclick = function(event) {
 let selectedUsers = [];
 
 let toggleSelection = function(id){
-  
+
   let isSelected = selectedUsers.findIndex(userId => userId === id)
-  
+
   let userTableRow = document.getElementById(id)
 
   if(isSelected === -1){
@@ -385,16 +370,17 @@ let toggleSelection = function(id){
 }
 
 let toggleAllCheckBoxes = function(){
-  alert("Toggole Al checkboxes")
-  // TODO: Append all check boxes
   let masterCheckBox = document.getElementById('masterCheckBox')
-  
   var checkBoxes = document.getElementsByClassName('checkbox_personalizada')
-  alert(checkBoxes.length)
-  if(masterCheckBox.checked){
-    checkBoxes.forEach(chkBox=>chkBox.checked=false)
-  }else{
-    checkBoxes.forEach(chkBox=>chkBox.checked=true)
-  }
+  Array.from(checkBoxes).forEach(chkBox=>{
+    console.log(masterCheckBox.checked && !chkBox.checked)
+    if(masterCheckBox.checked && !chkBox.checked){
+      //chkBox.checked = true;
+      chkBox.click();
+    }
+    if(!masterCheckBox.checked && chkBox.checked){
+      chkBox.click();
+    }
+  })
 }
 </script>
