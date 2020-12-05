@@ -35,6 +35,7 @@
                     onclick="toggleAllCheckBoxes()"
                     type="checkbox"
                     class="input_checkbox_cabezal_columna"
+                    id="masterCheckBox"
                   />
                   <button class="btn-eliminar_seleccionados">
                     <span
@@ -386,5 +387,14 @@ let toggleSelection = function(id){
 let toggleAllCheckBoxes = function(){
   alert("Toggole Al checkboxes")
   // TODO: Append all check boxes
+  let masterCheckBox = document.getElementById('masterCheckBox')
+  
+  var checkBoxes = document.getElementsByClassName('checkbox_personalizada')
+  alert(checkBoxes.length)
+  if(masterCheckBox.checked){
+    checkBoxes.forEach(chkBox=>chkBox.checked=false)
+  }else{
+    checkBoxes.forEach(chkBox=>chkBox.checked=true)
+  }
 }
 </script>
