@@ -13,11 +13,11 @@
         {{ recorrer_todo($attrs.longitud_tiempo) }}
         <div v-for="(item, index) in options" :key="'item' + index">
           Canal {{ index + 1 }}
-          <input type="checkbox" :id="item.tier_id" checked @change="seleccion_onoff($event)" />
+          <input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
           <label for="checkbox" value="on" name="on" id="on"> </label>
-          {{ item.tier_participant }} {{ item.tier_id }}
+          {{ item.PARTICIPANT }} {{ item.TIER_ID }}
 
-          <select :id="item.tier_id" @change="seleccion_visualizacion_options($event)">
+          <select :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
             <option value="B">Scrolling</option>
             <option value="A" selected>On-Line-Display</option>
           </select>
@@ -74,9 +74,9 @@
             -->
         <div v-for="(item, index) in tempdata" :key="index">
           <div v-if="$attrs.tiempo_parametro >= item.TIME_SLOT_REF1 && $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1">
-            <b> {{ item.tier_id }} : {{ item.ANNOTATION_VALUE }} </b>
+            <b> {{ item.TIER_ID }} : {{ item.ANNOTATION_VALUE }} </b>
           </div>
-          <p v-else><button v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)"></button> {{ item.tier_id }} :{{ item.TIME_SLOT_REF1 }} {{ item.ANNOTATION_VALUE }}</p>
+          <p v-else><button v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)"></button> {{ item.TIER_ID }} :{{ item.TIME_SLOT_REF1 }} {{ item.ANNOTATION_VALUE }}</p>
         </div>
       </div>
       <p v-else>Cargando.....</p>
@@ -141,7 +141,7 @@ export default {
             //checar https://stackoverflow.com/questions/7858385/how-to-add-values-to-an-array-of-objects-dynamically-in-javascript
             this.tempdata[this.contador] = {};
             this.tempdata[this.contador] = {
-              tier_id: this.otro[indice][0].TIER_ID[0],
+              TIER_ID: this.otro[indice][0].TIER_ID[0],
               ANNOTATION_ID: x.ANNOTATION_ID,
               ANNOTATION_VALUE: x.ANNOTATION_VALUE,
               TIME_SLOT_REF1: x.TIME_SLOT_REF1,
@@ -179,7 +179,7 @@ export default {
       return valor;
     },
     buscar_option_value: function (item) {
-      var valor = this.options.find((x) => x.tier_id == item);
+      var valor = this.options.find((x) => x.TIER_ID == item);
       //console.log("Aqui "+item)
       //console.log("otro "+valor)
       return valor;
@@ -190,9 +190,9 @@ export default {
       //+console.log(e.target.checked);
       if (e.target.checked) {
         //+console.log("si esta en on");
-        this.options.find((x) => x.tier_id == e.target.id).Visible = true;
+        this.options.find((x) => x.TIER_ID == e.target.id).Visible = true;
       } else {
-        this.options.find((x) => x.tier_id == e.target.id).Visible = false;
+        this.options.find((x) => x.TIER_ID == e.target.id).Visible = false;
         //+console.log("si lo off");
       }
       //+  console.log(
@@ -212,9 +212,9 @@ export default {
       //+     console.log(event.target.id);
       // console.log(arreglo_ref_tiempo.find(x=>x.ANNOTATION_ID===ts).TIME_SLOT_REF1)
       //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
-      if (this.options.find((x) => x.tier_id == event.target.id).value != event.target.value) {
+      if (this.options.find((x) => x.TIER_ID == event.target.id).value != event.target.value) {
         //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
-        this.options.find((x) => x.tier_id == event.target.id).value = event.target.value;
+        this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
       }
       //+   console.log(
       //+      "Cambio el valor a " +
@@ -260,11 +260,11 @@ export default {
         //Agrega al vector options para mostrar una linea o multiples
         this.options.push({
           //id: i,
-          tier_id: this.otro[j][0].TIER_ID[0],
-          tier_participant: this.otro[j][0].PARTICIPANT[0],
+          TIER_ID: this.otro[j][0].TIER_ID[0],
+          PARTICIPANT: this.otro[j][0].PARTICIPANT[0],
           value: "A",
           Visible: true,
-          Color: "#000000",
+          color: "#000000",
         });
       }
       // se asigno el vector audioannotations a options
