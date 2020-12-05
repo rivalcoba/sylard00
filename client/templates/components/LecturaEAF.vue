@@ -21,6 +21,7 @@
             <option value="B">Scrolling</option>
             <option value="A" selected>On-Line-Display</option>
           </select>
+          <input name="color" type="text" :id="item.TIER_ID" value="#000000" >
         </div>
 
         <div v-for="(item, index) in otro" :key="index">
