@@ -286,10 +286,10 @@ const deleteAudioannotaion = async (req, res) => {
 }
 
 const vuetestAudioannotaion = async (req, res) => {
-  const audioannotId = req.params.audioannotationId
+  const audioannotationid = req.params.audioannotation_id
   console.log("--------------Aqui--------------")
-  console.log(audioannotId)
-  res.render('audioannotations/vuetest', {audioannotId2:"audioannotId"})
+  console.log(audioannotationid)
+  res.render('audioannotations/vuetest', {audioannotationid})
 }
 
 export default {
