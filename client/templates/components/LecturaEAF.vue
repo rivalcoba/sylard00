@@ -6,47 +6,61 @@
     <div id="app">
       <!--  {{ info }} -->
       <div v-if="this.info.data">
-        <!--Si hay datos Linea por Linea
+        <table>
+      
+          <!--Si hay datos Linea por Linea
             {{$attrs.tiempo_parametro}} {{$attrs.longitud_tiempo}}
             <button v-on:click="leerTier">Saludar</button>
             <br />-->
-        {{ recorrer_todo($attrs.longitud_tiempo) }}
-        <div v-for="(item, index) in options" :key="'item' + index">
-          Canal {{ index + 1 }}
-          <input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
-          <label for="checkbox" value="on" name="on" id="on"> </label>
-          {{ item.PARTICIPANT }} {{ item.TIER_ID }}
+          {{
+            recorrer_todo($attrs.longitud_tiempo)
+          }}
+         
+<tr>
+          <div v-for="(item, index) in options" :key="'item' + index">
+          
+            Canal {{ index + 1 }} ({{item.LINGUISTIC_TYPE_REF}})
+            <input type="checkbox" :id="item.TIER_ID" v-model="item.Visible" />
+            <!--<label for="checkbox" value="on" name="on" id="on"> </label>
+            <input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
+            -->
+            
+            {{ item.PARTICIPANT }} {{ item.TIER_ID }}
 
-          <select :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
-            <option value="B">Scrolling</option>
-            <option value="A" selected>On-Line-Display</option>
-          </select>
-          <input name="color" type="text" :id="item.TIER_ID" value="#000000" >
-        </div>
+           <!-- <select v-model="item.value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
+            -->
+            <select v-model="item.value" :id="item.TIER_ID">
+              <option value="B">Scrolling</option>
+              <option value="A" selected>On-Line-Display</option>
+            </select>
+            <input name="color" type="text" :id="item.TIER_ID" v-model="item.color" />
+          </div>
 
-        <div v-for="(item, index) in otro" :key="index">
-          <div v-if="options[index].Visible">
-            <div v-if="options[index].value == 'A'">
-              <div v-for="(item, index) in otro[index]" :key="index">
-                <div v-if="$attrs.tiempo_parametro >= item.TIME_SLOT_REF1 && $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1">
-                  <b>
-                    <!--{{tier_temp}}:-->
-                    {{ item.ANNOTATION_VALUE }}
-                    <!--  me quede 
+          <div v-for="(item, index) in otro" :key="index">
+            <div v-if="options[index].Visible">
+              <div v-if="options[index].value == 'A'">
+                <div v-for="(item, index) in otro[index]" :key="index">
+                  <div v-if="$attrs.tiempo_parametro >= item.TIME_SLOT_REF1 && $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1">
+                    <b>
+                      <!--{{tier_temp}}:-->
+                      {{ item.ANNOTATION_VALUE }}
+                      <!--  me quede 
                                     {{sincronizar(7)}}
                                     -->
-                    <!-- {{item.ANNOTATION_ID}} 
+                      <!-- {{item.ANNOTATION_ID}} 
                 {{item.TIME_SLOT_REF1}} {{item.TIME_SLOT_REF2}} -->
-                  </b>
-                </div>
-                <div v-if="index == 0">
-                  <!-- {{item.DEFAULT_LOCALE[index]}} ({{item.LINGUISTIC_TYPE_REF[index]}}) {{item.PARTICIPANT[index]}}
+                    </b>
+                  </div>
+                  <div v-if="index == 0">
+                    <!-- {{item.DEFAULT_LOCALE[index]}} ({{item.LINGUISTIC_TYPE_REF[index]}}) {{item.PARTICIPANT[index]}}
                 {{tier_temp=item.TIER_ID[index]}}:-->{{ item.TIER_ID[index] }} :
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          </tr>
+        </table>
       </div>
       <p v-else>loading.....</p>
       <div v-if="this.info.data">
@@ -257,19 +271,19 @@ export default {
         // console.log(this.info.data.ANNOTATION_DOCUMENT.tier[1]);
         //console.log(this.info.data);
       }
-      for (var j in this.otro) {
-        //Agrega al vector options para mostrar una linea o multiples
-        this.options.push({
-          //id: i,
-          TIER_ID: this.otro[j][0].TIER_ID[0],
-          PARTICIPANT: this.otro[j][0].PARTICIPANT[0],
-          value: "A",
-          Visible: true,
-          color: "#000000",
-        });
-      }
+      // for (var j in this.otro) {
+      //   //Agrega al vector options para mostrar una linea o multiples
+      //   this.options.push({
+      //     //id: i,
+      //     TIER_ID: this.otro[j][0].TIER_ID[0],
+      //     PARTICIPANT: this.otro[j][0].PARTICIPANT[0],
+      //     value: "A",
+      //     Visible: true,
+      //     color: "#000000",
+      //   });
+      // }
       // se asigno el vector audioannotations a options
-     // this.options=this.audioannotations
+      this.options = this.audioannotations;
       //return true;
     },
 
