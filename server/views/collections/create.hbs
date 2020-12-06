@@ -97,7 +97,7 @@
                   <span class="icono_error_input icon-error"></span>
                 </p>
               </div>
-               <datalist id="langlist">
+              <datalist id="langlist">
              {{#each languages}}
              <option 
              id = '{{_id}}'
@@ -135,8 +135,8 @@
              </datalist>
             </div>
             <div class="modulo_boton_lengua">
-              <button class="btn_lateral_input_agregar_lengua" disabled>
-                <i id="addLangBtn" onclick="pageScripts.addLanguage()" class="icono_boton_lateral icon-plus"></i>
+              <button class="btn_lateral_input_agregar_lengua" disabled/>
+                <span id="addLangBtn" onclick="pageScripts.addLanguage()" class="icono_boton_lateral icon-plus"></span>
               </button>
             </div>
           </div>
@@ -255,7 +255,7 @@
                 <label class="label label_al_100">
                   Latitud:
                 </label>
-                <input type="text" class="input_flexible"  />
+                <input type="text" id="lat" class="input_flexible"  />
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
@@ -271,7 +271,7 @@
                 <label class="label label_al_100">
                   Longitud:
                 </label>
-                <input type="text" class="input_flexible"  />
+                <input type="text" id="long" class="input_flexible"  />
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
