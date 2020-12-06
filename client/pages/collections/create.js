@@ -147,13 +147,14 @@ function addLocalityRow(locality) {
     let tr = document.createElement('tr')
     tr.setAttribute('id', `${locality._id}`)
         // Adding element to the table
+
     tr.innerHTML = `
     <input
       type="text"
       style="display:none;"
       name="localities"
       value="${locality._id}">
-    <td>${locality.Nom_Loc}</td>
+    <td class="lengua_terminal_glottocode_agregar_coleccion">${locality.Nom_Loc}</td>
     <td>${locality.Nom_Mun}</td>
     <td>${locality.Nom_Ent}</td>
     <td>Mexico</td>
