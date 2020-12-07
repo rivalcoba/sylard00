@@ -256,7 +256,10 @@ const uploadfileAudioannotation = async (req, res, next) => {
   }
 }
 const editAudioannotation = async (req, res) => {
-  res.render('audioannotations/edit', {})
+  const audioannotationid = req.params.audioannotation_id
+  console.log("--------------Aqui Edit--------------")
+  console.log(audioannotationid)
+  res.render('audioannotations/edit', {audioannotationid})
 }
 
 const deleteAudioannotaion = async (req, res) => {
