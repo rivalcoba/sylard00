@@ -3867,6 +3867,11 @@ h6.canal_hijo_compacto {
     position: relative;
     z-index: 1;
 }
+
+input[type=password]::-ms-reveal,
+input[type=password]::-ms-clear {
+    display: none;
+}
 /*!
  * Bootstrap Grid v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
