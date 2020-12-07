@@ -49,13 +49,13 @@ const documentation = (req, res) => {
     })
 }
 const usermanual = (req, res) => {
-    res.render('index/register', {
+    res.render('index/usermanual', {
         title: 'User Manual',
         content: 'Terms and conditions are presenting bellow....',
     })
 }
 const terms = (req, res) => {
-    res.render('index/register', {
+    res.render('index/terms', {
         title: 'Terms',
         content: 'Terms and conditions are presenting bellow....',
     })
