@@ -3844,3 +3844,8 @@ h6.canal_hijo_compacto {
     position: relative;
     z-index: 1;
 }
+
+input[type=password]::-ms-reveal,
+input[type=password]::-ms-clear {
+    display: none;
+}
