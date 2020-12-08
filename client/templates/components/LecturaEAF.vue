@@ -7,7 +7,6 @@
       <!--  {{ info }} -->
       <div v-if="this.info.data">
         <table>
-      
           <!--Si hay datos Linea por Linea
             {{$attrs.tiempo_parametro}} {{$attrs.longitud_tiempo}}
             <button v-on:click="leerTier">Saludar</button>
@@ -15,56 +14,61 @@
           {{
             recorrer_todo($attrs.longitud_tiempo)
           }}
-         
-<tr>
-          <div v-for="(item, index) in options" :key="'item' + index">
-          
-            Canal {{ index + 1 }} ({{item.LINGUISTIC_TYPE_REF}})
-            <input type="checkbox" :id="item.TIER_ID" v-model="item.Visible" />
-            <!--<label for="checkbox" value="on" name="on" id="on"> </label>
+
+          <tr>
+            <div v-for="(item, index) in options" :key="'item' + index">
+              Canal {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
+              <input type="checkbox" :id="item.TIER_ID" v-model="item.Visible" />
+              <!--<label for="checkbox" value="on" name="on" id="on"> </label>
             <input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
             -->
-            
-            {{ item.PARTICIPANT }} {{ item.TIER_ID }}
 
-           <!-- <select v-model="item.value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
+              {{ item.PARTICIPANT }} {{ item.TIER_ID }}
+
+              <!-- <select v-model="item.value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
             -->
-            <select v-model="item.value" :id="item.TIER_ID">
-              <option value="B">Scrolling</option>
-              <option value="A" selected>On-Line-Display</option>
-            </select>
-            <input name="color" type="text" :id="item.TIER_ID" v-model="item.color" />
-          </div>
+              <select v-model="item.value" :id="item.TIER_ID">
+                <option value="B">Scrolling</option>
+                <option value="A" selected>On-Line-Display</option>
+              </select>
+              <input name="color" type="text" :id="item.TIER_ID" v-model="item.color" />
+            </div>
 
-          <div v-for="(item, index) in otro" :key="index">
-            <div v-if="options[index].Visible">
-              <div v-if="options[index].value == 'A'">
-                <div v-for="(item, index) in otro[index]" :key="index">
-                  <div v-if="$attrs.tiempo_parametro >= item.TIME_SLOT_REF1 && $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1">
-                    <b>
-                      <!--{{tier_temp}}:-->
-                      {{ item.ANNOTATION_VALUE }}
-                      <!--  me quede 
+            <div v-for="(item, index) in otro" :key="index">
+              <div v-if="options[index].Visible">
+                <div v-if="options[index].value == 'A'">
+                  <div v-for="(item, index) in otro[index]" :key="index">
+                    <div
+                      v-if="
+                        $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
+                        $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1
+                      "
+                    >
+                      <b>
+                        <!--{{tier_temp}}:-->
+                        {{ item.ANNOTATION_VALUE }}
+                        <!--  me quede 
                                     {{sincronizar(7)}}
                                     -->
-                      <!-- {{item.ANNOTATION_ID}} 
+                        <!-- {{item.ANNOTATION_ID}} 
                 {{item.TIME_SLOT_REF1}} {{item.TIME_SLOT_REF2}} -->
-                    </b>
-                  </div>
-                  <div v-if="index == 0">
-                    <!-- {{item.DEFAULT_LOCALE[index]}} ({{item.LINGUISTIC_TYPE_REF[index]}}) {{item.PARTICIPANT[index]}}
+                      </b>
+                    </div>
+                    <div v-if="index == 0">
+                      <!-- {{item.DEFAULT_LOCALE[index]}} ({{item.LINGUISTIC_TYPE_REF[index]}}) {{item.PARTICIPANT[index]}}
                 {{tier_temp=item.TIER_ID[index]}}:-->{{ item.TIER_ID[index] }} :
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
           </tr>
         </table>
       </div>
       <p v-else>loading.....</p>
       <div v-if="this.info.data">
-        ----------------------------------------------------------------- Si hay datos Multiples Lineas ------------------
+        ----------------------------------------------------------------- Si hay datos
+        Multiples Lineas ------------------
         <br />
         <!--<div v-for="(item, index) in otro" :key="index">
                 <div v-if="options[index].Visible">
@@ -88,10 +92,18 @@
             </div>
             -->
         <div v-for="(item, index) in tempdata" :key="index">
-          <div v-if="$attrs.tiempo_parametro >= item.TIME_SLOT_REF1 && $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1">
+          <div
+            v-if="
+              $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
+              $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1
+            "
+          >
             <b> {{ item.TIER_ID }} : {{ item.ANNOTATION_VALUE }} </b>
           </div>
-          <p v-else><button v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)"></button> {{ item.TIER_ID }} :{{ item.TIME_SLOT_REF1 }} {{ item.ANNOTATION_VALUE }}</p>
+          <p v-else>
+            <button v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)"></button>
+            {{ item.TIER_ID }} :{{ item.TIME_SLOT_REF1 }} {{ item.ANNOTATION_VALUE }}
+          </p>
         </div>
       </div>
       <p v-else>Cargando.....</p>
@@ -118,6 +130,7 @@ export default {
       contador: 0,
       audioannotations: [],
       mp3Audio: "",
+      ruta: "otro valor",
       //tiempo_parametro:"8"
     };
   },
@@ -150,7 +163,10 @@ export default {
           //console.log("+++++rrrrr+++" + this.otro[indice][0].PARTICIPANT)
 
           //if (this.results.find(((x) => x.TIME_SLOT_REF1 >= item) && ((x) => x.TIME_SLOT_REF2 <= item))) {
-          if ((x.TIME_SLOT_REF1 == item || x.TIME_SLOT_REF2 == item) && this.results.indexOf(x) === -1) {
+          if (
+            (x.TIME_SLOT_REF1 == item || x.TIME_SLOT_REF2 == item) &&
+            this.results.indexOf(x) === -1
+          ) {
             this.results.push(x);
             //aqui me quede arreglando el multilinea
             //checar https://stackoverflow.com/questions/7858385/how-to-add-values-to-an-array-of-objects-dynamically-in-javascript
@@ -188,7 +204,9 @@ export default {
       // me quede
       //chechar https://www.geeksforgeeks.org/indexof-method-in-an-object-array-in-javascript/
       //+console.log("--Aqui--" + item)
-      var valor = this.otro[1].find(((x) => x.TIME_SLOT_REF1 >= item) && ((x) => x.TIME_SLOT_REF2 <= item));
+      var valor = this.otro[1].find(
+        ((x) => x.TIME_SLOT_REF1 >= item) && ((x) => x.TIME_SLOT_REF2 <= item)
+      );
       //var valor = this.otro[1].find((x) => x.TIME_SLOT_REF1 >= item);
       //+console.log("--Aqui--" + valor)
       return valor;
@@ -227,7 +245,9 @@ export default {
       //+     console.log(event.target.id);
       // console.log(arreglo_ref_tiempo.find(x=>x.ANNOTATION_ID===ts).TIME_SLOT_REF1)
       //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
-      if (this.options.find((x) => x.TIER_ID == event.target.id).value != event.target.value) {
+      if (
+        this.options.find((x) => x.TIER_ID == event.target.id).value != event.target.value
+      ) {
         //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
         this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
       }
@@ -271,19 +291,33 @@ export default {
         // console.log(this.info.data.ANNOTATION_DOCUMENT.tier[1]);
         //console.log(this.info.data);
       }
-      // for (var j in this.otro) {
+      for (var j in this.otro) {
+        //Agrega al vector options para mostrar una linea o multiples
+        this.options.push({
+          _id: j,
+          TIER_ID: this.otro[j][0].TIER_ID[0],
+          PARTICIPANT: this.otro[j][0].PARTICIPANT[0],
+          value: "A",
+          Visible: true,
+          color: "#000000",
+          LINGUISTIC_TYPE_REF: "Transcripción",
+        });
+      }
+      // for (var j in this.audioannotations) {
       //   //Agrega al vector options para mostrar una linea o multiples
       //   this.options.push({
-      //     //id: i,
-      //     TIER_ID: this.otro[j][0].TIER_ID[0],
-      //     PARTICIPANT: this.otro[j][0].PARTICIPANT[0],
-      //     value: "A",
-      //     Visible: true,
-      //     color: "#000000",
+      //     _id: this.audioannotations[j]._id,
+      //     TIER_ID: this.audioannotations[j].TIER_ID,
+      //     PARTICIPANT: this.audioannotations[j].PARTICIPANT,
+      //     value: this.audioannotations[j].value,
+      //     Visible: this.audioannotations[j].Visible,
+      //     color: this.audioannotations[j].color,
+      //     LINGUISTIC_TYPE_REF:this.audioannotations[j].LINGUISTIC_TYPE_REF
       //   });
       // }
+      // console.log("se asigno el vector audioannotations a options")
       // se asigno el vector audioannotations a options
-      this.options = this.audioannotations;
+      //this.options = this.audioannotations;
       //return true;
     },
 
@@ -322,6 +356,13 @@ export default {
   updated() {
     //this.leerTier();
   },
+  created() {
+    var currentUrl = window.location.pathname;
+    this.ruta = currentUrl;
+    //console.log(currentUrl);
+    var ultimoSlash = this.ruta.lastIndexOf("/");
+    this.ruta = this.ruta.substring(ultimoSlash + 1);
+  },
   mounted() {
     // var parseString = require('xml2js').parseString;
     //estaba montando el xml
@@ -336,13 +377,16 @@ export default {
       this.info = response;
       self.leerTier();
     });
-    this.axios.get("/audioannotations/index/5fc97a8ecf27910d01982fc2").then((response) => {
-      this.audioannotations_info = response;
-      //falta hacer algo self.leerTier();
-      self.leerAudioannotationsMp3();
-      self.$root.$emit("valor_mp3", self.mp3Audio);
-      self.leerTierBD();
-    });
+    this.axios
+      .get("/audioannotations/index/"+ self.ruta)
+      .then((response) => {
+        this.audioannotations_info = response;
+        //falta hacer algo self.leerTier();
+        self.leerAudioannotationsMp3();
+        self.$root.$emit("valor_mp3", self.mp3Audio);
+        self.leerTierBD();
+        self.options = self.audioannotations;
+      });
     //this.saveFileJSon();
     //console.log("Aqui se esta añadiendo al json");
     //this.add("hola");
