@@ -1,28 +1,22 @@
-<main>
-	<div class="container-fluid" id="contenedor_mis_colecciones">
-		<div class="container-fluid" id="cabezal_mis_colecciones">
-			<div class="container">
-				<div class="col-sm-12" id="contenedor_items_cabezal_mis_colecciones">
-					<div class="" id="contenedor_titulos_cabezal_mis_colecciones">
-						<h1 id="titulo_mis_colecciones"><span class="icono_cabezal icon-folder-open-o"></span> Mis
-							colecciones</h1>
-						<h2 class="llamada" id="llamada_mis_colecciones">¡Hola!</h2>
-						<h3 class="blanco">{{user.name}} {{user.lastName}}</h3>
-					</div>
-					<div class="" id="contenedor_botones_cabezal">
-						<button class="btn btn-predeterminado"
-							onclick="window.location.href ='/collections/create'">Agregar colección <span
-								class="icono_boton icon-create_new_folder"></span></button>
-						<button class="btn btn-primario"
-							onclick="window.location.href = '/audioannotations/create'">Cargar audioanotacion<span
-								class="icono_boton icon-file_upload"></span></button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<section class="container">
-			<div class="col-sm-12 contenedor-90vh " id="contenedor_general_mis_colecciones">
-				<!--<div class="contenedor_barras_de_busqueda">
+        <div class="container-fluid" id="contenedor_mis_colecciones">
+            <div class="container-fluid" id="cabezal_mis_colecciones">
+                <div class="container">
+                    <div class="col-sm-12" id="contenedor_items_cabezal_mis_colecciones">
+                        <div class="" id="contenedor_titulos_cabezal_mis_colecciones">
+                            <h1 id="titulo_mis_colecciones"><span class="icono_cabezal icon-folder-open-o"></span> Mis colecciones</h1>
+                            <h2 class="llamada" id="llamada_mis_colecciones">¡Hola!</h2>
+                            <h3 class="blanco">{{user.name}} {{user.lastName}}</h3>
+                        </div>
+                        <div class="" id="contenedor_botones_cabezal">
+							<button class="btn btn-predeterminado" onclick="window.location.href ='/collections/create'">Agregar colección <span class="icono_boton icon-create_new_folder"></span></button>
+							<button class="btn btn-primario" onclick="window.location.href = '/audioannotations/create'">Cargar audioanotacion<span class="icono_boton icon-file_upload"></span></button>
+						</div>	
+                    </div>
+                </div>
+            </div>
+            <section class="container">
+                <div class="col-sm-12 contenedor-90vh " id="contenedor_general_mis_colecciones">
+                    <!--<div class="contenedor_barras_de_busqueda">
 						<div class="barra_de_busqueda_item" id="barra_busq_coleccion">
 							<div class="contenedor_etiquetas_barras_busqueda" >
 								<label class="label label_junto_flechas">Colección</label>
@@ -58,293 +52,234 @@
 						<div class="barra_de_busqueda_item" id="item_vacio_barra_busqueda">
 						</div>
 					</div> barras de busqueda por divs-->
-				<div class="contenedor_tabla_mis_colecciones">
-					<table class="tabla_mis_colecciones">
-						<thead>
-							<th class="cabezal_columnas_th" id="th_coleccion">
-								<div class="contenedor_etiquetas_barras_busqueda">
-									<label class="label label_junto_flechas">Colección</label>
-									<button class="flecha_orden_ascendente "><span
-											class="icon-arrow-up"></span></button>
-									<button class="flecha_orden_descendente"><span
-											class="icon-arrow-down"></span></button>
-								</div>
-								<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda">
-										<label class="label label_junto_flechas">Lengua terminal</label>
-										<button class="flecha_orden_ascendente active"><span
-												class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span
-												class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda">
-										<label class="label label_junto_flechas">Gpos. de lenguas</label>
-										<button class="flecha_orden_ascendente "><span
-												class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span
-												class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda">
-										<label class="label label_junto_flechas">Comunidades</label>
-										<button class="flecha_orden_ascendente "><span
-												class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span
-												class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
-								<th class="" id="th_acciones">
+                    <div class="contenedor_tabla_mis_colecciones">
+                        <table class="tabla_mis_colecciones">
+                            <thead>
+                                <th class="cabezal_columnas_th" id="th_coleccion">
+                                    <div class="contenedor_etiquetas_barras_busqueda">
+                                        <label class="label label_junto_flechas">Colección</label>
+                                        <button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+                                        <button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+                                    </div>
+                                    <input class="input_busqueda" type="search" placeholder="Búsqueda">
+                                </th>
+                                <th class="cabezal_columnas_th">
+                                    <div class="contenedor_etiquetas_barras_busqueda">
+                                        <label class="label label_junto_flechas">Lengua terminal</label>
+                                        <button class="flecha_orden_ascendente active"><span class="icon-arrow-up"></span></button>
+                                        <button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+                                    </div>
+                                    <input class="input_busqueda" type="search" placeholder="Búsqueda">
+                                </th>
+                                <th class="cabezal_columnas_th">
+                                    <div class="contenedor_etiquetas_barras_busqueda">
+                                        <label class="label label_junto_flechas">Gpos. de lenguas</label>
+                                        <button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+                                        <button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+                                    </div>
+                                    <input class="input_busqueda" type="search" placeholder="Búsqueda">
+                                </th>
+                                <th class="cabezal_columnas_th">
+                                    <div class="contenedor_etiquetas_barras_busqueda">
+                                        <label class="label label_junto_flechas">Comunidades</label>
+                                        <button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+                                        <button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+                                    </div>
+                                    <input class="input_busqueda" type="search" placeholder="Búsqueda">
+                                </th>
+                                <th class="" id="th_acciones">
 
-								</th>
-						</thead>
-							{{#each collections}}
-							   <tr>
-            					<td>
-									<strong><i>{{name}}</i></strong><p class="primeras_palabras_descripcion_collect"></p>
-								</td>
-							{{#each languages}}	
-            					<td class="" data-label="Lengua terminal (glottocode)">
-									{{language.gid}}<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">{{language.name}}</span>
-								</td>
-							{{/each}}
-							{{#each languages}}
-            					<td class="" data-label="Grupo de lenguas (glottocode)">
-									{{LanguageGroup.gid}}<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >{{LanguageGroup.name}}</span>
-								</td>
-							{{/each}}
-							{{#each localities}}
+                                </th>
+
+                            </thead>
+                             {{#each collections}}
+                            <tr>
+                                <td>
+                                    <strong><i>{{name}}</i></strong>
+                                    <p class="primeras_palabras_descripcion_collect"></p>
+                                </td>
+                                <td class="" data-label="Lengua terminal (glottocode)">
+                                   {{#each languages}}
+                                    {{language.gid}}<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">{{language.name}}</span><br>
+                                    <!--yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span-->
+                                 {{/each}}
+                                </td>
+                                <td class="" data-label="Grupo de lenguas (glottocode)">
+                                   {{#each languages}}
+                                  {{LanguageGroup.gid}}<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)">{{LanguageGroup.name}}</span>
+								 {{/each}}
+                </td>
             					<td class="comunidades"><span class="pais">
-									{{Nom_Mun}}</span><span class="estado">{{Nom_Mun}}</span><span class="comunidad">Yoloxóchitl</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">{{Lat_Decimal}} {{Lon_Decimal}}</span><hr class="hr_divisor_comunidad">
-								</td>
-							{{/each}}
-								<td class="td_acciones ">
-									<div class="contenedor_botones_accion">
-										<button class="btn_accion_tabla" id="coleccion_info"><i onclick="syModals.show('{{name}}','{{description}}')"
-										aria-hidden="true" class="icono_accion_tabla  icon-info1"></i></button>
-										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
-										<button class="btn_accion_tabla"><span data-target='dropdown{{_id}}' class="icono_accion_tabla icon-ellipsis-v" aria-hidden="true" ></span></button>
-										<ul id='dropdown{{_id}}' class='dropdown-content'>
-										<li>
-											<a href="#!">
-												<i class="fa fa-plus-circle" aria-hidden="true"
-													style="color:rgb(21, 193, 209);"></i>
-												Añadir AuAn
-											</a>
-										</li>
-										<li>
-											<a href="/collections/edit/{{_id}}">
-												<i class="fa fa-pencil-square-o" aria-hidden="true"
-													style="color:rgb(21, 193, 209);"></i>
-												Editar
-											</a>
-										</li>
-										<li>
-											<form class="center" action="/collections/delete/{{_id}}?_method=DELETE"
-												method="POST">
-												<input type="hidden" name="_method" value="DELETE">
-												<a onclick="this.parentNode.submit()">
-													<i class="fa fa-trash-o" aria-hidden="true" style="color: red;"></i>
-													Eliminar
-												</a>
-											</form>
-										</li>
-									</ul>
-									</div>
-								</td>
-        					</tr>		
+                         {{#each localities}}
+							México</span><span class="estado">{{Nom_Mun}}</span><span class="comunidad">{{Nom_Loc}}</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">{{Lat_Decimal}},  {{Lon_Decimal}}</span>
+                                    {{!--<hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Ecatlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
+                                    <hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Nanacatlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
+                                    <hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Tonalixco</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>--}}
+                               {{/each}}   
+                                </td>
+                                <td class="td_acciones">
+                                    <div class="contenedor_botones_accion">
+                                        <button class="btn_accion_tabla"><span  onclick="syModals.show('{{name}}','{{description}}')" class="icono_accion_tabla  icon-info1"></span></button>
+                                        <button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
+                                        <button id="elipsis1" class="btn_accion_tabla"><span class="icono_accion_tabla icon-ellipsis-v"></span></button>
+                                        <div id="modal_elipsis1" class="contenido_modal_elipsis">
+                                            <span class="icono_cerrar_modal_elipsis icon-close "></span>
+                                            <div class="contenedor_opciones_elipsis">
+                                                <a class="btn_opciones_ellipsis_mis_colecciones" href="#"><span class="icono_opcion_elipsis icon-file_upload"></span> Cargar audioanotación</a>
+                                                <a  href="/collections/edit/{{_id}}" class="btn_opciones_ellipsis_mis_colecciones" href="#"><span class="icono_opcion_elipsis icon-edit"></span> Editar metadatos</a>
+                                                 <form class="center" action="/collections/delete/{{_id}}?_method=DELETE" method="POST">
+                                                  <input type="hidden" name="_method" value="DELETE"><a  onclick="this.parentNode.submit()" class="btn_opciones_ellipsis_mis_colecciones" href="#"><span class="icono_opcion_elipsis icon-delete"></span> Eliminar</a> </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+{{!--<tbody>
+    {{#each collections}}
+    <tr>
+      <td> <h6>{{name}}</h6> </td>
+      <td>
+        {{#each languages}}
+          <h1>{{language.gid}}</h1>
+          <p>{{language.name}}</p>
+          <div class="divider"></div>
+        {{/each}}
+      </td>
+      <td>
+        {{#each languages}}
+          <h1>{{LanguageGroup.gid}}</h1>
+          <p>{{LanguageGroup.name}}</p>
+          <div class="divider"></div>
+        {{/each}}
+      </td>
+      <td>
+        {{#each localities}}
+          <h5>{{Nom_Loc}}</h5>
+          <p>{{Nom_Mun}} {{Nom_Mun}} </p>
+          <p>{{Lat_Decimal}} {{Lon_Decimal}}</p>
+          <div class="divider"></div>
+        {{/each}}        
+      </td>
 
-						<tbody>
-						
-							<tr>
+      {{#ifSu ../user}}
+        <td>
+            <i 
+              class="fa fa-user-circle-o" 
+              style="color: rgb(21, 193, 209);" 
+              aria-hidden="true"></i> {{user.name}}
+        </td>
+      {{/ifSu}}
+      
+      <td>
+        <i 
+          class="fa fa-info-circle fa-2x" 
+          style="color: rgb(21, 193, 209);" 
+          onclick="syModals.show('{{name}}','{{description}}')"
+          aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+        <a href="">
+        <i 
+          class="fa fa-expand fa-2x" 
+          aria-hidden="true" 
+          style="color: rgb(21, 193, 209);"></i>&nbsp;&nbsp;&nbsp;
 
-								{{#ifSu ../user}}
-								<td>
-									<i class="fa fa-user-circle-o" style="color: rgb(21, 193, 209);"
-										aria-hidden="true"></i> {{user.name}}
-								</td>
-								{{/ifSu}}
+        </a>
+        <!-- Dropdown Trigger -->
+        <span class='dropdown-trigger' href='#' data-target='dropdown{{_id}}'>
+          <i 
+            class="fa fa-ellipsis-v fa-2x" 
+            aria-hidden="true" 
+            style="color: rgb(21, 193, 209);"></i>
+        </span>&nbsp;&nbsp;&nbsp;
+        <!-- Dropdown Structure -->
+        <ul id='dropdown{{_id}}' class='dropdown-content'>          
+          <li>
+            <a href="#!">
+              <i 
+                class="fa fa-plus-circle"
+                aria-hidden="true" 
+                style="color:rgb(21, 193, 209);"></i> 
+                Añadir AuAn
+            </a>
+          </li>
+          <li>            
+            <a 
+              href="/collections/edit/{{_id}}">
+              <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:rgb(21, 193, 209);"></i>
+              Editar
+            </a>
+          </li>
+          <li>
+            <form 
+            class="center"
+              action="/collections/delete/{{_id}}?_method=DELETE" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <a
+                onclick="this.parentNode.submit()">
+                <i 
+                  class="fa fa-trash-o"
+                  aria-hidden="true" 
+                  style="color: red;"></i> 
+                Eliminar
+              </a>
+            </form>
+          </li>
+        </ul>    
+      </td>
+    </tr>    
+    {{/each}}    
+  </tbody>--}}
+ {{/each}} 
+                        </table>
+                        <div class="contenedor_paginacion">
+                            <div class="contenedor_input_paginacion">
+                                <input class="" id="busqueda_paginacion" type="text" placeholder="Pag.">
+                                <button class="btn_lateral_input" for="busqueda_paginacion"><span class="icono_pagina_busqueda  icon-chevron-right"></span></button>
 
-								<td>
-									<i class="fa fa-info-circle fa-2x" style="color: rgb(21, 193, 209);"
-										onclick="syModals.show('{{name}}','{{description}}')"
-										aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-									<a href="">
-										<i class="fa fa-expand fa-2x" aria-hidden="true"
-											style="color: rgb(21, 193, 209);"></i>&nbsp;&nbsp;&nbsp;
+                            </div>
+                            <div class="contenedor_numeros_paginacion">
+                                <a class="icono_paginacion" href="#"><span class="icon-first_page"></span></a>
+                                <a class="icono_paginacion" href="#"><span class="icon-angle-left"></span></a>
+                                <a class="numero_paginacion" href="#">2</a>
+                                <a class="numero_paginacion" href="#">3</a>
+                                <a class="numero_paginacion" href="#">4</a>
+                                <a class="numero_paginacion active" href="#">5</a>
+                                <a class="numero_paginacion" href="#">6</a>
+                                <a class="numero_paginacion" href="#">7</a>
+                                <a class="ultima_pagina" href="#">...29</a>
+                                <a class="icono_paginacion" href="#"><span class="icon-angle-right"></span></a>
+                                <a class="icono_paginacion" href="#"><span class=" icon-last_page"></span></a>
+                            </div>
 
-									</a>
-									<!-- Dropdown Trigger -->
-									<span class='dropdown-trigger' href='#' data-target='dropdown{{_id}}'>
-										<i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"
-											style="color: rgb(21, 193, 209);"></i>
-									</span>&nbsp;&nbsp;&nbsp;
-									<!-- Dropdown Structure -->
-								</td>
-							</tr>
-							{{/each}}
-						</tbody>
-					</table>
-					{{!--<table class="tabla_mis_colecciones">
-       					 	<thead>
-                				<th class="cabezal_columnas_th" id="th_coleccion">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Colección</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Lengua terminal</label>
-										<button class="flecha_orden_ascendente active"><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Gpos. de lenguas</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Comunidades</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
-								<th class="" id="th_acciones">
-									
-								</th>
-                				
-        					</thead>
-    					    <tr>
-            					<td>
-									<strong><i>Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</i></strong><p class="primeras_palabras_descripcion_collect"></p>
-									<div id="modal_info" class="modal">
-										<div class="contenido_modal">
-											<span class="icono_cerrar_modal icon-close"></span>
-											<h1><span class="icono_modal"></span></h1>	
-											<h2 class="titulo_modal">Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</h2>
-											<p class=" p_2columnas">Este proyecto representa un esfuerzo por documentar la riqueza florística del municipio de San Luis Acatlán y la nomenclatura, clasificación y uso económico y simbólico de las plantas en las cuatro comunidades de habla mixteco principal dentro de este municipio: Yoloxóchitl, Cuanacaxtitlán, Arroyo Cumiapa y Buena Vista. Incluye la colaboración de botánicos y lingüistas: Kenia Velasco Gutiérrez (botánica) se encargó de la mayor parte de las colectas en las cuatro comunidades; Rey Castillo García (un lingüista y hablante nativo de Yoloxóchitl) se encargó de la escritura tanto de nomenclatura como de transcripción y traducción de audio grabados. Hasta la fecha se ha hecho un total de 1,428 colectas que representan un total de 126 familias y 502 géneros.  Todavía se están identificando las colectas a especies pero se calcula llegar a aproximadamente 900 a 1,000 especies distintas.  La mayoría de las colectas son Magnoliophyta (1,381) pero también incluye Pteridophyta (39), Cycadophyta (3) y Coniferophyta (2). En cuanto a distribución geográfica se llevaron a cabo colectas en las siguientes comunidades: Yoloxóchitl (1,274), Buena Vista (68), Arroyo Cumiapa (43), Cuanacaxtitlán (40) y San Luis Acatlán (3). Se contó con el apoyo de más de 35 asesores locales los principales siendo Esteban Guadalupe Sierra y Constantino Teodoro Bautista de Yoloxóchitl. Para las identificación a especie también apoyaron más de 75 taxónomos expertos.</p>
-										</div>
-									</div>
-								</td>
-            					<td class="" data-label="Lengua terminal (glottocode)">
-									yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
-								</td>
-            					<td class="" data-label="Grupo de lenguas (glottocode)">
-									amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span><br>amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span>
-								</td>
-            					<td class="comunidades"><span class="pais">
-									México</span><span class="estado">Guerrero</span><span class="comunidad">Yoloxóchitl</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Cuanacaxtitlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Arroyo Cumiapa</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Buena Vista</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
-								</td>
-								<td class="td_acciones ">
-									<div class="contenedor_botones_accion">
-										<button class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
-										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
-										<button class="btn_accion_tabla"><span class="icono_accion_tabla icon-ellipsis-v"></span></button>
-									</div>
-								</td>
-        					</tr>
-							<tr>
-            					<td>
-									<strong><i>Estudio Florístico y Etnobotánico de Comunidades de habla Náhuat de la Sierra Nororiental de Puebla</i></strong><p class="primeras_palabras_descripcion_collect"></p>
-								</td>
-            					<td class="" data-label="Lengua terminal (glottocode)">
-									high1278<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Highland Puebla Nahuat</span><br><!--yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span-->
-								</td>
-            					<td class="" data-label="Grupo de lenguas (glottocode)">
-									azte1234<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Aztec</span><br><!--amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span-->
-								</td>
-            					<td class="comunidades"><span class="pais">
-									México</span><span class="estado">Guerrero</span><span class="comunidad">San Miguel Tzinacapan</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Tacuapan</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Arroyo Cumiapa</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Buena Vista</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
-							  </td>
-								<td class="td_acciones ">
-									<div class="contenedor_botones_accion ">
-									<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-info1"></span></button>
-									<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
-										<button class="btn_accion_tabla"><span class="icono_accion_tabla icon-ellipsis-v"></span></button>
-									</div>
-								</td>
-        					</tr>
-							<tr>
-            					<td>
-									<strong><i>Estudio Florissas de Comunidades Totonacas de la Sierra Nororiental y Norte de Puebla</i></strong><p class="primeras_palabras_descripcion_collect"></p>
-								</td>
-            					<td class="" data-label="Lengua terminal (glottocode)">
-									toto1252<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br><!--yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span-->
-								</td>
-            					<td class="" data-label="Grupo de lenguas (glottocode)">
-									toto1251<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" ><!--Amuzgo-mixtecan</span><br>amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span-->
-								</td>
-            					<td class="comunidades"><span class="pais">
-									México</span><span class="estado">Guerrero</span><span class="comunidad">Zongozotla</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Ecatlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Nanacatlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Tonalixco</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
-								</td>
-								<td class="td_acciones">
-									<div class="contenedor_botones_accion">
-										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-info1"></span></button>
-										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
-										<button id="elipsis1" class="btn_accion_tabla"><span class="icono_accion_tabla icon-ellipsis-v"></span></button>
-										<div id="modal_elipsis1" class="contenido_modal_elipsis">
-											<span class="icono_cerrar_modal_elipsis icon-close "></span>
-											<div class="contenedor_opciones_elipsis">
-												<a class="btn_opciones_ellipsis_mis_colecciones" href="#"><span class="icono_opcion_elipsis icon-file_upload"></span> Cargar audioanotación</a>
-												<a class="btn_opciones_ellipsis_mis_colecciones" href="#"><span class="icono_opcion_elipsis icon-edit"></span> Editar metadatos</a>
-												<a class="btn_opciones_ellipsis_mis_colecciones" href="#"><span class="icono_opcion_elipsis icon-delete"></span> Eliminar</a>
-											</div>	
-										</div>	
-									</div>
-								</td>
-        					</tr>
-        					
-        					
-						</table>--}}
-					<div class="contenedor_paginacion">
-						<div class="contenedor_input_paginacion">
-							<input class="" id="busqueda_paginacion" type="text" placeholder="Pag.">
-							<button class="btn_lateral_input" for="busqueda_paginacion"><span
-									class="icono_pagina_busqueda  icon-chevron-right"></span></button>
+                        </div>
+                    </div>
+                </div>
 
-						</div>
-						<div class="contenedor_numeros_paginacion">
-							<a class="icono_paginacion" href="#"><span class="icon-first_page"></span></a>
-							<a class="icono_paginacion" href="#"><span class="icon-angle-left"></span></a>
-							<a class="numero_paginacion" href="#">2</a>
-							<a class="numero_paginacion" href="#">3</a>
-							<a class="numero_paginacion" href="#">4</a>
-							<a class="numero_paginacion active" href="#">5</a>
-							<a class="numero_paginacion" href="#">6</a>
-							<a class="numero_paginacion" href="#">7</a>
-							<a class="ultima_pagina" href="#">...29</a>
-							<a class="icono_paginacion" href="#"><span class="icon-angle-right"></span></a>
-							<a class="icono_paginacion" href="#"><span class=" icon-last_page"></span></a>
-						</div>
+            </section>
+        </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("modal_elipsis1");
 
-					</div>
-				</div>
-			</div>
+        // Get the button that opens the modal
+        var btn = document.getElementById("elipsis1");
 
-		</section>
-	</div>
-</main>
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("icono_cerrar_modal_elipsis")[0];
 
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		var elems = document.querySelectorAll('.dropdown-trigger');
-		var instances = M.Dropdown.init(elems, {});
-	});
-</script>
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
