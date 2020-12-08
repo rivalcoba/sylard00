@@ -84,19 +84,31 @@ const index = async (req, res) => {
   .lean()
   .exec()
   
-  let usersDocs = usersObjs.map((usr)=>{
-    usr.role = usr.role==="colaborator"?"checked":""
-    // Attach user collections
-    // let collectionsDocs = await Collection.find({"user": usr._id})
-    // TODO: Terminar esta sección NO SE PUEDE LLENAR COLECCIONES
-     usr.collections = [{"name":usr._id},{"name":usr._id}]
-    return usr
-  })
+  // let usersDocs = usersObjs.map((usr)=>{
+  //   usr.role = usr.role==="colaborator"?"checked":""
+  //   // Attach user collections
+  //   // let collectionsDocs = await Collection.find({"user": usr._id})
+  //   // TODO: Terminar esta sección NO SE PUEDE LLENAR COLECCIONES
+  //    usr.collections = [{"name":usr._id},{"name":usr._id}]
+  //   return usr
+  // })
 
-  return res.json(usersDocs)
+  /*
+  #THESIS
+  REF: https://advancedweb.hu/how-to-use-async-functions-with-array-map-in-javascript/#:~:text=The%20map%20function,-The%20map%20is&text=An%20async%20version%20needs%20to,the%20results%20in%20an%20Array.
+  */
+  let usersDocs = await Promise.all(usersObjs.map(async (usr)=>{
+    usr.role = usr.role==="colaborator"?"checked":""
+    let collectionsDocs = await Collection.find({"user": usr._id})
+    usr.collectionsDocs = collectionsDocs.map(collectionDoc=>{
+      return collectionDoc.toJSON()
+    })
+    return usr
+  }))
+
+
   // Buscando las colecciones de este usuario
   //let collectionsDoc = Collection.find({"user":})
-
   res.render('user/index', { usersObjs: usersDocs })
 }
 

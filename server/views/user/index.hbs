@@ -157,7 +157,7 @@
               <td class="td_icono_usuario_administrador_usuarios">
                 <div class="contenedor_icono_usuario_administrador_usuarios">
                   <img
-                    src="{{image}}"
+                    src="/images/iconousuario.svg"
                     class="imagen_icono_usuario_administrador_usuarios"
                     alt="Ícono de venado usuario"
                   />
@@ -206,10 +206,10 @@
               </td>
               <td class="td_colecciones_administrador_usuarios">
                 <ul>
-                  {{each collections}}
+                  {{#each collectionsDocs}}
                   <li class="colecciones_usuario_lista">
                     <a href="#">
-                      {{name}}
+                      {{this.name}}
                     </a>
                   </li>                
                   {{/each}}
@@ -217,11 +217,11 @@
               </td>
               <td class="td_acciones">
                 <div class="contenedor_botones_accion_administrador_usuarios">
-                  <button id="elipsis1" class="btn_accion_tabla">
+                  <button id="elipsis{{@index}}" onclick="openModal('{{@index}}')" class="btn_accion_tabla">
                     <span class="icono_accion_tabla icon-ellipsis-v"></span>
                   </button>
-                  <div id="modal_elipsis1" class="contenido_modal_elipsis">
-                    <span class="icono_cerrar_modal_elipsis icon-close"></span>
+                  <div id="modal_elipsis{{@index}}" class="contenido_modal_elipsis">
+                    <span onclick="closeModal('{{@index}}')" class="icono_cerrar_modal_elipsis icon-close"></span>
                     <div class="contenedor_opciones_elipsis">
                       <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
                         <span class="icono_opcion_elipsis icon-edit"></span>
@@ -236,10 +236,10 @@
                 </div>
               </td>
             </tr>
-            <!-- FINALIZA TABLE ROW -->
             {{/each}}
+            <!-- FINALIZA TABLE ROW -->
           </table>
-          <div class="contenedor_paginacion">
+          {{!-- <div class="contenedor_paginacion">
             <div class="contenedor_input_paginacion">
               <input
                 class=""
@@ -286,72 +286,68 @@
                 <span class="icon-last_page"></span>
               </a>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </section>
   </div>
 </main>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <script>
-		// Get the modal
-var modal_info = document.getElementById("modal_info");
-
-// Get the button that opens the modal
-var btn_coleccion_info = document.getElementById("coleccion_info");
-
-// Get the <span> element that closes the modal
-var icono_cerrar_modal = document.getElementsByClassName("icono_cerrar_modal")[0];
-
-// When the user clicks on the button, open the modal
-btn_coleccion_info.onclick = function() {
-  modal_info.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-icono_cerrar_modal.onclick = function() {
-  modal_info.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal_info.style.display = "none";
-  }
-}
-	</script>
-	<script>
-		// Get the modal
-var modal = document.getElementById("modal_elipsis1");
-
-// Get the button that opens the modal
-var btn = document.getElementById("elipsis1");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("icono_cerrar_modal_elipsis")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
+let openModal = function(index){
+  // #THESIS Para la propagación de un evento
+  // Ref: https://vsvaibhav2016.medium.com/event-bubbling-and-event-capturing-in-javascript-6ff38bec30e#:~:text=If%20you%20want%20to%20stop,to%20the%20bottom%20to%20top.
+  // Get the modal
+  event.stopPropagation()
+  var modal = document.getElementById(`modal_elipsis${index}`);
   modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+let closeModal = function(index){
+  var modal = document.getElementById(`modal_elipsis${index}`);
+  modal.style.display = "none";  
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+window.onclick = event=>{
+  let targetElement = event.target
+  // #THESIS iterate over an array of elements got by its class names
+  // ref: https://stackoverflow.com/questions/3871547/js-iterating-over-result-of-getelementsbyclassname-using-array-foreach
+  // #THESIS CLick outside a model
+  // REF: https://www.blustemy.io/detecting-a-click-outside-an-element-in-javascript/#:~:text=To%20detect%20a%20click%20outside%20an%20element%20we%20must%20add,belongs%20to%20the%20flyout%20container.
+  let modals = document.getElementsByClassName('contenido_modal_elipsis')
+
+  do{
+    let result = Array.from(modals).map(modal=>{
+      if(targetElement == modal){
+        // Click inside an element
+        //console.log("return 1")
+        return 1;
+      }else{
+        return 0;
+      }
+    })
+
+    const reducer = (accumulator, currentValue) => accumulator + currentValue
+
+    let count = result.reduce(reducer)
+
+    if(count >= 1){
+      //console.log("Clicked inside a modal")
+      return
+    }
+
+    // Go up the DOM
+    targetElement = targetElement.parentNode
+  }while(targetElement)
+
+  // Click outside an element
+  Array.from(modals).forEach(modal => {
+    if(modal.style.display == "block"){
+      modal.style.display = "none";
+    }
+  })
+  //console.log("click outside a modal")
 }
+
 let selectedUsers = [];
 
 let toggleSelection = function(id){
