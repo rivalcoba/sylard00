@@ -40,7 +40,7 @@
             </td>
           </tr>
 
-          <div v-for="(item, index) in audioannotations.TIER" :key="'item' + index">
+          <div v-for="(item, index) in tier_acomodado" :key="'item' + index">
             <tr v-if="item2 == item.PARTICIPANT">
               <td>{{ item.TIER_ID }}</td>
 
@@ -48,7 +48,8 @@
                 <input
                   type="checkbox"
                   :id="item.TIER_ID"
-                  checked
+                   v-model="item.Visible" 
+                  :value="item.Visible"
                   @change="seleccion_onoff($event)"
                 />
               </td>
@@ -72,7 +73,7 @@
                   name="color"
                   type="text"
                   :id="item.TIER_ID"
-                  value="#000000"
+                  :value="item.color"
                   @change="seleccion_color($event)"
                 />
               </td>
@@ -163,21 +164,21 @@ export default {
       console.log("--------------------------------");
       console.log(
         "valor original es " +
-          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color
+          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).color
       );
       console.log(e.target.value);
       console.log(event.target.id);
       if (
-        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color !=
+        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).color !=
         event.target.value
       ) {
         //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
-        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color =
+        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).color =
           event.target.value;
       }
       console.log(
         "Cambio el valor a " +
-          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color
+          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).color
       );
       //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
     },
@@ -185,7 +186,7 @@ export default {
       console.log("--------------------------------");
       console.log(
         "valor original es " +
-          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color
+          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).color
       );
       console.log(e.target.value);
       console.log(event.target.id);
@@ -194,7 +195,7 @@ export default {
           console.log(
             "Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice
           );
-          this.tier_acomodado[indice].Color = e.target.value;
+          this.tier_acomodado[indice].color = e.target.value;
         }
       }
       //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
