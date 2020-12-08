@@ -54,17 +54,17 @@ const disableLanguageGroupBox = () => {
 
 async function enableLangGroup() {
     let selectedLanguage = languageBox.value
-        // Checking if is empty
-    if (selectedLanguage == "" ||
-        !is_valid_datalist_value(langlist.id, selectedLanguage)) {
-        languageBox.value = ""
+
+
+    // Checking if is empty
+    if (selectedLanguage == "") {
         return Swal.fire(
             'SYLARD!',
             'Debe seleccionar una opción de la lista',
             'info'
         )
     }
-
+    return
     let selectedLanguageId = document.querySelector(`option[value="${languageBox.value}"]`).id
     let parents = []
     try {
@@ -98,7 +98,9 @@ async function enableLangGroup() {
         option.setAttribute('data-id', `${planguage._id}`)
         option.setAttribute('data-name', `${planguage.name}`)
     });
+
     languageGroupBox.disabled = false
+
 }
 
 const enableAddButton = function() {
