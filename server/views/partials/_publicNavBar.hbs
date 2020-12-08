@@ -1,9 +1,19 @@
+<script>
+    let elemento_link = document.getElementById('home');
+  elemento_link.setAttribute("class", "active_a");
+</script>
 <!--INICIA barra de navegacion publico-->
 <div class="container-fluid back_aqua_0">
   <nav class="container contenedor_barra_nav_publico">
-    <a class="barra_nav_publico_elemento" href="/" id="bnpe_1">
+    {{#if user}}
+    <a id="home" class="barra_nav_publico_elemento" href="/dashboard" id="bnpe_1">
       <span class="icono_nav_publico icon-home1"></span>
     </a>
+     {{else}}
+     <a class="barra_nav_publico_elemento" href="/" id="bnpe_1">
+      <span class="icono_nav_publico icon-home1"></span>
+    </a>
+      {{/if}}
     <a class="barra_nav_publico_elemento" href="#" id="bnpe_2">
       {{translation.CATALOGUE}}
     </a>
