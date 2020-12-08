@@ -78,7 +78,17 @@
               <label class="label label_al_100">
                 Lengua terminal:
               </label>
-              <input 
+              <select  id="language" class="input_flexible" onfocus="pageScripts.disableLanguageGroupBox()"  onblur="pageScripts.enableLangGroup()" value="{{language}}" >
+                <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}
+                 {{#each languages}}
+             <option 
+             id = '{{_id}}'
+             data-id = '{{_id}}'
+             data-name = "{{name}}"
+            value = "{{name}} | {{gid}}">{{name}} | {{gid}}
+            {{/each}}
+              </select>
+             {{!-- <input 
               id="language" 
               type="text" 
               class="input_flexible"
@@ -86,7 +96,7 @@
               onblur="pageScripts.enableLangGroup()"
               value="{{language}}" 
               list="langlist" 
-               />
+               />--}}
               <div class="contenedor_icono_correcto_input">
                 <p>
                   <span class="icono_correcto_input icon-check_circle"></span>
