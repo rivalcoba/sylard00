@@ -1,10 +1,36 @@
 <template>
   <div id="EditAudioannotations">
-    Hola {{ who }}
-
-    {{ ruta }}
 
     <div v-if="this.audioannotations_info.data">
+       <div>Archivo Cargado: {{this.audioannotations.eaf}}</div>
+    <div>
+
+     
+   <div>
+      <label for="mp3_url">MP3</label>
+      <label>Cargado: {{this.audioannotations.mp3_url}}</label> 
+      <br><br>
+   </div>
+
+   <div>
+      <label for="duracion">Duracion {{this.audioannotations.duration}}</label>
+     <br><br>   
+   </div>
+
+   <div>
+      <label for="titulo">Titulo:</label>
+      <input type="text" id="titulo"  v-model="audioannotations.title" name="title"><br><br>
+
+   </div>
+   
+   <div>
+      <label for="descripcion">Descripcion:</label>
+      <input type="text" id="description" name="audioannotations.description"  v-model="audioannotations.description"><br><br>
+
+   </div>
+
+    </div>
+Aqui me quede selectionando colection
       <!--  <button v-on:click="agregar_tier_acomodado()"></button>-->
       <div v-for="(item2, index) in tier_participante" :key="'item' + index">
         <table>
@@ -84,6 +110,7 @@
         </table>
       </div>
     </div>
+    <button v-on:click="enviardatos()">Enviar</button>
   </div>
 </template>
 <script>
@@ -106,6 +133,11 @@ export default {
     };
   },
   methods: {
+    enviardatos:function(parametro){
+      this.audioannotations.TIER=this.tier_acomodado;
+      console.log(parametro)
+      window.location.href = '/audioannotations/create';
+    },
     leerTierBD: function () {
       //for (var i in this.audioannotations_info.data) {
       this.audioannotations = this.audioannotations_info.data;

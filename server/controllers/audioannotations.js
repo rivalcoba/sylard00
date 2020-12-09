@@ -256,6 +256,12 @@ const uploadfileAudioannotation = async (req, res, next) => {
   }
 }
 const editAudioannotation = async (req, res) => {
+
+  // let genreDoc = await Genre.findById(genre).exec()
+  // let collectionDoc = await Collection.findById(collection_id).exec()
+  // let gidDoc = collectionDoc.languages.id(gid)
+  // let locationDoc = collectionDoc.localities.id(location)
+
   const audioannotationid = req.params.audioannotation_id
   console.log("--------------Aqui Edit--------------")
   console.log(audioannotationid)

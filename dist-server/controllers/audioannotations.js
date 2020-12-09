@@ -41,7 +41,11 @@ console.log("> Audioanotations Created: "+JSON.stringify(a)),b.redirect(`/audioa
 try{(0,_deletejson.default)(d.filename),(0,_converteaf.default)(d.filename),(0,_converteaftojson.default)(d.filename)}catch(a){console.log("Erorroesss al convertir EAF2JSON"),console.log(a)}try{// Obteniendo datos de las collections
 const c=await _Collection.default.find({user:a.user._id}).populate("user").exec();let e=c.map(a=>a.toJSON());// Getting genere
 const f=await _Genre.default.find().exec();let g=f.map(a=>a.toJSON());b.render("audioannotations/create",{filename:d.filename,collections:e,genreArray:g})}catch(a){// Borrar eaf cargado
-_fs.default.unlinkSync(_path.default.join(__dirname,"..","public","eaf",d.filename)),b.status(500).json(a)}},editAudioannotation=async(a,b)=>{const c=a.params.audioannotation_id;console.log("--------------Aqui Edit--------------"),console.log(c),b.render("audioannotations/edit",{audioannotationid:c})},deleteAudioannotaion=async(a,b)=>{const c=a.params.audioannotation_id;try{//console.log("Borrar este")
+_fs.default.unlinkSync(_path.default.join(__dirname,"..","public","eaf",d.filename)),b.status(500).json(a)}},editAudioannotation=async(a,b)=>{// let genreDoc = await Genre.findById(genre).exec()
+// let collectionDoc = await Collection.findById(collection_id).exec()
+// let gidDoc = collectionDoc.languages.id(gid)
+// let locationDoc = collectionDoc.localities.id(location)
+const c=a.params.audioannotation_id;console.log("--------------Aqui Edit--------------"),console.log(c),b.render("audioannotations/edit",{audioannotationid:c})},deleteAudioannotaion=async(a,b)=>{const c=a.params.audioannotation_id;try{//console.log("Borrar este")
 //console.log(req.)
 let a=await _AudioAnnotations.default.findById(c).exec();const d=a.eaf,e=await _AudioAnnotations.default.deleteOne({_id:c}).exec();//console.log(file);
 console.log(`deleteAudioannotation> Result: ${e}`);//Borrado del archivo fisicamente
