@@ -59,10 +59,12 @@
                   name="value"
                   :id="item.TIER_ID"
                   @change="seleccion_visualizacion_options($event)"
+                  v-model="item.value"
                 >
                   <option value="B">Scrolling</option>
                   <option value="A" selected>On-Line-Display</option>
                 </select>
+                <!--checar https://stackoverflow.com/questions/43839066/how-can-i-set-selected-option-selected-in-vue-js-2 -->
                 <!--No funciona (no actualiza de manera automatica )<select v-model="tier_acomodado.value">
                         <option  v-bind:value="item.value" v-for="(c, index) in display" :key="index" :id="item.TIER_ID">{{ c.name }}</option>
                     </select>-->
@@ -160,6 +162,36 @@ export default {
         console.log("si lo off");
       }
     },
+  selecion_todos_visualizacion_options: function (e) {
+            //aqui me quede seleccionando por participante para que desbloquee todos
+            console.log("valor " +
+                e.target.value);
+            console.log("id " +
+                event.target.id);
+            if (e.target.value == "A") {
+                console.log("si esta en online display");
+                //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = true;
+                //cambiar todos
+                for (var indice in this.tier_acomodado) {
+                    if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
+                        console.log("Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice)
+                        this.tier_acomodado[indice].value = "A";
+                    }
+
+                }
+
+            } else {
+                //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = false;
+                console.log("esta Multi-line display");
+                for (var indice in this.tier_acomodado) {
+                    if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
+                        console.log("Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice)
+                        this.tier_acomodado[indice].value = "B";
+                    }
+                }
+            }
+
+        },
     seleccion_color: function (e) {
       console.log("--------------------------------");
       console.log(
