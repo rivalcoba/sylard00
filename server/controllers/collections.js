@@ -182,14 +182,18 @@ const api_getCollectionById = async(req, res)=>{
     collectionDoc = await Collection.findById(collection_id).exec()
     res.status(200).json(collectionDoc)
   } catch (error) {
-    res.status(404).json(error)
+    res.status(404).json({error: error.message})
   }
 }
 
 const api_getCollectionByUser = async (req, res)=>{
   const {userId} = req.params
-  let collectionDoc = {}
-  return res.json({"Test":"Ok",userId,collectionDoc})
+  try {
+    let collectionDocs = await Collection.find({"user":userId}).exec()
+    return res.status(200).json({collectionDocs})
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
 }
 
 export default {
