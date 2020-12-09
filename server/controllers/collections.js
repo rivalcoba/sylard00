@@ -186,6 +186,12 @@ const api_getCollectionById = async(req, res)=>{
   }
 }
 
+const api_getCollectionByUser = async (req, res)=>{
+  const {userId} = req.params
+  let collectionDoc = {}
+  return res.json({"Test":"Ok",userId,collectionDoc})
+}
+
 export default {
   // List Collections from a particular Colaborator User
   index,
@@ -203,4 +209,5 @@ export default {
   // Show single Collection
   // Process Delete Collection
   api_getCollectionById,
+  api_getCollectionByUser,
 }
