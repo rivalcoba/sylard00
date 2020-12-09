@@ -136,7 +136,14 @@ export default {
     enviardatos:function(parametro){
       this.audioannotations.TIER=this.tier_acomodado;
       console.log(parametro)
+  //     axios.post('https://api.com/v1/resource', 
+	// formData, 
+	// {
+	// 	// Config
+	// })
+      
       window.location.href = '/audioannotations/create';
+
     },
     leerTierBD: function () {
       //for (var i in this.audioannotations_info.data) {
