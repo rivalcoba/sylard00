@@ -2397,6 +2397,27 @@ p.canal_2_hablante_one_line_display_item {
     cursor: pointer;
 }
 
+.dropdown-trigger {
+    color: var(--color-primario-principal);
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    width: 1.725rem;
+    cursor: pointer;
+}
+
+.dropdown-trigger:hover {
+    color: var(--color-primario-hover-fill);
+}
+
+.dropdown-trigger:active {
+    color: var(--color-primario-pressed);
+}
+
+.dropdown-trigger:focus {
+    outline: none;
+}
+
 .btn_accion_tabla:hover {
     color: var(--color-primario-hover-fill);
 }
@@ -2416,7 +2437,7 @@ p.canal_2_hablante_one_line_display_item {
     box-sizing: border-box;
     vertical-align: middle;
     width: 1.25rem;
-    position: relative;
+    position: relative !important;
 }
 
 .contenedor_botones_accion {
@@ -2429,7 +2450,7 @@ p.canal_2_hablante_one_line_display_item {
     display: inline-block;
     width: 7rem;
     overflow: visible;
-    position: relative;
+    position: relative !important;
 }
 
 .td_acciones {
@@ -2514,13 +2535,17 @@ p.canal_2_hablante_one_line_display_item {
     display: none;
     background-color: #fefefe;
     border: 2px solid var(--color-primario-principal);
-    width: 13rem;
+    width: 13rem !important;
     /* Could be more or less, depending on screen size */
     border-radius: .375rem;
-    position: absolute;
-    bottom: -34px;
-    right: 2.25rem;
+    position: absolute !important;
+    top: -34px !important;
+    left: -8.25rem !important;
     z-index: 1;
+}
+
+.contenido_modal_elipsis:focus {
+    outline: none;
 }
 
 .icono_cerrar_modal_elipsis {
@@ -2539,6 +2564,7 @@ p.canal_2_hablante_one_line_display_item {
 .icono_cerrar_modal_elipsis:focus,
 .icono_cerrar_modal_elipsis:active {
     color: var(--gris01);
+    outline: none;
 }
 
 .contenedor_opciones_elipsis {
