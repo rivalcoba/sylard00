@@ -176,34 +176,45 @@ export default {
       console.log(this.colecciones.find((x) => x._id == e.target.value));
       if (e.target.value === undefined) {
         this.lenguage = [];
+        console.log("Esta entrando al undefined colection")
       } else {
         this.coleccion=this.colecciones.find((x) => x._id == e.target.value)
         this.lenguage = this.colecciones.find((x) => x._id == e.target.value).languages;
+        console.log("++++++++Lenguajes++++++++")
+        console.log(this.lenguage)
         this.comunidad = this.colecciones.find((x) => x._id == e.target.value).localities;
-        this.coleccion.languages=[]
-        this.coleccion.languages.push(this.lenguage[0])        
-        this.coleccion.localities=[]
-        this.coleccion.localities.push(this.comunidad[0])
+        console.log("++++++++localities++++++++")
+        console.log(this.comunidad)
+        //Aqui me quede quitando el error cuando entra por primera vez deja 2 localities y
+        //dos lenguajes
+        //this.coleccion.languages=[]
+        //this.coleccion.languages.push(this.lenguage[0])        
+        //this.coleccion.localities=[]
+        //this.coleccion.localities.push(this.comunidad[0])
       }
     },
     changeLenguaje: function (e) {
-      console.log("valor " + e.target.value);
-      console.log(this.lenguage.find((x) => x._id == e.target.value));
+     // console.log("valor " + e.target.value);
+      //console.log(this.lenguage.find((x) => x._id == e.target.value));
       if (e.target.value === undefined) {
         this.coleccion.lenguage = [];
+        console.log("Esta entrando al undefined changeLenguaje")
       } else {
         this.coleccion.languages=[]
-        this.coleccion.languages.push(this.lenguage.find((x) => x._id == e.target.value))       
+        this.coleccion.languages.push(this.lenguage.find((x) => x._id == e.target.value))
+        console.log("cambia el valor de changeLenguaje")       
       }
     },
      changeComunidad: function (e) {
-      console.log("valor " + e.target.value);
-      console.log(this.comunidad.find((x) => x._id == e.target.value));
+      // console.log("valor " + e.target.value);
+      // console.log(this.comunidad.find((x) => x._id == e.target.value));
       if (e.target.value === undefined) {
         this.coleccion.localities = [];
+        console.log("Esta entrando al undefined changeComunidad")
       } else {
         this.coleccion.localities=[]
-        this.coleccion.localities.push(this.comunidad.find((x) => x._id == e.target.value))       
+        this.coleccion.localities.push(this.comunidad.find((x) => x._id == e.target.value)) 
+        console.log("cambia el valor de changeComunidad")        
       }
     },
     enviardatos: function (parametro) {
