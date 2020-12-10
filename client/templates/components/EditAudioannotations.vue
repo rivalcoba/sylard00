@@ -1,36 +1,64 @@
 <template>
   <div id="EditAudioannotations">
-
     <div v-if="this.audioannotations_info.data">
-       <div>Archivo Cargado: {{this.audioannotations.eaf}}</div>
-    <div>
+      <div>Archivo Cargado: {{ this.audioannotations.eaf }}</div>
+      <div>
+        <div>
+          <label for="mp3_url">MP3</label>
+          <label>Cargado: {{ this.audioannotations.mp3_url }}</label>
+          <br /><br />
+        </div>
 
-     
-   <div>
-      <label for="mp3_url">MP3</label>
-      <label>Cargado: {{this.audioannotations.mp3_url}}</label> 
-      <br><br>
-   </div>
+        <div>
+          <label for="duracion">Duracion {{ this.audioannotations.duration }}</label>
+          <br /><br />
+        </div>
 
-   <div>
-      <label for="duracion">Duracion {{this.audioannotations.duration}}</label>
-     <br><br>   
-   </div>
+        <div>
+          <label for="titulo">Titulo:</label>
+          <input
+            type="text"
+            id="titulo"
+            v-model="audioannotations.title"
+            name="title"
+          /><br /><br />
+        </div>
 
-   <div>
-      <label for="titulo">Titulo:</label>
-      <input type="text" id="titulo"  v-model="audioannotations.title" name="title"><br><br>
+        <div>
+          <label for="descripcion">Descripcion:</label>
+          <input
+            type="text"
+            id="description"
+            name="audioannotations.description"
+            v-model="audioannotations.description"
+          /><br /><br />
+        </div>
+      </div>
+      Aqui me quede selectionando colection
 
-   </div>
-   
-   <div>
-      <label for="descripcion">Descripcion:</label>
-      <input type="text" id="description" name="audioannotations.description"  v-model="audioannotations.description"><br><br>
+      <select  @change="changeColeccion($event)">
+        <option disabled value="" >Selecciona una opción</option>
+        <option
+          v-for="(item3, index) in colecciones"
+          :key="'item3' + index"
+          v-bind:value="item3._id"
+        >
+          {{ item3.name }}
+        </option>
+      </select>
 
-   </div>
+      <select >
+        <option
+          v-for="(item4, index) in lenguage"
+          :key="'item4' + index"
+          v-bind:value="item4.language.name"
+        >
+          {{ item4.language.name }} {{ item4.LanguageGroup.name }}
+        </option>
+      </select>
 
-    </div>
-Aqui me quede selectionando colection
+      <!--<div v-for="(item3, index) in colecciones" :key="'item3' + index">
+         </div>-->
       <!--  <button v-on:click="agregar_tier_acomodado()"></button>-->
       <div v-for="(item2, index) in tier_participante" :key="'item' + index">
         <table>
@@ -74,7 +102,7 @@ Aqui me quede selectionando colection
                 <input
                   type="checkbox"
                   :id="item.TIER_ID"
-                   v-model="item.Visible" 
+                  v-model="item.Visible"
                   :value="item.Visible"
                   @change="seleccion_onoff($event)"
                 />
@@ -130,26 +158,46 @@ export default {
       audioannotations: [],
       tier_participante: [],
       tier_acomodado: [],
+      colecciones: [],
+      selected: "Selecciona una opción",
+      selected2: "Selecciona una opción",
+      lenguage: [],
     };
   },
   methods: {
-    enviardatos:function(parametro){
-      this.audioannotations.TIER=this.tier_acomodado;
-      console.log(parametro)
-  //     axios.post('https://api.com/v1/resource', 
-	// formData, 
-	// {
-	// 	// Config
-	// })
-      
-      window.location.href = '/audioannotations/create';
+    changeColeccion: function (e) {
+      console.log("valor " + e.target.value);
+      console.log(this.colecciones.find((x) => x._id == e.target.value));
+      if (e.target.value === undefined) {
+        this.lenguage = [];
+      } else {
+        this.lenguage = this.colecciones.find((x) => x._id == e.target.value).languages;
+      }
+    },
+    enviardatos: function (parametro) {
+      this.audioannotations.TIER = this.tier_acomodado;
+      console.log(parametro);
+      //     axios.post('https://api.com/v1/resource',
+      // formData,
+      // {
+      // 	// Config
+      // })
 
+      window.location.href = "/audioannotations/create";
     },
     leerTierBD: function () {
       //for (var i in this.audioannotations_info.data) {
       this.audioannotations = this.audioannotations_info.data;
       this.agrupar_tier_acomodado();
-      this.tier_acomodado=this.audioannotations.TIER
+      this.tier_acomodado = this.audioannotations.TIER;
+      //5f66395f6620c52fea0c5360
+      this.axios
+        .get("/collections/api/index/" + this.audioannotations.user._id)
+        .then((response) => {
+          //self.axios.get("/collections/api/index/5f66395f6620c52fea0c5360").then((response) => {
+          this.colecciones = response.data.collectionDocs;
+          //falta hacer algo self.leerTier();
+        });
       // }
     },
     agrupar_tier_acomodado: function () {
@@ -160,7 +208,6 @@ export default {
       this.tier_participante = myUniqueArray;
     },
     selecion_todos_onoff: function (e) {
-      //aqui me quede seleccionando por participante para que desbloquee todos
       console.log("valor " + e.target.value);
       console.log("id " + event.target.id);
       console.log("checado " + e.target.checked);
@@ -201,36 +248,34 @@ export default {
         console.log("si lo off");
       }
     },
-  selecion_todos_visualizacion_options: function (e) {
-            //aqui me quede seleccionando por participante para que desbloquee todos
-            console.log("valor " +
-                e.target.value);
-            console.log("id " +
-                event.target.id);
-            if (e.target.value == "A") {
-                console.log("si esta en online display");
-                //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = true;
-                //cambiar todos
-                for (var indice in this.tier_acomodado) {
-                    if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
-                        console.log("Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice)
-                        this.tier_acomodado[indice].value = "A";
-                    }
-
-                }
-
-            } else {
-                //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = false;
-                console.log("esta Multi-line display");
-                for (var indice in this.tier_acomodado) {
-                    if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
-                        console.log("Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice)
-                        this.tier_acomodado[indice].value = "B";
-                    }
-                }
-            }
-
-        },
+    selecion_todos_visualizacion_options: function (e) {
+      console.log("valor " + e.target.value);
+      console.log("id " + event.target.id);
+      if (e.target.value == "A") {
+        console.log("si esta en online display");
+        //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = true;
+        //cambiar todos
+        for (var indice in this.tier_acomodado) {
+          if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
+            console.log(
+              "Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice
+            );
+            this.tier_acomodado[indice].value = "A";
+          }
+        }
+      } else {
+        //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = false;
+        console.log("esta Multi-line display");
+        for (var indice in this.tier_acomodado) {
+          if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
+            console.log(
+              "Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice
+            );
+            this.tier_acomodado[indice].value = "B";
+          }
+        }
+      }
+    },
     seleccion_color: function (e) {
       console.log("--------------------------------");
       console.log(
@@ -293,12 +338,12 @@ export default {
   beforeMount() {},
   mounted() {
     var self = this;
-    this.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
-      this.audioannotations_info = response;
+    self.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
+      self.audioannotations_info = response;
       //falta hacer algo self.leerTier();
       self.leerTierBD();
     });
-    //this.agregar_tier_acomodado();
+    //this.agregar_tier_acomodado();colecciones
   },
 };
 </script>
