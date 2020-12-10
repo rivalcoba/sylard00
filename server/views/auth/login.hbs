@@ -7,12 +7,7 @@
   <div class="container">
     <div class="row contenedor-90vh" id="Fila1_login">
       <div class="col-md-5 px-4" id="columna_izquierda_login">
-        <img
-          class="wdt-75"
-          src="/images/elotes_huichol_login.svg"
-          id="huichol_img_login"
-          alt="Arte Huichol maíz"
-        />
+        <img class="wdt-75" src="/images/elotes_huichol_login.svg" id="huichol_img_login" alt="Arte Huichol maíz" />
       </div>
       <div class="col-md-7 pt-3" id="columna_derecha_login">
         <div class="" id="columna_derecha_login_anidada">
@@ -26,23 +21,13 @@
             {{translation.TYPE_YOUR_USERNAME_AND_PASSWORD}}
           </h3>
           <br />
-          <form
-            class="formulario_contenedor_login"
-            action="/auth/login/user"
-            method="post"
-          >
+          <form class="formulario_contenedor_login" action="/auth/login/user" method="post">
             <div class="contenedor_inputs_login">
               <label class="label label_al_100" for="email">
                 <span class="icon-email"></span>
                 {{translation.EMAIL}}
               </label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="{{translation.EMAIL_PLACEHOLDER}}"
-                required
-              />
+              <input id="email" type="email" name="email" placeholder="{{translation.EMAIL_PLACEHOLDER}}" required />
               <div class="contenedor_icono_correcto_input">
                 <p>
                   <span class="icono_correcto_input icon-check_circle"></span>
@@ -59,14 +44,8 @@
                 <span class="icon-lock"></span>
                 {{translation.PASSWORD}}
               </label>
-              <input
-                id="password"
-                type="password"
-                name="password"
-                placeholder="{{translation.PASSWORD_INTRODUCE}}"
-                minlength="6"
-                required
-              />
+              <input id="password" type="password" name="password" placeholder="{{translation.PASSWORD_INTRODUCE}}"
+                minlength="6" required />
               <div class="contenedor_icono_correcto_input">
                 <p>
                   <span class="icono_correcto_input icon-check_circle"></span>
@@ -77,11 +56,7 @@
                   <span class="icono_error_input icon-error"></span>
                 </p>
               </div>
-              <button
-                type="button"
-                onclick="showPassword()"
-                class="btn btn-predeterminado btn_input_derecha ml-2"
-              >
+              <button type="button" onclick="showPassword()" class="btn btn-predeterminado btn_input_derecha ml-2">
                 <span class="icon-eye"></span>
               </button>
               <br />
@@ -100,3 +75,13 @@
     </div>
   </div>
 </div>
+<script>
+  function showPassword() {
+    var tipo = document.getElementById("password");
+    if (tipo.type == "password") {
+      tipo.type = "text";
+    } else {
+      tipo.type = "password";
+    }
+  }
+</script>
