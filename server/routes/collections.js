@@ -66,5 +66,11 @@ router.get(
   collectionsController.api_getCollectionById
 )
 
+router.get('/api/index/:userId',
+/*ensureAuthenticated,
+  ensureColabUser,*/ // TODO: Uncomment to protect route
+  collectionsController.api_getCollectionByUser
+  )
+
 // Se exportan rutas
 export default router

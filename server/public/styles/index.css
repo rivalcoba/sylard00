@@ -1240,7 +1240,11 @@ input:checked + .slider_general {
 }
 
 #lenguas_agregadas_input {
-	width:98%;
+  width:98%;
+}
+
+#spokenLanguages {
+    width: 98%;
 }
 
 #boton_quitar {

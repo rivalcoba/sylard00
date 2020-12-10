@@ -5,5 +5,6 @@
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true
-    }
+    },
+    "clockify.tracking.workspaceId": "5fcc14ec7ff1d55822794999"
 }

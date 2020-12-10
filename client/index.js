@@ -31,6 +31,7 @@ import LecturaEAF from "@client/templates/components/LecturaEAF.vue";
 import LecturaTierEAF from "@client/templates/components/LecturaTierEAF.vue";
 import App2 from '@client/templates/main2.vue'
 import  FiltroAudioannotations  from "@client/templates/components/FiltroAudioannotations.vue";
+import  EditAudioannotations  from "@client/templates/components/EditAudioannotations.vue";
 import App3 from '@client/templates/main3.vue'
 
 
@@ -53,7 +54,10 @@ if(window.location.pathname == `/test`){
     window.app = indexTestScripts.getVueApp()
 }
 
-if(window.location.pathname == `/audioannotations/vuetest`){
+
+//if(window.location.pathname == `/audioannotations/vuetest/:id`){
+  if(window.location.pathname.match(/\/audioannotations\/vuetest\//)){
+ //if(window.location.pathname == `/audioannotations/vuetest`){ 
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("LecturaEAF", LecturaEAF);
@@ -87,6 +91,19 @@ if(window.location.pathname == `/audioannotations`){
     window.vm = new Vue({
       el: '#app3',
       render: h => h(App3)
+      //aqui
+     //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+     //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
+    })
+}
+
+if(window.location.pathname.match(/\/audioannotations\/edit\//)){
+    // window.Vue = Vue
+    Vue.use(VueAxios, axios);
+    Vue.component("EditAudioannotations", EditAudioannotations);
+    window.vm = new Vue({
+      el: '#EditAudioannotations',
+      render: h => h(EditAudioannotations)
       //aqui
      //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
      //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
