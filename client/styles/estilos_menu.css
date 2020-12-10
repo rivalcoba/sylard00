@@ -600,7 +600,6 @@ textarea:valid ~ .contenedor_icono_error_input /*No aparece el icono error cuand
 textarea:invalid ~ .contenedor_icono_error_input /*aparece el icono error cuando es invalido*/{
 	display: inline-block;
 	color: var(--color-error)!important;
-	border: 1px dashed red;
 }
 
 /*NO SE PORQUE NO despliega los iconos de validacion en SELECT*/ 
@@ -624,7 +623,6 @@ select:valid ~ .contenedor_icono_error_input /*No aparece el icono error cuando 
 select:invalid ~ .contenedor_icono_error_input /*aparece el icono error cuando es invalido*/ {
 	display: inline-block;
 	color: var(--color-error)!important;
-	border: 1px dashed red;
 	
 }
 
@@ -1195,7 +1193,6 @@ input:checked + .slider_general {
 
 .contenedor_botones_registro {
 	flex-basis: 93%;
-/*	border: 2px dashed red;*/
 }
 .btn_input_derecha {
 	font-size: 1rem;
