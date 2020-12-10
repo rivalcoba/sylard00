@@ -91,8 +91,11 @@ router.delete(
   audioannotationsController.deleteAudioannotaion
 )
 
+//router.get(
+//  '/vuetest/:audioannotation_id',
 router.get(
-  '/vuetest',
+  '/vuetest/:audioannotation_id',
+  
   ensureAuthenticated,
   ensureColabUser,
   audioannotationsController.vuetestAudioannotaion
