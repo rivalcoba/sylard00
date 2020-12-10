@@ -125,7 +125,7 @@ router.get(
 // | | | || |    _| |_ 
 // \_| |_/\_|    \___/ 
 
-router.get('/api/update/:audioannotationId',
+router.post('/api/update/:audioannotationId',
 /*ensureAuthenticated,
 ensureColabUser,*/ // TODO: Uncomment to protect route
 audioannotationsController.api_updateAudioAnnot

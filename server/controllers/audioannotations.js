@@ -302,9 +302,16 @@ const vuetestAudioannotaion = async (req, res) => {
 }
 
 // ***************** API ********************
-const api_updateAudioAnnot = (req,res)=>{
-  //const {audioannotationId} = req.params
-  res.status(200).json(req.body)
+const api_updateAudioAnnot = async (req,res)=>{
+  try {
+    const {audioannotationId} = req.params
+    let collectionDoc = await Audioannotations.findById(audioannotationId).exec()
+    collectionDoc.set(req.body)
+    let result = await collectionDoc.save()
+    res.status(200).json(result)
+  } catch (error) {
+    res.status(500).json({error: error.message})    
+  }
 }
 
 export default {
