@@ -34,20 +34,21 @@
           /><br /><br />
         </div>
       </div>
- Coleccion:
-      <select v-model="selected" @change="changeColeccion($event)">
-        <option disabled value="">Selecciona una opción</option>
+ Coleccion: 
+      <select @change="changeColeccion($event)">
+        <option disabled :value="audioannotations.collection_id.description">{{audioannotations.collection_id.description}}</option>
         <option
           v-for="(item3, index) in colecciones"
           :key="'item3' + index"
           v-bind:value="item3._id"
         >
-          {{ item3.name }}
+        {{ item3.name }}
         </option>
       </select><br /><br />
       Lengua Terminal y Grupo de lenguas
       <select @change="changeLenguaje($event)">
-        <option
+      <option disabled :value="audioannotations.gid.language.name">{{audioannotations.gid.language.name}} {{audioannotations.gid.LanguageGroup.name}}</option>
+          <option
           v-for="(item4, index) in lenguaje"
           :key="'item4' + index"
           v-bind:value="item4._id"
@@ -57,7 +58,8 @@
       </select><br /><br />
       Comunidad a la que pertenece
       <select @change="changeComunidad($event)">
-        <option
+        <option disabled :value="audioannotations.location.Nom_Loc">{{audioannotations.location.Nom_Loc}}-{{audioannotations.location.Nom_Mun}} {{audioannotations.location.Nom_Mun}}</option>
+         <option
           v-for="(item5, index) in comunidad"
           :key="'item5' + index"
           v-bind:value="item5._id"
@@ -187,7 +189,6 @@ export default {
        this.comunidad = colecTemporal.find(x => x._id == e.target.value).localities;
       //   console.log("++++++++localities++++++++")
       //   console.log(this.comunidad)
-
       //   this.coleccion.languages=[]
       //   this.coleccion.languages.push(this.lenguaje[0])        
       //   this.coleccion.localities=[]
@@ -198,7 +199,7 @@ export default {
     changeLenguaje: function (e) {
       //   //Aqui me quede quitando el error quitar los metodos  changeLenguaje y changeComunidad
       //   //dos lenguajes
-     // console.log("valor " + e.target.value);
+     console.log("valor changeLenguaje" + e.target.value);
       //console.log(this.lenguage.find((x) => x._id == e.target.value));
       // if (e.target.value === undefined) {
       //   //this.coleccion.lenguage = [];
@@ -212,7 +213,7 @@ export default {
       // }
     },
      changeComunidad: function (e) {
-      // console.log("valor " + e.target.value);
+      console.log("valor changeComunidad" + e.target.value);
       // console.log(this.comunidad.find((x) => x._id == e.target.value));
       // if (e.target.value === undefined) {
       //   //this.coleccion.localities = [];
@@ -225,7 +226,8 @@ export default {
       //    console.log("cambia el valor de changeLenguaje"+this.coleccion.localities[0].Nom_Loc+" "+this.coleccion.localities[0].Nom_Mun)     
        
       // }
-    },
+    },formaraudioannotation:function(pColeccion)
+    {},
     enviardatos: function (parametro) {
       this.audioannotations.TIER = this.tier_acomodado;
       console.log(parametro);
@@ -240,6 +242,8 @@ export default {
     leerTierBD: function () {
       //for (var i in this.audioannotations_info.data) {
       this.audioannotations = this.audioannotations_info.data;
+      //Valor para inicializar el select
+    
       this.agrupar_tier_acomodado();
       this.tier_acomodado = this.audioannotations.TIER;
       //5f66395f6620c52fea0c5360
@@ -248,7 +252,12 @@ export default {
         .then((response) => {
           //self.axios.get("/collections/api/index/5f66395f6620c52fea0c5360").then((response) => {
           this.colecciones = response.data.collectionDocs;
-          //falta hacer algo self.leerTier();
+       //Inicializa select de languages y localities
+       var audioTemporal;
+       audioTemporal=this.audioannotations.collection_id
+       this.lenguaje = audioTemporal.languages;
+       this.comunidad = audioTemporal.localities;
+
         });
       // }
     },
