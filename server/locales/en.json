@@ -49,6 +49,8 @@
     "REGISTER_CONTENT": "I want to register!",
     "SELECT_AN_OPTION": "Select your option",
     "ADD_COLLECTION": "Add Collection",
-    "COMPLETE_FIELDS": "Fill in the fields correctly"
+    "UPLOAD_AUDIONOTATION": "Upload Audio Annotation",
+    "COMPLETE_FIELDS": "Fill in the fields correctly",
+    "HELLO_COLLECTIONS": "Hello!"
 
 }
