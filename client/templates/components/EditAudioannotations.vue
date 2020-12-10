@@ -65,10 +65,6 @@
           {{ item5.Nom_Loc }}-{{ item5.Nom_Mun }}-{{ item5.Nom_Ent }}
         </option>
       </select><br /><br />
-
-      <!--<div v-for="(item3, index) in colecciones" :key="'item3' + index">
-         </div>-->
-      <!--  <button v-on:click="agregar_tier_acomodado()"></button>-->
       <div v-for="(item2, index) in tier_participante" :key="'item' + index">
         <table>
           <tr>
@@ -330,14 +326,7 @@ export default {
   },
   //   props:['idParametro'],
   computed: {
-    // imprimir(){
-    //   console.log("Ruta")
-    //   // const path = require('path');
-    //   // console.log(path.basename())
-    //   // console.log(this.idParametro)
-    //   // return this.idParametro
-    //  console.log(this.$route.query.test)
-    // }
+
   },
   created() {
     var currentUrl = window.location.pathname;
