@@ -48,7 +48,7 @@
       Lengua Terminal y Grupo de lenguas
       <select @change="changeLenguaje($event)">
         <option
-          v-for="(item4, index) in lenguage"
+          v-for="(item4, index) in lenguaje"
           :key="'item4' + index"
           v-bind:value="item4._id"
         >
@@ -166,56 +166,65 @@ export default {
       colecciones: [],
       selected: "Selecciona una opción",
       coleccion:[],
-      lenguage: [],
+      lenguaje: [],
       comunidad: [],
     };
   },
   methods: {
     changeColeccion: function (e) {
+      var colecTemporal=[]
+      colecTemporal=this.colecciones
       console.log("valor " + e.target.value);
-      console.log(this.colecciones.find((x) => x._id == e.target.value));
+      //console.log(colecTemporal.find((x) => x._id == e.target.value));
       if (e.target.value === undefined) {
-        this.lenguage = [];
+        //this.lenguaje = [];
         console.log("Esta entrando al undefined colection")
       } else {
-        this.coleccion=this.colecciones.find((x) => x._id == e.target.value)
-        this.lenguage = this.colecciones.find((x) => x._id == e.target.value).languages;
-        console.log("++++++++Lenguajes++++++++")
-        console.log(this.lenguage)
-        this.comunidad = this.colecciones.find((x) => x._id == e.target.value).localities;
-        console.log("++++++++localities++++++++")
-        console.log(this.comunidad)
-        //Aqui me quede quitando el error cuando entra por primera vez deja 2 localities y
-        //dos lenguajes
-        //this.coleccion.languages=[]
-        //this.coleccion.languages.push(this.lenguage[0])        
-        //this.coleccion.localities=[]
-        //this.coleccion.localities.push(this.comunidad[0])
+         this.coleccion=colecTemporal.find(x => x._id == e.target.value)
+        this.lenguaje = colecTemporal.find(x => x._id == e.target.value).languages;
+      //   console.log("++++++++Lenguajes++++++++")
+      //   console.log(this.lenguaje)
+       this.comunidad = colecTemporal.find(x => x._id == e.target.value).localities;
+      //   console.log("++++++++localities++++++++")
+      //   console.log(this.comunidad)
+
+      //   this.coleccion.languages=[]
+      //   this.coleccion.languages.push(this.lenguaje[0])        
+      //   this.coleccion.localities=[]
+      //   this.coleccion.localities.push(this.comunidad[0])
+        
       }
     },
     changeLenguaje: function (e) {
+      //   //Aqui me quede quitando el error quitar los metodos  changeLenguaje y changeComunidad
+      //   //dos lenguajes
      // console.log("valor " + e.target.value);
       //console.log(this.lenguage.find((x) => x._id == e.target.value));
-      if (e.target.value === undefined) {
-        this.coleccion.lenguage = [];
-        console.log("Esta entrando al undefined changeLenguaje")
-      } else {
-        this.coleccion.languages=[]
-        this.coleccion.languages.push(this.lenguage.find((x) => x._id == e.target.value))
-        console.log("cambia el valor de changeLenguaje")       
-      }
+      // if (e.target.value === undefined) {
+      //   //this.coleccion.lenguage = [];
+      //   console.log("Esta entrando al undefined changeLenguaje")
+      // } else {
+      //   this.coleccion.languages=[]
+      //   var leng = this.lenguaje.find(x => x._id == e.target.value)
+      //   this.coleccion.languages.push(leng)
+      //   console.log("cambia el valor de changeLenguaje")   
+      //   console.log("cambia el valor de changeLenguaje"+this.coleccion.languages[0].language.name+" "+this.coleccion.languages[0].LanguageGroup.name)     
+      // }
     },
      changeComunidad: function (e) {
       // console.log("valor " + e.target.value);
       // console.log(this.comunidad.find((x) => x._id == e.target.value));
-      if (e.target.value === undefined) {
-        this.coleccion.localities = [];
-        console.log("Esta entrando al undefined changeComunidad")
-      } else {
-        this.coleccion.localities=[]
-        this.coleccion.localities.push(this.comunidad.find((x) => x._id == e.target.value)) 
-        console.log("cambia el valor de changeComunidad")        
-      }
+      // if (e.target.value === undefined) {
+      //   //this.coleccion.localities = [];
+      //   console.log("Esta entrando al undefined changeComunidad")
+      // } else {
+      //   this.coleccion.localities=[]
+      //   var local=this.comunidad.find(x => x._id == e.target.value)
+      //   this.coleccion.localities.push(local) 
+      //   console.log("cambia el valor de changeComunidad") 
+      //    console.log("cambia el valor de changeLenguaje"+this.coleccion.localities[0].Nom_Loc+" "+this.coleccion.localities[0].Nom_Mun)     
+       
+      // }
     },
     enviardatos: function (parametro) {
       this.audioannotations.TIER = this.tier_acomodado;
