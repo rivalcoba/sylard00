@@ -46,7 +46,7 @@
         </option>
       </select><br /><br />
       Lengua Terminal y Grupo de lenguas
-      <select>
+      <select @change="changeLenguaje($event)">
         <option
           v-for="(item4, index) in lenguage"
           :key="'item4' + index"
@@ -56,7 +56,7 @@
         </option>
       </select><br /><br />
       Comunidad a la que pertenece
-      <select>
+      <select @change="changeComunidad($event)">
         <option
           v-for="(item5, index) in comunidad"
           :key="'item5' + index"
@@ -180,6 +180,30 @@ export default {
         this.coleccion=this.colecciones.find((x) => x._id == e.target.value)
         this.lenguage = this.colecciones.find((x) => x._id == e.target.value).languages;
         this.comunidad = this.colecciones.find((x) => x._id == e.target.value).localities;
+        this.coleccion.languages=[]
+        this.coleccion.languages.push(this.lenguage[0])        
+        this.coleccion.localities=[]
+        this.coleccion.localities.push(this.comunidad[0])
+      }
+    },
+    changeLenguaje: function (e) {
+      console.log("valor " + e.target.value);
+      console.log(this.lenguage.find((x) => x._id == e.target.value));
+      if (e.target.value === undefined) {
+        this.coleccion.lenguage = [];
+      } else {
+        this.coleccion.languages=[]
+        this.coleccion.languages.push(this.lenguage.find((x) => x._id == e.target.value))       
+      }
+    },
+     changeComunidad: function (e) {
+      console.log("valor " + e.target.value);
+      console.log(this.comunidad.find((x) => x._id == e.target.value));
+      if (e.target.value === undefined) {
+        this.coleccion.localities = [];
+      } else {
+        this.coleccion.localities=[]
+        this.coleccion.localities.push(this.comunidad.find((x) => x._id == e.target.value))       
       }
     },
     enviardatos: function (parametro) {
