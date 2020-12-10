@@ -1,0 +1,382 @@
+<main>
+  <div class="container-fluid" id="contenedor_administrador_usuarios">
+    <div class="container-fluid" id="cabezal_administrador_usuarios">
+      <div class="container">
+        <div
+          class="col-sm-12"
+          id="contenedor_items_cabezal_administrador_usuarios"
+        >
+          <div class="" id="contenedor_titulos_cabezal_administrador_usuarios">
+            <h1 id="titulo_administrador_usuarios">
+              <span class="icono_cabezal icon-group1"></span>
+              Usuarios
+            </h1>
+            <h2 class="llamada" id="llamada_administrador_usuarios">
+              Aquí están los colaboradores y consumidores de SYLARD
+            </h2>
+            <h3 class="blanco">
+              ¡Recuerde revisar y tener cuidado al editar!
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="container">
+      <div
+        class="col-sm-12 contenedor-90vh"
+        id="contenedor_general_todos_los_usuarios"
+      >
+        <div class="contenedor_tabla_todos_los_usuarios">
+          <table class="tabla_todos_los_usuarios">
+            <thead>
+              <th class="cabezal_columnas_th" id="th_acciones_generales">
+                <div class="contenedor_acciones_generales">
+                  <input
+                    onclick="toggleAllCheckBoxes()"
+                    type="checkbox"
+                    class="input_checkbox_cabezal_columna"
+                    id="masterCheckBox"
+                  />
+                  <button class="btn-eliminar_seleccionados">
+                    <span
+                      class="icono_boton_eliminar_audioanotaciones icon-delete"
+                    ></span>
+                  </button>
+                </div>
+              </th>
+              <th class="cabezal_columnas_th" id="th_usuario" colspan="2">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Usuario
+                  </label>
+                  <button class="flecha_orden_ascendente">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  placeholder="Búsqueda"
+                />
+              </th>
+              <th class="cabezal_columnas_th" id="th_lenguas_habladas">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Lenguas habladas
+                  </label>
+                  <button class="flecha_orden_ascendente">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  placeholder="Búsqueda"
+                />
+              </th>
+              <th
+                class="cabezal_columnas_th"
+                id="privilegios_administrador_usuarios"
+              >
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Privilegios
+                  </label>
+                  <button class="flecha_orden_ascendente active">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  list="usuarios_privilegios"
+                  name="privilegios_usuario"
+                  id="input_selector_ privilegios_usuario"
+                  placeholder="N. D."
+                  disabled
+                />
+                <datalist id="usuarios_privilegios">
+                  <option value="Colaborador"></option>
+                  <option value="Invitado"></option>
+                </datalist>
+              </th>
+              <th class="cabezal_columnas_th">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Descripción del usuario
+                  </label>
+                </div>
+                <input
+                  class="input_busqueda_invisible"
+                  type="search"
+                  placeholder="No disponible"
+                  disabled
+                />
+              </th>
+              <th class="cabezal_columnas_th">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Colecciones
+                  </label>
+                  <button class="flecha_orden_ascendente">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  placeholder="Búsqueda"
+                />
+              </th>
+              <th class="" id="th_acciones_administrador_usuarios"></th>
+            </thead>
+
+            <!-- INICIA TABLE ROW -->
+            {{#each usersObjs}}
+            <tr id="{{_id}}" class="">
+              <!--class="selected"-->
+              <td>
+                <label class="contenedor_checkbox">
+                  <input onclick="toggleSelection('{{_id}}')" type="checkbox" class="checkbox_personalizada" />
+                  <span class="marca_check"></span>
+                </label>
+              </td>
+
+              <td class="td_icono_usuario_administrador_usuarios">
+                <div class="contenedor_icono_usuario_administrador_usuarios">
+                  <img
+                    src="/images/iconousuario.svg"
+                    class="imagen_icono_usuario_administrador_usuarios"
+                    alt="Ícono de venado usuario"
+                  />
+                </div>
+              </td>
+
+              <td class="">
+                <div>{{name}}</div>
+                <span class="correo_de_usuario" data-label="Correo de usuario">
+                  {{email}}
+                </span>
+              </td>
+              <td>
+                {{#each spokenLanguages}}
+                <div>
+                  {{gid}}
+                  <span
+                    class="lengua_term_comun"
+                    data-label="Lengua terminal (nombre común)">
+                    {{name}}
+                  </span>
+                </div>
+                {{/each}}
+              </td>
+              <td class="tipo_de_colaborador_administrador_usuarios" id="">
+                <div class="contenedor_switch_canal_audioanotacion_hijo">
+                  <label class="switch_general">
+                    <input
+                      type="checkbox"
+                      class="checkbox_canal1"
+                      id="checbox_canal_1"
+                      {{role}}
+                    />
+                    <span class="slider_general round"></span>
+                  </label>
+                  <br />
+                  <label
+                    class="swich_etiqueta_opcion2"
+                    for="checbox_canal_1"
+                    id="switch_usuario_canal1_on"
+                  ></label>
+                </div>
+              </td>
+              <td class="td_descripcion_usuario_administrador_usuarios">
+                {{about}}
+              </td>
+              <td class="td_colecciones_administrador_usuarios">
+                <ul>
+                  {{#each collectionsDocs}}
+                  <li class="colecciones_usuario_lista">
+                    <a href="#">
+                      {{this.name}}
+                    </a>
+                  </li>                
+                  {{/each}}
+                </ul>
+              </td>
+              <td class="td_acciones">
+                <div class="contenedor_botones_accion_administrador_usuarios">
+                  <button id="elipsis{{@index}}" onclick="openModal('{{@index}}')" class="btn_accion_tabla">
+                    <span class="icono_accion_tabla icon-ellipsis-v"></span>
+                  </button>
+                  <div id="modal_elipsis{{@index}}" class="contenido_modal_elipsis">
+                    <span onclick="closeModal('{{@index}}')" class="icono_cerrar_modal_elipsis icon-close"></span>
+                    <div class="contenedor_opciones_elipsis">
+                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
+                        <span class="icono_opcion_elipsis icon-edit"></span>
+                        Editar usuario
+                      </a>
+                      <a class="btn_opciones_ellipsis_mis_colecciones" href="#">
+                        <span class="icono_opcion_elipsis icon-delete"></span>
+                        Eliminar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            {{/each}}
+            <!-- FINALIZA TABLE ROW -->
+          </table>
+          <div class="contenedor_paginacion">
+            {{!-- <div class="contenedor_input_paginacion">
+              <input
+                class=""
+                id="busqueda_paginacion"
+                type="text"
+                placeholder="Pag."
+              />
+              <button class="btn_lateral_input" for="busqueda_paginacion">
+                <span class="icono_pagina_busqueda  icon-chevron-right"></span>
+              </button>
+            </div> --}}
+            {{!-- <div class="contenedor_numeros_paginacion">
+              <a class="icono_paginacion" href="#">
+                <span class="icon-first_page"></span>
+              </a>
+              <a class="icono_paginacion" href="#">
+                <span class="icon-angle-left"></span>
+              </a>
+              <a class="numero_paginacion" href="#">
+                2
+              </a>
+              <a class="numero_paginacion" href="#">
+                3
+              </a>
+              <a class="numero_paginacion" href="#">
+                4
+              </a>
+              <a class="numero_paginacion active" href="#">
+                5
+              </a>
+              <a class="numero_paginacion" href="#">
+                6
+              </a>
+              <a class="numero_paginacion" href="#">
+                7
+              </a>
+              <a class="ultima_pagina" href="#">
+                ...29
+              </a>
+              <a class="icono_paginacion" href="#">
+                <span class="icon-angle-right"></span>
+              </a>
+              <a class="icono_paginacion" href="#">
+                <span class="icon-last_page"></span>
+              </a>
+            </div> --}}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<script>
+let openModal = function(index){
+  // #THESIS Para la propagación de un evento
+  // Ref: https://vsvaibhav2016.medium.com/event-bubbling-and-event-capturing-in-javascript-6ff38bec30e#:~:text=If%20you%20want%20to%20stop,to%20the%20bottom%20to%20top.
+  // Get the modal
+  event.stopPropagation()
+  var modal = document.getElementById(`modal_elipsis${index}`);
+  modal.style.display = "block";
+}
+
+let closeModal = function(index){
+  var modal = document.getElementById(`modal_elipsis${index}`);
+  modal.style.display = "none";  
+}
+
+window.onclick = event=>{
+  let targetElement = event.target
+  // #THESIS iterate over an array of elements got by its class names
+  // ref: https://stackoverflow.com/questions/3871547/js-iterating-over-result-of-getelementsbyclassname-using-array-foreach
+  // #THESIS CLick outside a model
+  // REF: https://www.blustemy.io/detecting-a-click-outside-an-element-in-javascript/#:~:text=To%20detect%20a%20click%20outside%20an%20element%20we%20must%20add,belongs%20to%20the%20flyout%20container.
+  let modals = document.getElementsByClassName('contenido_modal_elipsis')
+
+  do{
+    let result = Array.from(modals).map(modal=>{
+      if(targetElement == modal){
+        // Click inside an element
+        //console.log("return 1")
+        return 1;
+      }else{
+        return 0;
+      }
+    })
+
+    const reducer = (accumulator, currentValue) => accumulator + currentValue
+
+    let count = result.reduce(reducer)
+
+    if(count >= 1){
+      //console.log("Clicked inside a modal")
+      return
+    }
+
+    // Go up the DOM
+    targetElement = targetElement.parentNode
+  }while(targetElement)
+
+  // Click outside an element
+  Array.from(modals).forEach(modal => {
+    if(modal.style.display == "block"){
+      modal.style.display = "none";
+    }
+  })
+  //console.log("click outside a modal")
+}
+
+let selectedUsers = [];
+
+let toggleSelection = function(id){
+
+  let isSelected = selectedUsers.findIndex(userId => userId === id)
+
+  let userTableRow = document.getElementById(id)
+
+  if(isSelected === -1){
+    selectedUsers.push(id)
+    userTableRow.classList.add('selected')
+  }else{
+    userTableRow.classList.remove('selected')
+    selectedUsers.splice(isSelected, 1)
+  }
+}
+
+let toggleAllCheckBoxes = function(){
+  let masterCheckBox = document.getElementById('masterCheckBox')
+  var checkBoxes = document.getElementsByClassName('checkbox_personalizada')
+  Array.from(checkBoxes).forEach(chkBox=>{
+    console.log(masterCheckBox.checked && !chkBox.checked)
+    if(masterCheckBox.checked && !chkBox.checked){
+      //chkBox.checked = true;
+      chkBox.click();
+    }
+    if(!masterCheckBox.checked && chkBox.checked){
+      chkBox.click();
+    }
+  })
+}
+</script>
