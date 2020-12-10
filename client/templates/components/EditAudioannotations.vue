@@ -34,10 +34,9 @@
           /><br /><br />
         </div>
       </div>
-      Aqui me quede selectionando colection
-
-      <select  @change="changeColeccion($event)">
-        <option disabled value="" >Selecciona una opción</option>
+ Coleccion:
+      <select v-model="selected" @change="changeColeccion($event)">
+        <option disabled value="">Selecciona una opción</option>
         <option
           v-for="(item3, index) in colecciones"
           :key="'item3' + index"
@@ -45,17 +44,27 @@
         >
           {{ item3.name }}
         </option>
-      </select>
-
-      <select >
+      </select><br /><br />
+      Lengua Terminal y Grupo de lenguas
+      <select>
         <option
           v-for="(item4, index) in lenguage"
           :key="'item4' + index"
-          v-bind:value="item4.language.name"
+          v-bind:value="item4._id"
         >
           {{ item4.language.name }} {{ item4.LanguageGroup.name }}
         </option>
-      </select>
+      </select><br /><br />
+      Comunidad a la que pertenece
+      <select>
+        <option
+          v-for="(item5, index) in comunidad"
+          :key="'item5' + index"
+          v-bind:value="item5._id"
+        >
+          {{ item5.Nom_Loc }}-{{ item5.Nom_Mun }}-{{ item5.Nom_Ent }}
+        </option>
+      </select><br /><br />
 
       <!--<div v-for="(item3, index) in colecciones" :key="'item3' + index">
          </div>-->
@@ -162,6 +171,7 @@ export default {
       selected: "Selecciona una opción",
       selected2: "Selecciona una opción",
       lenguage: [],
+      comunidad: [],
     };
   },
   methods: {
@@ -172,6 +182,7 @@ export default {
         this.lenguage = [];
       } else {
         this.lenguage = this.colecciones.find((x) => x._id == e.target.value).languages;
+        this.comunidad = this.colecciones.find((x) => x._id == e.target.value).localities;
       }
     },
     enviardatos: function (parametro) {
