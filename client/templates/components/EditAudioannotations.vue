@@ -165,7 +165,7 @@ export default {
       tier_acomodado: [],
       colecciones: [],
       selected: "Selecciona una opción",
-      selected2: "Selecciona una opción",
+      coleccion:[],
       lenguage: [],
       comunidad: [],
     };
@@ -177,6 +177,7 @@ export default {
       if (e.target.value === undefined) {
         this.lenguage = [];
       } else {
+        this.coleccion=this.colecciones.find((x) => x._id == e.target.value)
         this.lenguage = this.colecciones.find((x) => x._id == e.target.value).languages;
         this.comunidad = this.colecciones.find((x) => x._id == e.target.value).localities;
       }
