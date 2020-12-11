@@ -34,39 +34,61 @@
           /><br /><br />
         </div>
       </div>
- Coleccion: 
+      Coleccion:
       <select ref="coleccion" @change="changeColeccion($event)">
-        <option disabled :value="audioannotations.collection_id.description">{{audioannotations.collection_id.description}}</option>
+        <option disabled :value="audioannotations.collection_id.description">
+          {{ audioannotations.collection_id.description }}
+        </option>
         <option
           v-for="(item3, index) in colecciones"
           :key="'item3' + index"
           v-bind:value="item3._id"
         >
-        {{ item3.name }}
-        </option>
-      </select><br /><br />
+          {{ item3.name }}
+        </option></select
+      ><br /><br />
       Lengua Terminal y Grupo de lenguas
       <select ref="lengua" @change="changeLenguaje($event)">
-      <option disabled :value="audioannotations.gid.language.name">{{audioannotations.gid.language.name}} {{audioannotations.gid.LanguageGroup.name}}</option>
-          <option
+        <option disabled :value="audioannotations.gid.language.name">
+          {{ audioannotations.gid.language.name }}
+          {{ audioannotations.gid.LanguageGroup.name }}
+        </option>
+        <option
           v-for="(item4, index) in lenguaje"
           :key="'item4' + index"
           v-bind:value="item4._id"
         >
           {{ item4.language.name }} {{ item4.LanguageGroup.name }}
-        </option>
-      </select><br /><br />
+        </option></select
+      ><br /><br />
       Comunidad a la que pertenece
       <select ref="comunidad" @change="changeComunidad($event)">
-        <option disabled :value="audioannotations.location.Nom_Loc">{{audioannotations.location.Nom_Loc}}-{{audioannotations.location.Nom_Mun}} {{audioannotations.location.Nom_Mun}}</option>
-         <option
+        <option disabled :value="audioannotations.location.Nom_Loc">
+          {{ audioannotations.location.Nom_Loc }}-{{ audioannotations.location.Nom_Mun }}
+          {{ audioannotations.location.Nom_Mun }}
+        </option>
+        <option
           v-for="(item5, index) in comunidad"
           :key="'item5' + index"
           v-bind:value="item5._id"
         >
           {{ item5.Nom_Loc }}-{{ item5.Nom_Mun }}-{{ item5.Nom_Ent }}
+        </option></select
+      ><br /><br />
+      Genero
+      <select ref="genero">
+        <option disabled :value="audioannotations.genre.name">
+          {{ audioannotations.genre.name }}
         </option>
-      </select><br /><br />
+        <option
+          v-for="(item6, index) in genero"
+          :key="'item6' + index"
+          v-bind:value="item6.name"
+        >
+          <!-- v-bind:value="item6._id"-->
+          {{ item6.name }}
+        </option>
+      </select>
       <div v-for="(item2, index) in tier_participante" :key="'item' + index">
         <table>
           <tr>
@@ -167,39 +189,39 @@ export default {
       tier_acomodado: [],
       colecciones: [],
       selected: "Selecciona una opción",
-      coleccion:[],
+      coleccion: [],
       lenguaje: [],
       comunidad: [],
+      genero: [],
     };
   },
   methods: {
     changeColeccion: function (e) {
-      var colecTemporal=[]
-      colecTemporal=this.colecciones
+      var colecTemporal = [];
+      colecTemporal = this.colecciones;
       console.log("valor " + e.target.value);
       //console.log(colecTemporal.find((x) => x._id == e.target.value));
       if (e.target.value === undefined) {
         //this.lenguaje = [];
-        console.log("Esta entrando al undefined colection")
+        console.log("Esta entrando al undefined colection");
       } else {
-         this.coleccion=colecTemporal.find(x => x._id == e.target.value)
-        this.lenguaje = colecTemporal.find(x => x._id == e.target.value).languages;
-      //   console.log("++++++++Lenguajes++++++++")
-      //   console.log(this.lenguaje)
-       this.comunidad = colecTemporal.find(x => x._id == e.target.value).localities;
-      //   console.log("++++++++localities++++++++")
-      //   console.log(this.comunidad)
-      //   this.coleccion.languages=[]
-      //   this.coleccion.languages.push(this.lenguaje[0])        
-      //   this.coleccion.localities=[]
-      //   this.coleccion.localities.push(this.comunidad[0])
-        
+        this.coleccion = colecTemporal.find((x) => x._id == e.target.value);
+        this.lenguaje = colecTemporal.find((x) => x._id == e.target.value).languages;
+        //   console.log("++++++++Lenguajes++++++++")
+        //   console.log(this.lenguaje)
+        this.comunidad = colecTemporal.find((x) => x._id == e.target.value).localities;
+        //   console.log("++++++++localities++++++++")
+        //   console.log(this.comunidad)
+        //   this.coleccion.languages=[]
+        //   this.coleccion.languages.push(this.lenguaje[0])
+        //   this.coleccion.localities=[]
+        //   this.coleccion.localities.push(this.comunidad[0])
       }
     },
     changeLenguaje: function (e) {
       //   //Aqui me quede quitando el error quitar los metodos  changeLenguaje y changeComunidad
       //   //dos lenguajes
-     console.log("valor changeLenguaje" + e.target.value);
+      console.log("valor changeLenguaje" + e.target.value);
       //console.log(this.lenguage.find((x) => x._id == e.target.value));
       // if (e.target.value === undefined) {
       //   //this.coleccion.lenguage = [];
@@ -208,11 +230,11 @@ export default {
       //   this.coleccion.languages=[]
       //   var leng = this.lenguaje.find(x => x._id == e.target.value)
       //   this.coleccion.languages.push(leng)
-      //   console.log("cambia el valor de changeLenguaje")   
-      //   console.log("cambia el valor de changeLenguaje"+this.coleccion.languages[0].language.name+" "+this.coleccion.languages[0].LanguageGroup.name)     
+      //   console.log("cambia el valor de changeLenguaje")
+      //   console.log("cambia el valor de changeLenguaje"+this.coleccion.languages[0].language.name+" "+this.coleccion.languages[0].LanguageGroup.name)
       // }
     },
-     changeComunidad: function (e) {
+    changeComunidad: function (e) {
       console.log("valor changeComunidad" + e.target.value);
       // console.log(this.comunidad.find((x) => x._id == e.target.value));
       // if (e.target.value === undefined) {
@@ -221,47 +243,55 @@ export default {
       // } else {
       //   this.coleccion.localities=[]
       //   var local=this.comunidad.find(x => x._id == e.target.value)
-      //   this.coleccion.localities.push(local) 
-      //   console.log("cambia el valor de changeComunidad") 
-      //    console.log("cambia el valor de changeLenguaje"+this.coleccion.localities[0].Nom_Loc+" "+this.coleccion.localities[0].Nom_Mun)     
-       
+      //   this.coleccion.localities.push(local)
+      //   console.log("cambia el valor de changeComunidad")
+      //    console.log("cambia el valor de changeLenguaje"+this.coleccion.localities[0].Nom_Loc+" "+this.coleccion.localities[0].Nom_Mun)
+
       // }
-    },formaraudioannotation:function()
-    {
-      var pColeccion,pLengua,pLocalidad
-      var p_lenguaje=[]
-      var p_Comunidad=[]
+    },
+    formaraudioannotation: function () {
+      var pGenero, pColeccion, pLengua, pLocalidad;
+      var p_lenguaje = [];
+      var p_Comunidad = [];
+      var p_Genero = [];
       //traer los datos
       //borrar _v y _id
 
-      pColeccion=this.$refs.coleccion.value
-      pLengua=this.$refs.lengua.value
-      pLocalidad=this.$refs.comunidad.value
-      console.log(this.$refs.coleccion.value)
-       console.log(this.$refs.lengua.value)
-       console.log(this.$refs.comunidad.value)
-//limpiar coleccion y leng []
-      this.coleccion=this.colecciones.find(x => x._id == pColeccion)
-      // console.log("Error en coleccion"+pColeccion)
-      this.p_lenguaje = this.coleccion.languages.find(x => x._id == pLengua);
-      // console.log("Error en lenguaje"+pLengua)
-      this.p_Comunidad = this.coleccion.localities.find(x => x._id == pLocalidad);
-      // console.log("Error en comunidad"+pLocalidad)
-      this.coleccion.languages =this.p_lenguaje
-      this.coleccion.localities=this.p_Comunidad
-      
-      this.audioannotations.collection_id=this.coleccion
-      this.audioannotations.gid=this.coleccion.languages
-      this.audioannotations.location=this.coleccion.localities
-      
-      delete this.audioannotations.__v
-      delete this.audioannotations._id
+      pColeccion = this.$refs.coleccion.value;
+      pLengua = this.$refs.lengua.value;
+      pLocalidad = this.$refs.comunidad.value;
+      pGenero = this.$refs.genero.value;
+      console.log(this.$refs.genero.value);
+      console.log(this.$refs.coleccion.value);
+      console.log(this.$refs.lengua.value);
+      console.log(this.$refs.comunidad.value);
 
-      
+      //limpiar coleccion y leng []
+      this.coleccion = this.colecciones.find((x) => x._id == pColeccion);
+      console.log("Error en coleccion" + pColeccion);
+      console.log(this.coleccion);
+      console.log("Error en lenguaje" + pLengua);
+      this.p_lenguaje = this.coleccion.languages.find((x) => x._id == pLengua);
+      console.log(this.p_lenguaje);
+      this.p_Comunidad = this.coleccion.localities.find((x) => x._id == pLocalidad);
+      console.log("Error en comunidad" + pLocalidad);
+      console.log(this.p_Comunidad);
+      this.p_Genero = this.genero.find((x) => x.name == pGenero);
+      console.log("Error en comunidad" + pGenero);
+      console.log(this.p_Genero);
+      this.coleccion.languages = this.p_lenguaje;
+      this.coleccion.localities = this.p_Comunidad;
+
+      this.audioannotations.collection_id = this.coleccion;
+      this.audioannotations.gid = this.coleccion.languages;
+      this.audioannotations.location = this.coleccion.localities;
+      this.audioannotations.genre = this.p_Genero;
+      delete this.audioannotations.__v;
+      delete this.audioannotations._id;
     },
     enviardatos: function () {
       //this.audioannotations.TIER = this.tier_acomodado;
-      this.formaraudioannotation()
+      this.formaraudioannotation();
       console.log();
       //     axios.post('https://api.com/v1/resource',
       // formData,
@@ -269,13 +299,13 @@ export default {
       // 	// Config
       // })
 
-     // window.location.href = "/audioannotations/create";
+      // window.location.href = "/audioannotations/create";
     },
     leerTierBD: function () {
       //for (var i in this.audioannotations_info.data) {
       this.audioannotations = this.audioannotations_info.data;
       //Valor para inicializar el select
-    
+
       this.agrupar_tier_acomodado();
       this.tier_acomodado = this.audioannotations.TIER;
       //5f66395f6620c52fea0c5360
@@ -284,12 +314,11 @@ export default {
         .then((response) => {
           //self.axios.get("/collections/api/index/5f66395f6620c52fea0c5360").then((response) => {
           this.colecciones = response.data.collectionDocs;
-       //Inicializa select de languages y localities
-       var audioTemporal;
-       audioTemporal=this.audioannotations.collection_id
-       this.lenguaje = audioTemporal.languages;
-       this.comunidad = audioTemporal.localities;
-
+          //Inicializa select de languages y localities
+          var audioTemporal;
+          audioTemporal = this.audioannotations.collection_id;
+          this.lenguaje = audioTemporal.languages;
+          this.comunidad = audioTemporal.localities;
         });
       // }
     },
@@ -411,9 +440,7 @@ export default {
     },
   },
   //   props:['idParametro'],
-  computed: {
-
-  },
+  computed: {},
   created() {
     var currentUrl = window.location.pathname;
     this.ruta = currentUrl;
@@ -428,6 +455,10 @@ export default {
       self.audioannotations_info = response;
       //falta hacer algo self.leerTier();
       self.leerTierBD();
+    });
+    self.axios.get("/genres/api").then((response) => {
+      self.genero = response.data;
+      //falta hacer algo self.leerTier();
     });
     //this.agregar_tier_acomodado();colecciones
   },
