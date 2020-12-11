@@ -35,7 +35,7 @@
         </div>
       </div>
  Coleccion: 
-      <select @change="changeColeccion($event)">
+      <select ref="coleccion" @change="changeColeccion($event)">
         <option disabled :value="audioannotations.collection_id.description">{{audioannotations.collection_id.description}}</option>
         <option
           v-for="(item3, index) in colecciones"
@@ -46,7 +46,7 @@
         </option>
       </select><br /><br />
       Lengua Terminal y Grupo de lenguas
-      <select @change="changeLenguaje($event)">
+      <select ref="lengua" @change="changeLenguaje($event)">
       <option disabled :value="audioannotations.gid.language.name">{{audioannotations.gid.language.name}} {{audioannotations.gid.LanguageGroup.name}}</option>
           <option
           v-for="(item4, index) in lenguaje"
@@ -57,7 +57,7 @@
         </option>
       </select><br /><br />
       Comunidad a la que pertenece
-      <select @change="changeComunidad($event)">
+      <select ref="comunidad" @change="changeComunidad($event)">
         <option disabled :value="audioannotations.location.Nom_Loc">{{audioannotations.location.Nom_Loc}}-{{audioannotations.location.Nom_Mun}} {{audioannotations.location.Nom_Mun}}</option>
          <option
           v-for="(item5, index) in comunidad"
@@ -226,18 +226,50 @@ export default {
       //    console.log("cambia el valor de changeLenguaje"+this.coleccion.localities[0].Nom_Loc+" "+this.coleccion.localities[0].Nom_Mun)     
        
       // }
-    },formaraudioannotation:function(pColeccion)
-    {},
-    enviardatos: function (parametro) {
-      this.audioannotations.TIER = this.tier_acomodado;
-      console.log(parametro);
+    },formaraudioannotation:function()
+    {
+      var pColeccion,pLengua,pLocalidad
+      var p_lenguaje=[]
+      var p_Comunidad=[]
+      //traer los datos
+      //borrar _v y _id
+
+      pColeccion=this.$refs.coleccion.value
+      pLengua=this.$refs.lengua.value
+      pLocalidad=this.$refs.comunidad.value
+      console.log(this.$refs.coleccion.value)
+       console.log(this.$refs.lengua.value)
+       console.log(this.$refs.comunidad.value)
+//limpiar coleccion y leng []
+      this.coleccion=this.colecciones.find(x => x._id == pColeccion)
+      // console.log("Error en coleccion"+pColeccion)
+      this.p_lenguaje = this.coleccion.languages.find(x => x._id == pLengua);
+      // console.log("Error en lenguaje"+pLengua)
+      this.p_Comunidad = this.coleccion.localities.find(x => x._id == pLocalidad);
+      // console.log("Error en comunidad"+pLocalidad)
+      this.coleccion.languages =this.p_lenguaje
+      this.coleccion.localities=this.p_Comunidad
+      
+      this.audioannotations.collection_id=this.coleccion
+      this.audioannotations.gid=this.coleccion.languages
+      this.audioannotations.location=this.coleccion.localities
+      
+      delete this.audioannotations.__v
+      delete this.audioannotations._id
+
+      
+    },
+    enviardatos: function () {
+      //this.audioannotations.TIER = this.tier_acomodado;
+      this.formaraudioannotation()
+      console.log();
       //     axios.post('https://api.com/v1/resource',
       // formData,
       // {
       // 	// Config
       // })
 
-      window.location.href = "/audioannotations/create";
+     // window.location.href = "/audioannotations/create";
     },
     leerTierBD: function () {
       //for (var i in this.audioannotations_info.data) {
