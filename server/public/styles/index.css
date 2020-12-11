@@ -623,7 +623,6 @@ textarea:valid ~ .contenedor_icono_error_input /*No aparece el icono error cuand
 textarea:invalid ~ .contenedor_icono_error_input /*aparece el icono error cuando es invalido*/{
 	display: inline-block;
 	color: var(--color-error)!important;
-	border: 1px dashed red;
 }
 
 /*NO SE PORQUE NO despliega los iconos de validacion en SELECT*/ 
@@ -647,7 +646,6 @@ select:valid ~ .contenedor_icono_error_input /*No aparece el icono error cuando 
 select:invalid ~ .contenedor_icono_error_input /*aparece el icono error cuando es invalido*/ {
 	display: inline-block;
 	color: var(--color-error)!important;
-	border: 1px dashed red;
 	
 }
 
@@ -1218,7 +1216,6 @@ input:checked + .slider_general {
 
 .contenedor_botones_registro {
 	flex-basis: 93%;
-/*	border: 2px dashed red;*/
 }
 .btn_input_derecha {
 	font-size: 1rem;
@@ -3526,7 +3523,6 @@ h6.canal_hijo_compacto {
 	position: relative;
 	z-index: 1;
 }
-
 /*!
  * Bootstrap Grid v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
