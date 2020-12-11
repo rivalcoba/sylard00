@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 // Languages UI
 let languageBox = document.getElementById('language')
 let langlist = document.getElementById('langlist')
-let languageGroupBox = document.getElementById('langGroup')
+let languageGroupBox = document.getElementById('langGroup') /*CAMBIAR Y ADAPTAR A SELECT*/
 let groupLanglist = document.getElementById('groupLanglist')
 let addLangBtn = document.getElementById('addLangBtn')
 
@@ -28,6 +28,8 @@ function deleteTableRow(element) {
     let tr = document.getElementById(id)
     tr.remove()
 }
+
+
 
 function is_valid_datalist_value(idDataList, inputValue) {
 
@@ -50,6 +52,7 @@ const disableLanguageGroupBox = () => {
     languageGroupBox.disabled = true
         /*addLangBtn.style.display = "none*/
     clearDataList(groupLanglist)
+
 }
 
 async function enableLangGroup() {
@@ -64,8 +67,8 @@ async function enableLangGroup() {
             'info'
         )
     }
-    return
-    let selectedLanguageId = document.querySelector(`option[value="${languageBox.value}"]`).id
+
+    let selectedLanguageId = document.querySelector(`option[value="${selectedLanguage}"]`).id
     let parents = []
     try {
         // Loading ParetnTree
@@ -90,21 +93,27 @@ async function enableLangGroup() {
             'error'
         )
     }
-    // 
+
+    let deleteSelect = document.getElementById('language');
+    deleteSelect.removeChild(deleteSelect.childNodes[0]);
+    /*AQUI BORRAR TODOS LOS OPTIONS DEL SELECT LLAMADO LANGUAGEGROUPBOX*/
     parents.forEach(planguage => {
         let option = document.createElement('option')
-        groupLanglist.appendChild(option)
+        languageGroupBox.appendChild(option)
         option.value = `${planguage.name} | ${planguage.gid}`
+        option.innerHTML = `${planguage.name} | ${planguage.gid}`
         option.setAttribute('data-id', `${planguage._id}`)
         option.setAttribute('data-name', `${planguage.name}`)
     });
-
     languageGroupBox.disabled = false
 
 }
 
 const enableAddButton = function() {
     addLangBtn.style.display = 'inline'
+
+
+
 }
 
 function addLanguageRow(language, groupLanguage) {
@@ -180,17 +189,15 @@ function addLocalityRow(locality) {
     }
 }
 
-const getLangData = (inputBox, dataList) => {
-    let value = inputBox.value
-    let dataListId = dataList.id
-
+const getLangData = (inputSelect, dataList = "") => {
+    let selectedLanguage = inputSelect.value
+    let inputSelectId = inputSelect.id
     let option = document.querySelector(
-        `#${dataListId} option[value="${value}"]`
+        `#${inputSelectId} option[value="${selectedLanguage}"]`
     )
-
     return {
         _id: option.dataset.id,
-        gid: value.split(' | ')[1],
+        gid: option.value.split(' | ')[1],
         name: option.dataset.name,
     }
 }
@@ -199,9 +206,7 @@ function addLanguage() {
     let selectedLangGroup = languageGroupBox.value
         // Check if langGroupBox has a correct option
     if (
-        selectedLangGroup == "" ||
-        !is_valid_datalist_value(groupLanglist.id, selectedLangGroup)) {
-        languageGroupBox.value = ""
+        selectedLangGroup == "") {
         return Swal.fire(
             'SYLARD!',
             'Debe seleccionar una opción de la lista',
@@ -209,6 +214,7 @@ function addLanguage() {
         )
     }
 
+    /*let selectedLanguageId = document.querySelector(`option[value="${selectedLanguage}"]`).id*/
     let lang = getLangData(languageBox, langlist)
     let groupLanguage = getLangData(languageGroupBox, groupLanglist)
 
