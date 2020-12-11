@@ -1,37 +1,72 @@
 <template>
   <div id="EditAudioannotations">
-
     <div v-if="this.audioannotations_info.data">
-       <div>Archivo Cargado: {{this.audioannotations.eaf}}</div>
-    <div>
+      <div>Archivo Cargado: {{ this.audioannotations.eaf }}</div>
+      <div>
+        <div>
+          <label for="mp3_url">MP3</label>
+          <label>Cargado: {{ this.audioannotations.mp3_url }}</label>
+          <br /><br />
+        </div>
 
-     
-   <div>
-      <label for="mp3_url">MP3</label>
-      <label>Cargado: {{this.audioannotations.mp3_url}}</label> 
-      <br><br>
-   </div>
+        <div>
+          <label for="duracion">Duracion {{ this.audioannotations.duration }}</label>
+          <br /><br />
+        </div>
 
-   <div>
-      <label for="duracion">Duracion {{this.audioannotations.duration}}</label>
-     <br><br>   
-   </div>
+        <div>
+          <label for="titulo">Titulo:</label>
+          <input
+            type="text"
+            id="titulo"
+            v-model="audioannotations.title"
+            name="title"
+          /><br /><br />
+        </div>
 
-   <div>
-      <label for="titulo">Titulo:</label>
-      <input type="text" id="titulo"  v-model="audioannotations.title" name="title"><br><br>
-
-   </div>
-   
-   <div>
-      <label for="descripcion">Descripcion:</label>
-      <input type="text" id="description" name="audioannotations.description"  v-model="audioannotations.description"><br><br>
-
-   </div>
-
-    </div>
-Aqui me quede selectionando colection
-      <!--  <button v-on:click="agregar_tier_acomodado()"></button>-->
+        <div>
+          <label for="descripcion">Descripcion:</label>
+          <input
+            type="text"
+            id="description"
+            name="audioannotations.description"
+            v-model="audioannotations.description"
+          /><br /><br />
+        </div>
+      </div>
+ Coleccion: 
+      <select ref="coleccion" @change="changeColeccion($event)">
+        <option disabled :value="audioannotations.collection_id.description">{{audioannotations.collection_id.description}}</option>
+        <option
+          v-for="(item3, index) in colecciones"
+          :key="'item3' + index"
+          v-bind:value="item3._id"
+        >
+        {{ item3.name }}
+        </option>
+      </select><br /><br />
+      Lengua Terminal y Grupo de lenguas
+      <select ref="lengua" @change="changeLenguaje($event)">
+      <option disabled :value="audioannotations.gid.language.name">{{audioannotations.gid.language.name}} {{audioannotations.gid.LanguageGroup.name}}</option>
+          <option
+          v-for="(item4, index) in lenguaje"
+          :key="'item4' + index"
+          v-bind:value="item4._id"
+        >
+          {{ item4.language.name }} {{ item4.LanguageGroup.name }}
+        </option>
+      </select><br /><br />
+      Comunidad a la que pertenece
+      <select ref="comunidad" @change="changeComunidad($event)">
+        <option disabled :value="audioannotations.location.Nom_Loc">{{audioannotations.location.Nom_Loc}}-{{audioannotations.location.Nom_Mun}} {{audioannotations.location.Nom_Mun}}</option>
+         <option
+          v-for="(item5, index) in comunidad"
+          :key="'item5' + index"
+          v-bind:value="item5._id"
+        >
+          {{ item5.Nom_Loc }}-{{ item5.Nom_Mun }}-{{ item5.Nom_Ent }}
+        </option>
+      </select><br /><br />
       <div v-for="(item2, index) in tier_participante" :key="'item' + index">
         <table>
           <tr>
@@ -74,7 +109,7 @@ Aqui me quede selectionando colection
                 <input
                   type="checkbox"
                   :id="item.TIER_ID"
-                   v-model="item.Visible" 
+                  v-model="item.Visible"
                   :value="item.Visible"
                   @change="seleccion_onoff($event)"
                 />
@@ -130,26 +165,132 @@ export default {
       audioannotations: [],
       tier_participante: [],
       tier_acomodado: [],
+      colecciones: [],
+      selected: "Selecciona una opción",
+      coleccion:[],
+      lenguaje: [],
+      comunidad: [],
     };
   },
   methods: {
-    enviardatos:function(parametro){
-      this.audioannotations.TIER=this.tier_acomodado;
-      console.log(parametro)
-  //     axios.post('https://api.com/v1/resource', 
-	// formData, 
-	// {
-	// 	// Config
-	// })
-      
-      window.location.href = '/audioannotations/create';
+    changeColeccion: function (e) {
+      var colecTemporal=[]
+      colecTemporal=this.colecciones
+      console.log("valor " + e.target.value);
+      //console.log(colecTemporal.find((x) => x._id == e.target.value));
+      if (e.target.value === undefined) {
+        //this.lenguaje = [];
+        console.log("Esta entrando al undefined colection")
+      } else {
+         this.coleccion=colecTemporal.find(x => x._id == e.target.value)
+        this.lenguaje = colecTemporal.find(x => x._id == e.target.value).languages;
+      //   console.log("++++++++Lenguajes++++++++")
+      //   console.log(this.lenguaje)
+       this.comunidad = colecTemporal.find(x => x._id == e.target.value).localities;
+      //   console.log("++++++++localities++++++++")
+      //   console.log(this.comunidad)
+      //   this.coleccion.languages=[]
+      //   this.coleccion.languages.push(this.lenguaje[0])        
+      //   this.coleccion.localities=[]
+      //   this.coleccion.localities.push(this.comunidad[0])
+        
+      }
+    },
+    changeLenguaje: function (e) {
+      //   //Aqui me quede quitando el error quitar los metodos  changeLenguaje y changeComunidad
+      //   //dos lenguajes
+     console.log("valor changeLenguaje" + e.target.value);
+      //console.log(this.lenguage.find((x) => x._id == e.target.value));
+      // if (e.target.value === undefined) {
+      //   //this.coleccion.lenguage = [];
+      //   console.log("Esta entrando al undefined changeLenguaje")
+      // } else {
+      //   this.coleccion.languages=[]
+      //   var leng = this.lenguaje.find(x => x._id == e.target.value)
+      //   this.coleccion.languages.push(leng)
+      //   console.log("cambia el valor de changeLenguaje")   
+      //   console.log("cambia el valor de changeLenguaje"+this.coleccion.languages[0].language.name+" "+this.coleccion.languages[0].LanguageGroup.name)     
+      // }
+    },
+     changeComunidad: function (e) {
+      console.log("valor changeComunidad" + e.target.value);
+      // console.log(this.comunidad.find((x) => x._id == e.target.value));
+      // if (e.target.value === undefined) {
+      //   //this.coleccion.localities = [];
+      //   console.log("Esta entrando al undefined changeComunidad")
+      // } else {
+      //   this.coleccion.localities=[]
+      //   var local=this.comunidad.find(x => x._id == e.target.value)
+      //   this.coleccion.localities.push(local) 
+      //   console.log("cambia el valor de changeComunidad") 
+      //    console.log("cambia el valor de changeLenguaje"+this.coleccion.localities[0].Nom_Loc+" "+this.coleccion.localities[0].Nom_Mun)     
+       
+      // }
+    },formaraudioannotation:function()
+    {
+      var pColeccion,pLengua,pLocalidad
+      var p_lenguaje=[]
+      var p_Comunidad=[]
+      //traer los datos
+      //borrar _v y _id
 
+      pColeccion=this.$refs.coleccion.value
+      pLengua=this.$refs.lengua.value
+      pLocalidad=this.$refs.comunidad.value
+      console.log(this.$refs.coleccion.value)
+       console.log(this.$refs.lengua.value)
+       console.log(this.$refs.comunidad.value)
+//limpiar coleccion y leng []
+      this.coleccion=this.colecciones.find(x => x._id == pColeccion)
+      // console.log("Error en coleccion"+pColeccion)
+      this.p_lenguaje = this.coleccion.languages.find(x => x._id == pLengua);
+      // console.log("Error en lenguaje"+pLengua)
+      this.p_Comunidad = this.coleccion.localities.find(x => x._id == pLocalidad);
+      // console.log("Error en comunidad"+pLocalidad)
+      this.coleccion.languages =this.p_lenguaje
+      this.coleccion.localities=this.p_Comunidad
+      
+      this.audioannotations.collection_id=this.coleccion
+      this.audioannotations.gid=this.coleccion.languages
+      this.audioannotations.location=this.coleccion.localities
+      
+      delete this.audioannotations.__v
+      delete this.audioannotations._id
+
+      
+    },
+    enviardatos: function () {
+      //this.audioannotations.TIER = this.tier_acomodado;
+      this.formaraudioannotation()
+      console.log();
+      //     axios.post('https://api.com/v1/resource',
+      // formData,
+      // {
+      // 	// Config
+      // })
+
+     // window.location.href = "/audioannotations/create";
     },
     leerTierBD: function () {
       //for (var i in this.audioannotations_info.data) {
       this.audioannotations = this.audioannotations_info.data;
+      //Valor para inicializar el select
+    
       this.agrupar_tier_acomodado();
-      this.tier_acomodado=this.audioannotations.TIER
+      this.tier_acomodado = this.audioannotations.TIER;
+      //5f66395f6620c52fea0c5360
+      this.axios
+        .get("/collections/api/index/" + this.audioannotations.user._id)
+        .then((response) => {
+          //self.axios.get("/collections/api/index/5f66395f6620c52fea0c5360").then((response) => {
+          this.colecciones = response.data.collectionDocs;
+       //Inicializa select de languages y localities
+       var audioTemporal;
+       audioTemporal=this.audioannotations.collection_id
+       this.lenguaje = audioTemporal.languages;
+       this.comunidad = audioTemporal.localities;
+
+        });
       // }
     },
     agrupar_tier_acomodado: function () {
@@ -160,7 +301,6 @@ export default {
       this.tier_participante = myUniqueArray;
     },
     selecion_todos_onoff: function (e) {
-      //aqui me quede seleccionando por participante para que desbloquee todos
       console.log("valor " + e.target.value);
       console.log("id " + event.target.id);
       console.log("checado " + e.target.checked);
@@ -201,36 +341,34 @@ export default {
         console.log("si lo off");
       }
     },
-  selecion_todos_visualizacion_options: function (e) {
-            //aqui me quede seleccionando por participante para que desbloquee todos
-            console.log("valor " +
-                e.target.value);
-            console.log("id " +
-                event.target.id);
-            if (e.target.value == "A") {
-                console.log("si esta en online display");
-                //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = true;
-                //cambiar todos
-                for (var indice in this.tier_acomodado) {
-                    if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
-                        console.log("Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice)
-                        this.tier_acomodado[indice].value = "A";
-                    }
-
-                }
-
-            } else {
-                //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = false;
-                console.log("esta Multi-line display");
-                for (var indice in this.tier_acomodado) {
-                    if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
-                        console.log("Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice)
-                        this.tier_acomodado[indice].value = "B";
-                    }
-                }
-            }
-
-        },
+    selecion_todos_visualizacion_options: function (e) {
+      console.log("valor " + e.target.value);
+      console.log("id " + event.target.id);
+      if (e.target.value == "A") {
+        console.log("si esta en online display");
+        //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = true;
+        //cambiar todos
+        for (var indice in this.tier_acomodado) {
+          if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
+            console.log(
+              "Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice
+            );
+            this.tier_acomodado[indice].value = "A";
+          }
+        }
+      } else {
+        //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = false;
+        console.log("esta Multi-line display");
+        for (var indice in this.tier_acomodado) {
+          if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
+            console.log(
+              "Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice
+            );
+            this.tier_acomodado[indice].value = "B";
+          }
+        }
+      }
+    },
     seleccion_color: function (e) {
       console.log("--------------------------------");
       console.log(
@@ -274,14 +412,7 @@ export default {
   },
   //   props:['idParametro'],
   computed: {
-    // imprimir(){
-    //   console.log("Ruta")
-    //   // const path = require('path');
-    //   // console.log(path.basename())
-    //   // console.log(this.idParametro)
-    //   // return this.idParametro
-    //  console.log(this.$route.query.test)
-    // }
+
   },
   created() {
     var currentUrl = window.location.pathname;
@@ -293,12 +424,12 @@ export default {
   beforeMount() {},
   mounted() {
     var self = this;
-    this.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
-      this.audioannotations_info = response;
+    self.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
+      self.audioannotations_info = response;
       //falta hacer algo self.leerTier();
       self.leerTierBD();
     });
-    //this.agregar_tier_acomodado();
+    //this.agregar_tier_acomodado();colecciones
   },
 };
 </script>
