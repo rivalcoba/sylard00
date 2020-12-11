@@ -22,4 +22,12 @@ router.put('/api/update/:genre_id',genreValidator.genrePut, genreController.api_
 // DELETE - DELETE
 router.delete('/api/delete/:genre_id', genreController.api_deleteGenres)
 
+//   ___  ______ _____ 
+//  / _ \ | ___ \_   _|
+// / /_\ \| |_/ / | |  
+// |  _  ||  __/  | |  
+// | | | || |    _| |_ 
+// \_| |_/\_|    \___/ 
+
+
 export default router

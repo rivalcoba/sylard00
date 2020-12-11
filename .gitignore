@@ -72,7 +72,6 @@ server/public/eaf/tmp/*.json
 dist-server/public/eaf/tmp/*.json
 
 # eslint
-.eslintrc.json
 server/public/js/index.js
 
 ### VisualStudioCode ###

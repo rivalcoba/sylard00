@@ -301,6 +301,19 @@ const vuetestAudioannotaion = async (req, res) => {
   res.render('audioannotations/vuetest', {audioannotationid})
 }
 
+// ***************** API ********************
+const api_updateAudioAnnot = async (req,res)=>{
+  try {
+    const {audioannotationId} = req.params
+    let collectionDoc = await Audioannotations.findById(audioannotationId).exec()
+    collectionDoc.set(req.body)
+    let result = await collectionDoc.save()
+    res.status(200).json(result)
+  } catch (error) {
+    res.status(500).json({error: error.message})    
+  }
+}
+
 export default {
   index,
   createAudioannotation,
@@ -310,5 +323,6 @@ export default {
   uploadfileAudioannotation,
   vuetestAudioannotaion,
   filtrarAudioannotation,
-  indexById
+  indexById,
+  api_updateAudioAnnot
 }
