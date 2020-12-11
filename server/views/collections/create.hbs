@@ -121,7 +121,11 @@
               <label class="label label_al_100">
                 Grupo de lenguas:
               </label>
-              <input 
+              <select disabled name="langGroup" id="langGroup" class="input_flexible" onfocus="pageScripts.enableAddButton()">
+                <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}</option>
+
+              </select>
+              {{!--<input 
               disabled 
               id="langGroup" 
               name="langGroup"
@@ -130,7 +134,7 @@
               onfocus="pageScripts.enableAddButton()"
               value="{{langGroup}}" 
               class="input_flexible" 
-              />
+              />--}}
               <div class="contenedor_icono_correcto_input">
                 <p>
                   <span class="icono_correcto_input icon-check_circle"></span>
@@ -141,8 +145,8 @@
                   <span class="icono_error_input icon-error"></span>
                 </p>
               </div>
-               <datalist id="groupLanglist">
-             </datalist>
+              {{!-- <datalist id="groupLanglist">
+             </datalist>--}}
             </div>
             <div class="modulo_boton_lengua">
               <button class="btn_lateral_input_agregar_lengua" disabled/>
@@ -171,7 +175,7 @@
                 <label class="label label_al_100">
                   País:
                 </label>
-                <input type="text" class="input_flexible" disabled/>
+                <input type="text" class="input_flexible" placeholder="México" disabled/>
                 <div class="contenedor_icono_correcto_input">
                   <p>
                     <span class="icono_correcto_input icon-check_circle"></span>
