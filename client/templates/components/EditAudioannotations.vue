@@ -35,20 +35,21 @@
         </div>
       </div>
       Coleccion:
-      <select ref="coleccion" @change="changeColeccion($event)">
-        <option disabled :value="audioannotations.collection_id.description">
-          {{ audioannotations.collection_id.description }}
+      <select  v-model="audioannotations.collection_id.name" ref="coleccion" @change="changeColeccion($event)">
+        <option disabled :value="audioannotations.collection_id.name">
+          {{ audioannotations.collection_id.name }}
         </option>
         <option
           v-for="(item3, index) in colecciones"
           :key="'item3' + index"
-          v-bind:value="item3._id"
+          v-bind:value="item3.name"
+          :id="item3._id"
         >
           {{ item3.name }}
         </option></select
       ><br /><br />
       Lengua Terminal y Grupo de lenguas
-      <select ref="lengua" @change="changeLenguaje($event)">
+      <select  ref="lengua" @change="changeLenguaje($event)">
         <option disabled :value="audioannotations.gid.language.name">
           {{ audioannotations.gid.language.name }}
           {{ audioannotations.gid.LanguageGroup.name }}
@@ -56,13 +57,14 @@
         <option
           v-for="(item4, index) in lenguaje"
           :key="'item4' + index"
-          v-bind:value="item4._id"
+          v-bind:value="item4.name+'-'+item4.LanguageGroup.name"
+          :id="item4._id"
         >
           {{ item4.language.name }} {{ item4.LanguageGroup.name }}
         </option></select
       ><br /><br />
       Comunidad a la que pertenece
-      <select ref="comunidad" @change="changeComunidad($event)">
+      <select  ref="comunidad" @change="changeComunidad($event)">
         <option disabled :value="audioannotations.location.Nom_Loc">
           {{ audioannotations.location.Nom_Loc }}-{{ audioannotations.location.Nom_Mun }}
           {{ audioannotations.location.Nom_Mun }}
@@ -70,20 +72,22 @@
         <option
           v-for="(item5, index) in comunidad"
           :key="'item5' + index"
-          v-bind:value="item5._id"
+          v-bind:value="'item5.NomLoc'+'-'+'item5.Nom_Mun'+'-'+'item5.Nom_Ent'"
+          :id="item5._id"
         >
           {{ item5.Nom_Loc }}-{{ item5.Nom_Mun }}-{{ item5.Nom_Ent }}
         </option></select
       ><br /><br />
       Genero
-      <select ref="genero">
-        <option disabled :value="audioannotations.genre.name">
+      <select  ref="genero">
+        <option  disabled :value="audioannotations.genre.name">
           {{ audioannotations.genre.name }}
         </option>
         <option
           v-for="(item6, index) in genero"
           :key="'item6' + index"
           v-bind:value="item6.name"
+          :id="'item6' + index"
         >
           <!-- v-bind:value="item6._id"-->
           {{ item6.name }}
@@ -198,18 +202,25 @@ export default {
   methods: {
     changeColeccion: function (e) {
       var colecTemporal = [];
+      var id_coleccion;
+      var id_lenguaje;
+      var id_comunidad;
       colecTemporal = this.colecciones;
-      console.log("valor " + e.target.value);
+        if(e.target.options.selectedIndex > -1) {
+          console.log(e.target.options[e.target.options.selectedIndex].id)
+          id_coleccion=e.target.options[e.target.options.selectedIndex].id
+        }else {
+          console.log("No esta encontrado la colecccion")
+        }
+      //console.log("id "+event.target.id)
+      //console.log("valor " + e.target.value);
       //console.log(colecTemporal.find((x) => x._id == e.target.value));
-      if (e.target.value === undefined) {
-        //this.lenguaje = [];
-        console.log("Esta entrando al undefined colection");
-      } else {
-        this.coleccion = colecTemporal.find((x) => x._id == e.target.value);
-        this.lenguaje = colecTemporal.find((x) => x._id == e.target.value).languages;
+      if (e.target.options.selectedIndex > -1) {
+        this.coleccion = colecTemporal.find((x) => x._id == id_coleccion);
+        this.lenguaje = colecTemporal.find((x) => x._id == id_coleccion).languages;
         //   console.log("++++++++Lenguajes++++++++")
         //   console.log(this.lenguaje)
-        this.comunidad = colecTemporal.find((x) => x._id == e.target.value).localities;
+        this.comunidad = colecTemporal.find((x) => x._id == id_coleccion).localities;
         //   console.log("++++++++localities++++++++")
         //   console.log(this.comunidad)
         //   this.coleccion.languages=[]
@@ -222,6 +233,7 @@ export default {
       //   //Aqui me quede quitando el error quitar los metodos  changeLenguaje y changeComunidad
       //   //dos lenguajes
       console.log("valor changeLenguaje" + e.target.value);
+       console.log("valor changeLenguaje" + e.target.id);
       //console.log(this.lenguage.find((x) => x._id == e.target.value));
       // if (e.target.value === undefined) {
       //   //this.coleccion.lenguage = [];
@@ -256,15 +268,15 @@ export default {
       var p_Genero = [];
       //traer los datos
       //borrar _v y _id
-
-      pColeccion = this.$refs.coleccion.value;
-      pLengua = this.$refs.lengua.value;
-      pLocalidad = this.$refs.comunidad.value;
+      //obtiene los valores del DOM
+      pColeccion = this.$refs.coleccion.id;
+      pLengua = this.$refs.lengua.id;
+      pLocalidad = this.$refs.comunidad.id;
       pGenero = this.$refs.genero.value;
       console.log(this.$refs.genero.value);
-      console.log(this.$refs.coleccion.value);
-      console.log(this.$refs.lengua.value);
-      console.log(this.$refs.comunidad.value);
+      console.log(this.$refs.coleccion.id);
+      console.log(this.$refs.lengua.id);
+      console.log(this.$refs.comunidad.id);
 
       //limpiar coleccion y leng []
       this.coleccion = this.colecciones.find((x) => x._id == pColeccion);
