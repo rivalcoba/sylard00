@@ -35,7 +35,12 @@
         </div>
       </div>
       Coleccion:
-      <select  v-model="audioannotations.collection_id.name" ref="coleccion" @change="changeColeccion($event)">
+      <select
+        id="idcoleccion"
+        v-model="audioannotations.collection_id.name"
+        ref="coleccion"
+        @change="changeColeccion($event)"
+      >
         <option disabled :value="audioannotations.collection_id.name">
           {{ audioannotations.collection_id.name }}
         </option>
@@ -49,7 +54,7 @@
         </option></select
       ><br /><br />
       Lengua Terminal y Grupo de lenguas
-      <select  ref="lengua" @change="changeLenguaje($event)">
+      <select id="lengua" ref="lengua" @change="changeLenguaje($event)">
         <option disabled :value="audioannotations.gid.language.name">
           {{ audioannotations.gid.language.name }}
           {{ audioannotations.gid.LanguageGroup.name }}
@@ -57,14 +62,14 @@
         <option
           v-for="(item4, index) in lenguaje"
           :key="'item4' + index"
-          v-bind:value="item4.name+'-'+item4.LanguageGroup.name"
+          v-bind:value="item4.name + '-' + item4.LanguageGroup.name"
           :id="item4._id"
         >
           {{ item4.language.name }} {{ item4.LanguageGroup.name }}
         </option></select
       ><br /><br />
       Comunidad a la que pertenece
-      <select  ref="comunidad" @change="changeComunidad($event)">
+      <select id="comunidad" ref="comunidad" @change="changeComunidad($event)">
         <option disabled :value="audioannotations.location.Nom_Loc">
           {{ audioannotations.location.Nom_Loc }}-{{ audioannotations.location.Nom_Mun }}
           {{ audioannotations.location.Nom_Mun }}
@@ -72,15 +77,15 @@
         <option
           v-for="(item5, index) in comunidad"
           :key="'item5' + index"
-          v-bind:value="'item5.NomLoc'+'-'+'item5.Nom_Mun'+'-'+'item5.Nom_Ent'"
+          v-bind:value="'item5.NomLoc' + '-' + 'item5.Nom_Mun' + '-' + 'item5.Nom_Ent'"
           :id="item5._id"
         >
           {{ item5.Nom_Loc }}-{{ item5.Nom_Mun }}-{{ item5.Nom_Ent }}
         </option></select
       ><br /><br />
       Genero
-      <select  ref="genero">
-        <option  disabled :value="audioannotations.genre.name">
+      <select ref="genero">
+        <option disabled :value="audioannotations.genre.name">
           {{ audioannotations.genre.name }}
         </option>
         <option
@@ -197,6 +202,9 @@ export default {
       lenguaje: [],
       comunidad: [],
       genero: [],
+      id_coleccionparametro: "",
+      id_lenguajeparametro: "",
+      id_comunidadparametro: "",
     };
   },
   methods: {
@@ -206,12 +214,13 @@ export default {
       var id_lenguaje;
       var id_comunidad;
       colecTemporal = this.colecciones;
-        if(e.target.options.selectedIndex > -1) {
-          console.log(e.target.options[e.target.options.selectedIndex].id)
-          id_coleccion=e.target.options[e.target.options.selectedIndex].id
-        }else {
-          console.log("No esta encontrado la colecccion")
-        }
+      if (e.target.options.selectedIndex > -1) {
+        console.log(e.target.options[e.target.options.selectedIndex].id);
+        id_coleccion = e.target.options[e.target.options.selectedIndex].id;
+        this.id_coleccionparametro = id_coleccion;
+      } else {
+        console.log("No esta encontrado la colecccion");
+      }
       //console.log("id "+event.target.id)
       //console.log("valor " + e.target.value);
       //console.log(colecTemporal.find((x) => x._id == e.target.value));
@@ -227,13 +236,23 @@ export default {
         //   this.coleccion.languages.push(this.lenguaje[0])
         //   this.coleccion.localities=[]
         //   this.coleccion.localities.push(this.comunidad[0])
+        this.id_lenguajeparametro = this.lenguaje[0]._id;
+        this.id_comunidadparametro = this.comunidad[0]._id;
       }
     },
     changeLenguaje: function (e) {
       //   //Aqui me quede quitando el error quitar los metodos  changeLenguaje y changeComunidad
       //   //dos lenguajes
       console.log("valor changeLenguaje" + e.target.value);
-       console.log("valor changeLenguaje" + e.target.id);
+      console.log("valor changeLenguaje" + e.target.id);
+
+      if (e.target.options.selectedIndex > -1) {
+        console.log(e.target.options[e.target.options.selectedIndex].id);
+        this.id_lenguajeparametro = e.target.options[e.target.options.selectedIndex].id;
+      } else {
+        console.log("No esta encontrado el lenguaje");
+      }
+
       //console.log(this.lenguage.find((x) => x._id == e.target.value));
       // if (e.target.value === undefined) {
       //   //this.coleccion.lenguage = [];
@@ -248,6 +267,13 @@ export default {
     },
     changeComunidad: function (e) {
       console.log("valor changeComunidad" + e.target.value);
+
+      if (e.target.options.selectedIndex > -1) {
+        console.log(e.target.options[e.target.options.selectedIndex].id);
+        this.id_comunidadparametro = e.target.options[e.target.options.selectedIndex].id;
+      } else {
+        console.log("No esta encontrado el lenguaje");
+      }
       // console.log(this.comunidad.find((x) => x._id == e.target.value));
       // if (e.target.value === undefined) {
       //   //this.coleccion.localities = [];
@@ -266,17 +292,26 @@ export default {
       var p_lenguaje = [];
       var p_Comunidad = [];
       var p_Genero = [];
+
       //traer los datos
       //borrar _v y _id
       //obtiene los valores del DOM
-      pColeccion = this.$refs.coleccion.id;
-      pLengua = this.$refs.lengua.id;
-      pLocalidad = this.$refs.comunidad.id;
+      pColeccion = this.id_coleccionparametro;
+      pLengua = this.id_lenguajeparametro;
+      pLocalidad = this.id_comunidadparametro;
+
+      // pColeccion = this.$refs.coleccion.id;
+      // pLengua = this.$refs.lengua.id;
+      // pLocalidad = this.$refs.comunidad.id;
+      //     id_coleccionparametro:"",
+      // id_lenguajeparametro:"",
+      // id_comunidadparametro:""
+
       pGenero = this.$refs.genero.value;
-      console.log(this.$refs.genero.value);
-      console.log(this.$refs.coleccion.id);
-      console.log(this.$refs.lengua.id);
-      console.log(this.$refs.comunidad.id);
+      // console.log(this.$refs.genero.value);
+      // console.log(this.$refs.coleccion.id);
+      // console.log(this.$refs.lengua.id);
+      // console.log(this.$refs.comunidad.id);
 
       //limpiar coleccion y leng []
       this.coleccion = this.colecciones.find((x) => x._id == pColeccion);
@@ -298,18 +333,15 @@ export default {
       this.audioannotations.gid = this.coleccion.languages;
       this.audioannotations.location = this.coleccion.localities;
       this.audioannotations.genre = this.p_Genero;
+
       delete this.audioannotations.__v;
       delete this.audioannotations._id;
     },
     enviardatos: function () {
       //this.audioannotations.TIER = this.tier_acomodado;
       this.formaraudioannotation();
-      console.log();
-      //     axios.post('https://api.com/v1/resource',
-      // formData,
-      // {
-      // 	// Config
-      // })
+      console.log("Emviando datos");
+     // axios.post("/audioannotations/api/update/" + this.ruta, this.audioannotations);
 
       // window.location.href = "/audioannotations/create";
     },
@@ -317,6 +349,9 @@ export default {
       //for (var i in this.audioannotations_info.data) {
       this.audioannotations = this.audioannotations_info.data;
       //Valor para inicializar el select
+      this.id_coleccionparametro = this.audioannotations.collection_id._id;
+      this.id_lenguajeparametro = this.audioannotations.gid._id;
+      this.id_comunidadparametro = this.audioannotations.location._id;
 
       this.agrupar_tier_acomodado();
       this.tier_acomodado = this.audioannotations.TIER;
