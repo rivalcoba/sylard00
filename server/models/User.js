@@ -17,7 +17,7 @@ const UserSchema = new Schema({
     secLastName:{
         type: String
     },
-    shortBio:{
+    about:{
         type: String
     },
     country:{

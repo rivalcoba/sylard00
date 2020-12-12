@@ -669,7 +669,7 @@ textarea
     resize: none;
 }
 
-input[type=checkbox] {}
+/*input[type=checkbox] {}*/
 
 input[type=file] {
     font-weight: 600;
@@ -2726,7 +2726,7 @@ p.canal_2_hablante_one_line_display_item {
     padding-left: .5rem;
 }
 
-.contenedor_inputs_agregar_coleccion_comunidad {}
+/*.contenedor_inputs_agregar_coleccion_comunidad {}*/
 
 .modulo_inputs_lengua,
 .modulo_inputs_hablantes_editor_de_campos_superusuario {
@@ -2972,7 +2972,7 @@ p.canal_2_hablante_one_line_display_item {
     color: var(--gris03)!important;
 }
 
-.contenedor_hablantes {}
+/*.contenedor_hablantes {}*/
 
 #th_titulo_por_audioanotacion,
 #th_coleccion_por_audioanotacion {
@@ -3335,7 +3335,7 @@ h5.hablante_canal_padre {
     flex-basis: 100%;
 }
 
-.contenedor_switch_canal_audioanotacion {}
+/*.contenedor_switch_canal_audioanotacion {}*/
 
 .contenedor_hablante {
     flex-basis: 52%;
@@ -3828,7 +3828,7 @@ h6.canal_hijo_compacto {
     width: 13%;
 }
 
-#privilegios_administrador_usuarios {}
+/*#privilegios_administrador_usuarios {}*/
 
 .td_colecciones {
     padding-left: 1.5rem;

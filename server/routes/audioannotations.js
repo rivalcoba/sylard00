@@ -21,6 +21,13 @@ router.get(
   audioannotationsController.index
 )
 
+router.get(
+  '/index/:audioannotationId',
+  ensureAuthenticated,
+  ensureColabUser,
+  audioannotationsController.indexById
+)
+
 router.post(
   '/add',
   ensureAuthenticated,
@@ -84,8 +91,11 @@ router.delete(
   audioannotationsController.deleteAudioannotaion
 )
 
+//router.get(
+//  '/vuetest/:audioannotation_id',
 router.get(
-  '/vuetest',
+  '/vuetest/:audioannotation_id',
+  
   ensureAuthenticated,
   ensureColabUser,
   audioannotationsController.vuetestAudioannotaion
@@ -107,6 +117,19 @@ router.get(
 
 //    res.send('cors problem fixed:)');
 //});
+
+//   ___  ______ _____ 
+//  / _ \ | ___ \_   _|
+// / /_\ \| |_/ / | |  
+// |  _  ||  __/  | |  
+// | | | || |    _| |_ 
+// \_| |_/\_|    \___/ 
+
+router.post('/api/update/:audioannotationId',
+/*ensureAuthenticated,
+ensureColabUser,*/ // TODO: Uncomment to protect route
+audioannotationsController.api_updateAudioAnnot
+)
 
 // Se exportan rutas
 export default router

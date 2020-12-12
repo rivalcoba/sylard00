@@ -14,7 +14,11 @@ import confirmEmailAccount from '@validators/confirmEmailAccount'
 import ensureAuthenticated from '@helpers/ensureAuth'
 
 /* GET users listing. */
-router.get('/',ensureAuthenticated, userController.index)
+// SU Views
+// //TODO: @AlbertoMondragon Ruta para visualizar vista #20
+router.get('/', ensureAuthenticated, userController.index)
+// DELETE
+router.delete('/', userController.delUsers);
 
 router.get('/edit', ensureAuthenticated, userController.edit);
 router.put('/edit', ensureAuthenticated, editUserFormValidation, userController.editUser);
@@ -26,6 +30,7 @@ router.get('/reset/password', userController.resetPassword);
 router.put('/reset/password',confirmEmailAccount, userController.resetUserPassword);
 
 // API
-router.get('/api/getusers', userController.api_getUsers)
+router.get('/api/getusers', userController.api_getUsers);
+router.delete('/api/delusers', userController.api_delUsers);
 
 module.exports = router;

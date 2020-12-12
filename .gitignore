@@ -62,12 +62,16 @@ typings/
 # next.js build output
 .next
 
-#files eaf y mp3
-.mp3
-.eaf
+# Files eaf y mp3
+server/public/eaf/*.eaf
+server/public/eaf/*.json
+dist-server/public/eaf/*.eaf
+dist-server/public/eaf/*.json
+# Temp file
+server/public/eaf/tmp/*.json
+dist-server/public/eaf/tmp/*.json
 
 # eslint
-.eslintrc.json
 server/public/js/index.js
 
 ### VisualStudioCode ###

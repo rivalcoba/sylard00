@@ -3,7 +3,7 @@
     <div v-if="this.info.data">
         <!--  <button v-on:click="agregar_tier_acomodado()"></button>-->
         <div v-for="(item2, index) in tier_participante" :key="'item' + index">
-            <input hidden type="text" name="hablante" :value="item2">
+            <input hidden type="text" name="PARTICIPANT" :value="item2">
             <table>
                 <tr>
                     <th> Canal Hablante </th>
@@ -12,27 +12,33 @@
                     <th>Color de Tipográfia</th>
                 </tr>
                 <tr>
-                    <td> ✔ Canal de Hablante: {{item2}}</td>
-                    <td><input type="checkbox" name="showTrack" :id="item2" checked @change="selecion_todos_onoff($event)" /></td>
+                    <td> ✔ Canal de Hablante: {{item2}}  </td>
+                    <td><input type="checkbox" :id="item2" checked @change="selecion_todos_onoff($event)" /></td>
                     <td>
-                        <select name="displayMode" :id="item2" @change="selecion_todos_visualizacion_options($event)">
+                        <select :id="item2" @change="selecion_todos_visualizacion_options($event)">
                             <option value="B">Scrolling</option>
                             <option value="A" selected>On-Line-Display</option>
                         </select>
                     </td>
-                    <td><input name="color" type="text" :id="item2" value="#000000" @change="seleccion_todos_color($event)"></td>
+                    <td><input type="text" :id="item2" value="#000000" @change="seleccion_todos_color($event)"></td>
+                    <td><input type="text" value="header" hidden></td>
+                    <td><input type="text" value="header" hidden></td>
                 </tr>
             
             <div v-for="(item, index) in tier_acomodado" :key="'item' + index">
 
-                <tr v-if="item2==item.PARTICIPANT && item.Visible">
-                    <input hidden type="text" name="hablante" :value="item.TIER_ID">
+                <tr v-if="item2==item.PARTICIPANT ">
+                     <input hidden type="text" name="LINGUISTIC_TYPE_REF" :value="item.LINGUISTIC_TYPE_REF">
+                    <input hidden type="text" name="TIER_ID" :value="item.TIER_ID">
+                    
                     <td>{{item.TIER_ID}} </td>
 
-                    <td><input name="showTrack" type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" /></td>
+                    <td><input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
+                    <input hidden type="text" :value="item.Visible" name="Visible" />
+                    </td>
                     
                     <td>
-                        <select  name="displayMode" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
+                        <select  name="value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
                             <option value="B">Scrolling</option>
                             <option value="A" selected>On-Line-Display</option>
                         </select>
@@ -44,6 +50,7 @@
                     <td><input name="color" type="text" :id="item.TIER_ID" value="#000000" @change="seleccion_color($event)"></td>
 
                 </tr>
+                
             </div>
             
                 <!--  <tr> https://codepen.io/anon/pen/gBWWmM
@@ -56,7 +63,9 @@
             </table>
         </div>
     </div>
+<input hidden type="text" name="capas" :value="tier_acomodado.length">
 </div>
+
 </template>
 
 <script>
@@ -306,7 +315,7 @@ export default {
     mounted() {
         var self = this;
         this.axios
-            .get("/eaf/Nuevoeaf.json")
+            .get("/eaf/tmp/Nuevoeaf.json")
             //.then((response) => (this.info = response));
             .then((response) => {this.info = response;
             self.agregar_tier_acomodado();

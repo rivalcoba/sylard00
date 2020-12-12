@@ -1,6 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import Collection from '@models/Collection'
+import { log } from 'console'
+import { PassThrough } from 'stream'
 
 // Home Controllers
 const index = (req, res) => {
@@ -73,17 +75,31 @@ const audioannotations = (req, res) => {
     res.render('index/audioannotations')
 }
 
-const cleanEaf = (req, res) => {
-    let eafPath = path.join(__dirname, '..', 'public', 'eaf')
-    fs.readdir(eafPath, (err, files) => {
-        if (err) { return res.json(err) }
-        for (const file of files) {
-            fs.unlink(path.join(eafPath, file), err => {
-                if (err) { return res.json(err) }
-            })
-        }
-        res.json({ "return": "ok" })
-    })
+const cleanEaf = (req,res)=>{
+  let eafPath = path.join(__dirname,'..','public','eaf')
+  
+  fs.readdir(eafPath,(err, files)=>{
+    if(err) {return res.json(err)}
+    for(const file of files){
+      if(path.extname(file) == ".eaf"){
+        fs.unlink(path.join(eafPath, file), err=>{
+          if(err) {return res.json(err)}
+        })
+      }
+    }
+  })
+
+  let eafTempPath = path.join(__dirname,'..','public','eaf','tmp')
+  fs.readdir(eafTempPath,(err,files)=>{
+    for (const file1 of files) {
+      if(path.extname(file1) == ".json"){
+        fs.unlink(path.join(eafTempPath, file1), err=>{
+          if(err) {return res.json(err)}
+        })
+      }
+    }
+  })
+  res.json({"return":"ok"})
 }
 
 // Exporting Controllers
