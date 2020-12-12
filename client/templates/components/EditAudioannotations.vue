@@ -340,9 +340,9 @@ export default {
     enviardatos: function () {
       //this.audioannotations.TIER = this.tier_acomodado;
       this.formaraudioannotation();
-      console.log("Emviando datos");
-     // axios.post("/audioannotations/api/update/" + this.ruta, this.audioannotations);
-
+      console.log("Enviando datos");
+     this.axios.post("/audioannotations/api/update/" + this.ruta, this.audioannotations);
+       console.log("Ya Enviando  datos");
       // window.location.href = "/audioannotations/create";
     },
     leerTierBD: function () {
