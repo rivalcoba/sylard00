@@ -155,7 +155,7 @@ const editCollection = async(req, res) => {
         if (result.ok) {
             req.flash(
                 'success_msg',
-                'La coleccion se ha actualziado con exito'
+                'La colección se ha actualizado con éxito'
             )
         } else {
             req.flash(
@@ -176,43 +176,43 @@ const editCollection = async(req, res) => {
     }
 }
 
-const api_getCollectionById = async(req, res)=>{
-  const collection_id = req.params.collection_id
-  let collectionDoc = {}  
-  try {
-    collectionDoc = await Collection.findById(collection_id).exec()
-    res.status(200).json(collectionDoc)
-  } catch (error) {
-    res.status(404).json({error: error.message})
-  }
+const api_getCollectionById = async(req, res) => {
+    const collection_id = req.params.collection_id
+    let collectionDoc = {}
+    try {
+        collectionDoc = await Collection.findById(collection_id).exec()
+        res.status(200).json(collectionDoc)
+    } catch (error) {
+        res.status(404).json({ error: error.message })
+    }
 }
 
-const api_getCollectionByUser = async (req, res)=>{
-  const {userId} = req.params
-  try {
-    let collectionDocs = await Collection.find({"user":userId}).exec()
-    return res.status(200).json({collectionDocs})
-  } catch (error) {
-    res.status(400).json({error: error.message})
-  }
+const api_getCollectionByUser = async(req, res) => {
+    const { userId } = req.params
+    try {
+        let collectionDocs = await Collection.find({ "user": userId }).exec()
+        return res.status(200).json({ collectionDocs })
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
 }
 
 export default {
-  // List Collections from a particular Colaborator User
-  index,
-  // Create Add Collection FORM
-  createCollection,
-  // Process ADD Collection FORM
-  addCollection,
-  // Delete Collection
-  deleteCollection,
-  // Update Collection FORM
-  editCollectionForm,
-  // Process Update Collection FORM
-  editCollection,
-  // Lists Collections from the logged user
-  // Show single Collection
-  // Process Delete Collection
-  api_getCollectionById,
-  api_getCollectionByUser,
+    // List Collections from a particular Colaborator User
+    index,
+    // Create Add Collection FORM
+    createCollection,
+    // Process ADD Collection FORM
+    addCollection,
+    // Delete Collection
+    deleteCollection,
+    // Update Collection FORM
+    editCollectionForm,
+    // Process Update Collection FORM
+    editCollection,
+    // Lists Collections from the logged user
+    // Show single Collection
+    // Process Delete Collection
+    api_getCollectionById,
+    api_getCollectionByUser,
 }
