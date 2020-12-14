@@ -1,4 +1,35 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _fs=_interopRequireDefault(require("fs")),_path=_interopRequireDefault(require("path")),_Collection=_interopRequireDefault(require("../models/Collection")),_Glottolog=_interopRequireDefault(require("../models/Glottolog")),_Location=_interopRequireDefault(require("../models/Location")),_AudioAnnotations=_interopRequireDefault(require("../models/AudioAnnotations")),_converteaftojson=_interopRequireDefault(require("../helpers/converteaftojson")),_deletejson=_interopRequireDefault(require("../helpers/deletejson")),_converteaf=_interopRequireDefault(require("../helpers/converteaf")),_Genre=_interopRequireDefault(require("../models/Genre")),_multer=_interopRequireDefault(require("multer")),_express=require("express");function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}const index=async(a,b)=>{console.log("Aqui");const c=await _AudioAnnotations.default.find({user:a.user._id}).populate("user").populate("colection").exec();c.forEach((a,b)=>{let d=a.location;a.colection.localities.forEach(a=>{console.log(`>ln40> loc_id: ${d} - ${a._id} - ${b} - ${a.Nom_Loc}`),d+""===a._id+""&&(console.log(`>>>>> ENCONTRADO: ln40> loc_id: ${d} - ${a._id} - ${b} - ${a.Nom_Loc}`),console.log("Antes de asignar"),console.log(a),c[b].location=a,console.log("Asignado"),console.log(c[b].location))});let e=a.gid;a.colection.languages.forEach(a=>{e+""===a._id+""&&(c[b].gid=a)})});let d=c.map(a=>a.toJSON());// let collections = collectionsDocs.map(collection=>{
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _fs=_interopRequireDefault(require("fs")),_path=_interopRequireDefault(require("path")),_Collection=_interopRequireDefault(require("../models/Collection")),_Glottolog=_interopRequireDefault(require("../models/Glottolog")),_Location=_interopRequireDefault(require("../models/Location")),_AudioAnnotations=_interopRequireDefault(require("../models/AudioAnnotations")),_converteaftojson=_interopRequireDefault(require("../helpers/converteaftojson")),_deletejson=_interopRequireDefault(require("../helpers/deletejson")),_converteaf=_interopRequireDefault(require("../helpers/converteaf")),_Genre=_interopRequireDefault(require("../models/Genre")),_multer=_interopRequireDefault(require("multer")),_express=require("express");function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}const index=async(a,b)=>{console.log("Aqui");const c=await _AudioAnnotations.default.find({user:a.user._id}).populate("user").populate("colection").exec();// let locality_found
+// audioannotationsDocs.forEach((audioannotation, index) => {
+//   let loc_id = audioannotation.location.id
+//   audioannotation.colection.localities.forEach(location => {
+//     console.log(
+//       `>ln40> loc_id: ${loc_id} - ${location._id} - ${index} - ${location.Nom_Loc}`
+//     )
+//     if (String(loc_id) === String(location._id)) {
+//       console.log(
+//         `>>>>> ENCONTRADO: ln40> loc_id: ${loc_id} - ${location._id} - ${index} - ${location.Nom_Loc}`
+//       )
+//       console.log('Antes de asignar')
+//       console.log(location)
+//       audioannotationsDocs[index].location = location
+//       console.log('Asignado')
+//       console.log(audioannotationsDocs[index].location)
+//     }
+//   })
+//   let glotid = audioannotation.gid
+//   audioannotation.colection.languages.forEach(gid => {
+//     //console.log(`>ln40> loc_id: ${loc_id} - ${gid._id} - ${index} - ${gid.Nom_Loc}`);
+//     if (String(glotid) === String(gid._id)) {
+//       //console.log(`>>>>> ENCONTRADO: ln40> loc_id: ${loc_id} - ${gid._id} - ${index} - ${gid.Nom_Loc}`);
+//       //console.log("Antes de asignar")
+//       //console.log(gid)
+//       audioannotationsDocs[index].gid = gid
+//       //console.log("Asignado")
+//       //console.log(audioannotationsDocs[index].gid)
+//     }
+//   })
+// })
+let d=c.map(a=>a.toJSON());// let collections = collectionsDocs.map(collection=>{
 //   return collection.toJSON()
 // })
 //return res.status(200).json(audioannotationsDocs);

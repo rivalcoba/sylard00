@@ -19,7 +19,9 @@
       <tr>
         <td><input type="text" id="titulo" name="titulo" v-model="titulo" /></td>
         <td><input type="text" id="lengua" name="lengua" v-model="lengua" /></td>
-        <td><input type="text" id="gpo_lengua" name="gpo_lengua" v-model="gpo_lengua" /></td>
+        <td>
+          <input type="text" id="gpo_lengua" name="gpo_lengua" v-model="gpo_lengua" />
+        </td>
         <td><input type="text" id="comunidad" name="comunidad" v-model="comunidad" /></td>
         <td><input type="text" id="hablantes" name="hablantes" v-model="hablantes" /></td>
         <td><input type="text" id="genero" name="genero" v-model="genero" /></td>
@@ -27,12 +29,16 @@
       </tr>
       <div v-for="(item2, index) in search_titulo" :key="'item' + index">
         <tr>
-          <td>{{ item2.titulo }}</td>
-          <td>{{ item2.colection.languages[0].language.gid }} {{ item2.colection.languages[0].language.name }}</td>
-          <td>{{ item2.colection.languages[0].LanguageGroup.gid }} {{ item2.colection.languages[0].LanguageGroup.name }}</td>
-          <td>{{ item2.colection.localities[0].Nom_Loc }} {{ item2.colection.localities[0].Nom_Mun }} {{ item2.colection.localities[0].Nom_Ent }} {{ item2.colection.localities[0].Lat_Decimal }} {{ item2.colection.localities[0].Lon_Decimal }}</td>
-          <td>{{ item2.genero }}</td>
-          <td>{{ item2.duracion }}</td>
+          <td>{{ item2.title }}</td>
+          <td>{{ item2.gid.language.gid }} {{ item2.gid.language.name }}</td>
+          <td>{{ item2.gid.LanguageGroup.gid }} {{ item2.gid.LanguageGroup.name }}</td>
+          <td>
+            {{ item2.location.Nom_Loc }} {{ item2.location.Nom_Mun }}
+            {{ item2.location.Nom_Ent }} {{ item2.location.Lat_Decimal }}
+            {{ item2.location.Lon_Decimal }}
+          </td>
+          <td>{{ item2.genre.name }}</td>
+          <td>{{ item2.duration }}</td>
           <td rowspan="3">
             Delete
             <a href="/audioannotations/create"> Añadir Audioannotations</a>
@@ -103,13 +109,27 @@ export default {
 
     search_titulo: function () {
       if (this.titulo.length > 2) {
-        return this.notas_audioannotations.filter((item) => item.titulo.toLowerCase().includes(this.titulo.toLowerCase()));
+        return this.notas_audioannotations.filter((item) =>
+          item.title.toLowerCase().includes(this.titulo.toLowerCase())
+        );
       } else if (this.lengua.length > 2) {
-        return this.notas_audioannotations.filter((item) => item.colection.languages[0].language.name.toLowerCase().includes(this.lengua.toLowerCase()));
+        return this.notas_audioannotations.filter((item) =>
+          item.gid.language.name
+            .toLowerCase()
+            .includes(this.lengua.toLowerCase())
+        );
       } else if (this.gpo_lengua.length > 2) {
-        return this.notas_audioannotations.filter((item) => item.colection.languages[0].LanguageGroup.name.toLowerCase().includes(this.gpo_lengua.toLowerCase()));
+        return this.notas_audioannotations.filter((item) =>
+          item.gid.LanguageGroup.name
+            .toLowerCase()
+            .includes(this.gpo_lengua.toLowerCase())
+        );
       } else if (this.comunidad.length > 2) {
-        return this.notas_audioannotations.filter((item) => item.colection.localities[0].Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase()));
+        return this.notas_audioannotations.filter((item) =>
+          item.location.Nom_Loc.toLowerCase().includes(
+            this.comunidad.toLowerCase()
+          )
+        );
       }
       return this.notas_audioannotations;
     },
