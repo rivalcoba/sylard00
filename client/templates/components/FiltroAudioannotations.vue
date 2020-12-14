@@ -37,7 +37,11 @@
             {{ item2.location.Nom_Ent }} {{ item2.location.Lat_Decimal }}
             {{ item2.location.Lon_Decimal }}
           </td>
-          <td><div v-for="(item3, index) in item2.TIER" :key="'item' + index"> {{item3.PARTICIPANT}} Hablante {{index+1}} <br> </div></td>
+          <td>
+            <div v-for="(item3, index) in item2.TIER" :key="'item' + index">
+              {{ item3.PARTICIPANT }} Hablante {{ index + 1 }} <br />
+            </div>
+          </td>
           <td>{{ item2.genre.name }} {{ item2.duration }}</td>
           <td rowspan="3">
             Delete
@@ -58,7 +62,8 @@ export default {
   },
   data() {
     return {
-      json: {},
+      participantOrdenado: [],
+      tier: [],
       result: null,
       otro: "nuevo",
       notas_audioannotations: [],
@@ -75,8 +80,10 @@ export default {
     cambiovalor(e) {
       console.log("valor " + e.target.value);
     },
-    setJson(payload) {
-      this.json = payload;
+    sacarTierParticipant() {
+      this.notas_audioannotations.TIER.forEach((element) => {
+        tier.push(element);
+      });
     },
     getTodos() {
       this.axios.get("audioannotations/filter").then((response) => {
@@ -125,6 +132,14 @@ export default {
       } else if (this.comunidad.length > 2) {
         return this.notas_audioannotations.filter((item) =>
           item.location.Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())
+        );
+      } else if (this.hablantes.length > 2) {
+        return this.notas_audioannotations.filter((item) =>
+          item.TIER[0].PARTICIPANT.toLowerCase().includes(this.hablantes.toLowerCase())
+        ); //sacarTierParticipant
+      } else if (this.genero.length > 2) {
+        return this.notas_audioannotations.filter((item) =>
+          item.genre.name.toLowerCase().includes(this.genero.toLowerCase())
         );
       }
       return this.notas_audioannotations;
