@@ -1,6 +1,6 @@
 <template>
   <div>
-    Audio annotations Aqui
+    Audio annotations 
 
     {{ otro }}
     <!--<button v-on:click="getTodos()"></button>-->
@@ -44,9 +44,10 @@
           </td>
           <td>{{ item2.genre.name }} {{ item2.duration }}</td>
           <td rowspan="3">
-            Delete
+             <a v-bind:href="'/audioannotations/delete/'+ item2._id">Delete</a>
             <a href="/audioannotations/create"> Añadir Audioannotations</a>
-            <a href="/audioannotations/vuetest">Reproducir Audioannotations</a>
+            <a v-bind:href="'/audioannotations/vuetest/'+ item2._id">Reproducir Audioannotations</a>
+            <a v-bind:href="'/audioannotations/edit/'+ item2._id">Editar Audioannotations</a>
           </td>
         </tr>
       </div>
