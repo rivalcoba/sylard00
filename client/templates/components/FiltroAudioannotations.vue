@@ -37,8 +37,8 @@
             {{ item2.location.Nom_Ent }} {{ item2.location.Lat_Decimal }}
             {{ item2.location.Lon_Decimal }}
           </td>
-          <td>{{ item2.genre.name }}</td>
-          <td>{{ item2.duration }}</td>
+          <td><div v-for="(item3, index) in item2.TIER" :key="'item' + index"> {{item3.PARTICIPANT}} Hablante {{index+1}} <br> </div></td>
+          <td>{{ item2.genre.name }} {{ item2.duration }}</td>
           <td rowspan="3">
             Delete
             <a href="/audioannotations/create"> Añadir Audioannotations</a>
@@ -114,9 +114,7 @@ export default {
         );
       } else if (this.lengua.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.gid.language.name
-            .toLowerCase()
-            .includes(this.lengua.toLowerCase())
+          item.gid.language.name.toLowerCase().includes(this.lengua.toLowerCase())
         );
       } else if (this.gpo_lengua.length > 2) {
         return this.notas_audioannotations.filter((item) =>
@@ -126,9 +124,7 @@ export default {
         );
       } else if (this.comunidad.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.location.Nom_Loc.toLowerCase().includes(
-            this.comunidad.toLowerCase()
-          )
+          item.location.Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())
         );
       }
       return this.notas_audioannotations;
