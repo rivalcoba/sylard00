@@ -1,8 +1,6 @@
 <template>
   <div>
     Audio annotations
-
-    {{ otro }}
     <!--<button v-on:click="getTodos()"></button>-->
     <table>
       <thead>
@@ -274,6 +272,28 @@ export default {
           // a must be equal to b
           return 0;
         });
+      }else if (this.bandera_genero) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.genre.name  > b.genre.name ) {
+            return -1;
+          }
+          if (a.genre.name  < b.genre.name ) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (this.bandera_hablantes) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.TIER[0].PARTICIPANT  > b.TIER[0].PARTICIPANT ) {
+            return -1;
+          }
+          if (a.TIER[0].PARTICIPANT  < b.TIER[0].PARTICIPANT ) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
       }
     },
     ordenar_ascendente: function () {
@@ -317,6 +337,28 @@ export default {
             return 1;
           }
           if (a.location.Nom_Loc < b.location.Nom_Loc) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (this.bandera_genero) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.genre.name  > b.genre.name ) {
+            return 1;
+          }
+          if (a.genre.name  < b.genre.name ) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (this.bandera_hablantes) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.TIER[0].PARTICIPANT  > b.TIER[0].PARTICIPANT ) {
+            return 1;
+          }
+          if (a.TIER[0].PARTICIPANT  < b.TIER[0].PARTICIPANT ) {
             return -1;
           }
           // a must be equal to b
