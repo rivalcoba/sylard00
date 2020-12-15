@@ -27,6 +27,14 @@
             id="bandera_titulo"
             @change="ordenar_ascendente()"
           />
+          <input
+            type="checkbox"
+            name="bandera_titulo"
+            value="false"
+            v-model="bandera_titulo"
+            id="bandera_titulo2"
+            @change="ordenar_descendente()"
+          />
         </td>
         <td>
           <input type="text" id="lengua" name="lengua" v-model="lengua" />
@@ -36,7 +44,15 @@
             value="true"
             v-model="bandera_lengua"
             id="bandera_lengua"
-             @change="ordenar_descendente()"
+            @change="ordenar_ascendente()"
+          />
+          <input
+            type="checkbox"
+            name="bandera_lengua"
+            value="false"
+            v-model="bandera_lengua"
+            id="bandera_lengua2"
+            @change="ordenar_descendente()"
           />
         </td>
         <td>
@@ -47,6 +63,15 @@
             value="true"
             v-model="bandera_gpo_lengua"
             id="bandera_gpo_lengua"
+            @change="ordenar_ascendente()"
+          />
+          <input
+            type="checkbox"
+            name="bandera_gpo_lengua2"
+            value="false"
+            v-model="bandera_gpo_lengua"
+            id="bandera_gpo_lengua2"
+            @change="ordenar_descendente()"
           />
         </td>
         <td>
@@ -57,6 +82,15 @@
             value="true"
             v-model="bandera_comunidad"
             id="bandera_comunidad"
+            @change="ordenar_ascendente()"
+          />
+          <input
+            type="checkbox"
+            name="bandera_comunidad2"
+            value="false"
+            v-model="bandera_comunidad"
+            id="bandera_comunidad2"
+            @change="ordenar_descendente()"
           />
         </td>
         <td>
@@ -67,6 +101,15 @@
             value="true"
             v-model="bandera_hablantes"
             id="bandera_hablantes"
+            @change="ordenar_ascendente()"
+          />
+          <input
+            type="checkbox"
+            name="bandera_hablantes2"
+            value="false"
+            v-model="bandera_hablantes"
+            id="bandera_hablantes2"
+            @change="ordenar_descendente()"
           />
         </td>
         <td>
@@ -77,6 +120,15 @@
             value="true"
             v-model="bandera_genero"
             id="bandera_genero"
+            @change="ordenar_ascendente()"
+          />
+          <input
+            type="checkbox"
+            name="bandera_genero2"
+            value="false"
+            v-model="bandera_genero"
+            id="bandera_genero2"
+            @change="ordenar_descendente()"
           />
         </td>
         <td></td>
@@ -176,31 +228,101 @@ export default {
         //console.log(response.data)
       });
     },
-  ordenar_descendente: function () {
+    ordenar_descendente: function () {
       //falta ordenar
-      return this.notas_audioannotations.sort(function (a, b) {
-        if (a.title > b.title) {
-          return -1;
-        }
-        if (a.title < b.title) {
-          return 1;
-        }
-        // a must be equal to b
-        return 0;
-      });
+      if (this.bandera_titulo) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.title > b.title) {
+            return -1;
+          }
+          if (a.title < b.title) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      } else if (this.bandera_lengua) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.gid.language.name > b.gid.language.name) {
+            return -1;
+          }
+          if (a.gid.language.name < b.gid.language.name) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      } else if (this.bandera_gpo_lengua) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
+            return -1;
+          }
+          if (a.gid.LanguageGroup.name < b.gid.LanguageGroup.name) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (this.bandera_comunidad) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.location.Nom_Loc > b.location.Nom_Loc) {
+            return -1;
+          }
+          if (a.location.Nom_Loc < b.location.Nom_Loc) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }
     },
-     ordenar_ascendente: function () {
+    ordenar_ascendente: function () {
       //falta ordenar
-      return this.notas_audioannotations.sort(function (a, b) {
-        if (a.title > b.title) {
-          return 1;
-        }
-        if (a.title < b.title) {
-          return -1;
-        }
-        // a must be equal to b
-        return 0;
-      });
+      if (this.bandera_titulo) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.title > b.title) {
+            return 1;
+          }
+          if (a.title < b.title) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      } else if (this.bandera_lengua) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.gid.language.name > b.gid.language.name) {
+            return 1;
+          }
+          if (a.gid.language.name < b.gid.language.name) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      } else if (this.bandera_gpo_lengua) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
+            return 1;
+          }
+          if (a.gid.LanguageGroup.name < b.gid.LanguageGroup.name) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (this.bandera_comunidad) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.location.Nom_Loc > b.location.Nom_Loc) {
+            return 1;
+          }
+          if (a.location.Nom_Loc < b.location.Nom_Loc) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }
     },
   },
   mounted() {
@@ -211,16 +333,14 @@ export default {
     });
   },
   computed: {
-  
-   
-// bandera_titulo: false,
-//       bandera_lengua: false,
-//       bandera_gpo_lengua: false,
-//       bandera_comunidad: false,
-//       bandera_hablantes: false,
-//       bandera_genero: false,
+    // bandera_titulo: false,
+    //       bandera_lengua: false,
+    //       bandera_gpo_lengua: false,
+    //       bandera_comunidad: false,
+    //       bandera_hablantes: false,
+    //       bandera_genero: false,
     search_titulo: function () {
-      if ((this.titulo.length > 2)) {
+      if (this.titulo.length > 2) {
         return this.notas_audioannotations.filter((item) =>
           item.title.toLowerCase().includes(this.titulo.toLowerCase())
         );
