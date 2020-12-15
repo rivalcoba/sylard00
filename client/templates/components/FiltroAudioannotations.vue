@@ -197,7 +197,7 @@ export default {
   methods: {
     borrarAudioanotacion(id) {
       var currentUrl = window.location.pathname;
-      const url = `${currentUrl}/delete/${id}?_method=DELETE`;
+      const url = `${currentUrl}/delete/${id}`;
       // /audioannotations/delete/{{_id}}?_method=DELETE
       this.axios.delete(url).then(
         (response) => {
