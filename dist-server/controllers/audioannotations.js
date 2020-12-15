@@ -1,4 +1,22 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _fs=_interopRequireDefault(require("fs")),_path=_interopRequireDefault(require("path")),_Collection=_interopRequireDefault(require("../models/Collection")),_Glottolog=_interopRequireDefault(require("../models/Glottolog")),_Location=_interopRequireDefault(require("../models/Location")),_AudioAnnotations=_interopRequireDefault(require("../models/AudioAnnotations")),_converteaftojson=_interopRequireDefault(require("../helpers/converteaftojson")),_deletejson=_interopRequireDefault(require("../helpers/deletejson")),_converteaf=_interopRequireDefault(require("../helpers/converteaf")),_Genre=_interopRequireDefault(require("../models/Genre")),_multer=_interopRequireDefault(require("multer")),_express=require("express");function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}const index=async(a,b)=>{console.log("Aqui");const c=await _AudioAnnotations.default.find({user:a.user._id}).populate("user").populate("colection").exec();// let locality_found
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _fs=_interopRequireDefault(require("fs")),_path=_interopRequireDefault(require("path")),_Collection=_interopRequireDefault(require("../models/Collection")),_Glottolog=_interopRequireDefault(require("../models/Glottolog")),_Location=_interopRequireDefault(require("../models/Location")),_AudioAnnotations=_interopRequireDefault(require("../models/AudioAnnotations")),_converteaftojson=_interopRequireDefault(require("../helpers/converteaftojson")),_deletejson=_interopRequireDefault(require("../helpers/deletejson")),_converteaf=_interopRequireDefault(require("../helpers/converteaf")),_Genre=_interopRequireDefault(require("../models/Genre")),_multer=_interopRequireDefault(require("multer")),_express=require("express");function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}const index=async(a,b)=>{// Get Collecionts
+//const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()
+// Collections to JSON
+// const audioannotationsDocs2 = await Audioannotations.aggregate([
+//    { "$match": { "user": req.user._id } },
+//   {
+//     $lookup:
+//     {
+//       from: "Collection",
+//       localField:"location",
+//       foreignField:"localities._id",
+//       as:"localidades"
+//     }
+//   }
+// ]).exec(function(err, results){
+//     console.log(results);
+//  })
+//console.log('Aqui')
+const c=await _AudioAnnotations.default.find({user:a.user._id}).populate("user").populate("colection").exec();// let locality_found
 // audioannotationsDocs.forEach((audioannotation, index) => {
 //   let loc_id = audioannotation.location.id
 //   audioannotation.colection.localities.forEach(location => {
@@ -41,7 +59,8 @@ try{let a=await _AudioAnnotations.default.findById(c).populate("collection_id").
 // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 // >>>>>>>>>>>>>>>>>>>>>>>>> AQUI ESTA EL JSON DE LA AUDIO ANNOTACION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-b.json(a)}catch(a){b.json(a)}},filtrarAudioannotation=async(a,b)=>{console.log("Aqui");// Aqui me quede le quite el await
+b.json(a)}catch(a){b.json(a)}},filtrarAudioannotation=async(a,b)=>{//console.log("Aqui")
+// Aqui me quede le quite el await
 try{const c=await _AudioAnnotations.default.find({user:a.user._id}).populate("user").populate("colection").exec();b.json(c)}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
 b.render("audioannotations/create")},addAudioannotation=async(a,b)=>{let{eaf:c,// ok
 mp3_url:d,// ok

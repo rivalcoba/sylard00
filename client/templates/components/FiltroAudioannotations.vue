@@ -1,8 +1,6 @@
 <template>
   <div>
-    Audio annotations 
-
-    {{ otro }}
+    Audio annotations
     <!--<button v-on:click="getTodos()"></button>-->
     <table>
       <thead>
@@ -17,14 +15,120 @@
         </tr>
       </thead>
       <tr>
-        <td><input type="text" id="titulo" name="titulo" v-model="titulo" /></td>
-        <td><input type="text" id="lengua" name="lengua" v-model="lengua" /></td>
+        <td>
+          <input type="text" id="titulo" name="titulo" v-model="titulo" />
+          <input
+            type="checkbox"
+            name="bandera_titulo"
+            value="true"
+            v-model="bandera_titulo"
+            id="bandera_titulo"
+            @change="ordenar_ascendente()"
+          />
+          <input
+            type="checkbox"
+            name="bandera_titulo"
+            value="false"
+            v-model="bandera_titulo"
+            id="bandera_titulo2"
+            @change="ordenar_descendente()"
+          />
+        </td>
+        <td>
+          <input type="text" id="lengua" name="lengua" v-model="lengua" />
+          <input
+            type="checkbox"
+            name="bandera_lengua"
+            value="true"
+            v-model="bandera_lengua"
+            id="bandera_lengua"
+            @change="ordenar_ascendente()"
+          />
+          <input
+            type="checkbox"
+            name="bandera_lengua"
+            value="false"
+            v-model="bandera_lengua"
+            id="bandera_lengua2"
+            @change="ordenar_descendente()"
+          />
+        </td>
         <td>
           <input type="text" id="gpo_lengua" name="gpo_lengua" v-model="gpo_lengua" />
+          <input
+            type="checkbox"
+            name="bandera_gpo_lengua"
+            value="true"
+            v-model="bandera_gpo_lengua"
+            id="bandera_gpo_lengua"
+            @change="ordenar_ascendente()"
+          />
+          <input
+            type="checkbox"
+            name="bandera_gpo_lengua2"
+            value="false"
+            v-model="bandera_gpo_lengua"
+            id="bandera_gpo_lengua2"
+            @change="ordenar_descendente()"
+          />
         </td>
-        <td><input type="text" id="comunidad" name="comunidad" v-model="comunidad" /></td>
-        <td><input type="text" id="hablantes" name="hablantes" v-model="hablantes" /></td>
-        <td><input type="text" id="genero" name="genero" v-model="genero" /></td>
+        <td>
+          <input type="text" id="comunidad" name="comunidad" v-model="comunidad" />
+          <input
+            type="checkbox"
+            name="bandera_comunidad"
+            value="true"
+            v-model="bandera_comunidad"
+            id="bandera_comunidad"
+            @change="ordenar_ascendente()"
+          />
+          <input
+            type="checkbox"
+            name="bandera_comunidad2"
+            value="false"
+            v-model="bandera_comunidad"
+            id="bandera_comunidad2"
+            @change="ordenar_descendente()"
+          />
+        </td>
+        <td>
+          <input type="text" id="hablantes" name="hablantes" v-model="hablantes" />
+          <input
+            type="checkbox"
+            name="bandera_hablantes"
+            value="true"
+            v-model="bandera_hablantes"
+            id="bandera_hablantes"
+            @change="ordenar_ascendente()"
+          />
+          <input
+            type="checkbox"
+            name="bandera_hablantes2"
+            value="false"
+            v-model="bandera_hablantes"
+            id="bandera_hablantes2"
+            @change="ordenar_descendente()"
+          />
+        </td>
+        <td>
+          <input type="text" id="genero" name="genero" v-model="genero" />
+          <input
+            type="checkbox"
+            name="bandera_genero"
+            value="true"
+            v-model="bandera_genero"
+            id="bandera_genero"
+            @change="ordenar_ascendente()"
+          />
+          <input
+            type="checkbox"
+            name="bandera_genero2"
+            value="false"
+            v-model="bandera_genero"
+            id="bandera_genero2"
+            @change="ordenar_descendente()"
+          />
+        </td>
         <td></td>
       </tr>
       <div v-for="(item2, index) in search_titulo" :key="'item' + index">
@@ -44,10 +148,15 @@
           </td>
           <td>{{ item2.genre.name }} {{ item2.duration }}</td>
           <td rowspan="3">
-             <a v-bind:href="'/audioannotations/delete/'+ item2._id">Delete</a>
+            <!-- <a v-bind:href="'/audioannotations/delete/' + item2._id">Delete</a>-->
             <a href="/audioannotations/create"> Añadir Audioannotations</a>
-            <a v-bind:href="'/audioannotations/vuetest/'+ item2._id">Reproducir Audioannotations</a>
-            <a v-bind:href="'/audioannotations/edit/'+ item2._id">Editar Audioannotations</a>
+            <a href="" @click="borrarAudioanotacion(item2._id)">Delete </a>
+            <a v-bind:href="'/audioannotations/vuetest/' + item2._id"
+              >Reproducir Audioannotations</a
+            >
+            <a v-bind:href="'/audioannotations/edit/' + item2._id"
+              >Editar Audioannotations</a
+            >
           </td>
         </tr>
       </div>
@@ -74,10 +183,35 @@ export default {
       comunidad: "",
       hablantes: "",
       genero: "",
-      valor_buscar: "",
+
+      bandera_titulo: false,
+      bandera_lengua: false,
+      bandera_gpo_lengua: false,
+      bandera_comunidad: false,
+      bandera_hablantes: false,
+      bandera_genero: false,
+
+      valor_buscar: false,
     };
   },
   methods: {
+    borrarAudioanotacion(id) {
+      var currentUrl = window.location.pathname;
+      const url = `${currentUrl}/delete/${id}`;
+      // /audioannotations/delete/{{_id}}?_method=DELETE
+      this.axios.delete(url).then(
+        (response) => {
+          console.log("si se borro");
+          console.log(url);
+        },
+        (error) => {
+          console.log("no se borro " + "/audioannotations/delete/" + id);
+          console.log(url);
+          console.log(error);
+        }
+      );
+    },
+
     cambiovalor(e) {
       console.log("valor " + e.target.value);
     },
@@ -92,29 +226,161 @@ export default {
         //console.log(response.data)
       });
     },
+    ordenar_descendente: function () {
+      //falta ordenar
+      if (this.bandera_titulo) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.title > b.title) {
+            return -1;
+          }
+          if (a.title < b.title) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      } else if (this.bandera_lengua) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.gid.language.name > b.gid.language.name) {
+            return -1;
+          }
+          if (a.gid.language.name < b.gid.language.name) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      } else if (this.bandera_gpo_lengua) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
+            return -1;
+          }
+          if (a.gid.LanguageGroup.name < b.gid.LanguageGroup.name) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (this.bandera_comunidad) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.location.Nom_Loc > b.location.Nom_Loc) {
+            return -1;
+          }
+          if (a.location.Nom_Loc < b.location.Nom_Loc) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (this.bandera_genero) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.genre.name  > b.genre.name ) {
+            return -1;
+          }
+          if (a.genre.name  < b.genre.name ) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (this.bandera_hablantes) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.TIER[0].PARTICIPANT  > b.TIER[0].PARTICIPANT ) {
+            return -1;
+          }
+          if (a.TIER[0].PARTICIPANT  < b.TIER[0].PARTICIPANT ) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }
+    },
+    ordenar_ascendente: function () {
+      //falta ordenar
+      if (this.bandera_titulo) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.title > b.title) {
+            return 1;
+          }
+          if (a.title < b.title) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      } else if (this.bandera_lengua) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.gid.language.name > b.gid.language.name) {
+            return 1;
+          }
+          if (a.gid.language.name < b.gid.language.name) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      } else if (this.bandera_gpo_lengua) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
+            return 1;
+          }
+          if (a.gid.LanguageGroup.name < b.gid.LanguageGroup.name) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (this.bandera_comunidad) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.location.Nom_Loc > b.location.Nom_Loc) {
+            return 1;
+          }
+          if (a.location.Nom_Loc < b.location.Nom_Loc) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (this.bandera_genero) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.genre.name  > b.genre.name ) {
+            return 1;
+          }
+          if (a.genre.name  < b.genre.name ) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (this.bandera_hablantes) {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.TIER[0].PARTICIPANT  > b.TIER[0].PARTICIPANT ) {
+            return 1;
+          }
+          if (a.TIER[0].PARTICIPANT  < b.TIER[0].PARTICIPANT ) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }
+    },
   },
   mounted() {
     var self = this;
-    this.axios.get("audioannotations/filter").then((response) => {
-      this.notas_audioannotations = response.data;
+    self.axios.get("audioannotations/filter").then((response) => {
+      self.notas_audioannotations = response.data;
       //console.log(response.data)
     });
   },
   computed: {
-    ordenar_ascendente: function () {
-      //falta ordenar
-      return this.notas_audioannotations.sort(function (a, b) {
-        if (a.titulo > b.titulo) {
-          return 1;
-        }
-        if (a.titulo < b.titulo) {
-          return -1;
-        }
-        // a must be equal to b
-        return 0;
-      });
-    },
-
+    // bandera_titulo: false,
+    //       bandera_lengua: false,
+    //       bandera_gpo_lengua: false,
+    //       bandera_comunidad: false,
+    //       bandera_hablantes: false,
+    //       bandera_genero: false,
     search_titulo: function () {
       if (this.titulo.length > 2) {
         return this.notas_audioannotations.filter((item) =>
