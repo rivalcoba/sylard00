@@ -1,6 +1,6 @@
 <template>
   <div>
-    Audio annotations 
+    Audio annotations
 
     {{ otro }}
     <!--<button v-on:click="getTodos()"></button>-->
@@ -44,10 +44,15 @@
           </td>
           <td>{{ item2.genre.name }} {{ item2.duration }}</td>
           <td rowspan="3">
-             <a v-bind:href="'/audioannotations/delete/'+ item2._id">Delete</a>
+            <!-- <a v-bind:href="'/audioannotations/delete/' + item2._id">Delete</a>-->
             <a href="/audioannotations/create"> Añadir Audioannotations</a>
-            <a v-bind:href="'/audioannotations/vuetest/'+ item2._id">Reproducir Audioannotations</a>
-            <a v-bind:href="'/audioannotations/edit/'+ item2._id">Editar Audioannotations</a>
+            <a href="" @click="borrarAudioanotacion(item2._id)">Delete </a>
+            <a v-bind:href="'/audioannotations/vuetest/' + item2._id"
+              >Reproducir Audioannotations</a
+            >
+            <a v-bind:href="'/audioannotations/edit/' + item2._id"
+              >Editar Audioannotations</a
+            >
           </td>
         </tr>
       </div>
@@ -78,6 +83,23 @@ export default {
     };
   },
   methods: {
+    borrarAudioanotacion(id) {
+      var currentUrl = window.location.pathname;
+      const url = `${currentUrl}/delete/${id}`;
+      // /audioannotations/delete/{{_id}}?_method=DELETE
+      this.axios.delete(url).then(
+        (response) => {
+          console.log("si se borro");
+                console.log(url);
+        },
+        (error) => {
+          console.log("no se borro " + "/audioannotations/delete/" + id);
+           console.log(url);
+          console.log(error);
+        }
+      );
+    },
+
     cambiovalor(e) {
       console.log("valor " + e.target.value);
     },
@@ -95,8 +117,8 @@ export default {
   },
   mounted() {
     var self = this;
-    this.axios.get("audioannotations/filter").then((response) => {
-      this.notas_audioannotations = response.data;
+    self.axios.get("audioannotations/filter").then((response) => {
+      self.notas_audioannotations = response.data;
       //console.log(response.data)
     });
   },

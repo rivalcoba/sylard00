@@ -34,7 +34,7 @@ const index = async (req, res) => {
   //     console.log(results);
   //  })
 
-  console.log('Aqui')
+  //console.log('Aqui')
 
   const audioannotationsDocs = await Audioannotations.find({
     user: req.user._id,
@@ -116,7 +116,7 @@ const indexById = async (req, res) => {
 }
 
 const filtrarAudioannotation = async (req,res)=>{
-  console.log("Aqui")
+  //console.log("Aqui")
   // Aqui me quede le quite el await
   try {
     const audioannotationsDocs =await  Audioannotations.find({user: req.user._id}).populate('user').populate('colection').exec()
