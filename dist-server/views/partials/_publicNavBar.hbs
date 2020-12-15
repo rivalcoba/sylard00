@@ -1,31 +1,41 @@
+<script>
+    let elemento_link = document.getElementById('home');
+  elemento_link.setAttribute("class", "active_a");
+</script>
 <!--INICIA barra de navegacion publico-->
 <div class="container-fluid back_aqua_0">
   <nav class="container contenedor_barra_nav_publico">
-    <a class="barra_nav_publico_elemento" href="/" id="bnpe_1">
+    {{#if user}}
+    <a id="home" class="barra_nav_publico_elemento" href="/dashboard" id="bnpe_1">
       <span class="icono_nav_publico icon-home1"></span>
     </a>
+     {{else}}
+     <a class="barra_nav_publico_elemento" href="/" id="bnpe_1">
+      <span class="icono_nav_publico icon-home1"></span>
+    </a>
+      {{/if}}
     <a class="barra_nav_publico_elemento" href="#" id="bnpe_2">
       {{translation.CATALOGUE}}
     </a>
-    <a class="barra_nav_publico_elemento" href="#" id="bnpe_3">
+    <a class="barra_nav_publico_elemento" href="/documentation" id="bnpe_3">
       {{translation.DOCUMENTATION}}
     </a>
-    <a class="barra_nav_publico_elemento" href="#" id="bnpe_4">
+    <a class="barra_nav_publico_elemento" href="/usermanual" id="bnpe_4">
       {{translation.USER_MANUAL}}
     </a>
     <h1 class="logo_menu" id="bnpe_5">
       SYLARD
     </h1>
-    <a class="barra_nav_publico_elemento" href="#" id="bnpe_6">
+    <a class="barra_nav_publico_elemento" href="/contact" id="bnpe_6">
       {{translation.CONTACT}}
     </a>
     <a class="barra_nav_publico_elemento" href="#" id="bnpe_7">
       {{translation.DOWNLOADS}}
     </a>
-    <a class="barra_nav_publico_elemento" href="#" id="bnpe_8">
+    <a class="barra_nav_publico_elemento" href="/terms" id="bnpe_8">
       {{translation.TERMS}}
     </a>
-    <a class="barra_nav_publico_elemento" href="#" id="bnpe_9">
+    <a class="barra_nav_publico_elemento" href="/credits" id="bnpe_9">
       {{translation.CREDITS}}
     </a>
   </nav>

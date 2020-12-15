@@ -43,38 +43,38 @@ const index = async (req, res) => {
     .populate('colection')
     .exec()
 
-  let locality_found
+  // let locality_found
 
-  audioannotationsDocs.forEach((audioannotation, index) => {
-    let loc_id = audioannotation.location
-    audioannotation.colection.localities.forEach(location => {
-      console.log(
-        `>ln40> loc_id: ${loc_id} - ${location._id} - ${index} - ${location.Nom_Loc}`
-      )
-      if (String(loc_id) === String(location._id)) {
-        console.log(
-          `>>>>> ENCONTRADO: ln40> loc_id: ${loc_id} - ${location._id} - ${index} - ${location.Nom_Loc}`
-        )
-        console.log('Antes de asignar')
-        console.log(location)
-        audioannotationsDocs[index].location = location
-        console.log('Asignado')
-        console.log(audioannotationsDocs[index].location)
-      }
-    })
-    let glotid = audioannotation.gid
-    audioannotation.colection.languages.forEach(gid => {
-      //console.log(`>ln40> loc_id: ${loc_id} - ${gid._id} - ${index} - ${gid.Nom_Loc}`);
-      if (String(glotid) === String(gid._id)) {
-        //console.log(`>>>>> ENCONTRADO: ln40> loc_id: ${loc_id} - ${gid._id} - ${index} - ${gid.Nom_Loc}`);
-        //console.log("Antes de asignar")
-        //console.log(gid)
-        audioannotationsDocs[index].gid = gid
-        //console.log("Asignado")
-        //console.log(audioannotationsDocs[index].gid)
-      }
-    })
-  })
+  // audioannotationsDocs.forEach((audioannotation, index) => {
+  //   let loc_id = audioannotation.location.id
+  //   audioannotation.colection.localities.forEach(location => {
+  //     console.log(
+  //       `>ln40> loc_id: ${loc_id} - ${location._id} - ${index} - ${location.Nom_Loc}`
+  //     )
+  //     if (String(loc_id) === String(location._id)) {
+  //       console.log(
+  //         `>>>>> ENCONTRADO: ln40> loc_id: ${loc_id} - ${location._id} - ${index} - ${location.Nom_Loc}`
+  //       )
+  //       console.log('Antes de asignar')
+  //       console.log(location)
+  //       audioannotationsDocs[index].location = location
+  //       console.log('Asignado')
+  //       console.log(audioannotationsDocs[index].location)
+  //     }
+  //   })
+  //   let glotid = audioannotation.gid
+  //   audioannotation.colection.languages.forEach(gid => {
+  //     //console.log(`>ln40> loc_id: ${loc_id} - ${gid._id} - ${index} - ${gid.Nom_Loc}`);
+  //     if (String(glotid) === String(gid._id)) {
+  //       //console.log(`>>>>> ENCONTRADO: ln40> loc_id: ${loc_id} - ${gid._id} - ${index} - ${gid.Nom_Loc}`);
+  //       //console.log("Antes de asignar")
+  //       //console.log(gid)
+  //       audioannotationsDocs[index].gid = gid
+  //       //console.log("Asignado")
+  //       //console.log(audioannotationsDocs[index].gid)
+  //     }
+  //   })
+  // })
 
   let audioannotations = audioannotationsDocs.map(audioannotation => {
     return audioannotation.toJSON()
@@ -269,6 +269,7 @@ const editAudioannotation = async (req, res) => {
 }
 
 const deleteAudioannotaion = async (req, res) => {
+  console.log("Aqui no entro")
   const audioannotation_id = req.params.audioannotation_id
   try {
     //console.log("Borrar este")
@@ -284,7 +285,7 @@ const deleteAudioannotaion = async (req, res) => {
     console.log(`deleteAudioannotation> Result: ${result}`)
     //Borrado del archivo fisicamente
     const fs = require('fs')
-    const path = 'server/public/eaf/' + file
+    const path = 'server/public/eaf/tmp/' + file
     fs.unlinkSync(path)
     res.redirect('/audioannotations')
   } catch (error) {
