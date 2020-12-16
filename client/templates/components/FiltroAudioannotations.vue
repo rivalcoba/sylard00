@@ -150,7 +150,7 @@
           <td rowspan="3">
             <!-- <a v-bind:href="'/audioannotations/delete/' + item2._id">Delete</a>-->
             <a href="/audioannotations/create"> Añadir Audioannotations</a>
-            <a href="" @click="borrarAudioanotacion(item2._id)">Delete </a>
+            <a href="" @click.prevent="borrarAudioanotacion(item2._id)">Delete </a>
             <a v-bind:href="'/audioannotations/vuetest/' + item2._id"
               >Reproducir Audioannotations</a
             >
