@@ -195,17 +195,17 @@ export default {
     };
   },
   methods: {
-    borrarAudioanotacion(id) {
+    borrarAudioanotacion(audioannotation_id) {
       var currentUrl = window.location.pathname;
-      const url = `${currentUrl}/delete/${id}`;
+      const url = `${currentUrl}/delete/${audioannotation_id}`;
       // /audioannotations/delete/{{_id}}?_method=DELETE
-      this.axios.delete(url).then(
+      this.axios.delete(url,audioannotation_id).then(
         (response) => {
           console.log("si se borro");
           console.log(url);
         },
         (error) => {
-          console.log("no se borro " + "/audioannotations/delete/" + id);
+          console.log("no se borro " + "/audioannotations/delete/" + audioannotation_id);
           console.log(url);
           console.log(error);
         }

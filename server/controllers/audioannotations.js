@@ -285,9 +285,9 @@ const deleteAudioannotaion = async (req, res) => {
     console.log(`deleteAudioannotation> Result: ${result}`)
     //Borrado del archivo fisicamente
     const fs = require('fs')
-    const path = 'server/public/eaf/tmp/' + file
+    const path = 'server/public/eaf/' + file
     fs.unlinkSync(path)
-    res.redirect('/audioannotations')
+    //res.redirect('/audioannotations')
   } catch (error) {
     //error de borrado
     console.error(error)
