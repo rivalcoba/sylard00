@@ -1,5 +1,329 @@
 <template>
 <div>
+       <p class="label" id="opciones_visuales_predeterminadas">Opciones visuales predeterminadas</p>
+        <div v-if="this.info.data">
+                        <div class="contenedor_opciones_visuales_predeterminadas" v-for="(item2, index) in tier_participante" :key="'item' + index">
+                            <input hidden type="text" name="PARTICIPANT" :value="item2">
+                            <div class="contenedor_canal_audioanotacion">
+                                <div class="contenedor_canal_padre">
+                                    <div class="contenedor_hablante">
+                                        <p class="label label_al_100">Canal 1 (hablante)</p>
+                                        <input type="text" class="hablante_canal_padre_input" :value="item2" disabled>
+                                        <button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-edit"></span></button>
+                                    </div>
+                                    <div class="contenedor_opciones_visuales_canal1_viewer">
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                                            <label class="label label_al_100">Mostrar</label>
+                                            <div class="contenedor_switch_canal_audioanotacion">
+                                                <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
+                                                <label class="switch_general">
+												<input type="checkbox"  class="checkbox_canal1" id="checbox_canal_1" checked>
+                   								<span class="slider_general round"></span></label>
+                                                <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+                                            <label class="label label_al_100">Visualizar en:</label>
+                                            <select class="opciones_despliegue_viewer input_flexible" list="opciones_despliegue" role="listbox">
+												<datalist id="opciones_despliegue">
+													<option  value="One line display" >One line display</option>
+													<option value="Scroll" selected>Scroll</option>
+												</datalist>
+											</select>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion">
+                                            <label class="label label_al_100">Color de tipografía</label>
+                                            <input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">
+                                            <div class="palette" id="colorPalette"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="contenedor_canal_audioanotacion">
+                                <div class="contenedor_canal_hijo">
+                                    <div class="contenedor_hablante_hijo">
+                                        <h6 class="canal_hijo">TGL traducción</h6>
+                                    </div>
+                                    <div class="contenedor_opciones_visuales_canal1_viewer">
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                                            <div class="contenedor_switch_canal_audioanotacion_hijo">
+                                                <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
+                                                <label class="switch_general">
+												<input type="checkbox"  class="checkbox_canal1" id="checbox_canal_1" checked>
+                   								<span class="slider_general round"></span></label>
+                                                <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                            </div>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+                                            <select class="opciones_despliegue_viewer input_flexible" list="opciones_despliegue" role="listbox">
+												<datalist id="opciones_despliegue">
+													<option  value="One line display" >One line display</option>
+													<option value="Scroll" selected>Scroll</option>
+												</datalist>
+											</select>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
+                                            <input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">
+                                            <div class="palette" id="colorPalette"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor_canal_audioanotacion">
+                                <div class="contenedor_canal_hijo">
+                                    <div class="contenedor_hablante_hijo">
+                                        <h6 class="canal_hijo">TGL traslation</h6>
+                                    </div>
+                                    <div class="contenedor_opciones_visuales_canal1_viewer">
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                                            <div class="contenedor_switch_canal_audioanotacion_hijo">
+                                                <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
+                                                <label class="switch_general">
+												<input type="checkbox"  class="checkbox_canal1" id="checbox_canal_1" checked>
+                   								<span class="slider_general round"></span></label>
+                                                <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                            </div>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+                                            <select class="opciones_despliegue_viewer input_flexible" list="opciones_despliegue" role="listbox">
+												<datalist id="opciones_despliegue">
+													<option  value="One line display" >One line display</option>
+													<option value="Scroll" selected>Scroll</option>
+												</datalist>
+											</select>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
+                                            <input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">
+                                            <div class="palette" id="colorPalette"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor_canal_audioanotacion">
+                                <div class="contenedor_canal_hijo">
+                                    <div class="contenedor_hablante_hijo">
+                                        <h6 class="canal_hijo">TGL Surface-2</h6>
+                                    </div>
+                                    <div class="contenedor_opciones_visuales_canal1_viewer">
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                                            <div class="contenedor_switch_canal_audioanotacion_hijo">
+                                                <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
+                                                <label class="switch_general">
+												<input type="checkbox"  class="checkbox_canal1" id="checbox_canal_1" checked>
+                   								<span class="slider_general round"></span></label>
+                                                <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                            </div>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+                                            <select class="opciones_despliegue_viewer input_flexible" list="opciones_despliegue" role="listbox">
+												<datalist id="opciones_despliegue">
+													<option  value="One line display" >One line display</option>
+													<option value="Scroll" selected>Scroll</option>
+												</datalist>
+											</select>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
+                                            <input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">
+                                            <div class="palette" id="colorPalette"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor_canal_audioanotacion">
+                                <div class="contenedor_canal_hijo">
+                                    <div class="contenedor_hablante_hijo">
+                                        <h6 class="canal_hijo">TGL Surface-3</h6>
+                                    </div>
+                                    <div class="contenedor_opciones_visuales_canal1_viewer">
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                                            <div class="contenedor_switch_canal_audioanotacion_hijo">
+                                                <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
+                                                <label class="switch_general">
+												<input type="checkbox"  class="checkbox_canal1" id="checbox_canal_1" checked>
+                   								<span class="slider_general round"></span></label>
+                                                <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                            </div>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+                                            <select class="opciones_despliegue_viewer input_flexible" list="opciones_despliegue" role="listbox">
+												<datalist id="opciones_despliegue">
+													<option  value="One line display" >One line display</option>
+													<option value="Scroll" selected>Scroll</option>
+												</datalist>
+											</select>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
+                                            <input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">
+                                            <div class="palette" id="colorPalette"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor_canal_audioanotacion">
+                                <div class="contenedor_canal_padre">
+                                    <div class="contenedor_hablante">
+                                        <p class="label label_al_100">Canal 2 (hablante)</p>
+                                        <input type="text" class="hablante_canal_padre_input" value="Juan Ramón de la Fuente">
+                                        <!--h5 class="hablante_canal_padre">Juan Ramón de la Fuente</h5-->
+                                        <button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-edit"></span></button>
+                                    </div>
+                                    <div class="contenedor_opciones_visuales_canal1_viewer">
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                                            <label class="label label_al_100">Mostrar</label>
+                                            <div class="contenedor_switch_canal_audioanotacion">
+                                                <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
+                                                <label class="switch_general">
+												<input type="checkbox"  class="checkbox_canal1" id="checbox_canal_1" checked>
+                   								<span class="slider_general round"></span></label>
+                                                <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+                                            <label class="label label_al_100">Visualizar en:</label>
+                                            <select class="opciones_despliegue_viewer input_flexible" list="opciones_despliegue" role="listbox">
+												<datalist id="opciones_despliegue">
+													<option  value="One line display" >One line display</option>
+													<option value="Scroll" selected>Scroll</option>
+												</datalist>
+											</select>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion">
+                                            <label class="label label_al_100">Color de tipografía</label>
+                                            <input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">
+                                            <div class="palette" id="colorPalette"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="contenedor_canal_audioanotacion">
+                                <div class="contenedor_canal_hijo">
+                                    <div class="contenedor_hablante_hijo">
+                                        <h6 class="canal_hijo">JRF traducción</h6>
+                                    </div>
+                                    <div class="contenedor_opciones_visuales_canal1_viewer">
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                                            <div class="contenedor_switch_canal_audioanotacion_hijo">
+                                                <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
+                                                <label class="switch_general">
+												<input type="checkbox"  class="checkbox_canal1" id="checbox_canal_1" checked>
+                   								<span class="slider_general round"></span></label>
+                                                <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                            </div>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+                                            <select class="opciones_despliegue_viewer input_flexible" list="opciones_despliegue" role="listbox">
+												<datalist id="opciones_despliegue">
+													<option  value="One line display" >One line display</option>
+													<option value="Scroll" selected>Scroll</option>
+												</datalist>
+											</select>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
+                                            <input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">
+                                            <div class="palette" id="colorPalette"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor_canal_audioanotacion">
+                                <div class="contenedor_canal_hijo">
+                                    <div class="contenedor_hablante_hijo">
+                                        <h6 class="canal_hijo">JRF traslation</h6>
+                                    </div>
+                                    <div class="contenedor_opciones_visuales_canal1_viewer">
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                                            <div class="contenedor_switch_canal_audioanotacion_hijo">
+                                                <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
+                                                <label class="switch_general">
+												<input type="checkbox"  class="checkbox_canal1" id="checbox_canal_1" checked>
+                   								<span class="slider_general round"></span></label>
+                                                <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                            </div>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+                                            <select class="opciones_despliegue_viewer input_flexible" list="opciones_despliegue" role="listbox">
+												<datalist id="opciones_despliegue">
+													<option  value="One line display" >One line display</option>
+													<option value="Scroll" selected>Scroll</option>
+												</datalist>
+											</select>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
+                                            <input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">
+                                            <div class="palette" id="colorPalette"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor_canal_audioanotacion">
+                                <div class="contenedor_canal_hijo">
+                                    <div class="contenedor_hablante_hijo">
+                                        <h6 class="canal_hijo">JRF Surface-2</h6>
+                                    </div>
+                                    <div class="contenedor_opciones_visuales_canal1_viewer">
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                                            <div class="contenedor_switch_canal_audioanotacion_hijo">
+                                                <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
+                                                <label class="switch_general">
+												<input type="checkbox"  class="checkbox_canal1" id="checbox_canal_1" checked>
+                   								<span class="slider_general round"></span></label>
+                                                <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                            </div>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+                                            <select class="opciones_despliegue_viewer input_flexible" list="opciones_despliegue" role="listbox">
+												<datalist id="opciones_despliegue">
+													<option  value="One line display" >One line display</option>
+													<option value="Scroll" selected>Scroll</option>
+												</datalist>
+											</select>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
+                                            <input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">
+                                            <div class="palette" id="colorPalette"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenedor_canal_audioanotacion">
+                                <div class="contenedor_canal_hijo">
+                                    <div class="contenedor_hablante_hijo">
+                                        <h6 class="canal_hijo">JRF Surface-3</h6>
+                                    </div>
+                                    <div class="contenedor_opciones_visuales_canal1_viewer">
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                                            <div class="contenedor_switch_canal_audioanotacion_hijo">
+                                                <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
+                                                <label class="switch_general">
+												<input type="checkbox"  class="checkbox_canal1" id="checbox_canal_1" checked>
+                   								<span class="slider_general round"></span></label>
+                                                <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                            </div>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+                                            <select class="opciones_despliegue_viewer input_flexible" list="opciones_despliegue" role="listbox">
+												<datalist id="opciones_despliegue">
+													<option  value="One line display" >One line display</option>
+													<option value="Scroll" selected>Scroll</option>
+												</datalist>
+											</select>
+                                        </div>
+                                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
+                                            <input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">
+                                            <div class="palette" id="colorPalette"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <!--AQUÍ EMPIEZA LA ANTIGUA VISTA-->
     <div v-if="this.info.data">
         <!--  <button v-on:click="agregar_tier_acomodado()"></button>-->
         <div v-for="(item2, index) in tier_participante" :key="'item' + index">
@@ -12,7 +336,7 @@
                     <th>Color de Tipográfia</th>
                 </tr>
                 <tr>
-                    <td> ✔ Canal de Hablante: {{item2}}  </td>
+                    <td> ✔ Canal de Hablante : {{item2}}  </td>
                     <td><input type="checkbox" :id="item2" checked @change="selecion_todos_onoff($event)" /></td>
                     <td>
                         <select :id="item2" @change="selecion_todos_visualizacion_options($event)">
