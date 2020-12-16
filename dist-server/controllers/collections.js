@@ -7,8 +7,8 @@ const index=async(a,b)=>{// Query
 let c="su"==b.locals.user.role?{}:{user:a.user._id};// Get Collecionts
 const d=await _Collection.default.find(c).populate("user").exec();// Collections to JSON
 let e=d.map(a=>a.toJSON());// List all the collections
-b.render("collections/index",{collections:e})},createCollection=async(a,b)=>{// Getting languages
-try{const a=await _Glottolog.default.find({$or:[{country_ids:"MX"},{country_ids:"US"}],parent_id:{$ne:""}},"gid name parent_id").exec(),c=await _Location.default.distinct("Nom_Ent");let d=a.map(a=>{let b={};return b=a.toJSON(),b});b.render("collections/create",{languages:d,entities:c})}catch(c){return a.flash("error_msg","El servidor no esta disponible, intente mas tarde"),b.redirect("/dashboard")}},addCollection=async(a,b)=>{// Grab collections from body
+b.render("collections/index",{title:"Mis colecciones",collections:e})},createCollection=async(a,b)=>{// Getting languages
+try{const a=await _Glottolog.default.find({$or:[{country_ids:"MX"},{country_ids:"US"}],parent_id:{$ne:""}},"gid name parent_id").exec(),c=await _Location.default.distinct("Nom_Ent");let d=a.map(a=>{let b={};return b=a.toJSON(),b});b.render("collections/create",{title:"Agregar colecci\xF3n",languages:d,entities:c})}catch(c){return a.flash("error_msg","El servidor no esta disponible, intente mas tarde"),b.redirect("/dashboard")}},addCollection=async(a,b)=>{// Grab collections from body
 let{collection:c}=a.body;// Add user
 c.user=a.user._id;const d=await _Collection.default.create(c);// Se encuentra usuario
 console.log(`addCollection> Colection Created: ${d.name}`),b.redirect("/collections")},deleteCollection=async(a,b)=>{const c=a.params.collection_id;try{// Owner Validation
