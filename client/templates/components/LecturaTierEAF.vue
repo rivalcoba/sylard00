@@ -47,7 +47,7 @@
                     </select>-->
                     </td>
 
-                    <td><input name="color" type="text" :id="item.TIER_ID" value="#000000" @change="seleccion_color($event)"></td>
+                    <td><input name="color" type="text" :id="item.TIER_ID" :value="item.Color" @change="seleccion_color($event)"></td>
 
                 </tr>
                 
