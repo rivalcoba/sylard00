@@ -94,9 +94,8 @@ async function enableLangGroup() {
         )
     }
 
-    let deleteSelect = document.getElementById('language');
-    deleteSelect.removeChild(deleteSelect.childNodes[0]);
-    /*AQUI BORRAR TODOS LOS OPTIONS DEL SELECT LLAMADO LANGUAGEGROUPBOX*/
+    clearDataList(languageGroupBox)
+        /*AQUI BORRAR TODOS LOS OPTIONS DEL SELECT LLAMADO LANGUAGEGROUPBOX*/
     parents.forEach(planguage => {
         let option = document.createElement('option')
         languageGroupBox.appendChild(option)
