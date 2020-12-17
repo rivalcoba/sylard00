@@ -199,17 +199,25 @@ export default {
       var currentUrl = window.location.pathname;
       const url = `${currentUrl}/delete/${audioannotation_id}`;
       // /audioannotations/delete/{{_id}}?_method=DELETE
-      this.axios.delete(url,audioannotation_id).then(
-        (response) => {
-          console.log("si se borro");
-          console.log(url);
-        },
-        (error) => {
-          console.log("no se borro " + "/audioannotations/delete/" + audioannotation_id);
-          console.log(url);
-          console.log(error);
-        }
-      );
+      console.log(url)
+      this.axios.delete(url)
+      .then(res => {
+                    if (res.data === 'ok')
+                        commit('DELETE_POST', audioannotation_id)
+                }).catch(err => {
+                console.log(err)
+            })
+      // .then(
+      //   (response) => {
+      //     console.log("si se borro");
+      //     console.log(url);
+      //   },
+      //   (error) => {
+      //     console.log("no se borro " + "/audioannotations/delete/" + audioannotation_id);
+      //     console.log(url);
+      //     console.log(error);
+      //   }
+      // );
     },
 
     cambiovalor(e) {
