@@ -269,18 +269,19 @@ const editAudioannotation = async (req, res) => {
 }
 
 const deleteAudioannotaion = async (req, res) => {
-  console.log("Aqui no entro")
+  //console.log("Aqui no entro")
   const audioannotation_id = req.params.audioannotation_id
   try {
         let audioannotationsDocs = await Audioannotations.findById(
       audioannotation_id
     ).exec()
     var file = audioannotationsDocs.eaf
-    //console.log(file);
+   // console.log(file);
     const result = await Audioannotations.deleteOne({
       _id: audioannotation_id,
     }).exec()
-    console.log(`deleteAudioannotation> Result: ${result}`)
+    //console.log(`deleteAudioannotation> Result: ${result}`);  
+     console.log(`deleteAudioannotation> Result: ${result}`,JSON.stringify(result));
   } catch (error) {
     console.log("no borro en la bd",error)
     return res.status(404).json(error)
@@ -294,10 +295,11 @@ const deleteAudioannotaion = async (req, res) => {
     const path = 'server/public/eaf/' + file
     fs.unlinkSync(path)
     //res.redirect('/audioannotations')
-    console.error("despues del borrado fisico")
+    //console.error("despues del borrado fisico")
+        return res.status(200).json({"file":"ok"})
   } catch (error) {
     //error de borrado
-    console.error('error')
+    console.error('error en el borrado fisico')
     console.error(error)
     return res.status(400).json(error)
   }
