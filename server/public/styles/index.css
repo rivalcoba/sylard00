@@ -669,6 +669,7 @@ textarea
     resize: none;
 }
 
+
 /*input[type=checkbox] {}*/
 
 input[type=file] {
@@ -2726,6 +2727,7 @@ p.canal_2_hablante_one_line_display_item {
     padding-left: .5rem;
 }
 
+
 /*.contenedor_inputs_agregar_coleccion_comunidad {}*/
 
 .modulo_inputs_lengua,
@@ -2971,6 +2973,7 @@ p.canal_2_hablante_one_line_display_item {
 .link_coleccion_tabla_catalogo {
     color: var(--gris03)!important;
 }
+
 
 /*.contenedor_hablantes {}*/
 
@@ -3275,6 +3278,10 @@ tr.selected {
     margin-right: 2.5%;
 }
 
+#description {
+    margin-right: 2.5%;
+}
+
 .contenedor_canal_audioanotacion {
     margin-top: 0;
 }
@@ -3334,6 +3341,7 @@ h5.hablante_canal_padre {
 .label_canal_padre {
     flex-basis: 100%;
 }
+
 
 /*.contenedor_switch_canal_audioanotacion {}*/
 
@@ -3827,6 +3835,7 @@ h6.canal_hijo_compacto {
 #th_lenguas_habladas {
     width: 13%;
 }
+
 
 /*#privilegios_administrador_usuarios {}*/
 
