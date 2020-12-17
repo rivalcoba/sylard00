@@ -38,7 +38,7 @@
                     </td>
                     
                     <td>
-                        <select  name="value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
+                        <select  name="value" :id="item.TIER_ID" v-model="item.value" @change="seleccion_visualizacion_options($event)">
                             <option value="B">Scrolling</option>
                             <option value="A" selected>On-Line-Display</option>
                         </select>
@@ -47,7 +47,7 @@
                     </select>-->
                     </td>
 
-                    <td><input name="color" type="text" :id="item.TIER_ID" value="#000000" @change="seleccion_color($event)"></td>
+                    <td><input name="color" type="text" :id="item.TIER_ID" :value="item.Color" @change="seleccion_color($event)"></td>
 
                 </tr>
                 

@@ -150,7 +150,7 @@
           <td rowspan="3">
             <!-- <a v-bind:href="'/audioannotations/delete/' + item2._id">Delete</a>-->
             <a href="/audioannotations/create"> Añadir Audioannotations</a>
-            <a href="" @click="borrarAudioanotacion(item2._id)">Delete </a>
+            <a href="" @click.prevent="borrarAudioanotacion(item2._id)">Delete </a>
             <a v-bind:href="'/audioannotations/vuetest/' + item2._id"
               >Reproducir Audioannotations</a
             >
@@ -195,17 +195,28 @@ export default {
     };
   },
   methods: {
-    borrarAudioanotacion(id) {
+    borrarAudioanotacion(audioannotation_id) {
       var currentUrl = window.location.pathname;
-      const url = `${currentUrl}/delete/${id}`;
+      const url = `${currentUrl}/delete/${audioannotation_id}`;
       // /audioannotations/delete/{{_id}}?_method=DELETE
-      this.axios.delete(url).then(
+      console.log(url)
+      this.axios.delete(url)
+      // .then(res => {
+      //               if (res.data === 'ok')
+      //                   commit('DELETE_POST', audioannotation_id)
+      //           }).catch(err => {
+      //           console.log(err)
+      //       })
+      .then(
         (response) => {
-          console.log("si se borro");
+          console.log("si se borro "+audioannotation_id);
+           let index = this.notas_audioannotations.findIndex(item => item._id === audioannotation_id)
+           console.log(index);
+            this.notas_audioannotations.splice(index, 1)
           console.log(url);
         },
         (error) => {
-          console.log("no se borro " + "/audioannotations/delete/" + id);
+          console.log("no se borro " + "/audioannotations/delete/" + audioannotation_id);
           console.log(url);
           console.log(error);
         }
