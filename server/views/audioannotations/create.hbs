@@ -15,10 +15,10 @@
    <input type="submit" value="Upload a file"/>
 </form>-->
 {{#unless filename}}
-<form action="/audioannotations/uploadfile" method="POST" id="form" enctype="multipart/form-data">
+<form action="/audioannotations/uploadfile" method="POST" id="form" name="chargeAudio" enctype="multipart/form-data">
    <label for="profilePic"></label>
    <input id="file" type='file' name="myFile" />
-   <input type="submit">
+   <!--<input type="submit">-->
 </form>
 {{/unless}}
 
@@ -93,7 +93,7 @@
    </div>
 
    <div>
-      <label for="genreSelect">Género a la que pertenece</label>
+      <label for="genreSelect">Género a la que pertenecessss</label>
       <select name="genre" id="genreSelect">
          {{#each genreArray}}
          <option value="{{_id}}" name="{{name}}">
@@ -163,4 +163,31 @@
       request.send()
       //return duration
    }
+   //Envio automatico de formulario
+   window.addEventListener("load",function(){
+		chargeAudio = document.chargeAudio;
+		file = document.chargeAudio.file;
+		campoError = document.getElementById("error");
+		
+		file.addEventListener("input",function(){
+			campoError.innerHTML= "";
+		});
+		file.addEventListener("change",envioAutomatico);
+	});
+
+	function uploadAudionn(e){
+		e = e || window.event;	
+		if(file.value==""){ 
+			e.preventDefault(); 
+			campoError.innerHTML ="Datos sin completar";
+		}else{
+			console.log("Necesita cargar un archivo");
+		};
+	};
+
+	function envioAutomatico(){
+		chargeAudio.addEventListener("submit",uploadAudionn);
+		chargeAudio.submit();
+	}
 </script>
+
