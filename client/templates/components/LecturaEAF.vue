@@ -130,6 +130,7 @@ export default {
       contador: 0,
       audioannotations: [],
       mp3Audio: "",
+      tituloAudioannotation:"",
       ruta: "otro valor",
       //tiempo_parametro:"8"
     };
@@ -385,6 +386,8 @@ export default {
         self.leerAudioannotationsMp3();
         self.$root.$emit("valor_mp3", self.mp3Audio);
         self.leerTierBD();
+        self.tituloAudioannotation=self.audioannotations_info.data.title
+        self.$root.$emit("tituloAudioannotation",self.tituloAudioannotation);
         self.options = self.audioannotations;
       });
     //this.saveFileJSon();

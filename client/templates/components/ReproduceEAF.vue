@@ -1,10 +1,11 @@
 <template>
 <div>
-    Reproducir MP3
-    <button @click="play">
+    
+ {{tituloaudio}}
+    <div id="wave"></div>
+       <button @click="play">
         Play/Pause
     </button>
-    <div id="wave"></div>
     <LecturaEAF :tiempo_parametro=tiempo_reproduciendo :longitud_tiempo=tiempo_longitud  @mensaje_scroll="player_mensaje_scroll"></LecturaEAF>
 </div>
 </template>
@@ -21,6 +22,7 @@ export default {
             timeInterval: null,
             tiempo_longitud: "0",
             mp3_name:"",
+            tituloaudio:""
         }
     },
     created() {
@@ -34,6 +36,10 @@ export default {
         console.log("este es el valor del mp3 "+mp3valor)
         this.mp3_name=mp3valor
         this.wavesurfer.load(mp3valor);
+        })
+        this.$root.$on("tituloAudioannotation",(audiotitulovalor)=>{
+            console.log("este es el valor del mp3 "+audiotitulovalor)
+            this.tituloaudio=audiotitulovalor
         })
         //this.wavesurfer.load(this.mp3_name);
        
