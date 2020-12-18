@@ -94,8 +94,7 @@ async function enableLangGroup() {
         )
     }
 
-    clearDataList(languageGroupBox)
-        /*AQUI BORRAR TODOS LOS OPTIONS DEL SELECT LLAMADO LANGUAGEGROUPBOX*/
+    clearDataList(langGroup)
     parents.forEach(planguage => {
         let option = document.createElement('option')
         languageGroupBox.appendChild(option)
@@ -262,6 +261,7 @@ function deleteLangRow(language) {
         // ----> BORRAR
 }
 
+//AQUÍ COMIENZA FUNCIONALIDAD DE ENTIDAD
 const addLocality = async function() {
     let selectedEntity = entityBox.value;
     let selectedMunicipality = municipalityBox.value;
@@ -371,7 +371,7 @@ const fillMunicipalitiesDataList = async function() {
         if (!is_valid_datalist_value('entities', entityBox.value)) {
             return Swal.fire(
                 'SYLARD!',
-                'Debe seleccionar una opción de la lista',
+                'Debe seleccionar unas opción de la lista',
                 'info'
             )
         }
@@ -444,7 +444,6 @@ const fillLocalitiesDataList = async function() {
             option.value = locality
         });
         localityBox.disabled = false;
-        addLocBtn.style.display = "inline"
 
     } catch (error) {
         return Swal.fire(
@@ -458,13 +457,12 @@ const fillLocalitiesDataList = async function() {
 const disableMunicipality = () => {
     municipalityBox.value = ""
     municipalityBox.disabled = true;
-    /*addLocBtn.style.display = "none"*/
 }
 
 const disableLocality = () => {
     localityBox.value = ""
     localityBox.disabled = true;
-    /*addLocBtn.style.display = "none"*/
+
 }
 
 //document.getElementsByTagName("tr")[2].remove();
