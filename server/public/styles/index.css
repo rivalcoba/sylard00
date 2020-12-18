@@ -3232,11 +3232,57 @@ tr.selected {
 }
 
 .contenedor_input_seleciona_origen_audioanotacion {
-    flex-basis: 50%;
+    flex-basis: 100%;
     display: flex;
     flex-flow: row wrap;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+}
+
+.contenedor_tiempo {
+    width: 98%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.nombre_archivo_selecionado_input {
+    flex-basis: 70%;
+    flex-grow: 2;
+    margin-right: 1rem;
+}
+
+.nombre_archivo_selecionado_input:disabled {
+    background-color: white;
+    font-weight: 600;
+    color: var(--color-primario-principal);
+    border: none;
+    border-bottom: 1px solid var(--color-primario-principal);
+    border-radius: 0px;
+}
+
+.duracion_input:disabled {
+    border: none;
+    background-color: white;
+    font-weight: 600;
+    color: var(--color-primario-principal);
+    border-bottom: 1px solid var(--color-primario-principal);
+    border-radius: 0px;
+}
+
+.duracion_input {
+    flex-basis: 20%;
+    flex-grow: 1;
+    margin-left: 0.125rem;
+}
+
+.icono_duracion {
+    margin: 0;
+    font-size: 1.5rem;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: middle;
+    width: 1.25rem;
+    color: var(--gris-texto-principal);
 }
 
 .contenedor_input_seleciona_origen_audioanotacion:first-of-type {
