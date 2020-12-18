@@ -13,7 +13,8 @@ var Mongo_Store=(0,_connectMongo.default)(_expressSession.default);app.use((0,_e
 // Se requiere parsear de mongoose obj a objeto
 // json y solo se puede hacer si el user existe
 // el user existe si se ha logeado el usuario  
-"en"==a.cookies.langbisquet?b.locals.en=!0:b.locals.es=!0,b.locals.success_msg=a.flash("success_msg"),b.locals.error_msg=a.flash("error_msg"),b.locals.passportError=a.flash("error"),b.locals.user=a.user?a.user.toJSON():null,c()}),app.use((0,_i18nExpress.default)({// where to store json files - defaults to './locales'
+// Se calcula la inicial del apellido
+"en"==a.cookies.langbisquet?b.locals.en=!0:b.locals.es=!0,b.locals.success_msg=a.flash("success_msg"),b.locals.error_msg=a.flash("error_msg"),b.locals.passportError=a.flash("error"),b.locals.user=a.user?a.user.toJSON():null,b.locals.user.lnInitial=b.locals.user.lastName[0],c()}),app.use((0,_i18nExpress.default)({// where to store json files - defaults to './locales'
 translationsPath:_path.default.join(__dirname,"locales"),// setup some locales - other locales default to en silently
 siteLangs:["en","es"],defaultLang:"es",textsVarName:"translation",paramLangName:"slang",// sets a custom cookie name to parse locale settings from
 cookieLangName:"langbisquet"})),(0,_routes.default)(app),app.use(function(a,b,c){c((0,_httpErrors.default)(404))}),app.use(function(a,b,c){// set locals, only providing error in development
