@@ -17,7 +17,7 @@
                                             <div class="contenedor_switch_canal_audioanotacion">
                                                 <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
                                                 <label class="switch_general">
-												<input type="checkbox"  :id="item2" checked @change="selecion_todos_onoff($event)" class="checkbox_canal1" />
+												<input type="checkbox" :id="item2" checked @change="selecion_todos_onoff($event)" class="checkbox_canal1" />
                    								<span class="slider_general round"></span></label>
                                                 <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
                                             </div>
@@ -56,9 +56,9 @@
                                                 <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
                                                 <label class="switch_general">
 												<input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" class="checkbox_canal1"/>
-                   								  <input hidden type="text" :value="item.Visible" name="Visible" />
                                                    <span class="slider_general round"></span></label>
                                                 <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                               <input hidden type="text" :value="item.Visible" name="Visible" />
                                             </div>
                                         </div>
                                         <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
