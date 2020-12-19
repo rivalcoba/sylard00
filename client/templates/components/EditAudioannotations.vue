@@ -343,7 +343,7 @@ export default {
       console.log("Enviando datos");
      this.axios.post("/audioannotations/api/update/" + this.ruta, this.audioannotations);
        console.log("Ya Enviando  datos");
-      window.location.href = "/audioannotations/";
+      window.location.href = "/audioannotations";
     },
     leerTierBD: function () {
       //for (var i in this.audioannotations_info.data) {

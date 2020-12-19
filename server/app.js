@@ -104,6 +104,8 @@ app.use((req, res, next)=>{
   // json y solo se puede hacer si el user existe
   // el user existe si se ha logeado el usuario  
   res.locals.user = req.user ? req.user.toJSON() : null;
+  // Se calcula la inicial del apellido
+  res.locals.user.lnInitial = res.locals.user.lastName[0]
   next()
 })
 

@@ -61,7 +61,7 @@
                                             </div>
                                         </div>
                                         <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
-                                            <select class="opciones_despliegue_viewer input_flexible" name="value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
+                                            <select v-model="item.value" class="opciones_despliegue_viewer input_flexible" name="value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
 												<option value="B">Scrolling</option>
                                                  <option value="A" selected>On-Line-Display</option>
 											</select>
@@ -83,6 +83,7 @@
 
 
 
+                    <td><input name="color" type="text" :id="item.TIER_ID" :value="item.Color" @change="seleccion_color($event)"></td>
 
 <input hidden type="text" name="capas" :value="tier_acomodado.length">
 </div>
