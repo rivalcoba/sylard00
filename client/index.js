@@ -33,7 +33,7 @@ import App2 from '@client/templates/main2.vue'
 import  FiltroAudioannotations  from "@client/templates/components/FiltroAudioannotations.vue";
 import  EditAudioannotations  from "@client/templates/components/EditAudioannotations.vue";
 import App3 from '@client/templates/main3.vue'
-import colorPicker from '@chelpers/la_color_picker'
+import colorPicker from '@chelpers/colorPicker'
 
 
 // Loading function to the global variable
@@ -41,7 +41,11 @@ import colorPicker from '@chelpers/la_color_picker'
 window.myI18n = myI18n
 window.formsManager = formsManager
 window.syModals = syModals
-window.colorPicker = colorPicker
+
+if (window.location.pathname == `/audioannotations/color`) {
+  window.showColorPalette = colorPicker.showColorPalette
+  window.hideColorPalette = colorPicker.hideColorPalette
+}
 
 if (window.location.pathname == `/locations/index`) {
   window.locations = locations_index

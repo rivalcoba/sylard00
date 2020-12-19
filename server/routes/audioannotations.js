@@ -108,6 +108,12 @@ router.get(
   audioannotationsController.filtrarAudioannotation
 )
 
+router.get(
+  '/color',
+  ensureAuthenticated,
+  ensureColabUser,
+  audioannotationsController.color)
+
 // Configurar cabeceras y cors https://filesamples.com/formats/mp3 //no funciona marca error en cors
 //router.get('/', function(req, res) {
 //    res.setHeader('Access-Control-Allow-Origin', '*');

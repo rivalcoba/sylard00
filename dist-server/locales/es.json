@@ -51,5 +51,6 @@
     "ADD_COLLECTION": "Agregar colección",
     "UPLOAD_AUDIONOTATION": "Cargar audioanotación",
     "COMPLETE_FIELDS": "Llena los campos correctamente",
-    "HELLO_COLLECTIONS": "¡Hola!"
+    "HELLO_COLLECTIONS": "¡Hola!",
+    "RESTORE": "Restablecer"
 }

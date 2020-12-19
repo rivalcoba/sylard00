@@ -62,7 +62,7 @@ try{let a=await _AudioAnnotations.default.findById(c).populate("collection_id").
 b.json(a)}catch(a){b.json(a)}},filtrarAudioannotation=async(a,b)=>{//console.log("Aqui")
 // Aqui me quede le quite el await
 try{const c=await _AudioAnnotations.default.find({user:a.user._id}).populate("user").populate("colection").exec();b.json(c)}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
-b.render("audioannotations/create")},addAudioannotation=async(a,b)=>{let{eaf:c,// ok
+b.render("audioannotations/create",{title:"Agregar audionotaci\xF3n"})},addAudioannotation=async(a,b)=>{let{eaf:c,// ok
 mp3_url:d,// ok
 duration:e,//ok
 title:f,// ok
@@ -103,5 +103,5 @@ console.log(`deleteAudioannotation> Result: ${b}`,JSON.stringify(b))}catch(a){re
 //Borrado del archivo fisicamente
 const a=require("fs");//res.redirect('/audioannotations')
 //console.error("despues del borrado fisico")
-return a.unlinkSync("server/public/eaf/"+d),b.status(200).json({file:"ok"})}catch(a){return console.error("error en el borrado fisico"),console.error(a),b.status(400).json(a)}},vuetestAudioannotaion=async(a,b)=>{const c=a.params.audioannotation_id;console.log("--------------Aqui--------------"),console.log(c),b.render("audioannotations/vuetest",{audioannotationid:c})},api_updateAudioAnnot=async(a,b)=>{try{const{audioannotationId:c}=a.params;let d=await _AudioAnnotations.default.findById(c).exec();d.set(a.body);let e=await d.save();b.status(200).json(e)}catch(a){b.status(500).json({error:a.message})}};// Visualize Audio Annotations By Id
-var _default={index,createAudioannotation,editAudioannotation,deleteAudioannotaion,addAudioannotation,uploadfileAudioannotation,vuetestAudioannotaion,filtrarAudioannotation,indexById,api_updateAudioAnnot};exports.default=_default;
+return a.unlinkSync("server/public/eaf/"+d),b.status(200).json({file:"ok"})}catch(a){return console.error("error en el borrado fisico"),console.error(a),b.status(400).json(a)}},vuetestAudioannotaion=async(a,b)=>{const c=a.params.audioannotation_id;console.log("--------------Aqui--------------"),console.log(c),b.render("audioannotations/vuetest",{audioannotationid:c})},color=(a,b)=>{b.render("audioannotations/color")},api_updateAudioAnnot=async(a,b)=>{try{const{audioannotationId:c}=a.params;let d=await _AudioAnnotations.default.findById(c).exec();d.set(a.body);let e=await d.save();b.status(200).json(e)}catch(a){b.status(500).json({error:a.message})}};// Visualize Audio Annotations By Id
+var _default={index,createAudioannotation,editAudioannotation,deleteAudioannotaion,addAudioannotation,uploadfileAudioannotation,vuetestAudioannotaion,filtrarAudioannotation,indexById,api_updateAudioAnnot,color};exports.default=_default;
