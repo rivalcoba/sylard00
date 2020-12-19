@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1>Lectura EAF</h1>
+    <button class="contenedor_acordeon">
+      <span class="icono_acordeon icon-chevron-down"></span> Opciones visuales
+    </button>
     <!-- https://www.youtube.com/watch?v=NPGkoOQPtJs
     min  9:05-->
     <div id="app">
@@ -17,50 +19,106 @@
 
           <tr>
             <div v-for="(item, index) in options" :key="'item' + index">
-              Canal {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
-              <input type="checkbox" :id="item.TIER_ID" v-model="item.Visible" />
+              <div class="contenedor_hablante_y_switch">
+                <p class="label label_switch_horizontal">
+                  Canal {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
+                </p>
+                <div class="contenedor_switch_canal">
+                  <label
+                    class="swich_etiqueta_opcion1"
+                    for="checkbox"
+                    id="switch_canal1_off"
+                    >OFF</label
+                  >
+                  <label class="switch_general">
+                    <input
+                      type="checkbox"
+                      :id="item.TIER_ID"
+                      class="checkbox_canal1"
+                      v-model="item.Visible" />
+                    <span class="slider_general round"></span
+                  ></label>
+                  <label
+                    class="swich_etiqueta_opcion2"
+                    for="checbox_canal_1"
+                    id="switch_usuario_canal1_on"
+                    >ON</label
+                  >
+                </div>
+              </div>
               <!--<label for="checkbox" value="on" name="on" id="on"> </label>
             <input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
             -->
 
-              {{ item.PARTICIPANT }} {{ item.TIER_ID }}
-
-              <!-- <select v-model="item.value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
+              <h5 class="nombre_hablante">{{ item.PARTICIPANT }} {{ item.TIER_ID }}</h5>
+              <div class="contenedor_opciones_visuales_canal1_viewer">
+                <!-- <select v-model="item.value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
             -->
-              <select v-model="item.value" :id="item.TIER_ID">
-                <option value="B">Scrolling</option>
-                <option value="A" selected>On-Line-Display</option>
-              </select>
-              <input name="color" type="text" :id="item.TIER_ID" v-model="item.color" />
+                <select
+                  class="opciones_despliegue_viewer"
+                  v-model="item.value"
+                  :id="item.TIER_ID"
+                >
+                  <option value="B">Scrolling</option>
+                  <option value="A" selected>On-Line-Display</option>
+                </select>
+                <!--  <input class="inp" name="color" type="text"  :id="item.TIER_ID" v-model="item.color" /> -->
+                <input
+                  class="inp"
+                  name="color"
+                  id="colorPicker"
+                  autocomplete="off"
+                  type="text"
+                  v-model="item.color"
+                />
+                <div class="palette" id="colorPalette"></div>
+              </div>
             </div>
 
-            <div v-for="(item, index) in otro" :key="index">
-              <div v-if="options[index].Visible">
-                <div v-if="options[index].value == 'A'">
-                  <div v-for="(item, index) in otro[index]" :key="index">
-                    <div
-                      v-if="
-                        $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
-                        $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1
-                      "
-                    >
-                      <b>
-                        <!--{{tier_temp}}:-->
-                        {{ item.ANNOTATION_VALUE }}
-                        <!--  me quede 
+            <div
+              class="contenedor_one_line_display"
+              v-for="(item, index) in otro"
+              :key="index"
+            >
+              <table class="table_one_line">
+                <div v-if="options[index].Visible">
+                  <div v-if="options[index].value == 'A'">
+                    <div v-for="(item, index) in otro[index]" :key="index">
+                      <div
+                        v-if="
+                          $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
+                          $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1
+                        "
+                      >
+                          <td>
+                            <p class="canal_1_hablante_one_line_display_item">
+                              <span class="siglas_canal_item"></span>
+                              {{ item.ANNOTATION_VALUE }}
+                            </p>
+                            <!--{{tier_temp}}:-->
+                            <!--  me quede 
                                     {{sincronizar(7)}}
                                     -->
-                        <!-- {{item.ANNOTATION_ID}} 
+                            <!-- {{item.ANNOTATION_ID}} 
                 {{item.TIME_SLOT_REF1}} {{item.TIME_SLOT_REF2}} -->
-                      </b>
-                    </div>
-                    <div v-if="index == 0">
-                      <!-- {{item.DEFAULT_LOCALE[index]}} ({{item.LINGUISTIC_TYPE_REF[index]}}) {{item.PARTICIPANT[index]}}
-                {{tier_temp=item.TIER_ID[index]}}:-->{{ item.TIER_ID[index] }} :
+                    </td>
+                      </div>
+                      <div v-if="index == 0">
+                        <!-- {{item.DEFAULT_LOCALE[index]}} ({{item.LINGUISTIC_TYPE_REF[index]}}) {{item.PARTICIPANT[index]}}
+                {{tier_temp=item.TIER_ID[index]}}:-->
+                        <p class="canal_1_hablante_one_line_display_item">
+                          <span class="siglas_canal_item"
+                            >{{ item.TIER_ID[index] }} :
+                          </span>
+                          
+                        </p>
+
+                      </div>
+                      
                     </div>
                   </div>
                 </div>
-              </div>
+              </table>
             </div>
           </tr>
         </table>
@@ -130,7 +188,7 @@ export default {
       contador: 0,
       audioannotations: [],
       mp3Audio: "",
-      tituloAudioannotation:"",
+      tituloAudioannotation: "",
       ruta: "otro valor",
       //tiempo_parametro:"8"
     };
@@ -378,18 +436,16 @@ export default {
       this.info = response;
       self.leerTier();
     });
-    this.axios
-      .get("/audioannotations/index/"+ self.ruta)
-      .then((response) => {
-        this.audioannotations_info = response;
-        //falta hacer algo self.leerTier();
-        self.leerAudioannotationsMp3();
-        self.$root.$emit("valor_mp3", self.mp3Audio);
-        self.leerTierBD();
-        self.tituloAudioannotation=self.audioannotations_info.data.title
-        self.$root.$emit("tituloAudioannotation",self.tituloAudioannotation);
-        self.options = self.audioannotations;
-      });
+    this.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
+      this.audioannotations_info = response;
+      //falta hacer algo self.leerTier();
+      self.leerAudioannotationsMp3();
+      self.$root.$emit("valor_mp3", self.mp3Audio);
+      self.leerTierBD();
+      self.tituloAudioannotation = self.audioannotations_info.data.title;
+      self.$root.$emit("tituloAudioannotation", self.tituloAudioannotation);
+      self.options = self.audioannotations;
+    });
     //this.saveFileJSon();
     //console.log("Aqui se esta añadiendo al json");
     //this.add("hola");
