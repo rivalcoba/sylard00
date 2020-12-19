@@ -1,6 +1,6 @@
 <template>
   <div>
-    Audio annotations
+    Audio annotations 1.0
     <!--<button v-on:click="getTodos()"></button>-->
     <table>
       <thead>
