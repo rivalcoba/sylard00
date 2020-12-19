@@ -90,18 +90,18 @@
                           $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1
                         "
                       >
-                          <td>
-                            <p class="canal_1_hablante_one_line_display_item">
-                              <span class="siglas_canal_item"></span>
-                              {{ item.ANNOTATION_VALUE }}
-                            </p>
-                            <!--{{tier_temp}}:-->
-                            <!--  me quede 
+                        <td>
+                          <p class="canal_1_hablante_one_line_display_item">
+                            <span class="siglas_canal_item"></span>
+                            {{ item.ANNOTATION_VALUE }}
+                          </p>
+                          <!--{{tier_temp}}:-->
+                          <!--  me quede 
                                     {{sincronizar(7)}}
                                     -->
-                            <!-- {{item.ANNOTATION_ID}} 
+                          <!-- {{item.ANNOTATION_ID}} 
                 {{item.TIME_SLOT_REF1}} {{item.TIME_SLOT_REF2}} -->
-                    </td>
+                        </td>
                       </div>
                       <div v-if="index == 0">
                         <!-- {{item.DEFAULT_LOCALE[index]}} ({{item.LINGUISTIC_TYPE_REF[index]}}) {{item.PARTICIPANT[index]}}
@@ -110,11 +110,8 @@
                           <span class="siglas_canal_item"
                             >{{ item.TIER_ID[index] }} :
                           </span>
-                          
                         </p>
-
                       </div>
-                      
                     </div>
                   </div>
                 </div>
@@ -125,10 +122,10 @@
       </div>
       <p v-else>loading.....</p>
       <div v-if="this.info.data">
-        ----------------------------------------------------------------- Si hay datos
-        Multiples Lineas ------------------
-        <br />
-        <!--<div v-for="(item, index) in otro" :key="index">
+        <hr />
+        <div class="contenedor_multilinea">
+          <table class="tabla_multilinea">
+            <!--<div v-for="(item, index) in otro" :key="index">
                 <div v-if="options[index].Visible">
                     <div v-if="options[index].value=='B'">
                         <div v-for="(item, index) in otro[index]" :key="index">
@@ -149,19 +146,39 @@
                 </div>
             </div>
             -->
-        <div v-for="(item, index) in tempdata" :key="index">
-          <div
-            v-if="
-              $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
-              $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1
-            "
-          >
-            <b> {{ item.TIER_ID }} : {{ item.ANNOTATION_VALUE }} </b>
-          </div>
-          <p v-else>
-            <button v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)"></button>
-            {{ item.TIER_ID }} :{{ item.TIME_SLOT_REF1 }} {{ item.ANNOTATION_VALUE }}
-          </p>
+            <div v-for="(item, index) in tempdata" :key="index">
+              <div
+                v-if="
+                  $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
+                  $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1
+                "
+              >
+                <tr class="row_multilinea">
+                  <td class="td_reproduccion_oculta">
+                    <span class="bocina_reproduccion icon-volume-up"></span>
+                  </td>
+                  <td class="td_canal">
+                    <span>{{ item.TIER_ID }}: </span> {{ item.ANNOTATION_VALUE }}
+                  </td>
+                </tr>
+              </div>
+              <div v-else>
+                <tr class="row_multilinea">
+                  <td rowspan="2" class="td_reproduccion">
+                    <span
+                      class="bocina_reproduccion icon-volume-up"
+                      v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)"
+                    ></span>
+                  </td>
+                  <td class="td_canal reproduccion">
+                    <span> {{ item.TIER_ID }}: </span>{{ item.TIME_SLOT_REF1 }}
+                    {{ item.ANNOTATION_VALUE }}
+                  </td>
+                </tr>
+                <!--Aqui me quede arreglando el scroll    <button v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)"></button>-->
+              </div>
+            </div>
+          </table>
         </div>
       </div>
       <p v-else>Cargando.....</p>
