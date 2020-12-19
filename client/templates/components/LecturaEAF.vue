@@ -158,7 +158,9 @@
                     <span class="bocina_reproduccion icon-volume-up" ></span>
                   </td>
                   <td class="td_canal">
-                    <span style="color:#234672;font-weight:bold">{{ item.TIER_ID }}: </span> {{ item.ANNOTATION_VALUE }}
+                    <span :style="traer_color(item.TIER_ID)">
+                      <!--traer el color del item.TIER_ID de this.audioannotations traer_color(item.TIER_ID) -->
+                      {{ item.TIER_ID }}: </span> {{ item.ANNOTATION_VALUE }}
                   </td>
                 </tr>
               </div>
@@ -214,6 +216,12 @@ export default {
     set: () => {},
   },
   methods: {
+    traer_color:function(tier_id) {      
+     // return "color:"+this.audioannotations.find(x => x.TIER_ID == tier_id).color
+      
+      //this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
+      //return color aqui me quede trayendo el color de audioannotations por id
+    },
     mensaje_al_player: function (tiempo) {
       console.log("Se envia un msg al player " + tiempo);
       this.$emit("mensaje_scroll", tiempo);
