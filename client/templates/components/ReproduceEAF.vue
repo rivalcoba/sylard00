@@ -5,15 +5,15 @@
         <!--I³tun⁴ ti¹nu’⁴u⁴<br>-->
         <i> {{ tituloaudio }}</i>
       </h2>
+        <div id="wave"></div>
+    <button @click="play"  type="button" class="btn btn-predeterminado" id="boton_play_viewer"><span class="icon-play_arrow"></span> / <span class="icon-pause1"></span></button>
       <LecturaEAF
         :tiempo_parametro="tiempo_reproduciendo"
         :longitud_tiempo="tiempo_longitud"
         @mensaje_scroll="player_mensaje_scroll"
       ></LecturaEAF>
     </div>
-    <div id="wave"></div>
-    <button @click="play"  type="button" class="btn btn-predeterminado" id="boton_play_viewer"><span class="icon-play_arrow"></span> / <span class="icon-pause1"></span></button>
-<!--				
+  <!--				
     <button @click="play">Play/Pause</button>-->
   </div>
 </template>
