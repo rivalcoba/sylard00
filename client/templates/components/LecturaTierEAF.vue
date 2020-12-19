@@ -1,12 +1,12 @@
 <template>
 <div>
-    <p class="label" id="opciones_visuales_predeterminadas">Opciones visuales predeterminadas</p>
-                        <div class="contenedor_opciones_visuales_predeterminadas" v-if="this.info.data">
-                              <div v-for="(item2, index) in tier_participante" :key="'item' + index">
+     <div v-if="this.info.data">
+   <p class="label" id="opciones_visuales_predeterminadas">Opciones visuales predeterminadas</p>
+                        <div class="contenedor_opciones_visuales_predeterminadas"  v-for="(item2, index) in tier_participante" :key="'item' + index">
+                            <input hidden type="text" name="PARTICIPANT" :value="item2">
                             <div class="contenedor_canal_audioanotacion">
                                 <div class="contenedor_canal_padre">
-                                    <div class="contenedor_hablante">
-                                        <input hidden type="text" name="PARTICIPANT" :value="item2">
+                                    <div class="contenedor_hablante"> 
                                         <p class="label label_al_100">Canal 1 (hablante)</p>
                                         <input type="text" class="hablante_canal_padre_input" :value="item2" disabled>
                                         <button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-edit"></span></button>
@@ -17,25 +17,26 @@
                                             <div class="contenedor_switch_canal_audioanotacion">
                                                 <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
                                                 <label class="switch_general">
-												<input type="checkbox" :id="item2" checked @change="selecion_todos_onoff($event)" class="checkbox_canal1">
-                                                   <span class="slider_general round"></span></label>
+												<input type="checkbox" :id="item2" checked @change="selecion_todos_onoff($event)" class="checkbox_canal1" />
+                   								<span class="slider_general round"></span></label>
                                                 <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
                                             </div>
 
                                         </div>
                                         <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
                                             <label class="label label_al_100">Visualizar en:</label>
-                                                <select class="opciones_despliegue_viewer input_flexible" :id="item2" @change="selecion_todos_visualizacion_options($event)">
-												<option value="B">Scrolling</option>
-                                                <option value="A" selected>On-Line-Display</option>
-											</select>
+                                           
+                                              <select class="opciones_despliegue_viewer input_flexible" :id="item2" @change="selecion_todos_visualizacion_options($event)">
+                            <option value="B">Scrolling</option>
+                            <option value="A" selected>On-Line-Display</option>
+                        </select>
                                         </div>
                                         <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion">
                                             <label class="label label_al_100">Color de tipografía</label>
-                                            <input type="text" :id="item2" value="#000000" @change="seleccion_todos_color($event)"  class="inp input_flexible" autocomplete="off">
+                                            <input type="text" :id="item2" value="#000000" @change="seleccion_todos_color($event)" class="inp input_flexible"><!--PENDIENTE COLOR-PICKET-->
                                             <input type="text" value="header" hidden>
                                             <input type="text" value="header" hidden>
-                                            <div class="palette" id="colorPalette"></div><!--FALTA INCORPORAR LA PALETA DE COLORES-->
+                                            <div class="palette" id="colorPalette"></div>
                                         </div>
                                     </div>
 
@@ -43,10 +44,10 @@
 
                             </div>
                             <div class="contenedor_canal_audioanotacion" v-for="(item, index) in tier_acomodado" :key="'item' + index">
-                                <div class="contenedor_canal_hijo" v-if="item2==item.PARTICIPANT">
-                                      <input hidden type="text" name="LINGUISTIC_TYPE_REF" :value="item.LINGUISTIC_TYPE_REF">
-                                      <input hidden type="text" name="TIER_ID" :value="item.TIER_ID">
+                                <div class="contenedor_canal_hijo" v-if="item2==item.PARTICIPANT ">
                                     <div class="contenedor_hablante_hijo">
+                                        <input hidden type="text" name="LINGUISTIC_TYPE_REF" :value="item.LINGUISTIC_TYPE_REF">
+                                         <input hidden type="text" name="TIER_ID" :value="item.TIER_ID">
                                         <h6 class="canal_hijo">{{item.TIER_ID}}</h6>
                                     </div>
                                     <div class="contenedor_opciones_visuales_canal1_viewer">
@@ -55,37 +56,29 @@
                                                 <label class="swich_etiqueta_opcion1" for="checkbox" id="switch_canal1_off">OFF</label>
                                                 <label class="switch_general">
 												<input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" class="checkbox_canal1"/>
-                   								<span class="slider_general round"></span></label>
+                                                   <span class="slider_general round"></span></label>
                                                 <label class="swich_etiqueta_opcion2" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
-                                                 <input hidden type="text" :value="item.Visible" name="Visible" />
+                                               <input hidden type="text" :value="item.Visible" name="Visible" />
                                             </div>
                                         </div>
                                         <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
-                                            <select v-model="item.value" class="opciones_despliegue_viewer input_flexible" name="value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
-												<option value="B">Scrolling</option>
-                                                 <option value="A" selected>On-Line-Display</option>
-											</select>
-                                          <!--No funciona (no actualiza de manera automatica )<select v-model="tier_acomodado.value">
-                        <option  v-bind:value="item.value" v-for="(c, index) in display" :key="index" :id="item.TIER_ID">{{ c.name }}</option>
-                    </select>-->
+                                           
+                                            <select class="opciones_despliegue_viewer input_flexible" name="value" :id="item.TIER_ID" v-model="item.value" @change="seleccion_visualizacion_options($event)">
+                            <option value="B">Scrolling</option>
+                            <option value="A" selected>On-Line-Display</option>
+                        </select>
                                         </div>
                                         <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
-                                            <input name="color" type="text" :id="item.TIER_ID" value="#000000" @change="seleccion_color($event)"  class="inp input_flexible">
-                                            <div class="palette" id="colorPalette"></div><!--FALTA INCLUIR PALETA DE COLORES-->
+                                            <!--<input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">-->
+                                            <input name="color" class="inp input_flexible" type="text" :id="item.TIER_ID" :value="item.Color" @change="seleccion_color($event)"><!--PENDIENTE PICKET-->
+                                            <div class="palette" id="colorPalette"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                             </div>
-                             <input hidden type="text" name="capas" :value="tier_acomodado.length">
                         </div>
-
-
-
-
-                    <td><input name="color" type="text" :id="item.TIER_ID" :value="item.Color" @change="seleccion_color($event)"></td>
-
-<input hidden type="text" name="capas" :value="tier_acomodado.length">
+     </div>
+                        <input hidden type="text" name="capas" :value="tier_acomodado.length">
 </div>
 
 </template>
