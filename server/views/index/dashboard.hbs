@@ -55,96 +55,52 @@
 									</div>
 									<input class="input_busqueda" type="search" placeholder="Búsqueda">
 								</th>
+								{{!--<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Usuario</label>
+										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input class="input_busqueda" type="search" placeholder="Búsqueda">
+								</th>--}}
 								<th class="" id="th_acciones">
 									
 								</th>
                 				
         					</thead>
-    					    <tr>
-            					<td>
-									<strong><i>Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</i></strong><p class="primeras_palabras_descripcion_collect"></p>
-									<div id="modal_info" class="modal">
-										<div class="contenido_modal">
-											<span class="icono_cerrar_modal icon-close"></span>
-											<h1><span class="icono_modal"></span></h1>	
-											<h2 class="titulo_modal">Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</h2>
-											<p class=" p_2columnas">Este proyecto representa un esfuerzo por documentar la riqueza florística del municipio de San Luis Acatlán y la nomenclatura, clasificación y uso económico y simbólico de las plantas en las cuatro comunidades de habla mixteco principal dentro de este municipio: Yoloxóchitl, Cuanacaxtitlán, Arroyo Cumiapa y Buena Vista. Incluye la colaboración de botánicos y lingüistas: Kenia Velasco Gutiérrez (botánica) se encargó de la mayor parte de las colectas en las cuatro comunidades; Rey Castillo García (un lingüista y hablante nativo de Yoloxóchitl) se encargó de la escritura tanto de nomenclatura como de transcripción y traducción de audio grabados. Hasta la fecha se ha hecho un total de 1,428 colectas que representan un total de 126 familias y 502 géneros.  Todavía se están identificando las colectas a especies pero se calcula llegar a aproximadamente 900 a 1,000 especies distintas.  La mayoría de las colectas son Magnoliophyta (1,381) pero también incluye Pteridophyta (39), Cycadophyta (3) y Coniferophyta (2). En cuanto a distribución geográfica se llevaron a cabo colectas en las siguientes comunidades: Yoloxóchitl (1,274), Buena Vista (68), Arroyo Cumiapa (43), Cuanacaxtitlán (40) y San Luis Acatlán (3). Se contó con el apoyo de más de 35 asesores locales los principales siendo Esteban Guadalupe Sierra y Constantino Teodoro Bautista de Yoloxóchitl. Para las identificación a especie también apoyaron más de 75 taxónomos expertos.</p>
-										</div>
-									</div>
-								</td>
-            					<td class="" data-label="Lengua terminal (glottocode)">
-									yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
-								</td>
-            					<td class="" data-label="Grupo de lenguas (glottocode)">
-									amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span><br>amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span>
-								</td>
-            					<td class="comunidades"><span class="pais">
-									México</span><span class="estado">Guerrero</span><span class="comunidad">Yoloxóchitl</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Cuanacaxtitlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Arroyo Cumiapa</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Buena Vista</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
-								</td>
-								<td class="td_acciones ">
-									<div class="contenedor_botones_accion">
-										<button class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
-										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
-									</div>
-								</td>
-        					</tr>
 							  <tr>
+								   {{#each collections}}
             					<td>
-									<strong><i>Estudio Florístico y Etnobotánico de Comunidades de habla Náhuat de la Sierra Nororiental de Puebla</i></strong><p class="primeras_palabras_descripcion_collect"></p>
-									<div id="modal_info" class="modal">
-										<div class="contenido_modal">
-											<span class="icono_cerrar_modal icon-close"></span>
-											<h1><span class="icono_modal"></span></h1>	
-											<h2 class="titulo_modal">Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</h2>
-											<p class=" p_2columnas">Este proyecto representa un esfuerzo por documentar la riqueza florística del municipio de San Luis Acatlán y la nomenclatura, clasificación y uso económico y simbólico de las plantas en las cuatro comunidades de habla mixteco principal dentro de este municipio: Yoloxóchitl, Cuanacaxtitlán, Arroyo Cumiapa y Buena Vista. Incluye la colaboración de botánicos y lingüistas: Kenia Velasco Gutiérrez (botánica) se encargó de la mayor parte de las colectas en las cuatro comunidades; Rey Castillo García (un lingüista y hablante nativo de Yoloxóchitl) se encargó de la escritura tanto de nomenclatura como de transcripción y traducción de audio grabados. Hasta la fecha se ha hecho un total de 1,428 colectas que representan un total de 126 familias y 502 géneros.  Todavía se están identificando las colectas a especies pero se calcula llegar a aproximadamente 900 a 1,000 especies distintas.  La mayoría de las colectas son Magnoliophyta (1,381) pero también incluye Pteridophyta (39), Cycadophyta (3) y Coniferophyta (2). En cuanto a distribución geográfica se llevaron a cabo colectas en las siguientes comunidades: Yoloxóchitl (1,274), Buena Vista (68), Arroyo Cumiapa (43), Cuanacaxtitlán (40) y San Luis Acatlán (3). Se contó con el apoyo de más de 35 asesores locales los principales siendo Esteban Guadalupe Sierra y Constantino Teodoro Bautista de Yoloxóchitl. Para las identificación a especie también apoyaron más de 75 taxónomos expertos.</p>
-										</div>
-									</div>
+									<strong><i>{{name}}</i></strong><p class="primeras_palabras_descripcion_collect"></p>
 								</td>
             					<td class="" data-label="Lengua terminal (glottocode)">
-									high1278<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Highland Puebla Nahuat</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
+									  {{#each languages}}
+									{{language.gid}}<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">{{language.name}}</span><br>
+								 {{/each}}
 								</td>
             					<td class="" data-label="Grupo de lenguas (glottocode)">
-									azte1234<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Aztec</span><br>
-									amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span>
+									  {{#each languages}}
+									{{LanguageGroup.gid}}<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >{{LanguageGroup.name}}</span><br>
+								  {{/each}}
 								</td>
             					<td class="comunidades"><span class="pais">
-									México</span><span class="estado">Guerrero</span><span class="comunidad">San Miguel Tzinacapan</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Tacuapan</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Xaltipan</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Buena Vista</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
+									  {{#each localities}}
+									México</span><span class="estado">{{Nom_Ent}}</span><span class="comunidad">{{Nom_Loc}}</span><span class="municipio_tabla">{{Nom_Mun}}</span><span class="localizacion">{{Lat_Decimal}} {{Lon_Decimal}}</span><hr class="hr_divisor_comunidad">
+								  {{/each}}   
 								</td>
+								{{!--
+								<td class="" data-label="Grupo de lenguas (glottocode)">	 
+									{{user.name}}
+								</td>--}}
+								
 								<td class="td_acciones ">
 									<div class="contenedor_botones_accion">
-										<button class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
+										<button onclick="syModals.show('{{name}}','{{description}}')" aria-hidden="true" class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
 										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
 									</div>
 								</td>
         					</tr>
-							  <tr>
-            					<td>
-									<strong><i>Estudio Floristas de Comunidades Totonacas de la Sierra Nororiental y Norte de Puebla</i></strong><p class="primeras_palabras_descripcion_collect"></p>
-									<div id="modal_info" class="modal">
-										<div class="contenido_modal">
-											<span class="icono_cerrar_modal icon-close"></span>
-											<h1><span class="icono_modal"></span></h1>	
-											<h2 class="titulo_modal">Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</h2>
-											<p class=" p_2columnas">Este proyecto representa un esfuerzo por documentar la riqueza florística del municipio de San Luis Acatlán y la nomenclatura, clasificación y uso económico y simbólico de las plantas en las cuatro comunidades de habla mixteco principal dentro de este municipio: Yoloxóchitl, Cuanacaxtitlán, Arroyo Cumiapa y Buena Vista. Incluye la colaboración de botánicos y lingüistas: Kenia Velasco Gutiérrez (botánica) se encargó de la mayor parte de las colectas en las cuatro comunidades; Rey Castillo García (un lingüista y hablante nativo de Yoloxóchitl) se encargó de la escritura tanto de nomenclatura como de transcripción y traducción de audio grabados. Hasta la fecha se ha hecho un total de 1,428 colectas que representan un total de 126 familias y 502 géneros.  Todavía se están identificando las colectas a especies pero se calcula llegar a aproximadamente 900 a 1,000 especies distintas.  La mayoría de las colectas son Magnoliophyta (1,381) pero también incluye Pteridophyta (39), Cycadophyta (3) y Coniferophyta (2). En cuanto a distribución geográfica se llevaron a cabo colectas en las siguientes comunidades: Yoloxóchitl (1,274), Buena Vista (68), Arroyo Cumiapa (43), Cuanacaxtitlán (40) y San Luis Acatlán (3). Se contó con el apoyo de más de 35 asesores locales los principales siendo Esteban Guadalupe Sierra y Constantino Teodoro Bautista de Yoloxóchitl. Para las identificación a especie también apoyaron más de 75 taxónomos expertos.</p>
-										</div>
-									</div>
-								</td>
-            					<td class="" data-label="Lengua terminal (glottocode)">
-									toto1252<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
-								</td>
-            					<td class="" data-label="Grupo de lenguas (glottocode)">
-									toto1251<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Totonacan</span><br>amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span>
-								</td>
-            					<td class="comunidades"><span class="pais">
-									México</span><span class="estado">Guerrero</span><span class="comunidad">Zongozotla</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Ecatlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Nanacatlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Tonalixco</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
-								</td>
-								<td class="td_acciones ">
-									<div class="contenedor_botones_accion">
-										<button class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
-										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
-									</div>
-								</td>
-        					</tr>
+							 {{/each}}    
 							        					
         					
 						</table>
