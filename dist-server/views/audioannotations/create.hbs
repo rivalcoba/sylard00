@@ -1,126 +1,173 @@
-<h1>Audio Annotations Play</h1>
-<!--<div id="app2">
-    <LecturaTierEAF>
-       aqui
-       {{{filename}}}
-   aqui
- </div>
-</LecturaTierEAF>
+<div class="container-fluid" id="contenedor_agregar_audioanotacion">
+   <div class="container-fluid" id="cabezal_agregar_audioanotacion">
+      <div class="container">
+         <div class="col-sm-12" id="contenedor_items_cabezal_agregar_audioanotacion">
+            <div class="" id="contenedor_titulos_cabezal_agregar_audioanotacion">
+               <h1 class="blanco" id="titulo_agregar_audioanotacion"><span
+                     class="icono_cabezal icon-file_upload"></span> Agregar audioanotacion</h1>
+               <h2 class="llamada" id="llamada_agregar_audioanotacion">Llena los campos correctamente</h2>
+            </div>
+         </div>
+      </div>
+   </div>
+   <section class="container">
+      <div class="col-sm-12 contenedor-90vh" id="contenedor_general_agregar_audioanotacion">
+         <div class="contenedor_establecer_origen_archivos_audioanotacion">
+            {{#unless filename}}
+            <form action="/audioannotations/uploadfile" method="POST" name="chargeAudio" id="form"
+               enctype="multipart/form-data">
+               <div class="contenedor_input_seleciona_origen_audioanotacion">
+                   <label class="label label_al_100" id="selecciona_archivo_eaf"
+                     for="selecciona_archivo_eaf_input">Selecciona el archivo con terminacion ".eaf"</label>
+                  <input class="input_flexible" id="file" type='file' name="myFile" placeholder="Selecciona el archivo"
+                     required>
+                  <div class="contenedor_icono_correcto_input">
+                     <p><span class="icono_correcto_input icon-check_circle"></span></p>
+                  </div>
+                  <div class="contenedor_icono_error_input">
+                     <p><span class="icono_error_input icon-error"></span></p>
+                  </div>
+               </div>
+            </form>
+            {{/unless}}
+            {{#if filename}}
+            <div class="contenedor_tiempo">
+               <label class="label label_al_100" for="selecciona_archivo_eaf_input">Archivo cargado éxitosamente</label>
+               <input class="nombre_archivo_selecionado_input" value="{{filename}}" disabled>
+               <div class="contenedor_icono_correcto_input">
+                  <p><span class="icono_correcto_input icon-check_circle"></span></p>
+               </div>
+               <div class="contenedor_icono_error_input">
+                  <p><span class="icono_error_input icon-error"></span></p>
+               </div>
+               <label class="" for="duracion"><span onclick="pageScripts.loadMp3()"
+                     class="icono_duracion icon-clock-o"></span></label>
+               <input class="duracion_input" disabled type="text" id="duracion" name="duration">
+            </div>
+            {{/if}}
+         </div>
+         <form action="/audioannotations/add" method="post" id='form2'>
+            <div class="contenedor_input_seleciona_origen_audioanotacion">
+               <input value="{{filename}}" type="hidden" id="eaf" name="eaf"><br><br>
+               <label class="label label_al_100" id="selecciona_url_mp3" for="selecciona_url_mp3_input">Selecciona URL del audio en
+               ".mp3"</label>
+               <input type="text" id="mp3_url" name="mp3_url"
+                  value="https://cdn.glitch.com/31e1c313-9473-4a67-b370-cbebc80a47b2%2FWhatsApp%20Audio%202020-11-09%20at%2020.55.02.mpeg"
+                  class="input_flexible"
+                  placeholder="Pega la URL de la ubicación del archivo con terminación &quot.mp3&quot" required>
+               <div class="contenedor_icono_correcto_input">
+                  <p><span class="icono_correcto_input icon-check_circle"></span></p>
+               </div>
+               <div class="contenedor_icono_error_input">
+                  <p><span class="icono_error_input icon-error"></span></p>
+               </div>
+            </div>
+            <div class="contenedor_input_agregar_audioanotacion">
+               <label class="label label_al_100" for="titulo_audioanotacion_input">Título</label>
+               <input class="input_flexible" id="titulo" name="title" type="text"
+                  placeholder="Titulo breve (max 120 carácteres)" maxlength="120" required>
+               <div class="contenedor_icono_correcto_input">
+                  <p><span class="icono_correcto_input icon-check_circle"></span></p>
+               </div>
+               <div class="contenedor_icono_error_input">
+                  <p><span class="icono_error_input icon-error"></span></p>
+               </div>
+            </div>
+            <div class="contenedor_input_agregar_audioanotacion">
+               <label class="label label_al_100" id="descripcion_de_la_audioanotacion"
+                  for="descripcion_audioanotacion_input">Descripcion de la audioanotación</label>
+               <textarea type="text" id="description" name="description" class="input_flexible" type="textarea"
+                  placeholder="Breve descripcion (max 200 carácteres)" maxlength="200" rows="5" required></textarea>
+
+            </div>
+            <div class="contenedor_input_agregar_audioanotacion">
+               <label class="label label_al_100" id="seleccion_coleccion_audioanotacion_label"
+                  for="seleccion_coleccion_audioanotacion_input">Colección a la que pertenece</label>
+               <select  class="input_flexible" onchange="pageScripts.fillGlottologSelect()" id="colectionSelect"
+                  name="colection" required>
+                  <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}</option>
+                  {{#each collections}}
+                  <option value="{{_id}}" name="{{name}}">
+                     {{name}}
+                  </option>
+                  {{/each}}
+               </select>
+               <div class="contenedor_icono_correcto_input">
+                  <p><span class="icono_correcto_input icon-check_circle"></span></p>
+               </div>
+               <div class="contenedor_icono_error_input">
+                  <p><span class="icono_error_input icon-error"></span></p>
+               </div>
+            </div>
+            <div class="contenedor_flex_audioanotacion">
+               <div class="contenedor_flex_tercio_audioanotacion">
+                  <label class="label label_al_100" id="seleccion_comunidad_audioanotacion_label"
+                     for="seleccion_comunidad_audioanotacion_input">Comunidad a la que pertenece</label>
+                  <select disabled class="input_flexible" id="localitiesSelect" name="location">
+                  </select>
+                  <div class="contenedor_icono_correcto_input">
+                     <p><span class="icono_correcto_input icon-check_circle"></span></p>
+                  </div>
+                  <div class="contenedor_icono_error_input">
+                     <p><span class="icono_error_input icon-error"></span></p>
+                  </div>
+               </div>
+               <div class="contenedor_flex_tercio_audioanotacion">
+                  <label class="label label_al_100" id="seleccion_lengua_terminal_audioanotacion_label"
+                     for="seleccion_lengua_terminal_audioanotacion_input">Lengua terminal a la que pertenece</label>
+                  <select disabled class="input_flexible" id="glottologSelect" name="gid">
+                  </select>
+                  <div class="contenedor_icono_correcto_input">
+                     <p><span class="icono_correcto_input icon-check_circle"></span></p>
+                  </div>
+                  <div class="contenedor_icono_error_input">
+                     <p><span class="icono_error_input icon-error"></span></p>
+                  </div>
+               </div>
+               <div class="contenedor_flex_tercio_audioanotacion">
+                  <label class="label label_al_100" id="seleccion_genero_audioanotacion_label"
+                     for="seleccion_lengua_terminal_audioanotacion_input">Género al que pertenece</label>
+
+                  <select  class="input_flexible" name="genre" id="genreSelect" required>
+                     <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}</option>
+                     {{#each genreArray}}
+                     <option value="{{_id}}" name="{{name}}">
+                        {{name}}
+                     </option>
+                     {{/each}}
+                  </select>
+                  <div class="contenedor_icono_correcto_input">
+                     <p><span class="icono_correcto_input icon-check_circle"></span></p>
+                  </div>
+                  <div class="contenedor_icono_error_input">
+                     <p><span class="icono_error_input icon-error"></span></p>
+                  </div>
+               </div>
+            </div>
+
+            <div id="app2">
+               <LecturaTierEAF>
+               </LecturaTierEAF>
+            </div>
+            <div class="botones_agregar_audioanotacion">
+
+               <div class="contenedor_botones">
+                  <button type="reset" class="btn btn-secundario"
+                     id="boton_restablecer_agregar_audioanotacion">Restablecer</button>
+                  <button type="submit" class="btn btn-primario"
+                     id="boton_guardar_agregar_audioanotacion">Guardar</button>
+               </div>
+            </div>
+
+         </form>
+      </div>
+
+   </section>
 </div>
--->
-<div> Crear audioannotations</div>
-<!--
-<form action="/audioannotations/uploadfile" enctype="multipart/form-data" method="POST"> 
-   <input type="file" name="myFile" />
-   <input type="submit" value="Upload a file"/>
-</form>-->
-{{#unless filename}}
-<form action="/audioannotations/uploadfile" method="POST" id="form" enctype="multipart/form-data">
-   <label for="profilePic"></label>
-   <input id="file" type='file' name="myFile" />
-   <input type="submit">
-</form>
-{{/unless}}
-
-
-{{#if filename}}
-
-
-<div>Archivo Cargado: {{filename}}</div>
-
-<form class="col s12" action="/audioannotations/add" method="post" id='form2'>
-   <!--
-<input type="file"
-       id="eaf" name="eaf"
-       accept="eaf/eaf">
-       <br><br>
-
-       a_id:String,
-  eaf:String,
-  titulo:String,
-  description: { type: String },
-  genero:String,
-  duracion:String,
-  mp3_url:String,
-  https://code.tutsplus.com/es/tutorials/file-upload-with-multer-in-node--cms-32088  -->
-   <div>
-      <input value="{{filename}}" type="hidden" id="eaf" name="eaf"><br><br>
-   </div>
-
-   <div>
-      <label for="mp3_url">MP3</label>
-      <input type="text" id="mp3_url" name="mp3_url" value="https://cdn.glitch.com/31e1c313-9473-4a67-b370-cbebc80a47b2%2FWhatsApp%20Audio%202020-11-09%20at%2020.55.02.mpeg"><br><br>
-      <a href="#" onclick="pageScripts.loadMp3()">LOAD AUDIO</a>
-   </div>
-
-   <div>
-      <label for="duracion">Duracion</label>
-      <input readonly type="text" id="duracion" name="duration"><br><br>   
-   </div>
-
-   <div>
-      <label for="titulo">Titulo:</label>
-      <input type="text" id="titulo" name="title"><br><br>
-   </div>
-   
-   <div>
-      <label for="descripcion">Descripcion:</label>
-      <input type="text" id="description" name="description"><br><br>
-   </div>
-
-   <div>
-      <label for="colectionSelect">Coleccion:</label>
-      <select onchange="pageScripts.fillGlottologSelect()" id="colectionSelect" name="colection">
-         <option value="" disabled selected>Seleccione una opción</option>
-         {{#each collections}}
-         <option value="{{_id}}" name="{{name}}">
-            {{name}}
-         </option>
-         {{/each}}
-      </select>
-   </div>   
-   
-   <div>
-      <label for="glottologSelect">Lengua Terminal y Grupo de lenguas</label>
-      <select id="glottologSelect" name="gid">
-      </select>
-   </div>
-
-   <div>
-      <label for="localitiesSelect">Comunidad a la que pertenece</label>
-      <select id="localitiesSelect" name="location">
-      </select>
-   </div>
-
-   <div>
-      <label for="genreSelect">Género a la que pertenece</label>
-      <select name="genre" id="genreSelect">
-         {{#each genreArray}}
-         <option value="{{_id}}" name="{{name}}">
-            {{name}}
-         </option>
-         {{/each}}
-      </select>
-   </div>
-
-   
-
-   <div id="app2">
-      <LecturaTierEAF>
-      </LecturaTierEAF>
-   </div>
-
-   <div >
-      <button type="submit">Submit</button>
-   </div>
-   
-</form>
-{{/if}}
 <script>
-   
+
    /*
    const $form    = document.querySelector('#form5')
-
    $form.addEventListener('submit', (event) =>  {
      event.preventDefault()
       const formData  =new FormData (event.currentTarget)
@@ -131,11 +178,9 @@
    //console.log("longitud Final")
    //console.log(longitudmp3())
    })*/
-
    function leer_eaf() {
       var leer = require('./converteaftojson');
    }
-
    function longitudmp3() {
       var duration;
       //const mp3file = 'https://raw.githubusercontent.com/prof3ssorSt3v3/media-sample-files/master/doorbell.mp3'
@@ -155,12 +200,35 @@
                longitud = duration
                var inputDuration = document.getElementById("duracion");
                inputDuration.value = duration;
-
                //document.write(duration)
             }
          )
       }
       request.send()
       //return duration
+   }
+
+   window.addEventListener("load", function () {
+      let chargeAudio = document.chargeAudio;
+      let file = document.chargeAudio.file;
+      let campoError = document.getElementById("error");
+
+      file.addEventListener("input", function () {
+         campoError.innerHTML = "";
+      });
+      file.addEventListener("change", envioAutomatico, false);
+   });
+   function uploadAudionn(e) {
+      e = e || window.event;
+      if (file.value == "") {
+         e.preventDefault();
+         campoError.innerHTML = "Datos sin completar";
+      } else {
+         console.log("Necesita cargar un archivo");
+      };
+   };
+   function envioAutomatico() {
+      chargeAudio.addEventListener("submit", uploadAudionn);
+      chargeAudio.submit();
    }
 </script>

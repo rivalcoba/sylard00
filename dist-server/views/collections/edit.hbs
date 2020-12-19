@@ -1,303 +1,360 @@
-<h2 class="center" style="color: palevioletred;">Editar Colección</h2>
-<h3 style="color: darkcyan;">Llena los campos correctamente</h3>
-
-<form
-	id="app" class="center" action="/collections/edit/{{collectionDoc._id}}?_method=PUT" method="POST">
-	<input type="hidden" name="_method" value="PUT">
-	<!-- Collection Name -->
-  <div class="row">
-    <div class="input-field col s12 m10 l8">
-      <i class="fa fa-archive prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
-      <label for="name">Nombre de la colección</label>
-      <input 
-				id="name" 
-				type="text"
-				name="name"
-        v-model="name">
+<div class="container-fluid" id="contenedor_agregar_coleccion">
+  <div class="container-fluid" id="cabezal_editar_coleccion">
+    <div class="container">
+      <div class="col-sm-12" id="contenedor_items_cabezal_agregar_coleccion">
+        <div class="" id="contenedor_titulos_cabezal_agregar_coleccion">
+          <h1 id="titulo_agregar_coleccion">
+            <span class="icono_cabezal icon-edit"></span>
+            Editar Colección
+          </h1>
+          <h2 class="llamada" id="llamada_agregar_coleccion">
+            Modifica los campos correctamente
+          </h2>
+        </div>
+      </div>
     </div>
   </div>
-
-	<!-- Collection Description-->
-  <div class="row">
-    <div class="input-field col s12 m10 l8">
-      <i class="fa fa-archive prefix" style="color: rgba(48, 115, 238, 0.924);"></i>
-      <label for="description">Descripción</label>
-      <textarea 
-      type="text" 
-      name="description" 
-      id="description" 
-      class="materialize-textarea"
-      v-model="description"></textarea>
-    </div>
-  </div>
-
-	<div class="row">
-    <span class="center" style="font-weight: 700;">
-      Lenguas de la coleccion
-    </span>
-  </div>
-
-	<!-- Collections Languages -->
-  <div class="row">
-    <div class="input-field col s12 m10 l4">
-      <i class="fa fa-language prefix" style="color: rgba(48, 115, 238, 0.924);" aria-hidden="true"></i>
-      <label for="language">Lengua Terminal</label>
-      <input 
-        placeholder="Orizaba Nahuatl | oriz1235"
-        id="language" 
-        type="text"
-				onchange="editCollectionScripts.fillLangGroupList(app)"
-        list="langlist">
-      <datalist id="langlist">
+  <section class="container">
+    <div
+      class="col-sm-12 contenedor-90vh"
+      id="contenedor_general_agregar_coleccion"
+    >
+      <form id="app" action="/collections/edit/{{collectionDoc._id}}?_method=PUT" method="POST">
+      	<input type="hidden" name="_method" value="PUT">
+        	<!-- Collection Name -->
+        <div class="contenedor_input_agregar_coleccion">
+          <label
+            class="label"
+            id="nombre_de_la_coleccion"
+            for="nombre_coleccion"
+          >
+            Nombre de la colección
+          </label>
+          <input
+          	id="name" 
+            name="name"
+            v-model="name"
+            class="input_ancho_completo"
+            type="text"
+            placeholder="Titulo breve (max 120 carácteres)"
+            maxlength="120"
+            required
+          />
+          <div class="contenedor_icono_correcto_input">
+            <p>
+              <span class="icono_correcto_input icon-check_circle"></span>
+            </p>
+          </div>
+          <div class="contenedor_icono_error_input">
+            <p>
+              <span class="icono_error_input icon-error"></span>
+            </p>
+          </div>
+        </div>
+        <div class="contenedor_input_agregar_coleccion">
+          <label
+            class="label"
+            id="descripcion_de_la_coleccion"
+            for="descripcion_coleccion_input"
+          >
+            Descripcion de la coleccion
+          </label>
+          <textarea
+            name="description"
+            id="description"
+            class="input_ancho_completo"
+            type="textarea"
+            placeholder="Breve descripcion (max 200 carácteres)"
+            maxlength="200"
+            rows="5"
+            v-model="description"
+            required
+          ></textarea>
+        </div>
+        	<!-- Collections Languages -->
+        <p class="label" id="lenguas_de_la_coleccion">
+          Lenguas de la colección
+        </p>
+        <div class="contenedor_etiqueta_agregar_coleccion_lenguas">
+          <div class="contenedor_inputs_agregar_coleccion_lengua">
+            <div class="modulo_inputs_lengua" id="">
+              <label class="label label_al_100">
+                Lengua terminal:
+              </label>
+              <input 
+              type="text" 
+              id="language" 
+              onchange="editCollectionScripts.fillLangGroupList(app)"
+              class="input_flexible" 
+               list="langlist">
+              <datalist id="langlist">
 				<option 
 					v-for="language in languages"
 					:id="language._id"
 					:value="language.name + ' | ' + language.gid"
 					>
       </datalist>
+              <div class="contenedor_icono_correcto_input">
+                <p>
+                  <span class="icono_correcto_input icon-check_circle"></span>
+                </p>
+              </div>
+              <div class="contenedor_icono_error_input">
+                <p>
+                  <span class="icono_error_input icon-error"></span>
+                </p>
+              </div>
+            </div>
+             <!-- Language Group -->
+            <div class="modulo_inputs_lengua">
+              <label class="label label_al_100">
+                Grupo de lenguas:
+              </label>
+              <input 
+              :disabled = "!languagesGroup.length > 0"
+               id="langGroup" 
+               name="langGroup"
+                list="groupLanglist"
+              type="text" 
+              class="input_flexible" 
+             >
+              <div class="contenedor_icono_correcto_input">
+                <p>
+                  <span class="icono_correcto_input icon-check_circle"></span>
+                </p>
+              </div>
+              <div class="contenedor_icono_error_input">
+                <p>
+                  <span class="icono_error_input icon-error"></span>
+                </p>
+              </div>
+            </div>
+            <div class="modulo_boton_lengua">
+              <button class="btn_lateral_input_agregar_lengua">
+                <span class="icono_boton_lateral icon-plus"></span>
+              </button>
+            </div>
+          </div>
+          <div class="contenedor_lenguas_agregadas">
+            <p class="label">
+              Lenguas agregadas a la colección
+              {{!--table collection--}}
+            </p>
+            <table  id="langTable" class="tabla_lenguas_agregadas">
+              <thead></thead>
+              <tr v-for="(langs, index) in colLanguages" class="row_lenguas_agregadas">
+                <td class="lengua_terminal_glottocode_agregar_coleccion">
+                  \{{ langs.language.gid }}
+                </td>
+                <td class="">
+                 \{{ langs.language.name }}
+                </td>
+                <td class="grupo_terminal_glottocode_agregar_coleccion">
+                  \{{ langs.LanguageGroup.gid }}
+                </td>
+                <td class="">
+                  \{{ langs.LanguageGroup.name }}
+                </td>
+                <td class="">
+                  <div class="contenedor_botones_accion_lengua">
+                    <button  @click="removeLangs(index)" class="btn_accion_tabla float_right">
+                      <span class="icono_accion_tabla  icon-delete"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <p class="label" id="comunidades_de_la_coleccion">
+          Comunidades de la colección
+        </p>
+        <div class="contenedor_etiqueta_agregar_coleccion_comunidad">
+          <div class="contenedor_inputs_agregar_coleccion_comunidad2">
+            <div class="contenedor_inputs_boton_lateral">
+              <div class="modulo_inputs_comunidad2" id="">
+                <label class="label label_al_100">
+                  País:
+                </label>
+                <input type="text" placeholder="México" class="input_flexible"  readonly/>
+                <div class="contenedor_icono_correcto_input">
+                  <p>
+                    <span class="icono_correcto_input icon-check_circle"></span>
+                  </p>
+                </div>
+                <div class="contenedor_icono_error_input">
+                  <p>
+                    <span class="icono_error_input icon-error"></span>
+                  </p>
+                </div>
+              </div>
+              <div class="modulo_inputs_comunidad2" id="">
+                <label class="label label_al_100">
+                  Entidad:
+                </label>
+                <input type="text" class="input_flexible" required />
+                <div class="contenedor_icono_correcto_input">
+                  <p>
+                    <span class="icono_correcto_input icon-check_circle"></span>
+                  </p>
+                </div>
+                <div class="contenedor_icono_error_input">
+                  <p>
+                    <span class="icono_error_input icon-error"></span>
+                  </p>
+                </div>
+              </div>
+              <div class="modulo_inputs_comunidad2">
+                <label class="label label_al_100">
+                  Municipio:
+                </label>
+                <input type="text" class="input_flexible" required />
+                <div class="contenedor_icono_correcto_input">
+                  <p>
+                    <span class="icono_correcto_input icon-check_circle"></span>
+                  </p>
+                </div>
+                <div class="contenedor_icono_error_input">
+                  <p>
+                    <span class="icono_error_input icon-error"></span>
+                  </p>
+                </div>
+              </div>
+              <div class="modulo_inputs_comunidad2">
+                <label class="label label_al_100">
+                  Localidad:
+                </label>
+                <input type="text" class="input_flexible" required />
+                <div class="contenedor_icono_correcto_input">
+                  <p>
+                    <span class="icono_correcto_input icon-check_circle"></span>
+                  </p>
+                </div>
+                <div class="contenedor_icono_error_input">
+                  <p>
+                    <span class="icono_error_input icon-error"></span>
+                  </p>
+                </div>
+              </div>
+              <div class="modulo_inputs_comunidad2" id="">
+                <label class="label label_al_100">
+                  Latitud:
+                </label>
+                <input type="text" class="input_flexible" required />
+                <div class="contenedor_icono_correcto_input">
+                  <p>
+                    <span class="icono_correcto_input icon-check_circle"></span>
+                  </p>
+                </div>
+                <div class="contenedor_icono_error_input">
+                  <p>
+                    <span class="icono_error_input icon-error"></span>
+                  </p>
+                </div>
+              </div>
+              <div class="modulo_inputs_comunidad2" id="">
+                <label class="label label_al_100">
+                  Longitud:
+                </label>
+                <input type="text" class="input_flexible" required />
+                <div class="contenedor_icono_correcto_input">
+                  <p>
+                    <span class="icono_correcto_input icon-check_circle"></span>
+                  </p>
+                </div>
+                <div class="contenedor_icono_error_input">
+                  <p>
+                    <span class="icono_error_input icon-error"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="modulo_boton_comunidad">
+              <button class="btn_lateral_input_agregar_comunidad">
+                <span class="icono_boton_lateral icon-plus"></span>
+              </button>
+            </div>
+          </div>
+          <div class="contenedor_comunidades_agregadas">
+            <p class="label">
+              Comunidades agregadas a la colección
+            </p>
+            {{!--table localities--}}
+            <table id="locTable" class="tabla_comunidades_agregadas">
+              <thead></thead>
+              <tr  v-for="(loc, index) in localities" class="row_comunidades_agregadas">
+                <td class="comunidad_agregar_coleccion">
+                  \{{loc.Nom_Loc}}
+                </td>
+                <td class="municipio_agregar_coleccion">
+                 \{{loc.Nom_Mun}}
+                </td>
+                <td class="entidad_agregar_coleccion">
+                 \{{loc.Nom_Ent}}
+                </td>
+                <td class="pais_agregar_coleccion">
+                  México
+                </td>
+                <td class="latitud_agregar_coleccion">
+                  \{{loc.Lat_Decimal}}
+                </td>
+                <td class="longitud_agregar_coleccion">
+                  \{{loc.Lon_Decimal}}
+                </td>
+                <td class="">
+                  <div class="contenedor_botones_accion_lengua">
+                    <button @click="removeLocs(index)" class="btn_accion_tabla float_right">
+                      <span class="icono_accion_tabla  icon-delete"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="contenedor_licencia_y_botones_agregar_coleccion">
+          <div class="contenedor_licencia">
+            <label class="label" for="licencia">
+              Licencia del contenido
+            </label>
+            <select name="license" id="license" v-model="license">
+              <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}
+              <option value="CC-BY-NC-SA">CC-BY-NC-SA
+				      <option value="CC BY-SA">CC BY-SA
+            </select>
+            <div class="contenedor_icono_correcto_input">
+              <p>
+                <span class="icono_correcto_input icon-check_circle"></span>
+              </p>
+            </div>
+            <div class="contenedor_icono_error_input">
+              <p>
+                <span class="icono_error_input icon-error"></span>
+              </p>
+            </div>
+          </div>
+          <div class="contenedor_botones">
+            <button
+              type="reset"
+              class="btn btn-secundario"
+              id="boton_restablecer_agregar_coleccion"
+            >
+              Restablecer
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primario"
+              id="boton_guardar_agregar_coleccion"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
-    <!-- Language Group -->
-    <div class="input-field col s12 m10 l4">
-      <label for="langGroup">Grupo de Lengua</label>
-      <input 
-        :disabled = "!languagesGroup.length > 0"
-        placeholder="Aztec | azte1234" 
-        id="langGroup" 
-        name="langGroup"
-        list="groupLanglist"
-        type="text"
-      >
-      <i 
-        class="fa fa-plus-square prefix" 
-        id="addLangBtn"
-        :style="{color: 'rgba(48, 238, 143, 0.911)', cursor: 'pointer', display: languagesGroup.length > 0 ? 'inline' : 'none'}"
-        @click="addLanguages()"></i>
-
-      <datalist id="groupLanglist">				
-      <option 
-					v-for="languageG in languagesGroup"
-					:id="languageG._id"
-					:value="languageG.name + ' | ' + languageG.gid"
-					>
-      </datalist>
-    </div>
-  </div>
-
-	<!-- Tabla de Resultados -->
-	<div class="row">
-		<div class="col s12 m10 l8">
-			<table>
-				<thead>
-					<span style="font-weight: 700; color:darksalmon">
-						Lenguas agregadas a la colección
-					</span>
-					<tr>
-						<th>ID</th>
-						<th>Nombre</th>
-						<th>ID Grupo de Lengua</th>
-						<th>Nombre Grupo de Lengua</th>
-						<th>Accion</th>
-					</tr>
-				</thead>
-				<tbody id="langTable">
-          <tr v-for="(langs, index) in colLanguages">
-            <td>\{{ langs.language.gid }}</td>
-            <td>\{{ langs.language.name }}</td>
-            <td>\{{ langs.LanguageGroup.gid }}</td>
-            <td>\{{ langs.LanguageGroup.name }}</td>
-            <td>
-              <i 
-                class="fa fa-trash fa-2x"
-                @click="removeLangs(index)"
-                style="color: rgb(241, 63, 32);cursor: pointer;"></i>
-            </td>
-          </tr>
-          </tbody>
-			</table>
-      <div v-for="(langs, index) in colLanguages">
-        <input 
-        style="display: none;"
-        name="languages" 
-        type="text" 
-        v-model="langs.language.gid">
-        <input 
-        style="display: none;"
-        name="languages" 
-        type="text" 
-        v-model="langs.LanguageGroup.gid">
-      </div>
-		</div>
-	</div>
-
-	<!-- Comunidades -->
-  <div class="row">
-    <span style="font-weight: 700;">
-      Comunidades de la colección
-    </span>
-  </div>
-
-	<!-- ENTIDAD -->
-  <div class="row">
-    <div class="input-field col s12 m10 l4">
-      <i 
-        class="fa fa-compass prefix" 
-        style="color: rgba(48, 115, 238, 0.924);"
-        aria-hidden="true"></i>
-      <label for="entity">Entidad:</label>
-      <input 
-        :disabled= "!entitiesList.length > 0"
-				onchange="editCollectionScripts.fillMunicipalitiesList(app)"
-				id="entity"
-        list="entitiesList" type="text"
-        >
-      <datalist id="entitiesList">
-        <option 
-        v-for="entity in entitiesList"
-				:value="entity"
-        >
-      </datalist>
-    </div>
-  </div>
-
-	<!-- Municipio -->
-  <div class="row">
-    <div class="input-field col s12 m10 l4">
-      <i 
-      class="fa fa-compass prefix" 
-      style="color: rgba(48, 115, 238, 0.924);"
-      aria-hidden="true"></i>
-      <label for="municipality">Municipio:</label>
-      <input 
-        :disabled = "!municipalitiesList.length > 0"
-        onchange="editCollectionScripts.fillLocalitiesList(app)"
-        type="text" 
-        id="municipality"
-        list="municipalitiesList">
-      <datalist id="municipalitiesList">
-				<option 
-        v-for="municipality in municipalitiesList"
-				:value="municipality"
-        >
-      </datalist>
-    </div>
-  </div>
-
-	<!-- Localidad -->
-  <div class="row">
-    <div class="input-field col s10 m10 l4">
-      <i 
-      class="fa fa-compass prefix" 
-      style="color: rgba(48, 115, 238, 0.924);"
-      aria-hidden="true"></i>
-      <label for="locality">Localidad:</label>
-      <input 
-      :disabled = "!localitiesList.length  > 0"
-      type="text" 
-      id="locality" 
-      list="localitiesList">
-      <i 
-        class="fa fa-plus-square fa-2x" 
-        id="addLocBtn"
-        :style="{
-          color: 'rgba(48, 238, 143, 0.911)', 
-          cursor : 'pointer', 
-          display: localitiesList.length > 0 ? 'inline' : 'none'
-        }"
-        @click="addLocality()"></i>
-      <datalist id="localitiesList">
-        <option 
-        v-for="locality in localitiesList"
-        :value="locality">
-      </datalist>
-    </div>
-  </div>
-
-	<!-- Tabla de Resultados Locality -->
-  <div class="row">
-    <div class="col s12 m10 l8">
-      <table>
-        <thead>
-          <span style="font-weight: 700; color:darksalmon">
-            Comunidades agregadas a la colección
-          </span>
-          <tr>
-            <th>Comunidad</th>
-            <th>Municipio</th>
-            <th>Entidad</th>
-            <th>País</th>
-            <th>Latitud</th>
-            <th>Longitud</th>
-            <th>Accion</th>
-          </tr>
-        </thead>
-        <tbody id="locTable">
-          <tr v-for="(loc, index) in localities">
-            <td>\{{loc.Nom_Loc}} </td>
-            <td>\{{loc.Nom_Mun}} </td>
-            <td>\{{loc.Nom_Ent}} </td>
-            <td>Mexico</td>
-            <td>\{{loc.Lat_Decimal}} </td>
-            <td>\{{loc.Lon_Decimal}} </td>
-            <td>
-							<i 
-              @click="removeLocs(index)"
-              class="fa fa-trash fa-2x" 
-              style="color: rgb(241, 63, 32);cursor: pointer;"></i>
-						</td>
-          </tr>
-        </tbody>
-      </table>
-      <div v-for="(loc, index) in localities">
-        <input 
-        type="text"
-        style="display:none;"
-        name="localities" 
-        v-model="loc.Nom_Ent">
-        <input 
-        type="text" 
-        style="display:none;"
-        name="localities" 
-        v-model="loc.Nom_Mun">
-        <input 
-        type="text" 
-        style="display:none;"
-        name="localities" 
-        v-model="loc.Nom_Loc">
-      </div>
-    </div>
-  </div>
-
-	<div class="row">
-		<div class="input-field col s12 m10 l4">
-			<i 
-			class="fa fa-creative-commons prefix"
-			style="color: rgba(48, 115, 238, 0.924);" 
-			aria-hidden="true"></i>
-			<label for="license">Licencia del Contenido</label>
-			<input 
-      type="text" 
-      placeholder="CC-BY-NC-SA"
-			name="license" 
-      id="license" 
-      list="licenseType"
-			v-model="license">
-			<datalist id="licenseType">
-				<option value="CC-BY-NC-SA">
-				<option value="CC BY-SA">
-			</datalist>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col s12 m10 l8">
-			<button type="submit" class="btn waves-effect waves-light">
-				Guardar
-				<i class="fa fa-floppy-o right"></i>
-			</button>
-		</div>
-	</div>
-</form>
-
+  </section>
 </div>
+
 <!-- VUE  -->
   <script src="https://unpkg.com/vue" crossorigin="anonymous"></script>
 <script>
