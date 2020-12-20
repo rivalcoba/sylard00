@@ -103,9 +103,11 @@ app.use((req, res, next)=>{
   // Se requiere parsear de mongoose obj a objeto
   // json y solo se puede hacer si el user existe
   // el user existe si se ha logeado el usuario  
-  res.locals.user = req.user ? req.user.toJSON() : null;
+  if(req.user){
+    res.locals.user = req.user.toJSON();
+    res.locals.user.lnInitial = res.locals.user.lastName[0];
+  }
   // Se calcula la inicial del apellido
-  res.locals.user.lnInitial = res.locals.user.lastName[0]
   next()
 })
 
