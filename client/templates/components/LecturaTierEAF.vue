@@ -2,7 +2,8 @@
 <div>
      <div v-if="this.info.data">
    <p class="label" id="opciones_visuales_predeterminadas">Opciones visuales predeterminadas</p>
-                        <div class="contenedor_opciones_visuales_predeterminadas"  v-for="(item2, index) in tier_participante" :key="'item' + index">
+                        <div class="contenedor_opciones_visuales_predeterminadas">
+                           <div v-for="(item2, index) in tier_participante" :key="'item' + index">
                             <input hidden type="text" name="PARTICIPANT" :value="item2">
                             <div class="contenedor_canal_audioanotacion">
                                 <div class="contenedor_canal_padre">
@@ -77,6 +78,7 @@
                                 </div>
                             </div>
                         </div>
+     </div>
      </div>
                         <input hidden type="text" name="capas" :value="tier_acomodado.length">
 </div>
