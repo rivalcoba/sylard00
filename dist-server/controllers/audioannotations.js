@@ -62,7 +62,7 @@ try{let a=await _AudioAnnotations.default.findById(c).populate("collection_id").
 b.json(a)}catch(a){b.json(a)}},filtrarAudioannotation=async(a,b)=>{//console.log("Aqui")
 // Aqui me quede le quite el await
 try{const c=await _AudioAnnotations.default.find({user:a.user._id}).populate("user").populate("colection").exec();b.json(c)}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
-b.render("audioannotations/create")},addAudioannotation=async(a,b)=>{let{eaf:c,// ok
+b.render("audioannotations/create",{title:"Agregar audionotaci\xF3n"})},addAudioannotation=async(a,b)=>{let{eaf:c,// ok
 mp3_url:d,// ok
 duration:e,//ok
 title:f,// ok

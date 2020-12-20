@@ -51,6 +51,7 @@
     "ADD_COLLECTION": "Add Collection",
     "UPLOAD_AUDIONOTATION": "Upload Audio Annotation",
     "COMPLETE_FIELDS": "Fill in the fields correctly",
-    "HELLO_COLLECTIONS": "Hello!"
+    "HELLO_COLLECTIONS": "Hello!",
+    "RESTORE": "Restore"
 
 }

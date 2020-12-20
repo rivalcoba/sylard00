@@ -33,6 +33,7 @@ import App2 from '@client/templates/main2.vue'
 import  FiltroAudioannotations  from "@client/templates/components/FiltroAudioannotations.vue";
 import  EditAudioannotations  from "@client/templates/components/EditAudioannotations.vue";
 import App3 from '@client/templates/main3.vue'
+import colorPicker from '@chelpers/la_color_picker'
 
 
 // Loading function to the global variable
@@ -40,6 +41,7 @@ import App3 from '@client/templates/main3.vue'
 window.myI18n = myI18n
 window.formsManager = formsManager
 window.syModals = syModals
+window.colorPicker = colorPicker
 
 if (window.location.pathname == `/locations/index`) {
   window.locations = locations_index

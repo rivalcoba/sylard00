@@ -78,12 +78,12 @@
                 data-label="Grupo de lenguas (nombre común)">{{LanguageGroup.name}}</span><br>
               {{/each}}
             </td>
-            <td class="comunidades"><span class="pais">
+            <td id="mostrar-hr" class="comunidades"><span class="pais">
                 {{#each localities}}
                 México</span><span class="estado">{{Nom_Ent}}</span><span class="comunidad">{{Nom_Loc}}</span><span
                 class="municipio_tabla">{{Nom_Mun}}</span><span class="localizacion">{{Lat_Decimal}}
                 {{Lon_Decimal}}</span>
-              {{!--<hr class="hr_divisor_comunidad">--}}
+              <hr class="hr_divisor_comunidad">
               {{/each}}
             </td>
             <td class="td_acciones">
