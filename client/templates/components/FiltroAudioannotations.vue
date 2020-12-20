@@ -1,167 +1,148 @@
 <template>
-  <div>
-    Audio annotations 1.0
-    <!--<button v-on:click="getTodos()"></button>-->
-    <table>
-      <thead>
-        <tr>
-          <th>Titulo</th>
-          <th>Lengua Terminal</th>
-          <th>Gpo de Lenguas</th>
-          <th>Comunidad</th>
-          <th>Hablantes</th>
-          <th>Genero y Duración</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tr>
-        <td>
-          <input type="text" id="titulo" name="titulo" v-model="titulo" />
-          <input
-            type="checkbox"
-            name="bandera_titulo"
-            value="true"
-            v-model="bandera_titulo"
-            id="bandera_titulo"
-            @change="ordenar_ascendente()"
-          />
-          <input
-            type="checkbox"
-            name="bandera_titulo"
-            value="false"
-            v-model="bandera_titulo"
-            id="bandera_titulo2"
-            @change="ordenar_descendente()"
-          />
-        </td>
-        <td>
-          <input type="text" id="lengua" name="lengua" v-model="lengua" />
-          <input
-            type="checkbox"
-            name="bandera_lengua"
-            value="true"
-            v-model="bandera_lengua"
-            id="bandera_lengua"
-            @change="ordenar_ascendente()"
-          />
-          <input
-            type="checkbox"
-            name="bandera_lengua"
-            value="false"
-            v-model="bandera_lengua"
-            id="bandera_lengua2"
-            @change="ordenar_descendente()"
-          />
-        </td>
-        <td>
-          <input type="text" id="gpo_lengua" name="gpo_lengua" v-model="gpo_lengua" />
-          <input
-            type="checkbox"
-            name="bandera_gpo_lengua"
-            value="true"
-            v-model="bandera_gpo_lengua"
-            id="bandera_gpo_lengua"
-            @change="ordenar_ascendente()"
-          />
-          <input
-            type="checkbox"
-            name="bandera_gpo_lengua2"
-            value="false"
-            v-model="bandera_gpo_lengua"
-            id="bandera_gpo_lengua2"
-            @change="ordenar_descendente()"
-          />
-        </td>
-        <td>
-          <input type="text" id="comunidad" name="comunidad" v-model="comunidad" />
-          <input
-            type="checkbox"
-            name="bandera_comunidad"
-            value="true"
-            v-model="bandera_comunidad"
-            id="bandera_comunidad"
-            @change="ordenar_ascendente()"
-          />
-          <input
-            type="checkbox"
-            name="bandera_comunidad2"
-            value="false"
-            v-model="bandera_comunidad"
-            id="bandera_comunidad2"
-            @change="ordenar_descendente()"
-          />
-        </td>
-        <td>
-          <input type="text" id="hablantes" name="hablantes" v-model="hablantes" />
-          <input
-            type="checkbox"
-            name="bandera_hablantes"
-            value="true"
-            v-model="bandera_hablantes"
-            id="bandera_hablantes"
-            @change="ordenar_ascendente()"
-          />
-          <input
-            type="checkbox"
-            name="bandera_hablantes2"
-            value="false"
-            v-model="bandera_hablantes"
-            id="bandera_hablantes2"
-            @change="ordenar_descendente()"
-          />
-        </td>
-        <td>
-          <input type="text" id="genero" name="genero" v-model="genero" />
-          <input
-            type="checkbox"
-            name="bandera_genero"
-            value="true"
-            v-model="bandera_genero"
-            id="bandera_genero"
-            @change="ordenar_ascendente()"
-          />
-          <input
-            type="checkbox"
-            name="bandera_genero2"
-            value="false"
-            v-model="bandera_genero"
-            id="bandera_genero2"
-            @change="ordenar_descendente()"
-          />
-        </td>
-        <td></td>
-      </tr>
-      <div v-for="(item2, index) in search_titulo" :key="'item' + index">
-        <tr>
-          <td>{{ item2.title }}</td>
-          <td>{{ item2.gid.language.gid }} {{ item2.gid.language.name }}</td>
-          <td>{{ item2.gid.LanguageGroup.gid }} {{ item2.gid.LanguageGroup.name }}</td>
-          <td>
-            {{ item2.location.Nom_Loc }} {{ item2.location.Nom_Mun }}
-            {{ item2.location.Nom_Ent }} {{ item2.location.Lat_Decimal }}
-            {{ item2.location.Lon_Decimal }}
-          </td>
-          <td>
-            <div v-for="(item3, index) in item2.TIER" :key="'item' + index">
-              {{ item3.PARTICIPANT }} Hablante {{ index + 1 }} <br />
-            </div>
-          </td>
-          <td>{{ item2.genre.name }} {{ item2.duration }}</td>
-          <td rowspan="3">
-            <!-- <a v-bind:href="'/audioannotations/delete/' + item2._id">Delete</a>-->
-            <a href="/audioannotations/create"> Añadir Audioannotations</a>
-            <a href="" @click.prevent="borrarAudioanotacion(item2._id)">Delete </a>
-            <a v-bind:href="'/audioannotations/vuetest/' + item2._id"
-              >Reproducir Audioannotations</a
-            >
-            <a v-bind:href="'/audioannotations/edit/' + item2._id"
-              >Editar Audioannotations</a
-            >
-          </td>
-        </tr>
-      </div>
-    </table>
-  </div>
+  <div class="container-fluid" id="contenedor_audioanotaciones">
+			<div class="container-fluid" id="cabezal_audioanotaciones">
+				<div class="container">
+					<div class="col-sm-12" id="contenedor_items_cabezal_audioanotaciones">
+						<div  class="" id="contenedor_titulos_cabezal_audioanotaciones">
+							<h1 id="titulo_audioanotaciones"><span class="icono_cabezal icon-file-sound-o"></span> Audioanotaciones</h1>
+							<h4 class="etiqueta_nombre_coleccion_audioanotaciones" id="etiqueta_coleccion_audioanotaciones">De la colección</h4><!--NOMBRE DE LA COLECCIÓN EN ENCABEZADO-->
+							<h3 class="nombre_coleccion_audioanotaciones blanco">Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán<button class="btn_info_coleccion_cabezal_coleccion_audioanotaciones" id="coleccion_info_general_cabezal"><span class="icono_info_coleccion_audioanotacion  icon-info1"></span></button></h3>
+							<h4 class="blanco gpo_lenguas_audioanotaciones">Grupo de lenguas: <strong>Amuzgo-mixtecan <span class="gpo_lenguas_glottocode_info">[amuz1253]</span></strong></h4>
+						</div>	
+						<div class="" id="contenedor_botones_cabezal">
+							<button class="btn btn-predeterminado">Editar colección <span class="icono_boton icon-edit"></span></button>
+							<button  onclick="window.location.href = '/audioannotations/create'" class="btn btn-primario">Cargar audioanotacion <span class="icono_boton icon-file_upload"></span></button>
+					
+						</div>	
+					</div>	
+				</div>
+			</div>
+			<section class="container">
+				<div class="col-sm-12 contenedor-90vh " id="contenedor_general_mis_colecciones">
+					<div class="contenedor_tabla_mis_colecciones">
+						<table class="tabla_catalogo_audianotaciones">
+       					 	<thead>
+								<th class="cabezal_columnas_th" id="th_acciones_generales">
+									<div class="contenedor_acciones_generales">
+										<input type="checkbox" class="input_checkbox_cabezal_columna prueba">
+										<button class="btn-eliminar_seleccionados prueba"><span class="icono_boton_eliminar_audioanotaciones icon-delete"></span></button>
+									</div>
+								</th>
+								<th class="cabezal_columnas_th" id="th_titulo_por_audioanotacion">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Título</label>
+										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button><!--PENDIENTE TOÑO LA INSTRUCCIÓN DE VUE V-MODEL NO FUNCIONA PARA BUTTONS-->
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input id="titulo" name="titulo" v-model="titulo" class="input_busqueda" type="search" placeholder="Búsqueda"/>
+								</th>
+                				
+								<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Lengua terminal</label>
+										<button class="flecha_orden_ascendente active"><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input type="text" id="lengua" name="lengua" v-model="lengua" class="input_busqueda"  placeholder="Búsqueda">
+								</th>
+																<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Comunidad</label>
+										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input type="text" id="comunidad" name="comunidad" v-model="comunidad" class="input_busqueda" placeholder="Búsqueda">
+								</th>
+								<th class="cabezal_columnas_th" id="th_hablantes">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Hablantes</label>
+										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input id="hablantes" name="hablantes" v-model="hablantes" class="input_busqueda" type="search" placeholder="Búsqueda"/>
+								</th>
+								<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Género y duracion</label>
+										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+									<input id="genero" name="genero" v-model="genero" class="input_busqueda" type="search" placeholder="Búsqueda"/>
+								</th>
+								<th class="contenedor_btn_regresar_th" id="th_acciones">
+									<div class="contenedor_boton_accion_cabeza_tabla_audioanotaciones">
+									<button class="btn-regresar_audioanotaciones " id="btn-regresar_audioanotaciones"><span class="icono_boton_eliminar_audioanotaciones icon-back"></span></button>
+									</div>
+								</th>
+        					</thead>
+                
+							<tbody v-for="(item2, index) in search_titulo" :key="'item' + index">
+    					    <tr>
+								<td>
+								<label class="contenedor_checkbox"> 
+									<input type="checkbox"  class="checkbox_personalizada">
+									<span class="marca_check"></span>
+								</label>
+								</td>
+								<td class="titulo_audioanotacion_tabla" data-label="titulo">
+								{{ item2.title }}<!--<i>(Malvaceae: Guazuma ulmifolia Lam. var.  ulmifolia)</i>--><span class="unique_id" data-label="unique_id">UID:xxx xxxxxxx xx</span>
+								</td>
+            													 
+            					<td class="" data-label="Lengua terminal (glottocode)">
+									{{ item2.gid.language.gid }}<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">{{ item2.gid.language.name }}</span>
+								</td>
+            					
+								<td>
+            					<!--td class=""><span class="pais">México</span><span class="estado">Guerrero</span--><span class="comunidad_2">{{ item2.location.Nom_Loc }}</span><br><span class="estado_tabla_catalogo">{{ item2.location.Nom_Ent }}</span><!--span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span-->
+								</td>
+								<td class="">
+									<div v-for="(item3, index) in item2.TIER" :key="'item' + index" class="contenedor_hablantes">
+										<span class="hablante"> {{ item3.PARTICIPANT }}</span><br><span class="canal">Canal {{ index + 1 }}</span>
+										
+									</div>
+								</td>
+								<td>
+									<span class="genero">{{ item2.genre.name }}</span>
+									<span class="duracion">{{ item2.duration }}</span>
+								</td>
+								<td class="td_acciones ">
+									<div class="contenedor_botones_accion">
+										<button onclick="syModals.show('','')" aria-hidden="true" class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
+										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
+									</div>
+								</td>							
+        					</tr>
+						</tbody>	 
+                  
+							        					
+        					
+						</table>
+						<div class="contenedor_paginacion">
+							<div class="contenedor_input_paginacion">
+								<input class="" id="busqueda_paginacion" type="text" placeholder="Pag.">
+								<button class="btn_lateral_input" for="busqueda_paginacion"><span class="icono_pagina_busqueda  icon-chevron-right"></span></button>
+
+							</div>
+							<div class="contenedor_numeros_paginacion">
+								<a class="icono_paginacion" href="#"><span class="icon-first_page"></span></a>
+								<a class="icono_paginacion" href="#"><span class="icon-angle-left"></span></a>
+								<a class="numero_paginacion" href="#">2</a>
+								<a class="numero_paginacion" href="#">3</a>
+								<a class="numero_paginacion" href="#">4</a>
+								<a class="numero_paginacion active" href="#">5</a>
+								<a class="numero_paginacion" href="#">6</a>
+								<a class="numero_paginacion" href="#">7</a>
+								<a class="ultima_pagina" href="#">...29</a>
+								<a class="icono_paginacion" href="#"><span class="icon-angle-right"></span></a>
+								<a class="icono_paginacion" href="#"><span class=" icon-last_page"></span></a>
+							</div>
+							
+						</div>	
+					</div>
+				</div>
+				
+			</section>
+		</div>
 </template>
 
 <script>
