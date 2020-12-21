@@ -13,13 +13,8 @@ function chooseColor(e) {
   const picker = e.target.getAttribute('data-picker')
   const palette = e.target.getAttribute('data-palette')
 
-  console.log(`picker: ${e.target.getAttribute('data-picker')}`);
-
   let colorInput = document.getElementById(picker) || document.querySelector(`input[data-did='${picker}']`)
   let colorPalette = document.getElementById(palette) || document.querySelector(`div[data-did='${palette}']`)
-  
-  console.log(`picker: ${colorInput}`);
-  console.log(`palette: ${colorPalette}`);
   
   let color = rgbToHex(e.target.style.backgroundColor);
   colorInput.value = color;
