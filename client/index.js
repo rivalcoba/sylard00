@@ -41,11 +41,18 @@ import colorPicker from '@chelpers/colorPicker'
 window.myI18n = myI18n
 window.formsManager = formsManager
 window.syModals = syModals
+window.showColorPalette = colorPicker.showColorPalette
+window.hideColorPalette = colorPicker.hideColorPalette
 
-if (window.location.pathname == `/audioannotations/color`) {
-  window.showColorPalette = colorPicker.showColorPalette
-  window.hideColorPalette = colorPicker.hideColorPalette
-}
+// if (window.location.pathname == `/audioannotations/uploadfile`) {
+//   window.showColorPalette = colorPicker.showColorPalette
+//   window.hideColorPalette = colorPicker.hideColorPalette
+// }
+
+// if (window.location.pathname == `/audioannotations/color`) {
+//   window.showColorPalette = colorPicker.showColorPalette
+//   window.hideColorPalette = colorPicker.hideColorPalette
+// }
 
 if (window.location.pathname == `/locations/index`) {
   window.locations = locations_index

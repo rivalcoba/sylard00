@@ -1,4 +1,3 @@
-
 function componentToHex(c) {
   var hex = c.toString(16);
   return hex.length == 1 ? "0" + hex : hex;
@@ -9,20 +8,28 @@ function rgbToHex(color) {
   return "#" + componentToHex(Number(arr[0])) + componentToHex(Number(arr[1])) + componentToHex(Number(arr[2]));
 }
 
- function chooseColor(e) {
+function chooseColor(e) {
 
-  let colorInput = document.getElementById(e.target.getAttribute('data-picker'))
-  let colorPalette = document.getElementById(e.target.getAttribute('data-palette'))
+  const picker = e.target.getAttribute('data-picker')
+  const palette = e.target.getAttribute('data-palette')
 
+  console.log(`picker: ${e.target.getAttribute('data-picker')}`);
+
+  let colorInput = document.getElementById(picker) || document.querySelector(`input[data-did='${picker}']`)
+  let colorPalette = document.getElementById(palette) || document.querySelector(`div[data-did='${palette}']`)
+  
+  console.log(`picker: ${colorInput}`);
+  console.log(`palette: ${colorPalette}`);
+  
   let color = rgbToHex(e.target.style.backgroundColor);
   colorInput.value = color;
   colorInput.style.borderRight = `2rem solid ${color}`;
   colorPalette.style.display = 'none';
 }
 
-function showColorPalette(colorPickerId, colorPaletteId) {
-  let colorPalette = document.getElementById(colorPaletteId);
-  let colorInput = document.getElementById(colorPickerId);
+function showColorPalette(colorPickerId, colorPaletteId) {    
+  let colorInput = document.getElementById(colorPickerId) || document.querySelector(`input[data-did='${colorPickerId}']`)
+  let colorPalette = document.getElementById(colorPaletteId) || document.querySelector(`div[data-did='${colorPaletteId}']`)
 
   colorPalette.onmouseover = () => {
     colorPalette.mouseIsOver = true;
@@ -41,8 +48,8 @@ function showColorPalette(colorPickerId, colorPaletteId) {
 }
 
 function hideColorPalette(colorPickerId, colorPaletteId) {
-  let colorInput = document.getElementById(colorPickerId);
-  let colorPalette = document.getElementById(colorPaletteId);
+  let colorInput = document.getElementById(colorPickerId) || document.querySelector(`input[data-did='${colorPickerId}']`)
+  let colorPalette = document.getElementById(colorPaletteId) || document.querySelector(`div[data-did='${colorPaletteId}']`)
   if(colorPalette.mouseIsOver === false) {
     colorPalette.style.display = 'none';
     colorInput.style.borderRight =  `2rem solid ${colorInput.value}`;
