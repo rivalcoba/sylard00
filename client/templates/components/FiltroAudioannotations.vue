@@ -109,7 +109,18 @@
 									<div class="contenedor_botones_accion">
 										<button onclick="syModals.show('','')" aria-hidden="true" class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
 										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
-									</div>
+									 <button data-target='' class='dropdown-trigger'><span
+                    class="icono_accion_tabla icon-ellipsis-v"></span></button><!--FALTA INCORPORAR DROPDOWN-->
+                  </div>
+                    <!-- <a v-bind:href="'/audioannotations/delete/' + item2._id">Delete</a>-->
+            <a href="/audioannotations/create"> Añadir Audioannotations</a>
+            <a href="" @click.prevent="borrarAudioanotacion(item2._id)">Delete </a>
+            <a v-bind:href="'/audioannotations/vuetest/' + item2._id"
+              >Reproducir Audioannotations</a
+            >
+            <a v-bind:href="'/audioannotations/edit/' + item2._id"
+              >Editar Audioannotations</a
+            >
 								</td>							
         					</tr>
 						</tbody>	 
