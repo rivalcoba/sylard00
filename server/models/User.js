@@ -42,7 +42,6 @@ const UserSchema = new Schema({
         default: 'visitor', // visitor | colaborator | su
         // required: true
     },
-    about : String,  
     image: {
         type: String,
         default: 'https://img.icons8.com/fluent/48/000000/user-male-circle.png'
@@ -99,11 +98,24 @@ UserSchema.methods.activateUser = async function(role = 'visitor'){
             role: role
         }).exec()
 }
+
 UserSchema.methods.upGradeToColaborator = async function(){
     await this.updateOne({
             updatedAt: new Date(),
             role: "colaborator"
         }).exec()
+}
+
+UserSchema.method.toggleUserPrivileges = async function(){
+    if(this.role === 'visitor' ){
+        return 'colaborator'
+    }else{
+        'return visitor'
+    }
+    /*await this.updateOne({
+        updatedAt: new Date(),
+        role: "colaborator"
+    }).exec()*/
 }
 
 UserSchema.methods.editUser= async function(data){

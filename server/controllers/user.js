@@ -164,6 +164,19 @@ const delUsers = async(req, res)=>{
   }
 }
 
+// API - API
+const api_toggleUserPrivileges = async (req, res)=>{
+  let {userId} = req.params
+  // Finding User by Id
+  try {
+    let userDoc = await User.findById(userId)
+    let result = await userDoc.toggleUserPrivileges()
+    res.status(200).json({result, userId})
+  } catch (error) {
+    res.status(200).json({result, userId})
+  }
+}
+
 const api_getUsers = async (req, res) => {
   const usersDocuments = await User.find().exec()
   res.status(200).json(usersDocuments)
@@ -205,4 +218,5 @@ export default {
   delUsers,
   api_getUsers,
   api_delUsers,
+  api_toggleUserPrivileges,
 }

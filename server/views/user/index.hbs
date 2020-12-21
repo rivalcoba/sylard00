@@ -86,7 +86,7 @@
               >
                 <div class="contenedor_etiquetas_barras_busqueda">
                   <label class="label label_junto_flechas">
-                    Privilegios
+                  Vis - Privilegios - Col
                   </label>
                   <button class="flecha_orden_ascendente active">
                     <span class="icon-arrow-up"></span>
@@ -293,6 +293,8 @@
   </div>
 </main>
 <script>
+let selectedUsers = [];
+
 let openModal = function(index){
   // #THESIS Para la propagación de un evento
   // Ref: https://vsvaibhav2016.medium.com/event-bubbling-and-event-capturing-in-javascript-6ff38bec30e#:~:text=If%20you%20want%20to%20stop,to%20the%20bottom%20to%20top.
@@ -347,8 +349,6 @@ window.onclick = event=>{
   })
   //console.log("click outside a modal")
 }
-
-let selectedUsers = [];
 
 let toggleSelection = function(id){
 
