@@ -83,6 +83,7 @@
               <table class="table_one_line">
                 <div v-if="options[index].Visible">
                   <div v-if="options[index].value == 'A'">
+                    <!--{{computedColor=options[index].color}}-->
                     <div v-for="(item, index) in otro[index]" :key="index">
                       <div
                         v-if="
@@ -92,8 +93,9 @@
                       >
                         <td>
                           <p class="canal_1_hablante_one_line_display_item">
-                            <span class="siglas_canal_item"></span>
-                            {{ item.ANNOTATION_VALUE }}
+                             <span v-bind:style="{ color: options[index].color }"> {{ item.ANNOTATION_VALUE }} </span>
+                          <!--  <span class="siglas_canal_item"></span>
+                            {{ item.ANNOTATION_VALUE }}-->
                           </p>
                           <!--{{tier_temp}}:-->
                           <!--  me quede 
@@ -158,8 +160,9 @@
                     <span class="bocina_reproduccion icon-volume-up" ></span>
                   </td>
                   <td class="td_canal">
-                    <span :style="traer_color(item.TIER_ID)">
-                      <!--traer el color del item.TIER_ID de this.audioannotations traer_color(item.TIER_ID) -->
+                     <!--<span :style="traer_color(item.TIER_ID)">
+                     traer el color del item.TIER_ID de this.audioannotations traer_color(item.TIER_ID) -->
+                         <span v-bind:style="{ color: traer_color(item.TIER_ID) }">
                       {{ item.TIER_ID }}: </span> {{ item.ANNOTATION_VALUE }}
                   </td>
                 </tr>
@@ -208,6 +211,7 @@ export default {
       mp3Audio: "",
       tituloAudioannotation: "",
       ruta: "otro valor",
+      color_tier:"#000000"
       //tiempo_parametro:"8"
     };
   },
@@ -221,6 +225,8 @@ export default {
       
       //this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
       //return color aqui me quede trayendo el color de audioannotations por id
+       var valor_color = this.options.find((x) => x.TIER_ID == tier_id).color;	
+       return valor_color
     },
     mensaje_al_player: function (tiempo) {
       console.log("Se envia un msg al player " + tiempo);
@@ -445,6 +451,17 @@ export default {
     //console.log(currentUrl);
     var ultimoSlash = this.ruta.lastIndexOf("/");
     this.ruta = this.ruta.substring(ultimoSlash + 1);
+  },
+  computed:{
+    computedColor:{
+      set(value){
+        this.color_tier=value
+      },
+      get(){
+        return this.color_tier
+
+      }
+    }
   },
   mounted() {
     // var parseString = require('xml2js').parseString;
