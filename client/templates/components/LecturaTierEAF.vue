@@ -4,7 +4,7 @@
    <p class="label" id="opciones_visuales_predeterminadas">Opciones visuales predeterminadas</p>
                         <div class="contenedor_opciones_visuales_predeterminadas">
                            <div v-for="(item2, index) in tier_participante" :key="'item' + index">
-                            <input hidden type="text" name="PARTICIPANT" :value="item2">
+                            <input hidden type="text" name="header" :value="item2">
                             <div class="contenedor_canal_audioanotacion">
                                 <div class="contenedor_canal_padre">
                                     <div class="contenedor_hablante"> 
@@ -45,10 +45,11 @@
 
                             </div>
                             <div class="contenedor_canal_audioanotacion" v-for="(item, index) in tier_acomodado" :key="'item' + index">
-                                <div class="contenedor_canal_hijo" v-if="item2==item.PARTICIPANT ">
+                                <div class="contenedor_canal_hijo" v-if="item2==item.PARTICIPANT">
                                     <div class="contenedor_hablante_hijo">
                                         <input hidden type="text" name="LINGUISTIC_TYPE_REF" :value="item.LINGUISTIC_TYPE_REF">
-                                         <input hidden type="text" name="TIER_ID" :value="item.TIER_ID">
+                                        <input hidden type="text" name="TIER_ID" :value="item.TIER_ID">
+                                        <input hidden type="text" name="PARTICIPANT" :value="item.PARTICIPANT">
                                         <h6 class="canal_hijo">{{item.TIER_ID}}</h6>
                                     </div>
                                     <div class="contenedor_opciones_visuales_canal1_viewer">

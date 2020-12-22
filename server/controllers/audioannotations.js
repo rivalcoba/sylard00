@@ -152,27 +152,23 @@ const addAudioannotation = async(req, res) => {
         value,
         color,
         LINGUISTIC_TYPE_REF,
-        TIER_ID
+        TIER_ID,
+        header,
     } = req.body
 
-
+    // Audioannotations Creations.
     let tiers = []
-    let numberOfTiersPerParticipant = Visible.length / PARTICIPANT.length
-    PARTICIPANT.forEach((participant, indexp) => {
-        for (let index = 0; index < numberOfTiersPerParticipant; index++) {
-            // Se calcula indice absoluto
-            let absIndex = index + indexp * numberOfTiersPerParticipant
-            console.log(`absIndex: ${absIndex} - `)
-            tiers.push({
-                PARTICIPANT: participant,
-                Visible: Visible[absIndex],
-                value: value[absIndex],
-                color: color[absIndex],
-                LINGUISTIC_TYPE_REF: LINGUISTIC_TYPE_REF[absIndex],
-                TIER_ID: TIER_ID[absIndex],
-            })
-        }
-    });
+    
+    PARTICIPANT.forEach((participant, index)=>{
+        tiers.push({
+            PARTICIPANT: participant,
+            Visible: Visible[index],
+            value: value[index],
+            color: color[index],
+            LINGUISTIC_TYPE_REF: LINGUISTIC_TYPE_REF[index],
+            TIER_ID: TIER_ID[index],
+        })
+    })
 
     // Building audioannotation
     let genreDoc = await Genre.findById(genre).exec()
@@ -191,6 +187,7 @@ const addAudioannotation = async(req, res) => {
         collection_id, // ok
         gid: gidDoc, // ok
         user: req.user._id,
+        header,
         TIER: tiers,
     }
 
