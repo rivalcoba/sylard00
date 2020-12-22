@@ -22,6 +22,7 @@ const AudioAnnotationsSchema = new Schema({
   gid: {},
   siglas: String,
   user: { type: Schema.Types.ObjectId, ref: 'Users' },
+  header: [String],
   TIER: [
     {
       PARTICIPANT: String,
