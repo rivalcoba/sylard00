@@ -62,7 +62,7 @@ if(window.location.pathname == `/test`){
   if(window.location.pathname.match(/\/audioannotations\/vuetest\//)){
  //if(window.location.pathname == `/audioannotations/vuetest`){ 
     // window.Vue = Vue
-    Vue.use(VueAxios, axios);
+    Vue.use(VueAxios, axios,colorPicker);
     Vue.component("LecturaEAF", LecturaEAF);
     window.vm = new Vue({
       el: '#app',

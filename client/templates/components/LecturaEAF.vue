@@ -62,16 +62,21 @@
                   <option value="B">Scrolling</option>
                   <option value="A" selected>On-Line-Display</option>
                 </select>
-                <!--  <input class="inp" name="color" type="text"  :id="item.TIER_ID" v-model="item.color" /> -->
+                <!--  <input class="inp" name="color" type="text"  :id="item.TIER_ID" v-model="item.color" /> 
+                cambiar data-id que sea unico-->
                 <input
-                  class="inp"
+                  readonly
+                  :data-did="'item' + index + '-colorPicker'"                  
                   name="color"
                   id="colorPicker"
                   autocomplete="off"
                   type="text"
                   v-model="item.color"
+                  onclick="showColorPalette('A1-colorPicker','A1-colorPalette')"
+                  onblur="hideColorPalette('A1-colorPicker','A1-colorPalette')"
+                  class="inp input_flexible"
                 />
-                <div class="palette" id="colorPalette"></div>
+                 <div class="palette" :data-did="'item' + index + '-colorPalette'" id="A1-colorPalette"></div>
               </div>
             </div>
 
@@ -93,8 +98,10 @@
                       >
                         <td>
                           <p class="canal_1_hablante_one_line_display_item">
-                             <span v-bind:style="{ color: options[index].color }"> {{ item.ANNOTATION_VALUE }} </span>
-                          <!--  <span class="siglas_canal_item"></span>
+                            <span v-bind:style="{ color: options[index].color }">
+                              {{ item.ANNOTATION_VALUE }}
+                            </span>
+                            <!--  <span class="siglas_canal_item"></span>
                             {{ item.ANNOTATION_VALUE }}-->
                           </p>
                           <!--{{tier_temp}}:-->
@@ -152,30 +159,33 @@
               <div
                 v-if="
                   $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
-                  $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 
+                  $attrs.tiempo_parametro <= item.TIME_SLOT_REF2
                 "
-              > <!-- $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 -1 -->
+              >
+                <!-- $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 -1 -->
                 <tr class="row_multilinea">
-                  <td rowspan="2"  class="td_canal reproduccion">
-                    <span class="bocina_reproduccion icon-volume-up" ></span>
+                  <td rowspan="2" class="td_canal reproduccion">
+                    <span class="bocina_reproduccion icon-volume-up"></span>
                   </td>
                   <td class="td_canal">
-                     <!--<span :style="traer_color(item.TIER_ID)">
+                    <!--<span :style="traer_color(item.TIER_ID)">
                      traer el color del item.TIER_ID de this.audioannotations traer_color(item.TIER_ID) -->
-                         <span v-bind:style="{ color: traer_color(item.TIER_ID) }">
-                      {{ item.TIER_ID }}: </span> {{ item.ANNOTATION_VALUE }}
+                    <span v-bind:style="{ color: traer_color(item.TIER_ID) }">
+                      {{ item.TIER_ID }}:
+                    </span>
+                    {{ item.ANNOTATION_VALUE }}
                   </td>
                 </tr>
               </div>
               <div v-else>
                 <tr class="row_multilinea">
-                  <td  class="td_reproduccion">
-                    <span                      
-                      
-                    ></span>
+                  <td class="td_reproduccion">
+                    <span></span>
                   </td>
-                  <td >
-                    <span v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)" > {{ item.TIER_ID }}: </span>{{ item.TIME_SLOT_REF1 }}
+                  <td>
+                    <span v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)">
+                      {{ item.TIER_ID }}: </span
+                    >{{ item.TIME_SLOT_REF1 }}
                     {{ item.ANNOTATION_VALUE }}
                   </td>
                 </tr>
@@ -211,7 +221,7 @@ export default {
       mp3Audio: "",
       tituloAudioannotation: "",
       ruta: "otro valor",
-      color_tier:"#000000"
+      color_tier: "#000000",
       //tiempo_parametro:"8"
     };
   },
@@ -220,13 +230,13 @@ export default {
     set: () => {},
   },
   methods: {
-    traer_color:function(tier_id) {      
-     // return "color:"+this.audioannotations.find(x => x.TIER_ID == tier_id).color
-      
+    traer_color: function (tier_id) {
+      // return "color:"+this.audioannotations.find(x => x.TIER_ID == tier_id).color
+
       //this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
       //return color aqui me quede trayendo el color de audioannotations por id
-       var valor_color = this.options.find((x) => x.TIER_ID == tier_id).color;	
-       return valor_color
+      var valor_color = this.options.find((x) => x.TIER_ID == tier_id).color;
+      return valor_color;
     },
     mensaje_al_player: function (tiempo) {
       console.log("Se envia un msg al player " + tiempo);
@@ -452,16 +462,15 @@ export default {
     var ultimoSlash = this.ruta.lastIndexOf("/");
     this.ruta = this.ruta.substring(ultimoSlash + 1);
   },
-  computed:{
-    computedColor:{
-      set(value){
-        this.color_tier=value
+  computed: {
+    computedColor: {
+      set(value) {
+        this.color_tier = value;
       },
-      get(){
-        return this.color_tier
-
-      }
-    }
+      get() {
+        return this.color_tier;
+      },
+    },
   },
   mounted() {
     // var parseString = require('xml2js').parseString;
@@ -491,6 +500,10 @@ export default {
     //console.log("Aqui se esta añadiendo al json");
     //this.add("hola");
     //this.leerTier();
+    //leer script color picker
+    // let la_colorScript = document.createElement('script')
+    // la_colorScript.setAttribute('src', 'https://cdn.glitch.com/120f087f-0e29-4163-9f0b-687d6b040d37%2Fla_color_picker.js')
+    // document.head.appendChild(la_colorScript)
   },
 };
 </script>
