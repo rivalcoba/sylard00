@@ -71,8 +71,8 @@ colection:h,// ok
 gid:i,// ok
 location:j,// ok
 genre:k,// ok
-PARTICIPANT:l,Visible:m,value:n,color:o,LINGUISTIC_TYPE_REF:p,TIER_ID:q}=a.body,r=[],s=m.length/l.length;l.forEach((a,b)=>{for(let c,d=0;d<s;d++)// Se calcula indice absoluto
-c=d+b*s,console.log(`absIndex: ${c} - `),r.push({PARTICIPANT:a,Visible:m[c],value:n[c],color:o[c],LINGUISTIC_TYPE_REF:p[c],TIER_ID:q[c]})});// Building audioannotation
+PARTICIPANT:l,Visible:m,value:n,color:o,LINGUISTIC_TYPE_REF:p,TIER_ID:q,header:r}=a.body,s=[];// Audioannotations Creations.
+l.forEach((a,b)=>{s.push({PARTICIPANT:a,Visible:m[b],value:n[b],color:o[b],LINGUISTIC_TYPE_REF:p[b],TIER_ID:q[b]})});// Building audioannotation
 let t=await _Genre.default.findById(k).exec(),u=await _Collection.default.findById(h).exec(),v=u.languages.id(i),w=u.localities.id(j),x={eaf:c,// ok
 title:f,// ok
 description:g,//
@@ -82,7 +82,7 @@ mp3_url:d,// ok
 location:w,// ok
 collection_id:h,// ok
 gid:v,// ok
-user:a.user._id,TIER:r};try{const a=await _AudioAnnotations.default.create(x);// return res.status(200).json(audioannotationDoc)
+user:a.user._id,header:r,TIER:s};try{const a=await _AudioAnnotations.default.create(x);// return res.status(200).json(audioannotationDoc)
 //res.redirect(`/audioannotations/index/${audioannotationDoc._id}`)
 //enviar a visualizar audioanootation con parametro
 console.log("> Audioanotations Created: "+JSON.stringify(a)),b.redirect(`/audioannotations/vuetest/${a._id}`)}catch(a){return b.status(200).json({error:a,from:"controller/audioannotations/addAudioannotation"})}},uploadfileAudioannotation=async(a,b,c)=>{const d=a.file;if(!d){const a=new Error("Please upload a file");return a.httpStatusCode=400,c(a)}//convertir nuevoJSON Aqui

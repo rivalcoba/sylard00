@@ -64,19 +64,21 @@
                 </select>
                 <!--  <input class="inp" name="color" type="text"  :id="item.TIER_ID" v-model="item.color" /> 
                 cambiar data-id que sea unico-->
+
+								
                 <input
                   readonly
-                  :data-did="'item' + index + '-colorPicker'"                  
+                  :data-did="'A' + (index+1) + '-colorPicker'"                  
                   name="color"
-                  id="colorPicker"
+                  :id="'A' + (index+1) + '-colorPicker'" 
                   autocomplete="off"
                   type="text"
                   v-model="item.color"
-                  onclick="showColorPalette('A1-colorPicker','A1-colorPalette')"
-                  onblur="hideColorPalette('A1-colorPicker','A1-colorPalette')"
+                  @click="metodocolor(index)"
+                  @blur="metodoblur(index)"
                   class="inp input_flexible"
                 />
-                 <div class="palette" :data-did="'item' + index + '-colorPalette'" id="A1-colorPalette"></div>
+                 <div class="palette" :data-did="'A' + (index+1) + '-colorPalette'" :id="'A' + (index+1) + '-colorPalette'"></div>
               </div>
             </div>
 
@@ -230,6 +232,24 @@ export default {
     set: () => {},
   },
   methods: {
+    metodocolor:function (parametro) {
+      var valorpaleta, valorcolor;
+      valorcolor = 'A' + (parametro+1)+ '-colorPicker'
+       valorpaleta = 'A' + (parametro+1)+ '-colorPalette'
+     showColorPalette(valorcolor,valorpaleta)
+      console.log("este es el parametro del colorpicker "+parametro +" p "+valorpaleta+" c "+valorcolor )
+      //return parametro
+    }, metodoblur:function(parametro){
+    //"hideColorPalette('A1-colorPicker','A1-colorPalette')"
+     var valorpaleta, valorcolor;
+      valorcolor = 'A' + (parametro+1)+ '-colorPicker'
+       valorpaleta = 'A' + (parametro+1)+ '-colorPalette'
+     hideColorPalette(valorcolor,valorpaleta)
+      console.log("este es el parametro del blur "+parametro +" p "+valorpaleta+" c "+valorcolor )
+    },
+
+
+
     traer_color: function (tier_id) {
       // return "color:"+this.audioannotations.find(x => x.TIER_ID == tier_id).color
 
