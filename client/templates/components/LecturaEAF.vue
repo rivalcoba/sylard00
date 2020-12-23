@@ -18,7 +18,7 @@
           }}
 
           <tr>
-            <div v-for="(item, index) in options" :key="'item' + index">
+                   <div v-for="(item, index) in options" :key="'item' + index">
               <div class="contenedor_hablante_y_switch">
                 <p class="label label_switch_horizontal">
                   Canal {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
@@ -65,8 +65,9 @@
                 <!--  <input class="inp" name="color" type="text"  :id="item.TIER_ID" v-model="item.color" /> 
                 cambiar data-id que sea unico-->
 
-								
+									<div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
                 <input
+                  class="inp input_flexible"
                   readonly
                   :data-did="'A' + (index+1) + '-colorPicker'"                  
                   name="color"
@@ -76,10 +77,11 @@
                   v-model="item.color"
                   @click="metodocolor(index)"
                   @blur="metodoblur(index)"
-                  class="inp input_flexible"
+                  
                 />
                  <div class="palette" :data-did="'A' + (index+1) + '-colorPalette'" :id="'A' + (index+1) + '-colorPalette'"></div>
-              </div>
+             </div>
+             </div>
             </div>
 
             <div
