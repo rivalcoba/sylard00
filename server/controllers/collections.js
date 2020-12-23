@@ -179,18 +179,20 @@ const editCollection = async(req, res) => {
 }
 
 const indexCollection = async(req,res)=>{
-    let {collectionId} = req.params
-    //
-    try {
-        //const audioannotationsDocs = await Audioannotations.find({})
-        const audioannotationsDocs = await Audioannotations.find({collection_id : collectionId}).populate('user')
+    const audioannotationsDocs = await Audioannotations.find({
+            user: req.user._id,
+        })
         .populate('user')
         .populate('colection')
         .exec()
-        return res.json({"id": collectionId,"audioAnnoations":audioannotationsDocs})
-    } catch (error) {
-        return res.json({"error": error.message})
-    }
+
+    let audioannotations = audioannotationsDocs.map(audioannotation => {
+        return audioannotation.toJSON()
+    })
+
+    return res.json(audioannotations)
+
+    //res.render('audioannotations/index', {audioannotations})
 }
 
 const api_getCollectionById = async(req, res) => {
