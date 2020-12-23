@@ -3,6 +3,8 @@
 import Collection from '@models/Collection'
 import Glottolog from '@models/Glottolog'
 import Locations from '@models/Location'
+import Audioannotations from '@models/AudioAnnotations'
+
 // import User from '@models/User'
 
 // List all the collaborators collections
@@ -176,6 +178,21 @@ const editCollection = async(req, res) => {
     }
 }
 
+const indexCollection = async(req,res)=>{
+    let {collectionId} = req.params
+    //
+    try {
+        //const audioannotationsDocs = await Audioannotations.find({})
+        const audioannotationsDocs = await Audioannotations.find({collection_id : collectionId}).populate('user')
+        .populate('user')
+        .populate('colection')
+        .exec()
+        return res.json({"id": collectionId,"audioAnnoations":audioannotationsDocs})
+    } catch (error) {
+        return res.json({"error": error.message})
+    }
+}
+
 const api_getCollectionById = async(req, res) => {
     const collection_id = req.params.collection_id
     let collectionDoc = {}
@@ -200,6 +217,7 @@ const api_getCollectionByUser = async(req, res) => {
 export default {
     // List Collections from a particular Colaborator User
     index,
+    indexCollection,
     // Create Add Collection FORM
     createCollection,
     // Process ADD Collection FORM
