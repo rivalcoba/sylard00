@@ -68,16 +68,15 @@
 									<div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
                 <input
                   class="inp input_flexible"
-                  readonly
                   :data-did="'A' + (index+1) + '-colorPicker'"                  
                   name="color"
-                  :id="'A' + (index+1) + '-colorPicker'" 
+                  :id="item.TIER_ID" 
                   autocomplete="off"
                   type="text"
                   v-model="item.color"
                   @click="metodocolor(index)"
                   @blur="metodoblur(index)"
-                  
+
                 />
                  <div class="palette" :data-did="'A' + (index+1) + '-colorPalette'" :id="'A' + (index+1) + '-colorPalette'"></div>
              </div>
