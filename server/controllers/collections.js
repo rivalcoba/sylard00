@@ -191,7 +191,7 @@ const indexCollection = async(req,res)=>{
     })
 
     return res.json(audioannotations)
-
+    // TODO: Falta Renderear Salida, se debe reutilizar visualizador de TOÑO
     //res.render('audioannotations/index', {audioannotations})
 }
 
