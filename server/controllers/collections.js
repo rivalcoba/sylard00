@@ -179,8 +179,11 @@ const editCollection = async(req, res) => {
 }
 
 const indexCollection = async(req,res)=>{
+    
+    const {collectionId} = req.params
+
     const audioannotationsDocs = await Audioannotations.find({
-            user: req.user._id,
+            user: req.user._id, collection_id: collectionId
         })
         .populate('user')
         .populate('colection')
@@ -191,7 +194,7 @@ const indexCollection = async(req,res)=>{
     })
 
     return res.json(audioannotations)
-    // TODO: Falta Renderear Salida, se debe reutilizar visualizador de TOÑO
+    // TODO: Toño / Alberto: Falta Renderear Salida, se debe reutilizar visualizador de TOÑO
     //res.render('audioannotations/index', {audioannotations})
 }
 
@@ -219,6 +222,7 @@ const api_getCollectionByUser = async(req, res) => {
 export default {
     // List Collections from a particular Colaborator User
     index,
+    // Indexa audio anotaciones que corresponden a alguna coleccion
     indexCollection,
     // Create Add Collection FORM
     createCollection,
