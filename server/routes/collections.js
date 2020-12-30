@@ -34,6 +34,12 @@ router.post(
   collectionValidator,
   collectionsController.addCollection
 )
+// Index Collection
+router.get('/index/:collectionId',
+ensureAuthenticated,
+ensureColabUser,
+collectionsController.indexCollection)
+
 // Show the edition of a collection form
 router.get(
   '/edit/:collection_id',

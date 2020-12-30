@@ -3,6 +3,8 @@
 import Collection from '@models/Collection'
 import Glottolog from '@models/Glottolog'
 import Locations from '@models/Location'
+import Audioannotations from '@models/AudioAnnotations'
+
 // import User from '@models/User'
 
 // List all the collaborators collections
@@ -176,6 +178,26 @@ const editCollection = async(req, res) => {
     }
 }
 
+const indexCollection = async(req,res)=>{
+    
+    const {collectionId} = req.params
+
+    const audioannotationsDocs = await Audioannotations.find({
+            user: req.user._id, collection_id: collectionId
+        })
+        .populate('user')
+        .populate('colection')
+        .exec()
+
+    let audioannotations = audioannotationsDocs.map(audioannotation => {
+        return audioannotation.toJSON()
+    })
+
+    return res.json(audioannotations)
+    // TODO: Toño / Alberto: Falta Renderear Salida, se debe reutilizar visualizador de TOÑO
+    //res.render('audioannotations/index', {audioannotations})
+}
+
 const api_getCollectionById = async(req, res) => {
     const collection_id = req.params.collection_id
     let collectionDoc = {}
@@ -200,6 +222,8 @@ const api_getCollectionByUser = async(req, res) => {
 export default {
     // List Collections from a particular Colaborator User
     index,
+    // Indexa audio anotaciones que corresponden a alguna coleccion
+    indexCollection,
     // Create Add Collection FORM
     createCollection,
     // Process ADD Collection FORM
