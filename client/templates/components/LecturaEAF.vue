@@ -18,7 +18,7 @@
           }}
 
           <tr>
-                   <div v-for="(item, index) in options" :key="'item' + index">
+            <div v-for="(item, index) in options" :key="'item' + index">
               <div class="contenedor_hablante_y_switch">
                 <p class="label label_switch_horizontal">
                   Canal {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
@@ -65,22 +65,30 @@
                 <!--  <input class="inp" name="color" type="text"  :id="item.TIER_ID" v-model="item.color" /> 
                 cambiar data-id que sea unico-->
 
-									<div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
-                <input
-                  class="inp input_flexible"
-                  :data-did="'A' + (index+1) + '-colorPicker'"                  
-                  name="color"
-                  :id="item.TIER_ID" 
-                  autocomplete="off"
-                  type="text"
-                  v-model="item.color"
-                  @click="metodocolor(index)"
-                  @blur="metodoblur(index)"
+                <div
+                  class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion"
+                >
+                    <input 
+                    :class="[activeClass]"
+                    v-bind:style="colorclase(item.color)"
+                    :data-did="'A' + (index + 1) + '-colorPicker'"
+                    name="color"
+                    :id="'color_' + item.TIER_ID"
+                    autocomplete="off"
+                    type="text"
+                    v-model="item.color"
+                    v-on:input="cambiarcolor($event)"
+                    @click="metodocolor(index, $event)"
+                    @blur="metodoblur(index,$event)"               
 
-                />
-                 <div class="palette" :data-did="'A' + (index+1) + '-colorPalette'" :id="'A' + (index+1) + '-colorPalette'"></div>
-             </div>
-             </div>
+                  />
+                  <div
+                    class="palette"
+                    :data-did="'A' + (index + 1) + '-colorPalette'"
+                    :id="'A' + (index + 1) + '-colorPalette'" 
+                  ></div>
+                </div>
+              </div>
             </div>
 
             <div
@@ -225,7 +233,9 @@ export default {
       tituloAudioannotation: "",
       ruta: "otro valor",
       color_tier: "#000000",
-      //tiempo_parametro:"8"
+
+     
+
     };
   },
   computed: {
@@ -233,23 +243,67 @@ export default {
     set: () => {},
   },
   methods: {
-    metodocolor:function (parametro) {
-      var valorpaleta, valorcolor;
-      valorcolor = 'A' + (parametro+1)+ '-colorPicker'
-       valorpaleta = 'A' + (parametro+1)+ '-colorPalette'
-     showColorPalette(valorcolor,valorpaleta)
-      console.log("este es el parametro del colorpicker "+parametro +" p "+valorpaleta+" c "+valorcolor )
-      //return parametro
-    }, metodoblur:function(parametro){
-    //"hideColorPalette('A1-colorPicker','A1-colorPalette')"
-     var valorpaleta, valorcolor;
-      valorcolor = 'A' + (parametro+1)+ '-colorPicker'
-       valorpaleta = 'A' + (parametro+1)+ '-colorPalette'
-     hideColorPalette(valorcolor,valorpaleta)
-      console.log("este es el parametro del blur "+parametro +" p "+valorpaleta+" c "+valorcolor )
+    colorclase: function(color){
+      return "border-right: 2rem solid "+color
     },
+    quitarcolor_id: function (e) {
+      var color_name = e;
+      // console.log("---------original-----------------------");
+      // console.log(color_name);
+      // console.log("----------sin color_----------------------");
+      // console.log(color_name.replace("color_", ""));
+      return color_name.replace("color_", "");
+    },
+    cambiarcolor: function (e) {
+    console.log("-------------cambiar color-------------------");
+      console.log(
+         'valor original es ' +
+           this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color
+       )
 
+      console.log("---------Valor-----------------------");
+      console.log(e.target.value);
+      console.log("--------id------------------------");
+      console.log(e.target.id);
+       this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color = e.target.value
+       return e.target.value
+    
+    },
+    metodocolor: function (parametro, e) {
+      
+      //this.quitarcolor_id(event.target.id)
 
+      var valorpaleta, valorcolor;
+      valorcolor = "A" + (parametro + 1) + "-colorPicker";
+      valorpaleta = "A" + (parametro + 1) + "-colorPalette";
+      showColorPalette(valorcolor, valorpaleta);
+      // console.log(
+      //   "este es el parametro del colorpicker " +
+      //     parametro +
+      //     " p " +
+      //     valorpaleta +
+      //     " c " +
+      //     valorcolor
+      // );
+    //  this.cambiarcolor(e)
+      //return parametro
+    },
+    metodoblur: function (parametro,e) {
+      //"hideColorPalette('A1-colorPicker','A1-colorPalette')"
+      var valorpaleta, valorcolor;
+      valorcolor = "A" + (parametro + 1) + "-colorPicker";
+      valorpaleta = "A" + (parametro + 1) + "-colorPalette";
+      hideColorPalette(valorcolor, valorpaleta);
+      console.log(
+        "este es el parametro del blur " +
+          parametro +
+          " p " +
+          valorpaleta +
+          " c " +
+          valorcolor
+      );
+      this.cambiarcolor(e)
+    },
 
     traer_color: function (tier_id) {
       // return "color:"+this.audioannotations.find(x => x.TIER_ID == tier_id).color
