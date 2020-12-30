@@ -19,6 +19,7 @@
 
           <tr>
             <div v-for="(item, index) in options" :key="'item' + index">
+              <td>
               <div class="contenedor_hablante_y_switch">
                 <p class="label label_switch_horizontal">
                   Canal {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
@@ -47,13 +48,13 @@
                 </div>
               </div>
               <!--<label for="checkbox" value="on" name="on" id="on"> </label>
-            <input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
-            -->
+               <input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
+               -->
 
               <h5 class="nombre_hablante">{{ item.PARTICIPANT }} {{ item.TIER_ID }}</h5>
               <div class="contenedor_opciones_visuales_canal1_viewer">
                 <!-- <select v-model="item.value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
-            -->
+                -->
                 <select
                   class="opciones_despliegue_viewer"
                   v-model="item.value"
@@ -68,7 +69,7 @@
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion"
                 >
-                    <input 
+                  <input
                     :class="[activeClass]"
                     v-bind:style="colorclase(item.color)"
                     :data-did="'A' + (index + 1) + '-colorPicker'"
@@ -79,16 +80,16 @@
                     v-model="item.color"
                     v-on:input="cambiarcolor($event)"
                     @click="metodocolor(index, $event)"
-                    @blur="metodoblur(index,$event)"               
-
+                    @blur="metodoblur(index, $event)"
                   />
                   <div
                     class="palette"
                     :data-did="'A' + (index + 1) + '-colorPalette'"
-                    :id="'A' + (index + 1) + '-colorPalette'" 
+                    :id="'A' + (index + 1) + '-colorPalette'"
                   ></div>
                 </div>
               </div>
+              </td>
             </div>
 
             <div
@@ -233,9 +234,6 @@ export default {
       tituloAudioannotation: "",
       ruta: "otro valor",
       color_tier: "#000000",
-
-     
-
     };
   },
   computed: {
@@ -243,8 +241,8 @@ export default {
     set: () => {},
   },
   methods: {
-    colorclase: function(color){
-      return "border-right: 2rem solid "+color
+    colorclase: function (color) {
+      return "border-right: 2rem solid " + color;
     },
     quitarcolor_id: function (e) {
       var color_name = e;
@@ -255,22 +253,21 @@ export default {
       return color_name.replace("color_", "");
     },
     cambiarcolor: function (e) {
-    console.log("-------------cambiar color-------------------");
+      console.log("-------------cambiar color-------------------");
       console.log(
-         'valor original es ' +
-           this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color
-       )
+        "valor original es " +
+          this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color
+      );
 
       console.log("---------Valor-----------------------");
       console.log(e.target.value);
       console.log("--------id------------------------");
       console.log(e.target.id);
-       this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color = e.target.value
-       return e.target.value
-    
+      this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color =
+        e.target.value;
+      return e.target.value;
     },
     metodocolor: function (parametro, e) {
-      
       //this.quitarcolor_id(event.target.id)
 
       var valorpaleta, valorcolor;
@@ -285,10 +282,10 @@ export default {
       //     " c " +
       //     valorcolor
       // );
-    //  this.cambiarcolor(e)
+      //  this.cambiarcolor(e)
       //return parametro
     },
-    metodoblur: function (parametro,e) {
+    metodoblur: function (parametro, e) {
       //"hideColorPalette('A1-colorPicker','A1-colorPalette')"
       var valorpaleta, valorcolor;
       valorcolor = "A" + (parametro + 1) + "-colorPicker";
@@ -302,7 +299,7 @@ export default {
           " c " +
           valorcolor
       );
-      this.cambiarcolor(e)
+      this.cambiarcolor(e);
     },
 
     traer_color: function (tier_id) {
