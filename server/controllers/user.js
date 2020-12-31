@@ -18,7 +18,6 @@ const edit = (req, res) => {
     spokenLang = spokenLang.concat(`${lang.name} | ${lang.gid}\n`)
   })
   spokenLang = spokenLang.trim()
-  console.log(spokenLang)
   res.render('user/edit', {
     title: 'SYLARD Editar Cuenta',
     spokenLang: spokenLang,
@@ -47,6 +46,7 @@ const editUserById = async (req, res) => {
     userDoc.spokenLanguages.forEach(lang => {
       spokenLang = spokenLang.concat(`${lang.name} | ${lang.gid}\n`)
     })
+    spokenLang = spokenLang.trim()
     res.render('user/editById', {
       title: 'SYLARD Editar Cuenta',
       userToEdit : userDoc.toJSON(),
@@ -73,6 +73,7 @@ const postEditUserById = async (req, res)=>{
   const {userId} = req.params
   try {
     let userDoc = await User.findById(userId)
+    
     await userDoc.editUser({
       name,
       lastName,
@@ -102,6 +103,8 @@ const editUser = async (req, res) => {
     country,
     about,
   } = req.body
+
+  //return res.json({spokenLanguages})
 
   // Update user
   await req.user.editUser({
@@ -243,7 +246,7 @@ const api_toggleUserPrivileges = async (req, res) => {
     let result = await userDoc.toggleUserPrivileges()
     res.status(200).json({ result, userId })
   } catch (error) {
-    res.status(200).json({ result, userId })
+    res.status(500).json({ error : error.message })
   }
 }
 
