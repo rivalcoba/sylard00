@@ -5,51 +5,119 @@ import Collection from '@models/Collection'
 
 // DELETE async
 const edit = (req, res) => {
-    let nativeLanguages = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'languages.json'))
-    let countries = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'countries.json'))
+  let nativeLanguages = jsonReader.readFileSync(
+    path.join(__dirname, '..', 'assets', 'languages.json')
+  )
+  let countries = jsonReader.readFileSync(
+    path.join(__dirname, '..', 'assets', 'countries.json')
+  )
 
-    let spokenLang = ""
+  let spokenLang = ''
 
-    req.user.spokenLanguages.forEach(lang => {
-        spokenLang = spokenLang.concat(`${lang.name} | ${lang.gid}\n`)
-    });
-    spokenLang = spokenLang.trim()
-    console.log(spokenLang)
-    res.render('user/edit', {
-        title: 'SYLARD Editar Cuenta',
-        spokenLang: spokenLang,
-        nativeLanguages: nativeLanguages,
-        countries: countries
-    })
+  req.user.spokenLanguages.forEach(lang => {
+    spokenLang = spokenLang.concat(`${lang.name} | ${lang.gid}\n`)
+  })
+  spokenLang = spokenLang.trim()
+  console.log(spokenLang)
+  res.render('user/edit', {
+    title: 'SYLARD Editar Cuenta',
+    spokenLang: spokenLang,
+    nativeLanguages: nativeLanguages,
+    countries: countries,
+  })
 }
 
-const editUser = async(req, res) => {
-    // Get values from req.body
-    const {
-        name,
-        lastName,
-        secLastName,
-        email,
-        spokenLanguages,
-        country,
-        about
-    } = req.body
+const editUserById = async (req, res) => {
+  let nativeLanguages = jsonReader.readFileSync(
+    path.join(__dirname, '..', 'assets', 'languages.json')
+  )
+  let countries = jsonReader.readFileSync(
+    path.join(__dirname, '..', 'assets', 'countries.json')
+  )
 
-    // Update user
-    await req.user.editUser({
-        name,
-        lastName,
-        secLastName,
-        email,
-        spokenLanguages,
-        country,
-        about
+  const { userId } = req.params
+  if (userId == req.user._id) {
+    return res.redirect('/user/edit')
+  }
+  try {
+    // Getting user
+    let userDoc = await User.findById(userId)
+    //
+    let spokenLang = ''
+    userDoc.spokenLanguages.forEach(lang => {
+      spokenLang = spokenLang.concat(`${lang.name} | ${lang.gid}\n`)
     })
+    res.render('user/editById', {
+      title: 'SYLARD Editar Cuenta',
+      userToEdit : userDoc.toJSON(),
+      spokenLang: spokenLang,
+      nativeLanguages: nativeLanguages,
+      countries: countries,
+    })
+  } catch (error) {
+    res.json({ 'error': error.message })
+  }
+}
 
+const postEditUserById = async (req, res)=>{
+  const {
+    name,
+    lastName,
+    secLastName,
+    email,
+    spokenLanguages,
+    country,
+    about,
+  } = req.body
+
+  const {userId} = req.params
+  try {
+    let userDoc = await User.findById(userId)
+    await userDoc.editUser({
+      name,
+      lastName,
+      secLastName,
+      email,
+      spokenLanguages,
+      country,
+      about,
+    })
     // Flash Message
-    req.flash('success_msg', 'Sus cambios se han guardado');
+    req.flash('success_msg', 'Sus cambios se han guardado')
     // Get the info from
-    res.redirect('/dashboard')
+    res.redirect('/user')
+  } catch (error) {
+    res.json({error: error.message})
+  }
+}
+
+const editUser = async (req, res) => {
+  // Get values from req.body
+  const {
+    name,
+    lastName,
+    secLastName,
+    email,
+    spokenLanguages,
+    country,
+    about,
+  } = req.body
+
+  // Update user
+  await req.user.editUser({
+    name,
+    lastName,
+    secLastName,
+    email,
+    spokenLanguages,
+    country,
+    about,
+  })
+
+  // Flash Message
+  req.flash('success_msg', 'Sus cambios se han guardado')
+  // Get the info from
+  res.redirect('/dashboard')
 }
 
 // Formulario para editar el password
@@ -81,10 +149,10 @@ const resetUserPassword = async (req, res) => {
 
 const index = async (req, res) => {
   // res.render('user/index', { usersObjs })
-  const usersObjs = await User.find({role : {$ne: "su"}})
-  .lean()
-  .exec()
-  
+  const usersObjs = await User.find({ role: { $ne: 'su' } })
+    .lean()
+    .exec()
+
   // let usersDocs = usersObjs.map((usr)=>{
   //   usr.role = usr.role==="colaborator"?"checked":""
   //   // Attach user collections
@@ -98,42 +166,45 @@ const index = async (req, res) => {
   #THESIS
   REF: https://advancedweb.hu/how-to-use-async-functions-with-array-map-in-javascript/#:~:text=The%20map%20function,-The%20map%20is&text=An%20async%20version%20needs%20to,the%20results%20in%20an%20Array.
   */
-  let usersDocs = await Promise.all(usersObjs.map(async (usr)=>{
-    usr.role = usr.role==="colaborator"?"checked":""
-    let collectionsDocs = await Collection.find({"user": usr._id})
-    usr.collectionsDocs = collectionsDocs.map(collectionDoc=>{
-      return collectionDoc.toJSON()
+  let usersDocs = await Promise.all(
+    usersObjs.map(async usr => {
+      usr.role = usr.role === 'colaborator' ? 'checked' : ''
+      let collectionsDocs = await Collection.find({ 'user': usr._id })
+      usr.collectionsDocs = collectionsDocs.map(collectionDoc => {
+        return collectionDoc.toJSON()
+      })
+      return usr
     })
-    return usr
-  }))
-
+  )
 
   // Buscando las colecciones de este usuario
   //let collectionsDoc = Collection.find({"user":})
   res.render('user/index', { usersObjs: usersDocs })
 }
 
-const delUsers = async(req, res)=>{	
+const delUsers = async (req, res) => {
   let { usersIds } = req.body
-  // Normalizing 
+  // Normalizing
   usersIds = typeof usersIds == 'string' ? [usersIds] : usersIds
   // TODO: DELETE USER AUDIOANNOTATIONS
   // UNA VEZ QUE TOÑO
-  console.log("========================================================")
-  console.log("========================================================")
-  console.log(">>>>>>>>>>>>>>>>>>>>>>> TODO <<<<<<<<<<<<<<<<<<<<<<<<<<<")
-  console.log("> FALTA QUE SE IMPLEMENTE BORRADO DE AUDIO ANOTACIONES")
-  console.log("> CUANDO SEBORRAN USUARIOS cotrollers/users.js")
-  console.log("========================================================")
-  console.log("========================================================")
+  console.log('========================================================')
+  console.log('========================================================')
+  console.log('>>>>>>>>>>>>>>>>>>>>>>> TODO <<<<<<<<<<<<<<<<<<<<<<<<<<<')
+  console.log('> FALTA QUE SE IMPLEMENTE BORRADO DE AUDIO ANOTACIONES')
+  console.log('> CUANDO SEBORRAN USUARIOS cotrollers/users.js')
+  console.log('========================================================')
+  console.log('========================================================')
   //
   let result = {}
   // DELETE USERS COLLECTIONS
-  let query = { 
-    user : { $in : usersIds}
+  let query = {
+    user: { $in: usersIds },
   }
   try {
-    result = await Collection.find(query,{name:true}).remove().exec()
+    result = await Collection.find(query, { name: true })
+      .remove()
+      .exec()
   } catch (error) {
     // Error al borrar audio anotaciones
     return res.status(404).json(error)
@@ -147,33 +218,32 @@ const delUsers = async(req, res)=>{
   // Delete all users
   result = {}
   try {
-    result = await User.find(query,{name:true, role: true}).remove().exec()
+    result = await User.find(query, { name: true, role: true })
+      .remove()
+      .exec()
     console.log(JSON.stringify(result))
-		req.flash(
+    req.flash(
       'success_msg',
-			`Usuarios borrados con exito: ${result.deletedCount}`
-      )
+      `Usuarios borrados con exito: ${result.deletedCount}`
+    )
   } catch (error) {
     console.log(error)
-		req.flash(
-			'error_msg',
-			'No se ha podido actualizar la colección'
-		)
-  } finally{
+    req.flash('error_msg', 'No se ha podido actualizar la colección')
+  } finally {
     res.redirect('/user')
   }
 }
 
 // API - API
-const api_toggleUserPrivileges = async (req, res)=>{
-  let {userId} = req.params
+const api_toggleUserPrivileges = async (req, res) => {
+  let { userId } = req.params
   // Finding User by Id
   try {
     let userDoc = await User.findById(userId)
     let result = await userDoc.toggleUserPrivileges()
-    res.status(200).json({result, userId})
+    res.status(200).json({ result, userId })
   } catch (error) {
-    res.status(200).json({result, userId})
+    res.status(200).json({ result, userId })
   }
 }
 
@@ -185,13 +255,11 @@ const api_getUsers = async (req, res) => {
 const api_delUsers = async (req, res) => {
   let { usersIds } = req.body
 
-  // TODO: IMPLEMENTAR BORRADO DE AUDIOANOTATIONS DE USUARIOS QUE SERAN BORRADOS  
-  
+  // TODO: IMPLEMENTAR BORRADO DE AUDIOANOTATIONS DE USUARIOS QUE SERAN BORRADOS
+
   // TODO: IMPLEMENTAR BORRADO DE COLLECTIONS DE USUARIOS QUE SERAN BORRADOS
 
-
-  
-  // Normalizing 
+  // Normalizing
   usersIds = typeof usersIds == 'string' ? [usersIds] : usersIds
   // Building Query
   let query = {
@@ -200,7 +268,9 @@ const api_delUsers = async (req, res) => {
 
   let result = {}
   try {
-    result = await User.find(query,{name:true, role: true}).remove().exec()    
+    result = await User.find(query, { name: true, role: true })
+      .remove()
+      .exec()
     res.status(200).json({ result })
   } catch (error) {
     res.status(500).json({ error })
@@ -210,6 +280,8 @@ const api_delUsers = async (req, res) => {
 export default {
   edit,
   editUser,
+  postEditUserById,
+  editUserById,
   editPassword,
   editUserPassword,
   resetPassword,

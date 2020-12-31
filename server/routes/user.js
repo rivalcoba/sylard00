@@ -12,15 +12,18 @@ import confirmEmailAccount from '@validators/confirmEmailAccount'
 
 // Authorization Check Middleware
 import ensureAuthenticated from '@helpers/ensureAuth'
+import ensureSuAuthenticated from '@helpers/ensureSuAuth'
 
 /* GET users listing. */
 // SU Views
-router.get('/', ensureAuthenticated, userController.index)
+router.get('/', ensureSuAuthenticated, userController.index)
 // DELETE
 router.delete('/', userController.delUsers);
 
 router.get('/edit', ensureAuthenticated, userController.edit);
 router.put('/edit', ensureAuthenticated, editUserFormValidation, userController.editUser);
+router.get('/edit/:userId', ensureSuAuthenticated, userController.editUserById)
+router.put('/edit/:userId', ensureSuAuthenticated, editUserFormValidation, userController.postEditUserById);
 
 router.get('/edit/password', ensureAuthenticated, userController.editPassword);
 router.put('/edit/password', ensureAuthenticated, editPasswordFormValidation, userController.editUserPassword);
