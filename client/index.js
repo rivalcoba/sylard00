@@ -30,8 +30,8 @@ import VueAxios from "vue-axios";
 import LecturaEAF from "@client/templates/components/LecturaEAF.vue";
 import LecturaTierEAF from "@client/templates/components/LecturaTierEAF.vue";
 import App2 from '@client/templates/main2.vue'
-import  FiltroAudioannotations  from "@client/templates/components/FiltroAudioannotations.vue";
-import  EditAudioannotations  from "@client/templates/components/EditAudioannotations.vue";
+import FiltroAudioannotations from "@client/templates/components/FiltroAudioannotations.vue";
+import EditAudioannotations from "@client/templates/components/EditAudioannotations.vue";
 import App3 from '@client/templates/main3.vue'
 import colorPicker from '@chelpers/colorPicker'
 
@@ -45,81 +45,81 @@ window.showColorPalette = colorPicker.showColorPalette
 window.hideColorPalette = colorPicker.hideColorPalette
 
 if (window.location.pathname == `/locations/index`) {
-  window.locations = locations_index
+    window.locations = locations_index
 }
 
-if(window.location.pathname == `/collections/create`){
+if (window.location.pathname == `/collections/create`) {
     window.pageScripts = collectionsCreate
 }
 
-if(window.location.pathname == `/test`){
+if (window.location.pathname == `/test`) {
     //window.VueCdn = VueCdn
     window.app = indexTestScripts.getVueApp()
 }
 
 
 //if(window.location.pathname == `/audioannotations/vuetest/:id`){
-  if(window.location.pathname.match(/\/audioannotations\/vuetest\//)){
- //if(window.location.pathname == `/audioannotations/vuetest`){ 
+if (window.location.pathname.match(/\/audioannotations\/vuetest\//)) {
+    //if(window.location.pathname == `/audioannotations/vuetest`){ 
     // window.Vue = Vue
-    Vue.use(VueAxios, axios,colorPicker);
+    Vue.use(VueAxios, axios, colorPicker);
     Vue.component("LecturaEAF", LecturaEAF);
     window.vm = new Vue({
-      el: '#app',
-      render: h => h(App)
+        el: '#app',
+        render: h => h(App)
     })
 }
 
 //if(window.location.pathname == `/audioannotations/create`){  
-if(window.location.pathname == `/audioannotations/uploadfile`){
+if (window.location.pathname == `/audioannotations/uploadfile`) {
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("LecturaTierEAF", LecturaTierEAF);
     window.vm = new Vue({
-      el: '#app2',
-      render: h => h(App2)
-      //aqui
-     //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
-     //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
+        el: '#app2',
+        render: h => h(App2)
+            //aqui
+            //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+            //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
     })
-    
+
     // Desde aqui poder ejecutar createAudioAnotation() del componente "LecturaTierEAF"
     window.pageScripts = createAudioAnnotationsScripts
 }
 
-if(window.location.pathname == `/audioannotations`){
+if (window.location.pathname == `/audioannotations` || window.location.pathname == '/dashboard' || window.location.pathname.match(/\/collections\/index\//)) {
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("FiltroAudioannotations", FiltroAudioannotations);
     window.vm = new Vue({
-      el: '#app3',
-      render: h => h(App3)
-      //aqui
-     //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
-     //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
+        el: '#app3',
+        render: h => h(App3)
+            //aqui
+            //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+            //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
     })
 }
 
-if(window.location.pathname.match(/\/audioannotations\/edit\//)){
+if (window.location.pathname.match(/\/audioannotations\/edit\//)) {
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("EditAudioannotations", EditAudioannotations);
     window.vm = new Vue({
-      el: '#EditAudioannotations',
-      render: h => h(EditAudioannotations)
-      //aqui
-     //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
-     //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
+        el: '#EditAudioannotations',
+        render: h => h(EditAudioannotations)
+            //aqui
+            //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+            //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
     })
 }
 
 
 
 // No se puede cargar script condicionalmente
-if(window.location.pathname.match(/\/collections\/edit\//)){
-  window.editCollectionScripts = editCollectionScripts
-  window.editCollectionScripts.fillLangList(app)
-  window.editCollectionScripts.fillEntitiesList(app)
+if (window.location.pathname.match(/\/collections\/edit\//)) {
+    window.editCollectionScripts = editCollectionScripts
+    window.editCollectionScripts.fillLangList(app)
+    window.editCollectionScripts.fillEntitiesList(app)
 }
 
 // Flashea mensaje si lo hay
