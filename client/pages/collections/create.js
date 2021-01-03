@@ -60,7 +60,9 @@ async function enableLangGroup() {
 
 
     // Checking if is empty
-    if (selectedLanguage == "") {
+    if (selectedLanguage == "" ||
+        !is_valid_datalist_value(langlist.id, selectedLanguage)) {
+        languageBox.value = ""
         return Swal.fire(
             'SYLARD!',
             'Debe seleccionar una opción de la lista',
@@ -68,7 +70,7 @@ async function enableLangGroup() {
         )
     }
 
-    let selectedLanguageId = document.querySelector(`option[value="${selectedLanguage}"]`).id
+    let selectedLanguageId = document.querySelector(`option[value="${languageBox.value}"]`).id
     let parents = []
     try {
         // Loading ParetnTree
@@ -93,11 +95,9 @@ async function enableLangGroup() {
             'error'
         )
     }
-
-    clearDataList(langGroup)
     parents.forEach(planguage => {
         let option = document.createElement('option')
-        languageGroupBox.appendChild(option)
+        groupLanglist.appendChild(option)
         option.value = `${planguage.name} | ${planguage.gid}`
         option.innerHTML = `${planguage.name} | ${planguage.gid}`
         option.setAttribute('data-id', `${planguage._id}`)
@@ -187,11 +187,11 @@ function addLocalityRow(locality) {
     }
 }
 
-const getLangData = (inputSelect, dataList = "") => {
-    let selectedLanguage = inputSelect.value
-    let inputSelectId = inputSelect.id
+const getLangData = (inputBox, dataList) => {
+    let value = inputBox.value
+    let dataListId = dataList.id
     let option = document.querySelector(
-        `#${inputSelectId} option[value="${selectedLanguage}"]`
+        `#${dataListId} option[value="${value}"]`
     )
     return {
         _id: option.dataset.id,
@@ -204,7 +204,9 @@ function addLanguage() {
     let selectedLangGroup = languageGroupBox.value
         // Check if langGroupBox has a correct option
     if (
-        selectedLangGroup == "") {
+        selectedLangGroup == "" ||
+        !is_valid_datalist_value(groupLanglist.id, selectedLangGroup)) {
+        languageGroupBox.value = ""
         return Swal.fire(
             'SYLARD!',
             'Debe seleccionar una opción de la lista',

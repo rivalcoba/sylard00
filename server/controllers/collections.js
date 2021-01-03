@@ -178,9 +178,9 @@ const editCollection = async(req, res) => {
     }
 }
 
-const indexCollection = async(req,res)=>{
-    
-    const {collectionId} = req.params
+const indexCollection = async(req, res) => {
+
+    /*const {collectionId} = req.params
 
     const audioannotationsDocs = await Audioannotations.find({
             user: req.user._id, collection_id: collectionId
@@ -194,8 +194,13 @@ const indexCollection = async(req,res)=>{
     })
 
     return res.json(audioannotations)
-    // TODO: Toño / Alberto: Falta Renderear Salida, se debe reutilizar visualizador de TOÑO
-    //res.render('audioannotations/index', {audioannotations})
+    */
+    res.render('audioannotations/index', {
+            //enviar
+
+        })
+        // TODO: Toño / Alberto: Falta Renderear Salida, se debe reutilizar visualizador de TOÑO
+        //res.render('audioannotations/index', {audioannotations})
 }
 
 const api_getCollectionById = async(req, res) => {

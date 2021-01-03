@@ -227,6 +227,10 @@
                     >
                       <span class="icono_accion_tabla icon-info1"></span>
                     </button>
+                    <a v-bind:href="'/audioannotations/edit/' + item2._id" >Editar Audioannotations</a>
+                    <a v-bind:href="'/audioannotations/vuetest/' + item2._id"
+              >Reproducir Audioannotations</a
+            >
                     <button class="btn_accion_tabla">
                       <span class="icono_accion_tabla icon-launch"></span>
                     </button>
@@ -491,7 +495,7 @@ export default {
   },
   mounted() {
     var self = this;
-    self.axios.get("audioannotations/filter").then((response) => {
+    self.axios.get("/audioannotations/filter").then((response) => {
       self.notas_audioannotations = response.data;
       //console.log(response.data)
     });
