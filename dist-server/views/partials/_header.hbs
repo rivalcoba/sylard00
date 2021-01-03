@@ -45,11 +45,6 @@
     <div class="barra_superior_elemento float_right">
       <!-- SI ES UN SUARIO -->
       {{#if user}}
-      {{#ifSu user}}
-      <a href="/collections">
-        <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
-      </a>
-      {{/ifSu}}
       <div class="barra_superior_elemento dropdown_menu_usuario float_right">
         <button class="dropbtn_barra_superior">
           <div class="contenedor_icono_usuario">
@@ -71,6 +66,11 @@
             <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
           </a>
           {{/ifColaborator}}
+           {{#ifSu user}}
+      <a href="/collections">
+        <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+      </a>
+      {{/ifSu}}
           {{#hideIfSu user}}
           <a href="/dashboard">
             <i class="fa fa-table"></i> {{translation.CATALOGUE}}
@@ -91,5 +91,6 @@
         {{!-- {{/unless}} PERMITE OCULTAR LE BARRA DE NAVEGACIÓN DE REGISTRO--}}
         {{/if}}
       </div>
+    </div>
   </nav>
 </div>

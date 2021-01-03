@@ -19,6 +19,7 @@
 
           <tr>
             <div v-for="(item, index) in options" :key="'item' + index">
+              <td>
               <div class="contenedor_hablante_y_switch">
                 <p class="label label_switch_horizontal">
                   Canal {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
@@ -47,13 +48,13 @@
                 </div>
               </div>
               <!--<label for="checkbox" value="on" name="on" id="on"> </label>
-            <input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
-            -->
+               <input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
+               -->
 
               <h5 class="nombre_hablante">{{ item.PARTICIPANT }} {{ item.TIER_ID }}</h5>
               <div class="contenedor_opciones_visuales_canal1_viewer">
                 <!-- <select v-model="item.value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
-            -->
+                -->
                 <select
                   class="opciones_despliegue_viewer"
                   v-model="item.value"
@@ -62,17 +63,33 @@
                   <option value="B">Scrolling</option>
                   <option value="A" selected>On-Line-Display</option>
                 </select>
-                <!--  <input class="inp" name="color" type="text"  :id="item.TIER_ID" v-model="item.color" /> -->
-                <input
-                  class="inp"
-                  name="color"
-                  id="colorPicker"
-                  autocomplete="off"
-                  type="text"
-                  v-model="item.color"
-                />
-                <div class="palette" id="colorPalette"></div>
+                <!--  <input class="inp" name="color" type="text"  :id="item.TIER_ID" v-model="item.color" /> 
+                cambiar data-id que sea unico-->
+
+                <div
+                  class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion"
+                >
+                  <input
+                    :class="[activeClass]"
+                    v-bind:style="colorclase(item.color)"
+                    :data-did="'A' + (index + 1) + '-colorPicker'"
+                    name="color"
+                    :id="'color_' + item.TIER_ID"
+                    autocomplete="off"
+                    type="text"
+                    v-model="item.color"
+                    v-on:input="cambiarcolor($event)"
+                    @click="metodocolor(index, $event)"
+                    @blur="metodoblur(index, $event)"
+                  />
+                  <div
+                    class="palette"
+                    :data-did="'A' + (index + 1) + '-colorPalette'"
+                    :id="'A' + (index + 1) + '-colorPalette'"
+                  ></div>
+                </div>
               </div>
+              </td>
             </div>
 
             <div
@@ -83,6 +100,7 @@
               <table class="table_one_line">
                 <div v-if="options[index].Visible">
                   <div v-if="options[index].value == 'A'">
+                    <!--{{computedColor=options[index].color}}-->
                     <div v-for="(item, index) in otro[index]" :key="index">
                       <div
                         v-if="
@@ -92,8 +110,11 @@
                       >
                         <td>
                           <p class="canal_1_hablante_one_line_display_item">
-                            <span class="siglas_canal_item"></span>
-                            {{ item.ANNOTATION_VALUE }}
+                            <span v-bind:style="{ color: options[index].color }">
+                              {{ item.ANNOTATION_VALUE }}
+                            </span>
+                            <!--  <span class="siglas_canal_item"></span>
+                            {{ item.ANNOTATION_VALUE }}-->
                           </p>
                           <!--{{tier_temp}}:-->
                           <!--  me quede 
@@ -150,29 +171,33 @@
               <div
                 v-if="
                   $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
-                  $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 
+                  $attrs.tiempo_parametro <= item.TIME_SLOT_REF2
                 "
-              > <!-- $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 -1 -->
+              >
+                <!-- $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 -1 -->
                 <tr class="row_multilinea">
-                  <td rowspan="2"  class="td_canal reproduccion">
-                    <span class="bocina_reproduccion icon-volume-up" ></span>
+                  <td rowspan="2" class="td_canal reproduccion">
+                    <span class="bocina_reproduccion icon-volume-up"></span>
                   </td>
                   <td class="td_canal">
-                    <span :style="traer_color(item.TIER_ID)">
-                      <!--traer el color del item.TIER_ID de this.audioannotations traer_color(item.TIER_ID) -->
-                      {{ item.TIER_ID }}: </span> {{ item.ANNOTATION_VALUE }}
+                    <!--<span :style="traer_color(item.TIER_ID)">
+                     traer el color del item.TIER_ID de this.audioannotations traer_color(item.TIER_ID) -->
+                    <span v-bind:style="{ color: traer_color(item.TIER_ID) }">
+                      {{ item.TIER_ID }}:
+                    </span>
+                    {{ item.ANNOTATION_VALUE }}
                   </td>
                 </tr>
               </div>
               <div v-else>
                 <tr class="row_multilinea">
-                  <td  class="td_reproduccion">
-                    <span                      
-                      
-                    ></span>
+                  <td class="td_reproduccion">
+                    <span></span>
                   </td>
-                  <td >
-                    <span v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)" > {{ item.TIER_ID }}: </span>{{ item.TIME_SLOT_REF1 }}
+                  <td>
+                    <span v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)">
+                      {{ item.TIER_ID }}: </span
+                    >{{ item.TIME_SLOT_REF1 }}
                     {{ item.ANNOTATION_VALUE }}
                   </td>
                 </tr>
@@ -208,7 +233,7 @@ export default {
       mp3Audio: "",
       tituloAudioannotation: "",
       ruta: "otro valor",
-      //tiempo_parametro:"8"
+      color_tier: "#000000",
     };
   },
   computed: {
@@ -216,11 +241,74 @@ export default {
     set: () => {},
   },
   methods: {
-    traer_color:function(tier_id) {      
-     // return "color:"+this.audioannotations.find(x => x.TIER_ID == tier_id).color
-      
+    colorclase: function (color) {
+      return "border-right: 2rem solid " + color;
+    },
+    quitarcolor_id: function (e) {
+      var color_name = e;
+      // console.log("---------original-----------------------");
+      // console.log(color_name);
+      // console.log("----------sin color_----------------------");
+      // console.log(color_name.replace("color_", ""));
+      return color_name.replace("color_", "");
+    },
+    cambiarcolor: function (e) {
+      console.log("-------------cambiar color-------------------");
+      console.log(
+        "valor original es " +
+          this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color
+      );
+
+      console.log("---------Valor-----------------------");
+      console.log(e.target.value);
+      console.log("--------id------------------------");
+      console.log(e.target.id);
+      this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color =
+        e.target.value;
+      return e.target.value;
+    },
+    metodocolor: function (parametro, e) {
+      //this.quitarcolor_id(event.target.id)
+
+      var valorpaleta, valorcolor;
+      valorcolor = "A" + (parametro + 1) + "-colorPicker";
+      valorpaleta = "A" + (parametro + 1) + "-colorPalette";
+      showColorPalette(valorcolor, valorpaleta);
+      // console.log(
+      //   "este es el parametro del colorpicker " +
+      //     parametro +
+      //     " p " +
+      //     valorpaleta +
+      //     " c " +
+      //     valorcolor
+      // );
+      //  this.cambiarcolor(e)
+      //return parametro
+    },
+    metodoblur: function (parametro, e) {
+      //"hideColorPalette('A1-colorPicker','A1-colorPalette')"
+      var valorpaleta, valorcolor;
+      valorcolor = "A" + (parametro + 1) + "-colorPicker";
+      valorpaleta = "A" + (parametro + 1) + "-colorPalette";
+      hideColorPalette(valorcolor, valorpaleta);
+      console.log(
+        "este es el parametro del blur " +
+          parametro +
+          " p " +
+          valorpaleta +
+          " c " +
+          valorcolor
+      );
+      this.cambiarcolor(e);
+    },
+
+    traer_color: function (tier_id) {
+      // return "color:"+this.audioannotations.find(x => x.TIER_ID == tier_id).color
+
       //this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
       //return color aqui me quede trayendo el color de audioannotations por id
+      var valor_color = this.options.find((x) => x.TIER_ID == tier_id).color;
+      return valor_color;
     },
     mensaje_al_player: function (tiempo) {
       console.log("Se envia un msg al player " + tiempo);
@@ -446,6 +534,16 @@ export default {
     var ultimoSlash = this.ruta.lastIndexOf("/");
     this.ruta = this.ruta.substring(ultimoSlash + 1);
   },
+  computed: {
+    computedColor: {
+      set(value) {
+        this.color_tier = value;
+      },
+      get() {
+        return this.color_tier;
+      },
+    },
+  },
   mounted() {
     // var parseString = require('xml2js').parseString;
     //estaba montando el xml
@@ -474,6 +572,10 @@ export default {
     //console.log("Aqui se esta añadiendo al json");
     //this.add("hola");
     //this.leerTier();
+    //leer script color picker
+    // let la_colorScript = document.createElement('script')
+    // la_colorScript.setAttribute('src', 'https://cdn.glitch.com/120f087f-0e29-4163-9f0b-687d6b040d37%2Fla_color_picker.js')
+    // document.head.appendChild(la_colorScript)
   },
 };
 </script>

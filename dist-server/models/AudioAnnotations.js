@@ -4,7 +4,7 @@ eaf:String,title:String,description:String,genre:{name:{type:String,required:!0}
 location:{},//location:String,
 collection_id:{type:_mongoose.Schema.Types.ObjectId,ref:"Collection"},//glottolog:{type:Schema.ObjectId,ref:"Glottologs"},
 //gid:String,//cambiar por L_gid
-gid:{},siglas:String,user:{type:_mongoose.Schema.Types.ObjectId,ref:"Users"},TIER:[{PARTICIPANT:String,Visible:String,value:String,color:String,LINGUISTIC_TYPE_REF:String,TIER_ID:String}]});//AudioAnnotationsSchema.methods.updateCollection= async function(data){
+gid:{},siglas:String,user:{type:_mongoose.Schema.Types.ObjectId,ref:"Users"},header:[String],TIER:[{PARTICIPANT:String,Visible:String,value:String,color:String,LINGUISTIC_TYPE_REF:String,TIER_ID:String}]});//AudioAnnotationsSchema.methods.updateCollection= async function(data){
 // return await this.updateOne(data).exec()
 //}
 // Compile model from schema

@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _Collection=_interopRequireDefault(require("../models/Collection")),_Glottolog=_interopRequireDefault(require("../models/Glottolog")),_Location=_interopRequireDefault(require("../models/Location"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}// Collections Controllers
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _Collection=_interopRequireDefault(require("../models/Collection")),_Glottolog=_interopRequireDefault(require("../models/Glottolog")),_Location=_interopRequireDefault(require("../models/Location")),_AudioAnnotations=_interopRequireDefault(require("../models/AudioAnnotations"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}// Collections Controllers
 // Import model
 // import User from '@models/User'
 // List all the collaborators collections
@@ -23,8 +23,11 @@ d=d.toJSON(),d.languages=JSON.stringify(d.languages),d.localities=JSON.stringify
 if(e=await _Collection.default.findById(d).exec(),e.user+""!=a.user._id+""&&"su"!=a.user.role+"")return a.flash("error_msg","No eres el propietario de esta colecci\xF3n"),b.redirect("/dashboard");// Update collection
 let f=await e.updateCollection(c);f.ok?a.flash("success_msg","La colecci\xF3n se ha actualizado con \xE9xito"):a.flash("error_msg","No se ha podido actualizar la colecci\xF3n"),b.redirect("/collections")}catch(c){// Se flashea Exito
 // Get the info from
-return a.flash("error_msg","No se ha podido encontrar la coleccion que se desea editar"),b.render("index/dashboard")}},api_getCollectionById=async(a,b)=>{const c=a.params.collection_id;let d={};try{d=await _Collection.default.findById(c).exec(),b.status(200).json(d)}catch(a){b.status(404).json({error:a.message})}},api_getCollectionByUser=async(a,b)=>{const{userId:c}=a.params;try{let a=await _Collection.default.find({user:c}).exec();return b.status(200).json({collectionDocs:a})}catch(a){b.status(400).json({error:a.message})}};var _default={// List Collections from a particular Colaborator User
-index,// Create Add Collection FORM
+return a.flash("error_msg","No se ha podido encontrar la coleccion que se desea editar"),b.render("index/dashboard")}},indexCollection=async(a,b)=>{const{collectionId:c}=a.params,d=await _AudioAnnotations.default.find({user:a.user._id,collection_id:c}).populate("user").populate("colection").exec();let e=d.map(a=>a.toJSON());return b.json(e);// TODO: Toño / Alberto: Falta Renderear Salida, se debe reutilizar visualizador de TOÑO
+//res.render('audioannotations/index', {audioannotations})
+},api_getCollectionById=async(a,b)=>{const c=a.params.collection_id;let d={};try{d=await _Collection.default.findById(c).exec(),b.status(200).json(d)}catch(a){b.status(404).json({error:a.message})}},api_getCollectionByUser=async(a,b)=>{const{userId:c}=a.params;try{let a=await _Collection.default.find({user:c}).exec();return b.status(200).json({collectionDocs:a})}catch(a){b.status(400).json({error:a.message})}};var _default={// List Collections from a particular Colaborator User
+index,// Indexa audio anotaciones que corresponden a alguna coleccion
+indexCollection,// Create Add Collection FORM
 createCollection,// Process ADD Collection FORM
 addCollection,// Delete Collection
 deleteCollection,// Update Collection FORM
