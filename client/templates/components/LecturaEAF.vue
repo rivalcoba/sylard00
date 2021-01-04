@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="contenedor_acordeon">
+    <button class="contenedor_acordeon" @click="acordion()">
       <span class="icono_acordeon icon-chevron-down"></span> Opciones visuales
     </button>
     <!-- https://www.youtube.com/watch?v=NPGkoOQPtJs
@@ -9,19 +9,21 @@
       <!--  {{ info }} -->
       <!--AQUÍ INICIA LA PRIMERA PARTE-->
       <div v-if="this.info.data">
+       
         {{ recorrer_todo($attrs.longitud_tiempo) }}
-        <div v-for="(item, index) in options" :key="'item' + index">
-          <div class="contenedor_canal_audioanotacion">
-            <div class="contenedor_canal_padre_compacto">
-              <div class="contenedor_hablante">
+         <div v-if="this.bandera_acordeon">
+          <div v-for="(item, index) in options" :key="'item' + index">
+            <div class="contenedor_canal_audioanotacion">
+               <div class="contenedor_canal_padre_compacto">
+                <div class="contenedor_hablante">
                 <p class="label label_al_100">
                   Canal {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
                 </p>
                 <h5 class="hablante_canal_padre">
                   {{ item.PARTICIPANT }} {{ item.TIER_ID }}
                 </h5>
-              </div>
-              <div class="contenedor_opciones_visuales_canal1_viewer">
+               </div>
+               <div class="contenedor_opciones_visuales_canal1_viewer">
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal"
                 >
@@ -88,15 +90,16 @@
               </div>
             </div>
           </div>
-        </div>
+         </div>
+         </div>
 
-        <!--AQUI APARECE LA TABLA DE QUIENES ESTAN HABLANDO--->
-        <hr />
-        <div
+         <!--AQUI APARECE LA TABLA DE QUIENES ESTAN HABLANDO--->
+         <hr />
+         <div
           class="contenedor_one_line_display"
           v-for="(item2, index2) in otro"
           :key="index2"
-        >
+         >
           <table class="table_one_line">
             <div v-if="options[index2].Visible">
               <div v-if="options[index2].value == 'A'">
@@ -128,7 +131,8 @@
               </div>
             </div>
           </table>
-        </div>
+        
+      </div>
       </div>
       <p v-else>loading.....</p>
       <!--ESTA ES LA TERCERA TABLA DE QUIENES ESTAN HABLANDO-->
@@ -224,6 +228,7 @@ export default {
       tituloAudioannotation: "",
       ruta: "otro valor",
       color_tier: "#000000",
+      bandera_acordeon:false
     };
   },
   computed: {
@@ -231,6 +236,13 @@ export default {
     set: () => {},
   },
   methods: {
+    acordion: function() {
+      if (this.bandera_acordeon) {
+        this.bandera_acordeon=false
+
+      } else 
+      this.bandera_acordeon=true
+    },
     siglas: function (cadenaADividir,separador) {
       var arrayDeCadenas = cadenaADividir.split(separador);
       var siglasvalor=""
