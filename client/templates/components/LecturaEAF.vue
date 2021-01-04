@@ -67,8 +67,7 @@
                 >
                   <label class="label label_al_100">Color de tipografía</label>
                   <input
-                    type="text"
-                    :class="[activeClass]"
+                    type="text"                   
                     v-bind:style="colorclase(item.color)"
                     :data-did="'A' + (index + 1) + '-colorPicker'"
                     name="color"
