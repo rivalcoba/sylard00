@@ -321,13 +321,23 @@
                       >
                       <input
                         type="text"
-                        class="inp input_flexible"
-                        :id="item2"
-                        value="#000000"
-                        @change="seleccion_todos_color($event)"
+                       :id="item2"
+                       
+                        value="#c60000"
+                         class="inp input_flexible_compacto"
+                         :data-did="'A' + (index+55 ) + '-colorPicker'"
+                         name="color"                         
+                        @change="seleccion_todos_color($event)"                     
+                    @click="metodocolor(index+55, $event,0)"
+                    @blur="metodoblur(index+55, $event,0)"
+                        autocomplete="off"
                       />
-                      <div class="palette" id="colorPalette"></div>
-                      <!--COLOR PICKET PENDIENTE-->
+                       <div
+                    class="palette"
+                    :data-did="'A' + (index+55  ) + '-colorPalette'"
+                    :id="'A' + (index+55 ) + '-colorPalette'"
+                  ></div>
+                      <!--COLOR PICKET PENDIENTE todos-->
                     </div>
                   </div>
                 </div>
@@ -395,15 +405,23 @@
                       class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion"
                     >
                       <input
-                        class="inp input_flexible"
+                          class="inp input_flexible_compacto"
                         autocomplete="off"
                         name="color"
                         type="text"
-                        :id="item.TIER_ID"
-                        :value="item.color"
+                         v-model="item.color"
+                        :id="'color_' + item.TIER_ID"
+                        v-bind:style="colorclase(item.color)"
+                        :data-did="'A' + (index + 1) + '-colorPicker'"
                         @change="seleccion_color($event)"
+                          @click="metodocolor(index, $event,1)"
+                    @blur="metodoblur(index, $event,1)"
                       />
-                      <div class="palette" id="colorPalette"></div>
+                    <div
+                    class="palette"
+                    :data-did="'A' + (index + 1) + '-colorPalette'"
+                    :id="'A' + (index + 1) + '-colorPalette'"
+                  ></div>
                       <!--PENDIENTE COLOR PICKET-->
                     </div>
                   </div>
@@ -456,6 +474,77 @@ export default {
     }
   },
   methods: {
+    colorclase: function (color) {
+      return "border-right: 2rem solid " + color;
+    },
+    quitarcolor_id: function (e) {
+      var color_name = e;
+      // console.log("---------original-----------------------");
+      // console.log(color_name);
+      // console.log("----------sin color_----------------------");
+      // console.log(color_name.replace("color_", ""));
+      return color_name.replace("color_", "");
+    },
+    cambiarcolor: function (e) {
+      console.log("-------------cambiar color-------------------");
+      console.log(
+        "valor original es " +
+          this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color
+      );
+
+      console.log("---------Valor-----------------------");
+      console.log(e.target.value);
+      console.log("--------id------------------------");
+      console.log(e.target.id);
+      this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color =
+        e.target.value;
+      return e.target.value;
+    },
+    metodocolor: function (parametro, e,valor) {
+      //this.quitarcolor_id(event.target.id)
+
+      var valorpaleta, valorcolor;
+      valorcolor = "A" + (parametro + valor) + "-colorPicker";
+      valorpaleta = "A" + (parametro + valor) + "-colorPalette";
+     
+      console.log(
+        "este es el parametro del colorpicker " +
+          parametro +
+          " p " +
+          valorpaleta +
+          " c " +
+          valorcolor
+      );
+       showColorPalette(valorcolor, valorpaleta);
+      //  this.cambiarcolor(e)
+      //return parametro
+    },
+    metodoblur: function (parametro, e,valor) {
+      //"hideColorPalette('A1-colorPicker','A1-colorPalette')"
+      var valorpaleta, valorcolor;
+      valorcolor = "A" + (parametro + valor) + "-colorPicker";
+      valorpaleta = "A" + (parametro + valor) + "-colorPalette";
+     
+      console.log(
+        "este es el parametro del blur " +
+          parametro +
+          " p " +
+          valorpaleta +
+          " c " +
+          valorcolor
+      );
+       hideColorPalette(valorcolor, valorpaleta);
+      //this.cambiarcolor(e);
+    },
+
+    traer_color: function (tier_id) {
+      // return "color:"+this.audioannotations.find(x => x.TIER_ID == tier_id).color
+
+      //this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
+      //return color aqui me quede trayendo el color de audioannotations por id
+      var valor_color = this.options.find((x) => x.TIER_ID == tier_id).color;
+      return valor_color;
+    },
     changeColeccion: function (e) {
       var colecTemporal = []
       var id_coleccion
@@ -685,6 +774,27 @@ export default {
         ).Visible = false
         console.log('si lo off')
       }
+    }, seleccion_visualizacion_options: function (e) {
+      //+  console.log("--------------------------------");
+      //+   console.log(
+      //+       "valor original es " +
+      //+      this.options.find((x) => x.tier_id == event.target.id).value
+      //+    );
+      //+    console.log(e.target.value);
+      //+     console.log(event.target.id);
+      // console.log(arreglo_ref_tiempo.find(x=>x.ANNOTATION_ID===ts).TIME_SLOT_REF1)
+      //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
+      if (
+        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).value != event.target.value
+      ) {
+        //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
+        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
+      }
+      //+   console.log(
+      //+      "Cambio el valor a " +
+      //+     this.options.find((x) => x.tier_id == event.target.id).value
+      //+    );
+      //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
     },
     selecion_todos_visualizacion_options: function (e) {
       console.log('valor ' + e.target.value)
@@ -743,13 +853,13 @@ export default {
       //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
     },
     seleccion_todos_color: function (e) {
-      console.log('--------------------------------')
+      console.log('----------El valor original del cambio de todos es----------------------'+event.target.id)
       console.log(
         'valor original es ' +
           this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).color
       )
+      console.log('----------El valor q se pasa es----')
       console.log(e.target.value)
-      console.log(event.target.id)
       for (var indice in this.tier_acomodado) {
         if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
           console.log(
