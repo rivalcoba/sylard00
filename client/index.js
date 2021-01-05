@@ -102,7 +102,7 @@ if (window.location.pathname == `/audioannotations` || window.location.pathname 
 
 if (window.location.pathname.match(/\/audioannotations\/edit\//)) {
     // window.Vue = Vue
-    Vue.use(VueAxios, axios);
+    Vue.use(VueAxios, axios,colorPicker);
     Vue.component("EditAudioannotations", EditAudioannotations);
     window.vm = new Vue({
         el: '#EditAudioannotations',
