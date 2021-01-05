@@ -322,7 +322,7 @@
                       <input
                         type="text"
                        :id="item2"
-                       
+                       v-bind:style="colorclase('#c60000')"
                         value="#c60000"
                          class="inp input_flexible_compacto"
                          :data-did="'A' + (index+55 ) + '-colorPicker'"
@@ -775,26 +775,14 @@ export default {
         console.log('si lo off')
       }
     }, seleccion_visualizacion_options: function (e) {
-      //+  console.log("--------------------------------");
-      //+   console.log(
-      //+       "valor original es " +
-      //+      this.options.find((x) => x.tier_id == event.target.id).value
-      //+    );
-      //+    console.log(e.target.value);
-      //+     console.log(event.target.id);
-      // console.log(arreglo_ref_tiempo.find(x=>x.ANNOTATION_ID===ts).TIME_SLOT_REF1)
-      //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
+
       if (
         this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).value != event.target.value
       ) {
-        //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
+
         this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
       }
-      //+   console.log(
-      //+      "Cambio el valor a " +
-      //+     this.options.find((x) => x.tier_id == event.target.id).value
-      //+    );
-      //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
+    
     },
     selecion_todos_visualizacion_options: function (e) {
       console.log('valor ' + e.target.value)
@@ -834,21 +822,21 @@ export default {
       console.log('--------------------------------')
       console.log(
         'valor original es ' +
-          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).color
+          this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(event.target.id)).color
       )
       console.log(e.target.value)
       console.log(event.target.id)
       if (
-        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).color !=
+        this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(event.target.id)).color !=
         event.target.value
       ) {
         //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
-        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).color =
+        this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(event.target.id)).color =
           event.target.value
       }
       console.log(
         'Cambio el valor a ' +
-          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).color
+          this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(event.target.id)).color
       )
       //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
     },
