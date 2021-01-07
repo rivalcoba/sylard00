@@ -128,6 +128,7 @@ const filtrarAudioannotation = async(req, res) => {
         //arregloAudio.push(tempaudio)
         //res.json(arregloAudio);
         res.json(audioannotationsDocs); //original
+        //checar https://kb.objectrocket.com/mongo-db/mongoose-pagination-with-nodejs-and-mongodb-1304
     } catch (error) {
         return res.status(400).json({
             mensaje: 'Ocurrio un error',
