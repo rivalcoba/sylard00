@@ -32,7 +32,13 @@ import LecturaTierEAF from "@client/templates/components/LecturaTierEAF.vue";
 import App2 from '@client/templates/main2.vue'
 import FiltroAudioannotations from "@client/templates/components/FiltroAudioannotations.vue";
 import EditAudioannotations from "@client/templates/components/EditAudioannotations.vue";
+import Audioannotations from "@client/templates/components/Audioannotations.vue";
+//AQUÍ SE IMPORTAN LAS NUEVAS VISTAS PARA EL DASHBOARD DE COLLECTIONS
+import Dashboard from "@client/templates/components/Dashboard.vue";
 import App3 from '@client/templates/main3.vue'
+import App4 from '@client/templates/main4.vue'
+import App5 from '@client/templates/main5.vue'
+//AQUÍ TERMINAN
 import colorPicker from '@chelpers/colorPicker'
 
 
@@ -100,6 +106,33 @@ if (window.location.pathname == `/audioannotations` || window.location.pathname 
     })
 }
 
+//Aquí redirige a la nueva vista de dashboard
+if (window.location.pathname == '/dashboard' || window.location.pathname.match(/\/collections\/index\//)) {
+    // window.Vue = Vue
+    Vue.use(VueAxios, axios);
+    Vue.component("Dashboard", Dashboard);
+    window.vm = new Vue({
+        el: '#app4',
+        render: h => h(App4)
+            //aqui
+            //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+            //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
+    })
+}
+
+if (window.location.pathname == '/audioannotation') {
+    // window.Vue = Vue
+    Vue.use(VueAxios, axios);
+    Vue.component("Audioannotations", Audioannotations);
+    window.vm = new Vue({
+        el: '#app5',
+        render: h => h(App5)
+            //aqui
+            //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+            //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
+    })
+}
+//AQUI TERMINA DASHBOARD
 if (window.location.pathname.match(/\/audioannotations\/edit\//)) {
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
