@@ -59,9 +59,15 @@ try{let a=await _AudioAnnotations.default.findById(c).populate("collection_id").
 // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 // >>>>>>>>>>>>>>>>>>>>>>>>> AQUI ESTA EL JSON DE LA AUDIO ANNOTACION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-b.json(a)}catch(a){b.json(a)}},filtrarAudioannotation=async(a,b)=>{//console.log("Aqui")
+b.json(a)}catch(a){b.json(a)}},filtrarAudioannotation=async(a,b)=>{// ,page = Math.max(0, req.param('page'))
+// var arregloAudio=[]
+//console.log("Aqui")
 // Aqui me quede le quite el await
-try{const c=await _AudioAnnotations.default.find({user:a.user._id}).populate("user").populate("colection").exec();b.json(c)}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
+try{const c=await _AudioAnnotations.default.find({user:a.user._id}).limit(2).sort({title:1}).skip(2).populate("user").populate("colection").exec();//var tempaudio= "{value:333}"
+//arregloAudio.push(audioannotationsDocs)
+//arregloAudio.push(tempaudio)
+//res.json(arregloAudio);
+b.json(c)}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
 b.render("audioannotations/create",{title:"Agregar audionotaci\xF3n"})},addAudioannotation=async(a,b)=>{let{eaf:c,// ok
 mp3_url:d,// ok
 duration:e,//ok

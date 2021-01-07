@@ -116,11 +116,18 @@ const indexById = async(req, res) => {
 }
 
 const filtrarAudioannotation = async(req, res) => {
+    var perPage = 2
+    // ,page = Math.max(0, req.param('page'))
+   // var arregloAudio=[]
     //console.log("Aqui")
     // Aqui me quede le quite el await
     try {
-        const audioannotationsDocs = await Audioannotations.find({ user: req.user._id }).populate('user').populate('colection').exec()
-        res.json(audioannotationsDocs);
+        const audioannotationsDocs = await Audioannotations.find({ user: req.user._id }).limit( perPage ).sort({"title":1}).skip(2).populate('user').populate('colection').exec()
+        //var tempaudio= "{value:333}"
+        //arregloAudio.push(audioannotationsDocs)
+        //arregloAudio.push(tempaudio)
+        //res.json(arregloAudio);
+        res.json(audioannotationsDocs); //original
     } catch (error) {
         return res.status(400).json({
             mensaje: 'Ocurrio un error',
