@@ -49,6 +49,7 @@
         "sweetalert2": "^9.17.1",
         "vue": "^2.6.12",
         "vue-axios": "^2.1.5",
+        "vue-sweetalert2": "^4.1.1",
         "wavesurfer.js": "^4.1.0",
         "xml2js": "^0.4.23",
         "yup": "^0.29.2"
