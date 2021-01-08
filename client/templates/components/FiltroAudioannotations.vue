@@ -227,10 +227,12 @@
                     >
                       <span class="icono_accion_tabla icon-info1"></span>
                     </button>
-                    <a v-bind:href="'/audioannotations/edit/' + item2._id" >Editar Audioannotations</a>
+                    <a v-bind:href="'/audioannotations/edit/' + item2._id"
+                      >Editar Audioannotations</a
+                    >
                     <a v-bind:href="'/audioannotations/vuetest/' + item2._id"
-              >Reproducir Audioannotations</a
-            >
+                      >Reproducir Audioannotations</a
+                    >
                     <button class="btn_accion_tabla">
                       <span class="icono_accion_tabla icon-launch"></span>
                     </button>
@@ -287,8 +289,8 @@ export default {
       result: null,
       otro: "nuevo",
       notas_audioannotations: [],
-      paginacion:"",
-     
+      paginacion: "",
+      pagina:"",
       titulo: "",
       lengua: "",
       gpo_lengua: "",
@@ -494,13 +496,22 @@ export default {
         });
       }
     },
+    getPage: function (page) {
+      var self = this;
+      self.axios.get("/audioannotations/filter?page="+page).then((response) => {
+        self.notas_audioannotations = response.data.itemsList;
+        self.paginacion = response.data.paginator;
+        self.pagina=self.paginacion
+        //console.log(response.data)
+      });
+    },
   },
   mounted() {
     var self = this;
-    self.axios.get("/audioannotations/filter").then((response) => {
-      
-      self.notas_audioannotations=response.data.itemsList
-       self.paginacion=response.data.paginator
+    self.axios.get("/audioannotations/filter/1").then((response) => {
+      self.notas_audioannotations = response.data.itemsList;
+      self.paginacion = response.data.paginator;
+      self.pagina=self.paginacion
       //console.log(response.data)
     });
   },
@@ -511,6 +522,28 @@ export default {
     //       bandera_comunidad: false,
     //       bandera_hablantes: false,
     //       bandera_genero: false,
+    isActived: function () {
+      return this.paginacion.currentPage;
+    },
+    pagesNumber: function () {
+      if (!this.paginacion.pageCount) {
+        return [];
+      }
+      var from = this.paginacion.currentPage - 2; //TODO offset
+      if (from < 1) {
+        from = 1;
+      }
+      var to = from + 2 * 2; //todo
+      if (to >= this.paginacion) {
+        to = this.paginacion;
+      }
+      var pagesArray = [];
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+      return pagesArray;
+    },
     search_titulo: function () {
       if (this.titulo.length > 2) {
         return this.notas_audioannotations.filter((item) =>
