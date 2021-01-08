@@ -40,6 +40,8 @@ import App4 from '@client/templates/main4.vue'
 import App5 from '@client/templates/main5.vue'
 //AQUÍ TERMINAN
 import colorPicker from '@chelpers/colorPicker'
+import VueSweetalert2 from 'vue-sweetalert2';
+Vue.use(VueSweetalert2);
 
 
 // Loading function to the global variable
