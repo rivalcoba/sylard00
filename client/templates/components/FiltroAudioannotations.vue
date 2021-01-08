@@ -227,10 +227,12 @@
                     >
                       <span class="icono_accion_tabla icon-info1"></span>
                     </button>
-                    <a v-bind:href="'/audioannotations/edit/' + item2._id" >Editar Audioannotations</a>
+                    <a v-bind:href="'/audioannotations/edit/' + item2._id"
+                      >Editar Audioannotations</a
+                    >
                     <a v-bind:href="'/audioannotations/vuetest/' + item2._id"
-              >Reproducir Audioannotations</a
-            >
+                      >Reproducir Audioannotations</a
+                    >
                     <button class="btn_accion_tabla">
                       <span class="icono_accion_tabla icon-launch"></span>
                     </button>
@@ -241,30 +243,57 @@
           </table>
           <div class="contenedor_paginacion">
             <div class="contenedor_input_paginacion">
-              <input class="" id="busqueda_paginacion" type="text" placeholder="Pag." />
-              <button class="btn_lateral_input" for="busqueda_paginacion">
+              <input
+                class=""
+                id="busqueda_paginacion"
+                v-model="pagina_buscar"
+                type="text"
+                placeholder="Pag."
+              />
+              <button
+                class="btn_lateral_input"
+                for="busqueda_paginacion"
+                @click="getPage(pagina_buscar)"
+              >
                 <span class="icono_pagina_busqueda icon-chevron-right"></span>
               </button>
             </div>
             <div class="contenedor_numeros_paginacion">
-              <a class="icono_paginacion" href="#"
-                ><span class="icon-first_page"></span
+              <a
+                v-if="paginacion.hasPrevPage"
+                class="icono_paginacion"
+                href="#"
+                @click.prevent="getPage(1)"
+                ><span v-if="paginacion.hasPrevPage" class="icon-first_page"></span
               ></a>
-              <a class="icono_paginacion" href="#"
-                ><span class="icon-angle-left"></span
+              <a
+                v-if="paginacion.hasPrevPage"
+                class="icono_paginacion"
+                href="#"
+                @click.prevent="getPage(pagina.prev)"
+                ><span v-if="paginacion.hasPrevPage" class="icon-angle-left"></span
               ></a>
-              <a class="numero_paginacion" href="#">2</a>
-              <a class="numero_paginacion" href="#">3</a>
-              <a class="numero_paginacion" href="#">4</a>
-              <a class="numero_paginacion active" href="#">5</a>
-              <a class="numero_paginacion" href="#">6</a>
-              <a class="numero_paginacion" href="#">7</a>
-              <a class="ultima_pagina" href="#">...29</a>
-              <a class="icono_paginacion" href="#"
-                ><span class="icon-angle-right"></span
+              <a
+                v-for="(pag, index) in pagesNumber"
+                :key="index"
+                 v-bind:class="[pag== isActived ? 'numero_paginacion active':  'numero_paginacion'  ]" 
+               href="#"
+                @click.prevent="getPage(pag)"
+                >{{ pag }}</a
+              >
+         
+              <!--<a v-if="paginacion.hasNextPage" class="ultima_pagina" href="#" @click.prevent="getPage(pagina.pageCount)"
+                >...{{ paginacion.pageCount }}</a
+              >-->
+              <a class="icono_paginacion" href="#" @click.prevent="getPage(pagina.next)"
+                ><span v-if="paginacion.hasNextPage" class="icon-angle-right"></span
               ></a>
-              <a class="icono_paginacion" href="#"
-                ><span class="icon-last_page"></span
+              <a
+                v-if="paginacion.hasNextPage"
+                class="icono_paginacion"
+                href="#"
+                @click.prevent="getPage(pagina.pageCount)"
+                ><span v-if="paginacion.hasNextPage" class="icon-last_page"></span
               ></a>
             </div>
           </div>
@@ -287,6 +316,8 @@ export default {
       result: null,
       otro: "nuevo",
       notas_audioannotations: [],
+      paginacion: "",
+      pagina: "",
       titulo: "",
       lengua: "",
       gpo_lengua: "",
@@ -300,6 +331,7 @@ export default {
       bandera_comunidad: false,
       bandera_hablantes: false,
       bandera_genero: false,
+      pagina_buscar: "",
 
       valor_buscar: false,
     };
@@ -492,11 +524,29 @@ export default {
         });
       }
     },
+    getPage: function (page) {
+      if (page > this.paginacion.pageCount) {
+        page = this.paginacion.pageCount;
+      }
+      if (page <= 0) {
+        page = 1;
+      }
+
+      var self = this;
+      self.axios.get("/audioannotations/filter/" + page).then((response) => {
+        self.notas_audioannotations = response.data.itemsList;
+        self.paginacion = response.data.paginator;
+        self.pagina = self.paginacion;
+        //console.log(response.data)
+      });
+    },
   },
   mounted() {
     var self = this;
-    self.axios.get("/audioannotations/filter").then((response) => {
-      self.notas_audioannotations = response.data;
+    self.axios.get("/audioannotations/filter/1").then((response) => {
+      self.notas_audioannotations = response.data.itemsList;
+      self.paginacion = response.data.paginator;
+      self.pagina = self.paginacion;
       //console.log(response.data)
     });
   },
@@ -507,6 +557,28 @@ export default {
     //       bandera_comunidad: false,
     //       bandera_hablantes: false,
     //       bandera_genero: false,
+    isActived: function () {
+      return this.paginacion.currentPage;
+    },
+    pagesNumber: function () {
+      if (!this.paginacion.pageCount) {
+        return [];
+      }
+      var from = this.paginacion.currentPage - 2; //TODO offset
+      if (from < 1) {
+        from = 1;
+      }
+      var to = from + 2 * 2; //todo
+      if (to >= this.paginacion.pageCount) {
+        to = this.paginacion.pageCount;
+      }
+      var pagesArray = [];
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+      return pagesArray;
+    },
     search_titulo: function () {
       if (this.titulo.length > 2) {
         return this.notas_audioannotations.filter((item) =>

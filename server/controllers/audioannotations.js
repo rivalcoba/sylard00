@@ -116,11 +116,55 @@ const indexById = async(req, res) => {
 }
 
 const filtrarAudioannotation = async(req, res) => {
-    //console.log("Aqui")
+    // ,page = Math.max(0, req.param('page'))
+   // var arregloAudio=[]
+    //console.log("Aqui esta el parametro"+req.param('page'))
     // Aqui me quede le quite el await
     try {
-        const audioannotationsDocs = await Audioannotations.find({ user: req.user._id }).populate('user').populate('colection').exec()
-        res.json(audioannotationsDocs);
+    
+    const myCustomLabels = {
+  totalDocs: 'itemCount',
+  docs: 'itemsList',
+  limit: 'perPage',
+  page: 'currentPage',
+  nextPage: 'next',
+  prevPage: 'prev',
+  totalPages: 'pageCount',
+  pagingCounter: 'slNo',
+  meta: 'paginator',
+};
+
+const options = {
+  page: req.params.page,
+  limit: 1,
+  sort: { title: 1 },
+  populate:'colection',
+  customLabels: myCustomLabels,
+};
+    
+    Audioannotations.paginate({},options,function(
+    err,
+    result
+  ){
+    if (err) {
+      console.log("El error esta aqui")
+      console.err(err);
+      return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            err
+        })
+    } else {
+      res.json(result);
+    }
+  })  
+      //const audioannotationsDocs = await Audioannotations.find({ user: req.user._id }).sort({"title":1}).populate('user').populate('colection').exec()
+        
+        //var tempaudio= "{value:333}"
+        //arregloAudio.push(audioannotationsDocs)
+        //arregloAudio.push(tempaudio)
+        //res.json(arregloAudio);
+       // res.json(audioannotationsDocs); //original
+        //checar https://kb.objectrocket.com/mongo-db/mongoose-pagination-with-nodejs-and-mongodb-1304
     } catch (error) {
         return res.status(400).json({
             mensaje: 'Ocurrio un error',

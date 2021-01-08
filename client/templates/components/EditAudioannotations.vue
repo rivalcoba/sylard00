@@ -324,7 +324,7 @@
                        :id="item2"
                        v-bind:style="colorclase('#c60000')"
                         value="#c60000"
-                         class="inp input_flexible_compacto"
+                         class="inp input_flexible"
                          :data-did="'A' + (index+55 ) + '-colorPicker'"
                          name="color"                         
                         @change="seleccion_todos_color($event)"                     
@@ -405,7 +405,7 @@
                       class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion"
                     >
                       <input
-                          class="inp input_flexible_compacto"
+                          class="inp input_flexible"
                         autocomplete="off"
                         name="color"
                         type="text"
