@@ -243,32 +243,57 @@
           </table>
           <div class="contenedor_paginacion">
             <div class="contenedor_input_paginacion">
-              <input class="" id="busqueda_paginacion" type="text" placeholder="Pag." />
-              <button class="btn_lateral_input" for="busqueda_paginacion">
+              <input
+                class=""
+                id="busqueda_paginacion"
+                v-model="pagina_buscar"
+                type="text"
+                placeholder="Pag."
+              />
+              <button
+                class="btn_lateral_input"
+                for="busqueda_paginacion"
+                @click="getPage(pagina_buscar)"
+              >
                 <span class="icono_pagina_busqueda icon-chevron-right"></span>
               </button>
             </div>
             <div class="contenedor_numeros_paginacion">
-              <a class="icono_paginacion" href="#" @click.prevent="getPage(1)"
-                ><span class="icon-first_page"></span
-              ></a>
-              <a class="icono_paginacion" href="#"
-                ><span class="icon-angle-left"></span
+              <a
+                v-if="paginacion.hasPrevPage"
+                class="icono_paginacion"
+                href="#"
+                @click.prevent="getPage(1)"
+                ><span v-if="paginacion.hasPrevPage" class="icon-first_page"></span
               ></a>
               <a
-                v-for="(item, index) in pagesNumber"
-                :key="index"
-                class="numero_paginacion"
+                v-if="paginacion.hasPrevPage"
+                class="icono_paginacion"
                 href="#"
-                >{{ item }}</a
-              >            
-              <a class="numero_paginacion active" href="#">5</a>
-              <a class="ultima_pagina" href="#">...29</a>
-              <a class="icono_paginacion" href="#"
-                ><span class="icon-angle-right"></span
+                @click.prevent="getPage(pagina.prev)"
+                ><span v-if="paginacion.hasPrevPage" class="icon-angle-left"></span
               ></a>
-              <a class="icono_paginacion" href="#" @click.prevent="getPage(pagina.pageCount)"
-                ><span class="icon-last_page"></span
+              <a
+                v-for="(pag, index) in pagesNumber"
+                :key="index"
+                 v-bind:class="[pag== isActived ? 'numero_paginacion active':  'numero_paginacion'  ]" 
+               href="#"
+                @click.prevent="getPage(pag)"
+                >{{ pag }}</a
+              >
+         
+              <!--<a v-if="paginacion.hasNextPage" class="ultima_pagina" href="#" @click.prevent="getPage(pagina.pageCount)"
+                >...{{ paginacion.pageCount }}</a
+              >-->
+              <a class="icono_paginacion" href="#" @click.prevent="getPage(pagina.next)"
+                ><span v-if="paginacion.hasNextPage" class="icon-angle-right"></span
+              ></a>
+              <a
+                v-if="paginacion.hasNextPage"
+                class="icono_paginacion"
+                href="#"
+                @click.prevent="getPage(pagina.pageCount)"
+                ><span v-if="paginacion.hasNextPage" class="icon-last_page"></span
               ></a>
             </div>
           </div>
@@ -306,6 +331,7 @@ export default {
       bandera_comunidad: false,
       bandera_hablantes: false,
       bandera_genero: false,
+      pagina_buscar: "",
 
       valor_buscar: false,
     };
@@ -499,6 +525,13 @@ export default {
       }
     },
     getPage: function (page) {
+      if (page > this.paginacion.pageCount) {
+        page = this.paginacion.pageCount;
+      }
+      if (page <= 0) {
+        page = 1;
+      }
+
       var self = this;
       self.axios.get("/audioannotations/filter/" + page).then((response) => {
         self.notas_audioannotations = response.data.itemsList;
@@ -536,8 +569,8 @@ export default {
         from = 1;
       }
       var to = from + 2 * 2; //todo
-      if (to >= this.paginacion) {
-        to = this.paginacion;
+      if (to >= this.paginacion.pageCount) {
+        to = this.paginacion.pageCount;
       }
       var pagesArray = [];
       while (from <= to) {
