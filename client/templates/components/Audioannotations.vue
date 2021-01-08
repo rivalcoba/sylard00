@@ -84,10 +84,10 @@
 							<tbody v-for="(item2, index) in search_titulo" :key="'item' + index">
     					    <tr>							
 								<td class="titulo_audioanotacion_tabla" data-label="titulo">
-									<a class="link_audioanotacion_tabla_catalogo" href="#">{{ item2.title }}</a><button class="btn_info_coleccion_tabla"><span class="icono_info_coleccion_tabla  icon-info1"></span></button><span class="unique_id" data-label="unique_id">UID:xxx xxxxxxx xx</span>
+									<a class="link_audioanotacion_tabla_catalogo" @click="showAudio">{{ item2.title }}</a><button class="btn_info_coleccion_tabla"><span class="icono_info_coleccion_tabla  icon-info1"></span></button><span class="unique_id" data-label="unique_id">UID:xxx xxxxxxx xx</span>
 								</td>
             					<td class="">
-										<a href="#" class="link_coleccion_tabla_catalogo"><i> Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</i></a>
+										<a @click="showCollect" class="link_coleccion_tabla_catalogo"><i> Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</i></a>
 									<button class="btn_info_coleccion_tabla"><span class="icono_info_coleccion_tabla  icon-info1"></span></button>
 								</td>								 
             					<td class="" data-label="Lengua terminal (glottocode)">
@@ -154,7 +154,7 @@
 
 <script>
 export default {
-  name: "FiltroAudioannotations",
+  name: "Audioannotations",
   props: {
     parametro: Object,
   },
@@ -183,6 +183,14 @@ export default {
     };
   },
   methods: {
+    showAudio(){
+      //Aqui se utiizan las funciones o estilos de SweetAlert
+        this.$swal('Titilo de la audioanotación');
+    },
+    showCollect(){
+      //Aqui se utiizan las funciones o estilos de SweetAlert
+        this.$swal('Titilo de la colección');
+    },
     /*borrarAudioanotacion(audioannotation_id) {
       var currentUrl = window.location.pathname;
       const url = `${currentUrl}/delete/${audioannotation_id}`;
