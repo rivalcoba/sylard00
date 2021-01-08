@@ -63,7 +63,7 @@ b.json(a)}catch(a){b.json(a)}},filtrarAudioannotation=async(a,b)=>{// ,page = Ma
 // var arregloAudio=[]
 //console.log("Aqui esta el parametro"+req.param('page'))
 // Aqui me quede le quite el await
-try{_AudioAnnotations.default.paginate({},{page:1,limit:1,sort:{title:1},populate:"colection",customLabels:{totalDocs:"itemCount",docs:"itemsList",limit:"perPage",page:"currentPage",nextPage:"next",prevPage:"prev",totalPages:"pageCount",pagingCounter:"slNo",meta:"paginator"}},function(a,c){return a?(console.log("El error esta aqui"),console.err(a),b.status(400).json({mensaje:"Ocurrio un error",err:a})):void b.json(c)})}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
+try{const c={page:a.params.page,limit:1,sort:{title:1},populate:"colection",customLabels:{totalDocs:"itemCount",docs:"itemsList",limit:"perPage",page:"currentPage",nextPage:"next",prevPage:"prev",totalPages:"pageCount",pagingCounter:"slNo",meta:"paginator"}};_AudioAnnotations.default.paginate({},c,function(a,c){return a?(console.log("El error esta aqui"),console.err(a),b.status(400).json({mensaje:"Ocurrio un error",err:a})):void b.json(c)})}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
 b.render("audioannotations/create",{title:"Agregar audionotaci\xF3n"})},addAudioannotation=async(a,b)=>{let{eaf:c,// ok
 mp3_url:d,// ok
 duration:e,//ok

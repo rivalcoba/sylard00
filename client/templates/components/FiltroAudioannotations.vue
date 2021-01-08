@@ -249,23 +249,25 @@
               </button>
             </div>
             <div class="contenedor_numeros_paginacion">
-              <a class="icono_paginacion" href="#"
+              <a class="icono_paginacion" href="#" @click.prevent="getPage(1)"
                 ><span class="icon-first_page"></span
               ></a>
               <a class="icono_paginacion" href="#"
                 ><span class="icon-angle-left"></span
               ></a>
-              <a class="numero_paginacion" href="#">2</a>
-              <a class="numero_paginacion" href="#">3</a>
-              <a class="numero_paginacion" href="#">4</a>
+              <a
+                v-for="(item, index) in pagesNumber"
+                :key="index"
+                class="numero_paginacion"
+                href="#"
+                >{{ item }}</a
+              >            
               <a class="numero_paginacion active" href="#">5</a>
-              <a class="numero_paginacion" href="#">6</a>
-              <a class="numero_paginacion" href="#">7</a>
               <a class="ultima_pagina" href="#">...29</a>
               <a class="icono_paginacion" href="#"
                 ><span class="icon-angle-right"></span
               ></a>
-              <a class="icono_paginacion" href="#"
+              <a class="icono_paginacion" href="#" @click.prevent="getPage(pagina.pageCount)"
                 ><span class="icon-last_page"></span
               ></a>
             </div>
@@ -290,7 +292,7 @@ export default {
       otro: "nuevo",
       notas_audioannotations: [],
       paginacion: "",
-      pagina:"",
+      pagina: "",
       titulo: "",
       lengua: "",
       gpo_lengua: "",
@@ -498,10 +500,10 @@ export default {
     },
     getPage: function (page) {
       var self = this;
-      self.axios.get("/audioannotations/filter?page="+page).then((response) => {
+      self.axios.get("/audioannotations/filter/" + page).then((response) => {
         self.notas_audioannotations = response.data.itemsList;
         self.paginacion = response.data.paginator;
-        self.pagina=self.paginacion
+        self.pagina = self.paginacion;
         //console.log(response.data)
       });
     },
@@ -511,7 +513,7 @@ export default {
     self.axios.get("/audioannotations/filter/1").then((response) => {
       self.notas_audioannotations = response.data.itemsList;
       self.paginacion = response.data.paginator;
-      self.pagina=self.paginacion
+      self.pagina = self.paginacion;
       //console.log(response.data)
     });
   },

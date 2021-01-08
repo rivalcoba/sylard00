@@ -135,7 +135,7 @@ const filtrarAudioannotation = async(req, res) => {
 };
 
 const options = {
-  page: 1,
+  page: req.params.page,
   limit: 1,
   sort: { title: 1 },
   populate:'colection',
