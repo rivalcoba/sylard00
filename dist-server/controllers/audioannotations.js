@@ -63,7 +63,7 @@ b.json(a)}catch(a){b.json(a)}},filtrarAudioannotation=async(a,b)=>{// ,page = Ma
 // var arregloAudio=[]
 //console.log("Aqui")
 // Aqui me quede le quite el await
-try{const c=await _AudioAnnotations.default.find({user:a.user._id}).limit(2).sort({title:1}).skip(2).populate("user").populate("colection").exec();//var tempaudio= "{value:333}"
+try{_AudioAnnotations.default.paginate({},{page:1,limit:1,sort:{title:1},populate:"colection",customLabels:{totalDocs:"itemCount",docs:"itemsList",limit:"perPage",page:"currentPage",nextPage:"next",prevPage:"prev",totalPages:"pageCount",pagingCounter:"slNo",meta:"paginator"}},function(a,c){a?console.err(a):b.json(c)});const c=await _AudioAnnotations.default.find({user:a.user._id}).sort({title:1}).populate("user").populate("colection").exec();//var tempaudio= "{value:333}"
 //arregloAudio.push(audioannotationsDocs)
 //arregloAudio.push(tempaudio)
 //res.json(arregloAudio);

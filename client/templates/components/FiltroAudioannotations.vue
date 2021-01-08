@@ -287,6 +287,8 @@ export default {
       result: null,
       otro: "nuevo",
       notas_audioannotations: [],
+      paginacion:"",
+     
       titulo: "",
       lengua: "",
       gpo_lengua: "",
@@ -496,7 +498,9 @@ export default {
   mounted() {
     var self = this;
     self.axios.get("/audioannotations/filter").then((response) => {
-      self.notas_audioannotations = response.data;
+      
+      self.notas_audioannotations=response.data.itemsList
+       self.paginacion=response.data.paginator
       //console.log(response.data)
     });
   },

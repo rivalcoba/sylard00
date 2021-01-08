@@ -116,13 +116,44 @@ const indexById = async(req, res) => {
 }
 
 const filtrarAudioannotation = async(req, res) => {
-    var perPage = 2
     // ,page = Math.max(0, req.param('page'))
    // var arregloAudio=[]
     //console.log("Aqui")
     // Aqui me quede le quite el await
     try {
-        const audioannotationsDocs = await Audioannotations.find({ user: req.user._id }).limit( perPage ).sort({"title":1}).skip(2).populate('user').populate('colection').exec()
+    
+    const myCustomLabels = {
+  totalDocs: 'itemCount',
+  docs: 'itemsList',
+  limit: 'perPage',
+  page: 'currentPage',
+  nextPage: 'next',
+  prevPage: 'prev',
+  totalPages: 'pageCount',
+  pagingCounter: 'slNo',
+  meta: 'paginator',
+};
+
+const options = {
+  page: 1,
+  limit: 1,
+  sort: { title: 1 },
+  populate:'colection',
+  customLabels: myCustomLabels,
+};
+    
+    Audioannotations.paginate({},options,function(
+    err,
+    result
+  ){
+    if (err) {
+      console.err(err);
+    } else {
+      res.json(result);
+    }
+  })  
+      const audioannotationsDocs = await Audioannotations.find({ user: req.user._id }).sort({"title":1}).populate('user').populate('colection').exec()
+        
         //var tempaudio= "{value:333}"
         //arregloAudio.push(audioannotationsDocs)
         //arregloAudio.push(tempaudio)
