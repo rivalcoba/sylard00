@@ -184,12 +184,21 @@ export default {
   },
   methods: {
     showAudio(){
+
       //Aqui se utiizan las funciones o estilos de SweetAlert
-        this.$swal('Titilo de la audioanotación');
+         this.$swal({
+          title: 'Aqui va el titulo de la audioanotación',
+          text: 'Aquí la descripción de la audioanotación',
+          showCloseButton: true,
+        });
     },
     showCollect(){
       //Aqui se utiizan las funciones o estilos de SweetAlert
-        this.$swal('Titilo de la colección');
+        this.$swal({
+          title: 'Aqui va el titulo de la colección',
+          text: 'Aquí la descripción de la colección',
+          showCloseButton: true,
+        });
     },
     /*borrarAudioanotacion(audioannotation_id) {
       var currentUrl = window.location.pathname;
