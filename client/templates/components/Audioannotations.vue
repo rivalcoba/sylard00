@@ -114,15 +114,6 @@
 							        					
         					
 						</table>
-						<!--<p class="primeras_palabras_descripcion_collect"></p>
-									<div id="modal_info" class="modal">
-										<div class="contenido_modal">
-											<span class="icono_cerrar_modal icon-close"></span>
-											<h1><span class="icono_modal"></span></h1>	
-											<h2 class="titulo_modal">Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</h2>
-											<p class=" p_2columnas">Este proyecto representa un esfuerzo por documentar la riqueza florística del municipio de San Luis Acatlán y la nomenclatura, clasificación y uso económico y simbólico de las plantas en las cuatro comunidades de habla mixteco principal dentro de este municipio: Yoloxóchitl, Cuanacaxtitlán, Arroyo Cumiapa y Buena Vista. Incluye la colaboración de botánicos y lingüistas: Kenia Velasco Gutiérrez (botánica) se encargó de la mayor parte de las colectas en las cuatro comunidades; Rey Castillo García (un lingüista y hablante nativo de Yoloxóchitl) se encargó de la escritura tanto de nomenclatura como de transcripción y traducción de audio grabados. Hasta la fecha se ha hecho un total de 1,428 colectas que representan un total de 126 familias y 502 géneros.  Todavía se están identificando las colectas a especies pero se calcula llegar a aproximadamente 900 a 1,000 especies distintas.  La mayoría de las colectas son Magnoliophyta (1,381) pero también incluye Pteridophyta (39), Cycadophyta (3) y Coniferophyta (2). En cuanto a distribución geográfica se llevaron a cabo colectas en las siguientes comunidades: Yoloxóchitl (1,274), Buena Vista (68), Arroyo Cumiapa (43), Cuanacaxtitlán (40) y San Luis Acatlán (3). Se contó con el apoyo de más de 35 asesores locales los principales siendo Esteban Guadalupe Sierra y Constantino Teodoro Bautista de Yoloxóchitl. Para las identificación a especie también apoyaron más de 75 taxónomos expertos.</p>
-										</div>
-									</div>--TODO MODAL PENDIENTE--->
 						<div class="contenedor_paginacion">
 							<div class="contenedor_input_paginacion">
 								<input class="" id="busqueda_paginacion" type="text" placeholder="Pag.">
@@ -390,8 +381,8 @@ export default {
   },
   mounted() {
     var self = this;
-    self.axios.get("/audioannotations/filter").then((response) => {
-      self.notas_audioannotations = response.data;
+    self.axios.get("/audioannotations/filter/1").then((response) => {
+      self.notas_audioannotations = response.data.itemsList;
       //console.log(response.data)
     });
   },

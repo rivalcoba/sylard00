@@ -334,8 +334,8 @@ export default {
   },
   mounted(){
     var self = this;
-    self.axios.get("/audioannotations/filter").then((response) => {
-      self.notas_audioannotations = response.data;
+    self.axios.get("/audioannotations/filter/1").then((response) => {
+      self.notas_audioannotations = response.data.itemsList;
       //console.log(response.data)
     });
   },
