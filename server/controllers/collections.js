@@ -196,11 +196,20 @@ const indexCollection = async(req, res) => {
     return res.json(audioannotations)
     */
     res.render('audioannotations/index', {
-            //enviar
+        //enviar
 
-        })
-        // TODO: Toño / Alberto: Falta Renderear Salida, se debe reutilizar visualizador de TOÑO
-        //res.render('audioannotations/index', {audioannotations})
+    })
+}
+
+//NUEVA API PARA COLLECTIONS
+const api_getCollectionAll = async(req, res) => {
+    let collectionDoc = {}
+    try {
+        collectionDoc = await Collection.find().exec()
+        res.status(200).json(collectionDoc)
+    } catch (error) {
+        res.status(404).json({ error: error.message })
+    }
 }
 
 const api_getCollectionById = async(req, res) => {
@@ -244,4 +253,5 @@ export default {
     // Process Delete Collection
     api_getCollectionById,
     api_getCollectionByUser,
+    api_getCollectionAll
 }

@@ -224,7 +224,7 @@
                       aria-hidden="true"
                       class="btn_accion_tabla"
                       id="coleccion_info"
-                    >
+                    ><!--TODO FALTA INCLUIR EL MODAL DE VUE-->
                       <span class="icono_accion_tabla icon-info1"></span>
                     </button>
                     <a v-bind:href="'/audioannotations/edit/' + item2._id"
@@ -236,6 +236,17 @@
                     <button class="btn_accion_tabla">
                       <span class="icono_accion_tabla icon-launch"></span>
                     </button>
+                     <button class='dropdown-trigger'><span
+                    class="icono_accion_tabla icon-ellipsis-v"></span></button>
+                    <div class=''><!--TODO FALTA PONER LA CLASE MODAL-->
+                  <span class="icono_cerrar_modal_elipsis icon-close "></span>
+                  <div class="contenedor_opciones_elipsis">
+                    <a v-bind:href="'/audioannotations/vuetest/' + item2._id" class="btn_opciones_ellipsis_mis_colecciones"><span
+                        class="icono_opcion_elipsis icon-file_upload"></span> Reproducir Audioanotación</a>
+                    <a v-bind:href="'/audioannotations/edit/' + item2._id" class="btn_opciones_ellipsis_mis_colecciones"><span
+                        class="icono_opcion_elipsis icon-edit"></span> Editar Audioanotación</a>
+                  </div>
+                </div>
                   </div>
                 </td>
               </tr>
