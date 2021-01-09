@@ -220,19 +220,13 @@
                 <td class="td_acciones">
                   <div class="contenedor_botones_accion">
                     <button
-                      onclick="syModals.show('','')"
                       aria-hidden="true"
                       class="btn_accion_tabla"
                       id="coleccion_info"
                     ><!--TODO FALTA INCLUIR EL MODAL DE VUE-->
                       <span class="icono_accion_tabla icon-info1"></span>
                     </button>
-                    <a v-bind:href="'/audioannotations/edit/' + item2._id"
-                      >Editar Audioannotations</a
-                    >
-                    <a v-bind:href="'/audioannotations/vuetest/' + item2._id"
-                      >Reproducir Audioannotations</a
-                    >
+                   
                     <button class="btn_accion_tabla">
                       <span class="icono_accion_tabla icon-launch"></span>
                     </button>
