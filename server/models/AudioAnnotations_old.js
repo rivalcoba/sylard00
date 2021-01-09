@@ -1,9 +1,7 @@
 import mongoose from 'mongoose'
 import { Schema } from 'mongoose'
-const mongoosePaginate = require('mongoose-paginate-v2'); //first step
 
 const AudioAnnotationsSchema = new Schema({
-
   //name: String,
   // a_id:String,
   eaf: String,
@@ -41,5 +39,4 @@ const AudioAnnotationsSchema = new Schema({
 // return await this.updateOne(data).exec()
 //}
 // Compile model from schema
-AudioAnnotationsSchema.plugin(mongoosePaginate); //second step
 export default mongoose.model('AudioAnnotations', AudioAnnotationsSchema)

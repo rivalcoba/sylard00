@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="contenedor_acordeon">
+    <button class="contenedor_acordeon" @click="acordion()">
       <span class="icono_acordeon icon-chevron-down"></span> Opciones visuales
     </button>
     <!-- https://www.youtube.com/watch?v=NPGkoOQPtJs
@@ -9,19 +9,21 @@
       <!--  {{ info }} -->
       <!--AQUÍ INICIA LA PRIMERA PARTE-->
       <div v-if="this.info.data">
+       
         {{ recorrer_todo($attrs.longitud_tiempo) }}
-        <div v-for="(item, index) in options" :key="'item' + index">
-          <div class="contenedor_canal_audioanotacion">
-            <div class="contenedor_canal_padre_compacto">
-              <div class="contenedor_hablante">
+         <div v-if="this.bandera_acordeon">
+          <div v-for="(item, index) in options" :key="'item' + index">
+            <div class="contenedor_canal_audioanotacion">
+               <div class="contenedor_canal_padre_compacto">
+                <div class="contenedor_hablante">
                 <p class="label label_al_100">
                   Canal {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
                 </p>
                 <h5 class="hablante_canal_padre">
                   {{ item.PARTICIPANT }} {{ item.TIER_ID }}
                 </h5>
-              </div>
-              <div class="contenedor_opciones_visuales_canal1_viewer">
+               </div>
+               <div class="contenedor_opciones_visuales_canal1_viewer">
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal"
                 >
@@ -68,7 +70,6 @@
                   <label class="label label_al_100">Color de tipografía</label>
                   <input
                     type="text"
-                    :class="[activeClass]"
                     v-bind:style="colorclase(item.color)"
                     :data-did="'A' + (index + 1) + '-colorPicker'"
                     name="color"
@@ -89,30 +90,29 @@
               </div>
             </div>
           </div>
-        </div>
+         </div>
+         </div>
 
-        <!--AQUI APARECE LA TABLA DE QUIENES ESTAN HABLANDO--->
-        <hr />
-        <div
+         <!--AQUI APARECE LA TABLA DE QUIENES ESTAN HABLANDO--->
+         <hr />
+         <div
           class="contenedor_one_line_display"
-          v-for="(item, index) in otro"
-          :key="index"
-        >
+          v-for="(item2, index2) in otro"
+          :key="index2"
+         >
           <table class="table_one_line">
-            <div v-if="options[index].Visible">
-              <div v-if="options[index].value == 'A'">
+            <div v-if="options[index2].Visible">
+              <div v-if="options[index2].value == 'A'">
                 <!--{{computedColor=options[index].color}}-->
-                <div v-for="(item, index) in otro[index]" :key="index">
+                <div v-for="(item, index) in otro[index2]" :key="index">
                   <!--AQUÍ EMPIEZA LA LLAMADA HACIA EL HABLANTE PRINCIPAL-->
                   <div v-if="index == 0">
                     <p class="canal_1_hablante_one_line_display_item">
-                      <span class="siglas_canal_item"
-                        >{{ item.TIER_ID[index] }} :
-                      </span>
+                      <span class="siglas_canal_item">{{ siglas(item.TIER_ID[index]," ") }}: {{item.TIER_ID[index]}} </span>
+                       <!--    <span class="siglas_canal_item">{{ item.TIER_ID[index] }} {{index2}} : </span>-->
                     </p>
                   </div>
                   <!--AQUÍ TERMINA LA LLAMADA HACIA EL HABLANTE PRINCIPAL-->
-
                   <div
                     v-if="
                       $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
@@ -120,9 +120,10 @@
                     "
                   >
                     <p class="canal_1_hablante_one_line_display_item">
-                      <span v-bind:style="{ color: options[index].color }">
+                     <span v-bind:style="{ color: options[index2].color }">
                         {{ item.ANNOTATION_VALUE }}
                       </span>
+                       <!-- <span> {{ item.ANNOTATION_VALUE }} - {{ index2 }} </span>-->
                       <!--TODO AQUI ME QUEDE HACE FALTA CORREGIR EL SALTO DE LINEA EN LOS HABLANTES-->
                     </p>
                   </div>
@@ -130,7 +131,8 @@
               </div>
             </div>
           </table>
-        </div>
+        
+      </div>
       </div>
       <p v-else>loading.....</p>
       <!--ESTA ES LA TERCERA TABLA DE QUIENES ESTAN HABLANDO-->
@@ -208,67 +210,84 @@ props:['tiempo_parametro','tiempo_longitud'],
 
 <script>
 export default {
-  name: 'LecturaEAF',
+  name: "LecturaEAF",
 
   data() {
     return {
       info: [],
       audioannotations_info: [],
       otro: [],
-      selected: 'A',
-      tier_temp: '',
+      selected: "A",
+      tier_temp: "",
       options: [],
       results: [],
       tempdata: [],
       contador: 0,
       audioannotations: [],
-      mp3Audio: '',
-      tituloAudioannotation: '',
-      ruta: 'otro valor',
-      color_tier: '#000000',
-    }
+      mp3Audio: "",
+      tituloAudioannotation: "",
+      ruta: "otro valor",
+      color_tier: "#000000",
+      bandera_acordeon:false
+    };
   },
   computed: {
     get: () => {},
     set: () => {},
   },
   methods: {
+    acordion: function() {
+      if (this.bandera_acordeon) {
+        this.bandera_acordeon=false
+
+      } else 
+      this.bandera_acordeon=true
+    },
+    siglas: function (cadenaADividir,separador) {
+      var arrayDeCadenas = cadenaADividir.split(separador);
+      var siglasvalor=""
+      for (var i=0; i < arrayDeCadenas.length; i++) {
+        //document.write(arrayDeCadenas[i] + " / ");
+        //console.log("Valor "+arrayDeCadenas[i][0])
+        siglasvalor+=arrayDeCadenas[i][0]
+   }
+     //console.log("Valor de siglas "+siglasvalor)
+      return siglasvalor
+    },
+
     colorclase: function (color) {
-      return 'border-right: 2rem solid ' + color
+      return "border-right: 2rem solid " + color;
     },
     quitarcolor_id: function (e) {
-      var color_name = e
+      var color_name = e;
       // console.log("---------original-----------------------");
       // console.log(color_name);
       // console.log("----------sin color_----------------------");
       // console.log(color_name.replace("color_", ""));
-      return color_name.replace('color_', '')
+      return color_name.replace("color_", "");
     },
     cambiarcolor: function (e) {
-      console.log('-------------cambiar color-------------------')
+      console.log("-------------cambiar color-------------------");
       console.log(
-        'valor original es ' +
-          this.options.find(
-            (x) => x.TIER_ID == this.quitarcolor_id(e.target.id)
-          ).color
-      )
+        "valor original es " +
+          this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color
+      );
 
-      console.log('---------Valor-----------------------')
-      console.log(e.target.value)
-      console.log('--------id------------------------')
-      console.log(e.target.id)
-      this.options.find(
-        (x) => x.TIER_ID == this.quitarcolor_id(e.target.id)
-      ).color = e.target.value
-      return e.target.value
+      console.log("---------Valor-----------------------");
+      console.log(e.target.value);
+      console.log("--------id------------------------");
+      console.log(e.target.id);
+      this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color =
+        e.target.value;
+      return e.target.value;
     },
     metodocolor: function (parametro, e) {
       //this.quitarcolor_id(event.target.id)
 
-      var valorpaleta, valorcolor
-      valorcolor = 'A' + (parametro + 1) + '-colorPicker'
-      valorpaleta = 'A' + (parametro + 1) + '-colorPalette'
-      showColorPalette(valorcolor, valorpaleta)
+      var valorpaleta, valorcolor;
+      valorcolor = "A" + (parametro + 1) + "-colorPicker";
+      valorpaleta = "A" + (parametro + 1) + "-colorPalette";
+      showColorPalette(valorcolor, valorpaleta);
       // console.log(
       //   "este es el parametro del colorpicker " +
       //     parametro +
@@ -282,19 +301,19 @@ export default {
     },
     metodoblur: function (parametro, e) {
       //"hideColorPalette('A1-colorPicker','A1-colorPalette')"
-      var valorpaleta, valorcolor
-      valorcolor = 'A' + (parametro + 1) + '-colorPicker'
-      valorpaleta = 'A' + (parametro + 1) + '-colorPalette'
-      hideColorPalette(valorcolor, valorpaleta)
+      var valorpaleta, valorcolor;
+      valorcolor = "A" + (parametro + 1) + "-colorPicker";
+      valorpaleta = "A" + (parametro + 1) + "-colorPalette";
+      hideColorPalette(valorcolor, valorpaleta);
       console.log(
-        'este es el parametro del blur ' +
+        "este es el parametro del blur " +
           parametro +
-          ' p ' +
+          " p " +
           valorpaleta +
-          ' c ' +
+          " c " +
           valorcolor
-      )
-      this.cambiarcolor(e)
+      );
+      this.cambiarcolor(e);
     },
 
     traer_color: function (tier_id) {
@@ -302,17 +321,17 @@ export default {
 
       //this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
       //return color aqui me quede trayendo el color de audioannotations por id
-      var valor_color = this.options.find((x) => x.TIER_ID == tier_id).color
-      return valor_color
+      var valor_color = this.options.find((x) => x.TIER_ID == tier_id).color;
+      return valor_color;
     },
     mensaje_al_player: function (tiempo) {
-      console.log('Se envia un msg al player ' + tiempo)
-      this.$emit('mensaje_scroll', tiempo)
+      console.log("Se envia un msg al player " + tiempo);
+      this.$emit("mensaje_scroll", tiempo);
       //this.$emit('nombre_mp3',this.mp3Audio)
     },
     recorrer_todo: function (longitud) {
       for (var i = 0; i <= longitud; i++) {
-        this.recorrer(i)
+        this.recorrer(i);
       }
       //this.recorrer(7)
       //+ console.log("Este el  ultimo contador" + this.contador)
@@ -333,10 +352,10 @@ export default {
             (x.TIME_SLOT_REF1 == item || x.TIME_SLOT_REF2 == item) &&
             this.results.indexOf(x) === -1
           ) {
-            this.results.push(x)
+            this.results.push(x);
             //aqui me quede arreglando el multilinea
             //checar https://stackoverflow.com/questions/7858385/how-to-add-values-to-an-array-of-objects-dynamically-in-javascript
-            this.tempdata[this.contador] = {}
+            this.tempdata[this.contador] = {};
             this.tempdata[this.contador] = {
               TIER_ID: this.otro[indice][0].TIER_ID[0],
               ANNOTATION_ID: x.ANNOTATION_ID,
@@ -344,14 +363,14 @@ export default {
               TIME_SLOT_REF1: x.TIME_SLOT_REF1,
               TIME_SLOT_REF2: x.TIME_SLOT_REF2,
               // valor: "valor " + indice
-            }
+            };
 
             //+ console.log("+++++rrrrr+++" + this.otro[indice][0].TIER_ID)
             //+ console.log("anotatio id" + x.ANNOTATION_ID)
             //+ console.log("value " + x.ANNOTATION_VALUE)
             //+ console.log("value TIME_SLOT_REF1 y 2:" + x.TIME_SLOT_REF1 + " " + x.TIME_SLOT_REF2)
             //+ console.log("-----Este es el contador" + this.contador + "-----")
-            this.contador++
+            this.contador++;
             //this.results.push(tempdata)
             //console.log("el valor " + this.otro[indice][0].TIER_ID[0])
 
@@ -360,7 +379,7 @@ export default {
           //if ((x.TIME_SLOT_REF2 <= item)) results.push(x)
 
           //}
-        })
+        });
       }
 
       //this.results.push(data)
@@ -372,16 +391,16 @@ export default {
       //+console.log("--Aqui--" + item)
       var valor = this.otro[1].find(
         ((x) => x.TIME_SLOT_REF1 >= item) && ((x) => x.TIME_SLOT_REF2 <= item)
-      )
+      );
       //var valor = this.otro[1].find((x) => x.TIME_SLOT_REF1 >= item);
       //+console.log("--Aqui--" + valor)
-      return valor
+      return valor;
     },
     buscar_option_value: function (item) {
-      var valor = this.options.find((x) => x.TIER_ID == item)
+      var valor = this.options.find((x) => x.TIER_ID == item);
       //console.log("Aqui "+item)
       //console.log("otro "+valor)
-      return valor
+      return valor;
     },
     seleccion_onoff: function (e) {
       //+console.log(e.target.value);
@@ -389,9 +408,9 @@ export default {
       //+console.log(e.target.checked);
       if (e.target.checked) {
         //+console.log("si esta en on");
-        this.options.find((x) => x.TIER_ID == e.target.id).Visible = true
+        this.options.find((x) => x.TIER_ID == e.target.id).Visible = true;
       } else {
-        this.options.find((x) => x.TIER_ID == e.target.id).Visible = false
+        this.options.find((x) => x.TIER_ID == e.target.id).Visible = false;
         //+console.log("si lo off");
       }
       //+  console.log(
@@ -412,12 +431,10 @@ export default {
       // console.log(arreglo_ref_tiempo.find(x=>x.ANNOTATION_ID===ts).TIME_SLOT_REF1)
       //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
       if (
-        this.options.find((x) => x.TIER_ID == event.target.id).value !=
-        event.target.value
+        this.options.find((x) => x.TIER_ID == event.target.id).value != event.target.value
       ) {
         //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
-        this.options.find((x) => x.TIER_ID == event.target.id).value =
-          event.target.value
+        this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
       }
       //+   console.log(
       //+      "Cambio el valor a " +
@@ -427,10 +444,10 @@ export default {
     }, //audioannotations
     leerAudioannotationsMp3: function () {
       // var i=0;
-      console.log('esta leyendo la mp3')
+      console.log("esta leyendo la mp3");
 
-      this.mp3Audio = this.audioannotations_info.data.mp3_url
-      console.log(this.mp3Audio)
+      this.mp3Audio = this.audioannotations_info.data.mp3_url;
+      console.log(this.mp3Audio);
       //return true;
     },
     leerTierBD: function () {
@@ -442,18 +459,18 @@ export default {
         // console.log(this.audioannotations_info.data.TIER[i].Visible)
         // console.log(this.audioannotations_info.data.TIER[i].color)
         // console.log(this.audioannotations_info.data.TIER[i].value)
-        this.audioannotations.push(this.audioannotations_info.data.TIER[i])
+        this.audioannotations.push(this.audioannotations_info.data.TIER[i]);
       }
     },
     leerTier: function () {
       // var i=0;
-      console.log('esta leyendo la tier')
+      console.log("esta leyendo la tier");
       for (var i in this.info.data.tier) {
         //+   console.log("aqui si entro 1");
         //console.log(this.info.data.tier[i]);
         //+   console.log("aqui si entro 2");
         //7/08/2020 aqui no puedo quitar infinite loop
-        this.otro.push(this.info.data.tier[i])
+        this.otro.push(this.info.data.tier[i]);
         //console.log("aqui si entro 3")
         //+    console.log("Tier num " + i);
         // console.log(this.info.data.ANNOTATION_DOCUMENT.tier[1]);
@@ -465,11 +482,11 @@ export default {
           _id: j,
           TIER_ID: this.otro[j][0].TIER_ID[0],
           PARTICIPANT: this.otro[j][0].PARTICIPANT[0],
-          value: 'A',
+          value: "A",
           Visible: true,
-          color: '#000000',
-          LINGUISTIC_TYPE_REF: 'Transcripción',
-        })
+          color: "#000000",
+          LINGUISTIC_TYPE_REF: "Transcripción",
+        });
       }
       // for (var j in this.audioannotations) {
       //   //Agrega al vector options para mostrar una linea o multiples
@@ -490,11 +507,11 @@ export default {
     },
 
     saveFileJSon: function () {
-      const data = JSON.stringify(this.otro)
-      window.localStorage.setItem('otro', data)
+      const data = JSON.stringify(this.otro);
+      window.localStorage.setItem("otro", data);
       //console.log(JSON.parse(window.localStorage.getItem('info')))
       //console.log("se creo el json");
-      return 'ok'
+      return "ok";
     },
     time_order_sub: function (text) {
       //       var parser, xmlDoc;
@@ -502,13 +519,13 @@ export default {
       //xmlDoc = parser.parseFromString(text,"text/xml");
       //document.getElementById("demo").innerHTML =
       //xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
-      return text
+      return text;
     },
     add: function (valor) {
       this.otro.push({
-        first: '1',
-        lastn: '3',
-      })
+        first: "1",
+        lastn: "3",
+      });
       //+   console.log(valor);
       //+   console.log(1);
     },
@@ -525,19 +542,19 @@ export default {
     //this.leerTier();
   },
   created() {
-    var currentUrl = window.location.pathname
-    this.ruta = currentUrl
+    var currentUrl = window.location.pathname;
+    this.ruta = currentUrl;
     //console.log(currentUrl);
-    var ultimoSlash = this.ruta.lastIndexOf('/')
-    this.ruta = this.ruta.substring(ultimoSlash + 1)
+    var ultimoSlash = this.ruta.lastIndexOf("/");
+    this.ruta = this.ruta.substring(ultimoSlash + 1);
   },
   computed: {
     computedColor: {
       set(value) {
-        this.color_tier = value
+        this.color_tier = value;
       },
       get() {
-        return this.color_tier
+        return this.color_tier;
       },
     },
   },
@@ -550,21 +567,21 @@ export default {
 
     //this.axios.get('/eaf/asset01.eaf')
     //       .then(response =>  (this.info = response)          );
-    var self = this
-    this.axios.get('/eaf/tmp/Nuevoeaf.json').then((response) => {
-      this.info = response
-      self.leerTier()
-    })
-    this.axios.get('/audioannotations/index/' + self.ruta).then((response) => {
-      this.audioannotations_info = response
+    var self = this;
+    this.axios.get("/eaf/tmp/Nuevoeaf.json").then((response) => {
+      this.info = response;
+      self.leerTier();
+    });
+    this.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
+      this.audioannotations_info = response;
       //falta hacer algo self.leerTier();
-      self.leerAudioannotationsMp3()
-      self.$root.$emit('valor_mp3', self.mp3Audio)
-      self.leerTierBD()
-      self.tituloAudioannotation = self.audioannotations_info.data.title
-      self.$root.$emit('tituloAudioannotation', self.tituloAudioannotation)
-      self.options = self.audioannotations
-    })
+      self.leerAudioannotationsMp3();
+      self.$root.$emit("valor_mp3", self.mp3Audio);
+      self.leerTierBD();
+      self.tituloAudioannotation = self.audioannotations_info.data.title;
+      self.$root.$emit("tituloAudioannotation", self.tituloAudioannotation);
+      self.options = self.audioannotations;
+    });
     //this.saveFileJSon();
     //console.log("Aqui se esta añadiendo al json");
     //this.add("hola");
@@ -574,5 +591,5 @@ export default {
     // la_colorScript.setAttribute('src', 'https://cdn.glitch.com/120f087f-0e29-4163-9f0b-687d6b040d37%2Fla_color_picker.js')
     // document.head.appendChild(la_colorScript)
   },
-}
+};
 </script>

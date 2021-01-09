@@ -78,25 +78,16 @@
               <label class="label label_al_100">
                 Lengua terminal:
               </label>
-              <select  id="language" class="input_flexible" onfocus="pageScripts.disableLanguageGroupBox()"  onblur="pageScripts.enableLangGroup()" value="{{language}}" >
-                <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}
-                 {{#each languages}}
-             <option 
-             id = '{{_id}}'
-             data-id = '{{_id}}'
-             data-name = "{{name}}"
-            value = "{{name}} | {{gid}}">{{name}} | {{gid}}
-            {{/each}}
-              </select>
-             {{!-- <input 
+             <input 
               id="language" 
               type="text" 
+              placeholder="{{translation.SELECT_AN_OPTION}}"
               class="input_flexible"
               onfocus="pageScripts.disableLanguageGroupBox()"
               onblur="pageScripts.enableLangGroup()"
               value="{{language}}" 
               list="langlist" 
-               />--}}
+               />
               <div class="contenedor_icono_correcto_input">
                 <p>
                   <span class="icono_correcto_input icon-check_circle"></span>
@@ -107,7 +98,7 @@
                   <span class="icono_error_input icon-error"></span>
                 </p>
               </div>
-              {{!--<datalist id="langlist">
+              <datalist id="langlist">
              {{#each languages}}
              <option 
              id = '{{_id}}'
@@ -115,26 +106,23 @@
              data-name = "{{name}}"
             value = "{{name}} | {{gid}}">
             {{/each}}
-            </datalist>--}}
+            </datalist>
             </div>
             <div class="modulo_inputs_lengua">
               <label class="label label_al_100">
                 Grupo de lenguas:
               </label>
-              <select disabled name="langGroup" id="langGroup" class="input_flexible" onfocus="pageScripts.enableAddButton()">
-                <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}</option>
-
-              </select>
-              {{!--<input 
+              <input 
               disabled 
               id="langGroup" 
               name="langGroup"
+              placeholder="{{translation.SELECT_AN_OPTION}}"
               list="groupLanglist"
               type="text"
               onfocus="pageScripts.enableAddButton()"
               value="{{langGroup}}" 
               class="input_flexible" 
-              />--}}
+              />
               <div class="contenedor_icono_correcto_input">
                 <p>
                   <span class="icono_correcto_input icon-check_circle"></span>
@@ -145,8 +133,8 @@
                   <span class="icono_error_input icon-error"></span>
                 </p>
               </div>
-              {{!-- <datalist id="groupLanglist">
-             </datalist>--}}
+              <datalist id="groupLanglist">
+             </datalist>
             </div>
             <div class="modulo_boton_lengua">
               <button class="btn_lateral_input_agregar_lengua" disabled/>
@@ -193,6 +181,7 @@
                 </label>
                 <input 
                 type="text" 
+                placeholder="{{translation.SELECT_AN_OPTION}}"
                 class="input_flexible"
                 onblur="pageScripts.fillMunicipalitiesDataList()"
                 onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()"
@@ -224,6 +213,7 @@
                 </label>
                 <input 
                 disabled 
+                placeholder="{{translation.SELECT_AN_OPTION}}"
                 onblur="pageScripts.fillLocalitiesDataList()" 
                 onfocus="pageScripts.disableLocality()"
                 type="text" list="municipalities" id="municipality"
@@ -246,6 +236,7 @@
                   Localidad:
                 </label>
                 <input  
+                placeholder="{{translation.SELECT_AN_OPTION}}"
                 disabled
                 type="text" 
                 class="input_flexible" 
@@ -320,11 +311,11 @@
             <label class="label" for="licencia">
               Licencia del contenido
             </label>
-            <select name="license" id="license" required/>
-               <option value="" disabled selected>{{translation.SELECT_AN_OPTION}}</option>
-               <option value="CC-BY-NC-SA">CC-BY-NC-SA
-               <option value="CC BY-SA">CC BY-SA
-            </select>
+            <input type="text" 
+            placeholder="{{translation.SELECT_AN_OPTION}}" 
+            name="license" 
+            id="license"
+            list="licenseType">
             <div class="contenedor_icono_correcto_input">
               <p>
                 <span class="icono_correcto_input icon-check_circle"></span>
@@ -335,6 +326,10 @@
                 <span class="icono_error_input icon-error"></span>
               </p>
             </div>
+            <datalist id="licenseType">
+        <option value="CC-BY-NC-SA">
+        <option value="CC BY-SA">
+      </datalist>
           </div>
           <div class="contenedor_botones">
             <button

@@ -102,9 +102,9 @@ router.get(
 )
 
 router.get(
-  '/filter',
-  ensureAuthenticated,
-  ensureColabUser,
+  '/filter/:page',
+   ensureAuthenticated,
+   ensureColabUser,
   audioannotationsController.filtrarAudioannotation
 )
 
