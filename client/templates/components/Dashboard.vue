@@ -62,7 +62,7 @@
         					</thead>
     					    <tr v-for="(item2, index) in search_titulo" :key="'item' + index">
             					<td>
-									<strong><i> {{ item2.description }}</i></strong><p class="primeras_palabras_descripcion_collect"></p>
+									<strong><i> {{ item2.name }}</i></strong><p class="primeras_palabras_descripcion_collect"></p>
 								</td>
             					<td class="" data-label="Lengua terminal (glottocode)">
 									yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
@@ -228,7 +228,7 @@ pagina_buscar: "",
         this.notas_audioannotations = response.data;
         //console.log(response.data)
       });
-    },
+    },*/
     ordenar_descendente: function () {
       //falta ordenar
       if (this.bandera_titulo) {
@@ -368,7 +368,7 @@ pagina_buscar: "",
           return 0;
         });
       }
-    },*/
+    },
     getPage: function (page) {
       if (page > this.paginacion.pageCount) {
         page = this.paginacion.pageCount;

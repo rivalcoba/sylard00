@@ -217,7 +217,7 @@ const api_getCollectionAll = async(req, res) => {
 };
 const options = {
   page: req.params.page,
-  limit: 1,
+  limit: 5,
   sort: { title: 1 },
   populate:'colection',
   customLabels: myCustomLabels,
