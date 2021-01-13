@@ -72,8 +72,10 @@
 								<th class="cabezal_columnas_th">
 									<div class="contenedor_etiquetas_barras_busqueda" >
 										<label class="label label_junto_flechas">Gpos. de lenguas</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+										<button   id="lengua_on"
+                    @click="ordenar_ascendente('gpo_lenguas_on')" class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button   id="lengua_on"
+                    @click="ordenar_descendente('gpo_lenguas_off')" class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
 									</div>
                                     <input class="input_busqueda" type="text" id="gpo_lengua" name="gpo_lengua" v-model="gpo_lengua" placeholder="Búsqueda"/>
 								</th>
@@ -357,7 +359,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_gpo_lengua) {
+      } else if (e=="gpo_lenguas_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
             return -1;
@@ -430,7 +432,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_gpo_lengua) {
+      } else if (e=="gpo_lenguas_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
             return 1;
