@@ -84,13 +84,21 @@
                 />
               </th>
 
-              <th class="cabezal_columnas_th">
+             <th class="cabezal_columnas_th">
                 <div class="contenedor_etiquetas_barras_busqueda">
                   <label class="label label_junto_flechas">Lengua terminal</label>
-                  <button class="flecha_orden_ascendente active">
+                  <button
+                    id="lengua_on"
+                    @click="ordenar_ascendente('lengua_on')"
+                    class="flecha_orden_ascendente active"
+                  >
                     <span class="icon-arrow-up"></span>
                   </button>
-                  <button class="flecha_orden_descendente">
+                  <button
+                    id="lengua_off"
+                    @click="ordenar_descendente('lengua_off')"
+                    class="flecha_orden_descendente"
+                  >
                     <span class="icon-arrow-down"></span>
                   </button>
                 </div>
@@ -106,10 +114,18 @@
               <th class="cabezal_columnas_th">
                 <div class="contenedor_etiquetas_barras_busqueda">
                   <label class="label label_junto_flechas">Comunidad</label>
-                  <button class="flecha_orden_ascendente">
+                  <button
+                    id="comunidad_on"
+                    @click="ordenar_ascendente('comunidad_on')"
+                    class="flecha_orden_ascendente"
+                  >
                     <span class="icon-arrow-up"></span>
                   </button>
-                  <button class="flecha_orden_descendente">
+                  <button
+                    id="comunidad_off"
+                    @click="ordenar_descendente('comunidad_off')"
+                    class="flecha_orden_descendente"
+                  >
                     <span class="icon-arrow-down"></span>
                   </button>
                 </div>
