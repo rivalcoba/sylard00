@@ -427,7 +427,7 @@ export default {
     },
   ordenar_descendente: function (e) {
       //falta ordenar
-      console.log("******************Esta entrando ordenar_descendente ******** "+e+" ************ "+this.bandera_titulo)
+      console.log("******************Esta entrando ordenar_descendente ******** "+e+" ************ "+e)
       if (e=="titulo_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.title > b.title) {
@@ -473,6 +473,7 @@ export default {
           return 0;
         });
       } else if (e=="genero_off") {
+        console.log("Entrando en el off")
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return -1;
@@ -498,7 +499,7 @@ export default {
     },
     ordenar_ascendente: function (e) {
       //falta ordenar
-      console.log("******************Esta entrando ordenar_ascendente ******** "+e+" ************ "+this.bandera_titulo)
+      console.log("******************Esta entrando ordenar_ascendente ******** "+e+" ************ "+e)
 
       if (e=="titulo_on") {
         return this.notas_audioannotations.sort(function (a, b) {
@@ -533,7 +534,8 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (e="comunidad_on") {
+      } else if (e=="comunidad_on") {
+         console.log("Entrando comunidad_on en el on")
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.location.Nom_Loc > b.location.Nom_Loc) {
             return 1;
@@ -545,6 +547,7 @@ export default {
           return 0;
         });
       } else if (e=="genero_on") {
+          console.log("Entrando genero en el on")
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return 1;
