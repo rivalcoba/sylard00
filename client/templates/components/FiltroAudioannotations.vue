@@ -63,10 +63,14 @@
               <th class="cabezal_columnas_th" id="th_titulo_por_audioanotacion">
                 <div class="contenedor_etiquetas_barras_busqueda">
                   <label class="label label_junto_flechas">Título</label>
-                  <button class="flecha_orden_ascendente">
+                     <button
+                    id="titulo_on"
+                    @click="ordenar_ascendente('titulo_on')"
+                    class="flecha_orden_ascendente"
+                  >
                     <span class="icon-arrow-up"></span></button
                   ><!--PENDIENTE TOÑO LA INSTRUCCIÓN DE VUE V-MODEL NO FUNCIONA PARA BUTTONS-->
-                  <button class="flecha_orden_descendente">
+                  <button id="titulo_off" @click="ordenar_descendente('titulo_off')" class="flecha_orden_descendente">
                     <span class="icon-arrow-down"></span>
                   </button>
                 </div>
@@ -389,9 +393,10 @@ export default {
         //console.log(response.data)
       });
     },
-    ordenar_descendente: function () {
+  ordenar_descendente: function (e) {
       //falta ordenar
-      if (this.bandera_titulo) {
+      console.log("******************Esta entrando ordenar_descendente ******** "+e+" ************ "+this.bandera_titulo)
+      if (e=="titulo_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.title > b.title) {
             return -1;
@@ -402,7 +407,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_lengua) {
+      } else if (e=="lengua_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.language.name > b.gid.language.name) {
             return -1;
@@ -424,7 +429,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_comunidad) {
+      } else if (e=="comunidad_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.location.Nom_Loc > b.location.Nom_Loc) {
             return -1;
@@ -435,7 +440,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_genero) {
+      } else if (e=="genero_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return -1;
@@ -446,7 +451,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_hablantes) {
+      } else if (e=="hablantes_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
             return -1;
@@ -459,9 +464,11 @@ export default {
         });
       }
     },
-    ordenar_ascendente: function () {
+    ordenar_ascendente: function (e) {
       //falta ordenar
-      if (this.bandera_titulo) {
+      console.log("******************Esta entrando ordenar_ascendente ******** "+e+" ************ "+this.bandera_titulo)
+
+      if (e=="titulo_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.title > b.title) {
             return 1;
@@ -472,7 +479,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_lengua) {
+      } else if (e=="lengua_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.language.name > b.gid.language.name) {
             return 1;
@@ -494,7 +501,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_comunidad) {
+      } else if (e="comunidad_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.location.Nom_Loc > b.location.Nom_Loc) {
             return 1;
@@ -505,7 +512,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_genero) {
+      } else if (e=="genero_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return 1;
@@ -516,7 +523,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_hablantes) {
+      } else if (e=="hablantes_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
             return 1;
