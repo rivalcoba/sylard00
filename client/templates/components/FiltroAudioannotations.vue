@@ -138,13 +138,21 @@
                   placeholder="Búsqueda"
                 />
               </th>
-              <th class="cabezal_columnas_th" id="th_hablantes">
+          <th class="cabezal_columnas_th" id="th_hablantes">
                 <div class="contenedor_etiquetas_barras_busqueda">
                   <label class="label label_junto_flechas">Hablantes</label>
-                  <button class="flecha_orden_ascendente">
+                  <button
+                    id="hablantes_on"
+                    @click="ordenar_ascendente('hablantes_on')"
+                    class="flecha_orden_ascendente"
+                  >
                     <span class="icon-arrow-up"></span>
                   </button>
-                  <button class="flecha_orden_descendente">
+                  <button
+                    id="hablantes_off"
+                    @click="ordenar_descendente('hablantes_off')"
+                    class="flecha_orden_descendente"
+                  >
                     <span class="icon-arrow-down"></span>
                   </button>
                 </div>
