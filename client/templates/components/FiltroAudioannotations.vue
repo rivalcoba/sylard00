@@ -168,10 +168,18 @@
               <th class="cabezal_columnas_th">
                 <div class="contenedor_etiquetas_barras_busqueda">
                   <label class="label label_junto_flechas">Género y duracion</label>
-                  <button class="flecha_orden_ascendente">
+                  <button
+                    id="genero_on"
+                    @click="ordenar_ascendente('genero_on')"
+                    class="flecha_orden_ascendente"
+                  >
                     <span class="icon-arrow-up"></span>
                   </button>
-                  <button class="flecha_orden_descendente">
+                  <button
+                    id="genero_off"
+                    @click="ordenar_descendente('genero_off')"
+                    class="flecha_orden_descendente"
+                  >
                     <span class="icon-arrow-down"></span>
                   </button>
                 </div>
