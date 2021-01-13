@@ -69,7 +69,8 @@
                     class="flecha_orden_ascendente"
                   >
                     <span class="icon-arrow-up"></span></button
-                  ><!--PENDIENTE TOÑO LA INSTRUCCIÓN DE VUE V-MODEL NO FUNCIONA PARA BUTTONS-->
+                  >
+                  <!--PENDIENTE TOÑO LA INSTRUCCIÓN DE VUE V-MODEL NO FUNCIONA PARA BUTTONS-->
                   <button id="titulo_off" @click="ordenar_descendente('titulo_off')" class="flecha_orden_descendente">
                     <span class="icon-arrow-down"></span>
                   </button>

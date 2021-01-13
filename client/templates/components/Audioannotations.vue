@@ -25,11 +25,20 @@
 						<table class="tabla_catalogo_audianotaciones">
        					 	<thead>
 								<th class="cabezal_columnas_th" id="th_titulo_por_audioanotacion">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Título</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+								    <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">Título</label>
+                     <button
+                    id="titulo_on"
+                    @click="ordenar_ascendente('titulo_on')"
+                    class="flecha_orden_ascendente"
+                  >
+                    <span class="icon-arrow-up"></span></button
+                  >
+                  <!--PENDIENTE TOÑO LA INSTRUCCIÓN DE VUE V-MODEL NO FUNCIONA PARA BUTTONS-->
+                  <button id="titulo_off" @click="ordenar_descendente('titulo_off')" class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
 									<input id="titulo" name="titulo" v-model="titulo" placeholder="Búsqueda" class="input_busqueda" type="search"/>
 								</th>
                 				<th class="cabezal_columnas_th" id="th_coleccion_por_audioanotacion">
@@ -41,11 +50,23 @@
 									<input class="input_busqueda" type="search" placeholder="Búsqueda">
 								</th>
 								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Lengua terminal</label>
-										<button class="flecha_orden_ascendente active"><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+							   <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">Lengua terminal</label>
+                  <button
+                    id="lengua_on"
+                    @click="ordenar_ascendente('lengua_on')"
+                    class="flecha_orden_ascendente active"
+                  >
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button
+                    id="lengua_off"
+                    @click="ordenar_descendente('lengua_off')"
+                    class="flecha_orden_descendente"
+                  >
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
                                     <input class="input_busqueda" type="text" id="lengua" name="lengua" v-model="lengua" placeholder="Busqueda"/>
 								</th>
 								<th class="cabezal_columnas_th">
@@ -57,11 +78,23 @@
                                     <input class="input_busqueda" type="text" id="gpo_lengua" name="gpo_lengua" v-model="gpo_lengua" placeholder="Búsqueda"/>
 								</th>
 								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Comunidad</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+								    <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">Comunidad</label>
+                  <button
+                    id="comunidad_on"
+                    @click="ordenar_ascendente('comunidad_on')"
+                    class="flecha_orden_ascendente"
+                  >
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button
+                    id="comunidad_off"
+                    @click="ordenar_descendente('comunidad_off')"
+                    class="flecha_orden_descendente"
+                  >
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
                                      <input class="input_busqueda" type="text" id="comunidad" name="comunidad" v-model="comunidad" placeholder="Búsqueda"/>
 								</th>
 								<th class="cabezal_columnas_th" id="th_hablantes">
@@ -275,9 +308,10 @@ export default {
         //console.log(response.data)
       });
     },
-    ordenar_descendente: function () {
+  ordenar_descendente: function (e) {
       //falta ordenar
-      if (this.bandera_titulo) {
+      console.log("******************Esta entrando ordenar_descendente ******** "+e+" ************ "+e)
+      if (e=="titulo_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.title > b.title) {
             return -1;
@@ -288,7 +322,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_lengua) {
+      } else if (e=="lengua_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.language.name > b.gid.language.name) {
             return -1;
@@ -310,7 +344,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_comunidad) {
+      } else if (e=="comunidad_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.location.Nom_Loc > b.location.Nom_Loc) {
             return -1;
@@ -321,7 +355,8 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_genero) {
+      } else if (e=="genero_off") {
+        console.log("Entrando en el off")
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return -1;
@@ -332,7 +367,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_hablantes) {
+      } else if (e=="hablantes_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
             return -1;
@@ -345,9 +380,11 @@ export default {
         });
       }
     },
-    ordenar_ascendente: function () {
+    ordenar_ascendente: function (e) {
       //falta ordenar
-      if (this.bandera_titulo) {
+      console.log("******************Esta entrando ordenar_ascendente ******** "+e+" ************ "+e)
+
+      if (e=="titulo_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.title > b.title) {
             return 1;
@@ -358,7 +395,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_lengua) {
+      } else if (e=="lengua_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.language.name > b.gid.language.name) {
             return 1;
@@ -380,7 +417,8 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_comunidad) {
+      } else if (e=="comunidad_on") {
+         console.log("Entrando comunidad_on en el on")
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.location.Nom_Loc > b.location.Nom_Loc) {
             return 1;
@@ -391,7 +429,8 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_genero) {
+      } else if (e=="genero_on") {
+          console.log("Entrando genero en el on")
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return 1;
@@ -402,7 +441,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_hablantes) {
+      } else if (e=="hablantes_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
             return 1;
