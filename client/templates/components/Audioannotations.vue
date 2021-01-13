@@ -146,7 +146,7 @@
 									<a class="link_audioanotacion_tabla_catalogo" @click="showAudio">{{ item2.title }}</a><button class="btn_info_coleccion_tabla"><span class="icono_info_coleccion_tabla  icon-info1"></span></button><span class="unique_id" data-label="unique_id">UID:xxx xxxxxxx xx</span>
 								</td>
             					<td class="">
-										<a @click="showCollect" class="link_coleccion_tabla_catalogo"><i> Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</i></a>
+										<a @click="showCollect" class="link_coleccion_tabla_catalogo"><i>{{arreglo_coleccion[index]}} </i></a>
 									<button class="btn_info_coleccion_tabla"><span class="icono_info_coleccion_tabla  icon-info1"></span></button>
 								</td>								 
             					<td class="" data-label="Lengua terminal (glottocode)">
@@ -267,9 +267,24 @@ export default {
       bandera_genero: false,
       pagina_buscar: "",
       valor_buscar: false,
+      coleccion:"",
+      arreglo_coleccion:[]
+    
     };
   },
   methods: {
+    get_nameColeccion(id){
+      var name;
+       //console.log("la ruta"+"collections/api/read/"+id)
+      this.axios.get("collections/api/read/"+id).then((response) => {
+      //this.coleccion = response.data
+      //console.log(response.data.name)
+      name=response.data.name
+      this.arreglo_coleccion.push(response.data.name)
+      });
+      //console.log("este es el nombre de la coleccion "+ this.coleccion.name)
+      return  name;
+    },
     showAudio(){
 
       //Aqui se utiizan las funciones o estilos de SweetAlert
@@ -331,6 +346,7 @@ export default {
     getTodos() {
       this.axios.get("audioannotations/filter").then((response) => {
         this.notas_audioannotations = response.data;
+        
         //console.log(response.data)
       });
     },
@@ -494,8 +510,16 @@ export default {
         self.notas_audioannotations = response.data.itemsList;
         self.paginacion = response.data.paginator;
         self.pagina = self.paginacion;
-        //console.log(response.data)
+           });
+           self.notas_audioannotations .forEach(element => {
+         //console.log("la coleccion "+element.collection_id)
+        this.get_nameColeccion(element.collection_id)
       });
+
+
+
+           console.log("se longitud2 ")
+        console.log(this.arreglo_coleccion.length) 
     },
   
   },
@@ -505,6 +529,19 @@ export default {
       self.notas_audioannotations = response.data.itemsList;
        self.paginacion = response.data.paginator;
       self.pagina = self.paginacion;
+             self.notas_audioannotations .forEach(element => {
+         //console.log("la coleccion "+element.collection_id)
+        this.get_nameColeccion(element.collection_id)
+      });
+        console.log("se longitud ")
+        console.log(this.arreglo_coleccion.length)
+      // this.arreglo_coleccion.forEach(element => {
+      //   console.log("indice "+element.index + "valor "+element)
+      //   self.notas_audioannotations[element.index].push(element)
+      // });
+      // console.log("se vacia ")
+      
+
       //console.log(response.data)
     });
   },
