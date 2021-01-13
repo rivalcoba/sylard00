@@ -55,7 +55,7 @@
                   <button
                     id="lengua_on"
                     @click="ordenar_ascendente('lengua_on')"
-                    class="flecha_orden_ascendente active"
+                    class="flecha_orden_ascendente "
                   >
                     <span class="icon-arrow-up"></span>
                   </button>
@@ -98,19 +98,43 @@
                                      <input class="input_busqueda" type="text" id="comunidad" name="comunidad" v-model="comunidad" placeholder="Búsqueda"/>
 								</th>
 								<th class="cabezal_columnas_th" id="th_hablantes">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Hablantes</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+								  <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">Hablantes</label>
+                  <button
+                    id="hablantes_on"
+                    @click="ordenar_ascendente('hablantes_on')"
+                    class="flecha_orden_ascendente"
+                  >
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button
+                    id="hablantes_off"
+                    @click="ordenar_descendente('hablantes_off')"
+                    class="flecha_orden_descendente"
+                  >
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
                                     <input class="input_busqueda" type="text" id="hablantes" name="hablantes" v-model="hablantes" placeholder="Búsqueda"/>
 								</th>
 								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Género y duracion</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+								   <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">Género y duracion</label>
+                  <button
+                    id="genero_on"
+                    @click="ordenar_ascendente('genero_on')"
+                    class="flecha_orden_ascendente"
+                  >
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button
+                    id="genero_off"
+                    @click="ordenar_descendente('genero_off')"
+                    class="flecha_orden_descendente"
+                  >
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
                                      <input class="input_busqueda" type="text" id="genero" name="genero" v-model="genero" placeholder="Búsqueda"/>
 								</th>
         					</thead>
