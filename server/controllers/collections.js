@@ -201,15 +201,57 @@ const indexCollection = async(req, res) => {
     })
 }
 
-//NUEVA API PARA COLLECTIONS
+//NUEVA API PARA COLLECTIONS with PAG
 const api_getCollectionAll = async(req, res) => {
-    let collectionDoc = {}
-    try {
-        collectionDoc = await Collection.find().exec()
-        res.status(200).json(collectionDoc)
-    } catch (error) {
-        res.status(404).json({ error: error.message })
+    //let collectionDoc = {}
+     const myCustomLabels = {
+  totalDocs: 'itemCount',
+  docs: 'itemsList',
+  limit: 'perPage',
+  page: 'currentPage',
+  nextPage: 'next',
+  prevPage: 'prev',
+  totalPages: 'pageCount',
+  pagingCounter: 'slNo',
+  meta: 'paginator',
+};
+const options = {
+  page: req.params.page,
+  limit: 5,
+  sort: { title: 1 },
+  populate:'colection',
+  customLabels: myCustomLabels,
+};
+try {
+    Collection.paginate({},options,function(
+    err,
+    result
+  ){
+    if (err) {
+      console.log("El error esta aqui")
+      console.err(err);
+      return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            err
+        })
+    } else {
+      res.json(result);
     }
+  }) 
+}
+ catch (error) {
+        return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            error
+        })
+    }
+
+    // try {
+    //     collectionDoc = await Collection.find().exec()
+    //     res.status(200).json(collectionDoc)
+    // } catch (error) {
+    //     res.status(404).json({ error: error.message })
+    // }
 }
 
 const api_getCollectionById = async(req, res) => {

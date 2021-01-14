@@ -113,10 +113,6 @@ const indexById = async(req, res) => {
 }
 
 const filtrarAudioannotation = async(req, res) => {
-    // ,page = Math.max(0, req.param('page'))
-   // var arregloAudio=[]
-    //console.log("Aqui esta el parametro"+req.param('page'))
-    // Aqui me quede le quite el await
     try {
     
     const myCustomLabels = {
@@ -133,7 +129,7 @@ const filtrarAudioannotation = async(req, res) => {
 
 const options = {
   page: req.params.page,
-  limit: 1,
+  limit: 2,
   sort: { title: 1 },
   populate:'colection',
   customLabels: myCustomLabels,
@@ -154,13 +150,6 @@ const options = {
       res.json(result);
     }
   })  
-      //const audioannotationsDocs = await Audioannotations.find({ user: req.user._id }).sort({"title":1}).populate('user').populate('colection').exec()
-        
-        //var tempaudio= "{value:333}"
-        //arregloAudio.push(audioannotationsDocs)
-        //arregloAudio.push(tempaudio)
-        //res.json(arregloAudio);
-       // res.json(audioannotationsDocs); //original
         //checar https://kb.objectrocket.com/mongo-db/mongoose-pagination-with-nodejs-and-mongodb-1304
     } catch (error) {
         return res.status(400).json({

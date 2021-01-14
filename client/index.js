@@ -95,7 +95,7 @@ if (window.location.pathname == `/audioannotations/uploadfile`) {
     window.pageScripts = createAudioAnnotationsScripts
 }
 
-if (window.location.pathname == `/audioannotations` || window.location.pathname == '/dashboard' || window.location.pathname.match(/\/collections\/index\//)) {
+if (window.location.pathname == `/audioannotations` ) {
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("FiltroAudioannotations", FiltroAudioannotations);
