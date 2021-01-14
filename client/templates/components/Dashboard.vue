@@ -64,8 +64,9 @@
             					<td>
 									<strong><i> {{ item2.name }}</i></strong><p class="primeras_palabras_descripcion_collect"></p>
 								</td>
-            					<td class="" data-label="Lengua terminal (glottocode)">
-									yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
+            					<td v-for="(item3, index3) in item2.languages" :key="'item3' + index3" class="" data-label="Lengua terminal (glottocode)">
+									 {{ item2.languages[index3].language.gid
+                    }}<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">{{ item2.languages[index3].language.name }}</span><br>
 								</td>
             					<td class="" data-label="Grupo de lenguas (glottocode)">
 									amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span><br>amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span>
@@ -428,7 +429,7 @@ pagina_buscar: "",
     search_titulo: function () {
       if (this.titulo.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.title.toLowerCase().includes(this.titulo.toLowerCase())
+          item.name.toLowerCase().includes(this.titulo.toLowerCase())
         );
       } else if (this.lengua.length > 2) {
         return this.notas_audioannotations.filter((item) =>
