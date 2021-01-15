@@ -25,11 +25,20 @@
 						<table class="tabla_catalogo_audianotaciones">
        					 	<thead>
 								<th class="cabezal_columnas_th" id="th_titulo_por_audioanotacion">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Título</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+								    <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">Título</label>
+                     <button
+                    id="titulo_on"
+                    @click="ordenar_ascendente('titulo_on')"
+                    class="flecha_orden_ascendente"
+                  >
+                    <span class="icon-arrow-up"></span></button
+                  >
+                  <!--PENDIENTE TOÑO LA INSTRUCCIÓN DE VUE V-MODEL NO FUNCIONA PARA BUTTONS-->
+                  <button id="titulo_off" @click="ordenar_descendente('titulo_off')" class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
 									<input id="titulo" name="titulo" v-model="titulo" placeholder="Búsqueda" class="input_busqueda" type="search"/>
 								</th>
                 				<th class="cabezal_columnas_th" id="th_coleccion_por_audioanotacion">
@@ -41,43 +50,93 @@
 									<input class="input_busqueda" type="search" placeholder="Búsqueda">
 								</th>
 								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Lengua terminal</label>
-										<button class="flecha_orden_ascendente active"><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+							   <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">Lengua terminal</label>
+                  <button
+                    id="lengua_on"
+                    @click="ordenar_ascendente('lengua_on')"
+                    class="flecha_orden_ascendente "
+                  >
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button
+                    id="lengua_off"
+                    @click="ordenar_descendente('lengua_off')"
+                    class="flecha_orden_descendente"
+                  >
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
                                     <input class="input_busqueda" type="text" id="lengua" name="lengua" v-model="lengua" placeholder="Busqueda"/>
 								</th>
 								<th class="cabezal_columnas_th">
 									<div class="contenedor_etiquetas_barras_busqueda" >
 										<label class="label label_junto_flechas">Gpos. de lenguas</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+										<button   id="lengua_on"
+                    @click="ordenar_ascendente('gpo_lenguas_on')" class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
+										<button   id="lengua_on"
+                    @click="ordenar_descendente('gpo_lenguas_off')" class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
 									</div>
                                     <input class="input_busqueda" type="text" id="gpo_lengua" name="gpo_lengua" v-model="gpo_lengua" placeholder="Búsqueda"/>
 								</th>
 								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Comunidad</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+								    <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">Comunidad</label>
+                  <button
+                    id="comunidad_on"
+                    @click="ordenar_ascendente('comunidad_on')"
+                    class="flecha_orden_ascendente"
+                  >
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button
+                    id="comunidad_off"
+                    @click="ordenar_descendente('comunidad_off')"
+                    class="flecha_orden_descendente"
+                  >
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
                                      <input class="input_busqueda" type="text" id="comunidad" name="comunidad" v-model="comunidad" placeholder="Búsqueda"/>
 								</th>
 								<th class="cabezal_columnas_th" id="th_hablantes">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Hablantes</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+								  <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">Hablantes</label>
+                  <button
+                    id="hablantes_on"
+                    @click="ordenar_ascendente('hablantes_on')"
+                    class="flecha_orden_ascendente"
+                  >
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button
+                    id="hablantes_off"
+                    @click="ordenar_descendente('hablantes_off')"
+                    class="flecha_orden_descendente"
+                  >
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
                                     <input class="input_busqueda" type="text" id="hablantes" name="hablantes" v-model="hablantes" placeholder="Búsqueda"/>
 								</th>
 								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Género y duracion</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+								   <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">Género y duracion</label>
+                  <button
+                    id="genero_on"
+                    @click="ordenar_ascendente('genero_on')"
+                    class="flecha_orden_ascendente"
+                  >
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button
+                    id="genero_off"
+                    @click="ordenar_descendente('genero_off')"
+                    class="flecha_orden_descendente"
+                  >
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
                                      <input class="input_busqueda" type="text" id="genero" name="genero" v-model="genero" placeholder="Búsqueda"/>
 								</th>
         					</thead>
@@ -87,7 +146,7 @@
 									<a class="link_audioanotacion_tabla_catalogo" @click="showAudio">{{ item2.title }}</a><button class="btn_info_coleccion_tabla"><span class="icono_info_coleccion_tabla  icon-info1"></span></button><span class="unique_id" data-label="unique_id">UID:xxx xxxxxxx xx</span>
 								</td>
             					<td class="">
-										<a @click="showCollect" class="link_coleccion_tabla_catalogo"><i> Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de San Luis Acatlán</i></a>
+										<a @click="showCollect" class="link_coleccion_tabla_catalogo"><i>{{arreglo_coleccion[index]}} </i></a>
 									<button class="btn_info_coleccion_tabla"><span class="icono_info_coleccion_tabla  icon-info1"></span></button>
 								</td>								 
             					<td class="" data-label="Lengua terminal (glottocode)">
@@ -114,27 +173,62 @@
 							        					
         					
 						</table>
-						<div class="contenedor_paginacion">
-							<div class="contenedor_input_paginacion">
-								<input class="" id="busqueda_paginacion" type="text" placeholder="Pag.">
-								<button class="btn_lateral_input" for="busqueda_paginacion"><span class="icono_pagina_busqueda  icon-chevron-right"></span></button>
-
-							</div>
-							<div class="contenedor_numeros_paginacion">
-								<a class="icono_paginacion" href="#"><span class="icon-first_page"></span></a>
-								<a class="icono_paginacion" href="#"><span class="icon-angle-left"></span></a>
-								<a class="numero_paginacion" href="#">2</a>
-								<a class="numero_paginacion" href="#">3</a>
-								<a class="numero_paginacion" href="#">4</a>
-								<a class="numero_paginacion active" href="#">5</a>
-								<a class="numero_paginacion" href="#">6</a>
-								<a class="numero_paginacion" href="#">7</a>
-								<a class="ultima_pagina" href="#">...29</a>
-								<a class="icono_paginacion" href="#"><span class="icon-angle-right"></span></a>
-								<a class="icono_paginacion" href="#"><span class=" icon-last_page"></span></a>
-							</div>
-							
-						</div>	
+			  <div class="contenedor_paginacion">
+            <div class="contenedor_input_paginacion">
+              <input
+                class=""
+                id="busqueda_paginacion"
+                v-model="pagina_buscar"
+                type="text"
+                placeholder="Pag."
+              />
+              <button
+                class="btn_lateral_input"
+                for="busqueda_paginacion"
+                @click="getPage(pagina_buscar)"
+              >
+                <span class="icono_pagina_busqueda icon-chevron-right"></span>
+              </button>
+            </div>
+            <div class="contenedor_numeros_paginacion">
+              <a
+                v-if="paginacion.hasPrevPage"
+                class="icono_paginacion"
+                href="#"
+                @click.prevent="getPage(1)"
+                ><span v-if="paginacion.hasPrevPage" class="icon-first_page"></span
+              ></a>
+              <a
+                v-if="paginacion.hasPrevPage"
+                class="icono_paginacion"
+                href="#"
+                @click.prevent="getPage(pagina.prev)"
+                ><span v-if="paginacion.hasPrevPage" class="icon-angle-left"></span
+              ></a>
+              <a
+                v-for="(pag, index) in pagesNumber"
+                :key="index"
+                 v-bind:class="[pag== isActived ? 'numero_paginacion active':  'numero_paginacion'  ]" 
+               href="#"
+                @click.prevent="getPage(pag)"
+                >{{ pag }}</a
+              >
+         
+              <!--<a v-if="paginacion.hasNextPage" class="ultima_pagina" href="#" @click.prevent="getPage(pagina.pageCount)"
+                >...{{ paginacion.pageCount }}</a
+              >-->
+              <a class="icono_paginacion" href="#" @click.prevent="getPage(pagina.next)"
+                ><span v-if="paginacion.hasNextPage" class="icon-angle-right"></span
+              ></a>
+              <a
+                v-if="paginacion.hasNextPage"
+                class="icono_paginacion"
+                href="#"
+                @click.prevent="getPage(pagina.pageCount)"
+                ><span v-if="paginacion.hasNextPage" class="icon-last_page"></span
+              ></a>
+            </div>
+          </div>
 					</div>
 				</div>
 				
@@ -156,6 +250,8 @@ export default {
       result: null,
       otro: "nuevo",
       notas_audioannotations: [],
+       paginacion: "",
+      pagina: "",
       titulo: "",
       lengua: "",
       gpo_lengua: "",
@@ -169,11 +265,26 @@ export default {
       bandera_comunidad: false,
       bandera_hablantes: false,
       bandera_genero: false,
-
+      pagina_buscar: "",
       valor_buscar: false,
+      coleccion:"",
+      arreglo_coleccion:[]
+    
     };
   },
   methods: {
+    get_nameColeccion(id){
+      var name;
+       //console.log("la ruta"+"collections/api/read/"+id)
+      this.axios.get("collections/api/read/"+id).then((response) => {
+      //this.coleccion = response.data
+      //console.log(response.data.name)
+      name=response.data.name
+      this.arreglo_coleccion.push(response.data.name)
+      });
+      //console.log("este es el nombre de la coleccion "+ this.coleccion.name)
+      return  name;
+    },
     showAudio(){
 
       //Aqui se utiizan las funciones o estilos de SweetAlert
@@ -235,12 +346,14 @@ export default {
     getTodos() {
       this.axios.get("audioannotations/filter").then((response) => {
         this.notas_audioannotations = response.data;
+        
         //console.log(response.data)
       });
     },
-    ordenar_descendente: function () {
+  ordenar_descendente: function (e) {
       //falta ordenar
-      if (this.bandera_titulo) {
+      console.log("******************Esta entrando ordenar_descendente ******** "+e+" ************ "+e)
+      if (e=="titulo_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.title > b.title) {
             return -1;
@@ -251,7 +364,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_lengua) {
+      } else if (e=="lengua_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.language.name > b.gid.language.name) {
             return -1;
@@ -262,7 +375,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_gpo_lengua) {
+      } else if (e=="gpo_lenguas_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
             return -1;
@@ -273,7 +386,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_comunidad) {
+      } else if (e=="comunidad_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.location.Nom_Loc > b.location.Nom_Loc) {
             return -1;
@@ -284,7 +397,8 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_genero) {
+      } else if (e=="genero_off") {
+        console.log("Entrando en el off")
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return -1;
@@ -295,7 +409,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_hablantes) {
+      } else if (e=="hablantes_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
             return -1;
@@ -308,9 +422,11 @@ export default {
         });
       }
     },
-    ordenar_ascendente: function () {
+    ordenar_ascendente: function (e) {
       //falta ordenar
-      if (this.bandera_titulo) {
+      console.log("******************Esta entrando ordenar_ascendente ******** "+e+" ************ "+e)
+
+      if (e=="titulo_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.title > b.title) {
             return 1;
@@ -321,7 +437,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_lengua) {
+      } else if (e=="lengua_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.language.name > b.gid.language.name) {
             return 1;
@@ -332,7 +448,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_gpo_lengua) {
+      } else if (e=="gpo_lenguas_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
             return 1;
@@ -343,7 +459,8 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_comunidad) {
+      } else if (e=="comunidad_on") {
+         console.log("Entrando comunidad_on en el on")
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.location.Nom_Loc > b.location.Nom_Loc) {
             return 1;
@@ -354,7 +471,8 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_genero) {
+      } else if (e=="genero_on") {
+          console.log("Entrando genero en el on")
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return 1;
@@ -365,7 +483,7 @@ export default {
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_hablantes) {
+      } else if (e=="hablantes_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
             return 1;
@@ -378,11 +496,52 @@ export default {
         });
       }
     },
+
+    getPage: function (page) {
+      if (page > this.paginacion.pageCount) {
+        page = this.paginacion.pageCount;
+      }
+      if (page <= 0) {
+        page = 1;
+      }
+
+      var self = this;
+      self.axios.get("/audioannotations/filter/" + page).then((response) => {
+        self.notas_audioannotations = response.data.itemsList;
+        self.paginacion = response.data.paginator;
+        self.pagina = self.paginacion;
+           });
+           self.notas_audioannotations .forEach(element => {
+         //console.log("la coleccion "+element.collection_id)
+        this.get_nameColeccion(element.collection_id)
+      });
+
+
+
+           console.log("se longitud2 ")
+        console.log(this.arreglo_coleccion.length) 
+    },
+  
   },
   mounted() {
     var self = this;
     self.axios.get("/audioannotations/filter/1").then((response) => {
       self.notas_audioannotations = response.data.itemsList;
+       self.paginacion = response.data.paginator;
+      self.pagina = self.paginacion;
+             self.notas_audioannotations .forEach(element => {
+         //console.log("la coleccion "+element.collection_id)
+        this.get_nameColeccion(element.collection_id)
+      });
+        console.log("se longitud ")
+        console.log(this.arreglo_coleccion.length)
+      // this.arreglo_coleccion.forEach(element => {
+      //   console.log("indice "+element.index + "valor "+element)
+      //   self.notas_audioannotations[element.index].push(element)
+      // });
+      // console.log("se vacia ")
+      
+
       //console.log(response.data)
     });
   },
@@ -393,6 +552,28 @@ export default {
     //       bandera_comunidad: false,
     //       bandera_hablantes: false,
     //       bandera_genero: false,
+    isActived: function () {
+      return this.paginacion.currentPage;
+    },
+    pagesNumber: function () {
+      if (!this.paginacion.pageCount) {
+        return [];
+      }
+      var from = this.paginacion.currentPage - 2; //TODO offset
+      if (from < 1) {
+        from = 1;
+      }
+      var to = from + 2 * 2; //todo
+      if (to >= this.paginacion.pageCount) {
+        to = this.paginacion.pageCount;
+      }
+      var pagesArray = [];
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+      return pagesArray;
+    },
     search_titulo: function () {
       if (this.titulo.length > 2) {
         return this.notas_audioannotations.filter((item) =>

@@ -27,7 +27,8 @@ const UserSchema = new Schema({
     },
     spokenLanguages:[{
         name: String,
-        gid: String
+        gid: String,
+        iso639P3code: String
     }],
     email: {
         type: String,

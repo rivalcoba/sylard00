@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { Schema } from 'mongoose'
+const mongoosePaginate = require('mongoose-paginate-v2'); //first step
 
 const CollectionSchema = new Schema({
   name: { type: String, required: true },
@@ -60,5 +61,5 @@ const CollectionSchema = new Schema({
 CollectionSchema.methods.updateCollection= async function(data){
   return await this.updateOne(data).exec()
 }
-
+CollectionSchema.plugin(mongoosePaginate); //second step
 export default mongoose.model('Collection', CollectionSchema)
