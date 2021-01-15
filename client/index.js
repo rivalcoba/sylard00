@@ -35,9 +35,11 @@ import EditAudioannotations from "@client/templates/components/EditAudioannotati
 import Audioannotations from "@client/templates/components/Audioannotations.vue";
 //AQUÍ SE IMPORTAN LAS NUEVAS VISTAS PARA EL DASHBOARD DE COLLECTIONS
 import Dashboard from "@client/templates/components/Dashboard.vue";
+import IndexCollections from "@client/templates/components/IndexCollections.vue";
 import App3 from '@client/templates/main3.vue'
 import App4 from '@client/templates/main4.vue'
 import App5 from '@client/templates/main5.vue'
+import App6 from '@client/templates/main6.vue'
 //AQUÍ TERMINAN
 import colorPicker from '@chelpers/colorPicker'
 import VueSweetalert2 from 'vue-sweetalert2';
@@ -81,8 +83,8 @@ if (window.location.pathname.match(/\/audioannotations\/vuetest\//)) {
 //if(window.location.pathname == `/audioannotations/create`){  
 if (window.location.pathname == `/audioannotations/uploadfile`) {
     // window.Vue = Vue
-    Vue.use(VueAxios, axios,colorPicker);
-    Vue.component("LecturaTierEAF", LecturaTierEAF,);
+    Vue.use(VueAxios, axios, colorPicker);
+    Vue.component("LecturaTierEAF", LecturaTierEAF, );
     window.vm = new Vue({
         el: '#app2',
         render: h => h(App2)
@@ -135,9 +137,22 @@ if (window.location.pathname == '/audioannotation') {
     })
 }
 //AQUI TERMINA DASHBOARD
+//Inicia Index para colecciones
+if (window.location.pathname == '/collections') {
+    // window.Vue = Vue
+    Vue.use(VueAxios, axios);
+    Vue.component("IndexCollections", IndexCollections);
+    window.vm = new Vue({
+        el: '#app6',
+        render: h => h(App6)
+            //aqui
+            //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+            //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
+    })
+}
 if (window.location.pathname.match(/\/audioannotations\/edit\//)) {
     // window.Vue = Vue
-    Vue.use(VueAxios, axios,colorPicker);
+    Vue.use(VueAxios, axios, colorPicker);
     Vue.component("EditAudioannotations", EditAudioannotations);
     window.vm = new Vue({
         el: '#EditAudioannotations',
