@@ -292,10 +292,10 @@ pagina_buscar: "",
         });
       } else if (e == "gpo_lenguas_off") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
+          if (a.languages[0].LanguageGroup.name > b.languages[0].LanguageGroup.name) {
             return -1;
           }
-          if (a.gid.LanguageGroup.name < b.gid.LanguageGroup.name) {
+          if (a.languages[0].LanguageGroup.name < b.languages[0].LanguageGroup.name) {
             return 1;
           }
           // a must be equal to b
@@ -303,10 +303,10 @@ pagina_buscar: "",
         });
       } else if (e == "comunidad_off") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.location.Nom_Loc > b.location.Nom_Loc) {
+          if (a.localities[0].Nom_Loc > b.localities[0].Nom_Loc) {
             return -1;
           }
-          if (a.location.Nom_Loc < b.location.Nom_Loc) {
+          if (a.localities[0].Nom_Loc < b.localities[0].Nom_Loc) {
             return 1;
           }
           // a must be equal to b
@@ -370,10 +370,10 @@ pagina_buscar: "",
         });
       } else if (e == "gpo_lenguas_on") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
+          if (a.languages[0].LanguageGroup.name > b.languages[0].LanguageGroup.name) {
             return 1;
           }
-          if (a.gid.LanguageGroup.name < b.gid.LanguageGroup.name) {
+          if (a.languages[0].LanguageGroup.name < b.languages[0].LanguageGroup.name) {
             return -1;
           }
           // a must be equal to b
@@ -382,10 +382,10 @@ pagina_buscar: "",
       } else if (e == "comunidad_on") {
         console.log("Entrando comunidad_on en el on");
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.location.Nom_Loc > b.location.Nom_Loc) {
+          if (a.localities[0].Nom_Loc > b.localities[0].Nom_Loc) {
             return 1;
           }
-          if (a.location.Nom_Loc < b.location.Nom_Loc) {
+          if (a.localities[0].Nom_Loc < b.localities[0].Nom_Loc) {
             return -1;
           }
           // a must be equal to b
