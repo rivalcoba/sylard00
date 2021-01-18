@@ -31,14 +31,33 @@
 									</div>
 									<input id="titulo" name="titulo" v-model="titulo" class="input_busqueda" type="search" placeholder="Búsqueda">
 								</th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Lengua terminal</label>
-										<button class="flecha_orden_ascendente active"><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
+							  <th class="cabezal_columnas_th">
+                  <div class="contenedor_etiquetas_barras_busqueda">
+                    <label class="label label_junto_flechas">Lengua terminal</label>
+                    <button
+                      id="lengua_on"
+                      @click="ordenar_ascendente('lengua_on')"
+                      class="flecha_orden_ascendente"
+                    >
+                      <span class="icon-arrow-up"></span>
+                    </button>
+                    <button
+                      id="lengua_off"
+                      @click="ordenar_descendente('lengua_off')"
+                      class="flecha_orden_descendente"
+                    >
+                      <span class="icon-arrow-down"></span>
+                    </button>
+                  </div>
+                  <input
+                    class="input_busqueda"
+                    type="text"
+                    id="lengua"
+                    name="lengua"
+                    v-model="lengua"
+                    placeholder="Busqueda"
+                  />
+                </th>
 								<th class="cabezal_columnas_th">
 									<div class="contenedor_etiquetas_barras_busqueda" >
 										<label class="label label_junto_flechas">Gpos. de lenguas</label>
@@ -240,6 +259,7 @@ pagina_buscar: "",
     },*/
     ordenar_descendente: function () {
       //falta ordenar
+        console.log("desc lengua "+this.bandera_lengua)
       if (this.bandera_titulo) {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.title > b.title) {
@@ -252,6 +272,7 @@ pagina_buscar: "",
           return 0;
         });
       } else if (this.bandera_lengua) {
+ 
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.language.name > b.gid.language.name) {
             return -1;
@@ -310,6 +331,7 @@ pagina_buscar: "",
     },
     ordenar_ascendente: function () {
       //falta ordenar
+              console.log("asc lengua "+this.bandera_lengua)
       if (this.bandera_titulo) {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.title > b.title) {
@@ -322,6 +344,7 @@ pagina_buscar: "",
           return 0;
         });
       } else if (this.bandera_lengua) {
+
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.language.name > b.gid.language.name) {
             return 1;
@@ -441,7 +464,7 @@ pagina_buscar: "",
         );
       } else if (this.lengua.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.gid.language.name.toLowerCase().includes(this.lengua.toLowerCase())
+          item.languages[0].language.name.toLowerCase().includes(this.lengua.toLowerCase())
         );
       } else if (this.gpo_lengua.length > 2) {
         return this.notas_audioannotations.filter((item) =>
