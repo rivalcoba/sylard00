@@ -85,14 +85,33 @@
                     placeholder="Búsqueda"
                   />
                 </th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Comunidades</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
+							   <th class="cabezal_columnas_th">
+                  <div class="contenedor_etiquetas_barras_busqueda">
+                    <label class="label label_junto_flechas">Comunidad</label>
+                    <button
+                      id="comunidad_on"
+                      @click="ordenar_ascendente('comunidad_on')"
+                      class="flecha_orden_ascendente"
+                    >
+                      <span class="icon-arrow-up"></span>
+                    </button>
+                    <button
+                      id="comunidad_off"
+                      @click="ordenar_descendente('comunidad_off')"
+                      class="flecha_orden_descendente"
+                    >
+                      <span class="icon-arrow-down"></span>
+                    </button>
+                  </div>
+                  <input
+                    class="input_busqueda"
+                    type="text"
+                    id="comunidad"
+                    name="comunidad"
+                    v-model="comunidad"
+                    placeholder="Búsqueda"
+                  />
+                </th>
 								<th class="" id="th_acciones">
 									
 								</th>
@@ -493,7 +512,7 @@ pagina_buscar: "",
         );
       } else if (this.comunidad.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.location.Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())
+          item.localities[0].Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())
         );
       } else if (this.hablantes.length > 2) {
         return this.notas_audioannotations.filter((item) =>
