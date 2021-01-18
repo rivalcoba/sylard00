@@ -58,14 +58,33 @@
                     placeholder="Busqueda"
                   />
                 </th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Gpos. de lenguas</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
+							<th class="cabezal_columnas_th">
+                  <div class="contenedor_etiquetas_barras_busqueda">
+                    <label class="label label_junto_flechas">Gpos. de lenguas</label>
+                    <button
+                      id="lengua_on"
+                      @click="ordenar_ascendente('gpo_lenguas_on')"
+                      class="flecha_orden_ascendente"
+                    >
+                      <span class="icon-arrow-up"></span>
+                    </button>
+                    <button
+                      id="lengua_on"
+                      @click="ordenar_descendente('gpo_lenguas_off')"
+                      class="flecha_orden_descendente"
+                    >
+                      <span class="icon-arrow-down"></span>
+                    </button>
+                  </div>
+                  <input
+                    class="input_busqueda"
+                    type="text"
+                    id="gpo_lengua"
+                    name="gpo_lengua"
+                    v-model="gpo_lengua"
+                    placeholder="Búsqueda"
+                  />
+                </th>
 								<th class="cabezal_columnas_th">
 									<div class="contenedor_etiquetas_barras_busqueda" >
 										<label class="label label_junto_flechas">Comunidades</label>
@@ -468,7 +487,7 @@ pagina_buscar: "",
         );
       } else if (this.gpo_lengua.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.gid.LanguageGroup.name
+          item.languages[0].LanguageGroup.name
             .toLowerCase()
             .includes(this.gpo_lengua.toLowerCase())
         );
