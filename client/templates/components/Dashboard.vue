@@ -24,11 +24,24 @@
 						<table class="tabla_catalogo_colecciones">
        					 	<thead>
                 				<th class="cabezal_columnas_th" id="th_coleccion">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Colección</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+								 <div class="contenedor_etiquetas_barras_busqueda">
+                    <label class="label label_junto_flechas">Colección</label>
+                    <button
+                      id="titulo_on"
+                      @click="ordenar_ascendente('titulo_on')"
+                      class="flecha_orden_ascendente"
+                    >
+                      <span class="icon-arrow-up"></span>
+                    </button>
+                    <!--PENDIENTE TOÑO LA INSTRUCCIÓN DE VUE V-MODEL NO FUNCIONA PARA BUTTONS-->
+                    <button
+                      id="titulo_off"
+                      @click="ordenar_descendente('titulo_off')"
+                      class="flecha_orden_descendente"
+                    >
+                      <span class="icon-arrow-down"></span>
+                    </button>
+                  </div>
 									<input id="titulo" name="titulo" v-model="titulo" class="input_busqueda" type="search" placeholder="Búsqueda">
 								</th>
 							  <th class="cabezal_columnas_th">
@@ -247,70 +260,27 @@ pagina_buscar: "",
 
     };
   },
-  methods: {
-    /*borrarAudioanotacion(audioannotation_id) {
-      var currentUrl = window.location.pathname;
-      const url = `${currentUrl}/delete/${audioannotation_id}`;
-      // /audioannotations/delete/{{_id}}?_method=DELETE
-      console.log(url);
-      this.axios
-        .delete(url)
-        // .then(res => {
-        //               if (res.data === 'ok')
-        //                   commit('DELETE_POST', audioannotation_id)
-        //           }).catch(err => {
-        //           console.log(err)
-        //       })
-        .then(
-          (response) => {
-            console.log("si se borro " + audioannotation_id);
-            let index = this.notas_audioannotations.findIndex(
-              (item) => item._id === audioannotation_id
-            );
-            console.log(index);
-            this.notas_audioannotations.splice(index, 1);
-            console.log(url);
-          },
-          (error) => {
-            console.log(
-              "no se borro " + "/audioannotations/delete/" + audioannotation_id
-            );
-            console.log(url);
-            console.log(error);
-          }
-        );
-    },
-
-    cambiovalor(e) {
-      console.log("valor " + e.target.value);
-    },
-    sacarTierParticipant() {
-      this.notas_audioannotations.TIER.forEach((element) => {
-        tier.push(element);
-      });
-    },
-    getTodos() {
-      this.axios.get("audioannotations/filter").then((response) => {
-        this.notas_audioannotations = response.data;
-        //console.log(response.data)
-      });
-    },*/
-    ordenar_descendente: function () {
+  methods: {    
+  ordenar_descendente: function (e) {
       //falta ordenar
-        console.log("desc lengua "+this.bandera_lengua)
-      if (this.bandera_titulo) {
+      console.log(
+        "******************Esta entrando ordenar_descendente ******** " +
+          e +
+          " ************ " +
+          e
+      );
+      if (e == "titulo_off") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.title > b.title) {
+          if (a.name > b.name) {
             return -1;
           }
-          if (a.title < b.title) {
+          if (a.name < b.name) {
             return 1;
           }
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_lengua) {
- 
+      } else if (e == "lengua_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.language.name > b.gid.language.name) {
             return -1;
@@ -321,7 +291,7 @@ pagina_buscar: "",
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_gpo_lengua) {
+      } else if (e == "gpo_lenguas_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
             return -1;
@@ -332,7 +302,7 @@ pagina_buscar: "",
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_comunidad) {
+      } else if (e == "comunidad_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.location.Nom_Loc > b.location.Nom_Loc) {
             return -1;
@@ -343,7 +313,8 @@ pagina_buscar: "",
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_genero) {
+      } else if (e == "genero_off") {
+        console.log("Entrando en el off");
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return -1;
@@ -354,7 +325,7 @@ pagina_buscar: "",
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_hablantes) {
+      } else if (e == "hablantes_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
             return -1;
@@ -367,22 +338,27 @@ pagina_buscar: "",
         });
       }
     },
-    ordenar_ascendente: function () {
+    ordenar_ascendente: function (e) {
       //falta ordenar
-              console.log("asc lengua "+this.bandera_lengua)
-      if (this.bandera_titulo) {
+      console.log(
+        "******************Esta entrando ordenar_ascendente ******** " +
+          e +
+          " ************ " +
+          e
+      );
+
+      if (e == "titulo_on") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.title > b.title) {
+          if (a.name > b.name) {
             return 1;
           }
-          if (a.title < b.title) {
+          if (a.name < b.name) {
             return -1;
           }
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_lengua) {
-
+      } else if (e == "lengua_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.language.name > b.gid.language.name) {
             return 1;
@@ -393,7 +369,7 @@ pagina_buscar: "",
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_gpo_lengua) {
+      } else if (e == "gpo_lenguas_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
             return 1;
@@ -404,7 +380,8 @@ pagina_buscar: "",
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_comunidad) {
+      } else if (e == "comunidad_on") {
+        console.log("Entrando comunidad_on en el on");
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.location.Nom_Loc > b.location.Nom_Loc) {
             return 1;
@@ -415,7 +392,8 @@ pagina_buscar: "",
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_genero) {
+      } else if (e == "genero_on") {
+        console.log("Entrando genero en el on");
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return 1;
@@ -426,7 +404,7 @@ pagina_buscar: "",
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_hablantes) {
+      } else if (e == "hablantes_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
             return 1;
@@ -514,15 +492,7 @@ pagina_buscar: "",
         return this.notas_audioannotations.filter((item) =>
           item.localities[0].Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())
         );
-      } else if (this.hablantes.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
-          item.TIER[0].PARTICIPANT.toLowerCase().includes(this.hablantes.toLowerCase())
-        ); //sacarTierParticipant
-      } else if (this.genero.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
-          item.genre.name.toLowerCase().includes(this.genero.toLowerCase())
-        );
-      }
+      } 
       return this.notas_audioannotations;
     },
   },
