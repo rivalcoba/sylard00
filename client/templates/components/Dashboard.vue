@@ -63,16 +63,25 @@
     					    <tr v-for="(item2, index) in search_titulo" :key="'item' + index">
             					<td>
 									<strong><i> {{ item2.name }}</i></strong><p class="primeras_palabras_descripcion_collect"></p>
-								</td>
-            					<td class="" data-label="Lengua terminal (glottocode)">
-									yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
-								</td>
-            					<td class="" data-label="Grupo de lenguas (glottocode)">
-									amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span><br>amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span>
-								</td>
-            					<td class="comunidades"><span class="pais">
-									México</span><span class="estado">Guerrero</span><span class="comunidad">Yoloxóchitl</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Cuanacaxtitlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Arroyo Cumiapa</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Buena Vista</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
-								</td>
+							   	</td>
+                   <td class="" data-label="Lengua terminal (glottocode)">
+                  <div v-for="(item3, index3) in item2.languages" :key="'item3' + index3" >
+            					
+									      {{ item3.language.gid
+                         }}<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">{{ item3.language.name}} </span><br>              
+                  </div>
+                  </td>
+                    <td   class="" data-label="Grupo de lenguas (glottocode)">
+                     <div  v-for="(item4, index4) in item2.languages" :key="'item4' + index4">            					
+								    	    {{item4.LanguageGroup.gid}}<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >	{{item4.LanguageGroup.name}}</span><br>
+							      </div>
+                     	  </td>
+            					<td class="comunidades">
+               <div v-for="(item5, index5) in item2.localities" :key="'item5' + index5">   
+								  <span class="pais">	México</span><span class="estado">{{item5.Nom_Ent}}</span><span class="comunidad">{{item5.Nom_Loc}}</span><span class="municipio_tabla">{{item5.Nom_Mun}}</span><span class="localizacion">{{item5.Lat_Decimal}}, {{item5.Lon_Decimal}}</span>
+								<hr class="hr_divisor_comunidad">
+                </div>
+                </td>
 								<td class="td_acciones ">
 									<div class="contenedor_botones_accion">
 										<button class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
@@ -428,7 +437,7 @@ pagina_buscar: "",
     search_titulo: function () {
       if (this.titulo.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.title.toLowerCase().includes(this.titulo.toLowerCase())
+          item.name.toLowerCase().includes(this.titulo.toLowerCase())
         );
       } else if (this.lengua.length > 2) {
         return this.notas_audioannotations.filter((item) =>

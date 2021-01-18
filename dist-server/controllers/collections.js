@@ -38,6 +38,9 @@ return a.flash("error_msg","No se ha podido encontrar la coleccion que se desea 
 
     return res.json(audioannotations)
     */b.render("audioannotations/index",{//enviar
+<<<<<<< HEAD
+})},api_getCollectionAll=async(a,b)=>{let c={};try{c=await _Collection.default.find().exec(),b.status(200).json(c)}catch(a){b.status(404).json({error:a.message})}},api_getCollectionById=async(a,b)=>{const c=a.params.collection_id;let d={};try{d=await _Collection.default.findById(c).exec(),b.status(200).json(d)}catch(a){b.status(404).json({error:a.message})}},api_getCollectionByUser=async(a,b)=>{const{userId:c}=a.params;try{let a=await _Collection.default.find({user:c}).exec();return b.status(200).json({collectionDocs:a})}catch(a){b.status(400).json({error:a.message})}};var _default={// List Collections from a particular Colaborator User
+=======
 })},api_getCollectionAll=async(a,b)=>{//let collectionDoc = {}
 const c={page:a.params.page,limit:5,sort:{title:1},populate:"colection",customLabels:{totalDocs:"itemCount",docs:"itemsList",limit:"perPage",page:"currentPage",nextPage:"next",prevPage:"prev",totalPages:"pageCount",pagingCounter:"slNo",meta:"paginator"}};try{_Collection.default.paginate({},c,function(a,c){return a?(console.log("El error esta aqui"),console.err(a),b.status(400).json({mensaje:"Ocurrio un error",err:a})):void b.json(c)})}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}// try {
 //     collectionDoc = await Collection.find().exec()
@@ -46,6 +49,7 @@ const c={page:a.params.page,limit:5,sort:{title:1},populate:"colection",customLa
 //     res.status(404).json({ error: error.message })
 // }
 },api_getCollectionById=async(a,b)=>{const c=a.params.collection_id;let d={};try{d=await _Collection.default.findById(c).exec(),b.status(200).json(d)}catch(a){b.status(404).json({error:a.message})}},api_getCollectionByUser=async(a,b)=>{const{userId:c}=a.params;try{let a=await _Collection.default.find({user:c}).exec();return b.status(200).json({collectionDocs:a})}catch(a){b.status(400).json({error:a.message})}};var _default={// List Collections from a particular Colaborator User
+>>>>>>> d22c384ba90a65779076259bca90b46f7e94f1e7
 index,// Indexa audio anotaciones que corresponden a alguna coleccion
 indexCollection,// Create Add Collection FORM
 createCollection,// Process ADD Collection FORM
