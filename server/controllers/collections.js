@@ -35,7 +35,7 @@ const createCollection = async(req, res) => {
                 $or: [{ country_ids: "MX" }, { country_ids: "US" }],
                 parent_id: { $ne: "" }
             },
-            'gid name parent_id'
+            'gid name parent_id iso639P3code'
         ).exec()
 
         const entities = await Locations.distinct('Nom_Ent')

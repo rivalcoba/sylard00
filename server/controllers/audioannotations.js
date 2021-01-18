@@ -9,9 +9,6 @@ import deletejson from '@helpers/deletejson'
 import eaftojson from '@helpers/converteaf'
 import Genre from '@models/Genre'
 
-import multer from 'multer'
-import { json } from 'express'
-
 const index = async(req, res) => {
     // Get Collecionts
     //const collectionsDocs = await Collection.find({user : req.user._id}).populate('user').exec()

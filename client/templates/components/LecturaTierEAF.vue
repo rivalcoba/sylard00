@@ -79,7 +79,6 @@
                     @click="metodocolor(index + 55, $event, 0)"
                     @blur="metodoblur(index + 55, $event, 0)"
                     autocomplete="off"
-                    name="color"
                   /><!--PENDIENTE COLOR-PICKET Inicio create-->
                   <input type="text" value="header" hidden />
                   <input type="text" value="header" hidden />
