@@ -33,7 +33,6 @@
                     >
                       <span class="icon-arrow-up"></span>
                     </button>
-                    <!--PENDIENTE TOÑO LA INSTRUCCIÓN DE VUE V-MODEL NO FUNCIONA PARA BUTTONS-->
                     <button
                       id="titulo_off"
                       @click="ordenar_descendente('titulo_off')"
@@ -282,10 +281,10 @@ pagina_buscar: "",
         });
       } else if (e == "lengua_off") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.gid.language.name > b.gid.language.name) {
+          if (a.languages[0].language.name > b.languages[0].language.name) {
             return -1;
           }
-          if (a.gid.language.name < b.gid.language.name) {
+          if (a.languages[0].language.name < b.languages[0].language.name) {
             return 1;
           }
           // a must be equal to b
@@ -360,10 +359,10 @@ pagina_buscar: "",
         });
       } else if (e == "lengua_on") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.gid.language.name > b.gid.language.name) {
+          if (a.languages[0].language.name > b.languages[0].language.name) {
             return 1;
           }
-          if (a.gid.language.name < b.gid.language.name) {
+          if (a.languages[0].language.name < b.languages[0].language.name) {
             return -1;
           }
           // a must be equal to b
