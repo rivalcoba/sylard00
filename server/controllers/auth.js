@@ -1,5 +1,6 @@
 // Importing user model
 import User from '@models/User'
+import Language from '@models/Glottolog'
 import passport from 'passport'
 import path from 'path'
 import jsonReader from '@helpers/jsonReader'
@@ -25,8 +26,13 @@ const loginUser = (req, res, next) => {
 }
 
 // Register User
-const register = (req, res) => {
-    let languages = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'languages.json'))
+const register = async (req, res) => {
+    // let languages = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'languages.json'))
+    let languagesDocs = await Language.find({},'name gid iso639P3code').exec()
+    let languages = languagesDocs.map(language => {
+        return language.toJSON()
+    })
+
     let countries = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'countries.json'))
 
     res.render('auth/register', {

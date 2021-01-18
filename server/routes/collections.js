@@ -72,9 +72,9 @@ router.get(
     collectionsController.api_getCollectionById
 )
 
-// API ALL
+// API ALL WITH PAG
 router.get(
-    '/api/read_all/',
+    '/api/read_all/:page',
     /*ensureAuthenticated,
     ensureColabUser,*/ // TODO: Uncomment to protect route
     collectionsController.api_getCollectionAll
