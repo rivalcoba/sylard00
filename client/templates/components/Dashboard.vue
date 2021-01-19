@@ -24,37 +24,106 @@
 						<table class="tabla_catalogo_colecciones">
        					 	<thead>
                 				<th class="cabezal_columnas_th" id="th_coleccion">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Colección</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
+								 <div class="contenedor_etiquetas_barras_busqueda">
+                    <label class="label label_junto_flechas">Colección</label>
+                    <button
+                      id="titulo_on"
+                      @click="ordenar_ascendente('titulo_on')"
+                      class="flecha_orden_ascendente"
+                    >
+                      <span class="icon-arrow-up"></span>
+                    </button>
+                    <button
+                      id="titulo_off"
+                      @click="ordenar_descendente('titulo_off')"
+                      class="flecha_orden_descendente"
+                    >
+                      <span class="icon-arrow-down"></span>
+                    </button>
+                  </div>
 									<input id="titulo" name="titulo" v-model="titulo" class="input_busqueda" type="search" placeholder="Búsqueda">
 								</th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Lengua terminal</label>
-										<button class="flecha_orden_ascendente active"><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Gpos. de lenguas</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
-								<th class="cabezal_columnas_th">
-									<div class="contenedor_etiquetas_barras_busqueda" >
-										<label class="label label_junto_flechas">Comunidades</label>
-										<button class="flecha_orden_ascendente "><span class="icon-arrow-up"></span></button>
-										<button class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
-									</div>
-									<input class="input_busqueda" type="search" placeholder="Búsqueda">
-								</th>
+							  <th class="cabezal_columnas_th">
+                  <div class="contenedor_etiquetas_barras_busqueda">
+                    <label class="label label_junto_flechas">Lengua terminal</label>
+                    <button
+                      id="lengua_on"
+                      @click="ordenar_ascendente('lengua_on')"
+                      class="flecha_orden_ascendente"
+                    >
+                      <span class="icon-arrow-up"></span>
+                    </button>
+                    <button
+                      id="lengua_off"
+                      @click="ordenar_descendente('lengua_off')"
+                      class="flecha_orden_descendente"
+                    >
+                      <span class="icon-arrow-down"></span>
+                    </button>
+                  </div>
+                  <input
+                    class="input_busqueda"
+                    type="text"
+                    id="lengua"
+                    name="lengua"
+                    v-model="lengua"
+                    placeholder="Busqueda"
+                  />
+                </th>
+							<th class="cabezal_columnas_th">
+                  <div class="contenedor_etiquetas_barras_busqueda">
+                    <label class="label label_junto_flechas">Gpos. de lenguas</label>
+                    <button
+                      id="lengua_on"
+                      @click="ordenar_ascendente('gpo_lenguas_on')"
+                      class="flecha_orden_ascendente"
+                    >
+                      <span class="icon-arrow-up"></span>
+                    </button>
+                    <button
+                      id="lengua_on"
+                      @click="ordenar_descendente('gpo_lenguas_off')"
+                      class="flecha_orden_descendente"
+                    >
+                      <span class="icon-arrow-down"></span>
+                    </button>
+                  </div>
+                  <input
+                    class="input_busqueda"
+                    type="text"
+                    id="gpo_lengua"
+                    name="gpo_lengua"
+                    v-model="gpo_lengua"
+                    placeholder="Búsqueda"
+                  />
+                </th>
+							   <th class="cabezal_columnas_th">
+                  <div class="contenedor_etiquetas_barras_busqueda">
+                    <label class="label label_junto_flechas">Comunidad</label>
+                    <button
+                      id="comunidad_on"
+                      @click="ordenar_ascendente('comunidad_on')"
+                      class="flecha_orden_ascendente"
+                    >
+                      <span class="icon-arrow-up"></span>
+                    </button>
+                    <button
+                      id="comunidad_off"
+                      @click="ordenar_descendente('comunidad_off')"
+                      class="flecha_orden_descendente"
+                    >
+                      <span class="icon-arrow-down"></span>
+                    </button>
+                  </div>
+                  <input
+                    class="input_busqueda"
+                    type="text"
+                    id="comunidad"
+                    name="comunidad"
+                    v-model="comunidad"
+                    placeholder="Búsqueda"
+                  />
+                </th>
 								<th class="" id="th_acciones">
 									
 								</th>
@@ -63,16 +132,25 @@
     					    <tr v-for="(item2, index) in search_titulo" :key="'item' + index">
             					<td>
 									<strong><i> {{ item2.name }}</i></strong><p class="primeras_palabras_descripcion_collect"></p>
-								</td>
-            					<td class="" data-label="Lengua terminal (glottocode)">
-									yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span><br>yolo1241<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">Yoloxóchitl Mixtec</span>
-								</td>
-            					<td class="" data-label="Grupo de lenguas (glottocode)">
-									amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span><br>amuz1253<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >Amuzgo-mixtecan</span>
-								</td>
-            					<td class="comunidades"><span class="pais">
-									México</span><span class="estado">Guerrero</span><span class="comunidad">Yoloxóchitl</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Cuanacaxtitlán</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Arroyo Cumiapa</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span><hr class="hr_divisor_comunidad"><span class="pais">México</span><span class="estado">Guerrero</span><span class="comunidad">Buena Vista</span><span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span>
-								</td>
+							   	</td>
+                   <td class="" data-label="Lengua terminal (glottocode)">
+                  <div v-for="(item3, index3) in item2.languages" :key="'item3' + index3" >
+            					
+									      {{ item3.language.gid
+                         }}<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">{{ item3.language.name}} </span><br>              
+                  </div>
+                  </td>
+                    <td   class="" data-label="Grupo de lenguas (glottocode)">
+                     <div  v-for="(item4, index4) in item2.languages" :key="'item4' + index4">            					
+								    	    {{item4.LanguageGroup.gid}}<span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)" >	{{item4.LanguageGroup.name}}</span><br>
+							      </div>
+                     	  </td>
+            					<td class="comunidades">
+               <div v-for="(item5, index5) in item2.localities" :key="'item5' + index5">   
+								  <span class="pais">	México</span><span class="estado">{{item5.Nom_Ent}}</span><span class="comunidad">{{item5.Nom_Loc}}</span><span class="municipio_tabla">{{item5.Nom_Mun}}</span><span class="localizacion">{{item5.Lat_Decimal}}, {{item5.Lon_Decimal}}</span>
+								<hr class="hr_divisor_comunidad">
+                </div>
+                </td>
 								<td class="td_acciones ">
 									<div class="contenedor_botones_accion">
 										<button class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
@@ -181,101 +259,61 @@ pagina_buscar: "",
 
     };
   },
-  methods: {
-    /*borrarAudioanotacion(audioannotation_id) {
-      var currentUrl = window.location.pathname;
-      const url = `${currentUrl}/delete/${audioannotation_id}`;
-      // /audioannotations/delete/{{_id}}?_method=DELETE
-      console.log(url);
-      this.axios
-        .delete(url)
-        // .then(res => {
-        //               if (res.data === 'ok')
-        //                   commit('DELETE_POST', audioannotation_id)
-        //           }).catch(err => {
-        //           console.log(err)
-        //       })
-        .then(
-          (response) => {
-            console.log("si se borro " + audioannotation_id);
-            let index = this.notas_audioannotations.findIndex(
-              (item) => item._id === audioannotation_id
-            );
-            console.log(index);
-            this.notas_audioannotations.splice(index, 1);
-            console.log(url);
-          },
-          (error) => {
-            console.log(
-              "no se borro " + "/audioannotations/delete/" + audioannotation_id
-            );
-            console.log(url);
-            console.log(error);
-          }
-        );
-    },
-
-    cambiovalor(e) {
-      console.log("valor " + e.target.value);
-    },
-    sacarTierParticipant() {
-      this.notas_audioannotations.TIER.forEach((element) => {
-        tier.push(element);
-      });
-    },
-    getTodos() {
-      this.axios.get("audioannotations/filter").then((response) => {
-        this.notas_audioannotations = response.data;
-        //console.log(response.data)
-      });
-    },*/
-    ordenar_descendente: function () {
+  methods: {    
+  ordenar_descendente: function (e) {
       //falta ordenar
-      if (this.bandera_titulo) {
+      console.log(
+        "******************Esta entrando ordenar_descendente ******** " +
+          e +
+          " ************ " +
+          e
+      );
+      if (e == "titulo_off") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.title > b.title) {
+          if (a.name > b.name) {
             return -1;
           }
-          if (a.title < b.title) {
+          if (a.name < b.name) {
             return 1;
           }
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_lengua) {
+      } else if (e == "lengua_off") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.gid.language.name > b.gid.language.name) {
+          if (a.languages[0].language.name > b.languages[0].language.name) {
             return -1;
           }
-          if (a.gid.language.name < b.gid.language.name) {
+          if (a.languages[0].language.name < b.languages[0].language.name) {
             return 1;
           }
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_gpo_lengua) {
+      } else if (e == "gpo_lenguas_off") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
+          if (a.languages[0].LanguageGroup.name > b.languages[0].LanguageGroup.name) {
             return -1;
           }
-          if (a.gid.LanguageGroup.name < b.gid.LanguageGroup.name) {
+          if (a.languages[0].LanguageGroup.name < b.languages[0].LanguageGroup.name) {
             return 1;
           }
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_comunidad) {
+      } else if (e == "comunidad_off") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.location.Nom_Loc > b.location.Nom_Loc) {
+          if (a.localities[0].Nom_Loc > b.localities[0].Nom_Loc) {
             return -1;
           }
-          if (a.location.Nom_Loc < b.location.Nom_Loc) {
+          if (a.localities[0].Nom_Loc < b.localities[0].Nom_Loc) {
             return 1;
           }
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_genero) {
+      } else if (e == "genero_off") {
+        console.log("Entrando en el off");
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return -1;
@@ -286,7 +324,7 @@ pagina_buscar: "",
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_hablantes) {
+      } else if (e == "hablantes_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
             return -1;
@@ -299,53 +337,62 @@ pagina_buscar: "",
         });
       }
     },
-    ordenar_ascendente: function () {
+    ordenar_ascendente: function (e) {
       //falta ordenar
-      if (this.bandera_titulo) {
+      console.log(
+        "******************Esta entrando ordenar_ascendente ******** " +
+          e +
+          " ************ " +
+          e
+      );
+
+      if (e == "titulo_on") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.title > b.title) {
+          if (a.name > b.name) {
             return 1;
           }
-          if (a.title < b.title) {
+          if (a.name < b.name) {
             return -1;
           }
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_lengua) {
+      } else if (e == "lengua_on") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.gid.language.name > b.gid.language.name) {
+          if (a.languages[0].language.name > b.languages[0].language.name) {
             return 1;
           }
-          if (a.gid.language.name < b.gid.language.name) {
+          if (a.languages[0].language.name < b.languages[0].language.name) {
             return -1;
           }
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_gpo_lengua) {
+      } else if (e == "gpo_lenguas_on") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
+          if (a.languages[0].LanguageGroup.name > b.languages[0].LanguageGroup.name) {
             return 1;
           }
-          if (a.gid.LanguageGroup.name < b.gid.LanguageGroup.name) {
+          if (a.languages[0].LanguageGroup.name < b.languages[0].LanguageGroup.name) {
             return -1;
           }
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_comunidad) {
+      } else if (e == "comunidad_on") {
+        console.log("Entrando comunidad_on en el on");
         return this.notas_audioannotations.sort(function (a, b) {
-          if (a.location.Nom_Loc > b.location.Nom_Loc) {
+          if (a.localities[0].Nom_Loc > b.localities[0].Nom_Loc) {
             return 1;
           }
-          if (a.location.Nom_Loc < b.location.Nom_Loc) {
+          if (a.localities[0].Nom_Loc < b.localities[0].Nom_Loc) {
             return -1;
           }
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_genero) {
+      } else if (e == "genero_on") {
+        console.log("Entrando genero en el on");
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
             return 1;
@@ -356,7 +403,7 @@ pagina_buscar: "",
           // a must be equal to b
           return 0;
         });
-      } else if (this.bandera_hablantes) {
+      } else if (e == "hablantes_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
             return 1;
@@ -428,31 +475,23 @@ pagina_buscar: "",
     search_titulo: function () {
       if (this.titulo.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.title.toLowerCase().includes(this.titulo.toLowerCase())
+          item.name.toLowerCase().includes(this.titulo.toLowerCase())
         );
       } else if (this.lengua.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.gid.language.name.toLowerCase().includes(this.lengua.toLowerCase())
+          item.languages[0].language.name.toLowerCase().includes(this.lengua.toLowerCase())
         );
       } else if (this.gpo_lengua.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.gid.LanguageGroup.name
+          item.languages[0].LanguageGroup.name
             .toLowerCase()
             .includes(this.gpo_lengua.toLowerCase())
         );
       } else if (this.comunidad.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.location.Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())
+          item.localities[0].Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())
         );
-      } else if (this.hablantes.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
-          item.TIER[0].PARTICIPANT.toLowerCase().includes(this.hablantes.toLowerCase())
-        ); //sacarTierParticipant
-      } else if (this.genero.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
-          item.genre.name.toLowerCase().includes(this.genero.toLowerCase())
-        );
-      }
+      } 
       return this.notas_audioannotations;
     },
   },
