@@ -8,7 +8,7 @@ let c="su"==b.locals.user.role?{}:{user:a.user._id};// Get Collecionts
 const d=await _Collection.default.find(c).populate("user").exec();// Collections to JSON
 let e=d.map(a=>a.toJSON());// List all the collections
 b.render("collections/index",{title:"Mis colecciones",collections:e})},createCollection=async(a,b)=>{// Getting languages
-try{const a=await _Glottolog.default.find({$or:[{country_ids:"MX"},{country_ids:"US"}],parent_id:{$ne:""}},"gid name parent_id").exec(),c=await _Location.default.distinct("Nom_Ent");let d=a.map(a=>{let b={};return b=a.toJSON(),b});b.render("collections/create",{title:"Agregar colecci\xF3n",languages:d,entities:c})}catch(c){return a.flash("error_msg","El servidor no esta disponible, intente mas tarde"),b.redirect("/dashboard")}},addCollection=async(a,b)=>{// Grab collections from body
+try{const a=await _Glottolog.default.find({$or:[{country_ids:"MX"},{country_ids:"US"}],parent_id:{$ne:""}},"gid name parent_id iso639P3code").exec(),c=await _Location.default.distinct("Nom_Ent");let d=a.map(a=>{let b={};return b=a.toJSON(),b});b.render("collections/create",{title:"Agregar colecci\xF3n",languages:d,entities:c})}catch(c){return a.flash("error_msg","El servidor no esta disponible, intente mas tarde"),b.redirect("/dashboard")}},addCollection=async(a,b)=>{// Grab collections from body
 let{collection:c}=a.body;// Add user
 c.user=a.user._id;const d=await _Collection.default.create(c);// Se encuentra usuario
 console.log(`addCollection> Colection Created: ${d.name}`),b.redirect("/collections")},deleteCollection=async(a,b)=>{const c=a.params.collection_id;try{// Owner Validation
@@ -38,9 +38,6 @@ return a.flash("error_msg","No se ha podido encontrar la coleccion que se desea 
 
     return res.json(audioannotations)
     */b.render("audioannotations/index",{//enviar
-<<<<<<< HEAD
-})},api_getCollectionAll=async(a,b)=>{let c={};try{c=await _Collection.default.find().exec(),b.status(200).json(c)}catch(a){b.status(404).json({error:a.message})}},api_getCollectionById=async(a,b)=>{const c=a.params.collection_id;let d={};try{d=await _Collection.default.findById(c).exec(),b.status(200).json(d)}catch(a){b.status(404).json({error:a.message})}},api_getCollectionByUser=async(a,b)=>{const{userId:c}=a.params;try{let a=await _Collection.default.find({user:c}).exec();return b.status(200).json({collectionDocs:a})}catch(a){b.status(400).json({error:a.message})}};var _default={// List Collections from a particular Colaborator User
-=======
 })},api_getCollectionAll=async(a,b)=>{//let collectionDoc = {}
 const c={page:a.params.page,limit:5,sort:{title:1},populate:"colection",customLabels:{totalDocs:"itemCount",docs:"itemsList",limit:"perPage",page:"currentPage",nextPage:"next",prevPage:"prev",totalPages:"pageCount",pagingCounter:"slNo",meta:"paginator"}};try{_Collection.default.paginate({},c,function(a,c){return a?(console.log("El error esta aqui"),console.err(a),b.status(400).json({mensaje:"Ocurrio un error",err:a})):void b.json(c)})}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}// try {
 //     collectionDoc = await Collection.find().exec()
@@ -49,7 +46,6 @@ const c={page:a.params.page,limit:5,sort:{title:1},populate:"colection",customLa
 //     res.status(404).json({ error: error.message })
 // }
 },api_getCollectionById=async(a,b)=>{const c=a.params.collection_id;let d={};try{d=await _Collection.default.findById(c).exec(),b.status(200).json(d)}catch(a){b.status(404).json({error:a.message})}},api_getCollectionByUser=async(a,b)=>{const{userId:c}=a.params;try{let a=await _Collection.default.find({user:c}).exec();return b.status(200).json({collectionDocs:a})}catch(a){b.status(400).json({error:a.message})}};var _default={// List Collections from a particular Colaborator User
->>>>>>> d22c384ba90a65779076259bca90b46f7e94f1e7
 index,// Indexa audio anotaciones que corresponden a alguna coleccion
 indexCollection,// Create Add Collection FORM
 createCollection,// Process ADD Collection FORM
