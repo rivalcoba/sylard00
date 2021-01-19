@@ -172,7 +172,7 @@
             <td class="td_acciones">
               <div class="contenedor_botones_accion">
                 <button
-                  @click="showCollect"
+                  @click="showCollect(item2.name,item2.description)"
                   aria-hidden="true"
                   class="btn_accion_tabla"
                 >
@@ -220,39 +220,63 @@
           </tr>
         </table>
         <div class="contenedor_paginacion">
-          <div class="contenedor_input_paginacion">
-            <input
-              class=""
-              id="busqueda_paginacion"
-              type="text"
-              placeholder="Pag."
-            />
-            <button class="btn_lateral_input" for="busqueda_paginacion">
-              <span class="icono_pagina_busqueda icon-chevron-right"></span>
-            </button>
-          </div>
-          <div class="contenedor_numeros_paginacion">
-            <a class="icono_paginacion" href="#"
-              ><span class="icon-first_page"></span
-            ></a>
-            <a class="icono_paginacion" href="#"
-              ><span class="icon-angle-left"></span
-            ></a>
-            <a class="numero_paginacion" href="#">2</a>
-            <a class="numero_paginacion" href="#">3</a>
-            <a class="numero_paginacion" href="#">4</a>
-            <a class="numero_paginacion active" href="#">5</a>
-            <a class="numero_paginacion" href="#">6</a>
-            <a class="numero_paginacion" href="#">7</a>
-            <a class="ultima_pagina" href="#">...29</a>
-            <a class="icono_paginacion" href="#"
-              ><span class="icon-angle-right"></span
-            ></a>
-            <a class="icono_paginacion" href="#"
-              ><span class="icon-last_page"></span
-            ></a>
-          </div>
-        </div>
+              <div class="contenedor_input_paginacion">
+                <input
+                  class=""
+                  id="busqueda_paginacion"
+                  v-model="pagina_buscar"
+                  type="text"
+                  placeholder="Pag."
+                />
+                <button
+                  class="btn_lateral_input"
+                  for="busqueda_paginacion"
+                  @click="getPage(pagina_buscar)"
+                >
+                  <span class="icono_pagina_busqueda icon-chevron-right"></span>
+                </button>
+              </div>
+              <div class="contenedor_numeros_paginacion">
+                <a
+                  v-if="paginacion.hasPrevPage"
+                  class="icono_paginacion"
+                  href="#"
+                  @click.prevent="getPage(1)"
+                  ><span v-if="paginacion.hasPrevPage" class="icon-first_page"></span
+                ></a>
+                <a
+                  v-if="paginacion.hasPrevPage"
+                  class="icono_paginacion"
+                  href="#"
+                  @click.prevent="getPage(pagina.prev)"
+                  ><span v-if="paginacion.hasPrevPage" class="icon-angle-left"></span
+                ></a>
+                <a
+                  v-for="(pag, index) in pagesNumber"
+                  :key="index"
+                  v-bind:class="[
+                    pag == isActived ? 'numero_paginacion active' : 'numero_paginacion',
+                  ]"
+                  href="#"
+                  @click.prevent="getPage(pag)"
+                  >{{ pag }}</a
+                >
+
+                <!--<a v-if="paginacion.hasNextPage" class="ultima_pagina" href="#" @click.prevent="getPage(pagina.pageCount)"
+                >...{{ paginacion.pageCount }}</a
+              >-->
+                <a class="icono_paginacion" href="#" @click.prevent="getPage(pagina.next)"
+                  ><span v-if="paginacion.hasNextPage" class="icon-angle-right"></span
+                ></a>
+                <a
+                  v-if="paginacion.hasNextPage"
+                  class="icono_paginacion"
+                  href="#"
+                  @click.prevent="getPage(pagina.pageCount)"
+                  ><span v-if="paginacion.hasNextPage" class="icon-last_page"></span
+                ></a>
+              </div>
+            </div>
       </div>
     </div>
   </section>
@@ -323,11 +347,12 @@ export default {
           }
         );
     },
-    showCollect() {
+    showCollect(title,text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
+      console.log("title "+title+"text "+text)
       this.$swal({
-        title: 'Aqui va el titulo de la colección',
-        text: 'Descripción de la colección',
+        title: title,
+        text: text,
         showCloseButton: true,
       })
     },
