@@ -225,7 +225,7 @@
               <tbody v-for="(item2, index) in search_titulo" :key="'item' + index">
                 <tr>
                   <td class="titulo_audioanotacion_tabla" data-label="titulo">
-                    <a class="link_audioanotacion_tabla_catalogo" @click="showAudio">{{
+                    <a class="link_audioanotacion_tabla_catalogo" @click="showAudio(item2.title,item2.description)">{{
                       item2.title
                     }}</a
                     ><button class="btn_info_coleccion_tabla">
@@ -235,7 +235,7 @@
                     >
                   </td>
                   <td class="">
-                    <a @click="showCollect" class="link_coleccion_tabla_catalogo"
+                    <a @click="showCollection(arreglo_coleccion[index])" class="link_coleccion_tabla_catalogo"
                       ><i>{{ arreglo_coleccion[index] }} </i></a
                     >
                     <button class="btn_info_coleccion_tabla">
@@ -394,19 +394,19 @@ export default {
       //console.log("este es el nombre de la coleccion "+ this.coleccion.name)
       return name;
     },
-    showAudio() {
+    showCollection(index) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
-        title: "Aqui va el titulo de la audioanotación",
-        text: "Aquí la descripción de la audioanotación",
+        title: index,
+        text: "",
         showCloseButton: true,
       });
     },
-    showCollect() {
+    showAudio(title,text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
-        title: "Aqui va el titulo de la colección",
-        text: "Aquí la descripción de la colección",
+        title: title,
+        text: text,
         showCloseButton: true,
       });
     },
