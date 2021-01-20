@@ -260,7 +260,7 @@
                       aria-hidden="true"
                       class="btn_accion_tabla"
                       id="coleccion_info"
-                    ><!--TODO FALTA INCLUIR EL MODAL DE VUE-->
+                      @click="showAudio(item2.title,item2.description)">
                       <span class="icono_accion_tabla icon-info1"></span>
                     </button>
                    
@@ -379,6 +379,14 @@ export default {
     };
   },
   methods: {
+    showAudio(title,text) {
+      //Aqui se utiizan las funciones o estilos de SweetAlert
+      this.$swal({
+        title: title,
+        text: text,
+        showCloseButton: true,
+      })
+    },
     borrarAudioanotacion(audioannotation_id) {
       var currentUrl = window.location.pathname;
       const url = `${currentUrl}/delete/${audioannotation_id}`;
