@@ -10,6 +10,7 @@
             <th class="cabezal_columnas_th" id="th_coleccion">
               <div class="contenedor_etiquetas_barras_busqueda">
                 <label class="label label_junto_flechas">Colección</label>
+                 <h1>{{ $t('message.myComponent') }}</h1>
                 <button
                   id="titulo_on"
                   @click="ordenar_ascendente('titulo_on')"
