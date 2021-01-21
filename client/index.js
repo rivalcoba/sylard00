@@ -41,29 +41,39 @@ import App4 from '@client/templates/main4.vue'
 import App5 from '@client/templates/main5.vue'
 import App6 from '@client/templates/main6.vue'
 //AQUÍ TERMINAN
-
+import en from '@client/templates/lang/locals/en_US'
+import es from '@client/templates/lang/locals/es_MX'
 //Intern
 import VueI18n from "vue-i18n";
 Vue.use(VueI18n);
 
+// const messages = {
+//   en: {
+//     message: {
+//       hello: "hello world",
+//       myComponent: "Ok bro"
+//     }
+//   },
+//   fr: {
+//     message: {
+//       hello: "Bonjour monde",
+//       myComponent: "Ok bro"
+//     }
+//   }
+// };
+
 const messages = {
-  en: {
-    message: {
-      hello: "hello world",
-      myComponent: "Ok bro"
-    }
-  },
-  fr: {
-    message: {
-      hello: "Bonjour monde",
-      myComponent: "Ok bro"
+    en: {
+      lang: en
+    },
+    es: {
+      lang: es
     }
   }
-};
 
 // Create VueI18n instance with options
 const i18n = new VueI18n({
-  locale: "fr", // set locale
+  locale: "en", // set locale
   messages // set locale messages
 });
 
