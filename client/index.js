@@ -47,21 +47,6 @@ import es from '@client/templates/lang/locals/es_MX'
 import VueI18n from "vue-i18n";
 Vue.use(VueI18n);
 
-// const messages = {
-//   en: {
-//     message: {
-//       hello: "hello world",
-//       myComponent: "Ok bro"
-//     }
-//   },
-//   fr: {
-//     message: {
-//       hello: "Bonjour monde",
-//       myComponent: "Ok bro"
-//     }
-//   }
-// };
-
 const messages = {
     en: {
       lang: en
