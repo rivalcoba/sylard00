@@ -52,5 +52,10 @@
     "UPLOAD_AUDIONOTATION": "Cargar audioanotación",
     "COMPLETE_FIELDS": "Llena los campos correctamente",
     "HELLO_COLLECTIONS": "¡Hola!",
-    "RESTORE": "Restablecer"
+    "RESTORE": "Restablecer",
+    "IDIOMA":"es",
+    "tabla_coleccion": {
+        "coleccion": "Colección",
+        "Lenguaterminal":"Lengua terminal"
+    }
 }

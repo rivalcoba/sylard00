@@ -43,9 +43,42 @@ import App6 from '@client/templates/main6.vue'
 //AQUÍ TERMINAN
 import en from '@client/templates/lang/locals/en_US'
 import es from '@client/templates/lang/locals/es_MX'
+
 //Intern
 import VueI18n from "vue-i18n";
 Vue.use(VueI18n);
+
+let requestURL = 'http://localhost:40923/i18n';
+let request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
+var  valor=""
+var sample2 = new lenguage();
+ request.onload = function() {
+  var superHeroes = request.response;
+  //console.log(superHeroes)
+  
+  valor=JSON.stringify(superHeroes)
+  //console.log(valor)
+  sample2.set(valor)
+}
+
+function lenguage(sample) {    
+    return {
+        get : function () {
+            return sample;
+        },
+        set : function (val) {
+
+            sample = val;
+            console.log(sample)
+        }
+    }
+}
+
+console.log("Aqui estoy")
+console.log(sample2.get())
 
 const messages = {
     en: {
@@ -53,12 +86,15 @@ const messages = {
     },
     es: {
       lang: es
-    }
+    },
+  //  xx:requestURL 
+        
   }
 
 // Create VueI18n instance with options
 const i18n = new VueI18n({
   locale: "en", // set locale
+  fallbackLocale: 'es',
   messages // set locale messages
 });
 
