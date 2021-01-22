@@ -41,9 +41,32 @@ import App4 from '@client/templates/main4.vue'
 import App5 from '@client/templates/main5.vue'
 import App6 from '@client/templates/main6.vue'
 //AQUÍ TERMINAN
+import en from '@client/templates/lang/locals/en_US'
+import es from '@client/templates/lang/locals/es_MX'
+//Intern
+import VueI18n from "vue-i18n";
+Vue.use(VueI18n);
+
+const messages = {
+    en: {
+      lang: en
+    },
+    es: {
+      lang: es
+    }
+  }
+
+// Create VueI18n instance with options
+const i18n = new VueI18n({
+  locale: "en", // set locale
+  messages // set locale messages
+});
+
 import colorPicker from '@chelpers/colorPicker'
 import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
+
+
 
 
 // Loading function to the global variable
@@ -143,7 +166,7 @@ if (window.location.pathname == '/collections') {
     Vue.use(VueAxios, axios);
     Vue.component("IndexCollections", IndexCollections);
     window.vm = new Vue({
-        el: '#app6',
+        el: '#app6',i18n,
         render: h => h(App6)
             //aqui
             //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson

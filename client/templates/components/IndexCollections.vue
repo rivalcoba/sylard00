@@ -9,7 +9,9 @@
           <thead>
             <th class="cabezal_columnas_th" id="th_coleccion">
               <div class="contenedor_etiquetas_barras_busqueda">
-                <label class="label label_junto_flechas">Colección</label>
+                <label class="label label_junto_flechas">{{ $t('lang.tabla_coleccion.coleccion') }}</label>
+                 <!--<h1>{{ $t('message.myComponent') }}</h1>-->
+             
                 <button
                   id="titulo_on"
                   @click="ordenar_ascendente('titulo_on')"
@@ -36,7 +38,8 @@
             </th>
             <th class="cabezal_columnas_th">
               <div class="contenedor_etiquetas_barras_busqueda">
-                <label class="label label_junto_flechas">Lengua terminal</label>
+                <label class="label label_junto_flechas">{{ $t('lang.tabla_coleccion.Lenguaterminal') }}</label>
+                
                 <button
                   id="lengua_on"
                   @click="ordenar_ascendente('lengua_on')"
