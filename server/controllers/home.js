@@ -1,8 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import Collection from '@models/Collection'
-import { log } from 'console'
-import { PassThrough } from 'stream'
 
 // Home Controllers
 const index = (req, res) => {
