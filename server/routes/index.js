@@ -24,5 +24,7 @@ router.get('/cleaneafs', homeController.cleanEaf)
     //router.get('/test', homeController.test)
     //router.get('/vuetest', homeController.vuetest)
     //router.get('/audioannotations',homeController.audioannotations)
+// =====================> API <===============
+router.get('/i18n', homeController.i18n)
 
 export default router

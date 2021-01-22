@@ -109,6 +109,10 @@ const cleanEaf = (req, res) => {
     res.json({ "return": "ok" })
 }
 
+const i18n = (req, res)=>{
+    res.status(200).json(req.app.locals.translation);
+}
+
 // Exporting Controllers
 export default {
     index,
@@ -123,4 +127,5 @@ export default {
     audioannotations,
     audioannotation,
     cleanEaf,
+    i18n,
 }
