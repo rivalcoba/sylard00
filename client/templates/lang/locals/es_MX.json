@@ -54,8 +54,29 @@
     "HELLO_COLLECTIONS": "¡Hola!",
     "RESTORE": "Restablecer",
     "LANGUAGE":"es",
+    "SHOWBY":{
+        "visualizarpor":"Visualizar por:",
+        "Audioanotacion":"Audioanotación",
+        "coleccion":"Colección"   
+       },
     "tabla_coleccion": {
         "coleccion": "Colección",
-        "Lenguaterminal":"Lengua terminal"
+        "Lenguaterminal":"Lengua terminal",
+        "gpoLengua": "Gpos. de lenguas",
+        "comunidades":"Comunidades"
+
+    },
+    "tabla_audioannotation": {
+        "coleccion": "Colección",
+        "Lenguaterminal":"Lengua terminal",
+        "gpoLengua": "Gpos. de lenguas",
+        "comunidades":"Comunidades",
+        "hablantes":"Hablantes",
+        "generoduracion":"Género y duracion"
+    },    "reproductor_audioannotation": {
+        "opcionesVisuales":"Opciones Visuales",
+        "mostrar":"Mostrar",
+        "visualizar":"Visualizar en:",
+        "colorTipo":"Color de tipografía"
     }
 }
