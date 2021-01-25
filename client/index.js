@@ -62,7 +62,7 @@ const messages = {
 
 // Create VueI18n instance with options
 const i18n = new VueI18n({
-
+  locale: "es", // set locale
   fallbackLocale: 'es',
   messages // set locale messages
 });
