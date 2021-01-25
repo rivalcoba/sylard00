@@ -1,17 +1,16 @@
 <template>
   <section class="container">
-    <div
-      class="col-sm-12 contenedor-90vh"
-      id="contenedor_general_mis_colecciones"
-    >
+    <div class="col-sm-12 contenedor-90vh" id="contenedor_general_mis_colecciones">
       <div class="contenedor_tabla_mis_colecciones">
         <table class="tabla_mis_colecciones">
           <thead>
             <th class="cabezal_columnas_th" id="th_coleccion">
               <div class="contenedor_etiquetas_barras_busqueda">
-                <label class="label label_junto_flechas">{{ $t('lang.tabla_coleccion.coleccion') }}</label>
-                 <!--<h1>{{ $t('message.myComponent') }}</h1>-->
-             
+                <label class="label label_junto_flechas">{{
+                  $t("lang.tabla_coleccion.coleccion")
+                }}</label>
+                <!--<h1>{{ $t('message.myComponent') }}</h1>-->
+
                 <button
                   id="titulo_on"
                   @click="ordenar_ascendente('titulo_on')"
@@ -38,8 +37,10 @@
             </th>
             <th class="cabezal_columnas_th">
               <div class="contenedor_etiquetas_barras_busqueda">
-                <label class="label label_junto_flechas">{{ $t('lang.tabla_coleccion.Lenguaterminal') }}</label>
-                
+                <label class="label label_junto_flechas">{{
+                  $t("lang.tabla_coleccion.Lenguaterminal")
+                }}</label>
+
                 <button
                   id="lengua_on"
                   @click="ordenar_ascendente('lengua_on')"
@@ -66,9 +67,7 @@
             </th>
             <th class="cabezal_columnas_th">
               <div class="contenedor_etiquetas_barras_busqueda">
-                <label class="label label_junto_flechas"
-                  >Gpos. de lenguas</label
-                >
+                <label class="label label_junto_flechas">Gpos. de lenguas</label>
                 <button
                   id="lengua_on"
                   @click="ordenar_ascendente('gpo_lenguas_on')"
@@ -97,19 +96,19 @@
               <div class="contenedor_etiquetas_barras_busqueda">
                 <label class="label label_junto_flechas">Comunidades</label>
                 <button
-                      id="comunidades_on"
-                      @click="ordenar_ascendente('comunidades_on')"
-                      class="flecha_orden_ascendente"
-                    >
-                      <span class="icon-arrow-up"></span>
-                    </button>
-                    <button
-                      id="comunidad_off"
-                      @click="ordenar_descendente('comunidad_off')"
-                      class="flecha_orden_descendente"
-                    >
-                      <span class="icon-arrow-down"></span>
-                    </button>
+                  id="comunidades_on"
+                  @click="ordenar_ascendente('comunidades_on')"
+                  class="flecha_orden_ascendente"
+                >
+                  <span class="icon-arrow-up"></span>
+                </button>
+                <button
+                  id="comunidad_off"
+                  @click="ordenar_descendente('comunidad_off')"
+                  class="flecha_orden_descendente"
+                >
+                  <span class="icon-arrow-down"></span>
+                </button>
               </div>
               <input
                 class="input_busqueda"
@@ -129,10 +128,7 @@
               >
             </td>
             <td class="" data-label="Lengua terminal (glottocode)">
-              <div
-                v-for="(item3, index3) in item2.languages"
-                :key="'item3' + index3"
-              >
+              <div v-for="(item3, index3) in item2.languages" :key="'item3' + index3">
                 {{ item3.language.gid }}
                 <span
                   class="lengua_term_comun"
@@ -142,14 +138,8 @@
                 ><br />
               </div>
             </td>
-            <td
-              class="grupo_lenguas"
-              data-label="Grupo de lenguas (glottocode)"
-            >
-              <div
-                v-for="(item4, index4) in item2.languages"
-                :key="'item4' + index4"
-              >
+            <td class="grupo_lenguas" data-label="Grupo de lenguas (glottocode)">
+              <div v-for="(item4, index4) in item2.languages" :key="'item4' + index4">
                 {{ item4.LanguageGroup.gid
                 }}<span
                   class="grupo_lengua_comun"
@@ -159,10 +149,7 @@
               </div>
             </td>
             <td id="mostrar-hr" class="comunidades">
-              <div
-                v-for="(item5, index5) in item2.localities"
-                :key="'item5' + index5"
-              >
+              <div v-for="(item5, index5) in item2.localities" :key="'item5' + index5">
                 <span class="pais"> {{ item5.Nom_Ent }}</span
                 ><span class="comunidad">{{ item5.Nom_Loc }}</span
                 ><span class="municipio_tabla">{{ item5.Nom_Mun }}</span
@@ -175,7 +162,7 @@
             <td class="td_acciones">
               <div class="contenedor_botones_accion">
                 <button
-                  @click="showCollect(item2.name,item2.description)"
+                  @click="showCollect(item2.name, item2.description)"
                   aria-hidden="true"
                   class="btn_accion_tabla"
                 >
@@ -189,22 +176,23 @@
                 <button class="dropdown-trigger">
                   <span class="icono_accion_tabla icon-ellipsis-v"></span>
                 </button>
-                 <div class="contenedor_opciones_elipsis">
-                    <a v-bind:href="'/collections/delete/' + item2._id" class="btn_opciones_ellipsis_mis_colecciones"><span
-                        class="icono_opcion_elipsis icon-edit"></span> Eliminar</a>
-                  </div>
+                <div class="contenedor_opciones_elipsis">
+                  <a
+                    v-bind:href="'/collections/delete/' + item2._id"
+                    class="btn_opciones_ellipsis_mis_colecciones"
+                    ><span class="icono_opcion_elipsis icon-edit"></span> Eliminar</a
+                  >
+                </div>
                 <div id="" class="contenido_modal_elipsis">
                   <span class="icono_cerrar_modal_elipsis icon-close"></span>
                   <div class="contenedor_opciones_elipsis">
                     <a class="btn_opciones_ellipsis_mis_colecciones" href="#"
-                      ><span
-                        class="icono_opcion_elipsis icon-file_upload"
-                      ></span>
-                      Cargar audioanotación</a
+                      ><span class="icono_opcion_elipsis icon-file_upload"></span> Cargar
+                      audioanotación</a
                     >
                     <a class="btn_opciones_ellipsis_mis_colecciones" href=""
-                      ><span class="icono_opcion_elipsis icon-edit"></span>
-                      Editar metadatos</a
+                      ><span class="icono_opcion_elipsis icon-edit"></span> Editar
+                      metadatos</a
                     >
                     <form class="center" action="" method="POST">
                       <input type="hidden" name="_method" value="DELETE" />
@@ -223,63 +211,63 @@
           </tr>
         </table>
         <div class="contenedor_paginacion">
-              <div class="contenedor_input_paginacion">
-                <input
-                  class=""
-                  id="busqueda_paginacion"
-                  v-model="pagina_buscar"
-                  type="text"
-                  placeholder="Pag."
-                />
-                <button
-                  class="btn_lateral_input"
-                  for="busqueda_paginacion"
-                  @click="getPage(pagina_buscar)"
-                >
-                  <span class="icono_pagina_busqueda icon-chevron-right"></span>
-                </button>
-              </div>
-              <div class="contenedor_numeros_paginacion">
-                <a
-                  v-if="paginacion.hasPrevPage"
-                  class="icono_paginacion"
-                  href="#"
-                  @click.prevent="getPage(1)"
-                  ><span v-if="paginacion.hasPrevPage" class="icon-first_page"></span
-                ></a>
-                <a
-                  v-if="paginacion.hasPrevPage"
-                  class="icono_paginacion"
-                  href="#"
-                  @click.prevent="getPage(pagina.prev)"
-                  ><span v-if="paginacion.hasPrevPage" class="icon-angle-left"></span
-                ></a>
-                <a
-                  v-for="(pag, index) in pagesNumber"
-                  :key="index"
-                  v-bind:class="[
-                    pag == isActived ? 'numero_paginacion active' : 'numero_paginacion',
-                  ]"
-                  href="#"
-                  @click.prevent="getPage(pag)"
-                  >{{ pag }}</a
-                >
+          <div class="contenedor_input_paginacion">
+            <input
+              class=""
+              id="busqueda_paginacion"
+              v-model="pagina_buscar"
+              type="text"
+              placeholder="Pag."
+            />
+            <button
+              class="btn_lateral_input"
+              for="busqueda_paginacion"
+              @click="getPage(pagina_buscar)"
+            >
+              <span class="icono_pagina_busqueda icon-chevron-right"></span>
+            </button>
+          </div>
+          <div class="contenedor_numeros_paginacion">
+            <a
+              v-if="paginacion.hasPrevPage"
+              class="icono_paginacion"
+              href="#"
+              @click.prevent="getPage(1)"
+              ><span v-if="paginacion.hasPrevPage" class="icon-first_page"></span
+            ></a>
+            <a
+              v-if="paginacion.hasPrevPage"
+              class="icono_paginacion"
+              href="#"
+              @click.prevent="getPage(pagina.prev)"
+              ><span v-if="paginacion.hasPrevPage" class="icon-angle-left"></span
+            ></a>
+            <a
+              v-for="(pag, index) in pagesNumber"
+              :key="index"
+              v-bind:class="[
+                pag == isActived ? 'numero_paginacion active' : 'numero_paginacion',
+              ]"
+              href="#"
+              @click.prevent="getPage(pag)"
+              >{{ pag }}</a
+            >
 
-                <!--<a v-if="paginacion.hasNextPage" class="ultima_pagina" href="#" @click.prevent="getPage(pagina.pageCount)"
+            <!--<a v-if="paginacion.hasNextPage" class="ultima_pagina" href="#" @click.prevent="getPage(pagina.pageCount)"
                 >...{{ paginacion.pageCount }}</a
               >-->
-                <a class="icono_paginacion" href="#" @click.prevent="getPage(pagina.next)"
-                  ><span v-if="paginacion.hasNextPage" class="icon-angle-right"></span
-                ></a>
-                <a
-                  v-if="paginacion.hasNextPage"
-                  class="icono_paginacion"
-                  href="#"
-                  @click.prevent="getPage(pagina.pageCount)"
-                  ><span v-if="paginacion.hasNextPage" class="icon-last_page"></span
-                ></a>
-              </div>
-            </div>
+            <a class="icono_paginacion" href="#" @click.prevent="getPage(pagina.next)"
+              ><span v-if="paginacion.hasNextPage" class="icon-angle-right"></span
+            ></a>
+            <a
+              v-if="paginacion.hasNextPage"
+              class="icono_paginacion"
+              href="#"
+              @click.prevent="getPage(pagina.pageCount)"
+              ><span v-if="paginacion.hasNextPage" class="icon-last_page"></span
+            ></a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -287,7 +275,7 @@
 
 <script>
 export default {
-  name: 'IndexCollections',
+  name: "IndexCollections",
   props: {
     parametro: Object,
   },
@@ -296,16 +284,16 @@ export default {
       participantOrdenado: [],
       tier: [],
       result: null,
-      otro: 'nuevo',
+      otro: "nuevo",
       notas_audioannotations: [],
-      paginacion: '',
-      pagina: '',
-      titulo: '',
-      lengua: '',
-      gpo_lengua: '',
-      comunidad: '',
-      hablantes: '',
-      genero: '',
+      paginacion: "",
+      pagina: "",
+      titulo: "",
+      lengua: "",
+      gpo_lengua: "",
+      comunidad: "",
+      hablantes: "",
+      genero: "",
 
       bandera_titulo: false,
       bandera_lengua: false,
@@ -313,12 +301,13 @@ export default {
       bandera_comunidad: false,
       bandera_hablantes: false,
       bandera_genero: false,
-      pagina_buscar: '',
+      pagina_buscar: "",
       valor_buscar: false,
-    }
+      idioma: "es",
+    };
   },
   methods: {
-     borrarCollection(collection_id) {
+    borrarCollection(collection_id) {
       var currentUrl = window.location.pathname;
       const url = `${currentUrl}/delete/${collection_id}`;
       // /audioannotations/delete/{{_id}}?_method=DELETE
@@ -342,216 +331,212 @@ export default {
             console.log(url);
           },
           (error) => {
-            console.log(
-              "no se borro " + "/collections/delete/" + collection_id
-            );
+            console.log("no se borro " + "/collections/delete/" + collection_id);
             console.log(url);
             console.log(error);
           }
         );
     },
-    showCollect(title,text) {
+    showCollect(title, text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
-      console.log("title "+title+"text "+text)
+      console.log("title " + title + "text " + text);
       this.$swal({
         title: title,
         text: text,
         showCloseButton: true,
-      })
+      });
     },
     ordenar_descendente: function (e) {
       //falta ordenar
       console.log(
-        '******************Esta entrando ordenar_descendente ******** ' +
+        "******************Esta entrando ordenar_descendente ******** " +
           e +
-          ' ************ ' +
+          " ************ " +
           e
-      )
-      if (e == 'titulo_off') {
+      );
+      if (e == "titulo_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.name > b.name) {
-            return -1
+            return -1;
           }
           if (a.name < b.name) {
-            return 1
+            return 1;
           }
           // a must be equal to b
-          return 0
-        })
-      } else if (e == 'lengua_off') {
+          return 0;
+        });
+      } else if (e == "lengua_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.languages[0].language.name > b.languages[0].language.name) {
-            return -1
+            return -1;
           }
           if (a.languages[0].language.name < b.languages[0].language.name) {
-            return 1
+            return 1;
           }
           // a must be equal to b
-          return 0
-        })
-      } else if (e == 'gpo_lenguas_off') {
+          return 0;
+        });
+      } else if (e == "gpo_lenguas_off") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (
-            a.languages[0].LanguageGroup.name >
-            b.languages[0].LanguageGroup.name
-          ) {
-            return -1
+          if (a.languages[0].LanguageGroup.name > b.languages[0].LanguageGroup.name) {
+            return -1;
           }
-          if (
-            a.languages[0].LanguageGroup.name <
-            b.languages[0].LanguageGroup.name
-          ) {
-            return 1
+          if (a.languages[0].LanguageGroup.name < b.languages[0].LanguageGroup.name) {
+            return 1;
           }
           // a must be equal to b
-          return 0
-        })
-      } else if (e == 'comunidad_off') {
+          return 0;
+        });
+      } else if (e == "comunidad_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.localities[0].Nom_Loc > b.localities[0].Nom_Loc) {
-            return -1
+            return -1;
           }
           if (a.localities[0].Nom_Loc < b.localities[0].Nom_Loc) {
-            return 1
+            return 1;
           }
           // a must be equal to b
-          return 0
-        })
-      } else if (e == 'genero_off') {
-        console.log('Entrando en el off')
+          return 0;
+        });
+      } else if (e == "genero_off") {
+        console.log("Entrando en el off");
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
-            return -1
+            return -1;
           }
           if (a.genre.name < b.genre.name) {
-            return 1
+            return 1;
           }
           // a must be equal to b
-          return 0
-        })
-      } else if (e == 'hablantes_off') {
+          return 0;
+        });
+      } else if (e == "hablantes_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
-            return -1
+            return -1;
           }
           if (a.TIER[0].PARTICIPANT < b.TIER[0].PARTICIPANT) {
-            return 1
+            return 1;
           }
           // a must be equal to b
-          return 0
-        })
+          return 0;
+        });
       }
     },
     ordenar_ascendente: function (e) {
       //falta ordenar
       console.log(
-        '******************Esta entrando ordenar_ascendente ******** ' +
+        "******************Esta entrando ordenar_ascendente ******** " +
           e +
-          ' ************ ' +
+          " ************ " +
           e
-      )
+      );
 
-      if (e == 'titulo_on') {
+      if (e == "titulo_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.name > b.name) {
-            return 1
+            return 1;
           }
           if (a.name < b.name) {
-            return -1
+            return -1;
           }
           // a must be equal to b
-          return 0
-        })
-      } else if (e == 'lengua_on') {
+          return 0;
+        });
+      } else if (e == "lengua_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.languages[0].language.name > b.languages[0].language.name) {
-            return 1
+            return 1;
           }
           if (a.languages[0].language.name < b.languages[0].language.name) {
-            return -1
+            return -1;
           }
           // a must be equal to b
-          return 0
-        })
-      } else if (e == 'gpo_lenguas_on') {
+          return 0;
+        });
+      } else if (e == "gpo_lenguas_on") {
         return this.notas_audioannotations.sort(function (a, b) {
-          if (
-            a.languages[0].LanguageGroup.name >
-            b.languages[0].LanguageGroup.name
-          ) {
-            return 1
+          if (a.languages[0].LanguageGroup.name > b.languages[0].LanguageGroup.name) {
+            return 1;
           }
-          if (
-            a.languages[0].LanguageGroup.name <
-            b.languages[0].LanguageGroup.name
-          ) {
-            return -1
+          if (a.languages[0].LanguageGroup.name < b.languages[0].LanguageGroup.name) {
+            return -1;
           }
           // a must be equal to b
-          return 0
-        })
-      } else if (e == 'comunidades_on') {
-        console.log('Entrando comunidades_on en el on')
+          return 0;
+        });
+      } else if (e == "comunidades_on") {
+        console.log("Entrando comunidades_on en el on");
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.localities[0].Nom_Loc > b.localities[0].Nom_Loc) {
-            return 1
+            return 1;
           }
           if (a.localities[0].Nom_Loc < b.localities[0].Nom_Loc) {
-            return -1
+            return -1;
           }
           // a must be equal to b
-          return 0
-        })
-      } else if (e == 'genero_on') {
-        console.log('Entrando genero en el on')
+          return 0;
+        });
+      } else if (e == "genero_on") {
+        console.log("Entrando genero en el on");
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.genre.name > b.genre.name) {
-            return 1
+            return 1;
           }
           if (a.genre.name < b.genre.name) {
-            return -1
+            return -1;
           }
           // a must be equal to b
-          return 0
-        })
-      } else if (e == 'hablantes_on') {
+          return 0;
+        });
+      } else if (e == "hablantes_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
-            return 1
+            return 1;
           }
           if (a.TIER[0].PARTICIPANT < b.TIER[0].PARTICIPANT) {
-            return -1
+            return -1;
           }
           // a must be equal to b
-          return 0
-        })
+          return 0;
+        });
       }
     },
     getPage: function (page) {
       if (page > this.paginacion.pageCount) {
-        page = this.paginacion.pageCount
+        page = this.paginacion.pageCount;
       }
       if (page <= 0) {
-        page = 1
+        page = 1;
       }
 
-      var self = this
-      self.axios.get('collections/api/read_all/' + page).then((response) => {
-        self.notas_audioannotations = response.data.itemsList
-        self.paginacion = response.data.paginator
-        self.pagina = self.paginacion
+      var self = this;
+      self.axios.get("collections/api/read_all/" + page).then((response) => {
+        self.notas_audioannotations = response.data.itemsList;
+        self.paginacion = response.data.paginator;
+        self.pagina = self.paginacion;
         //console.log(response.data)
-      })
+      });
     },
   },
   mounted() {
-    var self = this
-    self.axios.get('collections/api/read_all/1').then((response) => {
-      self.notas_audioannotations = response.data.itemsList
-      self.paginacion = response.data.paginator
-      self.pagina = self.paginacion
+    var self = this;
+    self.axios.get("collections/api/read_all/1").then((response) => {
+      self.notas_audioannotations = response.data.itemsList;
+      self.paginacion = response.data.paginator;
+      self.pagina = self.paginacion;
       //console.log(response.data)
-    })
+    });
+    self.axios.get("i18n").then((response) => {
+      self.idioma = response.data.LANGUAGE;
+      if (self.idioma === "es") {
+        //console.log("esta en español");
+        this.$i18n.locale = "es";
+      } else if (self.idioma === "en") {
+        //console.log("esta en ingles");
+        this.$i18n.locale = "en";
+      }
+    });
   },
   //ESTA FUNCIÓN ES LA QUE SE ENCARGA DE HACER LA BÚSQUEDA EN LA TABLA
   computed: {
@@ -562,53 +547,51 @@ export default {
     //       bandera_hablantes: false,
     //       bandera_genero: false,
     isActived: function () {
-      return this.paginacion.currentPage
+      return this.paginacion.currentPage;
     },
     pagesNumber: function () {
       if (!this.paginacion.pageCount) {
-        return []
+        return [];
       }
-      var from = this.paginacion.currentPage - 2 //TODO offset
+      var from = this.paginacion.currentPage - 2; //TODO offset
       if (from < 1) {
-        from = 1
+        from = 1;
       }
-      var to = from + 2 * 2 //todo
+      var to = from + 2 * 2; //todo
       if (to >= this.paginacion.pageCount) {
-        to = this.paginacion.pageCount
+        to = this.paginacion.pageCount;
       }
-      var pagesArray = []
+      var pagesArray = [];
       while (from <= to) {
-        pagesArray.push(from)
-        from++
+        pagesArray.push(from);
+        from++;
       }
-      return pagesArray
+      return pagesArray;
     },
     search_titulo: function () {
       if (this.titulo.length > 2) {
         return this.notas_audioannotations.filter((item) =>
           item.name.toLowerCase().includes(this.titulo.toLowerCase())
-        )
+        );
       } else if (this.lengua.length > 2) {
         return this.notas_audioannotations.filter((item) =>
           item.languages[0].language.name
             .toLowerCase()
             .includes(this.lengua.toLowerCase())
-        )
+        );
       } else if (this.gpo_lengua.length > 2) {
         return this.notas_audioannotations.filter((item) =>
           item.languages[0].LanguageGroup.name
             .toLowerCase()
             .includes(this.gpo_lengua.toLowerCase())
-        )
+        );
       } else if (this.comunidad.length > 2) {
         return this.notas_audioannotations.filter((item) =>
-          item.localities[0].Nom_Loc.toLowerCase().includes(
-            this.comunidad.toLowerCase()
-          )
-        )
+          item.localities[0].Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())
+        );
       }
-      return this.notas_audioannotations
+      return this.notas_audioannotations;
     },
   },
-}
+};
 </script>
