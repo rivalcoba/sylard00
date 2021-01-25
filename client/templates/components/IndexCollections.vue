@@ -67,7 +67,7 @@
             </th>
             <th class="cabezal_columnas_th">
               <div class="contenedor_etiquetas_barras_busqueda">
-                <label class="label label_junto_flechas">Gpos. de lenguas</label>
+                <label class="label label_junto_flechas">{{$t("lang.tabla_coleccion.gpoLengua")}}</label>
                 <button
                   id="lengua_on"
                   @click="ordenar_ascendente('gpo_lenguas_on')"
@@ -94,7 +94,7 @@
             </th>
             <th class="cabezal_columnas_th">
               <div class="contenedor_etiquetas_barras_busqueda">
-                <label class="label label_junto_flechas">Comunidades</label>
+                <label class="label label_junto_flechas">{{$t("lang.tabla_coleccion.comunidades")}}</label>
                 <button
                   id="comunidades_on"
                   @click="ordenar_ascendente('comunidades_on')"
