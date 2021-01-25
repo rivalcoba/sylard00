@@ -43,9 +43,11 @@ import App6 from '@client/templates/main6.vue'
 //AQUÍ TERMINAN
 import en from '@client/templates/lang/locals/en_US'
 import es from '@client/templates/lang/locals/es_MX'
+
 //Intern
 import VueI18n from "vue-i18n";
 Vue.use(VueI18n);
+
 
 const messages = {
     en: {
@@ -53,12 +55,15 @@ const messages = {
     },
     es: {
       lang: es
-    }
+    },
+  //  xx:requestURL 
+        
   }
 
 // Create VueI18n instance with options
 const i18n = new VueI18n({
-  locale: "en", // set locale
+  locale: "es", // set locale
+  fallbackLocale: 'es',
   messages // set locale messages
 });
 
