@@ -51,20 +51,20 @@ Vue.use(VueI18n);
 
 const messages = {
     en: {
-      lang: en
+        lang: en
     },
     es: {
-      lang: es
+        lang: es
     },
-  //  xx:requestURL 
-        
-  }
+    //  xx:requestURL 
+
+}
 
 // Create VueI18n instance with options
 const i18n = new VueI18n({
-  locale: "es", // set locale
-  fallbackLocale: 'es',
-  messages // set locale messages
+    locale: "es", // set locale
+    fallbackLocale: 'es',
+    messages // set locale messages
 });
 
 import colorPicker from '@chelpers/colorPicker'
@@ -125,7 +125,7 @@ if (window.location.pathname == `/audioannotations/uploadfile`) {
     window.pageScripts = createAudioAnnotationsScripts
 }
 
-if (window.location.pathname == `/audioannotations` ) {
+if (window.location.pathname == `/audioannotations`) {
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("FiltroAudioannotations", FiltroAudioannotations);
@@ -145,6 +145,7 @@ if (window.location.pathname == '/dashboard' || window.location.pathname.match(/
     Vue.component("Dashboard", Dashboard);
     window.vm = new Vue({
         el: '#app4',
+        i18n,
         render: h => h(App4)
             //aqui
             //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
@@ -171,7 +172,8 @@ if (window.location.pathname == '/collections') {
     Vue.use(VueAxios, axios);
     Vue.component("IndexCollections", IndexCollections);
     window.vm = new Vue({
-        el: '#app6',i18n,
+        el: '#app6',
+        i18n,
         render: h => h(App6)
             //aqui
             //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
