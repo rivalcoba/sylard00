@@ -159,6 +159,7 @@ if (window.location.pathname == '/audioannotation') {
     Vue.component("Audioannotations", Audioannotations);
     window.vm = new Vue({
         el: '#app5',
+        i18n,
         render: h => h(App5)
             //aqui
             //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
