@@ -2,6 +2,7 @@
     "WELCOME_MSG": "¡Bienvenido a SYLARD!",
     "WELCOME": "¡Bienvenido!",
     "Enjoy_the_diversity_of_our_collections!": "¡Disfruta de la diversidad de nuestras colecciones!",
+    "Enjoy_the_diversity_of_our_audio_annotation!": "¡Disfruta de la diversidad de nuestras colecciones!",
     "WELCOME_TO_OUR_CATALOG": "Bienvenido a nuestro catálogo",
     "Search": "Búsqueda",
     "SYLARD_MEANING": "SYLARD viene del inglés y significa <b>S</b>ynchronized <b>L</b>anguage <b>A</b>nnotation <b>R</b>esult <b>D</b>isplay",
@@ -66,8 +67,7 @@
         "coleccion": "Colección",
         "Lenguaterminal": "Lengua terminal",
         "gpoLengua": "Gpos. de lenguas",
-        "comunidades": "Comunidades",
-        "Comunidad": "Comunidad"
+        "comunidades": "Comunidades"
 
     },
     "tabla_audioannotation": {
@@ -76,7 +76,9 @@
         "gpoLengua": "Gpos. de lenguas",
         "comunidades": "Comunidades",
         "hablantes": "Hablantes",
-        "generoduracion": "Género y duracion"
+        "generoduracion": "Género y duracion",
+        "titulo": "Título",
+        "Comunidad": "Comunidad"
     },
     "reproductor_audioannotation": {
         "opcionesVisuales": "Opciones Visuales",
