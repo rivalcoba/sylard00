@@ -9,22 +9,22 @@
           id="imagen_de_catalogo"
         />
         <div class="" id="contenedor_texto_cabezal_catalogo">
-          <h1 class="">Bienvenido a nuestro catálogo</h1>
+          <h1 class="">{{$t("lang.WELCOME_TO_OUR_CATALOG")}}</h1>
           <h2 class="llamada" id="llamada_catalogo">
-            ¡Disfruta de la diversidad de nuestras audioanotaciones!
+            {{$t("lang.Enjoy_the_diversity_of_our_audio_annotation!")}}
           </h2>
         </div>
       </div>
 
       <section class="container contenedor-90vh" id="contenedor_listado_catalogo">
         <div class="contenedor_switch_visualizar_por_en_catalogo">
-          <label class="label" for="" id="">Visualizar por:</label>
+          <label class="label" for="" id="">{{$t("lang.SHOWBY.Visualizar_por")}}</label>
           <div class="contenedor_switch_visualizacion_catalogo">
             <label
               class="swich_etiqueta_opcion1"
               for="checkbox_coleccion"
               id="switch_visualizar_por_audioanotacion"
-              >Audioanotación</label
+              >{{$t("lang.SHOWBY.Audioanotacion")}}</label
             >
             <label class="switch_general">
               <input
@@ -39,7 +39,7 @@
               class="swich_etiqueta_opcion2"
               for="checkbox_coleccion"
               id="switch_visualizar_por_coleccion"
-              >Colección</label
+              >{{$t("lang.SHOWBY.coleccion")}}</label
             >
           </div>
 
@@ -48,7 +48,7 @@
               <thead>
                 <th class="cabezal_columnas_th" id="th_titulo_por_audioanotacion">
                   <div class="contenedor_etiquetas_barras_busqueda">
-                    <label class="label label_junto_flechas">Título</label>
+                    <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.titulo")}}</label>
                     <button
                       id="titulo_on"
                       @click="ordenar_ascendente('titulo_on')"
@@ -56,7 +56,6 @@
                     >
                       <span class="icon-arrow-up"></span>
                     </button>
-                    <!--PENDIENTE TOÑO LA INSTRUCCIÓN DE VUE V-MODEL NO FUNCIONA PARA BUTTONS-->
                     <button
                       id="titulo_off"
                       @click="ordenar_descendente('titulo_off')"
@@ -76,7 +75,7 @@
                 </th>
                 <th class="cabezal_columnas_th" id="th_coleccion_por_audioanotacion">
                   <div class="contenedor_etiquetas_barras_busqueda">
-                    <label class="label label_junto_flechas">Colección</label>
+                    <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.coleccion")}}</label>
                     <button class="flecha_orden_ascendente">
                       <span class="icon-arrow-up"></span>
                     </button>
@@ -88,7 +87,7 @@
                 </th>
                 <th class="cabezal_columnas_th">
                   <div class="contenedor_etiquetas_barras_busqueda">
-                    <label class="label label_junto_flechas">Lengua terminal</label>
+                    <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.Lenguaterminal")}}</label>
                     <button
                       id="lengua_on"
                       @click="ordenar_ascendente('lengua_on')"
@@ -115,7 +114,7 @@
                 </th>
                 <th class="cabezal_columnas_th">
                   <div class="contenedor_etiquetas_barras_busqueda">
-                    <label class="label label_junto_flechas">Gpos. de lenguas</label>
+                    <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.gpoLengua")}}</label>
                     <button
                       id="lengua_on"
                       @click="ordenar_ascendente('gpo_lenguas_on')"
@@ -142,7 +141,7 @@
                 </th>
                 <th class="cabezal_columnas_th">
                   <div class="contenedor_etiquetas_barras_busqueda">
-                    <label class="label label_junto_flechas">Comunidad</label>
+                    <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.Comunidad")}}</label>
                     <button
                       id="comunidad_on"
                       @click="ordenar_ascendente('comunidad_on')"
@@ -169,7 +168,7 @@
                 </th>
                 <th class="cabezal_columnas_th" id="th_hablantes">
                   <div class="contenedor_etiquetas_barras_busqueda">
-                    <label class="label label_junto_flechas">Hablantes</label>
+                    <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.hablantes")}}</label>
                     <button
                       id="hablantes_on"
                       @click="ordenar_ascendente('hablantes_on')"
@@ -196,7 +195,7 @@
                 </th>
                 <th class="cabezal_columnas_th">
                   <div class="contenedor_etiquetas_barras_busqueda">
-                    <label class="label label_junto_flechas">Género y duracion</label>
+                    <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.generoduracion")}}</label>
                     <button
                       id="genero_on"
                       @click="ordenar_ascendente('genero_on')"
@@ -663,6 +662,17 @@ export default {
     });
     console.log("se longitud ");
     console.log(this.arreglo_coleccion.length);
+    //INTERNATIONALITATION PAGE WITH I18N
+         self.axios.get("i18n").then((response) => {
+      self.idioma = response.data.LANGUAGE;
+      if (self.idioma === "es") {
+        //console.log("esta en español");
+        this.$i18n.locale = "es";
+      } else if (self.idioma === "en") {
+        //console.log("esta en ingles");
+        this.$i18n.locale = "en";
+      }
+    });
   },
   computed: {
     // bandera_titulo: false,
