@@ -199,7 +199,7 @@
                     class="btn-regresar_audioanotaciones"
                     id="btn-regresar_audioanotaciones"
                   >
-                    <span class="icono_boton_eliminar_audioanotaciones icon-back"></span>
+                    <span onclick="window.location.href = '/dashboard'" class="icono_boton_eliminar_audioanotaciones icon-back"><!--TODO AQUI---></span>
                   </button>
                 </div>
               </th>
