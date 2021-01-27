@@ -1,6 +1,10 @@
 {
     "WELCOME_MSG": "¡Bienvenido a SYLARD!",
     "WELCOME": "¡Bienvenido!",
+    "Enjoy_the_diversity_of_our_collections!": "¡Disfruta de la diversidad de nuestras colecciones!",
+    "Enjoy_the_diversity_of_our_audio_annotation!": "¡Disfruta de la diversidad de nuestras colecciones!",
+    "WELCOME_TO_OUR_CATALOG": "Bienvenido a nuestro catálogo",
+    "Search": "Búsqueda",
     "SYLARD_MEANING": "SYLARD viene del inglés y significa <b>S</b>ynchronized <b>L</b>anguage <b>A</b>nnotation <b>R</b>esult <b>D</b>isplay",
     "LOGIN": "Accesar",
     "LOGIN_AUTH": "Ingresar",
@@ -53,30 +57,33 @@
     "COMPLETE_FIELDS": "Llena los campos correctamente",
     "HELLO_COLLECTIONS": "¡Hola!",
     "RESTORE": "Restablecer",
-    "LANGUAGE":"es",
-    "SHOWBY":{
-        "visualizarpor":"Visualizar por:",
-        "Audioanotacion":"Audioanotación",
-        "coleccion":"Colección"   
-       },
+    "LANGUAGE": "es",
+    "SHOWBY": {
+        "Visualizar_por": "Visualizar por:",
+        "Audioanotacion": "Audioanotación",
+        "coleccion": "Colección"
+    },
     "tabla_coleccion": {
         "coleccion": "Colección",
-        "Lenguaterminal":"Lengua terminal",
+        "Lenguaterminal": "Lengua terminal",
         "gpoLengua": "Gpos. de lenguas",
-        "comunidades":"Comunidades"
+        "comunidades": "Comunidades"
 
     },
     "tabla_audioannotation": {
         "coleccion": "Colección",
-        "Lenguaterminal":"Lengua terminal",
+        "Lenguaterminal": "Lengua terminal",
         "gpoLengua": "Gpos. de lenguas",
-        "comunidades":"Comunidades",
-        "hablantes":"Hablantes",
-        "generoduracion":"Género y duracion"
-    },    "reproductor_audioannotation": {
-        "opcionesVisuales":"Opciones Visuales",
-        "mostrar":"Mostrar",
-        "visualizar":"Visualizar en:",
-        "colorTipo":"Color de tipografía"
+        "comunidades": "Comunidades",
+        "hablantes": "Hablantes",
+        "generoduracion": "Género y duracion",
+        "titulo": "Título",
+        "Comunidad": "Comunidad"
+    },
+    "reproductor_audioannotation": {
+        "opcionesVisuales": "Opciones Visuales",
+        "mostrar": "Mostrar",
+        "visualizar": "Visualizar en:",
+        "colorTipo": "Color de tipografía"
     }
 }

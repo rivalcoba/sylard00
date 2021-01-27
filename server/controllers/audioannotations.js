@@ -86,6 +86,7 @@ const index = async(req, res) => {
     // console.log("Aqui")
     //console.log(collections)
     res.render('audioannotations/index', {
+        title: 'Audioanotaciones de la colección...',
         //enviar
         audioannotations,
     })
@@ -114,43 +115,43 @@ const indexById = async(req, res) => {
 
 const filtrarAudioannotation = async(req, res) => {
     try {
-    
-    const myCustomLabels = {
-  totalDocs: 'itemCount',
-  docs: 'itemsList',
-  limit: 'perPage',
-  page: 'currentPage',
-  nextPage: 'next',
-  prevPage: 'prev',
-  totalPages: 'pageCount',
-  pagingCounter: 'slNo',
-  meta: 'paginator',
-};
 
-const options = {
-  page: req.params.page,
-  limit: 2,
-  sort: { title: 1 },
-  populate:'colection',
-  customLabels: myCustomLabels,
-};
-    
-    Audioannotations.paginate({},options,function(
-    err,
-    result
-  ){
-    if (err) {
-      console.log("El error esta aqui")
-      console.err(err);
-      return res.status(400).json({
-            mensaje: 'Ocurrio un error',
-            err
-        })
-    } else {
-      res.json(result);
-    }
-  })  
-        //checar https://kb.objectrocket.com/mongo-db/mongoose-pagination-with-nodejs-and-mongodb-1304
+        const myCustomLabels = {
+            totalDocs: 'itemCount',
+            docs: 'itemsList',
+            limit: 'perPage',
+            page: 'currentPage',
+            nextPage: 'next',
+            prevPage: 'prev',
+            totalPages: 'pageCount',
+            pagingCounter: 'slNo',
+            meta: 'paginator',
+        };
+
+        const options = {
+            page: req.params.page,
+            limit: 2,
+            sort: { title: 1 },
+            populate: 'colection',
+            customLabels: myCustomLabels,
+        };
+
+        Audioannotations.paginate({}, options, function(
+                err,
+                result
+            ) {
+                if (err) {
+                    console.log("El error esta aqui")
+                    console.err(err);
+                    return res.status(400).json({
+                        mensaje: 'Ocurrio un error',
+                        err
+                    })
+                } else {
+                    res.json(result);
+                }
+            })
+            //checar https://kb.objectrocket.com/mongo-db/mongoose-pagination-with-nodejs-and-mongodb-1304
     } catch (error) {
         return res.status(400).json({
             mensaje: 'Ocurrio un error',
@@ -188,8 +189,8 @@ const addAudioannotation = async(req, res) => {
 
     // Audioannotations Creations.
     let tiers = []
-    
-    PARTICIPANT.forEach((participant, index)=>{
+
+    PARTICIPANT.forEach((participant, index) => {
         tiers.push({
             PARTICIPANT: participant,
             Visible: Visible[index],
@@ -274,6 +275,7 @@ const uploadfileAudioannotation = async(req, res, next) => {
         })
 
         res.render('audioannotations/create', {
+            title: 'Agregar audioanotación',
             filename: file.filename,
             collections,
             genreArray,
@@ -294,54 +296,60 @@ const editAudioannotation = async(req, res) => {
     const audioannotationid = req.params.audioannotation_id
     console.log("--------------Aqui Edit--------------")
     console.log(audioannotationid)
-    res.render('audioannotations/edit', { audioannotationid })
+    res.render('audioannotations/edit', {
+        title: 'Editar audioanotación',
+        audioannotationid
+    })
 }
 
-const deleteAudioannotaion = async (req, res) => {
-  //console.log("Aqui no entro")
-  const audioannotation_id = req.params.audioannotation_id
-  try {
+const deleteAudioannotaion = async(req, res) => {
+    //console.log("Aqui no entro")
+    const audioannotation_id = req.params.audioannotation_id
+    try {
         let audioannotationsDocs = await Audioannotations.findById(
-      audioannotation_id
-    ).exec()
-    var file = audioannotationsDocs.eaf
-   // console.log(file);
-    const result = await Audioannotations.deleteOne({
-      _id: audioannotation_id,
-    }).exec()
-    //console.log(`deleteAudioannotation> Result: ${result}`);  
-     console.log(`deleteAudioannotation> Result: ${result}`,JSON.stringify(result));
-  } catch (error) {
-    console.log("no borro en la bd",error)
-    return res.status(404).json(error)
-  }
-  try {
-    //console.log("Borrar este")
-    //console.log(req.)
+            audioannotation_id
+        ).exec()
+        var file = audioannotationsDocs.eaf
+            // console.log(file);
+        const result = await Audioannotations.deleteOne({
+                _id: audioannotation_id,
+            }).exec()
+            //console.log(`deleteAudioannotation> Result: ${result}`);  
+        console.log(`deleteAudioannotation> Result: ${result}`, JSON.stringify(result));
+    } catch (error) {
+        console.log("no borro en la bd", error)
+        return res.status(404).json(error)
+    }
+    try {
+        //console.log("Borrar este")
+        //console.log(req.)
 
-    //Borrado del archivo fisicamente
-    const fs = require('fs')
-    const path = 'server/public/eaf/' + file
-    fs.unlinkSync(path)
-    //res.redirect('/audioannotations')
-    //console.error("despues del borrado fisico")
-        return res.status(200).json({"file":"ok"})
-  } catch (error) {
-    //error de borrado
-    console.error('error en el borrado fisico')
-    console.error(error)
-    return res.status(400).json(error)
-  }
+        //Borrado del archivo fisicamente
+        const fs = require('fs')
+        const path = 'server/public/eaf/' + file
+        fs.unlinkSync(path)
+            //res.redirect('/audioannotations')
+            //console.error("despues del borrado fisico")
+        return res.status(200).json({ "file": "ok" })
+    } catch (error) {
+        //error de borrado
+        console.error('error en el borrado fisico')
+        console.error(error)
+        return res.status(400).json(error)
+    }
 }
 
 const vuetestAudioannotaion = async(req, res) => {
     const audioannotationid = req.params.audioannotation_id
     console.log("--------------Aqui--------------")
     console.log(audioannotationid)
-    res.render('audioannotations/vuetest', { audioannotationid })
+    res.render('audioannotations/vuetest', {
+        title: 'SYLARD Visor EAF',
+        audioannotationid
+    })
 }
 
-const color = (req, res)=>{
+const color = (req, res) => {
     res.render('audioannotations/color')
 }
 
