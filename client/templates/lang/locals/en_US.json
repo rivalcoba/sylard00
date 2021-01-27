@@ -4,6 +4,7 @@
     "WELCOME_TO_OUR_CATALOG": "Welcome to our catalog",
     "Search": "Search",
     "Enjoy_the_diversity_of_our_collections!": "Enjoy the diversity of our collections!",
+    "Enjoy_the_diversity_of_our_audio_annotation!": "Enjoy the diversity of our audio annotation!",
     "SYLARD_MEANING": "SYLARD is an acronym for <b>S</b>ynchronized <b>L</b>anguage <b>A</b>nnotation <b>R</b>esult <b>D</b>isplay",
     "LOGIN": "Login",
     "LOGIN_AUTH": "Login",
@@ -75,7 +76,8 @@
         "comunidades": "Communities",
         "Comunidad": "Comunity",
         "hablantes": "Speakers",
-        "generoduracion": "Gender and duration"
+        "generoduracion": "Gender and duration",
+        "titulo": "Title"
     },
     "reproductor_audioannotation": {
         "opcionesVisuales": "Visual Options",
