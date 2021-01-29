@@ -55,6 +55,7 @@
     "ADD_COLLECTION": "Add Collection",
     "UPLOAD_AUDIONOTATION": "Upload Audio Annotation",
     "COMPLETE_FIELDS": "Fill in the fields correctly",
+    "Default_visual_options": "Default visual options",
     "HELLO_COLLECTIONS": "Hello!",
     "RESTORE": "Restore",
     "LANGUAGE": "en",
@@ -83,7 +84,8 @@
         "opcionesVisuales": "Visual Options",
         "mostrar": "Show",
         "visualizar": "View in:",
-        "colorTipo": "Typography Color"
+        "colorTipo": "Typography Color",
+        "Hablante": "Channel 1 (speaker)"
     }
 
 }
