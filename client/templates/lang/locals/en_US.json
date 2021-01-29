@@ -85,7 +85,8 @@
         "mostrar": "Show",
         "visualizar": "View in:",
         "colorTipo": "Typography Color",
-        "Hablante": "Channel 1 (speaker)"
+        "Hablante": "Channel 1 (speaker)",
+        "Canal": "Channel"
     }
 
 }
