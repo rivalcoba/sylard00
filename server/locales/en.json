@@ -32,6 +32,7 @@
     "FORGOT_PASSWORD": "Forgot password?",
     "EMAIL_PLACEHOLDER": "Enter your email",
     "RESET_PASSWORD_TITLE": "Reset Password",
+    "RESET": "Reset",
     "RESET_PASSWORD_MESSAGE": "Enter your email account to send you a provisional password",
     "TYPE_YOUR_USERNAME_AND_PASSWORD": "Type your username and password",
     "PASSWORD_INTRODUCE": "Type your password",
@@ -52,33 +53,43 @@
     "UPLOAD_AUDIONOTATION": "Upload Audio Annotation",
     "COMPLETE_FIELDS": "Fill in the fields correctly",
     "HELLO_COLLECTIONS": "Hello!",
+    "Select_the_file_ending_with_eaf": "Select the file ending with .eaf",
+    "Enter_the_audio_URL_in_mp3": "Enter the audio URL in .mp3",
+    "Title": "Title",
+    "Description_of_the_audio_annotation": "Description of the audio annotation",
+    "Collection_to_which_it_belongs": "Collection to which it belongs",
+    "Community_to_which_it_belongs": "Community to which it belongs",
+    "Terminal_language_to_which_it_belongs": "Terminal language to which it belongs",
+    "Genre_to_which_it_belongs": "Genre to which it belongs",
+    "File_uploaded_successfully": "File uploaded successfully",
+    "Default_visual_options": "Default visual options",
     "RESTORE": "Restore",
-    "LANGUAGE":"en",
-    "SHOWBY":{
-     "visualizarpor":"Show By:",
-     "Audioanotacion":"Audioanotation",
-     "coleccion":"collection"   
+    "LANGUAGE": "en",
+    "SHOWBY": {
+        "visualizarpor": "Show By:",
+        "Audioanotacion": "Audioanotation",
+        "coleccion": "collection"
     },
     "tabla_coleccion": {
         "coleccion": "Collection",
-        "Lenguaterminal":"Last Tongue",
+        "Lenguaterminal": "Last Tongue",
         "gpoLengua": "Language Group",
-        "comunidades":"Communities"
+        "comunidades": "Communities"
     },
     "tabla_audioannotation": {
         "coleccion": "Collection",
-        "Lenguaterminal":"Last Tongue",
-        "titulo":"Title",
+        "Lenguaterminal": "Last Tongue",
+        "titulo": "Title",
         "gpoLengua": "Language Group",
-        "comunidades":"Communities",
-        "hablantes":"Speakers",
-        "generoduracion":"Gender and duration"
+        "comunidades": "Communities",
+        "hablantes": "Speakers",
+        "generoduracion": "Gender and duration"
     },
     "reproductor_audioannotation": {
-        "opcionesVisuales":"Visual Options",
-        "mostrar":"Show",
-        "visualizar":"View in:",
-        "colorTipo":"Typography Color"
+        "opcionesVisuales": "Visual Options",
+        "mostrar": "Show",
+        "visualizar": "View in:",
+        "colorTipo": "Typography Color"
     }
 
 }
