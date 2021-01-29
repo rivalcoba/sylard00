@@ -86,6 +86,7 @@
         "mostrar": "Mostrar",
         "visualizar": "Visualizar en:",
         "colorTipo": "Color de tipografía",
-        "Hablante": "Canal 1 (hablante)"
+        "Hablante": "Canal 1 (hablante)",
+        "Canal": "Canal"
     }
 }
