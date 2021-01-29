@@ -33,6 +33,7 @@
     "FORGOT_PASSWORD": "¿Olvidaste la contraseña?",
     "EMAIL_PLACEHOLDER": "Escribe tu correo",
     "RESET_PASSWORD_TITLE": "Restablecer contraseña",
+    "RESET": "Restablecer",
     "RESET_PASSWORD_MESSAGE": "Te enviaremos una contraseña provisional",
     "TYPE_YOUR_USERNAME_AND_PASSWORD": "Teclea tu usuario y contraseña",
     "CATALOGUE": "Catálogo",
@@ -51,33 +52,43 @@
     "ADD_COLLECTION": "Agregar colección",
     "UPLOAD_AUDIONOTATION": "Cargar audioanotación",
     "COMPLETE_FIELDS": "Llena los campos correctamente",
+    "Select_the_file_ending_with_eaf": "Selecciona el archivo con terminacion .eaf",
+    "Enter_the_audio_URL_in_mp3": "Ingrese la URL de audio en .mp3",
+    "Title": "Título",
+    "Description_of_the_audio_annotation": "Descripción de la audioanotación",
+    "Collection_to_which_it_belongs": "Colección a la que pertenece",
+    "Community_to_which_it_belongs": "Comunidad a la que pertenece",
+    "Terminal_language_to_which_it_belongs": "Lengua terminal a la que pertenece",
+    "File uploaded successfully": "Archivo cargado éxitosamente",
+    "Genre_to_which_it_belongs": "Género al que pertenece",
+    "Default_visual_options": "Opciones visuales predeterminadas",
     "HELLO_COLLECTIONS": "¡Hola!",
     "RESTORE": "Restablecer",
-    "LANGUAGE":"es",
-    "SHOWBY":{
-        "visualizarpor":"Visualizar por:",
-        "Audioanotacion":"Audioanotación",
-        "coleccion":"Colección"   
-       },
+    "LANGUAGE": "es",
+    "SHOWBY": {
+        "visualizarpor": "Visualizar por:",
+        "Audioanotacion": "Audioanotación",
+        "coleccion": "Colección"
+    },
     "tabla_coleccion": {
         "coleccion": "Colección",
-        "Lenguaterminal":"Lengua terminal",
+        "Lenguaterminal": "Lengua terminal",
         "gpoLengua": "Gpos. de lenguas",
-        "comunidades":"Comunidades"
-        },
+        "comunidades": "Comunidades"
+    },
     "tabla_audioannotation": {
         "coleccion": "Colección",
-        "Lenguaterminal":"Lengua terminal",
-        "titulo":"Titulo",
+        "Lenguaterminal": "Lengua terminal",
+        "titulo": "Titulo",
         "gpoLengua": "Gpos. de lenguas",
-        "comunidades":"Comunidades",
-        "hablantes":"Hablantes",
-        "generoduracion":"Género y duracion"
+        "comunidades": "Comunidades",
+        "hablantes": "Hablantes",
+        "generoduracion": "Género y duracion"
     },
     "reproductor_audioannotation": {
-        "opcionesVisuales":"Opciones Visuales",
-        "mostrar":"Mostrar",
-        "visualizar":"Visualizar en:",
-        "colorTipo":"Color de tipografía"
+        "opcionesVisuales": "Opciones Visuales",
+        "mostrar": "Mostrar",
+        "visualizar": "Visualizar en:",
+        "colorTipo": "Color de tipografía"
     }
 }
