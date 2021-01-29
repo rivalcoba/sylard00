@@ -55,6 +55,7 @@
     "ADD_COLLECTION": "Agregar colección",
     "UPLOAD_AUDIONOTATION": "Cargar audioanotación",
     "COMPLETE_FIELDS": "Llena los campos correctamente",
+    "Default_visual_options": "Opciones visuales predeterminadas",
     "HELLO_COLLECTIONS": "¡Hola!",
     "RESTORE": "Restablecer",
     "LANGUAGE": "es",
@@ -84,6 +85,7 @@
         "opcionesVisuales": "Opciones Visuales",
         "mostrar": "Mostrar",
         "visualizar": "Visualizar en:",
-        "colorTipo": "Color de tipografía"
+        "colorTipo": "Color de tipografía",
+        "Hablante": "Canal 1 (hablante)"
     }
 }
