@@ -104,6 +104,7 @@ if (window.location.pathname.match(/\/audioannotations\/vuetest\//)) {
     Vue.component("LecturaEAF", LecturaEAF);
     window.vm = new Vue({
         el: '#app',
+        i18n,
         render: h => h(App)
     })
 }
@@ -115,6 +116,7 @@ if (window.location.pathname == `/audioannotations/uploadfile`) {
     Vue.component("LecturaTierEAF", LecturaTierEAF, );
     window.vm = new Vue({
         el: '#app2',
+        i18n,
         render: h => h(App2)
             //aqui
             //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
