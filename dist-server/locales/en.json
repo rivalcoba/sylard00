@@ -36,6 +36,7 @@
     "TYPE_YOUR_USERNAME_AND_PASSWORD": "Type your username and password",
     "PASSWORD_INTRODUCE": "Type your password",
     "CATALOGUE": "Catalogue",
+    "Choose_your_user_privileges": "Choose your user privileges",
     "SEE_CATALOGUE": "See catalogue",
     "DOCUMENTATION": "Documentation",
     "USER_MANUAL": "User manual",
@@ -53,32 +54,32 @@
     "COMPLETE_FIELDS": "Fill in the fields correctly",
     "HELLO_COLLECTIONS": "Hello!",
     "RESTORE": "Restore",
-    "LANGUAGE":"en",
-    "SHOWBY":{
-     "visualizarpor":"Show By:",
-     "Audioanotacion":"Audioanotation",
-     "coleccion":"collection"   
+    "LANGUAGE": "en",
+    "SHOWBY": {
+        "visualizarpor": "Show By:",
+        "Audioanotacion": "Audioanotation",
+        "coleccion": "collection"
     },
     "tabla_coleccion": {
         "coleccion": "Collection",
-        "Lenguaterminal":"Last Tongue",
+        "Lenguaterminal": "Last Tongue",
         "gpoLengua": "Language Group",
-        "comunidades":"Communities"
+        "comunidades": "Communities"
     },
     "tabla_audioannotation": {
         "coleccion": "Collection",
-        "Lenguaterminal":"Last Tongue",
-        "titulo":"Title",
+        "Lenguaterminal": "Last Tongue",
+        "titulo": "Title",
         "gpoLengua": "Language Group",
-        "comunidades":"Communities",
-        "hablantes":"Speakers",
-        "generoduracion":"Gender and duration"
+        "comunidades": "Communities",
+        "hablantes": "Speakers",
+        "generoduracion": "Gender and duration"
     },
     "reproductor_audioannotation": {
-        "opcionesVisuales":"Visual Options",
-        "mostrar":"Show",
-        "visualizar":"View in:",
-        "colorTipo":"Typography Color"
+        "opcionesVisuales": "Visual Options",
+        "mostrar": "Show",
+        "visualizar": "View in:",
+        "colorTipo": "Typography Color"
     }
 
 }
