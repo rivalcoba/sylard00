@@ -1,7 +1,7 @@
 <template>
   <div>
     <button class="contenedor_acordeon" @click="acordion()">
-      <span class="icono_acordeon icon-chevron-down"></span> Opciones visuales
+      <span class="icono_acordeon icon-chevron-down"></span> {{$t("lang.reproductor_audioannotation.opcionesVisuales")}}
     </button>
     <!-- https://www.youtube.com/watch?v=NPGkoOQPtJs
     min  9:05-->
@@ -17,7 +17,7 @@
                <div class="contenedor_canal_padre_compacto">
                 <div class="contenedor_hablante">
                 <p class="label label_al_100">
-                  Canal {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
+                  {{$t("lang.reproductor_audioannotation.Canal")}} {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
                 </p>
                 <h5 class="hablante_canal_padre">
                   {{ item.PARTICIPANT }} {{ item.TIER_ID }}
@@ -27,7 +27,7 @@
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal"
                 >
-                  <label class="label label_al_100">Mostrar</label>
+                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.mostrar")}}</label>
                   <div class="contenedor_switch_canal_audioanotacion">
                     <label
                       class="swich_etiqueta_opcion1_compacto"
@@ -54,7 +54,7 @@
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en"
                 >
-                  <label class="label label_al_100">Visualizar en:</label>
+                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.visualizar")}}</label>
                   <select
                     class="opciones_despliegue_viewer input_flexible_compacto"
                     v-model="item.value"
@@ -67,7 +67,7 @@
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion"
                 >
-                  <label class="label label_al_100">Color de tipografía</label>
+                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.colorTipo")}}</label>
                   <input
                     type="text"
                     v-bind:style="colorclase(item.color)"
@@ -581,6 +581,17 @@ export default {
       self.tituloAudioannotation = self.audioannotations_info.data.title;
       self.$root.$emit("tituloAudioannotation", self.tituloAudioannotation);
       self.options = self.audioannotations;
+    });
+      //INTERNATIONALITATION PAGE WITH I18N
+         self.axios.get("i18n").then((response) => {
+      self.idioma = response.data.LANGUAGE;
+      if (self.idioma === "es") {
+        //console.log("esta en español");
+        this.$i18n.locale = "es";
+      } else if (self.idioma === "en") {
+        //console.log("esta en ingles");
+        this.$i18n.locale = "en";
+      }
     });
     //this.saveFileJSon();
     //console.log("Aqui se esta añadiendo al json");

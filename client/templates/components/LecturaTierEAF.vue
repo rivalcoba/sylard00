@@ -2,7 +2,7 @@
   <div>
     <div v-if="this.info.data">
       <p class="label" id="opciones_visuales_predeterminadas">
-        Opciones visuales predeterminadas
+        {{$t("lang.Default_visual_options")}}
       </p>
       <div class="contenedor_opciones_visuales_predeterminadas">
         <div v-for="(item2, index) in tier_participante" :key="'item' + index">
@@ -10,7 +10,7 @@
           <div class="contenedor_canal_audioanotacion">
             <div class="contenedor_canal_padre">
               <div class="contenedor_hablante">
-                <p class="label label_al_100">Canal 1 (hablante)</p>
+                <p class="label label_al_100"> {{$t("lang.reproductor_audioannotation.Hablante")}}</p>
                 <input
                   type="text"
                   class="hablante_canal_padre_input"
@@ -25,7 +25,7 @@
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal"
                 >
-                  <label class="label label_al_100">Mostrar</label>
+                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.mostrar")}}</label>
                   <div class="contenedor_switch_canal_audioanotacion">
                     <label
                       class="swich_etiqueta_opcion1"
@@ -53,7 +53,7 @@
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en"
                 >
-                  <label class="label label_al_100">Visualizar en:</label>
+                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.visualizar")}}</label>
 
                   <select
                     class="opciones_despliegue_viewer input_flexible"
@@ -67,7 +67,7 @@
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion"
                 >
-                  <label class="label label_al_100">Color de tipografía</label>
+                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.colorTipo")}}</label>
                   <input
                     type="text"
                     :data-did="'A' + (index + 55) + '-colorPicker'"
@@ -470,6 +470,17 @@ export default {
         this.info = response;
         self.agregar_tier_acomodado();
       });
+      //INTERNATIONALITATION PAGE WITH I18N
+         self.axios.get("i18n").then((response) => {
+      self.idioma = response.data.LANGUAGE;
+      if (self.idioma === "es") {
+        //console.log("esta en español");
+        this.$i18n.locale = "es";
+      } else if (self.idioma === "en") {
+        //console.log("esta en ingles");
+        this.$i18n.locale = "en";
+      }
+    });
     //this.agregar_tier_acomodado();
   },
 };
