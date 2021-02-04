@@ -37,6 +37,7 @@ import Audioannotations from "@client/templates/components/Audioannotations.vue"
 import Dashboard from "@client/templates/components/Dashboard.vue";
 import IndexCollections from "@client/templates/components/IndexCollections.vue";
 import App3 from '@client/templates/main3.vue'
+import Main31 from '@client/templates/main31.vue'
 import App4 from '@client/templates/main4.vue'
 import App5 from '@client/templates/main5.vue'
 import App6 from '@client/templates/main6.vue'
@@ -125,6 +126,15 @@ if (window.location.pathname == `/audioannotations/uploadfile`) {
     window.pageScripts = createAudioAnnotationsScripts
 }
 
+if(window.location.pathname.match(/\/collections\/index\//)){
+    Vue.use(VueAxios, axios);
+    //Vue.component("AudioAnnotationsByCollection", AudioAnnotationsByCollection);
+    window.vm = new Vue({
+        el: '#main31',
+        render: h => h(Main31) // h stands for hyperscript
+    })
+}
+
 if (window.location.pathname == `/audioannotations`) {
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
@@ -132,14 +142,11 @@ if (window.location.pathname == `/audioannotations`) {
     window.vm = new Vue({
         el: '#app3',
         render: h => h(App3)
-            //aqui
-            //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
-            //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview 
     })
 }
 
 //Aquí redirige a la nueva vista de dashboard
-if (window.location.pathname == '/dashboard' || window.location.pathname.match(/\/collections\/index\//)) {
+if (window.location.pathname == '/dashboard') {
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("Dashboard", Dashboard);

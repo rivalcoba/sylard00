@@ -179,25 +179,7 @@ const editCollection = async(req, res) => {
 }
 
 const indexCollection = async(req, res) => {
-
-    /*const {collectionId} = req.params
-
-    const audioannotationsDocs = await Audioannotations.find({
-            user: req.user._id, collection_id: collectionId
-        })
-        .populate('user')
-        .populate('colection')
-        .exec()
-
-    let audioannotations = audioannotationsDocs.map(audioannotation => {
-        return audioannotation.toJSON()
-    })
-
-    return res.json(audioannotations)
-    */
-    res.render('audioannotations/index', {
-        //enviar
-
+    res.render('audioannotations/indexByCollection', {
     })
 }
 
