@@ -140,8 +140,8 @@ router.get(
     
     router.get(
       '/api/index/:id/:page',
-      ensureAuthenticated,
-      ensureColabUser,
+      //ensureAuthenticated,
+      //ensureColabUser,
       audioannotationsController.api_indexAudioannotationsByCollection
     )
 // Se exportan rutas

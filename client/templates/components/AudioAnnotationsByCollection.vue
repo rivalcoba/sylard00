@@ -16,8 +16,7 @@
             </h4>
             <!--NOMBRE DE LA COLECCIÓN EN ENCABEZADO-->
             <h3 class="nombre_coleccion_audioanotaciones blanco">
-              Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el
-              Municipio de San Luis Acatlán
+              {{collectionName}}
               <button
                 class="btn_info_coleccion_cabezal_coleccion_audioanotaciones"
                 id="coleccion_info_general_cabezal"
@@ -30,9 +29,9 @@
             <h4 class="blanco gpo_lenguas_audioanotaciones">
               Grupo de lenguas:
               <strong
-                >Amuzgo-mixtecan
+                >{{languageGroupName}}
                 <span class="gpo_lenguas_glottocode_info"
-                  >[amuz1253]</span
+                  >{{languageGroupId}}</span
                 ></strong
               >
             </h4>
@@ -418,6 +417,9 @@ export default {
   },
   data() {
     return {
+      collectionName: '',
+      languageGroupName: '',
+      languageGroupId: '',
       participantOrdenado: [],
       tier: [],
       result: null,
@@ -675,7 +677,12 @@ export default {
   async mounted() {
     let collectionId = window.location.pathname.split('/').pop();
     try {
-      let response = await this.axios.get(`/audioannotations/api/index/${collectionId}/1`)
+      let response = await this.axios.get(`/collections/api/read/${collectionId}`)
+      this.collectionName = response.data.name
+      this.languageGroupName = response.data.languages[0].LanguageGroup.name
+      this.languageGroupId = response.data.languages[0].LanguageGroup.gid
+
+      response = await this.axios.get(`/audioannotations/api/index/${collectionId}/1`)
       this.notas_audioannotations = response.data.itemsList
       this.paginacion = response.data.paginator
       this.pagina = this.paginacion
@@ -685,12 +692,6 @@ export default {
     }
   },
   computed: {
-    // bandera_titulo: false,
-    //       bandera_lengua: false,
-    //       bandera_gpo_lengua: false,
-    //       bandera_comunidad: false,
-    //       bandera_hablantes: false,
-    //       bandera_genero: false,
     isActived: function() {
       return this.paginacion.currentPage
     },
