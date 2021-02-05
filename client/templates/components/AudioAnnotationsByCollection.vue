@@ -5,7 +5,8 @@
         <div class="col-sm-12" id="contenedor_items_cabezal_audioanotaciones">
           <div class="" id="contenedor_titulos_cabezal_audioanotaciones">
             <h1 id="titulo_audioanotaciones">
-              <span class="icono_cabezal icon-file-sound-o"></span> Audioanotaciones
+              <span class="icono_cabezal icon-file-sound-o"></span>
+              Audioanotaciones
             </h1>
             <h4
               class="etiqueta_nombre_coleccion_audioanotaciones"
@@ -15,19 +16,24 @@
             </h4>
             <!--NOMBRE DE LA COLECCIÓN EN ENCABEZADO-->
             <h3 class="nombre_coleccion_audioanotaciones blanco">
-              Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el Municipio de
-              San Luis Acatlán<button
+              Estudio Florístico y Etnobotánico de Comunidades Mixtecas en el
+              Municipio de San Luis Acatlán
+              <button
                 class="btn_info_coleccion_cabezal_coleccion_audioanotaciones"
                 id="coleccion_info_general_cabezal"
               >
-                <span class="icono_info_coleccion_audioanotacion icon-info1"></span>
+                <span
+                  class="icono_info_coleccion_audioanotacion icon-info1"
+                ></span>
               </button>
             </h3>
             <h4 class="blanco gpo_lenguas_audioanotaciones">
               Grupo de lenguas:
               <strong
                 >Amuzgo-mixtecan
-                <span class="gpo_lenguas_glottocode_info">[amuz1253]</span></strong
+                <span class="gpo_lenguas_glottocode_info"
+                  >[amuz1253]</span
+                ></strong
               >
             </h4>
           </div>
@@ -39,20 +45,28 @@
               onclick="window.location.href = '/audioannotations/create'"
               class="btn btn-primario"
             >
-              Cargar audioanotacion <span class="icono_boton icon-file_upload"></span>
+              Cargar audioanotacion
+              <span class="icono_boton icon-file_upload"></span>
             </button>
           </div>
         </div>
       </div>
     </div>
+
     <section class="container">
-      <div class="col-sm-12 contenedor-90vh" id="contenedor_general_mis_colecciones">
+      <div
+        class="col-sm-12 contenedor-90vh"
+        id="contenedor_general_mis_colecciones"
+      >
         <div class="contenedor_tabla_mis_colecciones">
           <table class="tabla_catalogo_audianotaciones">
             <thead>
               <th class="cabezal_columnas_th" id="th_acciones_generales">
                 <div class="contenedor_acciones_generales">
-                  <input type="checkbox" class="input_checkbox_cabezal_columna prueba" />
+                  <input
+                    type="checkbox"
+                    class="input_checkbox_cabezal_columna prueba"
+                  />
                   <button class="btn-eliminar_seleccionados prueba">
                     <span
                       class="icono_boton_eliminar_audioanotaciones icon-delete"
@@ -63,15 +77,19 @@
               <th class="cabezal_columnas_th" id="th_titulo_por_audioanotacion">
                 <div class="contenedor_etiquetas_barras_busqueda">
                   <label class="label label_junto_flechas">Título</label>
-                     <button
+                  <button
                     id="titulo_on"
                     @click="ordenar_ascendente('titulo_on')"
                     class="flecha_orden_ascendente"
                   >
-                    <span class="icon-arrow-up"></span></button
-                  >
+                    <span class="icon-arrow-up"></span>
+                  </button>
                   <!--PENDIENTE TOÑO LA INSTRUCCIÓN DE VUE V-MODEL NO FUNCIONA PARA BUTTONS-->
-                  <button id="titulo_off" @click="ordenar_descendente('titulo_off')" class="flecha_orden_descendente">
+                  <button
+                    id="titulo_off"
+                    @click="ordenar_descendente('titulo_off')"
+                    class="flecha_orden_descendente"
+                  >
                     <span class="icon-arrow-down"></span>
                   </button>
                 </div>
@@ -85,9 +103,11 @@
                 />
               </th>
 
-             <th class="cabezal_columnas_th">
+              <th class="cabezal_columnas_th">
                 <div class="contenedor_etiquetas_barras_busqueda">
-                  <label class="label label_junto_flechas">Lengua terminal</label>
+                  <label class="label label_junto_flechas"
+                    >Lengua terminal</label
+                  >
                   <button
                     id="lengua_on"
                     @click="ordenar_ascendente('lengua_on')"
@@ -139,7 +159,7 @@
                   placeholder="Búsqueda"
                 />
               </th>
-          <th class="cabezal_columnas_th" id="th_hablantes">
+              <th class="cabezal_columnas_th" id="th_hablantes">
                 <div class="contenedor_etiquetas_barras_busqueda">
                   <label class="label label_junto_flechas">Hablantes</label>
                   <button
@@ -168,7 +188,9 @@
               </th>
               <th class="cabezal_columnas_th">
                 <div class="contenedor_etiquetas_barras_busqueda">
-                  <label class="label label_junto_flechas">Género y duracion</label>
+                  <label class="label label_junto_flechas"
+                    >Género y duracion</label
+                  >
                   <button
                     id="genero_on"
                     @click="ordenar_ascendente('genero_on')"
@@ -194,18 +216,27 @@
                 />
               </th>
               <th class="contenedor_btn_regresar_th" id="th_acciones">
-                <div class="contenedor_boton_accion_cabeza_tabla_audioanotaciones">
+                <div
+                  class="contenedor_boton_accion_cabeza_tabla_audioanotaciones"
+                >
                   <button
                     class="btn-regresar_audioanotaciones"
                     id="btn-regresar_audioanotaciones"
                   >
-                    <span onclick="window.location.href = '/dashboard'" class="icono_boton_eliminar_audioanotaciones icon-back"><!--TODO AQUI---></span>
+                    <span
+                      onclick="window.location.href = '/dashboard'"
+                      class="icono_boton_eliminar_audioanotaciones icon-back"
+                      ><!--TODO AQUI---></span
+                    >
                   </button>
                 </div>
               </th>
             </thead>
 
-            <tbody v-for="(item2, index) in search_titulo" :key="'item' + index">
+            <tbody
+              v-for="(item2, index) in search_titulo"
+              :key="'item' + index"
+            >
               <tr>
                 <td>
                   <label class="contenedor_checkbox">
@@ -260,24 +291,39 @@
                       aria-hidden="true"
                       class="btn_accion_tabla"
                       id="coleccion_info"
-                      @click="showAudio(item2.title,item2.description)">
+                      @click="showAudio(item2.title, item2.description)"
+                    >
                       <span class="icono_accion_tabla icon-info1"></span>
                     </button>
-                   
+
                     <button class="btn_accion_tabla">
                       <span class="icono_accion_tabla icon-launch"></span>
                     </button>
-                     <button class='dropdown-trigger'><span
-                    class="icono_accion_tabla icon-ellipsis-v"></span></button>
-                    <div class=''><!--TODO FALTA PONER LA CLASE MODAL-->
-                  <span class="icono_cerrar_modal_elipsis icon-close "></span>
-                  <div class="contenedor_opciones_elipsis">
-                    <a v-bind:href="'/audioannotations/vuetest/' + item2._id" class="btn_opciones_ellipsis_mis_colecciones"><span
-                        class="icono_opcion_elipsis icon-file_upload"></span> Reproducir Audioanotación</a>
-                    <a v-bind:href="'/audioannotations/edit/' + item2._id" class="btn_opciones_ellipsis_mis_colecciones"><span
-                        class="icono_opcion_elipsis icon-edit"></span> Editar Audioanotación</a>
-                  </div>
-                </div>
+                    <button class="dropdown-trigger">
+                      <span class="icono_accion_tabla icon-ellipsis-v"></span>
+                    </button>
+                    <div class="">
+                      <!--TODO FALTA PONER LA CLASE MODAL-->
+                      <span
+                        class="icono_cerrar_modal_elipsis icon-close "
+                      ></span>
+                      <div class="contenedor_opciones_elipsis">
+                        <a
+                          v-bind:href="'/audioannotations/vuetest/' + item2._id"
+                          class="btn_opciones_ellipsis_mis_colecciones"
+                          ><span
+                            class="icono_opcion_elipsis icon-file_upload"
+                          ></span>
+                          Reproducir Audioanotación</a
+                        >
+                        <a
+                          v-bind:href="'/audioannotations/edit/' + item2._id"
+                          class="btn_opciones_ellipsis_mis_colecciones"
+                          ><span class="icono_opcion_elipsis icon-edit"></span>
+                          Editar Audioanotación</a
+                        >
+                      </div>
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -306,36 +352,55 @@
                 class="icono_paginacion"
                 href="#"
                 @click.prevent="getPage(1)"
-                ><span v-if="paginacion.hasPrevPage" class="icon-first_page"></span
+                ><span
+                  v-if="paginacion.hasPrevPage"
+                  class="icon-first_page"
+                ></span
               ></a>
               <a
                 v-if="paginacion.hasPrevPage"
                 class="icono_paginacion"
                 href="#"
                 @click.prevent="getPage(pagina.prev)"
-                ><span v-if="paginacion.hasPrevPage" class="icon-angle-left"></span
+                ><span
+                  v-if="paginacion.hasPrevPage"
+                  class="icon-angle-left"
+                ></span
               ></a>
               <a
                 v-for="(pag, index) in pagesNumber"
                 :key="index"
-                 v-bind:class="[pag== isActived ? 'numero_paginacion active':  'numero_paginacion'  ]" 
-               href="#"
+                v-bind:class="[
+                  pag == isActived
+                    ? 'numero_paginacion active'
+                    : 'numero_paginacion',
+                ]"
+                href="#"
                 @click.prevent="getPage(pag)"
                 >{{ pag }}</a
               >
-         
+
               <!--<a v-if="paginacion.hasNextPage" class="ultima_pagina" href="#" @click.prevent="getPage(pagina.pageCount)"
                 >...{{ paginacion.pageCount }}</a
               >-->
-              <a class="icono_paginacion" href="#" @click.prevent="getPage(pagina.next)"
-                ><span v-if="paginacion.hasNextPage" class="icon-angle-right"></span
+              <a
+                class="icono_paginacion"
+                href="#"
+                @click.prevent="getPage(pagina.next)"
+                ><span
+                  v-if="paginacion.hasNextPage"
+                  class="icon-angle-right"
+                ></span
               ></a>
               <a
                 v-if="paginacion.hasNextPage"
                 class="icono_paginacion"
                 href="#"
                 @click.prevent="getPage(pagina.pageCount)"
-                ><span v-if="paginacion.hasNextPage" class="icon-last_page"></span
+                ><span
+                  v-if="paginacion.hasNextPage"
+                  class="icon-last_page"
+                ></span
               ></a>
             </div>
           </div>
@@ -347,7 +412,7 @@
 
 <script>
 export default {
-  name: "FiltroAudioannotations",
+  name: 'FiltroAudioannotations',
   props: {
     parametro: Object,
   },
@@ -356,16 +421,16 @@ export default {
       participantOrdenado: [],
       tier: [],
       result: null,
-      otro: "nuevo",
+      otro: 'nuevo',
       notas_audioannotations: [],
-      paginacion: "",
-      pagina: "",
-      titulo: "",
-      lengua: "",
-      gpo_lengua: "",
-      comunidad: "",
-      hablantes: "",
-      genero: "",
+      paginacion: '',
+      pagina: '',
+      titulo: '',
+      lengua: '',
+      gpo_lengua: '',
+      comunidad: '',
+      hablantes: '',
+      genero: '',
 
       bandera_titulo: false,
       bandera_lengua: false,
@@ -373,13 +438,13 @@ export default {
       bandera_comunidad: false,
       bandera_hablantes: false,
       bandera_genero: false,
-      pagina_buscar: "",
+      pagina_buscar: '',
 
       valor_buscar: false,
-    };
+    }
   },
   methods: {
-    showAudio(title,text) {
+    showAudio(title, text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
         title: title,
@@ -388,10 +453,10 @@ export default {
       })
     },
     borrarAudioanotacion(audioannotation_id) {
-      var currentUrl = window.location.pathname;
-      const url = `${currentUrl}/delete/${audioannotation_id}`;
+      var currentUrl = window.location.pathname
+      const url = `${currentUrl}/delete/${audioannotation_id}`
       // /audioannotations/delete/{{_id}}?_method=DELETE
-      console.log(url);
+      console.log(url)
       this.axios
         .delete(url)
         // .then(res => {
@@ -401,210 +466,220 @@ export default {
         //           console.log(err)
         //       })
         .then(
-          (response) => {
-            console.log("si se borro " + audioannotation_id);
+          response => {
+            console.log('si se borro ' + audioannotation_id)
             let index = this.notas_audioannotations.findIndex(
-              (item) => item._id === audioannotation_id
-            );
-            console.log(index);
-            this.notas_audioannotations.splice(index, 1);
-            console.log(url);
+              item => item._id === audioannotation_id
+            )
+            console.log(index)
+            this.notas_audioannotations.splice(index, 1)
+            console.log(url)
           },
-          (error) => {
+          error => {
             console.log(
-              "no se borro " + "/audioannotations/delete/" + audioannotation_id
-            );
-            console.log(url);
-            console.log(error);
+              'no se borro ' + '/audioannotations/delete/' + audioannotation_id
+            )
+            console.log(url)
+            console.log(error)
           }
-        );
+        )
     },
 
     cambiovalor(e) {
-      console.log("valor " + e.target.value);
+      console.log('valor ' + e.target.value)
     },
     sacarTierParticipant() {
-      this.notas_audioannotations.TIER.forEach((element) => {
-        tier.push(element);
-      });
+      this.notas_audioannotations.TIER.forEach(element => {
+        tier.push(element)
+      })
     },
     getTodos() {
-      this.axios.get("audioannotations/filter").then((response) => {
-        this.notas_audioannotations = response.data;
+      this.axios.get('audioannotations/filter').then(response => {
+        this.notas_audioannotations = response.data
         //console.log(response.data)
-      });
+      })
     },
-  ordenar_descendente: function (e) {
+    ordenar_descendente: function(e) {
       //falta ordenar
-      console.log("******************Esta entrando ordenar_descendente ******** "+e+" ************ "+e)
-      if (e=="titulo_off") {
-        return this.notas_audioannotations.sort(function (a, b) {
+      console.log(
+        '******************Esta entrando ordenar_descendente ******** ' +
+          e +
+          ' ************ ' +
+          e
+      )
+      if (e == 'titulo_off') {
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.title > b.title) {
-            return -1;
+            return -1
           }
           if (a.title < b.title) {
-            return 1;
+            return 1
           }
           // a must be equal to b
-          return 0;
-        });
-      } else if (e=="lengua_off") {
-        return this.notas_audioannotations.sort(function (a, b) {
+          return 0
+        })
+      } else if (e == 'lengua_off') {
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.gid.language.name > b.gid.language.name) {
-            return -1;
+            return -1
           }
           if (a.gid.language.name < b.gid.language.name) {
-            return 1;
+            return 1
           }
           // a must be equal to b
-          return 0;
-        });
+          return 0
+        })
       } else if (this.bandera_gpo_lengua) {
-        return this.notas_audioannotations.sort(function (a, b) {
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
-            return -1;
+            return -1
           }
           if (a.gid.LanguageGroup.name < b.gid.LanguageGroup.name) {
-            return 1;
+            return 1
           }
           // a must be equal to b
-          return 0;
-        });
-      } else if (e=="comunidad_off") {
-        return this.notas_audioannotations.sort(function (a, b) {
+          return 0
+        })
+      } else if (e == 'comunidad_off') {
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.location.Nom_Loc > b.location.Nom_Loc) {
-            return -1;
+            return -1
           }
           if (a.location.Nom_Loc < b.location.Nom_Loc) {
-            return 1;
+            return 1
           }
           // a must be equal to b
-          return 0;
-        });
-      } else if (e=="genero_off") {
-        console.log("Entrando en el off")
-        return this.notas_audioannotations.sort(function (a, b) {
+          return 0
+        })
+      } else if (e == 'genero_off') {
+        console.log('Entrando en el off')
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.genre.name > b.genre.name) {
-            return -1;
+            return -1
           }
           if (a.genre.name < b.genre.name) {
-            return 1;
+            return 1
           }
           // a must be equal to b
-          return 0;
-        });
-      } else if (e=="hablantes_off") {
-        return this.notas_audioannotations.sort(function (a, b) {
+          return 0
+        })
+      } else if (e == 'hablantes_off') {
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
-            return -1;
+            return -1
           }
           if (a.TIER[0].PARTICIPANT < b.TIER[0].PARTICIPANT) {
-            return 1;
+            return 1
           }
           // a must be equal to b
-          return 0;
-        });
+          return 0
+        })
       }
     },
-    ordenar_ascendente: function (e) {
+    ordenar_ascendente: function(e) {
       //falta ordenar
-      console.log("******************Esta entrando ordenar_ascendente ******** "+e+" ************ "+e)
+      console.log(
+        '******************Esta entrando ordenar_ascendente ******** ' +
+          e +
+          ' ************ ' +
+          e
+      )
 
-      if (e=="titulo_on") {
-        return this.notas_audioannotations.sort(function (a, b) {
+      if (e == 'titulo_on') {
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.title > b.title) {
-            return 1;
+            return 1
           }
           if (a.title < b.title) {
-            return -1;
+            return -1
           }
           // a must be equal to b
-          return 0;
-        });
-      } else if (e=="lengua_on") {
-        return this.notas_audioannotations.sort(function (a, b) {
+          return 0
+        })
+      } else if (e == 'lengua_on') {
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.gid.language.name > b.gid.language.name) {
-            return 1;
+            return 1
           }
           if (a.gid.language.name < b.gid.language.name) {
-            return -1;
+            return -1
           }
           // a must be equal to b
-          return 0;
-        });
+          return 0
+        })
       } else if (this.bandera_gpo_lengua) {
-        return this.notas_audioannotations.sort(function (a, b) {
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.gid.LanguageGroup.name > b.gid.LanguageGroup.name) {
-            return 1;
+            return 1
           }
           if (a.gid.LanguageGroup.name < b.gid.LanguageGroup.name) {
-            return -1;
+            return -1
           }
           // a must be equal to b
-          return 0;
-        });
-      } else if (e=="comunidad_on") {
-         console.log("Entrando comunidad_on en el on")
-        return this.notas_audioannotations.sort(function (a, b) {
+          return 0
+        })
+      } else if (e == 'comunidad_on') {
+        console.log('Entrando comunidad_on en el on')
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.location.Nom_Loc > b.location.Nom_Loc) {
-            return 1;
+            return 1
           }
           if (a.location.Nom_Loc < b.location.Nom_Loc) {
-            return -1;
+            return -1
           }
           // a must be equal to b
-          return 0;
-        });
-      } else if (e=="genero_on") {
-          console.log("Entrando genero en el on")
-        return this.notas_audioannotations.sort(function (a, b) {
+          return 0
+        })
+      } else if (e == 'genero_on') {
+        console.log('Entrando genero en el on')
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.genre.name > b.genre.name) {
-            return 1;
+            return 1
           }
           if (a.genre.name < b.genre.name) {
-            return -1;
+            return -1
           }
           // a must be equal to b
-          return 0;
-        });
-      } else if (e=="hablantes_on") {
-        return this.notas_audioannotations.sort(function (a, b) {
+          return 0
+        })
+      } else if (e == 'hablantes_on') {
+        return this.notas_audioannotations.sort(function(a, b) {
           if (a.TIER[0].PARTICIPANT > b.TIER[0].PARTICIPANT) {
-            return 1;
+            return 1
           }
           if (a.TIER[0].PARTICIPANT < b.TIER[0].PARTICIPANT) {
-            return -1;
+            return -1
           }
           // a must be equal to b
-          return 0;
-        });
+          return 0
+        })
       }
     },
-    getPage: function (page) {
+    getPage: function(page) {
       if (page > this.paginacion.pageCount) {
-        page = this.paginacion.pageCount;
+        page = this.paginacion.pageCount
       }
       if (page <= 0) {
-        page = 1;
+        page = 1
       }
 
-      var self = this;
-      self.axios.get("/audioannotations/filter/" + page).then((response) => {
-        self.notas_audioannotations = response.data.itemsList;
-        self.paginacion = response.data.paginator;
-        self.pagina = self.paginacion;
+      var self = this
+      self.axios.get('/audioannotations/filter/' + page).then(response => {
+        self.notas_audioannotations = response.data.itemsList
+        self.paginacion = response.data.paginator
+        self.pagina = self.paginacion
         //console.log(response.data)
-      });
+      })
     },
   },
   mounted() {
-    var self = this;
-    self.axios.get("/audioannotations/filter/1").then((response) => {
-      self.notas_audioannotations = response.data.itemsList;
-      self.paginacion = response.data.paginator;
-      self.pagina = self.paginacion;
-      //console.log(response.data)
-    });
+    var self = this
+    let collectionId = window.location.pathname.split('/').pop();
+    self.axios.get(`/audioannotations/api/index/${collectionId}/1`).then(response => {
+      self.notas_audioannotations = response.data.itemsList
+      self.paginacion = response.data.paginator
+      self.pagina = self.paginacion
+    })
   },
   computed: {
     // bandera_titulo: false,
@@ -613,58 +688,64 @@ export default {
     //       bandera_comunidad: false,
     //       bandera_hablantes: false,
     //       bandera_genero: false,
-    isActived: function () {
-      return this.paginacion.currentPage;
+    isActived: function() {
+      return this.paginacion.currentPage
     },
-    pagesNumber: function () {
+    pagesNumber: function() {
       if (!this.paginacion.pageCount) {
-        return [];
+        return []
       }
-      var from = this.paginacion.currentPage - 2; //TODO offset
+      var from = this.paginacion.currentPage - 2 //TODO offset
       if (from < 1) {
-        from = 1;
+        from = 1
       }
-      var to = from + 2 * 2; //todo
+      var to = from + 2 * 2 //todo
       if (to >= this.paginacion.pageCount) {
-        to = this.paginacion.pageCount;
+        to = this.paginacion.pageCount
       }
-      var pagesArray = [];
+      var pagesArray = []
       while (from <= to) {
-        pagesArray.push(from);
-        from++;
+        pagesArray.push(from)
+        from++
       }
-      return pagesArray;
+      return pagesArray
     },
-    search_titulo: function () {
+    search_titulo: function() {
       if (this.titulo.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
+        return this.notas_audioannotations.filter(item =>
           item.title.toLowerCase().includes(this.titulo.toLowerCase())
-        );
+        )
       } else if (this.lengua.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
-          item.gid.language.name.toLowerCase().includes(this.lengua.toLowerCase())
-        );
+        return this.notas_audioannotations.filter(item =>
+          item.gid.language.name
+            .toLowerCase()
+            .includes(this.lengua.toLowerCase())
+        )
       } else if (this.gpo_lengua.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
+        return this.notas_audioannotations.filter(item =>
           item.gid.LanguageGroup.name
             .toLowerCase()
             .includes(this.gpo_lengua.toLowerCase())
-        );
+        )
       } else if (this.comunidad.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
-          item.location.Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())
-        );
+        return this.notas_audioannotations.filter(item =>
+          item.location.Nom_Loc.toLowerCase().includes(
+            this.comunidad.toLowerCase()
+          )
+        )
       } else if (this.hablantes.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
-          item.TIER[0].PARTICIPANT.toLowerCase().includes(this.hablantes.toLowerCase())
-        ); //sacarTierParticipant
+        return this.notas_audioannotations.filter(item =>
+          item.TIER[0].PARTICIPANT.toLowerCase().includes(
+            this.hablantes.toLowerCase()
+          )
+        ) //sacarTierParticipant
       } else if (this.genero.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
+        return this.notas_audioannotations.filter(item =>
           item.genre.name.toLowerCase().includes(this.genero.toLowerCase())
-        );
+        )
       }
-      return this.notas_audioannotations;
+      return this.notas_audioannotations
     },
   },
-};
+}
 </script>

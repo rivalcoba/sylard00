@@ -160,6 +160,54 @@ const filtrarAudioannotation = async(req, res) => {
     }
 }
 
+const api_indexAudioannotationsByCollection = async(req, res) => {
+    let {id} = req.params
+    let query = {"collection_id" : id}
+    try {
+        const myCustomLabels = {
+            totalDocs: 'itemCount',
+            docs: 'itemsList',
+            limit: 'perPage',
+            page: 'currentPage',
+            nextPage: 'next',
+            prevPage: 'prev',
+            totalPages: 'pageCount',
+            pagingCounter: 'slNo',
+            meta: 'paginator',
+        };
+
+        const options = {
+            page: req.params.page,
+            limit: 2,
+            sort: { title: 1 },
+            populate: 'colection',
+            customLabels: myCustomLabels,
+        };
+
+        Audioannotations.paginate(query, options, function(
+                err,
+                result
+            ) {
+                if (err) {
+                    console.log("El error esta aqui")
+                    console.err(err);
+                    return res.status(400).json({
+                        mensaje: 'Ocurrio un error',
+                        err
+                    })
+                } else {
+                    res.json(result);
+                }
+            })
+            //checar https://kb.objectrocket.com/mongo-db/mongoose-pagination-with-nodejs-and-mongodb-1304
+    } catch (error) {
+        return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            error
+        })
+    }
+}
+
 const createAudioannotation = (req, res) => {
     // Getting languages
     res.render('audioannotations/create', {
@@ -377,5 +425,6 @@ export default {
     filtrarAudioannotation,
     indexById,
     api_updateAudioAnnot,
+    api_indexAudioannotationsByCollection,
     color,
 }
