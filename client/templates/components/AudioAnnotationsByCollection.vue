@@ -672,14 +672,17 @@ export default {
       })
     },
   },
-  mounted() {
-    var self = this
+  async mounted() {
     let collectionId = window.location.pathname.split('/').pop();
-    self.axios.get(`/audioannotations/api/index/${collectionId}/1`).then(response => {
-      self.notas_audioannotations = response.data.itemsList
-      self.paginacion = response.data.paginator
-      self.pagina = self.paginacion
-    })
+    try {
+      let response = await this.axios.get(`/audioannotations/api/index/${collectionId}/1`)
+      this.notas_audioannotations = response.data.itemsList
+      this.paginacion = response.data.paginator
+      this.pagina = this.paginacion
+    } catch (error) {
+      console.log(`Error requesting: /audioannotations/api/index/${collectionId}/1`)
+      throw error
+    }
   },
   computed: {
     // bandera_titulo: false,
