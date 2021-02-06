@@ -75,7 +75,7 @@ UserSchema.pre('save', function(){
 UserSchema.post('save', async function(){
     try {
         console.log(`LN68@models/User.js>: Sending email to ${this.email}`)
-        await new Mail('confirm-account')
+        let res = await new Mail('confirm-account')
         .from("yoncece@sylard.com")
         .to(this.email, this.name)
         .subject('Sylard, please confirm your account')
@@ -84,6 +84,7 @@ UserSchema.post('save', async function(){
             url: `${keys.homeUrl}/auth/email/confirm/${this.emailConfirmationToken}`
         })
         .send()
+        console.log(`>>> Email Response: ${res}`)
         console.log(`models/User.js>: Email send correctly!!!`)
     } catch (error) {
         console.log(`models/User.js> ERROR SENDING MAIL: ${error.message}`)
