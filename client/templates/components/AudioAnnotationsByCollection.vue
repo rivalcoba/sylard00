@@ -666,7 +666,8 @@ export default {
       }
 
       var self = this
-      self.axios.get('/audioannotations/filter/' + page).then(response => {
+      
+      self.axios.get(`/audioannotations/api/index/${collectionId}/${page}`).then(response => {
         self.notas_audioannotations = response.data.itemsList
         self.paginacion = response.data.paginator
         self.pagina = self.paginacion
