@@ -2,7 +2,7 @@
 import { Router } from 'express'
 // Creating an instance from the express router
 const router = new Router()
-// Authorization Check Middleware
+    // Authorization Check Middleware
 import ensureAuthenticated from '@helpers/ensureAuth'
 import ensureColabUser from '@validators/ensureColabUser'
 // Import Controllers
@@ -14,63 +14,77 @@ import collectionEditionValidator from '@validators/collections/collectionsEditi
 // Collections Routes
 // Lista las colecciones del usuario
 router.get(
-  '/',
-  ensureAuthenticated,
-  ensureColabUser,
-  collectionsController.index
-)
-// Show Form to create a collection
+        '/',
+        ensureAuthenticated,
+        ensureColabUser,
+        collectionsController.index
+    )
+    // Show Form to create a collection
 router.get(
-  '/create',
-  ensureAuthenticated,
-  ensureColabUser,
-  collectionsController.createCollection
-)
-// Process a collection creation request
+        '/create',
+        ensureAuthenticated,
+        ensureColabUser,
+        collectionsController.createCollection
+    )
+    // Process a collection creation request
 router.post(
-  '/add',
-  ensureAuthenticated,
-  ensureColabUser,
-  collectionValidator,
-  collectionsController.addCollection
-)
+        '/add',
+        ensureAuthenticated,
+        ensureColabUser,
+        collectionValidator,
+        collectionsController.addCollection
+    )
+    // Index Collection
+router.get('/index/:collectionId',
+    ensureAuthenticated,
+    ensureColabUser,
+    collectionsController.indexCollection)
+
 // Show the edition of a collection form
 router.get(
-  '/edit/:collection_id',
-  ensureAuthenticated,
-  ensureColabUser,
-  collectionsController.editCollectionForm
+    '/edit/:collection_id',
+    ensureAuthenticated,
+    ensureColabUser,
+    collectionsController.editCollectionForm
 )
 
 // Update a Collection
 router.put(
-  '/edit/:collection_id',
-  ensureAuthenticated,
-  ensureColabUser,
-  collectionEditionValidator,
-  collectionsController.editCollection
-)
-// Delete a Collection
+        '/edit/:collection_id',
+        ensureAuthenticated,
+        ensureColabUser,
+        collectionEditionValidator,
+        collectionsController.editCollection
+    )
+    // Delete a Collection
 router.delete(
-  '/delete/:collection_id',
-  ensureAuthenticated,
-  ensureColabUser,
-  collectionsController.deleteCollection
+    '/delete/:collection_id',
+    ensureAuthenticated,
+    ensureColabUser,
+    collectionsController.deleteCollection
 )
 
 // API
 router.get(
-  '/api/read/:collection_id',
-  /*ensureAuthenticated,
-  ensureColabUser,*/ // TODO: Uncomment to protect route
-  collectionsController.api_getCollectionById
+    '/api/read/:collection_id',
+    /*ensureAuthenticated,
+    ensureColabUser,*/ // TODO: Uncomment to protect route
+    collectionsController.api_getCollectionById
+)
+
+// API ALL WITH PAG
+router.get(
+    '/api/read_all/:page',
+    /*ensureAuthenticated,
+    ensureColabUser,*/ // TODO: Uncomment to protect route
+    collectionsController.api_getCollectionAll
 )
 
 router.get('/api/index/:userId',
-/*ensureAuthenticated,
-  ensureColabUser,*/ // TODO: Uncomment to protect route
-  collectionsController.api_getCollectionByUser
-  )
+    /*ensureAuthenticated,
+      ensureColabUser,*/ // TODO: Uncomment to protect route
+    collectionsController.api_getCollectionByUser
+)
 
 // Se exportan rutas
 export default router

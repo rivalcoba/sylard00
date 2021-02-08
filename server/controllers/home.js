@@ -1,8 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import Collection from '@models/Collection'
-import { log } from 'console'
-import { PassThrough } from 'stream'
 
 // Home Controllers
 const index = (req, res) => {
@@ -24,6 +22,13 @@ const contact = (req, res) => {
         content: 'Contact the administrator',
     })
 }
+
+const audioannotation = (req, res) => {
+    res.render('index/audioannotation', {
+        title: 'Catálogo por audioanotación',
+
+    })
+}
 const credits = (req, res) => {
     res.render('index/contact', {
         title: 'Credits',
@@ -40,7 +45,7 @@ const dashboard = async(req, res) => {
         return collection.toJSON()
     })
     res.render('index/dashboard', {
-        title: 'Catálogo por audionotación',
+        title: 'Catálogo por colección',
         collections,
     })
 }
@@ -75,31 +80,35 @@ const audioannotations = (req, res) => {
     res.render('index/audioannotations')
 }
 
-const cleanEaf = (req,res)=>{
-  let eafPath = path.join(__dirname,'..','public','eaf')
-  
-  fs.readdir(eafPath,(err, files)=>{
-    if(err) {return res.json(err)}
-    for(const file of files){
-      if(path.extname(file) == ".eaf"){
-        fs.unlink(path.join(eafPath, file), err=>{
-          if(err) {return res.json(err)}
-        })
-      }
-    }
-  })
+const cleanEaf = (req, res) => {
+    let eafPath = path.join(__dirname, '..', 'public', 'eaf')
 
-  let eafTempPath = path.join(__dirname,'..','public','eaf','tmp')
-  fs.readdir(eafTempPath,(err,files)=>{
-    for (const file1 of files) {
-      if(path.extname(file1) == ".json"){
-        fs.unlink(path.join(eafTempPath, file1), err=>{
-          if(err) {return res.json(err)}
-        })
-      }
-    }
-  })
-  res.json({"return":"ok"})
+    fs.readdir(eafPath, (err, files) => {
+        if (err) { return res.json(err) }
+        for (const file of files) {
+            if (path.extname(file) == ".eaf") {
+                fs.unlink(path.join(eafPath, file), err => {
+                    if (err) { return res.json(err) }
+                })
+            }
+        }
+    })
+
+    let eafTempPath = path.join(__dirname, '..', 'public', 'eaf', 'tmp')
+    fs.readdir(eafTempPath, (err, files) => {
+        for (const file1 of files) {
+            if (path.extname(file1) == ".json") {
+                fs.unlink(path.join(eafTempPath, file1), err => {
+                    if (err) { return res.json(err) }
+                })
+            }
+        }
+    })
+    res.json({ "return": "ok" })
+}
+
+const i18n = (req, res)=>{
+    res.status(200).json(req.app.locals.translation);
 }
 
 // Exporting Controllers
@@ -114,5 +123,7 @@ export default {
     test,
     vuetest,
     audioannotations,
+    audioannotation,
     cleanEaf,
+    i18n,
 }

@@ -1,6 +1,6 @@
 <script>
-    let elemento_link = document.getElementById('register');
-  elemento_link.setAttribute("class", "active_a");
+	let elemento_link = document.getElementById('register');
+	elemento_link.setAttribute("class", "active_a");
 </script>
 <div class="container-fluid" id="contenedor_registro">
 	<div class="extension_fondo_blanco d-sm-none d-md-block"></div>
@@ -24,7 +24,7 @@
 							<strong>
 								Jonathan Amith.
 							</strong>
-							
+
 						</p>
 						<h6 class="blanco">
 							Si decides ser visitante
@@ -32,10 +32,10 @@
 						<p class="secundario_blanco">
 							Deberas registrarte y aceptar los
 							<a href="#">
-								términos y condiciones.	</a>
-						El registro es con el propósito de que puedas compartir información y proteger los derechos
+								términos y condiciones. </a>
+							El registro es con el propósito de que puedas compartir información y proteger los derechos
 							de los colaboradores.
-							
+
 						</p>
 					</div>
 				</div>
@@ -46,10 +46,10 @@
 						{{translation.REGISTER}}
 					</h1>
 					<h3>
-						Llena los campos correctamente
+						{{translation.COMPLETE_FIELDS}}
 					</h3>
 					<p class="parrafo_grande">
-						Elige tus privilegios de usuario
+						{{translation.Choose_your_user_privileges}}
 					</p>
 					<form action="/auth/register/user" method="post" role="form" class="formulario_contenedor">
 						<div id="selector_colaborador">
@@ -124,8 +124,8 @@
 								<span class="icon-email"></span>
 								Correo electrónico:
 							</label>
-							<input id="email" type="email" placeholder="Email" name="email"
-								value="{{email}}" required/>
+							<input id="email" type="email" placeholder="Email" name="email" value="{{email}}"
+								required />
 							<div class="contenedor_icono_correcto_input">
 								<p>
 									<span class="icono_correcto_input icon-check_circle"></span>
@@ -142,8 +142,8 @@
 								<span class="icon-lock"></span>
 								Contraseña:
 							</label>
-							<input id="password" type="password" name="password"
-								placeholder="Al menos de 6 caracteres" minlength="6" required />
+							<input id="password" type="password" name="password" placeholder="Al menos de 6 caracteres"
+								minlength="6" required />
 							<div class="contenedor_icono_correcto_input">
 								<p>
 									<span class="icono_correcto_input icon-check_circle"></span>
@@ -177,16 +177,9 @@
 							<label class="label" for="country">
 								País de origen
 							</label>
-							<select value="{{country}}"  id="country" name="country" required>
-							<option value="" disabled selected>{{translation.SELECT_AN_OPTION}}</option>
-							{{#each countries}}
-							{{#if ../es}}
-							<option value="{{name_es}}">{{name_es}}</option>
-								{{else}}
-							<option value="{{name_en}}">{{name_en}}</option>
-								{{/if}}
-								{{/each}}
-							</select>
+							<input type="seacrh" size="5" maxlength="" name="country"
+								placeholder="{{translation.SELECT_AN_OPTION}}" id="country" list="countries"
+								value="{{country}}">
 							<div class="contenedor_icono_correcto_input">
 								<p>
 									<span class="icono_correcto_input icon-check_circle"></span>
@@ -197,44 +190,56 @@
 									<span class="icono_error_input icon-error"></span>
 								</p>
 							</div>
+							<datalist id="countries">
+								{{#each countries}}
+								{{#if ../es}}
+								<option value="{{name_es}}">
+									{{else}}
+								<option value="{{name_en}}">
+									{{/if}}
+									{{/each}}
+							</datalist>
 						</div>
 						<div class="contenedor_inputs" id="lenguas_habladas_input">
 							<label class="label" for="lenguas_habladas">
 								Lenguas habladas
 							</label>
-							<select class="input_con_boton_derecha" id="langSearch" role="listbox">
-						<option value="" disabled selected>{{translation.SELECT_AN_OPTION}}</option>
-							{{#each nativeLanguages}}
-						<option value="{{name}} | {{gid}}">{{name}} | {{gid}}"
-						{{/each}}
-							</select>
-							<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar" onclick="formsManager.addSelection()">
+							<input class="input_con_boton_derecha" type="search" id="langSearch"
+								placeholder="{{translation.SELECT_AN_OPTION}}" list="languages">
+							<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar"
+								onclick="formsManager.addSelection()">
 								<span class="icon-plus"></span>
 							</i>
+							<datalist id="languages">
+								{{#each nativeLanguages}}
+								<option value="{{name}} | {{gid}} | {{iso639P3code}}">
+									{{/each}}
+							</datalist>
 						</div>
 						<div class="contenedor_inputs" id="contenedor_inputs_con_boton">
 							<label class="label" for="about_you">
 								Cuentanos acerca de ti
 							</label>
-							<textarea name="about" placeholder="¿A qué te dedicas? ¿Para qué usarías SYLARD?" id="about" rows="3"></textarea>
+							<textarea name="about" placeholder="¿A qué te dedicas? ¿Para qué usarías SYLARD?" id="about"
+								rows="3"></textarea>
 						</div>
 						<div class="contenedor_inputs" id="lenguas_agregadas_input_seleccionadas">
 							<label class="label" for="lenguas_agregadas">
 								Lenguas agregadas
 							</label>
-							<textarea 
-							type="text" 
-							id="spokenLanguages" 
-							name="lenguas_agregadas" 
-							class=""
-							placeholder="Aquí aparecen las lenguas que agregaste"
-							 rows="3"></textarea>
+							<textarea type="text" id="spokenLanguages" name="lenguas_agregadas" class=""
+								placeholder="Aquí aparecen las lenguas que agregaste" rows="3"></textarea>
 						</div>
 						<div class="">
-							<i class="btn btn_input_derecha" id="boton_quitar" onclick="formsManager.clearLastSelection()" >
+							<i class="btn btn_input_derecha" id="boton_quitar"
+								onclick="formsManager.clearLastSelection()">
 								<span class="icon-minus"></span>
 							</i>
 						</div>
+						<input class="contenedor_inputs" type="checkbox" required>
+						<label class="label" for="lenguas_agregadas">
+								Hé leido y acepto los terminos y condiciones.
+							</label>
 						<div class="contenedor_botones_registro">
 							<button type="submit" class="btn btn-primario float_right">
 								{{translation.REG}}
@@ -243,11 +248,6 @@
 						</div>
 					</form>
 				</div>
-				{{!--<datalist id="languages">
-					{{#each nativeLanguages}}
-					<option value="{{name}} | {{gid}}">
-						{{/each}}
-				</datalist>--}}
 			</div>
 		</div>
 	</div>

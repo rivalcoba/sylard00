@@ -40,7 +40,7 @@
                <div class="contenedor_icono_error_input">
                   <p><span class="icono_error_input icon-error"></span></p>
                </div>
-               <label class="" for="duracion"><span onclick="pageScripts.loadMp3()"
+               <label class="" for="duracion"><span
                      class="icono_duracion icon-clock-o"></span></label>
                <input class="duracion_input" disabled type="text" id="duracion" name="duration">
             </div>
@@ -49,9 +49,9 @@
          <form action="/audioannotations/add" method="post" id='form2'>
             <div class="contenedor_input_seleciona_origen_audioanotacion">
                <input value="{{filename}}" type="hidden" id="eaf" name="eaf"><br><br>
-               <label class="label label_al_100" id="selecciona_url_mp3" for="selecciona_url_mp3_input">Selecciona URL del audio en
+               <label class="label label_al_100" id="selecciona_url_mp3" for="selecciona_url_mp3_input">Ingresa URL del audio en
                ".mp3"</label>
-               <input type="text" id="mp3_url" name="mp3_url"
+               <input onblur="pageScripts.loadMp3()" type="text" id="mp3_url" name="mp3_url"
                   value="https://cdn.glitch.com/31e1c313-9473-4a67-b370-cbebc80a47b2%2FWhatsApp%20Audio%202020-11-09%20at%2020.55.02.mpeg"
                   class="input_flexible"
                   placeholder="Pega la URL de la ubicación del archivo con terminación &quot.mp3&quot" required>

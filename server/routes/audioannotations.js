@@ -102,34 +102,47 @@ router.get(
 )
 
 router.get(
-  '/filter',
-  ensureAuthenticated,
-  ensureColabUser,
+  '/filter/:page',
+   ensureAuthenticated,
+   ensureColabUser,
   audioannotationsController.filtrarAudioannotation
 )
 
-// Configurar cabeceras y cors https://filesamples.com/formats/mp3 //no funciona marca error en cors
-//router.get('/', function(req, res) {
-//    res.setHeader('Access-Control-Allow-Origin', '*');
-//    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-//    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
-//    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
 
-//    res.send('cors problem fixed:)');
-//});
-
-//   ___  ______ _____ 
-//  / _ \ | ___ \_   _|
-// / /_\ \| |_/ / | |  
-// |  _  ||  __/  | |  
-// | | | || |    _| |_ 
-// \_| |_/\_|    \___/ 
-
-router.post('/api/update/:audioannotationId',
-/*ensureAuthenticated,
-ensureColabUser,*/ // TODO: Uncomment to protect route
-audioannotationsController.api_updateAudioAnnot
-)
-
+router.get(
+  '/color',
+  ensureAuthenticated,
+  ensureColabUser,
+  audioannotationsController.color)
+  
+  // Configurar cabeceras y cors https://filesamples.com/formats/mp3 //no funciona marca error en cors
+  //router.get('/', function(req, res) {
+    //    res.setHeader('Access-Control-Allow-Origin', '*');
+    //    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    //    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+    //    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+    
+    //    res.send('cors problem fixed:)');
+    //});
+    
+    //   ___  ______ _____ 
+    //  / _ \ | ___ \_   _|
+    // / /_\ \| |_/ / | |  
+    // |  _  ||  __/  | |  
+    // | | | || |    _| |_ 
+    // \_| |_/\_|    \___/ 
+    
+    router.post('/api/update/:audioannotationId',
+    /*ensureAuthenticated,
+    ensureColabUser,*/ // TODO: Uncomment to protect route
+    audioannotationsController.api_updateAudioAnnot
+    )
+    
+    router.get(
+      '/api/index/:id/:page',
+      //ensureAuthenticated,
+      //ensureColabUser,
+      audioannotationsController.api_indexAudioannotationsByCollection
+    )
 // Se exportan rutas
 export default router

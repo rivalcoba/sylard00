@@ -36,6 +36,7 @@
     "RESET_PASSWORD_MESSAGE": "Te enviaremos una contraseña provisional",
     "TYPE_YOUR_USERNAME_AND_PASSWORD": "Teclea tu usuario y contraseña",
     "CATALOGUE": "Catálogo",
+    "Choose_your_user_privileges": "Elige tus privilegios de usuario",
     "SEE_CATALOGUE": "Ver catálogo",
     "DOCUMENTATION": "Documentación",
     "USER_MANUAL": "Manual de usuario",
@@ -52,5 +53,32 @@
     "UPLOAD_AUDIONOTATION": "Cargar audioanotación",
     "COMPLETE_FIELDS": "Llena los campos correctamente",
     "HELLO_COLLECTIONS": "¡Hola!",
-    "RESTORE": "Restablecer"
+    "RESTORE": "Restablecer",
+    "LANGUAGE": "es",
+    "SHOWBY": {
+        "visualizarpor": "Visualizar por:",
+        "Audioanotacion": "Audioanotación",
+        "coleccion": "Colección"
+    },
+    "tabla_coleccion": {
+        "coleccion": "Colección",
+        "Lenguaterminal": "Lengua terminal",
+        "gpoLengua": "Gpos. de lenguas",
+        "comunidades": "Comunidades"
+    },
+    "tabla_audioannotation": {
+        "coleccion": "Colección",
+        "Lenguaterminal": "Lengua terminal",
+        "titulo": "Titulo",
+        "gpoLengua": "Gpos. de lenguas",
+        "comunidades": "Comunidades",
+        "hablantes": "Hablantes",
+        "generoduracion": "Género y duracion"
+    },
+    "reproductor_audioannotation": {
+        "opcionesVisuales": "Opciones Visuales",
+        "mostrar": "Mostrar",
+        "visualizar": "Visualizar en:",
+        "colorTipo": "Color de tipografía"
+    }
 }

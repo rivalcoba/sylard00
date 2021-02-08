@@ -88,7 +88,7 @@
 								Correo electrónico:
 							</label>
 							<input id="email" type="email" class="validate" name="email" value="{{user.email}}"
-								*required* />
+								readonly />
 							<div class="contenedor_icono_correcto_input">
 								<p>
 									<span class="icono_correcto_input icon-check_circle"></span>
@@ -104,28 +104,9 @@
 							<label class="label" for="country">
 								País de origen
 							</label>
-							<select name="country" id="country">
-								<option {{#if es}} value="{{user.country.name_es}}">{{user.country.name_es}}
-									{{else}}
-									value="{{user.country.name_en}}">{{user.country.name_en}}
-									{{/if}}
-									{{#each countries}}
-									{{#if ../es}}
-								<option value="{{name_es}}">{{name_es}}
-									{{else}}
-								<option value="{{name_en}}">{{name_en}}
-									{{/if}}
-									{{/each}}
-							</select>
-							{{!--<input 
-							type="text" 
-							name="country" 
-							id="country" 
-							list="countries" 
-							{{#if es}}
-							value="{{user.country.name_es}}" 
-							{{else}} value="{{user.country.name_en}}" 
-							{{/if}}>--}}
+							<input type="text" placeholder="{{translation.SELECT_AN_OPTION}}" name="country"
+								id="country" list="countries" {{#if es}} value="{{user.country.name_es}}" {{else}}
+								value="{{user.country.name_en}}" {{/if}}>
 							<div class="contenedor_icono_correcto_input">
 								<p>
 									<span class="icono_correcto_input icon-check_circle"></span>
@@ -135,21 +116,31 @@
 								<p>
 									<span class="icono_error_input icon-error"></span>
 								</p>
+								<datalist id="countries">
+									{{#each countries}}
+									{{#if ../es}}
+									<option value="{{name_es}}">
+										{{else}}
+									<option value="{{name_en}}">
+										{{/if}}
+										{{/each}}
+								</datalist>
 							</div>
 						</div>
 						<div class="contenedor_inputs" id="lenguas_habladas_input">
 							<label class="label" for="lenguas_habladas">
 								Lenguas habladas
 							</label>
-							<select class="input_con_boton_derecha" id="langSearch" role="listbox">
-								<option value="" disabled selected>{{translation.SELECT_AN_OPTION}}</option>
-								{{#each nativeLanguages}}
-								<option value="{{name}} | {{gid}}">{{name}} | {{gid}}
-									{{/each}}
-							</select>
+							<input placeholder="{{translation.SELECT_AN_OPTION}}" type="search" id="langSearch"
+								list="languages">
 							<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar">
 								<span class="icon-plus" onclick="formsManager.addSelection()"></span>
 							</i>
+							<datalist id="languages">
+								{{#each nativeLanguages}}
+								<option value="{{name}} | {{gid}}">
+									{{/each}}
+							</datalist>
 						</div>
 						<div class="contenedor_inputs" id="contenedor_inputs_con_boton">
 							<label class="label" for="about_you">

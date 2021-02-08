@@ -1,76 +1,146 @@
 <template>
   <div>
-    <h1>Lectura EAF</h1>
+    <button class="contenedor_acordeon" @click="acordion()">
+      <span class="icono_acordeon icon-chevron-down"></span> {{$t("lang.reproductor_audioannotation.opcionesVisuales")}}
+    </button>
     <!-- https://www.youtube.com/watch?v=NPGkoOQPtJs
     min  9:05-->
     <div id="app">
       <!--  {{ info }} -->
+      <!--AQUÍ INICIA LA PRIMERA PARTE-->
       <div v-if="this.info.data">
-        <table>
-          <!--Si hay datos Linea por Linea
-            {{$attrs.tiempo_parametro}} {{$attrs.longitud_tiempo}}
-            <button v-on:click="leerTier">Saludar</button>
-            <br />-->
-          {{
-            recorrer_todo($attrs.longitud_tiempo)
-          }}
-
-          <tr>
-            <div v-for="(item, index) in options" :key="'item' + index">
-              Canal {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
-              <input type="checkbox" :id="item.TIER_ID" v-model="item.Visible" />
-              <!--<label for="checkbox" value="on" name="on" id="on"> </label>
-            <input type="checkbox" :id="item.TIER_ID" checked @change="seleccion_onoff($event)" />
-            -->
-
-              {{ item.PARTICIPANT }} {{ item.TIER_ID }}
-
-              <!-- <select v-model="item.value" :id="item.TIER_ID" @change="seleccion_visualizacion_options($event)">
-            -->
-              <select v-model="item.value" :id="item.TIER_ID">
-                <option value="B">Scrolling</option>
-                <option value="A" selected>On-Line-Display</option>
-              </select>
-              <input name="color" type="text" :id="item.TIER_ID" v-model="item.color" />
-            </div>
-
-            <div v-for="(item, index) in otro" :key="index">
-              <div v-if="options[index].Visible">
-                <div v-if="options[index].value == 'A'">
-                  <div v-for="(item, index) in otro[index]" :key="index">
-                    <div
-                      v-if="
-                        $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
-                        $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1
-                      "
+       
+        {{ recorrer_todo($attrs.longitud_tiempo) }}
+         <div v-if="this.bandera_acordeon">
+          <div v-for="(item, index) in options" :key="'item' + index">
+            <div class="contenedor_canal_audioanotacion">
+               <div class="contenedor_canal_padre_compacto">
+                <div class="contenedor_hablante">
+                <p class="label label_al_100">
+                  {{$t("lang.reproductor_audioannotation.Canal")}} {{ index + 1 }} ({{ item.LINGUISTIC_TYPE_REF }})
+                </p>
+                <h5 class="hablante_canal_padre">
+                  {{ item.PARTICIPANT }} {{ item.TIER_ID }}
+                </h5>
+               </div>
+               <div class="contenedor_opciones_visuales_canal1_viewer">
+                <div
+                  class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal"
+                >
+                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.mostrar")}}</label>
+                  <div class="contenedor_switch_canal_audioanotacion">
+                    <label
+                      class="swich_etiqueta_opcion1_compacto"
+                      for="checkbox"
+                      id="switch_canal1_off"
+                      >OFF</label
                     >
-                      <b>
-                        <!--{{tier_temp}}:-->
+                    <label class="switch_general">
+                      <input
+                        type="checkbox"
+                        :id="item.TIER_ID"
+                        class="checkbox_canal1"
+                        v-model="item.Visible" />
+                      <span class="slider_general round"></span
+                    ></label>
+                    <label
+                      class="swich_etiqueta_opcion2_compacto"
+                      for="checbox_canal_1"
+                      id="switch_usuario_canal1_on"
+                      >ON</label
+                    >
+                  </div>
+                </div>
+                <div
+                  class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en"
+                >
+                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.visualizar")}}</label>
+                  <select
+                    class="opciones_despliegue_viewer input_flexible_compacto"
+                    v-model="item.value"
+                    :id="item.TIER_ID"
+                  >
+                    <option value="B">Scrolling</option>
+                    <option value="A" selected>On-Line-Display</option>
+                  </select>
+                </div>
+                <div
+                  class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion"
+                >
+                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.colorTipo")}}</label>
+                  <input
+                    type="text"
+                    v-bind:style="colorclase(item.color)"
+                    :data-did="'A' + (index + 1) + '-colorPicker'"
+                    name="color"
+                    :id="'color_' + item.TIER_ID"
+                    class="inp input_flexible_compacto"
+                    autocomplete="off"
+                    v-model="item.color"
+                    v-on:input="cambiarcolor($event)"
+                    @click="metodocolor(index, $event)"
+                    @blur="metodoblur(index, $event)"
+                  />
+                  <div
+                    class="palette"
+                    :data-did="'A' + (index + 1) + '-colorPalette'"
+                    :id="'A' + (index + 1) + '-colorPalette'"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+         </div>
+         </div>
+
+         <!--AQUI APARECE LA TABLA DE QUIENES ESTAN HABLANDO--->
+         <hr />
+         <div
+          class="contenedor_one_line_display"
+          v-for="(item2, index2) in otro"
+          :key="index2"
+         >
+          <table class="table_one_line">
+            <div v-if="options[index2].Visible">
+              <div v-if="options[index2].value == 'A'">
+                <!--{{computedColor=options[index].color}}-->
+                <div v-for="(item, index) in otro[index2]" :key="index">
+                  <!--AQUÍ EMPIEZA LA LLAMADA HACIA EL HABLANTE PRINCIPAL-->
+                  <div v-if="index == 0">
+                    <p class="canal_1_hablante_one_line_display_item">
+                      <span class="siglas_canal_item">{{ siglas(item.TIER_ID[index]," ") }}: {{item.TIER_ID[index]}} </span>
+                       <!--    <span class="siglas_canal_item">{{ item.TIER_ID[index] }} {{index2}} : </span>-->
+                    </p>
+                  </div>
+                  <!--AQUÍ TERMINA LA LLAMADA HACIA EL HABLANTE PRINCIPAL-->
+                  <div
+                    v-if="
+                      $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
+                      $attrs.tiempo_parametro <= item.TIME_SLOT_REF2
+                    "
+                  >
+                    <p class="canal_1_hablante_one_line_display_item">
+                     <span v-bind:style="{ color: options[index2].color }">
                         {{ item.ANNOTATION_VALUE }}
-                        <!--  me quede 
-                                    {{sincronizar(7)}}
-                                    -->
-                        <!-- {{item.ANNOTATION_ID}} 
-                {{item.TIME_SLOT_REF1}} {{item.TIME_SLOT_REF2}} -->
-                      </b>
-                    </div>
-                    <div v-if="index == 0">
-                      <!-- {{item.DEFAULT_LOCALE[index]}} ({{item.LINGUISTIC_TYPE_REF[index]}}) {{item.PARTICIPANT[index]}}
-                {{tier_temp=item.TIER_ID[index]}}:-->{{ item.TIER_ID[index] }} :
-                    </div>
+                      </span>
+                       <!-- <span> {{ item.ANNOTATION_VALUE }} - {{ index2 }} </span>-->
+                      <!--TODO AQUI ME QUEDE HACE FALTA CORREGIR EL SALTO DE LINEA EN LOS HABLANTES-->
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-          </tr>
-        </table>
+          </table>
+        
+      </div>
       </div>
       <p v-else>loading.....</p>
+      <!--ESTA ES LA TERCERA TABLA DE QUIENES ESTAN HABLANDO-->
       <div v-if="this.info.data">
-        ----------------------------------------------------------------- Si hay datos
-        Multiples Lineas ------------------
-        <br />
-        <!--<div v-for="(item, index) in otro" :key="index">
+        <hr />
+        <div class="contenedor_multilinea">
+          <table class="tabla_multilinea">
+            <!--<div v-for="(item, index) in otro" :key="index">
                 <div v-if="options[index].Visible">
                     <div v-if="options[index].value=='B'">
                         <div v-for="(item, index) in otro[index]" :key="index">
@@ -91,19 +161,44 @@
                 </div>
             </div>
             -->
-        <div v-for="(item, index) in tempdata" :key="index">
-          <div
-            v-if="
-              $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
-              $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1
-            "
-          >
-            <b> {{ item.TIER_ID }} : {{ item.ANNOTATION_VALUE }} </b>
-          </div>
-          <p v-else>
-            <button v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)"></button>
-            {{ item.TIER_ID }} :{{ item.TIME_SLOT_REF1 }} {{ item.ANNOTATION_VALUE }}
-          </p>
+            <div v-for="(item, index) in tempdata" :key="index">
+              <div
+                v-if="
+                  $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
+                  $attrs.tiempo_parametro <= item.TIME_SLOT_REF2
+                "
+              >
+                <!-- $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 -1 -->
+                <tr class="row_multilinea">
+                  <td rowspan="2" class="td_canal reproduccion">
+                    <span class="bocina_reproduccion icon-volume-up"></span>
+                  </td>
+                  <td class="td_canal">
+                    <!--<span :style="traer_color(item.TIER_ID)">
+                     traer el color del item.TIER_ID de this.audioannotations traer_color(item.TIER_ID) -->
+                    <span v-bind:style="{ color: traer_color(item.TIER_ID) }">
+                      {{ item.TIER_ID }}:
+                    </span>
+                    {{ item.ANNOTATION_VALUE }}
+                  </td>
+                </tr>
+              </div>
+              <div v-else>
+                <tr class="row_multilinea">
+                  <td class="td_reproduccion">
+                    <span></span>
+                  </td>
+                  <td>
+                    <span v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)">
+                      {{ item.TIER_ID }}: </span
+                    >{{ item.TIME_SLOT_REF1 }}
+                    {{ item.ANNOTATION_VALUE }}
+                  </td>
+                </tr>
+                <!--Aqui me quede arreglando el scroll    <button v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)"></button>-->
+              </div>
+            </div>
+          </table>
         </div>
       </div>
       <p v-else>Cargando.....</p>
@@ -130,8 +225,10 @@ export default {
       contador: 0,
       audioannotations: [],
       mp3Audio: "",
+      tituloAudioannotation: "",
       ruta: "otro valor",
-      //tiempo_parametro:"8"
+      color_tier: "#000000",
+      bandera_acordeon:false
     };
   },
   computed: {
@@ -139,6 +236,94 @@ export default {
     set: () => {},
   },
   methods: {
+    acordion: function() {
+      if (this.bandera_acordeon) {
+        this.bandera_acordeon=false
+
+      } else 
+      this.bandera_acordeon=true
+    },
+    siglas: function (cadenaADividir,separador) {
+      var arrayDeCadenas = cadenaADividir.split(separador);
+      var siglasvalor=""
+      for (var i=0; i < arrayDeCadenas.length; i++) {
+        //document.write(arrayDeCadenas[i] + " / ");
+        //console.log("Valor "+arrayDeCadenas[i][0])
+        siglasvalor+=arrayDeCadenas[i][0]
+   }
+     //console.log("Valor de siglas "+siglasvalor)
+      return siglasvalor
+    },
+
+    colorclase: function (color) {
+      return "border-right: 2rem solid " + color;
+    },
+    quitarcolor_id: function (e) {
+      var color_name = e;
+      // console.log("---------original-----------------------");
+      // console.log(color_name);
+      // console.log("----------sin color_----------------------");
+      // console.log(color_name.replace("color_", ""));
+      return color_name.replace("color_", "");
+    },
+    cambiarcolor: function (e) {
+      console.log("-------------cambiar color-------------------");
+      console.log(
+        "valor original es " +
+          this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color
+      );
+
+      console.log("---------Valor-----------------------");
+      console.log(e.target.value);
+      console.log("--------id------------------------");
+      console.log(e.target.id);
+      this.options.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color =
+        e.target.value;
+      return e.target.value;
+    },
+    metodocolor: function (parametro, e) {
+      //this.quitarcolor_id(event.target.id)
+
+      var valorpaleta, valorcolor;
+      valorcolor = "A" + (parametro + 1) + "-colorPicker";
+      valorpaleta = "A" + (parametro + 1) + "-colorPalette";
+      showColorPalette(valorcolor, valorpaleta);
+      // console.log(
+      //   "este es el parametro del colorpicker " +
+      //     parametro +
+      //     " p " +
+      //     valorpaleta +
+      //     " c " +
+      //     valorcolor
+      // );
+      //  this.cambiarcolor(e)
+      //return parametro
+    },
+    metodoblur: function (parametro, e) {
+      //"hideColorPalette('A1-colorPicker','A1-colorPalette')"
+      var valorpaleta, valorcolor;
+      valorcolor = "A" + (parametro + 1) + "-colorPicker";
+      valorpaleta = "A" + (parametro + 1) + "-colorPalette";
+      hideColorPalette(valorcolor, valorpaleta);
+      console.log(
+        "este es el parametro del blur " +
+          parametro +
+          " p " +
+          valorpaleta +
+          " c " +
+          valorcolor
+      );
+      this.cambiarcolor(e);
+    },
+
+    traer_color: function (tier_id) {
+      // return "color:"+this.audioannotations.find(x => x.TIER_ID == tier_id).color
+
+      //this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
+      //return color aqui me quede trayendo el color de audioannotations por id
+      var valor_color = this.options.find((x) => x.TIER_ID == tier_id).color;
+      return valor_color;
+    },
     mensaje_al_player: function (tiempo) {
       console.log("Se envia un msg al player " + tiempo);
       this.$emit("mensaje_scroll", tiempo);
@@ -363,6 +548,16 @@ export default {
     var ultimoSlash = this.ruta.lastIndexOf("/");
     this.ruta = this.ruta.substring(ultimoSlash + 1);
   },
+  computed: {
+    computedColor: {
+      set(value) {
+        this.color_tier = value;
+      },
+      get() {
+        return this.color_tier;
+      },
+    },
+  },
   mounted() {
     // var parseString = require('xml2js').parseString;
     //estaba montando el xml
@@ -377,20 +572,35 @@ export default {
       this.info = response;
       self.leerTier();
     });
-    this.axios
-      .get("/audioannotations/index/"+ self.ruta)
-      .then((response) => {
-        this.audioannotations_info = response;
-        //falta hacer algo self.leerTier();
-        self.leerAudioannotationsMp3();
-        self.$root.$emit("valor_mp3", self.mp3Audio);
-        self.leerTierBD();
-        self.options = self.audioannotations;
-      });
+    this.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
+      this.audioannotations_info = response;
+      //falta hacer algo self.leerTier();
+      self.leerAudioannotationsMp3();
+      self.$root.$emit("valor_mp3", self.mp3Audio);
+      self.leerTierBD();
+      self.tituloAudioannotation = self.audioannotations_info.data.title;
+      self.$root.$emit("tituloAudioannotation", self.tituloAudioannotation);
+      self.options = self.audioannotations;
+    });
+      //INTERNATIONALITATION PAGE WITH I18N
+         self.axios.get("i18n").then((response) => {
+      self.idioma = response.data.LANGUAGE;
+      if (self.idioma === "es") {
+        //console.log("esta en español");
+        this.$i18n.locale = "es";
+      } else if (self.idioma === "en") {
+        //console.log("esta en ingles");
+        this.$i18n.locale = "en";
+      }
+    });
     //this.saveFileJSon();
     //console.log("Aqui se esta añadiendo al json");
     //this.add("hola");
     //this.leerTier();
+    //leer script color picker
+    // let la_colorScript = document.createElement('script')
+    // la_colorScript.setAttribute('src', 'https://cdn.glitch.com/120f087f-0e29-4163-9f0b-687d6b040d37%2Fla_color_picker.js')
+    // document.head.appendChild(la_colorScript)
   },
 };
 </script>
