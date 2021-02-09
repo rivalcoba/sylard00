@@ -108,16 +108,19 @@ UserSchema.methods.upGradeToColaborator = async function(){
         }).exec()
 }
 
-UserSchema.method.toggleUserPrivileges = async function(){
-    if(this.role === 'visitor' ){
-        return 'colaborator'
-    }else{
-        'return visitor'
+UserSchema.methods.toggleUserPrivileges = async function(){
+    let newRole = this.role === 'visitor' ? 'colaborator' : 'visitor'
+    try {
+        let result = await this.updateOne({
+            updatedAt: new Date(),
+            role: newRole
+        }).exec()
+        result.newRole = newRole
+        result._id = this._id
+        return result
+    } catch (error) {
+        return "error"
     }
-    /*await this.updateOne({
-        updatedAt: new Date(),
-        role: "colaborator"
-    }).exec()*/
 }
 
 UserSchema.methods.editUser= async function(data){

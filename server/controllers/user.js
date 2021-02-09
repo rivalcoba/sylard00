@@ -244,7 +244,7 @@ const api_toggleUserPrivileges = async (req, res) => {
   try {
     let userDoc = await User.findById(userId)
     let result = await userDoc.toggleUserPrivileges()
-    res.status(200).json({ result, userId })
+    res.status(200).json(result)
   } catch (error) {
     res.status(500).json({ error : error.message })
   }

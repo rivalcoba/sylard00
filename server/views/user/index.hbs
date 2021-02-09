@@ -189,6 +189,7 @@
                       type="checkbox"
                       class="checkbox_canal1"
                       id="checbox_canal_1"
+                      onclick="pageScripts.toggleRole('{{_id}}')"
                       {{role}}
                     />
                     <span class="slider_general round"></span>
@@ -313,7 +314,7 @@ window.onclick = event=>{
   let targetElement = event.target
   // #THESIS iterate over an array of elements got by its class names
   // ref: https://stackoverflow.com/questions/3871547/js-iterating-over-result-of-getelementsbyclassname-using-array-foreach
-  // #THESIS CLick outside a model
+  // #THESIS CLick outside a modal
   // REF: https://www.blustemy.io/detecting-a-click-outside-an-element-in-javascript/#:~:text=To%20detect%20a%20click%20outside%20an%20element%20we%20must%20add,belongs%20to%20the%20flyout%20container.
   let modals = document.getElementsByClassName('contenido_modal_elipsis')
 

@@ -22,6 +22,8 @@ import editCollectionScripts from '@client/pages/collections/edit'
 import indexTestScripts from '@client/pages/index/test'
 // Audioannotations Scripts
 import createAudioAnnotationsScripts from '@client/pages/audioannotations/create'
+// User scripts
+import userScriptsIndex from '@client/pages/users/index'
 
 import Vue from 'vue'
 import App from '@client/templates/main.vue'
@@ -89,6 +91,10 @@ if (window.location.pathname == `/locations/index`) {
 
 if (window.location.pathname == `/collections/create`) {
     window.pageScripts = collectionsCreate
+}
+
+if(window.location.pathname === '/user'){
+    window.pageScripts = userScriptsIndex
 }
 
 if (window.location.pathname == `/test`) {
