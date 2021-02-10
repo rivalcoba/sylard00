@@ -53,13 +53,13 @@ let d=c.map(a=>a.toJSON());// let collections = collectionsDocs.map(collection=>
 //return res.status(200).json(audioannotationsDocs);
 // console.log("Aqui")
 //console.log(collections)
-b.render("audioannotations/index",{//enviar
+b.render("audioannotations/index",{title:"Audioanotaciones de la colecci\xF3n...",//enviar
 audioannotations:d})},indexById=async(a,b)=>{const c=a.params.audioannotationId;console.log(`>finding ${c}`);// Find audio annotation to visualize
 try{let a=await _AudioAnnotations.default.findById(c).populate("collection_id").populate("user").exec();// TODO: TOÑO
 // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 // >>>>>>>>>>>>>>>>>>>>>>>>> AQUI ESTA EL JSON DE LA AUDIO ANNOTACION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-b.json(a)}catch(a){b.json(a)}},filtrarAudioannotation=async(a,b)=>{try{const c={page:a.params.page,limit:2,sort:{title:1},populate:"colection",customLabels:{totalDocs:"itemCount",docs:"itemsList",limit:"perPage",page:"currentPage",nextPage:"next",prevPage:"prev",totalPages:"pageCount",pagingCounter:"slNo",meta:"paginator"}};_AudioAnnotations.default.paginate({},c,function(a,c){return a?(console.log("El error esta aqui"),console.err(a),b.status(400).json({mensaje:"Ocurrio un error",err:a})):void b.json(c)})}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
+b.json(a)}catch(a){b.json(a)}},filtrarAudioannotation=async(a,b)=>{try{const c={page:a.params.page,limit:2,sort:{title:1},populate:"colection",customLabels:{totalDocs:"itemCount",docs:"itemsList",limit:"perPage",page:"currentPage",nextPage:"next",prevPage:"prev",totalPages:"pageCount",pagingCounter:"slNo",meta:"paginator"}};_AudioAnnotations.default.paginate({},c,function(a,c){return a?(console.log("El error esta aqui"),console.err(a),b.status(400).json({mensaje:"Ocurrio un error",err:a})):void b.json(c)})}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},api_indexAudioannotationsByCollection=async(a,b)=>{let{id:c}=a.params;try{const d={page:a.params.page,limit:2,sort:{title:1},populate:"colection",customLabels:{totalDocs:"itemCount",docs:"itemsList",limit:"perPage",page:"currentPage",nextPage:"next",prevPage:"prev",totalPages:"pageCount",pagingCounter:"slNo",meta:"paginator"}};_AudioAnnotations.default.paginate({collection_id:c},d,function(a,c){return a?(console.log("El error esta aqui"),console.err(a),b.status(400).json({mensaje:"Ocurrio un error",err:a})):void b.json(c)})}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}},createAudioannotation=(a,b)=>{// Getting languages
 b.render("audioannotations/create",{title:"Agregar audionotaci\xF3n"})},addAudioannotation=async(a,b)=>{let{eaf:c,// ok
 mp3_url:d,// ok
 duration:e,//ok
@@ -88,12 +88,12 @@ console.log("> Audioanotations Created: "+JSON.stringify(a)),b.redirect(`/audioa
 // console.log(file.filename)
 try{(0,_deletejson.default)(d.filename),(0,_converteaf.default)(d.filename),(0,_converteaftojson.default)(d.filename)}catch(a){console.log("Erorroesss al convertir EAF2JSON"),console.log(a)}try{// Obteniendo datos de las collections
 const c=await _Collection.default.find({user:a.user._id}).populate("user").exec();let e=c.map(a=>a.toJSON());// Getting genere
-const f=await _Genre.default.find().exec();let g=f.map(a=>a.toJSON());b.render("audioannotations/create",{filename:d.filename,collections:e,genreArray:g})}catch(a){// Borrar eaf cargado
+const f=await _Genre.default.find().exec();let g=f.map(a=>a.toJSON());b.render("audioannotations/create",{title:"Agregar audioanotaci\xF3n",filename:d.filename,collections:e,genreArray:g})}catch(a){// Borrar eaf cargado
 _fs.default.unlinkSync(_path.default.join(__dirname,"..","public","eaf",d.filename)),b.status(500).json(a)}},editAudioannotation=async(a,b)=>{// let genreDoc = await Genre.findById(genre).exec()
 // let collectionDoc = await Collection.findById(collection_id).exec()
 // let gidDoc = collectionDoc.languages.id(gid)
 // let locationDoc = collectionDoc.localities.id(location)
-const c=a.params.audioannotation_id;console.log("--------------Aqui Edit--------------"),console.log(c),b.render("audioannotations/edit",{audioannotationid:c})},deleteAudioannotaion=async(a,b)=>{//console.log("Aqui no entro")
+const c=a.params.audioannotation_id;console.log("--------------Aqui Edit--------------"),console.log(c),b.render("audioannotations/edit",{title:"Editar audioanotaci\xF3n",audioannotationid:c})},deleteAudioannotaion=async(a,b)=>{//console.log("Aqui no entro")
 const c=a.params.audioannotation_id;try{let a=await _AudioAnnotations.default.findById(c).exec();var d=a.eaf;// console.log(file);
 const b=await _AudioAnnotations.default.deleteOne({_id:c}).exec();//console.log(`deleteAudioannotation> Result: ${result}`);  
 console.log(`deleteAudioannotation> Result: ${b}`,JSON.stringify(b))}catch(a){return console.log("no borro en la bd",a),b.status(404).json(a)}try{//console.log("Borrar este")
@@ -101,5 +101,5 @@ console.log(`deleteAudioannotation> Result: ${b}`,JSON.stringify(b))}catch(a){re
 //Borrado del archivo fisicamente
 const a=require("fs");//res.redirect('/audioannotations')
 //console.error("despues del borrado fisico")
-return a.unlinkSync("server/public/eaf/"+d),b.status(200).json({file:"ok"})}catch(a){return console.error("error en el borrado fisico"),console.error(a),b.status(400).json(a)}},vuetestAudioannotaion=async(a,b)=>{const c=a.params.audioannotation_id;console.log("--------------Aqui--------------"),console.log(c),b.render("audioannotations/vuetest",{audioannotationid:c})},color=(a,b)=>{b.render("audioannotations/color")},api_updateAudioAnnot=async(a,b)=>{try{const{audioannotationId:c}=a.params;let d=await _AudioAnnotations.default.findById(c).exec();d.set(a.body);let e=await d.save();b.status(200).json(e)}catch(a){b.status(500).json({error:a.message})}};// Visualize Audio Annotations By Id
-var _default={index,createAudioannotation,editAudioannotation,deleteAudioannotaion,addAudioannotation,uploadfileAudioannotation,vuetestAudioannotaion,filtrarAudioannotation,indexById,api_updateAudioAnnot,color};exports.default=_default;
+return a.unlinkSync("server/public/eaf/"+d),b.status(200).json({file:"ok"})}catch(a){return console.error("error en el borrado fisico"),console.error(a),b.status(400).json(a)}},vuetestAudioannotaion=async(a,b)=>{const c=a.params.audioannotation_id;console.log("--------------Aqui--------------"),console.log(c),b.render("audioannotations/vuetest",{title:"SYLARD Visor EAF",audioannotationid:c})},color=(a,b)=>{b.render("audioannotations/color")},api_updateAudioAnnot=async(a,b)=>{try{const{audioannotationId:c}=a.params;let d=await _AudioAnnotations.default.findById(c).exec();d.set(a.body);let e=await d.save();b.status(200).json(e)}catch(a){b.status(500).json({error:a.message})}};// Visualize Audio Annotations By Id
+var _default={index,createAudioannotation,editAudioannotation,deleteAudioannotaion,addAudioannotation,uploadfileAudioannotation,vuetestAudioannotaion,filtrarAudioannotation,indexById,api_updateAudioAnnot,api_indexAudioannotationsByCollection,color};exports.default=_default;

@@ -382,13 +382,15 @@ export default {
   },
   methods: {
     async get_nameColeccion(id) {
+       var self = this;
       var name;
       //console.log("la ruta"+"collections/api/read/"+id)
-      this.axios.get("collections/api/read/" + id).then((response) => {
+      self.axios.get("collections/api/read/" + id).then((response) => {
         //this.coleccion = response.data
         //console.log(response.data.name)
         name = response.data.name;
-        this.arreglo_coleccion.push(response.data.name);
+        self.arreglo_coleccion.push(response.data.name);
+        return name
       });
       //console.log("este es el nombre de la coleccion "+ this.coleccion.name)
       return name;
@@ -648,8 +650,9 @@ export default {
       self.paginacion = response.data.paginator;
       self.pagina = self.paginacion;
       self.notas_audioannotations.forEach((element) => {
+        element.name_collection=self.get_nameColeccion(element.collection_id);
         //console.log("la coleccion "+element.collection_id)
-        this.get_nameColeccion(element.collection_id);
+        //this.get_nameColeccion(element.collection_id);
       });
 
       // this.arreglo_coleccion.forEach(element => {

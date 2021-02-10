@@ -23,22 +23,7 @@ d=d.toJSON(),d.languages=JSON.stringify(d.languages),d.localities=JSON.stringify
 if(e=await _Collection.default.findById(d).exec(),e.user+""!=a.user._id+""&&"su"!=a.user.role+"")return a.flash("error_msg","No eres el propietario de esta colecci\xF3n"),b.redirect("/dashboard");// Update collection
 let f=await e.updateCollection(c);f.ok?a.flash("success_msg","La colecci\xF3n se ha actualizado con \xE9xito"):a.flash("error_msg","No se ha podido actualizar la colecci\xF3n"),b.redirect("/collections")}catch(c){// Se flashea Exito
 // Get the info from
-return a.flash("error_msg","No se ha podido encontrar la coleccion que se desea editar"),b.render("index/dashboard")}},indexCollection=async(a,b)=>{/*const {collectionId} = req.params
-
-    const audioannotationsDocs = await Audioannotations.find({
-            user: req.user._id, collection_id: collectionId
-        })
-        .populate('user')
-        .populate('colection')
-        .exec()
-
-    let audioannotations = audioannotationsDocs.map(audioannotation => {
-        return audioannotation.toJSON()
-    })
-
-    return res.json(audioannotations)
-    */b.render("audioannotations/index",{//enviar
-})},api_getCollectionAll=async(a,b)=>{//let collectionDoc = {}
+return a.flash("error_msg","No se ha podido encontrar la coleccion que se desea editar"),b.render("index/dashboard")}},indexCollection=async(a,b)=>{b.render("audioannotations/indexByCollection",{})},api_getCollectionAll=async(a,b)=>{//let collectionDoc = {}
 const c={page:a.params.page,limit:5,sort:{title:1},populate:"colection",customLabels:{totalDocs:"itemCount",docs:"itemsList",limit:"perPage",page:"currentPage",nextPage:"next",prevPage:"prev",totalPages:"pageCount",pagingCounter:"slNo",meta:"paginator"}};try{_Collection.default.paginate({},c,function(a,c){return a?(console.log("El error esta aqui"),console.err(a),b.status(400).json({mensaje:"Ocurrio un error",err:a})):void b.json(c)})}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}// try {
 //     collectionDoc = await Collection.find().exec()
 //     res.status(200).json(collectionDoc)
