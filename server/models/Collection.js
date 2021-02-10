@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import { Schema } from 'mongoose'
 const mongoosePaginate = require('mongoose-paginate-v2'); //first step
+import AudioAnnotations from '@models/AudioAnnotations'
 
 const CollectionSchema = new Schema({
   name: { type: String, required: true },
@@ -55,6 +56,20 @@ const CollectionSchema = new Schema({
   user:{
     type: Schema.Types.ObjectId,
     ref: 'Users'
+  }
+})
+
+// Hooks
+CollectionSchema.pre('remove', async function(){
+  let query = {
+    collection_id : this._id
+  }
+  try {
+    let result = await AudioAnnotations.find(query).remove().exec()
+    console.log(`>>> REMOVING Audio Annotations result: ${result}`)
+  } catch (error) {
+    console.log(`>>> Error when deleting Audio Annotations: ${error.message}`);
+    throw error
   }
 })
 

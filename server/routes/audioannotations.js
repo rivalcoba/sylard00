@@ -86,8 +86,8 @@ router.put(
 // Delete a Collection
 router.delete(
   '/delete/:audioannotation_id',
-  ensureAuthenticated,
-  ensureColabUser,
+  //ensureAuthenticated,
+  //ensureColabUser,
   audioannotationsController.deleteAudioannotaion
 )
 

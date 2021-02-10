@@ -1,5 +1,9 @@
 import mongoose from 'mongoose'
 import { Schema } from 'mongoose'
+import fs from 'fs'
+//import { promises as fs } from 'fs'
+import path from 'path'
+
 const mongoosePaginate = require('mongoose-paginate-v2'); //first step
 
 const AudioAnnotationsSchema = new Schema({
@@ -35,6 +39,23 @@ const AudioAnnotationsSchema = new Schema({
       TIER_ID: String,
     },
   ],
+})
+
+// Hooks
+AudioAnnotationsSchema.pre('deleteOne',{ query: false , document : true }, function(){
+  // Deleting eaf file
+  let fileName = this.eaf
+  // ref: https://stackoverflow.com/questions/10265798/determine-project-root-from-a-running-node-js-application
+  let eafPath = path.join(__dirname, '..', 'public', 'eaf')
+  console.log(`$>> Deleting file: ${fileName}`);
+
+  fs.unlink(path.join(eafPath, fileName),err=>{
+    if (err) {
+      console.log(`$>> error: ${err.message}`);
+      throw err
+    }
+    console.log(`$>> File deleted: ${fileName} OK!`);
+  })
 })
 
 //AudioAnnotationsSchema.methods.updateCollection= async function(data){
