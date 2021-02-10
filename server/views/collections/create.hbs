@@ -26,14 +26,14 @@
             id="nombre_de_la_coleccion"
             for="nombre_coleccion"
           >
-            Nombre de la colección
+            {{translation.NAME_COLLECTION}}
           </label>
           <input
             class="input_ancho_completo"
             type="text"
             id="name"
             name="name"
-            placeholder="Titulo breve (max 120 carácteres)"
+            placeholder="{{translation.SHORT_TITLE}}"
             maxlength="120"
             required
             
@@ -55,14 +55,14 @@
             id="descripcion_de_la_coleccion"
             for="descripcion_coleccion_input"
           >
-            Descripcion de la coleccion
+            {{translation.DESC_COLLECTION}}
           </label>
           <textarea
             class="input_ancho_completo"
             type="textarea"
             name="description"
             id="description"
-            placeholder="Breve descripcion (max 200 carácteres)"
+            placeholder="{{translation.DESC_COLLECTION_}}"
             maxlength="200"
             rows="5"
             required
@@ -70,13 +70,13 @@
           ></textarea>
         </div>
         <p class="label" id="lenguas_de_la_coleccion">
-          Lenguas de la colección
+          {{translation.LANG_COLLECTION}}
         </p>
         <div class="contenedor_etiqueta_agregar_coleccion_lenguas">
           <div class="contenedor_inputs_agregar_coleccion_lengua">
             <div class="modulo_inputs_lengua" id="">
               <label class="label label_al_100">
-                Lengua terminal:
+                {{translation.tabla_audioannotation.Lenguaterminal}}:
               </label>
              <input 
               id="language" 
@@ -110,7 +110,7 @@
             </div>
             <div class="modulo_inputs_lengua">
               <label class="label label_al_100">
-                Grupo de lenguas:
+                {{translation.tabla_coleccion.gpoLenguas}}:
               </label>
               <input 
               disabled 
@@ -144,7 +144,7 @@
           </div>
           <div class="contenedor_lenguas_agregadas">
             <p class="label">
-              Lenguas agregadas a la colección
+              {{translation.tabla_coleccion.langAdd}}
             </p>
             <table class="tabla_lenguas_agregadas">
               <thead></thead>
@@ -154,14 +154,14 @@
           </div>
         </div>
         <p class="label" id="comunidades_de_la_coleccion">
-          Comunidades de la colección
+          {{translation.tabla_coleccion.comunidades_coll}}
         </p>
         <div class="contenedor_etiqueta_agregar_coleccion_comunidad">
           <div class="contenedor_inputs_agregar_coleccion_comunidad2">
             <div class="contenedor_inputs_boton_lateral">
               <div class="modulo_inputs_comunidad2" id="">
                 <label class="label label_al_100">
-                  País:
+                  {{translation.COUNTRYY}}:
                 </label>
                 <input type="text" class="input_flexible" placeholder="México" disabled/>
                 <div class="contenedor_icono_correcto_input">
@@ -177,7 +177,7 @@
               </div>
               <div class="modulo_inputs_comunidad2" id="">
                 <label class="label label_al_100">
-                  Entidad:
+                  {{translation.Entity}}:
                 </label>
                 <input 
                 type="text" 
@@ -209,7 +209,7 @@
               </div>
               <div class="modulo_inputs_comunidad2">
                 <label class="label label_al_100">
-                  Municipio:
+                  {{translation.Municipality}}:
                 </label>
                 <input 
                 disabled 
@@ -233,7 +233,7 @@
               </div>
               <div class="modulo_inputs_comunidad2">
                 <label class="label label_al_100">
-                  Localidad:
+                  {{translation.Locality}}:
                 </label>
                 <input  
                 placeholder="{{translation.SELECT_AN_OPTION}}"
@@ -258,7 +258,7 @@
               </div>
               <div class="modulo_inputs_comunidad2" id="">
                 <label class="label label_al_100">
-                  Latitud:
+                  {{translation.Latitude}}:
                 </label>
                 <input type="text" id="lat" class="input_flexible"  />
                 <div class="contenedor_icono_correcto_input">
@@ -274,7 +274,7 @@
               </div>
               <div class="modulo_inputs_comunidad2" id="">
                 <label class="label label_al_100">
-                  Longitud:
+                  {{translation.Longitude}}:
                 </label>
                 <input type="text" id="long" class="input_flexible"  />
                 <div class="contenedor_icono_correcto_input">
@@ -297,7 +297,7 @@
           </div>
           <div class="contenedor_comunidades_agregadas">
             <p class="label">
-              Comunidades agregadas a la colección
+              {{translation.Communities_add}}
             </p>
             <table class="tabla_comunidades_agregadas">
               <thead></thead>
@@ -309,7 +309,7 @@
         <div class="contenedor_licencia_y_botones_agregar_coleccion">
           <div class="contenedor_licencia">
             <label class="label" for="licencia">
-              Licencia del contenido
+              {{translation.Content_license}}
             </label>
             <input type="text" 
             placeholder="{{translation.SELECT_AN_OPTION}}" 
@@ -337,14 +337,14 @@
               class="btn btn-secundario"
               id="boton_restablecer_agregar_coleccion"
             >
-              Restablecer
+              {{translation.RESTORE}}
             </button>
             <button
               type="submit"
               class="btn btn-primario"
               id="boton_guardar_agregar_coleccion"
             >
-              Guardar
+              {{translation.SAVE}}
             </button>
           </div>
         </div>
