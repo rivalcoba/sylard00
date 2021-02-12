@@ -223,7 +223,7 @@
                     id="btn-regresar_audioanotaciones"
                   >
                     <span
-                      onclick="window.location.href = '/dashboard'"
+                      onclick="window.location.href = '/collections'"
                       class="icono_boton_eliminar_audioanotaciones icon-back"
                       ><!--TODO AQUI---></span
                     >
@@ -296,7 +296,8 @@
                     </button>
 
                     <button class="btn_accion_tabla">
-                      <span class="icono_accion_tabla icon-launch"></span>
+                      <a
+                          v-bind:href="'/audioannotations/vuetest/' + item2._id"><span class="icono_accion_tabla icon-launch"></span></a>
                     </button>
                     <button class="dropdown-trigger">
                       <span class="icono_accion_tabla icon-ellipsis-v"></span>
