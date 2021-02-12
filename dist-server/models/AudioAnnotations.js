@@ -4,6 +4,6 @@ eaf:String,title:String,description:String,genre:{name:{type:String,required:!0}
 location:{},//location:String,
 collection_id:{type:_mongoose.Schema.Types.ObjectId,ref:"Collection"},//glottolog:{type:Schema.ObjectId,ref:"Glottologs"},
 //gid:String,//cambiar por L_gid
-gid:{},siglas:String,user:{type:_mongoose.Schema.Types.ObjectId,ref:"Users"},header:[String],TIER:[{PARTICIPANT:String,Visible:String,value:String,color:String,LINGUISTIC_TYPE_REF:String,TIER_ID:String}]});//first step
+gid:{},siglas:String,user:{type:_mongoose.Schema.Types.ObjectId,ref:"Users"},header:[String],participant:{name:String,canal:String},TIER:[{PARTICIPANT:String,Visible:String,value:String,color:String,LINGUISTIC_TYPE_REF:String,TIER_ID:String}]});//first step
 AudioAnnotationsSchema.plugin(mongoosePaginate);//second step
 var _default=_mongoose.default.model("AudioAnnotations",AudioAnnotationsSchema);exports.default=_default;

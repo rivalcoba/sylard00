@@ -1,6 +1,10 @@
 {
     "WELCOME_MSG": "Welcome to SYLARD!",
     "WELCOME": "Welcome!",
+    "WELCOME_TO_OUR_CATALOG": "Welcome to our catalog",
+    "Search": "Search",
+    "Enjoy_the_diversity_of_our_collections!": "Enjoy the diversity of our collections!",
+    "Enjoy_the_diversity_of_our_audio_annotation!": "Enjoy the diversity of our audio annotation!",
     "SYLARD_MEANING": "SYLARD is an acronym for <b>S</b>ynchronized <b>L</b>anguage <b>A</b>nnotation <b>R</b>esult <b>D</b>isplay",
     "LOGIN": "Login",
     "LOGIN_AUTH": "Login",
@@ -10,6 +14,7 @@
     "EMAIL": "Email",
     "PASSWORD": "Password",
     "DASHBOARD": "Dashboard",
+    "LIBRARY": "Library",
     "SYLARD_project": "SYLARD project",
     "Our_objetive": "Our objetive",
     "DESCRIPTION_SYLARD": "SYLARD is a developing platform for the presentation and exchange of audio transcripts in indigenous languages ​​of Mesoamerica.",
@@ -21,7 +26,6 @@
     "The_responsibilities": "The responsibilities...",
     "We_believe": "We believe in access to knowledge and in the proper use of it.",
     "Our_platform": "Your registration enriches <br> our platform!*",
-    "LIBRARY": "Library",
     "EDIT_ACCOUNT": "Edit account",
     "EDIT_FIELDS": "Edit the fields and hit the save button",
     "UDPATE_PRIVILEGES": "Update your user privileges",
@@ -55,8 +59,8 @@
     "SUBMIT": "Login",
     "FORGOT_PASSWORD": "Forgot password?",
     "EMAIL_PLACEHOLDER": "Enter your email",
-    "RESET_PASSWORD_TITLE": "Reset Password",
     "RESET": "Reset",
+    "RESET_PASSWORD_TITLE": "Reset Password",
     "RESET_PASSWORD_MESSAGE": "Enter your email account to send you a provisional password",
     "TYPE_YOUR_USERNAME_AND_PASSWORD": "Type your username and password",
     "PASSWORD_INTRODUCE": "Type your password",
@@ -87,6 +91,19 @@
     "VISITANT_": "Visitant",
     "COLLABORATOR_": "Collaborator",
     "NAME": "Name:",
+    "COUNTRYY": "Country",
+    "Entity": "Entity",
+    "Municipality": "Municipality",
+    "Locality": "Locality",
+    "Communities_add": "Communities added to the collection",
+    "Content_license": "Content license",
+    "Latitude": "Latitude",
+    "Longitude": "Longitude",
+    "NAME_COLLECTION": "Collection name",
+    "SHORT_TITLE": "Short title (max 120 characters)",
+    "DESC_COLLECTION": "Description of the collection",
+    "DESC_COLLECTION_": "Brief description (max 200 characters)",
+    "LANG_COLLECTION": "Languages ​​of the collection",
     "LAST_NAME": "Last name:",
     "MATERNAL_SUR": "Maternal surname (optional):",
     "CONFIRM_PASSWORD_": "Confirm Password:",
@@ -94,6 +111,7 @@
     "ADD_COLLECTION": "Add Collection",
     "UPLOAD_AUDIONOTATION": "Upload Audio Annotation",
     "COMPLETE_FIELDS": "Fill in the fields correctly",
+    "HELLO_COLLECTIONS": "Hello!",
     "CONFIRM_PASSWORD_PLACEHOLDER_": "Must match password",
     "COUNTRY": "Country of origin",
     "LANGUAGUES": "Spoken languages",
@@ -103,7 +121,6 @@
     "WHAT_IS_YOUR_JOB": "What is your job? What would you use SYLARD for?",
     "ADD_LANG_": "The languages ​​you added appear here",
     "ACEPT_TERMS": "I have read and accept the terms and conditions.",
-    "HELLO_COLLECTIONS": "Hello!",
     "Select_the_file_ending_with_eaf": "Select the file ending with .eaf",
     "Enter_the_audio_URL_in_mp3": "Enter the audio URL in .mp3",
     "Title": "Title",
@@ -117,7 +134,7 @@
     "RESTORE": "Restore",
     "LANGUAGE": "en",
     "SHOWBY": {
-        "visualizarpor": "Show By:",
+        "Visualizar_por": "Show By:",
         "Audioanotacion": "Audioanotation",
         "coleccion": "collection"
     },
@@ -125,22 +142,27 @@
         "coleccion": "Collection",
         "Lenguaterminal": "Last Tongue",
         "gpoLengua": "Language Group",
-        "comunidades": "Communities"
+        "comunidades": "Communities",
+        "langAdd": "Languages ​​added to the collection",
+        "comunidades_coll": "Collection communities"
     },
     "tabla_audioannotation": {
         "coleccion": "Collection",
         "Lenguaterminal": "Last Tongue",
-        "titulo": "Title",
         "gpoLengua": "Language Group",
         "comunidades": "Communities",
+        "Comunidad": "Comunity",
         "hablantes": "Speakers",
-        "generoduracion": "Gender and duration"
+        "generoduracion": "Gender and duration",
+        "titulo": "Title"
     },
     "reproductor_audioannotation": {
         "opcionesVisuales": "Visual Options",
         "mostrar": "Show",
         "visualizar": "View in:",
-        "colorTipo": "Typography Color"
+        "colorTipo": "Typography Color",
+        "Hablante": "Channel 1 (speaker)",
+        "Canal": "Channel"
     }
 
 }

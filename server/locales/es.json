@@ -1,6 +1,10 @@
 {
     "WELCOME_MSG": "¡Bienvenido a SYLARD!",
     "WELCOME": "¡Bienvenido!",
+    "Enjoy_the_diversity_of_our_collections!": "¡Disfruta de la diversidad de nuestras colecciones!",
+    "Enjoy_the_diversity_of_our_audio_annotation!": "¡Disfruta de la diversidad de nuestras colecciones!",
+    "WELCOME_TO_OUR_CATALOG": "Bienvenido a nuestro catálogo",
+    "Search": "Búsqueda",
     "SYLARD_MEANING": "SYLARD viene del inglés y significa <b>S</b>ynchronized <b>L</b>anguage <b>A</b>nnotation <b>R</b>esult <b>D</b>isplay",
     "LOGIN": "Accesar",
     "LOGIN_AUTH": "Ingresar",
@@ -56,11 +60,9 @@
     "SAVE": "Guardar",
     "EDIT_PASSWORD": "Editar Contraseña",
     "CONFIRM_PASSWORD": "Confirmar Contraseña",
-    "CONFIRM_PASSWORD_": "Confirma la Contraseña:",
     "PASSWORD_PLACEHOLDER": "Ingrese al menos 6 caracteres",
     "PASSWORD_INTRODUCE": "Escriba la contraseña",
     "CONFIRM_PASSWORD_PLACEHOLDER": "Debe coincidir con el de arriba",
-    "CONFIRM_PASSWORD_PLACEHOLDER_": "Debe coincidir con la contraseña",
     "RESET_MAIL_PLACEHOLDER": "Ingresa el correo de tu cuenta",
     "SUBMIT": "Enviar",
     "EDIT_ACCOUNT": "Editar cuenta",
@@ -130,7 +132,7 @@
     "RESTORE": "Restablecer",
     "LANGUAGE": "es",
     "SHOWBY": {
-        "visualizarpor": "Visualizar por:",
+        "Visualizar_por": "Visualizar por:",
         "Audioanotacion": "Audioanotación",
         "coleccion": "Colección"
     },
@@ -138,24 +140,28 @@
         "coleccion": "Colección",
         "Lenguaterminal": "Lengua terminal",
         "gpoLengua": "Gpos. de lenguas",
-        "gpoLenguas": "Grupo de lenguas",
         "comunidades": "Comunidades",
         "langAdd": "Lenguas agregadas a la colección",
         "comunidades_coll": "Comunidades de la colección"
+
+
     },
     "tabla_audioannotation": {
         "coleccion": "Colección",
         "Lenguaterminal": "Lengua terminal",
-        "titulo": "Titulo",
         "gpoLengua": "Gpos. de lenguas",
         "comunidades": "Comunidades",
         "hablantes": "Hablantes",
-        "generoduracion": "Género y duracion"
+        "generoduracion": "Género y duracion",
+        "titulo": "Título",
+        "Comunidad": "Comunidad"
     },
     "reproductor_audioannotation": {
         "opcionesVisuales": "Opciones Visuales",
         "mostrar": "Mostrar",
         "visualizar": "Visualizar en:",
-        "colorTipo": "Color de tipografía"
+        "colorTipo": "Color de tipografía",
+        "Hablante": "Canal 1 (hablante)",
+        "Canal": "Canal"
     }
 }
