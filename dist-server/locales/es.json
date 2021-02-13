@@ -144,13 +144,18 @@
         "comunidades_coll": "Comunidades de la colección"
     },
     "tabla_audioannotation": {
+        "Audioannotations":"Audioanotaciones ",
+        "from":"De la colección ",
+        "editCollection":"Editar Colección",
+        "uploadAudioAnnotation":"Cargar AudioAnnotación",
         "coleccion": "Colección",
         "Lenguaterminal": "Lengua terminal",
-        "titulo": "Titulo",
-        "gpoLengua": "Gpos. de lenguas",
+        "gpoLengua": "Gpos. de lenguas:",
         "comunidades": "Comunidades",
         "hablantes": "Hablantes",
-        "generoduracion": "Género y duracion"
+        "generoduracion": "Género y duracion",
+        "titulo": "Título",
+        "Comunidad": "Comunidad"
     },
     "reproductor_audioannotation": {
         "opcionesVisuales": "Opciones Visuales",

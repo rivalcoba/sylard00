@@ -242,11 +242,11 @@
                 </td>
                 <td class="">
                   <div
-                    v-for="(item3, index) in item2.TIER"
+                    v-for="(item3, index) in item2.header"
                     :key="'item' + index"
                     class="contenedor_hablantes"
                   >
-                    <span class="hablante"> {{ item3.PARTICIPANT }}</span
+                    <span class="hablante"> {{ item3 }}</span
                     ><br /><span class="canal">Canal {{ index + 1 }}</span>
                   </div>
                 </td>
