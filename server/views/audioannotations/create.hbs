@@ -30,6 +30,8 @@
                </div>
             </form>
             {{/unless}}
+         </div>
+         <form action="/audioannotations/add" method="post" id='form2'>
             {{#if filename}}
             <div class="contenedor_tiempo">
                <label class="label label_al_100" for="selecciona_archivo_eaf_input">{{translation.File_uploaded_successfully}}</label>
@@ -42,11 +44,9 @@
                </div>
                <label class="" for="duracion"><span
                      class="icono_duracion icon-clock-o"></span></label>
-               <input class="duracion_input" disabled type="text" id="duracion" name="duration">
+               <input class="duracion_input" readonly type="text" id="duracion" name="duration">
             </div>
             {{/if}}
-         </div>
-         <form action="/audioannotations/add" method="post" id='form2'>
             <div class="contenedor_input_seleciona_origen_audioanotacion">
                <input value="{{filename}}" type="hidden" id="eaf" name="eaf"><br><br>
                <label class="label label_al_100" id="selecciona_url_mp3" for="selecciona_url_mp3_input">{{translation.Enter_the_audio_URL_in_mp3}}</label>
