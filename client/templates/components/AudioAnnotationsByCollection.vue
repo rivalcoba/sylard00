@@ -272,11 +272,11 @@
                 </td>
                 <td class="">
                   <div
-                    v-for="(item3, index) in item2.TIER"
+                     v-for="(item3, index) in item2.header"
                     :key="'item' + index"
                     class="contenedor_hablantes"
                   >
-                    <span class="hablante"> {{ item3.PARTICIPANT }}</span
+                    <span class="hablante"> {{ item3 }}</span
                     ><br /><span class="canal">Canal {{ index + 1 }}</span>
                   </div>
                 </td>
@@ -443,6 +443,7 @@ export default {
       pagina_buscar: '',
 
       valor_buscar: false,
+      collectionId:""
     }
   },
   methods: {
@@ -667,7 +668,7 @@ export default {
 
       var self = this
       
-      self.axios.get(`/audioannotations/api/index/${collectionId}/${page}`).then(response => {
+      self.axios.get(`/audioannotations/api/index/`+self.collectionId+`/${page}`).then(response => {
         self.notas_audioannotations = response.data.itemsList
         self.paginacion = response.data.paginator
         self.pagina = self.paginacion
@@ -688,6 +689,7 @@ export default {
       }
     });
     let collectionId = window.location.pathname.split('/').pop();
+    self.collectionId =collectionId;
     try {
       let response = await this.axios.get(`/collections/api/read/${collectionId}`)
       this.collectionName = response.data.name
