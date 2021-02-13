@@ -357,7 +357,7 @@ const deleteAudioannotaion = async(req, res) => {
                 _id: audioannotation_id,
             }).exec()
             
-            document.deleteOne();
+        document.deleteOne();
         return res.status(200).json({ "fileDeleted": "ok" })
 
     } catch (error) {
@@ -393,10 +393,6 @@ const api_updateAudioAnnot = async(req, res) => {
     }
 }
 
-const api_deleteAduioAnnot = async (req, res) => {
-    throw new Error()
-}
-
 export default {
     index,
     createAudioannotation,
@@ -409,6 +405,5 @@ export default {
     indexById,
     api_updateAudioAnnot,
     api_indexAudioannotationsByCollection,
-    api_deleteAduioAnnot,
     color,
 }

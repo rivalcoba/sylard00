@@ -86,5 +86,10 @@ router.get('/api/index/:userId',
     collectionsController.api_getCollectionByUser
 )
 
+router.delete('/api/delete/:collection_id',
+    /*ensureAuthenticated,
+    ensureColabUser,*/ // TODO: Uncomment to protect route,
+    collectionsController.api_delCollectionById)
+
 // Se exportan rutas
 export default router

@@ -60,17 +60,24 @@ const CollectionSchema = new Schema({
 })
 
 // Hooks
-CollectionSchema.pre('remove', async function(){
+CollectionSchema.pre('deleteOne',{ query: false , document : true }, async function(){
   let query = {
     collection_id : this._id
   }
+  // return console.log("Delleted collection > collection_id: " + this._id)
   try {
-    let result = await AudioAnnotations.find(query).remove().exec()
-    console.log(`>>> REMOVING Audio Annotations result: ${result}`)
+    let audioAnnotDocs = await AudioAnnotations.find(query).exec()
+    console.log(">> audioAnnotDocs: " + audioAnnotDocs);
+    let results = await Promise.all(audioAnnotDocs.forEach(async audioAnnot => {
+      let deleteResult = await audioAnnot.deleteOne()
+      return deleteResult
+    }))
+    results.forEach(result => {
+      console.log(`>> Deletion result: ${result}`);
+    });
   } catch (error) {
-    console.log(`>>> Error when deleting Audio Annotations: ${error.message}`);
-    throw error
-  }
+    console.log(">> No AudioAnnot detected: " + error.message);
+  }    
 })
 
 CollectionSchema.methods.updateCollection= async function(data){
