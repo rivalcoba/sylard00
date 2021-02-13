@@ -144,13 +144,18 @@
         "comunidades_coll": "Collection communities"
     },
     "tabla_audioannotation": {
+        "Audioannotations":"Audioanotations ",
+        "from":"from Collection ",
+        "editCollection":"Edit Collection",
+        "uploadAudioAnnotation":"upload AudioAnnotation",
         "coleccion": "Collection",
         "Lenguaterminal": "Last Tongue",
-        "titulo": "Title",
-        "gpoLengua": "Language Group",
+        "gpoLengua": "Languages Group:",
         "comunidades": "Communities",
+        "Comunidad": "Comunity",
         "hablantes": "Speakers",
-        "generoduracion": "Gender and duration"
+        "generoduracion": "Gender and duration",
+        "titulo": "Title"
     },
     "reproductor_audioannotation": {
         "opcionesVisuales": "Visual Options",

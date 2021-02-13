@@ -133,6 +133,7 @@ if(window.location.pathname.match(/\/collections\/index\//)){
     //Vue.component("AudioAnnotationsByCollection", AudioAnnotationsByCollection);
     window.vm = new Vue({
         el: '#main31',
+        i18n,
         render: h => h(Main31) // h stands for hyperscript
     })
 }
