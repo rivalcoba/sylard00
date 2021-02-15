@@ -74,6 +74,8 @@ UserSchema.pre('save', function(){
 UserSchema.post('save', async function(){
     try {
         console.log(`LN68@models/User.js>: Sending email to ${this.email}`)
+        console.log(`LN68@models/User.js>: Sending email from ${keys.authMail}`)
+        console.log(`LN68@models/User.js>: user mail service ${keys.mailUserName}`)
         let res = await new Mail('confirm-account')
         .from(keys.authMail)
         .to(this.email, this.name)
