@@ -76,7 +76,7 @@ UserSchema.post('save', async function(){
     try {
         console.log(`LN68@models/User.js>: Sending email to ${this.email}`)
         let res = await new Mail('confirm-account')
-        .from("yoncece@sylard.com")
+        .from(keys.authMail)
         .to(this.email, this.name)
         .subject('Sylard, please confirm your account')
         .data({
@@ -132,7 +132,7 @@ UserSchema.methods.resetPassword = async function () {
   }).exec()
 
   await new Mail('resetPassword')
-    .from('yoncece@sylard.com')
+    .from(keys.authMail)
     .to(this.email, this.name)
     .subject('Sylard, Password Reset')
     .data({
