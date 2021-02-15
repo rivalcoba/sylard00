@@ -43,7 +43,6 @@ const UserSchema = new Schema({
         default: 'visitor', // visitor | colaborator | su
         // required: true
     },
-    about : String,  
     image: {
         type: String,
         default: 'https://img.icons8.com/fluent/48/000000/user-male-circle.png'
