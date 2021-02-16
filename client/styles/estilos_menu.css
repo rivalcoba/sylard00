@@ -2890,6 +2890,10 @@ p.canal_2_hablante_one_line_display_item {
 }
 
 #imagen_de_catalogo {
+    width: 100%;
+}
+
+.contenedor_imagen_cabezal_catalogo {
     margin-right: 2rem;
     margin-left: 2rem;
     flex-basis: 25%;
