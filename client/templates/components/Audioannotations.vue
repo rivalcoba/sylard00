@@ -2,12 +2,14 @@
   <div class="container-fluid" id="contenedor_catalogo">
     <div class="container">
       <div class="col-sm-12 contenedor_cabezal_catalogo" id="">
+        <div class="contenedor_imagen_cabezal_catalogo">
         <img
           src="images/leon_catalogo.svg"
           alt="Imagen ornamental de textil de Huichapan"
           class=""
           id="imagen_de_catalogo"
         />
+        </div>
         <div class="" id="contenedor_texto_cabezal_catalogo">
           <h1 class="">{{$t("lang.WELCOME_TO_OUR_CATALOG")}}</h1>
           <h2 class="llamada" id="llamada_catalogo">

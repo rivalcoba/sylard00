@@ -51,6 +51,15 @@ export default {
   mounted() {
     this.wavesurfer = WaveSurfer.create({
       container: '#wave',
+      waveColor: '#A5DBE6',
+      progressColor: '#7EBFCC',
+      cursorColor: '#15C1D1', 
+      barWidth: 5,
+      barRadius: 3,
+      cursorWidth: 2, 
+      height: 88,
+      barMinHeight:20, 
+      //barGap: 3,
     })
     this.$root.$on('valor_mp3', (mp3valor) => {
       console.log('este es el valor del mp3 ' + mp3valor)
