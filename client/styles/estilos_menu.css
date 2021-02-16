@@ -1164,7 +1164,7 @@ input:checked+.slider_general:before {
 .contenido_dropdown_menu_usuario {
     display: none;
     position: absolute;
-    z-index: 2;
+    z-index: 999;
     border: 1px rgba(255, 255, 255, .3) solid;
     border-top: none;
 }
