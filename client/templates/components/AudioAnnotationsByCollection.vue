@@ -21,7 +21,7 @@
                 class="btn_info_coleccion_cabezal_coleccion_audioanotaciones"
                 id="coleccion_info_general_cabezal"
               >
-                <span
+                <span  @click="showCollection(collectionName)"
                   class="icono_info_coleccion_audioanotacion icon-info1"
                 ></span>
               </button>
@@ -455,6 +455,17 @@ export default {
         showCloseButton: true,
       })
     },
+     showCollection(collectionName, text) {
+      //Aqui se utiizan las funciones o estilos de SweetAlert
+      this.$swal({
+        title: collectionName,
+        text: text,
+        showCloseButton: true,
+        icon: 'info',
+        showConfirmButton: false,
+      })
+    },
+
     borrarAudioanotacion(audioannotation_id) {
       var currentUrl = window.location.pathname
       const url = `${currentUrl}/delete/${audioannotation_id}`
