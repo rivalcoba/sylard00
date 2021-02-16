@@ -877,6 +877,7 @@ input[type="button"] {
 .btn-predeterminado:active {
     background: var(--color-sec-pressed);
     border: 2px solid var(--color-sec-pressed);
+    outline: none;
 }
 
 .btn-primario,
