@@ -117,6 +117,9 @@ const testMail = async (req, res) =>{
     let {
         email,
     } = req.params
+    console.log(`Api Email>: Sending email to ${email}`)
+    console.log(`Api Email>: Sending email from ${keys.authMail}`)
+    console.log(`Api Email>: user mail service ${keys.mailUserName}`)
     let result = await new Mail('email-test')
         .from(keys.authMail)
         .to(email, "Sr. Steve")
@@ -125,6 +128,7 @@ const testMail = async (req, res) =>{
             name: "Sr. Steve",
         })
         .send()
+    console.log(`Api Email>: user mail service ${JSON.stringify(result)}`)
     res.status(200).json({email, result})
 }
 
