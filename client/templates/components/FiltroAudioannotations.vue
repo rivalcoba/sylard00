@@ -385,6 +385,7 @@ export default {
         title: title,
         text: text,
         showCloseButton: true,
+        showConfirmButton: false,
       })
     },
     borrarAudioanotacion(audioannotation_id) {
