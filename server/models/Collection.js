@@ -67,14 +67,15 @@ CollectionSchema.pre('deleteOne',{ query: false , document : true }, async funct
   // return console.log("Delleted collection > collection_id: " + this._id)
   try {
     let audioAnnotDocs = await AudioAnnotations.find(query).exec()
-    console.log(">> audioAnnotDocs: " + audioAnnotDocs);
-    let results = await Promise.all(audioAnnotDocs.forEach(async audioAnnot => {
+    console.log(">> Lengh audioAnnotDocs: " + audioAnnotDocs.length);
+    console.log(">> Type audioAnnotDocs: " + typeof (audioAnnotDocs));
+    await Promise.all(audioAnnotDocs.forEach(async audioAnnot => {
       let deleteResult = await audioAnnot.deleteOne()
       return deleteResult
     }))
-    results.forEach(result => {
-      console.log(`>> Deletion result: ${result}`);
-    });
+    // results.forEach(result => {
+    //   console.log(`>> Deletion result: ${result}`);
+    // });
   } catch (error) {
     console.log(">> No AudioAnnot detected: " + error.message);
   }    

@@ -47,6 +47,7 @@ AudioAnnotationsSchema.pre('deleteOne',{ query: false , document : true }, funct
   let fileName = this.eaf
   // ref: https://stackoverflow.com/questions/10265798/determine-project-root-from-a-running-node-js-application
   let eafPath = path.join(__dirname, '..', 'public', 'eaf')
+  let jsonPath = path.join(__dirname, '..', 'public', 'eaf', 'tmp')
   console.log(`$>> Deleting file: ${fileName}`);
 
   fs.unlink(path.join(eafPath, fileName),err=>{
@@ -55,6 +56,10 @@ AudioAnnotationsSchema.pre('deleteOne',{ query: false , document : true }, funct
       throw err
     }
     console.log(`$>> File deleted: ${fileName} OK!`);
+    fs.unlink(path.join(jsonPath, `${fileName}.json`), err=>{
+      if(err) throw err
+      console.log(`$>> File deleted: ${fileName}.json OK!`);
+    })
   })
 })
 
