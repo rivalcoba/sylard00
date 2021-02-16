@@ -120,16 +120,20 @@ const testMail = async (req, res) =>{
     console.log(`Api Email>: Sending email to ${email}`)
     console.log(`Api Email>: Sending email from ${keys.authMail}`)
     console.log(`Api Email>: user mail service ${keys.mailUserName}`)
-    let result = await new Mail('email-test')
-        .from(keys.authMail)
-        .to(email, "Sr. Steve")
-        .subject('Sylard, This is an email test')
-        .data({
-            name: "Sr. Steve",
-        })
-        .send()
-    console.log(`Api Email>: user mail service ${JSON.stringify(result)}`)
-    res.status(200).json({email, result})
+    try {
+        let result = await new Mail('email-test')
+            .from(keys.authMail)
+            .to(email, "Sr. Steve")
+            .subject('Sylard, This is an email test')
+            .data({
+                name: "Sr. Steve",
+            })
+            .send()
+        console.log(`Api Email>: user mail service ${JSON.stringify(result)}`)
+        res.status(200).json({email, result})
+    } catch (error) {
+        res.status(400).json({error : error.message})
+    }
 }
 
 // Exporting Controllers
