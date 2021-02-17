@@ -49,7 +49,7 @@ const editUserById = async (req, res) => {
     spokenLang = spokenLang.trim()
     res.render('user/editById', {
       title: 'SYLARD Editar Cuenta',
-      userToEdit : userDoc.toJSON(),
+      userToEdit: userDoc.toJSON(),
       spokenLang: spokenLang,
       nativeLanguages: nativeLanguages,
       countries: countries,
@@ -59,7 +59,7 @@ const editUserById = async (req, res) => {
   }
 }
 
-const postEditUserById = async (req, res)=>{
+const postEditUserById = async (req, res) => {
   const {
     name,
     lastName,
@@ -70,10 +70,10 @@ const postEditUserById = async (req, res)=>{
     about,
   } = req.body
 
-  const {userId} = req.params
+  const { userId } = req.params
   try {
     let userDoc = await User.findById(userId)
-    
+
     await userDoc.editUser({
       name,
       lastName,
@@ -88,7 +88,7 @@ const postEditUserById = async (req, res)=>{
     // Get the info from
     res.redirect('/user')
   } catch (error) {
-    res.json({error: error.message})
+    res.json({ error: error.message })
   }
 }
 
@@ -155,15 +155,6 @@ const index = async (req, res) => {
   const usersObjs = await User.find({ role: { $ne: 'su' } })
     .lean()
     .exec()
-
-  // let usersDocs = usersObjs.map((usr)=>{
-  //   usr.role = usr.role==="colaborator"?"checked":""
-  //   // Attach user collections
-  //   // let collectionsDocs = await Collection.find({"user": usr._id})
-  //   // TODO: Terminar esta sección NO SE PUEDE LLENAR COLECCIONES
-  //    usr.collections = [{"name":usr._id},{"name":usr._id}]
-  //   return usr
-  // })
 
   /*
   #THESIS
@@ -246,7 +237,7 @@ const api_toggleUserPrivileges = async (req, res) => {
     let result = await userDoc.toggleUserPrivileges()
     res.status(200).json(result)
   } catch (error) {
-    res.status(500).json({ error : error.message })
+    res.status(500).json({ error: error.message })
   }
 }
 
@@ -258,10 +249,6 @@ const api_getUsers = async (req, res) => {
 const api_delUsers = async (req, res) => {
   let { usersIds } = req.body
 
-  // TODO: IMPLEMENTAR BORRADO DE AUDIOANOTATIONS DE USUARIOS QUE SERAN BORRADOS
-
-  // TODO: IMPLEMENTAR BORRADO DE COLLECTIONS DE USUARIOS QUE SERAN BORRADOS
-
   // Normalizing
   usersIds = typeof usersIds == 'string' ? [usersIds] : usersIds
   // Building Query
@@ -269,14 +256,20 @@ const api_delUsers = async (req, res) => {
     _id: { $in: usersIds },
   }
 
-  let result = {}
   try {
-    result = await User.find(query, { name: true, role: true })
-      .remove()
-      .exec()
-    res.status(200).json({ result })
+    const userDocs = await User.find(query).exec()
+
+    let deletionResults = Promise.all(
+      userDocs.map(async userDoc =>{
+        console.log(`>> Deleting user: ${userDoc.name}`);
+        let result = await userDoc.deleteOne()
+        return result
+      })
+    )
+    res.status(200).json({ result: 'Dellete user(s) ok', deletionResults })
   } catch (error) {
-    res.status(500).json({ error })
+    console.log(`>-> Error al borrar usuario(s): ${error.message}`)
+    res.status(500).json({ error: error.message })
   }
 }
 

@@ -93,7 +93,7 @@ if (window.location.pathname == `/collections/create`) {
     window.pageScripts = collectionsCreate
 }
 
-if(window.location.pathname === '/user'){
+if(window.location.pathname === '/user' || window.location.pathname === '/users'){
     window.pageScripts = userScriptsIndex
 }
 

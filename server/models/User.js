@@ -4,6 +4,7 @@ import Bcrypt from 'bcryptjs'
 import randomstring from 'randomstring'
 import Mail from '@fullstackjs/mail'
 import keys from '@config/keys'
+import Collections from '@models/Collection'
 
 // Creatnig a User Schema
 const UserSchema = new Schema({    
@@ -56,6 +57,30 @@ const UserSchema = new Schema({
     createdAt: Date,
     updatedAt: Date,
     emailConfirmedAt: Date
+})
+
+UserSchema.pre('deleteOne',{ query: false , document : true },async function(){
+    console.log(`>> USER PRE DELETE ONE: ${this._id}`);
+    let query = {
+        user : this._id
+    }
+    try {
+        let collectionsDocs = await Collections.find(query).exec()
+        console.log(`>> collectionsDocs: ${collectionsDocs.length}`);
+       
+        let deletionResults = await Promise.all(
+            collectionsDocs.map(async colletionDoc => {
+            console.log(`>> Deleting Collection: ${colletionDoc.title}`);
+            let deleteResult = await colletionDoc.deleteOne()
+            return deleteResult  
+        }))
+
+        console.log(`>-> deletionResults: ${deletionResults}`);
+
+    } catch (error) {
+        console.log(`>-> USER PRE DELETEONE Error: ${error.message}`);
+        throw error
+    }
 })
 
 // Creating a Pre 

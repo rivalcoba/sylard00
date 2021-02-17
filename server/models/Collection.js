@@ -61,6 +61,8 @@ const CollectionSchema = new Schema({
 
 // Hooks
 CollectionSchema.pre('deleteOne',{ query: false , document : true }, async function(){
+  console.log(">> COLLECTION PRE DELETE ONE");
+  
   let query = {
     collection_id : this._id
   }
@@ -69,13 +71,11 @@ CollectionSchema.pre('deleteOne',{ query: false , document : true }, async funct
     let audioAnnotDocs = await AudioAnnotations.find(query).exec()
     console.log(">> Lengh audioAnnotDocs: " + audioAnnotDocs.length);
     console.log(">> Type audioAnnotDocs: " + typeof (audioAnnotDocs));
-    await Promise.all(audioAnnotDocs.forEach(async audioAnnot => {
+    let deletionResults = await Promise.all(audioAnnotDocs.map(async audioAnnot => {
       let deleteResult = await audioAnnot.deleteOne()
       return deleteResult
     }))
-    // results.forEach(result => {
-    //   console.log(`>> Deletion result: ${result}`);
-    // });
+    console.log(`>-> deletionResults: ${deletionResults}`)
   } catch (error) {
     console.log(">> No AudioAnnot detected: " + error.message);
   }    
