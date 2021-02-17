@@ -877,6 +877,7 @@ input[type="button"] {
 .btn-predeterminado:active {
     background: var(--color-sec-pressed);
     border: 2px solid var(--color-sec-pressed);
+    outline: none;
 }
 
 .btn-primario,
@@ -1164,7 +1165,7 @@ input:checked+.slider_general:before {
 .contenido_dropdown_menu_usuario {
     display: none;
     position: absolute;
-    z-index: 2;
+    z-index: 999;
     border: 1px rgba(255, 255, 255, .3) solid;
     border-top: none;
 }
@@ -2890,6 +2891,10 @@ p.canal_2_hablante_one_line_display_item {
 }
 
 #imagen_de_catalogo {
+    width: 100%;
+}
+
+.contenedor_imagen_cabezal_catalogo {
     margin-right: 2rem;
     margin-left: 2rem;
     flex-basis: 25%;

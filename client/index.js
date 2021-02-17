@@ -139,6 +139,7 @@ if(window.location.pathname.match(/\/collections\/index\//)){
     //Vue.component("AudioAnnotationsByCollection", AudioAnnotationsByCollection);
     window.vm = new Vue({
         el: '#main31',
+        i18n,
         render: h => h(Main31) // h stands for hyperscript
     })
 }
@@ -149,6 +150,7 @@ if (window.location.pathname == `/audioannotations`) {
     Vue.component("FiltroAudioannotations", FiltroAudioannotations);
     window.vm = new Vue({
         el: '#app3',
+         i18n,
         render: h => h(App3)
     })
 }
@@ -202,6 +204,7 @@ if (window.location.pathname.match(/\/audioannotations\/edit\//)) {
     Vue.component("EditAudioannotations", EditAudioannotations);
     window.vm = new Vue({
         el: '#EditAudioannotations',
+        i18n,
         render: h => h(EditAudioannotations)
             //aqui
             //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson

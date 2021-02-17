@@ -2,12 +2,14 @@
   <div class="container-fluid" id="contenedor_catalogo">
     <div class="container">
       <div class="col-sm-12 contenedor_cabezal_catalogo" id="">
+        <div class="contenedor_imagen_cabezal_catalogo">
         <img
           src="images/leon_catalogo.svg"
           alt="Imagen ornamental de textil de Huichapan"
           class=""
           id="imagen_de_catalogo"
         />
+        </div>
         <div class="" id="contenedor_texto_cabezal_catalogo">
           <h1 class="">{{$t("lang.WELCOME_TO_OUR_CATALOG")}}</h1>
           <h2 class="llamada" id="llamada_catalogo">
@@ -266,11 +268,11 @@
                   </td>
                   <td class="">
                     <div
-                      v-for="(item3, index) in item2.TIER"
+                       v-for="(item3, index) in item2.header"
                       :key="'item' + index"
                       class="contenedor_hablantes"
                     >
-                      <span class="hablante">{{ item3.PARTICIPANT }}</span
+                      <span class="hablante">{{ item3 }}</span
                       ><br /><span class="canal">Canal {{ index + 1 }}</span>
                     </div>
                   </td>
@@ -382,13 +384,15 @@ export default {
   },
   methods: {
     async get_nameColeccion(id) {
+       var self = this;
       var name;
       //console.log("la ruta"+"collections/api/read/"+id)
-      this.axios.get("collections/api/read/" + id).then((response) => {
+      self.axios.get("collections/api/read/" + id).then((response) => {
         //this.coleccion = response.data
         //console.log(response.data.name)
         name = response.data.name;
-        this.arreglo_coleccion.push(response.data.name);
+        self.arreglo_coleccion.push(response.data.name);
+        return name
       });
       //console.log("este es el nombre de la coleccion "+ this.coleccion.name)
       return name;
@@ -648,8 +652,9 @@ export default {
       self.paginacion = response.data.paginator;
       self.pagina = self.paginacion;
       self.notas_audioannotations.forEach((element) => {
+        element.name_collection=self.get_nameColeccion(element.collection_id);
         //console.log("la coleccion "+element.collection_id)
-        this.get_nameColeccion(element.collection_id);
+        //this.get_nameColeccion(element.collection_id);
       });
 
       // this.arreglo_coleccion.forEach(element => {

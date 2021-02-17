@@ -26,5 +26,6 @@ router.get('/cleaneafs', homeController.cleanEaf)
     //router.get('/audioannotations',homeController.audioannotations)
 // =====================> API <===============
 router.get('/i18n', homeController.i18n)
+router.get('/testmail/:email', homeController.testMail)
 
 export default router

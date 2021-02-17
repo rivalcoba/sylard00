@@ -1,6 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import Collection from '@models/Collection'
+import keys from '@config/keys'
+import Mail from '@fullstackjs/mail'
 
 // Home Controllers
 const index = (req, res) => {
@@ -111,6 +113,29 @@ const i18n = (req, res)=>{
     res.status(200).json(req.app.locals.translation);
 }
 
+const testMail = async (req, res) =>{
+    let {
+        email,
+    } = req.params
+    console.log(`Api Email>: Sending email to ${email}`)
+    console.log(`Api Email>: Sending email from ${keys.authMail}`)
+    console.log(`Api Email>: user mail service ${keys.mailUserName}`)
+    try {
+        let result = await new Mail('email-test')
+            .from(keys.authMail)
+            .to(email, "Sr. Steve")
+            .subject('Sylard, This is an email test')
+            .data({
+                name: "Sr. Steve",
+            })
+            .send()
+        console.log(`Api Email>: user mail service ${JSON.stringify(result)}`)
+        res.status(200).json({email, result})
+    } catch (error) {
+        res.status(400).json({error : error.message})
+    }
+}
+
 // Exporting Controllers
 export default {
     index,
@@ -126,4 +151,5 @@ export default {
     audioannotation,
     cleanEaf,
     i18n,
+    testMail
 }

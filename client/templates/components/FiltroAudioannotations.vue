@@ -242,11 +242,11 @@
                 </td>
                 <td class="">
                   <div
-                    v-for="(item3, index) in item2.TIER"
+                    v-for="(item3, index) in item2.header"
                     :key="'item' + index"
                     class="contenedor_hablantes"
                   >
-                    <span class="hablante"> {{ item3.PARTICIPANT }}</span
+                    <span class="hablante"> {{ item3 }}</span
                     ><br /><span class="canal">Canal {{ index + 1 }}</span>
                   </div>
                 </td>
@@ -265,7 +265,7 @@
                     </button>
                    
                     <button class="btn_accion_tabla">
-                      <span class="icono_accion_tabla icon-launch"></span>
+                      <a v-bind:href="'/audioannotations/vuetest/' + item2._id"><span class="icono_accion_tabla icon-launch"></span></a>
                     </button>
                      <button class='dropdown-trigger'><span
                     class="icono_accion_tabla icon-ellipsis-v"></span></button>
@@ -385,6 +385,7 @@ export default {
         title: title,
         text: text,
         showCloseButton: true,
+        showConfirmButton: false,
       })
     },
     borrarAudioanotacion(audioannotation_id) {

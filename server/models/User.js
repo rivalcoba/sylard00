@@ -99,8 +99,10 @@ UserSchema.pre('save', function(){
 UserSchema.post('save', async function(){
     try {
         console.log(`LN68@models/User.js>: Sending email to ${this.email}`)
-        let res = await new Mail('confirm-account')
-        .from("yoncece@sylard.com")
+        console.log(`LN68@models/User.js>: Sending email from ${keys.authMail}`)
+        console.log(`LN68@models/User.js>: user mail service ${keys.mailUserName}`)
+        let result = await new Mail('confirm-account')
+        .from(keys.authMail)
         .to(this.email, this.name)
         .subject('Sylard, please confirm your account')
         .data({
@@ -108,7 +110,7 @@ UserSchema.post('save', async function(){
             url: `${keys.homeUrl}/auth/email/confirm/${this.emailConfirmationToken}`
         })
         .send()
-        console.log(`>>> Email Response: ${res}`)
+        console.log(`>>> Email Response: ${JSON.stringify(result)}`)
         console.log(`models/User.js>: Email send correctly!!!`)
     } catch (error) {
         console.log(`models/User.js> ERROR SENDING MAIL: ${error.message}`)
@@ -172,7 +174,7 @@ UserSchema.methods.resetPassword = async function () {
   }).exec()
 
   await new Mail('resetPassword')
-    .from('yoncece@sylard.com')
+    .from(keys.authMail)
     .to(this.email, this.name)
     .subject('Sylard, Password Reset')
     .data({

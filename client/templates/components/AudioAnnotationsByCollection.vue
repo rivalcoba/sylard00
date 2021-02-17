@@ -6,13 +6,13 @@
           <div class="" id="contenedor_titulos_cabezal_audioanotaciones">
             <h1 id="titulo_audioanotaciones">
               <span class="icono_cabezal icon-file-sound-o"></span>
-              Audioanotaciones
+              {{$t("lang.tabla_audioannotation.Audioannotations")}}
             </h1>
             <h4
               class="etiqueta_nombre_coleccion_audioanotaciones"
               id="etiqueta_coleccion_audioanotaciones"
             >
-              De la colección
+                {{$t("lang.tabla_audioannotation.from")}}
             </h4>
             <!--NOMBRE DE LA COLECCIÓN EN ENCABEZADO-->
             <h3 class="nombre_coleccion_audioanotaciones blanco">
@@ -21,13 +21,13 @@
                 class="btn_info_coleccion_cabezal_coleccion_audioanotaciones"
                 id="coleccion_info_general_cabezal"
               >
-                <span
+                <span  @click="showCollection(collectionName)"
                   class="icono_info_coleccion_audioanotacion icon-info1"
                 ></span>
               </button>
             </h3>
             <h4 class="blanco gpo_lenguas_audioanotaciones">
-              Grupo de lenguas:
+              {{$t("lang.tabla_audioannotation.gpoLengua")}}
               <strong
                 >{{languageGroupName}}
                 <span class="gpo_lenguas_glottocode_info"
@@ -38,13 +38,13 @@
           </div>
           <div class="" id="contenedor_botones_cabezal">
             <button class="btn btn-predeterminado">
-              Editar colección <span class="icono_boton icon-edit"></span>
+            {{$t("lang.tabla_audioannotation.editCollection")}} <span class="icono_boton icon-edit"></span>
             </button>
             <button
               onclick="window.location.href = '/audioannotations/create'"
               class="btn btn-primario"
-            >
-              Cargar audioanotacion
+            >    {{$t("lang.tabla_audioannotation.uploadAudioAnnotation")}}
+              
               <span class="icono_boton icon-file_upload"></span>
             </button>
           </div>
@@ -75,7 +75,7 @@
               </th>
               <th class="cabezal_columnas_th" id="th_titulo_por_audioanotacion">
                 <div class="contenedor_etiquetas_barras_busqueda">
-                  <label class="label label_junto_flechas">Título</label>
+                  <label class="label label_junto_flechas">  {{$t("lang.tabla_audioannotation.titulo")}}</label>
                   <button
                     id="titulo_on"
                     @click="ordenar_ascendente('titulo_on')"
@@ -105,7 +105,7 @@
               <th class="cabezal_columnas_th">
                 <div class="contenedor_etiquetas_barras_busqueda">
                   <label class="label label_junto_flechas"
-                    >Lengua terminal</label
+                    >  {{$t("lang.tabla_audioannotation.Lenguaterminal")}}</label
                   >
                   <button
                     id="lengua_on"
@@ -133,7 +133,7 @@
               </th>
               <th class="cabezal_columnas_th">
                 <div class="contenedor_etiquetas_barras_busqueda">
-                  <label class="label label_junto_flechas">Comunidad</label>
+                  <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.Comunidad")}}</label>
                   <button
                     id="comunidad_on"
                     @click="ordenar_ascendente('comunidad_on')"
@@ -160,7 +160,7 @@
               </th>
               <th class="cabezal_columnas_th" id="th_hablantes">
                 <div class="contenedor_etiquetas_barras_busqueda">
-                  <label class="label label_junto_flechas">Hablantes</label>
+                  <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.hablantes")}}</label>
                   <button
                     id="hablantes_on"
                     @click="ordenar_ascendente('hablantes_on')"
@@ -188,7 +188,7 @@
               <th class="cabezal_columnas_th">
                 <div class="contenedor_etiquetas_barras_busqueda">
                   <label class="label label_junto_flechas"
-                    >Género y duracion</label
+                    >{{$t("lang.tabla_audioannotation.generoduracion")}}</label
                   >
                   <button
                     id="genero_on"
@@ -272,11 +272,11 @@
                 </td>
                 <td class="">
                   <div
-                    v-for="(item3, index) in item2.TIER"
+                     v-for="(item3, index) in item2.header"
                     :key="'item' + index"
                     class="contenedor_hablantes"
                   >
-                    <span class="hablante"> {{ item3.PARTICIPANT }}</span
+                    <span class="hablante"> {{ item3 }}</span
                     ><br /><span class="canal">Canal {{ index + 1 }}</span>
                   </div>
                 </td>
@@ -411,7 +411,7 @@
 
 <script>
 export default {
-  name: 'FiltroAudioannotations',
+  name: 'AudioAnnotationsbyCollection',
   props: {
     parametro: Object,
   },
@@ -443,6 +443,7 @@ export default {
       pagina_buscar: '',
 
       valor_buscar: false,
+      collectionId:""
     }
   },
   methods: {
@@ -454,6 +455,17 @@ export default {
         showCloseButton: true,
       })
     },
+     showCollection(collectionName, text) {
+      //Aqui se utiizan las funciones o estilos de SweetAlert
+      this.$swal({
+        title: collectionName,
+        text: text,
+        showCloseButton: true,
+        icon: 'info',
+        showConfirmButton: false,
+      })
+    },
+
     borrarAudioanotacion(audioannotation_id) {
       var currentUrl = window.location.pathname
       const url = `${currentUrl}/delete/${audioannotation_id}`
@@ -667,7 +679,7 @@ export default {
 
       var self = this
       
-      self.axios.get(`/audioannotations/api/index/${collectionId}/${page}`).then(response => {
+      self.axios.get(`/audioannotations/api/index/`+self.collectionId+`/${page}`).then(response => {
         self.notas_audioannotations = response.data.itemsList
         self.paginacion = response.data.paginator
         self.pagina = self.paginacion
@@ -676,7 +688,19 @@ export default {
     },
   },
   async mounted() {
+     var self = this;
+      self.axios.get("i18n").then((response) => {
+      self.idioma = response.data.LANGUAGE;
+      if (self.idioma === "es") {
+        console.log("esta en español");
+        this.$i18n.locale = "es";
+      } else if (self.idioma === "en") {
+        console.log("esta en ingles");
+        this.$i18n.locale = "en";
+      }
+    });
     let collectionId = window.location.pathname.split('/').pop();
+    self.collectionId =collectionId;
     try {
       let response = await this.axios.get(`/collections/api/read/${collectionId}`)
       this.collectionName = response.data.name
@@ -691,6 +715,7 @@ export default {
       console.log(`Error requesting: /audioannotations/api/index/${collectionId}/1`)
       throw error
     }
+    
   },
   computed: {
     isActived: function() {

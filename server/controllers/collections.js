@@ -176,49 +176,54 @@ const editCollection = async (req, res) => {
   }
 }
 
-const indexCollection = async (req, res) => {
-  res.render('audioannotations/indexByCollection', {})
+const indexCollection = async(req, res) => {
+  res.render('audioannotations/indexByCollection', {
+      title: 'Audioanotaciones de la colección...',
+  })
 }
 
 //NUEVA API PARA COLLECTIONS with PAG
-const api_getCollectionAll = async (req, res) => {
+const api_getCollectionAll = async(req, res) => {
   //let collectionDoc = {}
   const myCustomLabels = {
-    totalDocs: 'itemCount',
-    docs: 'itemsList',
-    limit: 'perPage',
-    page: 'currentPage',
-    nextPage: 'next',
-    prevPage: 'prev',
-    totalPages: 'pageCount',
-    pagingCounter: 'slNo',
-    meta: 'paginator',
-  }
+      totalDocs: 'itemCount',
+      docs: 'itemsList',
+      limit: 'perPage',
+      page: 'currentPage',
+      nextPage: 'next',
+      prevPage: 'prev',
+      totalPages: 'pageCount',
+      pagingCounter: 'slNo',
+      meta: 'paginator',
+  };
   const options = {
-    page: req.params.page,
-    limit: 5,
-    sort: { title: 1 },
-    populate: 'colection',
-    customLabels: myCustomLabels,
-  }
+      page: req.params.page,
+      limit: 5,
+      sort: { title: 1 },
+      populate: 'colection',
+      customLabels: myCustomLabels,
+  };
   try {
-    Collection.paginate({}, options, function(err, result) {
-      if (err) {
-        console.log('El error esta aqui')
-        console.err(err)
-        return res.status(400).json({
-          mensaje: 'Ocurrio un error',
+      Collection.paginate({}, options, function(
           err,
-        })
-      } else {
-        res.json(result)
-      }
-    })
+          result
+      ) {
+          if (err) {
+              console.log("El error esta aqui")
+              console.err(err);
+              return res.status(400).json({
+                  mensaje: 'Ocurrio un error',
+                  err
+              })
+          } else {
+              res.json(result);
+          }
+      })
   } catch (error) {
-    return res.status(400).json({
-      mensaje: 'Ocurrio un error',
-      error,
-    })
+      return res.status(400).json({
+          mensaje: 'Ocurrio un error',
+          error
+      })
   }
 
   // try {
