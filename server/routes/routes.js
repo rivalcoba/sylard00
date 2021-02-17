@@ -16,7 +16,7 @@ export default function(app){
     app.use('/auth', auth)
 
     // Users
-    app.use('/user', user)
+    app.use(['/user','/users'], user)
 
     // Collections
     app.use('/collections', collections)
