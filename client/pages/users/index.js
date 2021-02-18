@@ -14,6 +14,20 @@ const toggleRole = async (userId)=>{
   }
 }
 
+const deleteUsers = async (users)=>{
+  try {
+    await userModel.deleteUsers(users)
+    location = location.href
+  } catch (error) {
+    return Swal.fire(
+      'Error!',
+      error.message,
+      'info'
+    )
+  }
+}
+
 export default {
   toggleRole,
+  deleteUsers
 }

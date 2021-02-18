@@ -30,6 +30,7 @@ router.put('/edit/password', ensureAuthenticated, editPasswordFormValidation, us
 
 router.get('/reset/password', userController.resetPassword);
 router.put('/reset/password', confirmEmailAccount, userController.resetUserPassword);
+router.get('/delete/:userId', userController.delById)
 
 // ============ ==> API <== ====================
 // TODO: Proteger RUTAS

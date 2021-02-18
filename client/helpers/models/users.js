@@ -8,6 +8,16 @@ const toggleUserPrivileges = async (userId)=>{
   return {"result":"failed"}
 }
 
+const deleteUsers = async (usersIds)=>{
+  const response = await client.delete('/user/api/delusers', { data: {usersIds} })
+  if(response.status == 200){
+    console.log(`data: ${response.data}`);
+    return response.data
+  }
+  return {"result":"failed"}
+}
+
 export default{
   toggleUserPrivileges,
+  deleteUsers
 }

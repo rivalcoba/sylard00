@@ -248,9 +248,10 @@ const api_getUsers = async (req, res) => {
 
 const api_delUsers = async (req, res) => {
   let { usersIds } = req.body
-
+  
   // Normalizing
   usersIds = typeof usersIds == 'string' ? [usersIds] : usersIds
+  
   // Building Query
   let query = {
     _id: { $in: usersIds },
@@ -273,6 +274,18 @@ const api_delUsers = async (req, res) => {
   }
 }
 
+const delById = async (req, res)=>{
+  let {userId} = req.params
+  try {
+    let userDoc = await User.findById(userId)
+    let result = await userDoc.deleteOne()
+    console.log(`> DELETE: ${result}`)
+    res.redirect('/user')
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+}
+
 export default {
   edit,
   editUser,
@@ -287,4 +300,5 @@ export default {
   api_getUsers,
   api_delUsers,
   api_toggleUserPrivileges,
+  delById
 }
