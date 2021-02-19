@@ -176,13 +176,14 @@
                 <button class="dropdown-trigger">
                   <span class="icono_accion_tabla icon-ellipsis-v"></span>
                 </button>
-                <div class="contenedor_opciones_elipsis">
+                <!--<div class="contenedor_opciones_elipsis">
                   <a
                     v-bind:href="'/collections/delete/' + item2._id"
                     class="btn_opciones_ellipsis_mis_colecciones"
                     ><span class="icono_opcion_elipsis icon-edit"></span> Eliminar</a
                   >
-                </div>
+                </div>-->
+                <!--TODO FALTA APLICAR LAS RUTAS DE CARGA, EDICIÓN, ELIMINANCIÓN Y HABILITAR EL ELIPISIS-->
                 <div id="" class="contenido_modal_elipsis">
                   <span class="icono_cerrar_modal_elipsis icon-close"></span>
                   <div class="contenedor_opciones_elipsis">
@@ -337,13 +338,33 @@ export default {
           }
         );
     },
-    showCollect(title, text) {
+    showCollect(title,  text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       console.log("title " + title + "text " + text);
       this.$swal({
-        title: title,
-        text: text,
+        //title: title,
+        //text: text,
+        html:
+        `<h3 class="sa_titulo_coleccion"><code>${title}</code></h3>` + 
+        `<p class="sa_parrafo_grande"><code>${text}</code></p>`,
+        icon: 'info',
         showCloseButton: true,
+        showConfirmButton: true,
+        buttonsStyling:false,
+        confirmButtonText:
+        'Entiendo',
+        confirmButtonAriaLabel: 'Entendido',
+        customClass: {
+        container: '',
+        popup:'sa-popup',
+        //header: 'sa_header',
+        title: 'sa_title',
+        icon:'sa_icon',
+        text: 'sa_parrafo_grande',
+        confirmButton: 'btn btn-predeterminado sa_btn_confirm', //resolver focus en css,
+        cancelButton: 'btn btn-secundario sa_btn',
+        footer: 'secundario'
+  },
       });
     },
     ordenar_descendente: function (e) {
