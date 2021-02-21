@@ -223,7 +223,7 @@
                     id="btn-regresar_audioanotaciones"
                   >
                     <span
-                      onclick="window.location.href = '/dashboard'"
+                      onclick="window.location.href = '/collections'"
                       class="icono_boton_eliminar_audioanotaciones icon-back"
                       ><!--TODO AQUI---></span
                     >
@@ -296,12 +296,13 @@
                     </button>
 
                     <button class="btn_accion_tabla">
-                      <span class="icono_accion_tabla icon-launch"></span>
+                      <a v-bind:href="'/audioannotations/vuetest/' + item2._id">
+                      <span class="icono_accion_tabla icon-launch"></span></a>
                     </button>
                     <button class="dropdown-trigger">
                       <span class="icono_accion_tabla icon-ellipsis-v"></span>
                     </button>
-                    <div class="">
+                  <div id="" class="contenido_modal_elipsis">
                       <!--TODO FALTA PONER LA CLASE MODAL-->
                       <span
                         class="icono_cerrar_modal_elipsis icon-close "
@@ -450,20 +451,54 @@ export default {
     showAudio(title, text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
-        title: title,
-        text: text,
+        html:
+        `<h3 class="sa_titulo_coleccion"><code>${title}</code></h3>` + 
+        `<p class="sa_parrafo_grande"><code>${text}</code></p>`,
+        icon: 'info',
         showCloseButton: true,
-      })
+        showConfirmButton: true,
+        buttonsStyling:false,
+        confirmButtonText:
+        'Entiendo',
+        confirmButtonAriaLabel: 'Entendido',
+        customClass: {
+        container: '',
+        popup:'sa-popup',
+        //header: 'sa_header',
+        title: 'sa_title',
+        icon:'sa_icon',
+        text: 'sa_parrafo_grande',
+        confirmButton: 'btn btn-predeterminado sa_btn_confirm', //resolver focus en css,
+        cancelButton: 'btn btn-secundario sa_btn',
+        footer: 'secundario'
+  },
+      });
     },
      showCollection(collectionName, text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
-        title: collectionName,
-        text: text,
-        showCloseButton: true,
+       html:
+        `<h3 class="sa_titulo_coleccion"><code>${collectionName}</code></h3>` ,
+        /*TODO FALTA TRAER LA DESCRIPCIÓN`<p class="sa_parrafo_grande"><code>${text}</code></p>`*/
         icon: 'info',
-        showConfirmButton: false,
-      })
+        showCloseButton: true,
+        showConfirmButton: true,
+        buttonsStyling:false,
+        confirmButtonText:
+        'Entiendo',
+        confirmButtonAriaLabel: 'Entendido',
+        customClass: {
+        container: '',
+        popup:'sa-popup',
+        //header: 'sa_header',
+        title: 'sa_title',
+        icon:'sa_icon',
+        text: 'sa_parrafo_grande',
+        confirmButton: 'btn btn-predeterminado sa_btn_confirm', //resolver focus en css,
+        cancelButton: 'btn btn-secundario sa_btn',
+        footer: 'secundario'
+  },
+      });
     },
 
     borrarAudioanotacion(audioannotation_id) {
