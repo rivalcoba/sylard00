@@ -173,7 +173,7 @@
                   v-bind:href="'/collections/index/' + item2._id"
                   ><span class="icono_accion_tabla icon-launch"></span
                 ></a>
-                <button class="dropdown-trigger">
+                <button class="dropdown-trigger" @click="elipsis()">
                   <span class="icono_accion_tabla icon-ellipsis-v"></span>
                 </button>
                 <!--<div class="contenedor_opciones_elipsis">
@@ -184,29 +184,27 @@
                   >
                 </div>-->
                 <!--TODO FALTA APLICAR LAS RUTAS DE CARGA, EDICIÓN, ELIMINANCIÓN Y HABILITAR EL ELIPISIS-->
+               <!-- <div v-if="this.bandera_elipsiss">-->
                 <div id="" class="contenido_modal_elipsis">
                   <span class="icono_cerrar_modal_elipsis icon-close"></span>
                   <div class="contenedor_opciones_elipsis">
-                    <a class="btn_opciones_ellipsis_mis_colecciones" href="#"
+                    <a v-bind:href="'/audioannotations/create'" class="btn_opciones_ellipsis_mis_colecciones"
                       ><span class="icono_opcion_elipsis icon-file_upload"></span> Cargar
                       audioanotación</a
                     >
-                    <a class="btn_opciones_ellipsis_mis_colecciones" href=""
+                    <a v-bind:href="'/collections/edit/' + item2._id" class="btn_opciones_ellipsis_mis_colecciones"
                       ><span class="icono_opcion_elipsis icon-edit"></span> Editar
                       metadatos</a
                     >
-                    <form class="center" action="" method="POST">
-                      <input type="hidden" name="_method" value="DELETE" />
                       <a
-                        onclick="this.parentNode.submit()"
+                      v-bind:href="'/collections/delete/' + item2._id"
                         class="btn_opciones_ellipsis_mis_colecciones"
-                        href="#"
                         ><span class="icono_opcion_elipsis icon-delete"></span>
                         Eliminar</a
                       >
-                    </form>
                   </div>
                 </div>
+                <!--</div>-->
               </div>
             </td>
           </tr>
@@ -305,9 +303,17 @@ export default {
       pagina_buscar: "",
       valor_buscar: false,
       idioma: "es",
+      bandera_elipsiss:false
     };
   },
   methods: {
+    elipsis: function() {
+      if (this.bandera_elipsiss) {
+        this.bandera_elipsiss=false
+
+      } else 
+      this.bandera_elipsiss=true
+    },
     borrarCollection(collection_id) {
       var currentUrl = window.location.pathname;
       const url = `${currentUrl}/delete/${collection_id}`;
