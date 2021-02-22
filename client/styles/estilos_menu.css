@@ -2539,6 +2539,7 @@ p.canal_2_hablante_one_line_display_item {
 }
 
 .contenido_modal_elipsis {
+    display: none;
     background-color: #fefefe;
     border: 2px solid var(--color-primario-principal);
     width: 13rem !important;
