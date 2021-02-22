@@ -173,39 +173,38 @@
                   v-bind:href="'/collections/index/' + item2._id"
                   ><span class="icono_accion_tabla icon-launch"></span
                 ></a>
-                <button class="dropdown-trigger">
+                <button class="dropdown-trigger" @click="elipsis()">
                   <span class="icono_accion_tabla icon-ellipsis-v"></span>
                 </button>
-                <div class="contenedor_opciones_elipsis">
+                <!--<div class="contenedor_opciones_elipsis">
                   <a
                     v-bind:href="'/collections/delete/' + item2._id"
                     class="btn_opciones_ellipsis_mis_colecciones"
                     ><span class="icono_opcion_elipsis icon-edit"></span> Eliminar</a
                   >
-                </div>
+                </div>-->
+                <!--TODO FALTA APLICAR LAS RUTAS DE CARGA, EDICIÓN, ELIMINANCIÓN Y HABILITAR EL ELIPISIS-->
+               <!-- <div v-if="this.bandera_elipsiss">-->
                 <div id="" class="contenido_modal_elipsis">
                   <span class="icono_cerrar_modal_elipsis icon-close"></span>
                   <div class="contenedor_opciones_elipsis">
-                    <a class="btn_opciones_ellipsis_mis_colecciones" href="#"
+                    <a v-bind:href="'/audioannotations/create'" class="btn_opciones_ellipsis_mis_colecciones"
                       ><span class="icono_opcion_elipsis icon-file_upload"></span> Cargar
                       audioanotación</a
                     >
-                    <a class="btn_opciones_ellipsis_mis_colecciones" href=""
+                    <a v-bind:href="'/collections/edit/' + item2._id" class="btn_opciones_ellipsis_mis_colecciones"
                       ><span class="icono_opcion_elipsis icon-edit"></span> Editar
                       metadatos</a
                     >
-                    <form class="center" action="" method="POST">
-                      <input type="hidden" name="_method" value="DELETE" />
                       <a
-                        onclick="this.parentNode.submit()"
+                      v-bind:href="'/collections/delete/' + item2._id"
                         class="btn_opciones_ellipsis_mis_colecciones"
-                        href="#"
                         ><span class="icono_opcion_elipsis icon-delete"></span>
                         Eliminar</a
                       >
-                    </form>
                   </div>
                 </div>
+                <!--</div>-->
               </div>
             </td>
           </tr>
@@ -304,9 +303,17 @@ export default {
       pagina_buscar: "",
       valor_buscar: false,
       idioma: "es",
+      bandera_elipsiss:false
     };
   },
   methods: {
+    elipsis: function() {
+      if (this.bandera_elipsiss) {
+        this.bandera_elipsiss=false
+
+      } else 
+      this.bandera_elipsiss=true
+    },
     borrarCollection(collection_id) {
       var currentUrl = window.location.pathname;
       const url = `${currentUrl}/delete/${collection_id}`;
@@ -337,13 +344,33 @@ export default {
           }
         );
     },
-    showCollect(title, text) {
+    showCollect(title,  text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       console.log("title " + title + "text " + text);
       this.$swal({
-        title: title,
-        text: text,
+        //title: title,
+        //text: text,
+        html:
+        `<h3 class="sa_titulo_coleccion"><code>${title}</code></h3>` + 
+        `<p class="sa_parrafo_grande"><code>${text}</code></p>`,
+        icon: 'info',
         showCloseButton: true,
+        showConfirmButton: true,
+        buttonsStyling:false,
+        confirmButtonText:
+        'Entiendo',
+        confirmButtonAriaLabel: 'Entendido',
+        customClass: {
+        container: '',
+        popup:'sa-popup',
+        //header: 'sa_header',
+        title: 'sa_title',
+        icon:'sa_icon',
+        text: 'sa_parrafo_grande',
+        confirmButton: 'btn btn-predeterminado sa_btn_confirm', //resolver focus en css,
+        cancelButton: 'btn btn-secundario sa_btn',
+        footer: 'secundario'
+  },
       });
     },
     ordenar_descendente: function (e) {

@@ -172,11 +172,28 @@ export default {
        showCollect(title,text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
-        title: title,
-        text: text,
+         html:
+        `<h3 class="sa_titulo_coleccion"><code>${title}</code></h3>` + 
+        `<p class="sa_parrafo_grande"><code>${text}</code></p>`,
+        icon: 'info',
         showCloseButton: true,
-        showConfirmButton: false,
-      })
+        showConfirmButton: true,
+        buttonsStyling:false,
+        confirmButtonText:
+        'Entiendo',
+        confirmButtonAriaLabel: 'Entendido',
+        customClass: {
+        container: '',
+        popup:'sa-popup',
+        //header: 'sa_header',
+        title: 'sa_title',
+        icon:'sa_icon',
+        text: 'sa_parrafo_grande',
+        confirmButton: 'btn btn-predeterminado sa_btn_confirm', //resolver focus en css,
+        cancelButton: 'btn btn-secundario sa_btn',
+        footer: 'secundario'
+  },
+      });
     },
         ordenar_descendente: function (e) {
             //falta ordenar
