@@ -23,21 +23,21 @@ d=d.toJSON(),d.languages=JSON.stringify(d.languages),d.localities=JSON.stringify
 if(e=await _Collection.default.findById(d).exec(),e.user+""!=a.user._id+""&&"su"!=a.user.role+"")return a.flash("error_msg","No eres el propietario de esta colecci\xF3n"),b.redirect("/dashboard");// Update collection
 let f=await e.updateCollection(c);f.ok?a.flash("success_msg","La colecci\xF3n se ha actualizado con \xE9xito"):a.flash("error_msg","No se ha podido actualizar la colecci\xF3n"),b.redirect("/collections")}catch(c){// Se flashea Exito
 // Get the info from
-return a.flash("error_msg","No se ha podido encontrar la coleccion que se desea editar"),b.render("index/dashboard")}},indexCollection=async(a,b)=>{b.render("audioannotations/indexByCollection",{title:"Audioanotaciones de la colecci\xF3n..."})},api_getCollectionAll=async(a,b)=>{//let collectionDoc = {}
+return a.flash("error_msg","No se ha podido encontrar la coleccion que se desea editar"),b.render("index/dashboard")}},indexCollection=async(a,b)=>{b.render("audioannotations/indexByCollection",{title:"Audioanotaciones de la colecci\xF3n..."})},indexReadonlyCollection=(a,b)=>{b.render("audioannotations/indexreadonly",{title:"Audioanotaciones del cat\xE1logo"})},api_getCollectionAll=async(a,b)=>{//let collectionDoc = {}
 const c={page:a.params.page,limit:5,sort:{title:1},populate:"colection",customLabels:{totalDocs:"itemCount",docs:"itemsList",limit:"perPage",page:"currentPage",nextPage:"next",prevPage:"prev",totalPages:"pageCount",pagingCounter:"slNo",meta:"paginator"}};try{_Collection.default.paginate({},c,function(a,c){return a?(console.log("El error esta aqui"),console.err(a),b.status(400).json({mensaje:"Ocurrio un error",err:a})):void b.json(c)})}catch(a){return b.status(400).json({mensaje:"Ocurrio un error",error:a})}// try {
 //     collectionDoc = await Collection.find().exec()
 //     res.status(200).json(collectionDoc)
 // } catch (error) {
 //     res.status(404).json({ error: error.message })
 // }
-},api_getCollectionById=async(a,b)=>{const c=a.params.collection_id;let d={};try{d=await _Collection.default.findById(c).exec(),b.status(200).json(d)}catch(a){b.status(404).json({error:a.message})}},api_getCollectionByUser=async(a,b)=>{const{userId:c}=a.params;try{let a=await _Collection.default.find({user:c}).exec();return b.status(200).json({collectionDocs:a})}catch(a){b.status(400).json({error:a.message})}};var _default={// List Collections from a particular Colaborator User
+},api_getCollectionById=async(a,b)=>{const c=a.params.collection_id;let d={};try{d=await _Collection.default.findById(c).exec(),b.status(200).json(d)}catch(a){b.status(404).json({error:a.message})}},api_getCollectionByUser=async(a,b)=>{const{userId:c}=a.params;try{let a=await _Collection.default.find({user:c}).exec();return b.status(200).json({collectionDocs:a})}catch(a){b.status(400).json({error:a.message})}},api_delCollectionById=async(a,b)=>{const c=a.params.collection_id;try{const a=await _Collection.default.findOne({_id:c}).exec();return a?(a.deleteOne(),b.status(200).json({CollectionDeleted:"ok"})):b.status(400).json({CollectionDeleted:"nothing to delete"})}catch(a){return console.log("no borro en la bd",a),b.status(404).json({error:a.message})}};var _default={// List Collections from a particular Colaborator User
 index,// Indexa audio anotaciones que corresponden a alguna coleccion
 indexCollection,// Create Add Collection FORM
 createCollection,// Process ADD Collection FORM
 addCollection,// Delete Collection
 deleteCollection,// Update Collection FORM
 editCollectionForm,// Process Update Collection FORM
-editCollection,// Lists Collections from the logged user
+editCollection,indexReadonlyCollection,// Lists Collections from the logged user
 // Show single Collection
 // Process Delete Collection
-api_getCollectionById,api_getCollectionByUser,api_getCollectionAll};exports.default=_default;
+api_getCollectionById,api_getCollectionByUser,api_getCollectionAll,api_delCollectionById};exports.default=_default;

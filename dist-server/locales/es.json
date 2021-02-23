@@ -147,13 +147,14 @@
 
     },
     "tabla_audioannotation": {
-        "Audioannotations":"Audioanotaciones ",
-        "from":"De la colección ",
-        "editCollection":"Editar Colección",
-        "uploadAudioAnnotation":"Cargar AudioAnnotación",
+        "Audioannotations": "Audioanotaciones ",
+        "from": "De la colección ",
+        "editCollection": "Editar Colección",
+        "uploadAudioAnnotation": "Cargar AudioAnnotación",
         "coleccion": "Colección",
         "Lenguaterminal": "Lengua terminal",
         "gpoLengua": "Gpos. de lenguas:",
+        "gpo_de_lengua": "Grupo de lenguas:",
         "comunidades": "Comunidades",
         "hablantes": "Hablantes",
         "generoduracion": "Género y duracion",
