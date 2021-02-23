@@ -184,7 +184,7 @@
                   >
                 </div>-->
                 <!--TODO FALTA APLICAR LAS RUTAS DE CARGA, EDICIÓN, ELIMINANCIÓN Y HABILITAR EL ELIPISIS-->
-               <!-- <div v-if="this.bandera_elipsiss">-->
+               <!--<div v-if="this.bandera_elipsiss">TODO AQUI TOÑO-->
                 <div id="" class="contenido_modal_elipsis">
                   <span class="icono_cerrar_modal_elipsis icon-close"></span>
                   <div class="contenedor_opciones_elipsis">
@@ -204,8 +204,8 @@
                       >
                   </div>
                 </div>
-                <!--</div>-->
-              </div>
+                </div>
+              <!--</div>-->
             </td>
           </tr>
         </table>
