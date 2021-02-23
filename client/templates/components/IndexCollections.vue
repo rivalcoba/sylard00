@@ -173,7 +173,7 @@
                   v-bind:href="'/collections/index/' + item2._id"
                   ><span class="icono_accion_tabla icon-launch"></span
                 ></a>
-                <button class="dropdown-trigger" @click="elipsis()">
+                <button class="dropdown-trigger" @click="elipsis(index)">
                   <span class="icono_accion_tabla icon-ellipsis-v"></span>
                 </button>
                 <!--<div class="contenedor_opciones_elipsis">
@@ -183,9 +183,11 @@
                     ><span class="icono_opcion_elipsis icon-edit"></span> Eliminar</a
                   >
                 </div>-->
-                <!--TODO FALTA APLICAR LAS RUTAS DE CARGA, EDICIÓN, ELIMINANCIÓN Y HABILITAR EL ELIPISIS-->
-               <!--<div v-if="this.bandera_elipsiss">TODO AQUI TOÑO-->
-                <div id="" class="contenido_modal_elipsis">
+                <!--TODO FALTA APLICAR LAS RUTAS DE CARGA, EDICIÓN, ELIMINANCIÓN Y HABILITAR EL ELIPISIS
+              <div v-if="bandera_elipsiss">    bandera_elipsiss:false,
+      activeClass: 'contenido_modal_elipsis',  
+                <div v-if=elipsis"> -->
+               <div v-if="item_index==index"  v-bind:class="{ contenido_modal_elipsis: bandera_elipsiss }">
                   <span class="icono_cerrar_modal_elipsis icon-close"></span>
                   <div class="contenedor_opciones_elipsis">
                     <a v-bind:href="'/audioannotations/create'" class="btn_opciones_ellipsis_mis_colecciones"
@@ -204,8 +206,8 @@
                       >
                   </div>
                 </div>
-                </div>
-              <!--</div>-->
+               </div>
+            <!--   </div>-->
             </td>
           </tr>
         </table>
@@ -303,16 +305,25 @@ export default {
       pagina_buscar: "",
       valor_buscar: false,
       idioma: "es",
-      bandera_elipsiss:false
+      bandera_elipsiss:true,
+      activeClass: 'contenido_modal_elipsis',
+      item_index:"" 
     };
   },
   methods: {
-    elipsis: function() {
+    elipsis: function(index) {
       if (this.bandera_elipsiss) {
         this.bandera_elipsiss=false
+          this.item_index=index 
+        
 
       } else 
+      {
       this.bandera_elipsiss=true
+    this.item_index=""
+      }
+      
+     
     },
     borrarCollection(collection_id) {
       var currentUrl = window.location.pathname;
