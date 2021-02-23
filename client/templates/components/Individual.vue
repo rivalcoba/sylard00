@@ -6,7 +6,7 @@
 						<div  class="" id="contenedor_titulos_cabezal_catalogo_coleccion_individual">
 							<h1 id="titulo_catalogo_coleccion_individual">Contenido</h1>
 							<h4 class="blanco" id="etiqueta_coleccion_catalogo_coleccion_individual">De la colección</h4>
-							<h3 class="nombre_coleccion_audioanotaciones blanco">{{collectionName}}<button class="btn_info_coleccion_cabezal_coleccion_audioanotaciones" id="coleccion_info_general_cabezal"><span @click="showCollection(collectionName)" class="icono_info_coleccion_audioanotacion  icon-info1"></span></button></h3>
+							<h3 class="nombre_coleccion_audioanotaciones blanco">{{collectionName}}<button class="btn_info_coleccion_cabezal_coleccion_audioanotaciones" id="coleccion_info_general_cabezal"><span @click="showCollection(collectionName, collectionDescription)" class="icono_info_coleccion_audioanotacion  icon-info1"></span></button></h3>
 							<h4 class="blanco gpo_lenguas_audioanotaciones">Grupo de lenguas: <strong>{{languageGroupName}} <span class="gpo_lenguas_glottocode_info">[{{languageGroupId}}]</span></strong></h4>
 						</div>	
 						<div class="contenedor_imagen_cabezal_catalogo_coleccion_individual">
@@ -274,6 +274,7 @@ export default {
   data() {
     return {
       collectionName: '',
+      collectionDescription:'',
       languageGroupName: '',
       languageGroupId: '',
       participantOrdenado: [],
@@ -329,12 +330,12 @@ export default {
   },
       });
     },
-     showCollection(collectionName, text) {
+     showCollection(collectionName, collectionDescription) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
        html:
-        `<h3 class="sa_titulo_coleccion"><code>${collectionName}</code></h3>` ,
-        /*TODO FALTA TRAER LA DESCRIPCIÓN`<p class="sa_parrafo_grande"><code>${text}</code></p>`*/
+        `<h3 class="sa_titulo_coleccion"><code>${collectionName}</code></h3>` +
+        `<p class="sa_parrafo_grande"><code>${collectionDescription}</code></p>`,
         icon: 'info',
         showCloseButton: true,
         showConfirmButton: true,
@@ -594,6 +595,7 @@ export default {
     try {
       let response = await this.axios.get(`/collections/api/read/${collectionId}`)
       this.collectionName = response.data.name
+      this.collectionDescription = response.data.description
       this.languageGroupName = response.data.languages[0].LanguageGroup.name
       this.languageGroupId = response.data.languages[0].LanguageGroup.gid
 
