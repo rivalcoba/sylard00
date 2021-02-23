@@ -1,98 +1,36 @@
 <template>
-  <div class="container-fluid" id="contenedor_audioanotaciones">
-    <div class="container-fluid" id="cabezal_audioanotaciones">
-      <div class="container">
-        <div class="col-sm-12" id="contenedor_items_cabezal_audioanotaciones">
-          <div class="" id="contenedor_titulos_cabezal_audioanotaciones">
-            <h1 id="titulo_audioanotaciones">
-              <span class="icono_cabezal icon-file-sound-o"></span>
-              {{$t("lang.tabla_audioannotation.Audioannotations")}}
-            </h1>
-            <h4
-              class="etiqueta_nombre_coleccion_audioanotaciones"
-              id="etiqueta_coleccion_audioanotaciones"
-            >
-                {{$t("lang.tabla_audioannotation.from")}}
-            </h4>
-            <!--NOMBRE DE LA COLECCIÓN EN ENCABEZADO-->
-            <h3 class="nombre_coleccion_audioanotaciones blanco">
-              {{collectionName}}
-              <button
-                class="btn_info_coleccion_cabezal_coleccion_audioanotaciones"
-                id="coleccion_info_general_cabezal"
-              >
-                <span  @click="showCollection(collectionName, collectionDescription)"
-                  class="icono_info_coleccion_audioanotacion icon-info1"
-                ></span>
-              </button>
-            </h3>
-            <h4 class="blanco gpo_lenguas_audioanotaciones">
-              {{$t("lang.tabla_audioannotation.gpoLengua")}}
-              <strong
-                >{{languageGroupName}}
-                <span class="gpo_lenguas_glottocode_info"
-                  >{{languageGroupId}}</span
-                ></strong
-              >
-            </h4>
-          </div>
-          <div class="" id="contenedor_botones_cabezal">
-            <button class="btn btn-predeterminado">
-            {{$t("lang.tabla_audioannotation.editCollection")}} <span class="icono_boton icon-edit"></span>
-            </button>
-            <button
-              onclick="window.location.href = '/audioannotations/create'"
-              class="btn btn-primario"
-            >    {{$t("lang.tabla_audioannotation.uploadAudioAnnotation")}}
-              
-              <span class="icono_boton icon-file_upload"></span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <section class="container">
-      <div
-        class="col-sm-12 contenedor-90vh"
-        id="contenedor_general_mis_colecciones"
-      >
-        <div class="contenedor_tabla_mis_colecciones">
-          <table class="tabla_catalogo_audianotaciones">
-            <thead>
-              <th class="cabezal_columnas_th" id="th_acciones_generales">
-                <div class="contenedor_acciones_generales">
-                  <input
-                    type="checkbox"
-                    class="input_checkbox_cabezal_columna prueba"
-                  />
-                  <button class="btn-eliminar_seleccionados prueba">
-                    <span
-                      class="icono_boton_eliminar_audioanotaciones icon-delete"
-                    ></span>
-                  </button>
-                </div>
-              </th>
-              <th class="cabezal_columnas_th" id="th_titulo_por_audioanotacion">
-                <div class="contenedor_etiquetas_barras_busqueda">
-                  <label class="label label_junto_flechas">  {{$t("lang.tabla_audioannotation.titulo")}}</label>
-                  <button
+ 	<div class="container-fluid" id="contenedor_catalogo_coleccion_individual">
+			<div class="container-fluid" id="cabezal_catalogo_coleccion_individual">
+				<div class="container">
+					<div class="col-sm-12" id="contenedor_items_cabezal_catalogo_coleccion_individual">
+						<div  class="" id="contenedor_titulos_cabezal_catalogo_coleccion_individual">
+							<h1 id="titulo_catalogo_coleccion_individual">Contenido</h1>
+							<h4 class="blanco" id="etiqueta_coleccion_catalogo_coleccion_individual">De la colección</h4>
+							<h3 class="nombre_coleccion_audioanotaciones blanco">{{collectionName}}<button class="btn_info_coleccion_cabezal_coleccion_audioanotaciones" id="coleccion_info_general_cabezal"><span @click="showCollection(collectionName, collectionDescription)" class="icono_info_coleccion_audioanotacion  icon-info1"></span></button></h3>
+							<h4 class="blanco gpo_lenguas_audioanotaciones">Grupo de lenguas: <strong>{{languageGroupName}} <span class="gpo_lenguas_glottocode_info">[{{languageGroupId}}]</span></strong></h4>
+						</div>	
+						<div class="contenedor_imagen_cabezal_catalogo_coleccion_individual">
+							<img src="/images/leon_catalogo.svg" class="imagen_reflejada">				
+						</div>	
+					</div>	
+				</div>
+			</div>
+			<section class="container">
+				<div class="col-sm-12 contenedor-90vh " id="contenedor_general_catalogo_coleccion_individual">
+					<div class="contenedor_tabla_catalogo_coleccion_individual">
+						<table class="tabla_catalogo_audianotaciones_coleccion_individual">
+       					 	<thead>
+								<th class="cabezal_columnas_th" id="th_titulo_por_audioanotacion">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Título</label>
+										  <button
                     id="titulo_on"
                     @click="ordenar_ascendente('titulo_on')"
                     class="flecha_orden_ascendente"
-                  >
-                    <span class="icon-arrow-up"></span>
-                  </button>
-                  <!--PENDIENTE TOÑO LA INSTRUCCIÓN DE VUE V-MODEL NO FUNCIONA PARA BUTTONS-->
-                  <button
-                    id="titulo_off"
-                    @click="ordenar_descendente('titulo_off')"
-                    class="flecha_orden_descendente"
-                  >
-                    <span class="icon-arrow-down"></span>
-                  </button>
-                </div>
-                <input
+                  ><span class="icon-arrow-up"></span></button>
+									 <button id="titulo_off" @click="ordenar_descendente('titulo_off')" class="flecha_orden_descendente"><span class="icon-arrow-down"></span></button>
+									</div>
+								 <input
                   id="titulo"
                   name="titulo"
                   v-model="titulo"
@@ -100,29 +38,23 @@
                   type="search"
                   placeholder="Búsqueda"
                 />
-              </th>
-
-              <th class="cabezal_columnas_th">
-                <div class="contenedor_etiquetas_barras_busqueda">
-                  <label class="label label_junto_flechas"
-                    >  {{$t("lang.tabla_audioannotation.Lenguaterminal")}}</label
-                  >
-                  <button
+								</th>
+                				
+								<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Lengua terminal</label>
+									<button
                     id="lengua_on"
                     @click="ordenar_ascendente('lengua_on')"
-                    class="flecha_orden_ascendente active"
-                  >
-                    <span class="icon-arrow-up"></span>
-                  </button>
-                  <button
+                    class="flecha_orden_ascendente"
+                  ><span class="icon-arrow-up"></span></button>
+										 <button
                     id="lengua_off"
                     @click="ordenar_descendente('lengua_off')"
                     class="flecha_orden_descendente"
-                  >
-                    <span class="icon-arrow-down"></span>
-                  </button>
-                </div>
-                <input
+                  ><span class="icon-arrow-down"></span></button>
+									</div>
+								 <input
                   type="text"
                   id="lengua"
                   name="lengua"
@@ -130,26 +62,22 @@
                   class="input_busqueda"
                   placeholder="Búsqueda"
                 />
-              </th>
-              <th class="cabezal_columnas_th">
-                <div class="contenedor_etiquetas_barras_busqueda">
-                  <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.Comunidad")}}</label>
-                  <button
+								</th>
+																<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Comunidad</label>
+										<button
                     id="comunidad_on"
                     @click="ordenar_ascendente('comunidad_on')"
                     class="flecha_orden_ascendente"
-                  >
-                    <span class="icon-arrow-up"></span>
-                  </button>
-                  <button
+                  ><span class="icon-arrow-up"></span></button>
+										<button
                     id="comunidad_off"
                     @click="ordenar_descendente('comunidad_off')"
                     class="flecha_orden_descendente"
-                  >
-                    <span class="icon-arrow-down"></span>
-                  </button>
-                </div>
-                <input
+                  ><span class="icon-arrow-down"></span></button>
+									</div>
+									<input
                   type="text"
                   id="comunidad"
                   name="comunidad"
@@ -157,26 +85,22 @@
                   class="input_busqueda"
                   placeholder="Búsqueda"
                 />
-              </th>
-              <th class="cabezal_columnas_th" id="th_hablantes">
-                <div class="contenedor_etiquetas_barras_busqueda">
-                  <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.hablantes")}}</label>
-                  <button
+								</th>
+								<th class="cabezal_columnas_th" id="th_hablantes">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Hablantes</label>
+									 <button
                     id="hablantes_on"
                     @click="ordenar_ascendente('hablantes_on')"
                     class="flecha_orden_ascendente"
-                  >
-                    <span class="icon-arrow-up"></span>
-                  </button>
-                  <button
+                  ><span class="icon-arrow-up"></span></button>
+										 <button
                     id="hablantes_off"
                     @click="ordenar_descendente('hablantes_off')"
                     class="flecha_orden_descendente"
-                  >
-                    <span class="icon-arrow-down"></span>
-                  </button>
-                </div>
-                <input
+                  ><span class="icon-arrow-down"></span></button>
+									</div>
+								 <input
                   id="hablantes"
                   name="hablantes"
                   v-model="hablantes"
@@ -184,28 +108,22 @@
                   type="search"
                   placeholder="Búsqueda"
                 />
-              </th>
-              <th class="cabezal_columnas_th">
-                <div class="contenedor_etiquetas_barras_busqueda">
-                  <label class="label label_junto_flechas"
-                    >{{$t("lang.tabla_audioannotation.generoduracion")}}</label
-                  >
-                  <button
+								</th>
+								<th class="cabezal_columnas_th">
+									<div class="contenedor_etiquetas_barras_busqueda" >
+										<label class="label label_junto_flechas">Género y duracion</label>
+									 <button
                     id="genero_on"
                     @click="ordenar_ascendente('genero_on')"
                     class="flecha_orden_ascendente"
-                  >
-                    <span class="icon-arrow-up"></span>
-                  </button>
-                  <button
+                  ><span class="icon-arrow-up"></span></button>
+									<button
                     id="genero_off"
                     @click="ordenar_descendente('genero_off')"
                     class="flecha_orden_descendente"
-                  >
-                    <span class="icon-arrow-down"></span>
-                  </button>
-                </div>
-                <input
+                  ><span class="icon-arrow-down"></span></button>
+									</div>
+									 <input
                   id="genero"
                   name="genero"
                   v-model="genero"
@@ -213,123 +131,59 @@
                   type="search"
                   placeholder="Búsqueda"
                 />
-              </th>
-              <th class="contenedor_btn_regresar_th" id="th_acciones">
-                <div
-                  class="contenedor_boton_accion_cabeza_tabla_audioanotaciones"
-                >
-                  <button
-                    class="btn-regresar_audioanotaciones"
-                    id="btn-regresar_audioanotaciones"
-                  >
-                    <span
-                      onclick="window.location.href = '/collections'"
-                      class="icono_boton_eliminar_audioanotaciones icon-back"
-                      ><!--TODO AQUI---></span
-                    >
-                  </button>
-                </div>
-              </th>
-            </thead>
-
-            <tbody
+								</th>
+								<th class="" id="th_acciones">
+									
+								</th>
+        					</thead>
+							<tbody
               v-for="(item2, index) in search_titulo"
-              :key="'item' + index"
-            >
-              <tr>
-                <td>
-                  <label class="contenedor_checkbox">
-                    <input type="checkbox" class="checkbox_personalizada" />
-                    <span class="marca_check"></span>
-                  </label>
-                </td>
-                <td class="titulo_audioanotacion_tabla" data-label="titulo">
-                  {{ item2.title
-                  }}<!--<i>(Malvaceae: Guazuma ulmifolia Lam. var.  ulmifolia)</i>--><span
-                    class="unique_id"
-                    data-label="unique_id"
-                    >UID:xxx xxxxxxx xx</span
-                  >
-                </td>
-
-                <td class="" data-label="Lengua terminal (glottocode)">
-                  {{ item2.gid.language.gid
-                  }}<span
-                    class="lengua_term_comun"
-                    data-label="Lengua terminal (nombre común)"
-                    >{{ item2.gid.language.name }}</span
-                  >
-                </td>
-
-                <td>
-                  <!--td class=""><span class="pais">México</span><span class="estado">Guerrero</span--><span
-                    class="comunidad_2"
-                    >{{ item2.location.Nom_Loc }}</span
-                  ><br /><span class="estado_tabla_catalogo">{{
+              :key="'item' + index">
+    					    <tr>
+								
+								<td class="titulo_audioanotacion_tabla" data-label="titulo">
+								 {{ item2.title
+                  }}<span class="unique_id" data-label="unique_id">UID:xxx xxxxxxx xx</span>
+								</td>
+            													 
+            					<td class="" data-label="Lengua terminal (glottocode)">
+								 {{ item2.gid.language.gid
+                  }}<span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">{{ item2.gid.language.name }}</span>
+								</td>
+            					
+								<td>
+            					<!--td class=""><span class="pais">México</span><span class="estado">Guerrero</span--><span class="comunidad_2">{{ item2.location.Nom_Loc }}</span><br><span class="estado_tabla_catalogo">{{
                     item2.location.Nom_Ent
-                  }}</span
-                  ><!--span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span-->
-                </td>
-                <td class="">
-                  <div
-                     v-for="(item3, index) in item2.header"
-                    :key="'item' + index"
-                    class="contenedor_hablantes"
-                  >
-                    <span class="hablante"> {{ item3 }}</span
-                    ><br /><span class="canal">Canal {{ index + 1 }}</span>
-                  </div>
-                </td>
-                <td>
-                  <span class="genero">{{ item2.genre.name }}</span>
-                  <span class="duracion">{{ item2.duration }}</span>
-                </td>
-                <td class="td_acciones">
-                  <div class="contenedor_botones_accion">
-                    <button
-                      aria-hidden="true"
-                      class="btn_accion_tabla"
-                      id="coleccion_info"
-                      @click="showAudio(item2.title, item2.description)"
-                    >
-                      <span class="icono_accion_tabla icon-info1"></span>
-                    </button>
-
-                    <button class="btn_accion_tabla">
-                      <a v-bind:href="'/audioannotations/vuetest/' + item2._id">
-                      <span class="icono_accion_tabla icon-launch"></span></a>
-                    </button>
-                    <button class="dropdown-trigger">
-                      <span class="icono_accion_tabla icon-ellipsis-v"></span>
-                    </button>
-                  <div id="" class="contenido_modal_elipsis">
-                      <!--TODO FALTA PONER LA CLASE MODAL-->
-                      <span
-                        class="icono_cerrar_modal_elipsis icon-close "
-                      ></span>
-                      <div class="contenedor_opciones_elipsis">
-                        <a
-                          v-bind:href="'/audioannotations/vuetest/' + item2._id"
-                          class="btn_opciones_ellipsis_mis_colecciones"
-                          ><span
-                            class="icono_opcion_elipsis icon-file_upload"
-                          ></span>
-                          Reproducir Audioanotación</a
-                        >
-                        <a
-                          v-bind:href="'/audioannotations/edit/' + item2._id"
-                          class="btn_opciones_ellipsis_mis_colecciones"
-                          ><span class="icono_opcion_elipsis icon-edit"></span>
-                          Editar Audioanotación</a
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="contenedor_paginacion">
+                  }}</span><!--span class="municipio_tabla">San Luis Acatlán</span><span class="localizacion">16.816020, -98.685990</span-->
+								</td>
+								<td class="">
+									<div 
+                   v-for="(item3, index) in item2.header"
+                   :key="'item' + index"
+                  class="contenedor_hablantes">
+										<span class="hablante">{{ item3 }}</span><br><span class="canal">Canal 1 {{ index + 1 }}</span>
+										
+									</div>
+								</td>
+								<td>
+									<span class="genero">{{ item2.genre.name }}</span>
+									<span class="duracion">{{ item2.duration }}</span>
+								</td>
+								<td class="td_acciones ">
+									<div class="contenedor_botones_accion">
+										<button  @click="showAudio(item2.title, item2.description)" class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
+										<button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
+									</div>
+								</td>							
+        					</tr>
+							<tr>			
+        					</tr>
+								
+						</tbody>	 
+							        					
+        					
+						</table>
+					 <div class="contenedor_paginacion">
             <div class="contenedor_input_paginacion">
               <input
                 class=""
@@ -404,15 +258,16 @@
               ></a>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  </div>
+					</div>
+				</div>
+				
+			</section>
+		</div>
 </template>
 
 <script>
 export default {
-  name: 'AudioAnnotationsbyCollection',
+  name: 'Individual',
   props: {
     parametro: Object,
   },
@@ -479,7 +334,7 @@ export default {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
        html:
-        `<h3 class="sa_titulo_coleccion"><code>${collectionName}</code></h3>` + 
+        `<h3 class="sa_titulo_coleccion"><code>${collectionName}</code></h3>` +
         `<p class="sa_parrafo_grande"><code>${collectionDescription}</code></p>`,
         icon: 'info',
         showCloseButton: true,
@@ -740,7 +595,6 @@ export default {
     try {
       let response = await this.axios.get(`/collections/api/read/${collectionId}`)
       this.collectionName = response.data.name
-      console.log(self.collectionId)
       this.collectionDescription = response.data.description
       this.languageGroupName = response.data.languages[0].LanguageGroup.name
       this.languageGroupId = response.data.languages[0].LanguageGroup.gid

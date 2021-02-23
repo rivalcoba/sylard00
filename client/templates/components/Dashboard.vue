@@ -103,7 +103,7 @@
                             <td class="td_acciones ">
                                 <div class="contenedor_botones_accion">
                                     <button @click="showCollect(item2.name,item2.description)" class="btn_accion_tabla" id="coleccion_info"><span class="icono_accion_tabla  icon-info1"></span></button>
-                                    <button class="btn_accion_tabla"><span class="icono_accion_tabla  icon-launch"></span></button>
+                                    <button class="btn_accion_tabla"><a v-bind:href="'/collections/index/readonly/' + item2._id"><span class="icono_accion_tabla  icon-launch"></span></a></button>
                                 </div>
                             </td>
                         </tr>
