@@ -897,9 +897,15 @@ input[type="button"] {
 }
 
 .btn-predeterminado:focus,
+.btn-primario:focus,
+.btn-secundario:focus {
+    outline: var(--gris05);
+}
+
 .btn-predeterminado:active {
     background: var(--color-sec-pressed);
     border: 2px solid var(--color-sec-pressed);
+    outline: none;
 }
 
 .btn-primario,
@@ -1187,7 +1193,7 @@ input:checked+.slider_general:before {
 .contenido_dropdown_menu_usuario {
     display: none;
     position: absolute;
-    z-index: 2;
+    z-index: 999;
     border: 1px rgba(255, 255, 255, .3) solid;
     border-top: none;
 }
@@ -2913,6 +2919,10 @@ p.canal_2_hablante_one_line_display_item {
 }
 
 #imagen_de_catalogo {
+    width: 100%;
+}
+
+.contenedor_imagen_cabezal_catalogo {
     margin-right: 2rem;
     margin-left: 2rem;
     flex-basis: 25%;
@@ -2946,6 +2956,7 @@ p.canal_2_hablante_one_line_display_item {
 
 .icono_info_coleccion_tabla {
     margin: 0;
+    margin-left: 4px;
     font-size: 1rem;
     line-height: .875rem;
     padding: 0;
@@ -3952,6 +3963,78 @@ h6.canal_hijo_compacto {
 input[type=password]::-ms-reveal,
 input[type=password]::-ms-clear {
     display: none;
+}
+
+
+/*SWEET ALERT STYLES*/
+
+.sa-popup {
+    background-color: #fefefe!important;
+    border: 2px solid var(--color-primario-principal)!important;
+    border-radius: .5rem!important;
+}
+
+.sa-warning {
+    color: #135C6E!important;
+}
+
+.sa_title {
+    font-size: 1.5rem!important;
+    line-height: 2rem;
+    font-weight: 500;
+    color: var(--color-sec-pressed)!important;
+}
+
+.sa_div_scroll_text {
+    height: 10rem;
+    overflow-y: scroll;
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gris04);
+}
+
+.sa_div_scroll_text p {
+    text-align: left;
+}
+
+.sa_div_scroll_text p:last-of-type {
+    margin-bottom: .25rem;
+}
+
+.sa_header {
+    height: 100px !important;
+}
+
+.sa_icon {
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--color-primario-principal) !important;
+    border-color: var(--color-primario-principal) !important;
+    font-family: var(--sans-serif) !important;
+}
+
+.sa_btn,
+.sa_btn_confirm {
+    margin-bottom: 0px !important;
+}
+
+.sa_parrafo_grande {
+    font-weight: 400;
+    font-family: var(--serif);
+    font-size: .875rem;
+    line-height: 1.5rem;
+    color: var(--gris-texto-principal);
+    margin-bottom: 1rem;
+    margin-top: .25rem;
+    text-align: left;
+}
+
+.sa_titulo_coleccion {
+    text-align: left;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+    color: var(--color-sec-pressed)!important;
 }
 /*!
  * Bootstrap Grid v4.5.2 (https://getbootstrap.com/)

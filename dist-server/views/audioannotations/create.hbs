@@ -12,7 +12,7 @@
    </div>
    <section class="container">
       <div class="col-sm-12 contenedor-90vh" id="contenedor_general_agregar_audioanotacion">
-         <div class="contenedor_establecer_origen_archivos_audioanotacion">
+      
             {{#unless filename}}
             <form action="/audioannotations/uploadfile" method="POST" name="chargeAudio" id="form"
                enctype="multipart/form-data">
@@ -30,7 +30,7 @@
                </div>
             </form>
             {{/unless}}
-         </div>
+         
          <form action="/audioannotations/add" method="post" id='form2'>
             {{#if filename}}
             <div class="contenedor_tiempo">

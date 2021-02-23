@@ -147,13 +147,14 @@
         "comunidades_coll": "Collection communities"
     },
     "tabla_audioannotation": {
-        "Audioannotations":"Audioanotations ",
-        "from":"from Collection ",
-        "editCollection":"Edit Collection",
-        "uploadAudioAnnotation":"upload AudioAnnotation",
+        "Audioannotations": "Audioanotations ",
+        "from": "from Collection ",
+        "editCollection": "Edit Collection",
+        "uploadAudioAnnotation": "upload AudioAnnotation",
         "coleccion": "Collection",
         "Lenguaterminal": "Last Tongue",
         "gpoLengua": "Languages Group:",
+        "gpo_de_lengua": "Languages Group:",
         "comunidades": "Communities",
         "Comunidad": "Comunity",
         "hablantes": "Speakers",

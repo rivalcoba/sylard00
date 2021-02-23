@@ -28,7 +28,7 @@ const loginUser = (req, res, next) => {
 // Register User
 const register = async (req, res) => {
     // let languages = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'languages.json'))
-    let languagesDocs = await Language.find({},'name gid iso639P3code').exec()
+    let languagesDocs = await Language.find({},{name : true, gid :true, iso639P3code: true, country_ids:true ,country_ids:"MX"  } ).exec()
     let languages = languagesDocs.map(language => {
         return language.toJSON()
     })
