@@ -236,7 +236,7 @@
                     >
                   </td>
                   <td class="">
-                    <a class="link_coleccion_tabla_catalogo"
+                    <a v-bind:href="'/collections/index/readonly/' + item2._id" class="link_coleccion_tabla_catalogo"
                       ><i>{{ arreglo_coleccion[index] }} </i></a
                     >
                     <button @click="showCollection(arreglo_coleccion[index])" class="btn_info_coleccion_tabla">
