@@ -26,7 +26,7 @@ GlottologSchema.virtual('parentTree',{
 GlottologSchema.methods.getParent = async function(){
   const doc = await mongoose.model('Glottologs').findOne({
     gid: this.parent_id
-  },'gid name parent_id').exec()
+  },'gid name parent_id ').exec()
   return doc
 }
 

@@ -3,7 +3,7 @@
 const login=(a,b)=>{b.render("auth/login",{title:"SYLARD Login"})},loginUser=(a,b,c)=>{// 1 Se agrega authenticacion
 // y se pasa una estrategia
 _passport.default.authenticate("local",{successRedirect:"/",failureRedirect:"/auth/login",failureFlash:!0})(a,b,c)},register=async(a,b)=>{// let languages = jsonReader.readFileSync(path.join(__dirname, '..', 'assets', 'languages.json'))
-let c=await _Glottolog.default.find({},"name gid iso639P3code").exec(),d=c.map(a=>a.toJSON()),e=_jsonReader.default.readFileSync(_path.default.join(__dirname,"..","assets","countries.json"));b.render("auth/register",{title:"SYLARD Registro",onRegisterPage:!0,nativeLanguages:d,countries:e})},registerUser=async(a,b)=>{// Extracting Data from the request
+let c=await _Glottolog.default.find({},{name:!0,gid:!0,iso639P3code:!0,country_ids:!0,country_ids:"MX"}).exec(),d=c.map(a=>a.toJSON()),e=_jsonReader.default.readFileSync(_path.default.join(__dirname,"..","assets","countries.json"));b.render("auth/register",{title:"SYLARD Registro",onRegisterPage:!0,nativeLanguages:d,countries:e})},registerUser=async(a,b)=>{// Extracting Data from the request
 const{name:c,lastName:d,secLastName:e,email:f,password:g,role:h,spokenLanguages:i,country:j,terms:k,about:l}=a.body;try{// Back en Validation
 // Creating the new user
 const a=await _User.default.create({name:c,lastName:d,secLastName:e,email:f,password:g,role:h,spokenLanguages:i,country:j,terms:"on"===k,about:l});let m=a.toJSON();b.render("auth/confirmMailSent",m)}catch(a){return console.log(`controllers/auth.js> ERROR registering user: ${a.message}`),b.status(409).send(`> Error : ${a.message}`)}},emailConfirmed=async(a,b)=>{try{// Activating Account
