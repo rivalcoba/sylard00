@@ -236,10 +236,10 @@
                     >
                   </td>
                   <td class="">
-                    <a v-bind:href="'/collections/index/readonly/' + item2._id" class="link_coleccion_tabla_catalogo"
-                      ><i>{{ arreglo_coleccion[index] }} </i></a
+                    <a v-bind:href="'/collections/index/readonly/' + item2.collection_id._id" class="link_coleccion_tabla_catalogo"
+                      ><i>{{ item2.collection_id.name }} </i></a
                     >
-                    <button @click="showCollection(arreglo_coleccion[index])" class="btn_info_coleccion_tabla">
+                    <button @click="showCollection(item2.collection_id.description)" class="btn_info_coleccion_tabla">
                       <span class="icono_info_coleccion_tabla icon-info1"></span>
                     </button>
                   </td>
@@ -670,12 +670,12 @@ export default {
         self.pagina = self.paginacion;
       });
       this.arreglo_coleccion = [];
-      self.notas_audioannotations.forEach((element) => {
-        //console.log("la coleccion "+element.collection_id)
-        this.get_nameColeccion(element.collection_id);
-      });
-      console.log("se longitud2 ");
-      console.log(this.arreglo_coleccion.length);
+      // self.notas_audioannotations.forEach((element) => {
+      //   //console.log("la coleccion "+element.collection_id)
+      //   this.get_nameColeccion(element.collection_id);
+      // });
+      // console.log("se longitud2 ");
+      // console.log(this.arreglo_coleccion.length);
       // this.arreglo_coleccion.forEach(element => {
       //   console.log("indice "+element.index + "valor "+element)
       //   self.notas_audioannotations[element.index].push(element)
@@ -688,11 +688,11 @@ export default {
       self.notas_audioannotations = response.data.itemsList;
       self.paginacion = response.data.paginator;
       self.pagina = self.paginacion;
-      self.notas_audioannotations.forEach((element) => {
-        element.name_collection=self.get_nameColeccion(element.collection_id);
-        //console.log("la coleccion "+element.collection_id)
-        //this.get_nameColeccion(element.collection_id);
-      });
+      // self.notas_audioannotations.forEach((element) => {
+      //   element.name_collection=self.get_nameColeccion(element.collection_id);
+      //   //console.log("la coleccion "+element.collection_id)
+      //   //this.get_nameColeccion(element.collection_id);
+      // });
 
       // this.arreglo_coleccion.forEach(element => {
       //   console.log("indice "+element.index + "valor "+element)
