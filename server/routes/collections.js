@@ -97,5 +97,7 @@ router.delete('/api/delete/:collection_id',
     ensureColabUser,*/ // TODO: Uncomment to protect route,
     collectionsController.api_delCollectionById)
 
+router.delete('/api/delete', collectionsController.api_delete)
+
 // Se exportan rutas
 export default router

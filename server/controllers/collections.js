@@ -3,7 +3,6 @@
 import Collection from '@models/Collection'
 import Glottolog from '@models/Glottolog'
 import Locations from '@models/Location'
-import Audioannotations from '@models/AudioAnnotations'
 
 // import User from '@models/User'
 
@@ -278,6 +277,34 @@ const api_delCollectionById = async(req, res) => {
     }
 }
 
+const api_delete = async (req, res) => {
+  // Collecting the id from the body
+  let { collectionsIds } = req.body
+
+  // Normalizing in the case to recieve one
+  // id or more
+  collectionsIds =
+    typeof collectionsIds == 'string' ? [collectionsIds] : collectionsIds
+
+  // Building Query
+  let query = {
+    _id: { $in: collectionsIds },
+  }
+
+  try {
+    // Getting all the collections
+    let collectionsDocs = await Collection.find(query).exec()
+    let deletionResults = Promise.all(collectionsDocs.map(async collectionDoc =>{
+      let result = await collectionDoc.deleteOne()
+      return result
+    }))
+    res.status(200).json({ result: 'Dellete Collection(s) ok', deletionResults })
+  } catch (error) {
+    console.log(`>-> Error al borrar Collection(es): ${error.message}`)
+    res.status(500).json({ error: error.message })
+  }
+}
+
 export default {
     // List Collections from a particular Colaborator User
     index,
@@ -301,4 +328,5 @@ export default {
     api_getCollectionByUser,
     api_getCollectionAll,
     api_delCollectionById,
+    api_delete,
 }
