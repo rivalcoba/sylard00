@@ -132,14 +132,11 @@ const filtrarAudioannotation = async(req, res) => {
             page: req.params.page,
             limit: 2,
             sort: { title: 1 },
-            populate: 'colection',
+            populate: 'collection_id',
             customLabels: myCustomLabels,
         };
 
-        Audioannotations.paginate({}, options, function(
-                err,
-                result
-            ) {
+        Audioannotations.paginate({}, options, function(err,result) {
                 if (err) {
                     console.log("El error esta aqui")
                     console.err(err);
