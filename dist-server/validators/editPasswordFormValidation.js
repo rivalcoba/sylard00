@@ -1,8 +1,0 @@
-"use strict";var Yup=_interopRequireWildcard(require("yup"));Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;function _getRequireWildcardCache(){if("function"!=typeof WeakMap)return null;var a=new WeakMap;return _getRequireWildcardCache=function(){return a},a}function _interopRequireWildcard(a){if(a&&a.__esModule)return a;if(null===a||"object"!=typeof a&&"function"!=typeof a)return{default:a};var b=_getRequireWildcardCache();if(b&&b.has(a))return b.get(a);var c={},d=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var e in a)if(Object.prototype.hasOwnProperty.call(a,e)){var f=d?Object.getOwnPropertyDescriptor(a,e):null;f&&(f.get||f.set)?Object.defineProperty(c,e,f):c[e]=a[e]}return c.default=a,b&&b.set(a,c),c}// import "@babel/polyfill" // DELETE NOT USE
-// Importing validation framework
-// Creating validation schema
-// All we need from the confirmation email is the token
-const UserRegistrationSchema=Yup.object().shape({password:Yup.string().min(6).required("Se requiere ingresar password de al menos 6 caracteres"),confirmationPassword:Yup.string().oneOf([Yup.ref("password")],"Los passwords ingresados no coinciden")});var _default=async(a,b,c)=>{try{// Extracting data
-const{password:b,confirmationPassword:d}=a.body;// Backend form validation
-// Go to the next middleware
-await UserRegistrationSchema.validate({password:b,confirmationPassword:d}),c()}catch(c){console.log(`editPasswordFormValidation>errors> ${c.errors}`),a.flash("error_msg",`Formulario incorrecto: ${c.message}`),b.redirect("/user/edit/password")}};exports.default=_default;

@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;const diacriticSensitiveRegex=(a="")=>a.replace(/a/g,"[a,\xE1,\xE0,\xE4]").replace(/e/g,"[e,\xE9,\xEB]").replace(/i/g,"[i,\xED,\xEF]").replace(/o/g,"[o,\xF3,\xF6,\xF2]").replace(/u/g,"[u,\xFC,\xFA,\xF9]");var _default={diacriticSensitiveRegex};exports.default=_default;

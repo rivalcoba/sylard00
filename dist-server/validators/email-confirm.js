@@ -1,8 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var Yup=_interopRequireWildcard(require("yup")),_User=_interopRequireDefault(require("../models/User"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function _getRequireWildcardCache(){if("function"!=typeof WeakMap)return null;var a=new WeakMap;return _getRequireWildcardCache=function(){return a},a}function _interopRequireWildcard(a){if(a&&a.__esModule)return a;if(null===a||"object"!=typeof a&&"function"!=typeof a)return{default:a};var b=_getRequireWildcardCache();if(b&&b.has(a))return b.get(a);var c={},d=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var e in a)if(Object.prototype.hasOwnProperty.call(a,e)){var f=d?Object.getOwnPropertyDescriptor(a,e):null;f&&(f.get||f.set)?Object.defineProperty(c,e,f):c[e]=a[e]}return c.default=a,b&&b.set(a,c),c}// Importing validation framework
-// Creating validation schema
-// All we need from the confirmation email is the token
-const EmailConfirmSchema=Yup.object().shape({token:Yup.string().length(64).required()});var _default=async(a,b,c)=>{try{await EmailConfirmSchema.validate(a.params),console.log(`email-confirmed>Token: ${a.params.token}`);// Checking if the token is valid!!
-const b=await _User.default.findOne({emailConfirmationToken:a.params.token});// If the user was not found
-if(!b)throw console.log("email-cofirm> No se encontro usuario"),new Yup.ValidationError(`Invalid Confirmation Code: ${a.params.token}`,a.body,"token");// If the user was found
-// We continue with the process
-console.log("> Token Correcto"),a.user=b,c()}catch(c){a.flash("error_msg","Token inexistente"),b.redirect("/")}};exports.default=_default;
