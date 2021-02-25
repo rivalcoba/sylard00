@@ -71,6 +71,13 @@
         <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
       </a>
       {{/ifSu}}
+
+      {{#ifSu user}}
+      <a href="/user">
+        <i class="fa fa-book"></i> Usuarios
+      </a>
+      {{/ifSu}}
+
           {{#hideIfSu user}}
           <a href="/dashboard">
             <i class="fa fa-table"></i> {{translation.CATALOGUE}}
