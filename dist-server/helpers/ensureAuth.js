@@ -1,2 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=_default;function _default(a,b,c){// isAuthentcaded is a funcion of passport
-return a.isAuthenticated()?c():void(a.flash("error_msg","Requiere acceder con su cuenta"),b.redirect("/auth/login"))}

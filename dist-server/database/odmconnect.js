@@ -1,3 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=_default;var _mongoose=_interopRequireDefault(require("mongoose")),_keys=_interopRequireDefault(require("../config/keys"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}// To use asynch await here
-// import "@babel/polyfill"
-const getConnection=async()=>{try{await _mongoose.default.connect(_keys.default.databaseUrl,{useNewUrlParser:!0,useUnifiedTopology:!0}),console.log(`LN29@app.js: Mongoose connected @${_keys.default.databaseUrl}`)}catch(a){console.log(`LN31@app.js: Error: ${a.message}`)}};function _default(){return _mongoose.default.Promise=global.Promise,getConnection()}

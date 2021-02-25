@@ -82,4 +82,4 @@ server/public/js/index.js
 !.vscode/extensions.json
 
 # Ignoring builds
-dist-server
+dist-server/
