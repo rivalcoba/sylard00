@@ -78,10 +78,15 @@
                 <th class="cabezal_columnas_th" id="th_coleccion_por_audioanotacion">
                   <div class="contenedor_etiquetas_barras_busqueda">
                     <label class="label label_junto_flechas">{{$t("lang.tabla_audioannotation.coleccion")}}</label>
-                    <button class="flecha_orden_ascendente">
+                    <button 
+                    id="lengua_on"
+                      @click="ordenar_ascendente('collection_on')"                      
+                    class="flecha_orden_ascendente">
                       <span class="icon-arrow-up"></span>
                     </button>
-                    <button class="flecha_orden_descendente">
+                    <button  id="lengua_off"
+                      @click="ordenar_descendente('collection_off')"
+                      class="flecha_orden_descendente">
                       <span class="icon-arrow-down"></span>
                     </button>
                   </div>
@@ -573,6 +578,17 @@ export default {
           // a must be equal to b
           return 0;
         });
+      }else if (e == "collection_off") {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.collection_id.name > b.collection_id.name) {
+            return -1;
+          }
+          if (a.collection_id.name < b.collection_id.name) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
       }
     },
     ordenar_ascendente: function (e) {
@@ -647,6 +663,17 @@ export default {
             return 1;
           }
           if (a.TIER[0].PARTICIPANT < b.TIER[0].PARTICIPANT) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (e == "collection_on") {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.collection_id.name > b.collection_id.name) {
+            return 1;
+          }
+          if (a.collection_id.name < b.collection_id.name) {
             return -1;
           }
           // a must be equal to b
