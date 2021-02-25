@@ -90,7 +90,12 @@
                       <span class="icon-arrow-down"></span>
                     </button>
                   </div>
-                  <input class="input_busqueda" type="search" placeholder="Búsqueda" />
+                  <input  id="titulo"
+                    name="titulo"
+                    v-model="coleccion"
+                    placeholder="Búsqueda"
+                    class="input_busqueda"
+                    type="search" />
                 </th>
                 <th class="cabezal_columnas_th">
                   <div class="contenedor_etiquetas_barras_busqueda">
@@ -798,6 +803,10 @@ export default {
       } else if (this.genero.length > 2) {
         return this.notas_audioannotations.filter((item) =>
           item.genre.name.toLowerCase().includes(this.genero.toLowerCase())
+        );
+      }else if (this.coleccion.length > 2) {
+        return this.notas_audioannotations.filter((item) =>
+          item.collection_id.name.toLowerCase().includes(this.coleccion.toLowerCase())
         );
       }
       return this.notas_audioannotations;
