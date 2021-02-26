@@ -66,8 +66,12 @@
                     type="checkbox"
                     class="input_checkbox_cabezal_columna prueba"
                     v-on:click="agregarArregloDelete"
-                   v-model="borrar_todos" />
-                  <button class="btn-eliminar_seleccionados prueba">
+                    v-model="borrar_todos"
+                  />
+                  <button
+                    class="btn-eliminar_seleccionados prueba"
+                    v-on:click="eliminartodos()"
+                  >
                     <span
                       class="icono_boton_eliminar_audioanotaciones icon-delete"
                     ></span>
@@ -438,6 +442,50 @@ export default {
     };
   },
   methods: {
+    obtener_title_audioannotations(id) {
+      const found = this.notas_audioannotations.find((element) => element._id == id);
+      //console.log("Aqui lo encontro "+id+" "+found.description)
+      return found.description;
+    },
+    eliminartodos() {
+      let texto_mostrar = "";
+      this.audioannotationArregloDelete.forEach((element) => {
+        // console.log("Aqui lo encontro "+element+" "+this.obtener_title_audioannotations(element) )
+        texto_mostrar =
+          this.obtener_title_audioannotations(element) + "<br>" + texto_mostrar;
+      });
+
+      this.$swal.fire
+        ({
+          html:
+            `<h3 class="sa_titulo_coleccion"><code>Quieres Borrar</code></h3>` +
+            `<p class="sa_parrafo_grande"><code>${texto_mostrar}</code></p>`,
+          icon: "info",
+          showCloseButton: true,
+          showCancelButton: true,
+          showConfirmButton: true,
+          buttonsStyling: false,
+          confirmButtonText: "Entiendo",
+          confirmButtonAriaLabel: "Entendido",
+          customClass: {
+            container: "",
+            popup: "sa-popup",
+            //header: 'sa_header',
+            title: "sa_title",
+            icon: "sa_icon",
+            text: "sa_parrafo_grande",
+            confirmButton: "btn btn-predeterminado sa_btn_confirm", //resolver focus en css,
+            cancelButton: "btn btn-secundario sa_btn",
+            footer: "secundario",
+          },
+        })
+        .then((result) => {
+          if (result.value) {
+          console.log("Borro todo"+texto_mostrar);
+          }
+        });
+      //this.audioannotationArregloDelete
+    },
     agregarArregloDelete() {
       if (this.borrar_todos) {
         this.audioannotationArregloDelete = [];
@@ -728,7 +776,7 @@ export default {
         console.log(error);
       }
       this.audioannotationArregloDelete = [];
-      this.borrar_todos=false;
+      this.borrar_todos = false;
       this.notas_audioannotations.forEach((element) => {
         element.borrar = false;
       });
