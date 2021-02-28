@@ -187,8 +187,8 @@
               <div v-if="bandera_elipsiss">    bandera_elipsiss:false,
       activeClass: 'contenido_modal_elipsis',  
                 <div v-if=elipsis"> -->
-               <div v-if="item_index==index"  v-bind:class="{ contenido_modal_elipsis: bandera_elipsiss }">
-                  <span class="icono_cerrar_modal_elipsis icon-close"></span>
+               <div v-if="item_index==index"  v-bind:class="{ contenido_modal_elipsis: bandera_elipsiss }" v-bind:style="contenido_modal_elipsis">
+                  <span v-on:click="elipsis($event)" class="icono_cerrar_modal_elipsis icon-close"></span>
                   <div class="contenedor_opciones_elipsis">
                     <a v-bind:href="'/audioannotations/create'" class="btn_opciones_ellipsis_mis_colecciones"
                       ><span class="icono_opcion_elipsis icon-file_upload"></span> Cargar
@@ -307,12 +307,23 @@ export default {
       idioma: "es",
       bandera_elipsiss:true,
       activeClass: 'contenido_modal_elipsis',
-      item_index:"" 
+      item_index:"",
+       contenido_modal_elipsis:{
+      background: '#fefefe',
+      width: '13rem !important',
+      position: 'absolute !important',
+      top: '-34px !important',
+      left: '-8.25rem !important',
+      border: '2px solid var(--color-primario-principal)',
+      "border-radius": '.375rem',
+      "z-index": '1'
+      } 
     };
   },
   methods: {
-    elipsis: function(index) {
+    elipsis: function(index, event) {
       if (this.bandera_elipsiss) {
+        if (event) event.preventDefault()
         this.bandera_elipsiss=false
           this.item_index=index 
         
