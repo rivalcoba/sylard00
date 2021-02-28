@@ -299,11 +299,10 @@
                       <a v-bind:href="'/audioannotations/vuetest/' + item2._id">
                       <span class="icono_accion_tabla icon-launch"></span></a>
                     </button>
-                    <button class="dropdown-trigger">
+                    <button class="dropdown-trigger" @click="elipsis(index)">
                       <span class="icono_accion_tabla icon-ellipsis-v"></span>
                     </button>
-                  <div id="" class="contenido_modal_elipsis">
-                      <!--TODO FALTA PONER LA CLASE MODAL-->
+                 <!--<div id="" class="contenido_modal_elipsis">
                       <span
                         class="icono_cerrar_modal_elipsis icon-close "
                       ></span>
@@ -323,7 +322,28 @@
                           Editar Audioanotación</a
                         >
                       </div>
-                    </div>
+                    </div>-->
+                     <div v-if="item_index==index" v-bind:class="{ contenido_modal_elipsis: bandera_elipsiss }" v-bind:style="contenido_modal_elipsis">
+                  <span v-on:click="elipsis($event)" class="icono_cerrar_modal_elipsis icon-close"></span>
+                  <div class="contenedor_opciones_elipsis">
+                    <a
+                          v-bind:href="'/audioannotations/vuetest/' + item2._id"
+                          class="btn_opciones_ellipsis_mis_colecciones"
+                          ><span
+                            class="icono_opcion_elipsis icon-file_upload"
+                          ></span>
+                          Reproducir Audioanotación</a
+                        >
+                   <a v-bind:href="'/audioannotations/edit/' + item2._id"
+                          class="btn_opciones_ellipsis_mis_colecciones"
+                          ><span class="icono_opcion_elipsis icon-edit"></span>
+                          Editar Audioanotación</a
+                        >
+                  </div>
+                </div>
+
+
+                    
                   </div>
                 </td>
               </tr>
@@ -435,7 +455,6 @@ export default {
       comunidad: '',
       hablantes: '',
       genero: '',
-
       bandera_titulo: false,
       bandera_lengua: false,
       bandera_gpo_lengua: false,
@@ -443,12 +462,39 @@ export default {
       bandera_hablantes: false,
       bandera_genero: false,
       pagina_buscar: '',
-
       valor_buscar: false,
-      collectionId:""
+      collectionId:"",
+      bandera_elipsiss:true,
+      activeClass: 'contenido_modal_elipsis',
+      item_index:"",
+      contenido_modal_elipsis:{
+      background: '#fefefe',
+      width: '13rem !important',
+      position: 'absolute !important',
+      top: '-34px !important',
+      left: '-8.25rem !important',
+      border: '2px solid var(--color-primario-principal)',
+      "border-radius": '.375rem',
+      "z-index": '1'
+      }
     }
   },
   methods: {
+    elipsis: function(index,event) {
+       if (event) event.preventDefault()
+      if (this.bandera_elipsiss) {
+        this.bandera_elipsiss=false
+          this.item_index=index 
+        
+
+      } else 
+      {
+      this.bandera_elipsiss=true
+    this.item_index=""
+      }
+      
+     
+    },
     showAudio(title, text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
