@@ -331,7 +331,7 @@
                           Audioanotación</a
                         >
                       </div>
-                    </div>-->
+                    </div>
                      <div v-if="item_index==index" v-bind:class="{ contenido_modal_elipsis: bandera_elipsiss }" v-bind:style="contenido_modal_elipsis">
                   <span v-on:click="elipsis($event)" class="icono_cerrar_modal_elipsis icon-close"></span>
                   <div class="contenedor_opciones_elipsis">
@@ -455,7 +455,19 @@ export default {
       bandera_hablantes: false,
       bandera_genero: false,
       pagina_buscar: "",
-
+ bandera_elipsiss:true,
+      activeClass: 'contenido_modal_elipsis',
+      item_index:"",
+       contenido_modal_elipsis:{
+      background: '#fefefe',
+      width: '13rem !important',
+      position: 'absolute !important',
+      top: '-34px !important',
+      left: '-8.25rem !important',
+      border: '2px solid var(--color-primario-principal)',
+      "border-radius": '.375rem',
+      "z-index": '1'
+      },
       valor_buscar: false,
       collectionId: "",
       audioannotationArregloDelete: [],
@@ -463,6 +475,21 @@ export default {
     };
   },
   methods: {
+     elipsis: function(index, event) {
+      if (this.bandera_elipsiss) {
+        if (event) event.preventDefault()
+        this.bandera_elipsiss=false
+          this.item_index=index 
+        
+
+      } else 
+      {
+      this.bandera_elipsiss=true
+    this.item_index=""
+      }
+      
+     
+    },
     obtener_title_audioannotations(id) {
       const found = this.notas_audioannotations.find((element) => element._id == id);
       //console.log("Aqui lo encontro "+id+" "+found.description)
