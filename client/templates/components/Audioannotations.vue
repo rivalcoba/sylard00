@@ -249,7 +249,7 @@
                     <a v-bind:href="'/collections/index/readonly/' + item2.collection_id._id" class="link_coleccion_tabla_catalogo"
                       ><i>{{ item2.collection_id.name }} </i></a
                     >
-                    <button @click="showCollection(item2.collection_id.description)" class="btn_info_coleccion_tabla">
+                    <button @click="showCollection(item2.collection_id.name,item2.collection_id.description)" class="btn_info_coleccion_tabla">
                       <span class="icono_info_coleccion_tabla icon-info1"></span>
                     </button>
                   </td>
@@ -396,24 +396,26 @@ export default {
     async get_nameColeccion(id) {
        var self = this;
       var name;
+      var description;
       //console.log("la ruta"+"collections/api/read/"+id)
       self.axios.get("collections/api/read/" + id).then((response) => {
         //this.coleccion = response.data
         //console.log(response.data.name)
         name = response.data.name;
+        description = response.data.description;
         self.arreglo_coleccion.push(response.data.name);
-        return name
+        self.arreglo_coleccion.push(response.data.description);
+        return name, description
       });
       //console.log("este es el nombre de la coleccion "+ this.coleccion.name)
       return name;
     },
-    showCollection(index) {
+    showCollection(name,description) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
         html:
-        `<h3 class="sa_titulo_coleccion"><code>${index}</code></h3>`,
-        //TODO FALTA TRAER LA DESCRIPCIÓN DE LA COLLECIÓN
-        /*`<p class="sa_parrafo_grande"><code>${text}</code></p>`*/
+        `<h3 class="sa_titulo_coleccion"><code>${name}</code></h3>` +
+        `<p class="sa_parrafo_grande"><code>${description}</code></p>`,
         icon: 'info',
         showCloseButton: true,
         showConfirmButton: true,
