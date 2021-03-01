@@ -80,3 +80,6 @@ server/public/js/index.js
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Ignoring builds
+dist-server/
