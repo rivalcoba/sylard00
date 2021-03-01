@@ -145,13 +145,6 @@ router.get(
     audioannotationsController.api_indexAudioannotationsByCollection
 )
 
-router.get(
-    '/api/index/:id/:page',
-    //ensureAuthenticated,
-    //ensureColabUser, // TODO: Uncomment to protect route
-    audioannotationsController.api_indexAudioannotationsByCollection
-)
-
 router.delete('/api/delete',
         //ensureAuthenticated,
         //ensureColabUser, // TODO: Uncomment to protect route

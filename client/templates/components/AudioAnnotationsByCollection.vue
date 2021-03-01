@@ -314,9 +314,10 @@
                     <button class="dropdown-trigger" @click="elipsis(index)">
                       <span class="icono_accion_tabla icon-ellipsis-v"></span>
                     </button>
-                    <div id="" class="contenido_modal_elipsis">
-                      <!--TODO FALTA PONER LA CLASE MODAL-->
-                      <span class="icono_cerrar_modal_elipsis icon-close"></span>
+                 <!--<div id="" class="contenido_modal_elipsis">
+                      <span
+                        class="icono_cerrar_modal_elipsis icon-close "
+                      ></span>
                       <div class="contenedor_opciones_elipsis">
                         <a
                           v-bind:href="'/audioannotations/vuetest/' + item2._id"
@@ -439,88 +440,53 @@ export default {
       result: null,
       otro: "nuevo",
       notas_audioannotations: [],
-      paginacion: "",
-      pagina: "",
-      titulo: "",
-      lengua: "",
-      gpo_lengua: "",
-      comunidad: "",
-      hablantes: "",
-      genero: "",
-
+      paginacion: '',
+      pagina: '',
+      titulo: '',
+      lengua: '',
+      gpo_lengua: '',
+      comunidad: '',
+      hablantes: '',
+      genero: '',
       bandera_titulo: false,
       bandera_lengua: false,
       bandera_gpo_lengua: false,
       bandera_comunidad: false,
       bandera_hablantes: false,
       bandera_genero: false,
-      pagina_buscar: "",
-
+      pagina_buscar: '',
       valor_buscar: false,
-      collectionId: "",
-      audioannotationArregloDelete: [],
-      borrar_todos: false,
-    };
+      collectionId:"",
+      bandera_elipsiss:true,
+      activeClass: 'contenido_modal_elipsis',
+      item_index:"",
+      contenido_modal_elipsis:{
+      background: '#fefefe',
+      width: '13rem !important',
+      position: 'absolute !important',
+      top: '-34px !important',
+      left: '-8.25rem !important',
+      border: '2px solid var(--color-primario-principal)',
+      "border-radius": '.375rem',
+      "z-index": '1'
+      }
+    }
   },
   methods: {
-    obtener_title_audioannotations(id) {
-      const found = this.notas_audioannotations.find((element) => element._id == id);
-      //console.log("Aqui lo encontro "+id+" "+found.description)
-      return found.description;
-    },
-    eliminartodos() {
-      let texto_mostrar = "";
-      this.audioannotationArregloDelete.forEach((element) => {
-        // console.log("Aqui lo encontro "+element+" "+this.obtener_title_audioannotations(element) )
-        texto_mostrar =
-          this.obtener_title_audioannotations(element) + "<br>" + texto_mostrar;
-      });
+    elipsis: function(index,event) {
+       if (event) event.preventDefault()
+      if (this.bandera_elipsiss) {
+        this.bandera_elipsiss=false
+          this.item_index=index 
+        
 
-      this.$swal.fire
-        ({
-          html:
-            `<h3 class="sa_titulo_coleccion"><code>Quieres Borrar</code></h3>` +
-            `<p class="sa_parrafo_grande"><code>${texto_mostrar}</code></p>`,
-          icon: "info",
-          showCloseButton: true,
-          showCancelButton: true,
-          showConfirmButton: true,
-          buttonsStyling: false,
-          confirmButtonText: "Entiendo",
-          confirmButtonAriaLabel: "Entendido",
-          customClass: {
-            container: "",
-            popup: "sa-popup",
-            //header: 'sa_header',
-            title: "sa_title",
-            icon: "sa_icon",
-            text: "sa_parrafo_grande",
-            confirmButton: "btn btn-predeterminado sa_btn_confirm", //resolver focus en css,
-            cancelButton: "btn btn-secundario sa_btn",
-            footer: "secundario",
-          },
-        })
-        .then((result) => {
-          if (result.value) {
-          console.log("Borro todo"+texto_mostrar);
-          }
-        });
-      //this.audioannotationArregloDelete
-    },
-    agregarArregloDelete() {
-      if (this.borrar_todos) {
-        this.audioannotationArregloDelete = [];
-        this.borrar_todos = false;
-      } else {
-        this.audioannotationArregloDelete = [];
-        this.notas_audioannotations.forEach((element) => {
-          this.audioannotationArregloDelete.push(element._id);
-        });
-        this.borrar_todos = true;
+      } else 
+      {
+      this.bandera_elipsiss=true
+    this.item_index=""
       }
-    },
-    quitarArregloDelete() {
-      this.audioannotationArregloDelete = [];
+      
+     
     },
     showAudio(title, text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
