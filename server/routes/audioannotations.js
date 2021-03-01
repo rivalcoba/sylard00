@@ -141,8 +141,13 @@ router.get(
     router.get(
       '/api/index/:id/:page',
       //ensureAuthenticated,
-      //ensureColabUser,
+      //ensureColabUser, // TODO: Uncomment to protect route
       audioannotationsController.api_indexAudioannotationsByCollection
     )
+
+    router.delete('/api/delete',
+    //ensureAuthenticated,
+    //ensureColabUser, // TODO: Uncomment to protect route
+    audioannotationsController.api_deleteAudioannotations)
 // Se exportan rutas
 export default router

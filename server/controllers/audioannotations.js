@@ -377,7 +377,13 @@ const color = (req, res) => {
     res.render('audioannotations/color')
 }
 
-// ***************** API ********************
+    //   ___  ______ _____ 
+    //  / _ \ | ___ \_   _|
+    // / /_\ \| |_/ / | |  
+    // |  _  ||  __/  | |  
+    // | | | || |    _| |_ 
+    // \_| |_/\_|    \___/ 
+    
 const api_updateAudioAnnot = async(req, res) => {
     try {
         const { audioannotationId } = req.params
@@ -388,6 +394,34 @@ const api_updateAudioAnnot = async(req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
+}
+
+const api_deleteAudioannotations = async (req, res) => {
+  try {
+    // Collecting the id from the body
+    let { audioannotationsIds } = req.body
+    // Normalizing in the case to recieve one
+    // id or more
+    audioannotationsIds =
+      typeof audioannotationsIds == 'string'
+        ? [audioannotationsIds]
+        : audioannotationsIds
+
+    // Building Query
+    let query = {
+      _id: { $in: audioannotationsIds },
+    }
+
+    // Getting all the collections
+    let audioannotationsDocs = await Audioannotations.find(query).exec()
+    let deletionResults = Promise.all(audioannotationsDocs.map(async audioannotationDoc =>{
+      let result = await audioannotationDoc.deleteOne()
+      return result
+    }))
+    res.status(200).json({ result: 'Delete Audioannotation(s) ok', deletionResults })
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
 }
 
 export default {
@@ -402,5 +436,6 @@ export default {
     indexById,
     api_updateAudioAnnot,
     api_indexAudioannotationsByCollection,
+    api_deleteAudioannotations,
     color,
 }
