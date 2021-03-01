@@ -139,10 +139,22 @@ router.post('/api/update/:audioannotationId',
 )
 
 router.get(
-        '/api/index/:id/:page',
+    '/api/index/:id/:page',
+    //ensureAuthenticated,
+    //ensureColabUser,
+    audioannotationsController.api_indexAudioannotationsByCollection
+)
+
+router.get(
+    '/api/index/:id/:page',
+    //ensureAuthenticated,
+    //ensureColabUser, // TODO: Uncomment to protect route
+    audioannotationsController.api_indexAudioannotationsByCollection
+)
+
+router.delete('/api/delete',
         //ensureAuthenticated,
-        //ensureColabUser,
-        audioannotationsController.api_indexAudioannotationsByCollection
-    )
+        //ensureColabUser, // TODO: Uncomment to protect route
+        audioannotationsController.api_deleteAudioannotations)
     // Se exportan rutas
 export default router
