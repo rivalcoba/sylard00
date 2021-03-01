@@ -691,7 +691,7 @@ export default {
         this.audioannotations
       )
       console.log('Ya Enviando  datos')
-      window.location.href = '/audioannotations'
+      window.location.href = '/collections' 
     },
     leerTierBD: function () {
       //for (var i in this.audioannotations_info.data) {
