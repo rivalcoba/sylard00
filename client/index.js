@@ -146,7 +146,7 @@ if (window.location.pathname.match(/\/collections\/index\//)) {
 }
 
 //Dashboard Collections
-if (window.location.pathname.match(/\/collections\/index\/readonly\//)) {
+if (window.location.pathname.match(/\/audioannotations\/index\/readonly\//)) {
     Vue.use(VueAxios, axios);
     //Vue.component("AudioAnnotationsByCollection", AudioAnnotationsByCollection);
     window.vm = new Vue({
