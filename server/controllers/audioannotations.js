@@ -136,7 +136,7 @@ const filtrarAudioannotation = async(req, res) => {
             customLabels: myCustomLabels,
         };
 
-        Audioannotations.paginate({}, options, function(err,result) {
+        Audioannotations.paginate({}, options, function(err, result) {
                 if (err) {
                     console.log("El error esta aqui")
                     console.err(err);
@@ -158,8 +158,8 @@ const filtrarAudioannotation = async(req, res) => {
 }
 
 const api_indexAudioannotationsByCollection = async(req, res) => {
-    let {id} = req.params
-    let query = {"collection_id" : id}
+    let { id } = req.params
+    let query = { "collection_id": id }
     try {
         const myCustomLabels = {
             totalDocs: 'itemCount',
@@ -331,6 +331,8 @@ const uploadfileAudioannotation = async(req, res, next) => {
         res.status(500).json(error)
     }
 }
+
+
 const editAudioannotation = async(req, res) => {
 
     // let genreDoc = await Genre.findById(genre).exec()
@@ -351,9 +353,9 @@ const deleteAudioannotaion = async(req, res) => {
     const audioannotation_id = req.params.audioannotation_id
     try {
         const document = await Audioannotations.findOne({
-                _id: audioannotation_id,
-            }).exec()
-            
+            _id: audioannotation_id,
+        }).exec()
+
         document.deleteOne();
         return res.status(200).json({ "fileDeleted": "ok" })
 
@@ -377,13 +379,19 @@ const color = (req, res) => {
     res.render('audioannotations/color')
 }
 
-    //   ___  ______ _____ 
-    //  / _ \ | ___ \_   _|
-    // / /_\ \| |_/ / | |  
-    // |  _  ||  __/  | |  
-    // | | | || |    _| |_ 
-    // \_| |_/\_|    \___/ 
-    
+const indexReadonlyCollection = (req, res) => {
+    res.render('audioannotations/indexreadonly', {
+        title: 'Audioanotaciones del catálogo',
+    })
+}
+
+//   ___  ______ _____ 
+//  / _ \ | ___ \_   _|
+// / /_\ \| |_/ / | |  
+// |  _  ||  __/  | |  
+// | | | || |    _| |_ 
+// \_| |_/\_|    \___/ 
+
 const api_updateAudioAnnot = async(req, res) => {
     try {
         const { audioannotationId } = req.params
@@ -396,32 +404,31 @@ const api_updateAudioAnnot = async(req, res) => {
     }
 }
 
-const api_deleteAudioannotations = async (req, res) => {
-  try {
-    // Collecting the id from the body
-    let { audioannotationsIds } = req.body
-    // Normalizing in the case to recieve one
-    // id or more
-    audioannotationsIds =
-      typeof audioannotationsIds == 'string'
-        ? [audioannotationsIds]
-        : audioannotationsIds
+const api_deleteAudioannotations = async(req, res) => {
+    try {
+        // Collecting the id from the body
+        let { audioannotationsIds } = req.body
+            // Normalizing in the case to recieve one
+            // id or more
+        audioannotationsIds =
+            typeof audioannotationsIds == 'string' ? [audioannotationsIds] :
+            audioannotationsIds
 
-    // Building Query
-    let query = {
-      _id: { $in: audioannotationsIds },
+        // Building Query
+        let query = {
+            _id: { $in: audioannotationsIds },
+        }
+
+        // Getting all the collections
+        let audioannotationsDocs = await Audioannotations.find(query).exec()
+        let deletionResults = Promise.all(audioannotationsDocs.map(async audioannotationDoc => {
+            let result = await audioannotationDoc.deleteOne()
+            return result
+        }))
+        res.status(200).json({ result: 'Delete Audioannotation(s) ok', deletionResults })
+    } catch (error) {
+        res.status(500).json({ error: error.message })
     }
-
-    // Getting all the collections
-    let audioannotationsDocs = await Audioannotations.find(query).exec()
-    let deletionResults = Promise.all(audioannotationsDocs.map(async audioannotationDoc =>{
-      let result = await audioannotationDoc.deleteOne()
-      return result
-    }))
-    res.status(200).json({ result: 'Delete Audioannotation(s) ok', deletionResults })
-  } catch (error) {
-    res.status(500).json({ error: error.message })
-  }
 }
 
 export default {
@@ -434,6 +441,7 @@ export default {
     vuetestAudioannotaion,
     filtrarAudioannotation,
     indexById,
+    indexReadonlyCollection,
     api_updateAudioAnnot,
     api_indexAudioannotationsByCollection,
     api_deleteAudioannotations,
