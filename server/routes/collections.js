@@ -85,10 +85,11 @@ router.get(
     ensureColabUser,*/ // TODO: Uncomment to protect route
     collectionsController.api_getCollectionAll
 )
+// Requiere autenticación
 router.get(
-    '/api/userid/:userid/pag/:page',
-    /*ensureAuthenticated,
-    ensureColabUser,*/ // TODO: Uncomment to protect route
+    '/api/pag/:page',
+    ensureAuthenticated,
+    ensureColabUser,
     collectionsController.api_getPagCollectionByUser
 )
 

@@ -268,7 +268,7 @@ const api_getPagCollectionByUser = async (req, res)=>{
         sort: { title: 1 },
         customLabels: myCustomLabels,
     };
-    const { userid } = req.params
+    const  userid  = res.locals.user._id
     try {
         Collection.paginate({user: userid}, options, function(
             err,
