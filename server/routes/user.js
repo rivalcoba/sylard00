@@ -22,15 +22,15 @@ router.delete('/', userController.delUsers);
 
 router.get('/edit', ensureAuthenticated, userController.edit);
 router.put('/edit', ensureAuthenticated, editUserFormValidation, userController.editUser);
-router.get('/edit/:userId', ensureSuAuthenticated, userController.editUserById)
-router.put('/edit/:userId', ensureSuAuthenticated, editUserFormValidation, userController.postEditUserById);
+router.get('/su/edit/:userId', ensureSuAuthenticated, userController.editUserById)
+router.put('/su/edit/:userId', ensureSuAuthenticated, editUserFormValidation, userController.postEditUserById);
 
 router.get('/edit/password', ensureAuthenticated, userController.editPassword);
 router.put('/edit/password', ensureAuthenticated, editPasswordFormValidation, userController.editUserPassword);
 
 router.get('/reset/password', userController.resetPassword);
 router.put('/reset/password', confirmEmailAccount, userController.resetUserPassword);
-router.get('/delete/:userId', userController.delById)
+router.get('/su/delete/:userId', ensureSuAuthenticated, userController.delById)
 
 // ============ ==> API <== ====================
 // TODO: Proteger RUTAS
