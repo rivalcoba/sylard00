@@ -249,6 +249,50 @@ const api_getCollectionById = async(req, res) => {
     }
 }
 
+const api_getPagCollectionByUser = async (req, res)=>{
+    const myCustomLabels = {
+        totalDocs: 'itemCount',
+        docs: 'itemsList',
+        limit: 'perPage',
+        page: 'currentPage',
+        nextPage: 'next',
+        prevPage: 'prev',
+        totalPages: 'pageCount',
+        pagingCounter: 'slNo',
+        meta: 'paginator',
+    };
+
+    const options = {
+        page: req.params.page,
+        limit: 5,
+        sort: { title: 1 },
+        customLabels: myCustomLabels,
+    };
+    const { userid } = req.params
+    try {
+        Collection.paginate({user: userid}, options, function(
+            err,
+            result
+        ) {
+            if (err) {
+                console.log("El error esta aqui")
+                console.err(err);
+                return res.status(400).json({
+                    mensaje: 'Ocurrio un error',
+                    err
+                })
+            } else {
+                res.json(result);
+            }
+        })
+    } catch (error) {
+        return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            error : error.message
+        })
+    }
+}
+
 const api_getCollectionByUser = async(req, res) => {
     const { userId } = req.params
     try {
@@ -326,6 +370,7 @@ export default {
     // Process Delete Collection
     api_getCollectionById,
     api_getCollectionByUser,
+    api_getPagCollectionByUser,
     api_getCollectionAll,
     api_delCollectionById,
     api_delete,
