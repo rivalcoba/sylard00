@@ -91,6 +91,12 @@ router.delete(
     audioannotationsController.deleteAudioannotaion
 )
 
+//Dashboard Collection
+router.get('/index/readonly/:collectionId',
+    ensureAuthenticated,
+    //ensureColabUser,
+    audioannotationsController.indexReadonlyCollection)
+
 //router.get(
 //  '/vuetest/:audioannotation_id',
 router.get(
