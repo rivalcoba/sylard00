@@ -840,22 +840,25 @@ export default {
   },
   async mounted() {
     var self = this;
-    self.axios.get("i18n").then((response) => {
-      self.idioma = response.data.LANGUAGE;
-      if (self.idioma === "es") {
-        console.log("esta en español");
-        this.$i18n.locale = "es";
-      } else if (self.idioma === "en") {
-        console.log("esta en ingles");
-        this.$i18n.locale = "en";
-      }
-    });
+
     let collectionId = window.location.pathname.split("/").pop();
     self.collectionId = collectionId;
     try {
+
+    self.axios.get("/i18n").then((response) => {
+      self.idioma = response.data.LANGUAGE;
+      if (self.idioma === "es") {
+       // console.log("esta en español");
+        this.$i18n.locale = "es";
+      } else if (self.idioma === "en") {
+        //console.log("esta en ingles");
+        this.$i18n.locale = "en";
+      }
+    });
+
       let response = await this.axios.get(`/collections/api/read/${collectionId}`);
       this.collectionName = response.data.name;
-      console.log(self.collectionId);
+      console.log("Aqui esta el id de la coleccion"+self.collectionId);
       this.collectionDescription = response.data.description;
       this.languageGroupName = response.data.languages[0].LanguageGroup.name;
       this.languageGroupId = response.data.languages[0].LanguageGroup.gid;
@@ -871,6 +874,8 @@ export default {
       console.log(`Error requesting: /audioannotations/api/index/${collectionId}/1`);
       throw error;
     }
+
+    
   },
   computed: {
     isActived: function () {
