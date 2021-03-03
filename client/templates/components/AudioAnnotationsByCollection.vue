@@ -828,14 +828,7 @@ export default {
       this.notas_audioannotations.forEach((element) => {
         element.borrar = false;
       });
-      // await self.axios
-      //   .get(`/audioannotations/api/index/` + self.collectionId + `/${page}`)
-      //   .then((response) => {
-      //     self.notas_audioannotations = response.data.itemsList;
-      //     self.paginacion = response.data.paginator;
-      //     self.pagina = self.paginacion;
-      //     //console.log(response.data)
-      //   });
+
     },
   },
   async mounted() {
@@ -858,7 +851,7 @@ export default {
 
       let response = await this.axios.get(`/collections/api/read/${collectionId}`);
       this.collectionName = response.data.name;
-      console.log("Aqui esta el id de la coleccion"+self.collectionId);
+      //console.log("Aqui esta el id de la coleccion"+self.collectionId);
       this.collectionDescription = response.data.description;
       this.languageGroupName = response.data.languages[0].LanguageGroup.name;
       this.languageGroupId = response.data.languages[0].LanguageGroup.gid;
