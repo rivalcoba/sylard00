@@ -546,7 +546,7 @@ export default {
       }
 
       var self = this;
-      self.axios.get("collections/api/read_all/" + page).then((response) => {
+      self.axios.get("collections/api/pag/" + page).then((response) => {
         self.notas_audioannotations = response.data.itemsList;
         self.paginacion = response.data.paginator;
         self.pagina = self.paginacion;
@@ -556,7 +556,7 @@ export default {
   },
   mounted() {
     var self = this;
-    self.axios.get("collections/api/read_all/1").then((response) => {
+    self.axios.get("collections/api/pag/1").then((response) => {
       self.notas_audioannotations = response.data.itemsList;
       self.paginacion = response.data.paginator;
       self.pagina = self.paginacion;
