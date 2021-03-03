@@ -38,7 +38,10 @@
             </h4>
           </div>
           <div class="" id="contenedor_botones_cabezal">
-            <button class="btn btn-predeterminado">
+            <button 
+             v-on:click="editarcoleccion()"
+              class="btn btn-predeterminado"
+            >
               {{ $t("lang.tabla_audioannotation.editCollection") }}
               <span class="icono_boton icon-edit"></span>
             </button>
@@ -332,27 +335,30 @@
                         >
                       </div>
                     </div>
-                     <div v-if="item_index==index" v-bind:class="{ contenido_modal_elipsis: bandera_elipsiss }" v-bind:style="contenido_modal_elipsis">
-                  <span v-on:click="elipsis($event)" class="icono_cerrar_modal_elipsis icon-close"></span>
-                  <div class="contenedor_opciones_elipsis">
-                    <a
+                    <div
+                      v-if="item_index == index"
+                      v-bind:class="{ contenido_modal_elipsis: bandera_elipsiss }"
+                      v-bind:style="contenido_modal_elipsis"
+                    >
+                      <span
+                        v-on:click="elipsis($event)"
+                        class="icono_cerrar_modal_elipsis icon-close"
+                      ></span>
+                      <div class="contenedor_opciones_elipsis">
+                        <a
                           v-bind:href="'/audioannotations/vuetest/' + item2._id"
                           class="btn_opciones_ellipsis_mis_colecciones"
-                          ><span
-                            class="icono_opcion_elipsis icon-file_upload"
-                          ></span>
+                          ><span class="icono_opcion_elipsis icon-file_upload"></span>
                           Reproducir Audioanotación</a
                         >
-                   <a v-bind:href="'/audioannotations/edit/' + item2._id"
+                        <a
+                          v-bind:href="'/audioannotations/edit/' + item2._id"
                           class="btn_opciones_ellipsis_mis_colecciones"
-                          ><span class="icono_opcion_elipsis icon-edit"></span>
-                          Editar Audioanotación</a
+                          ><span class="icono_opcion_elipsis icon-edit"></span> Editar
+                          Audioanotación</a
                         >
-                  </div>
-                </div>
-
-
-                    
+                      </div>
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -455,18 +461,18 @@ export default {
       bandera_hablantes: false,
       bandera_genero: false,
       pagina_buscar: "",
- bandera_elipsiss:true,
-      activeClass: 'contenido_modal_elipsis',
-      item_index:"",
-       contenido_modal_elipsis:{
-      background: '#fefefe',
-      width: '13rem !important',
-      position: 'absolute !important',
-      top: '-34px !important',
-      left: '-8.25rem !important',
-      border: '2px solid var(--color-primario-principal)',
-      "border-radius": '.375rem',
-      "z-index": '1'
+      bandera_elipsiss: true,
+      activeClass: "contenido_modal_elipsis",
+      item_index: "",
+      contenido_modal_elipsis: {
+        background: "#fefefe",
+        width: "13rem !important",
+        position: "absolute !important",
+        top: "-34px !important",
+        left: "-8.25rem !important",
+        border: "2px solid var(--color-primario-principal)",
+        "border-radius": ".375rem",
+        "z-index": "1",
       },
       valor_buscar: false,
       collectionId: "",
@@ -475,20 +481,18 @@ export default {
     };
   },
   methods: {
-     elipsis: function(index, event) {
+    editarcoleccion:function(){
+      window.location.href ='/collections/edit/'+this.collectionId;
+    },
+    elipsis: function (index, event) {
       if (this.bandera_elipsiss) {
-        if (event) event.preventDefault()
-        this.bandera_elipsiss=false
-          this.item_index=index 
-        
-
-      } else 
-      {
-      this.bandera_elipsiss=true
-    this.item_index=""
+        if (event) event.preventDefault();
+        this.bandera_elipsiss = false;
+        this.item_index = index;
+      } else {
+        this.bandera_elipsiss = true;
+        this.item_index = "";
       }
-      
-     
     },
     obtener_title_audioannotations(id) {
       const found = this.notas_audioannotations.find((element) => element._id == id);
@@ -503,8 +507,8 @@ export default {
           this.obtener_title_audioannotations(element) + "<br>" + texto_mostrar;
       });
 
-      this.$swal.fire
-        ({
+      this.$swal
+        .fire({
           html:
             `<h3 class="sa_titulo_coleccion"><code>Quieres Borrar</code></h3>` +
             `<p class="sa_parrafo_grande"><code>${texto_mostrar}</code></p>`,
@@ -529,7 +533,7 @@ export default {
         })
         .then((result) => {
           if (result.value) {
-          console.log("Borro todo"+texto_mostrar);
+            console.log("Borro todo" + texto_mostrar);
           }
         });
       //this.audioannotationArregloDelete
@@ -828,34 +832,28 @@ export default {
       this.notas_audioannotations.forEach((element) => {
         element.borrar = false;
       });
-      // await self.axios
-      //   .get(`/audioannotations/api/index/` + self.collectionId + `/${page}`)
-      //   .then((response) => {
-      //     self.notas_audioannotations = response.data.itemsList;
-      //     self.paginacion = response.data.paginator;
-      //     self.pagina = self.paginacion;
-      //     //console.log(response.data)
-      //   });
     },
   },
   async mounted() {
     var self = this;
-    self.axios.get("i18n").then((response) => {
-      self.idioma = response.data.LANGUAGE;
-      if (self.idioma === "es") {
-        console.log("esta en español");
-        this.$i18n.locale = "es";
-      } else if (self.idioma === "en") {
-        console.log("esta en ingles");
-        this.$i18n.locale = "en";
-      }
-    });
+
     let collectionId = window.location.pathname.split("/").pop();
     self.collectionId = collectionId;
     try {
+      self.axios.get("/i18n").then((response) => {
+        self.idioma = response.data.LANGUAGE;
+        if (self.idioma === "es") {
+          // console.log("esta en español");
+          this.$i18n.locale = "es";
+        } else if (self.idioma === "en") {
+          //console.log("esta en ingles");
+          this.$i18n.locale = "en";
+        }
+      });
+
       let response = await this.axios.get(`/collections/api/read/${collectionId}`);
       this.collectionName = response.data.name;
-      console.log(self.collectionId);
+      //console.log("Aqui esta el id de la coleccion"+self.collectionId);
       this.collectionDescription = response.data.description;
       this.languageGroupName = response.data.languages[0].LanguageGroup.name;
       this.languageGroupId = response.data.languages[0].LanguageGroup.gid;

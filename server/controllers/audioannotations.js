@@ -130,7 +130,7 @@ const filtrarAudioannotation = async(req, res) => {
 
         const options = {
             page: req.params.page,
-            limit: 2,
+            limit: 5,
             sort: { title: 1 },
             populate: 'collection_id',
             customLabels: myCustomLabels,
@@ -175,7 +175,7 @@ const api_indexAudioannotationsByCollection = async(req, res) => {
 
         const options = {
             page: req.params.page,
-            limit: 2,
+            limit: 5,
             sort: { title: 1 },
             populate: 'colection',
             customLabels: myCustomLabels,
