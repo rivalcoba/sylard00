@@ -44,6 +44,7 @@ import Main7 from '@client/templates/main7.vue'
 import App4 from '@client/templates/main4.vue'
 import App5 from '@client/templates/main5.vue'
 import App6 from '@client/templates/main6.vue'
+import MainUser from '@client/templates/MainUser.vue'
 //AQUÍ TERMINAN
 import en from '@client/templates/lang/locals/en_US'
 import es from '@client/templates/lang/locals/es_MX'
@@ -224,7 +225,17 @@ if (window.location.pathname.match(/\/audioannotations\/edit\//)) {
     })
 }
 
-
+if (window.location.pathname == `/user`) {
+    //if(window.location.pathname == /audioannotations/vuetest){ 
+    // window.Vue = Vue
+    Vue.use(VueAxios, axios);
+    //Vue.component("Usuarios", Usuarios);
+    window.vm = new Vue({
+        el: '#appmainuser',
+        i18n,
+        render: h => h(MainUser)
+    })
+}
 
 // No se puede cargar script condicionalmente
 if (window.location.pathname.match(/\/collections\/edit\//)) {
