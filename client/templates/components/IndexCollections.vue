@@ -176,19 +176,8 @@
                 <button class="dropdown-trigger" @click="elipsis(index)">
                   <span class="icono_accion_tabla icon-ellipsis-v"></span>
                 </button>
-                <!--<div class="contenedor_opciones_elipsis">
-                  <a
-                    v-bind:href="'/collections/delete/' + item2._id"
-                    class="btn_opciones_ellipsis_mis_colecciones"
-                    ><span class="icono_opcion_elipsis icon-edit"></span> Eliminar</a
-                  >
-                </div>-->
-                <!--TODO FALTA APLICAR LAS RUTAS DE CARGA, EDICIÓN, ELIMINANCIÓN Y HABILITAR EL ELIPISIS
-              <div v-if="bandera_elipsiss">    bandera_elipsiss:false,
-      activeClass: 'contenido_modal_elipsis',  
-                <div v-if=elipsis"> -->
-               <div v-if="item_index==index"  v-bind:class="{ contenido_modal_elipsis: bandera_elipsiss }">
-                  <span class="icono_cerrar_modal_elipsis icon-close"></span>
+               <div v-if="item_index==index"  v-bind:class="{ contenido_modal_elipsis: bandera_elipsiss }" v-bind:style="contenido_modal_elipsis">
+                  <span v-on:click="elipsis($event)" class="icono_cerrar_modal_elipsis icon-close"></span>
                   <div class="contenedor_opciones_elipsis">
                     <a v-bind:href="'/audioannotations/create'" class="btn_opciones_ellipsis_mis_colecciones"
                       ><span class="icono_opcion_elipsis icon-file_upload"></span> Cargar
@@ -198,8 +187,8 @@
                       ><span class="icono_opcion_elipsis icon-edit"></span> Editar
                       metadatos</a
                     >
-                      <a
-                      v-bind:href="'/collections/delete/' + item2._id"
+                      <a href=""
+                      @click.prevent="borrarCollection(item2._id)"
                         class="btn_opciones_ellipsis_mis_colecciones"
                         ><span class="icono_opcion_elipsis icon-delete"></span>
                         Eliminar</a
@@ -307,12 +296,23 @@ export default {
       idioma: "es",
       bandera_elipsiss:true,
       activeClass: 'contenido_modal_elipsis',
-      item_index:"" 
+      item_index:"",
+       contenido_modal_elipsis:{
+      background: '#fefefe',
+      width: '13rem !important',
+      position: 'absolute !important',
+      top: '-34px !important',
+      left: '-8.25rem !important',
+      border: '2px solid var(--color-primario-principal)',
+      "border-radius": '.375rem',
+      "z-index": '1'
+      } 
     };
   },
   methods: {
-    elipsis: function(index) {
+    elipsis: function(index, event) {
       if (this.bandera_elipsiss) {
+        if (event) event.preventDefault()
         this.bandera_elipsiss=false
           this.item_index=index 
         
@@ -329,31 +329,28 @@ export default {
       var currentUrl = window.location.pathname;
       const url = `${currentUrl}/delete/${collection_id}`;
       // /audioannotations/delete/{{_id}}?_method=DELETE
-      console.log(url);
-      this.axios
-        .delete(url)
-        // .then(res => {
-        //               if (res.data === 'ok')
-        //                   commit('DELETE_POST', audioannotation_id)
-        //           }).catch(err => {
-        //           console.log(err)
-        //       })
-        .then(
-          (response) => {
-            console.log("si se borro " + collection_id);
-            let index = this.notas_audioannotations.findIndex(
-              (item) => item._id === collection_id
-            );
-            console.log(index);
-            this.notas_audioannotations.splice(index, 1);
-            console.log(url);
-          },
-          (error) => {
-            console.log("no se borro " + "/collections/delete/" + collection_id);
-            console.log(url);
-            console.log(error);
-          }
-        );
+      console.log(url)
+      this.axios.delete(url)
+      // .then(res => {
+      //               if (res.data === 'ok')
+      //                   commit('DELETE_POST', audioannotation_id)
+      //           }).catch(err => {
+      //           console.log(err)
+      //       })
+      .then(
+        (response) => {
+          console.log("si se borro "+collection_id);
+           let index = this.notas_audioannotations.findIndex(item => item._id === collection_id)
+           console.log(index);
+            this.notas_audioannotations.splice(index, 1)
+          console.log(url);
+        },
+        (error) => {
+          console.log("no se borro " + "/collections/delete/" + collection_id);
+          console.log(url);
+          console.log(error);
+        }
+      );
     },
     showCollect(title,  text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
@@ -549,7 +546,7 @@ export default {
       }
 
       var self = this;
-      self.axios.get("collections/api/read_all/" + page).then((response) => {
+      self.axios.get("collections/api/pag/" + page).then((response) => {
         self.notas_audioannotations = response.data.itemsList;
         self.paginacion = response.data.paginator;
         self.pagina = self.paginacion;
@@ -559,7 +556,7 @@ export default {
   },
   mounted() {
     var self = this;
-    self.axios.get("collections/api/read_all/1").then((response) => {
+    self.axios.get("collections/api/pag/1").then((response) => {
       self.notas_audioannotations = response.data.itemsList;
       self.paginacion = response.data.paginator;
       self.pagina = self.paginacion;

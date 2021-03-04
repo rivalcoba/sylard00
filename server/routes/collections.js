@@ -40,11 +40,7 @@ router.get('/index/:collectionId',
     ensureColabUser,
     collectionsController.indexCollection)
 
-//Dashboard Collection
-router.get('/index/readonly/:collectionId',
-    ensureAuthenticated,
-    //ensureColabUser,
-    collectionsController.indexReadonlyCollection)
+
 
 // Show the edition of a collection form
 router.get(
@@ -84,6 +80,13 @@ router.get(
     /*ensureAuthenticated,
     ensureColabUser,*/ // TODO: Uncomment to protect route
     collectionsController.api_getCollectionAll
+)
+// Requiere autenticación
+router.get(
+    '/api/pag/:page',
+    ensureAuthenticated,
+    ensureColabUser,
+    collectionsController.api_getPagCollectionByUser
 )
 
 router.get('/api/index/:userId',
