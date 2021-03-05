@@ -1,9 +1,152 @@
 <div id="appmainuser">
 <CompUsuarios></CompUsuarios>
 
-<<<<<<< HEAD
 </div>
-=======
+<main>
+  <div class="container-fluid" id="contenedor_administrador_usuarios">
+    <div class="container-fluid" id="cabezal_administrador_usuarios">
+      <div class="container">
+        <div
+          class="col-sm-12"
+          id="contenedor_items_cabezal_administrador_usuarios"
+        >
+          <div class="" id="contenedor_titulos_cabezal_administrador_usuarios">
+            <h1 id="titulo_administrador_usuarios">
+              <span class="icono_cabezal icon-group1"></span>
+              Usuarios
+            </h1>
+            <h2 class="llamada" id="llamada_administrador_usuarios">
+              Aquí están los colaboradores y consumidores de SYLARD
+            </h2>
+            <h3 class="blanco">
+              ¡Recuerde revisar y tener cuidado al editar!
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="container">
+      <div
+        class="col-sm-12 contenedor-90vh"
+        id="contenedor_general_todos_los_usuarios"
+      >
+        <div class="contenedor_tabla_todos_los_usuarios">
+          <table class="tabla_todos_los_usuarios">
+            <thead>
+              <th class="cabezal_columnas_th" id="th_acciones_generales">
+                <div class="contenedor_acciones_generales">
+                  <input
+                    onclick="toggleAllCheckBoxes()"
+                    type="checkbox"
+                    class="input_checkbox_cabezal_columna"
+                    id="masterCheckBox"
+                  />
+                  <button onclick="pageScripts.deleteUsers(selectedUsers)" class="btn-eliminar_seleccionados">
+                    <span
+                      class="icono_boton_eliminar_audioanotaciones icon-delete"
+                    ></span>
+                  </button>
+                </div>
+              </th>
+              <th class="cabezal_columnas_th" id="th_usuario" colspan="2">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Usuario
+                  </label>
+                  <button class="flecha_orden_ascendente">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  placeholder="Búsqueda"
+                />
+              </th>
+              <th class="cabezal_columnas_th" id="th_lenguas_habladas">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Lenguas habladas
+                  </label>
+                  <button class="flecha_orden_ascendente">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  placeholder="Búsqueda"
+                />
+              </th>
+              <th
+                class="cabezal_columnas_th"
+                id="privilegios_administrador_usuarios"
+              >
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                  Vis - Privilegios - Col
+                  </label>
+                  <button class="flecha_orden_ascendente active">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  list="usuarios_privilegios"
+                  name="privilegios_usuario"
+                  id="input_selector_ privilegios_usuario"
+                  placeholder="N. D."
+                  disabled
+                />
+                <datalist id="usuarios_privilegios">
+                  <option value="Colaborador"></option>
+                  <option value="Invitado"></option>
+                </datalist>
+              </th>
+              <th class="cabezal_columnas_th">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Descripción del usuario
+                  </label>
+                </div>
+                <input
+                  class="input_busqueda_invisible"
+                  type="search"
+                  placeholder="No disponible"
+                  disabled
+                />
+              </th>
+              <th class="cabezal_columnas_th">
+                <div class="contenedor_etiquetas_barras_busqueda">
+                  <label class="label label_junto_flechas">
+                    Colecciones
+                  </label>
+                  <button class="flecha_orden_ascendente">
+                    <span class="icon-arrow-up"></span>
+                  </button>
+                  <button class="flecha_orden_descendente">
+                    <span class="icon-arrow-down"></span>
+                  </button>
+                </div>
+                <input
+                  class="input_busqueda"
+                  type="search"
+                  placeholder="Búsqueda"
+                />
+              </th>
+              <th class="" id="th_acciones_administrador_usuarios"></th>
+            </thead>
+
             <!-- INICIA TABLE ROW -->
             {{#each usersObjs}}
             <tr id="{{_id}}" class="">
@@ -85,11 +228,11 @@
                   <div id="modal_elipsis{{@index}}" class="contenido_modal_elipsis">
                     <span onclick="closeModal('{{@index}}')" class="icono_cerrar_modal_elipsis icon-close"></span>
                     <div class="contenedor_opciones_elipsis">
-                      <a class="btn_opciones_ellipsis_mis_colecciones" href="/user/su/edit/{{_id}}">
+                      <a class="btn_opciones_ellipsis_mis_colecciones" href="/user/edit/{{_id}}">
                         <span class="icono_opcion_elipsis icon-edit"></span>
                         Editar usuario
                       </a>
-                      <a class="btn_opciones_ellipsis_mis_colecciones" href="/user/su/delete/{{_id}}">
+                      <a class="btn_opciones_ellipsis_mis_colecciones" href="/user/delete/{{_id}}">
                         <span class="icono_opcion_elipsis icon-delete"></span>
                         Eliminar
                       </a>
@@ -242,4 +385,3 @@ let toggleAllCheckBoxes = function(){
   })
 }
 </script>
->>>>>>> 08e3c44a655c805db24dc75d3bb9f8c18adc1350
