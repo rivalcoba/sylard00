@@ -1415,6 +1415,13 @@ input:checked+.slider_general:before {
 }
 
 
+/*CLASE EN IMAGENES*/
+
+#huichol_img_registro {
+    width: 35%;
+}
+
+
 /*ELEMENTOS REGISTRO*/
 
 #contenedor_registro {
@@ -3137,6 +3144,12 @@ tr.selected {
     background-color: var(--color-seleccion);
     border-left: 4px solid var(--amarillo);
     border-right: 4px solid var(--amarillo);
+}
+
+.contenedor_terms_registro {
+    padding-left: 1.5rem;
+    float: left;
+    padding-bottom: .5625rem;
 }
 
 .contenedor_checkbox {
