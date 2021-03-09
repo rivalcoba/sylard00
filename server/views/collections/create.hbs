@@ -5,10 +5,10 @@
         <div class="" id="contenedor_titulos_cabezal_agregar_coleccion">
           <h1 id="titulo_agregar_coleccion">
             <span class="icono_cabezal icon-create_new_folder"></span>
-            {{translation.ADD_COLLECTION}}
+            {{translation.SYLARDCOLLECTIONS.ADD_COLLECTION}}
           </h1>
           <h2 class="llamada" id="llamada_agregar_coleccion">
-            {{translation.COMPLETE_FIELDS}}
+            {{translation.SYLARDCOLLECTIONS.COMPLETE_FIELDS}}
           </h2>
         </div>
       </div>
@@ -26,14 +26,14 @@
             id="nombre_de_la_coleccion"
             for="nombre_coleccion"
           >
-            {{translation.NAME_COLLECTION}}
+            {{translation.SYLARDCOLLECTIONS.NAME_COLLECTION}}
           </label>
           <input
             class="input_ancho_completo"
             type="text"
             id="name"
             name="name"
-            placeholder="{{translation.SHORT_TITLE}}"
+            placeholder="{{translation.SYLARDCOLLECTIONS.SHORT_TITLE}}"
             maxlength="120"
             required
             
@@ -55,14 +55,14 @@
             id="descripcion_de_la_coleccion"
             for="descripcion_coleccion_input"
           >
-            {{translation.DESC_COLLECTION}}
+            {{translation.SYLARDCOLLECTIONS.DESC_COLLECTION}}
           </label>
           <textarea
             class="input_ancho_completo"
             type="textarea"
             name="description"
             id="description"
-            placeholder="{{translation.DESC_COLLECTION_}}"
+            placeholder="{{translation.SYLARDCOLLECTIONS.DESC_COLLECTION_}}"
             maxlength="200"
             rows="5"
             required
@@ -70,18 +70,18 @@
           ></textarea>
         </div>
         <p class="label" id="lenguas_de_la_coleccion">
-          {{translation.LANG_COLLECTION}}
+          {{translation.SYLARDCOLLECTIONS.LANG_COLLECTION}}
         </p>
         <div class="contenedor_etiqueta_agregar_coleccion_lenguas">
           <div class="contenedor_inputs_agregar_coleccion_lengua">
             <div class="modulo_inputs_lengua" id="">
               <label class="label label_al_100">
-                {{translation.tabla_audioannotation.Lenguaterminal}}:
+                {{translation.SYLARDCOLLECTIONS.LENGUAGUET}}
               </label>
              <input 
               id="language" 
               type="text" 
-              placeholder="{{translation.SELECT_AN_OPTION}}"
+              placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}"
               class="input_flexible"
               onfocus="pageScripts.disableLanguageGroupBox()"
               onblur="pageScripts.enableLangGroup()"
@@ -110,13 +110,13 @@
             </div>
             <div class="modulo_inputs_lengua">
               <label class="label label_al_100">
-                {{translation.tabla_audioannotation.gpo_de_lengua}}
+                {{translation.SYLARDCOLLECTIONS.GROUP_LANG}}
               </label>
               <input 
               disabled 
               id="langGroup" 
               name="langGroup"
-              placeholder="{{translation.SELECT_AN_OPTION}}"
+              placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}"
               list="groupLanglist"
               type="text"
               onfocus="pageScripts.enableAddButton()"
@@ -144,7 +144,7 @@
           </div>
           <div class="contenedor_lenguas_agregadas">
             <p class="label">
-              {{translation.tabla_coleccion.langAdd}}
+              {{translation.SYLARDCOLLECTIONS.LAG_ADS}}
             </p>
             <table class="tabla_lenguas_agregadas">
               <thead></thead>
@@ -154,14 +154,14 @@
           </div>
         </div>
         <p class="label" id="comunidades_de_la_coleccion">
-          {{translation.tabla_coleccion.comunidades_coll}}
+             {{translation.SYLARDCOLLECTIONS.COMUNITY}}
         </p>
         <div class="contenedor_etiqueta_agregar_coleccion_comunidad">
           <div class="contenedor_inputs_agregar_coleccion_comunidad2">
             <div class="contenedor_inputs_boton_lateral">
               <div class="modulo_inputs_comunidad2" id="">
                 <label class="label label_al_100">
-                  {{translation.COUNTRYY}}:
+                  {{translation.SYLARDCOLLECTIONS.COUNTRY}}
                 </label>
                 <input type="text" class="input_flexible" placeholder="México" disabled/>
                 <div class="contenedor_icono_correcto_input">
@@ -177,11 +177,11 @@
               </div>
               <div class="modulo_inputs_comunidad2" id="">
                 <label class="label label_al_100">
-                  {{translation.Entity}}:
+                  {{translation.SYLARDCOLLECTIONS.ENTITY}}
                 </label>
                 <input 
                 type="text" 
-                placeholder="{{translation.SELECT_AN_OPTION}}"
+                placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}"
                 class="input_flexible"
                 onblur="pageScripts.fillMunicipalitiesDataList()"
                 onfocus="pageScripts.disableMunicipality();pageScripts.disableLocality()"
@@ -209,11 +209,11 @@
               </div>
               <div class="modulo_inputs_comunidad2">
                 <label class="label label_al_100">
-                  {{translation.Municipality}}:
+                  {{translation.SYLARDCOLLECTIONS.MUNICIPALITY}}
                 </label>
                 <input 
                 disabled 
-                placeholder="{{translation.SELECT_AN_OPTION}}"
+                placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}"
                 onblur="pageScripts.fillLocalitiesDataList()" 
                 onfocus="pageScripts.disableLocality()"
                 type="text" list="municipalities" id="municipality"
@@ -233,10 +233,10 @@
               </div>
               <div class="modulo_inputs_comunidad2">
                 <label class="label label_al_100">
-                  {{translation.Locality}}:
+                  {{translation.SYLARDCOLLECTIONS.LOCALITY}}
                 </label>
                 <input  
-                placeholder="{{translation.SELECT_AN_OPTION}}"
+                placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}"
                 disabled
                 type="text" 
                 class="input_flexible" 
@@ -258,7 +258,7 @@
               </div>
               <div class="modulo_inputs_comunidad2" id="">
                 <label class="label label_al_100">
-                  {{translation.Latitude}}:
+                  {{translation.SYLARDCOLLECTIONS.LATITUD}}
                 </label>
                 <input type="text" id="lat" class="input_flexible"  disabled/>
                 <div class="contenedor_icono_correcto_input">
@@ -274,7 +274,7 @@
               </div>
               <div class="modulo_inputs_comunidad2" id="">
                 <label class="label label_al_100">
-                  {{translation.Longitude}}:
+                  {{translation.SYLARDCOLLECTIONS.LONGITUDE}}:
                 </label>
                 <input type="text" id="long" class="input_flexible"  disabled/>
                 <div class="contenedor_icono_correcto_input">
@@ -297,7 +297,7 @@
           </div>
           <div class="contenedor_comunidades_agregadas">
             <p class="label">
-              {{translation.Communities_add}}
+              {{translation.SYLARDCOLLECTIONS.COMUNITIES_ADD}}
             </p>
             <table class="tabla_comunidades_agregadas">
               <thead></thead>
@@ -309,10 +309,10 @@
         <div class="contenedor_licencia_y_botones_agregar_coleccion">
           <div class="contenedor_licencia">
             <label class="label" for="licencia">
-              {{translation.Content_license}}
+              {{translation.SYLARDCOLLECTIONS.CONTENT_LICENSE}}
             </label>
             <input type="text" 
-            placeholder="{{translation.SELECT_AN_OPTION}}" 
+            placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}" 
             name="license" 
             id="license"
             list="licenseType">
@@ -337,14 +337,14 @@
               class="btn btn-secundario"
               id="boton_restablecer_agregar_coleccion"
             >
-              {{translation.RESTORE}}
+              {{translation.SYLARDCOLLECTIONS.RESTORE}}
             </button>
             <button
               type="submit"
               class="btn btn-primario"
               id="boton_guardar_agregar_coleccion"
             >
-              {{translation.SAVE}}
+              {{translation.SYLARDCOLLECTIONS.SAVE}}
             </button>
           </div>
         </div>

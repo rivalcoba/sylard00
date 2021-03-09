@@ -12,22 +12,22 @@
       <div class="col-md-7 pt-3" id="columna_derecha_login">
         <div class="" id="columna_derecha_login_anidada">
           <h1>
-            {{translation.LOGIN_AUTH}}
+            {{translation.SYLARDLOGIN.LOGIN}}
           </h1>
           <h2 class="llamada" id="llamada_login">
-            {{translation.WELCOME}}
+            {{translation.SYLARDLOGIN.WELCOME}}
           </h2>
           <h3>
-            {{translation.TYPE_YOUR_USERNAME_AND_PASSWORD}}
+            {{translation.SYLARDLOGIN.TYPE_YOUR_USERNAME_AND_PASSWORD}}
           </h3>
           <br />
           <form class="formulario_contenedor_login" action="/auth/login/user" method="post">
             <div class="contenedor_inputs_login">
               <label class="label label_al_100" for="email">
                 <span class="icon-email"></span>
-                {{translation.EMAIL}}
+                {{translation.SYLARDLOGIN.EMAIL}}
               </label>
-              <input id="email" type="email" name="email" placeholder="{{translation.EMAIL_PLACEHOLDER}}" required />
+              <input id="email" type="email" name="email" placeholder="{{translation.SYLARDLOGIN.EMAIL_PLACEHOLDER}}" required />
               <div class="contenedor_icono_correcto_input">
                 <p>
                   <span class="icono_correcto_input icon-check_circle"></span>
@@ -42,9 +42,9 @@
             <div class="contenedor_inputs_login">
               <label class="label" id="label_pass_login" for="password">
                 <span class="icon-lock"></span>
-                {{translation.PASSWORD}}
+                {{translation.SYLARDLOGIN.PASSWORD}}
               </label>
-              <input id="password" type="password" name="password" placeholder="{{translation.PASSWORD_INTRODUCE}}"
+              <input id="password" type="password" name="password" placeholder="{{translation.SYLARDLOGIN.PASSWORD_INTRODUCE}}"
                 minlength="6" required />
               <div class="contenedor_icono_correcto_input">
                 <p>
@@ -63,10 +63,10 @@
             </div>
             <div class="contenedor_botones_login">
               <a class="" href="/user/reset/password">
-                {{translation.FORGOT_PASSWORD}}
+                {{translation.SYLARDLOGIN.FORGOT_PASSWORD}}
               </a>
               <button type="submit" id="boton_login" class="btn btn-primario">
-                {{translation.SUBMIT}}
+                {{translation.SYLARDLOGIN.SUBMIT}}
               </button>
             </div>
           </form>
