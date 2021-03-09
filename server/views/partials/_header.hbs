@@ -55,45 +55,45 @@
         <div class="contenido_dropdown_menu_usuario">
           {{#if user}}
           <a href="/user/edit"><span class="icono_dropdown_menu_usuario_item icon-edit"></span>
-            {{translation.EDIT_USER}}</a>
+            {{translation.HEADER.EDIT_USER}}</a>
           <a href="/user/edit/password"><span class="icono_dropdown_menu_usuario_item icon-key1"></span>
-            {{translation.EDIT_PASSWORD}}</a>
+            {{translation.HEADER.EDIT_PASSWORD}}</a>
           {{/if}}
           <a href="#"><span class="icono_dropdown_menu_usuario_item icon-folder-open-o"></span>
-            {{translation.EXPLORE}}</a>
+            {{translation.HEADER.EXPLORE}}</a>
           {{#ifColaborator user}}
           <a href="/collections">
-            <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+            <i class="fa fa-book"></i> {{translation.HEADER.MY_COLLECTIONS}}
           </a>
           {{/ifColaborator}}
            {{#ifSu user}}
       <a href="/collections">
-        <i class="fa fa-book"></i> {{translation.MY_COLLECTIONS}}
+        <i class="fa fa-book"></i> {{translation.HEADER.MY_COLLECTIONS}}
       </a>
       {{/ifSu}}
 
       {{#ifSu user}}
       <a href="/user">
-        <i class="fa fa-book"></i> Usuarios
+        <i class="fa fa-book"></i> {{translation.HEADER.USERS}}
       </a>
       {{/ifSu}}
 
           {{#hideIfSu user}}
           <a href="/dashboard">
-            <i class="fa fa-table"></i> {{translation.CATALOGUE}}
+            <i class="fa fa-table"></i> {{translation.NAVBAR.CATALOGUE}}
           </a>
           {{/hideIfSu}}
           <a class="dropdown_menu_usuario_logout" href="/auth/logout"><span
-              class="icono_dropdown_menu_usuario_item icon-log-out"></span> {{translation.LOGOUT}}</a>
+              class="icono_dropdown_menu_usuario_item icon-log-out"></span> {{translation.HEADER.LOGOUT}}</a>
         </div>
         {{else}}
         <a id="login" href="/auth/login">
-          {{translation.LOGIN}} <span class="icono icon-login"></span></a>
+          {{translation.HEADER.LOGIN}} <span class="icono icon-login"></span></a>
       </div>
       <div class="barra_superior_elemento float_right">
         {{!-- {{#unless onRegisterPage}}--}}
         <a id="register" href="/auth/register">
-          {{translation.REGISTER}} <span class="icono icon-person"></span>
+          {{translation.HEADER.REGISTER}} <span class="icono icon-person"></span>
         </a>
         {{!-- {{/unless}} PERMITE OCULTAR LE BARRA DE NAVEGACIÓN DE REGISTRO--}}
         {{/if}}

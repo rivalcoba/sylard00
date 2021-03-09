@@ -142,6 +142,11 @@ const resetPassword = (req, res) => {
     title: 'SYLARD Editar Cuenta',
   })
 }
+const indexUsuarios = (req, res) => {
+  res.render('/user', {
+    title: 'Usuarios Index',
+  })
+}
 
 const resetUserPassword = async (req, res) => {
   // Se busca usuario con el password
@@ -300,5 +305,6 @@ export default {
   api_getUsers,
   api_delUsers,
   api_toggleUserPrivileges,
-  delById
+  delById,
+  indexUsuarios
 }
