@@ -3216,6 +3216,26 @@ tr.selected {
     color: white;
 }
 
+#contenedor_mensaje_promocion_a_colaborador {
+    background-color: var(--color-primario-principal-oscuro);
+}
+
+#llamada_colaborador_activo {
+    color: var(--color-primario-principal);
+}
+
+#icono_principal_mensaje_promocion_a_colaborador {
+    color: var(--color-primario-principal);
+}
+
+#mensaje_promocion_a_colaborador {
+    color: var(--color-primario-principal);
+}
+
+.correo_usuario_mensaje_promocion_a_colaborador {
+    color: white;
+}
+
 .contenedor_establecer_origen_archivos_audioanotacion {
     width: 100%;
     display: flex;
