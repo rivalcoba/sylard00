@@ -33,11 +33,18 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 },
-            },
+                
+            }, 
             {
                 test: /\.vue$/,
                 use: {
                     loader: 'vue-loader',
+                },
+            },
+            {
+                test: /\.(ttf|eot|woff|woff2)$/,
+                use: {
+                    loader: 'file-loader',
                 },
             },
             {

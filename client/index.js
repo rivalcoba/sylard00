@@ -49,6 +49,15 @@ import MainUser from '@client/templates/MainUser.vue'
 import en from '@client/templates/lang/locals/en_US'
 import es from '@client/templates/lang/locals/es_MX'
 
+//data tables
+import ElementUI from 'element-ui'
+import '../node_modules/element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
+
+Vue.config.productionTip = false
+
+//----
+
 //Intern
 import VueI18n from "vue-i18n";
 Vue.use(VueI18n);
