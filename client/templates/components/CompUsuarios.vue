@@ -3,6 +3,15 @@
   <div class="col-sm-12 contenedor-90vh" id="contenedor_general_mis_colecciones">
       <div class="contenedor_tabla_mis_colecciones">
  <div class="content">
+    <div class="block" style="margin-top:15px;">
+            <el-pagination align='center' @size-change="handleSizeChange" @current-change="handleCurrentChange" 
+            :current-page="currentPage" 
+            :page-sizes="[5,10,20,100,total_registros]" 
+            :page-size="pageSize" 
+            layout="total, sizes, prev, pager, next, jumper" 
+            :total="result.length">
+            </el-pagination>
+        </div>
        <el-input
           v-model="search"
           size="mini"
@@ -10,7 +19,7 @@
           class="contenedor_etiquetas_barras_busqueda"
           />
       <el-table
-    :data="result.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()) || data.email.toLowerCase().includes(search.toLowerCase()) || data.role.toLowerCase().includes(search.toLowerCase()) || data.about.toLowerCase().includes(search.toLowerCase()))"
+   :data="result.slice((currentPage-1)*pageSize,currentPage*pageSize)"
     :default-sort = "{prop: 'date', order: 'descending'}"
     style="width: 100%"
     class="tabla_todos_los_usuarios"
@@ -63,7 +72,12 @@ import axios from "axios";
 export default {
   data: () => ({
     result: [],
-     search: ''
+     search: '',
+     total_registros:0,
+
+                                         currentPage: 1, // número de página actual
+                                         total: 200, // número total
+                                         pageSize: 5 // Número de datos por página
   }),
   methods:{
       formatter(row) {
@@ -81,10 +95,23 @@ export default {
          handleSelectionChange(val) {
         this.multipleSelection = val;
       }
+      ,// Se activa cuando cambia el número de entradas por página Seleccione cuántas líneas mostrar en una página
+                handleSizeChange(val) {
+                                         console.log (`$ {val} por página`);
+                    this.currentPage = 1;
+                    this.pageSize = val;
+                },
+                                 // Se activa cuando cambia la página actual Saltar a otras páginas
+                handleCurrentChange(val) {
+                                         console.log (`Página actual: $ {val}`);
+                    this.currentPage = val;
+                }
   },
   created() {
     axios.get("/user/api/getusers").then((result) => {
       this.result = result.data;
+      this.total_registros=this.result.length;
+      
     })
   }
 };
