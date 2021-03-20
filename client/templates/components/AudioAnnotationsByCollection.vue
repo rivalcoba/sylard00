@@ -605,40 +605,17 @@ export default {
         },
       });
     },
-    borrarTodasAudioannotations(valores){
-      let audioannotationsIds=""
-      let cont=0
-      valores.forEach(element => {
-        //audioannotationsIds=audioannotationsIds+"audioannotationsIds="+element
-        cont ++
-        console.log(cont)
-        if (cont>1) {
-           audioannotationsIds=audioannotationsIds+"&audioannotationsIds="+element
-        }else 
-        {
-           audioannotationsIds=audioannotationsIds+"audioannotationsIds="+element
-        }
-      });
-      console.log("estos son los parametros"+audioannotationsIds)
-      console.log("Valores a Borrar ")
-      console.log(audioannotationsIds)
-       var currentUrl = window.location.pathname;
-      const url = `/audioannotations/api/delete/?${audioannotationsIds}`;
-      // /audioannotations/delete/{{_id}}?_method=DELETE
+    borrarTodasAudioannotations(audioannotationsIds){
+      console.log(`Valores a Borrar: ${audioannotationsIds}`)
+      var currentUrl = window.location.pathname;
+      const url = `/audioannotations/api/delete`;
       console.log(url);
       this.axios
-        .delete(url)
-        // .then(res => {
-        //               if (res.data === 'ok')
-        //                   commit('DELETE_POST', audioannotation_id)
-        //           }).catch(err => {
-        //           console.log(err)
-        //       })
+        .delete(url,{ data: {audioannotationsIds}})
         .then(
           (response) => {
-            console.log("si se borro " + valores); 
-            this.getPage(this.pagina.currentPage)          
-           
+            console.log("si se borro " + response); 
+            this.getPage(this.pagina.currentPage)           
           },
           (error) => {
             console.log(
