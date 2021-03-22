@@ -51,6 +51,7 @@ import es from '@client/templates/lang/locals/es_MX'
 
 //data tables
 import ElementUI from 'element-ui'
+import vuetify from './plugins/vuetify';
 import '../node_modules/element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 
@@ -237,9 +238,13 @@ if (window.location.pathname.match(/\/audioannotations\/edit\//)) {
 if (window.location.pathname == `/user`) {
     //if(window.location.pathname == /audioannotations/vuetest){ 
     // window.Vue = Vue
+    Vue.use(ElementUI)
+
+Vue.config.productionTip = false
     Vue.use(VueAxios, axios);
     //Vue.component("Usuarios", Usuarios);
     window.vm = new Vue({
+        vuetify,
         el: '#appmainuser',
         i18n,
         render: h => h(MainUser)
