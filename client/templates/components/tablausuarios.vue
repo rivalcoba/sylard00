@@ -2,7 +2,6 @@
   <v-card>
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
-
     <v-card-title>
       <v-text-field
         v-model="search"
@@ -28,6 +27,7 @@
   </v-card>
 </template>
 <script>
+import 'vuetify/dist/vuetify.min.css';
 import axios from "axios";
   export default {
     data () {
