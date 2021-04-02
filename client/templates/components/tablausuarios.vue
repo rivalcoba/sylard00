@@ -27,7 +27,7 @@
   </v-card>
 </template>
 <script>
-import 'vuetify/dist/vuetify.min.css';
+//import 'vuetify/dist/vuetify.min.css';
 import axios from "axios";
   export default {
     data () {
