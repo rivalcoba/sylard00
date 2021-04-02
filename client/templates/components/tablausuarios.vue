@@ -29,17 +29,19 @@
 <script>
 //import 'vuetify/dist/vuetify.min.css';
 import axios from "axios";
+
   export default {
     data () {
       return {
         checkbox: true,
         arreglo_datos:[],
+        arreglo_datos_temp:[],
         search: '',
         selected: [],
         headers: [
           { text: 'Usuarios', value: 'name' },
           { text: 'email', value: 'email' },
-          { text: 'Lenguajes', value: 'spokenLanguages[0].name' },
+          { text: 'Lenguajes', value: 'lenguajes_concat' },
           { text: 'Privilegios', value: 'role' },
           { text: 'Descripcios', value: 'about' }
         ],
@@ -49,11 +51,25 @@ import axios from "axios";
       created() {
     axios.get("/user/api/getusers").then((result) => {
       this.arreglo_datos=this.result = result.data;
-      
-      for(let i=0;i<this.arreglo_datos.length;i++){
-        console.log(this.arreglo_datos[i].spokenLanguages[0]);
-      }
+      let objson_arr = this.arreglo_datos;
+       let arreglo_concat = "";
+        let jsonaumentado = [];
+        for(let x = 0 ; x<objson_arr.length;x++){
+           let temparrjson=objson_arr[x];
+            
+            for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
+                arreglo_concat =arreglo_concat + temparrjson.spokenLanguages[i].name + ", ";
+                temparrjson.lenguajes_concat=arreglo_concat;
+                jsonaumentado.push(temparrjson);
+            }
+            
+        }
+        console.log( jsonaumentado);
+        //this.arreglo_datos=jsonaumentado;
     })
+    
   }
+  
+  
   }
 </script>
