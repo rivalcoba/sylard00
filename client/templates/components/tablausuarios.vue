@@ -57,7 +57,7 @@ import axios from "axios";
         let jsonaumentado = [];
         for(let x = 0 ; x<objson_arr.length;x++){
            let temparrjson=objson_arr[x];
-            
+            arreglo_concat="";
             for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
                 arreglo_concat =arreglo_concat +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
                 temparrjson.lenguajes_concat=arreglo_concat;
