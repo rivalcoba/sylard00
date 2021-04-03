@@ -43,7 +43,8 @@ import axios from "axios";
           { text: 'email', value: 'email' },
           { text: 'Lenguajes', value: 'lenguajes_concat' },
           { text: 'Privilegios', value: 'role' },
-          { text: 'Descripcios', value: 'about' }
+          { text: 'Descripcios', value: 'about' },
+          { text: 'Collecciones' , value: 'collections'}
         ],
         
       }
@@ -58,7 +59,7 @@ import axios from "axios";
            let temparrjson=objson_arr[x];
             
             for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
-                arreglo_concat =arreglo_concat + temparrjson.spokenLanguages[i].name + ", ";
+                arreglo_concat =arreglo_concat +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
                 temparrjson.lenguajes_concat=arreglo_concat;
                 jsonaumentado.push(temparrjson);
             }
