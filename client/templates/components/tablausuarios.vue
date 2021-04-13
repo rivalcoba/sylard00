@@ -19,7 +19,30 @@
       item-key="_id"
       show-select
      class="elevation-1"
-    ></v-data-table>
+    >
+    <template v-slot:item.switch="{ item }">
+      <v-switch
+      color="info"
+      v-model="switch1"
+      :label="` ${switch1.toString()}`"
+    ></v-switch>
+    </template>
+     <template v-slot:item.actions="{ item }">
+      <v-icon
+        small
+        class="mr-2"
+        @click="editItem(item)"
+      >
+        mdi-pencil
+      </v-icon>
+      <v-icon
+        small
+        @click="deleteItem(item)"
+      >
+        mdi-delete
+      </v-icon>
+    </template>
+    </v-data-table>
     <v-checkbox
       v-model="checkbox"
       :label="`Checkbox 1: ${checkbox.toString()}`"
@@ -38,13 +61,16 @@ import axios from "axios";
         arreglo_datos_temp:[],
         search: '',
         selected: [],
+         switch1: true,
         headers: [
           { text: 'Usuarios', value: 'name' },
           { text: 'email', value: 'email' },
           { text: 'Lenguajes', value: 'lenguajes_concat' },
           { text: 'Privilegios', value: 'role' },
+            { text: 'Switch' , value: 'switch', sortable:false},
           { text: 'Descripcios', value: 'about' },
-          { text: 'Collecciones' , value: 'collections'}
+          { text: 'Collecciones' , value: 'collections'},
+           { text: 'Actions', value: 'actions', sortable: false },
         ],
         
       }
