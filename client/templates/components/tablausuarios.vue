@@ -11,7 +11,7 @@
         hide-details
       ></v-text-field>
     </v-card-title>
-    <v-data-table
+      <v-data-table
      v-model="selected"
       :headers="headers"
       :items="arreglo_datos"
@@ -20,8 +20,15 @@
       show-select
      class="elevation-1"
     >
+      <template v-slot:item.name="{ item }">
+      <p><label for="">{{item.name}}</label></p>
+      <p><label for="">{{item.email}}</label></p>
+     
+    </template>
     <template v-slot:item.switch="{ item }">
+      <label for="">{{item._id}}</label>
       <v-switch
+      :key="item._id"
       color="info"
       v-model="switch1"
       :label="` ${switch1.toString()}`"
@@ -30,11 +37,12 @@
      <template v-slot:item.actions="{ item }">
       <v-icon
         small
-        class="mr-2"
+        class="icon-edit"
         @click="editItem(item)"
       >
-        mdi-pencil
       </v-icon>
+        <p></p>
+
       <v-icon
         small
         @click="deleteItem(item)"
@@ -43,10 +51,6 @@
       </v-icon>
     </template>
     </v-data-table>
-    <v-checkbox
-      v-model="checkbox"
-      :label="`Checkbox 1: ${checkbox.toString()}`"
-    ></v-checkbox>
   </v-card>
 </template>
 <script>
@@ -61,13 +65,12 @@ import axios from "axios";
         arreglo_datos_temp:[],
         search: '',
         selected: [],
-         switch1: true,
+         switch1: [],
         headers: [
-          { text: 'Usuarios', value: 'name' },
-          { text: 'email', value: 'email' },
+            { text:'Usuario', value:'name', sortable:true},
           { text: 'Lenguajes', value: 'lenguajes_concat' },
           { text: 'Privilegios', value: 'role' },
-            { text: 'Switch' , value: 'switch', sortable:false},
+          { text: 'Switch' , value: 'switch', sortable:false},
           { text: 'Descripcios', value: 'about' },
           { text: 'Collecciones' , value: 'collections'},
            { text: 'Actions', value: 'actions', sortable: false },
@@ -83,6 +86,7 @@ import axios from "axios";
         let jsonaumentado = [];
         for(let x = 0 ; x<objson_arr.length;x++){
            let temparrjson=objson_arr[x];
+           let 
             arreglo_concat="";//borrar por cada iteracion
             for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
                 arreglo_concat =arreglo_concat +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
