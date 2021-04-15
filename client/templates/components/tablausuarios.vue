@@ -26,11 +26,10 @@
      
     </template>
     <template v-slot:item.switch="{ item }">
-      <label for="">{{item._id}}</label>
       <v-switch
       :key="item._id"
       color="info"
-      v-model="switch1"
+      v-model="item.switch_toggle"
       :label="` ${switch1.toString()}`"
     ></v-switch>
     </template>
@@ -62,18 +61,19 @@ import axios from "axios";
       return {
         checkbox: true,
         arreglo_datos:[],
-        arreglo_datos_temp:[],
+        arreglo_datos_boleanos:[],
         search: '',
         selected: [],
          switch1: [],
         headers: [
             { text:'Usuario', value:'name', sortable:true},
           { text: 'Lenguajes', value: 'lenguajes_concat' },
-          { text: 'Privilegios', value: 'role' },
-          { text: 'Switch' , value: 'switch', sortable:false},
-          { text: 'Descripcios', value: 'about' },
+          //{ text: 'Privilegios', value: 'role' },
+          { text: 'Vis-Privilegios-Col' , value: 'switch', sortable:false},
+          { text: 'Descripcion', value: 'about' },
           { text: 'Collecciones' , value: 'collections'},
            { text: 'Actions', value: 'actions', sortable: false },
+        //   { text: 'algosaurio', value: 'switch_toggle', sortable: false },
         ],
         
       }
@@ -86,14 +86,22 @@ import axios from "axios";
         let jsonaumentado = [];
         for(let x = 0 ; x<objson_arr.length;x++){
            let temparrjson=objson_arr[x];
-           let 
-            arreglo_concat="";//borrar por cada iteracion
+           let arreglo_concat="";//borrar por cada iteracion
             for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
                 arreglo_concat =arreglo_concat +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
                 temparrjson.lenguajes_concat=arreglo_concat;
                 jsonaumentado.push(temparrjson);
             }
-            
+            //condiciones para agregar en la vista un boleano para manipular
+            if(temparrjson.role==="colaborator" || temparrjson.role==="su"){
+            temparrjson.switch_toggle=true;
+            jsonaumentado.push(temparrjson);
+            }
+             if(temparrjson.role==="visitor"){
+            temparrjson.switch_toggle=false;
+            jsonaumentado.push(temparrjson);
+            }
+          
         }
         console.log( jsonaumentado);
         //this.arreglo_datos=jsonaumentado;
