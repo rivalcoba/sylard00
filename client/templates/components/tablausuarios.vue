@@ -30,8 +30,10 @@
       :key="item._id"
       color="info"
       v-model="item.switch_toggle"
-      :label="` ${switch1.toString()}`"
+      :label="` ${item.switch_toggle.toString()}`"
+      @click="switch_toggle_role(item.switch_toggle,item._id);"
     ></v-switch>
+    <label for="">{{item.switch_toggle}}</label>
     </template>
      <template v-slot:item.actions="{ item }">
       <v-icon
@@ -44,7 +46,7 @@
 
       <v-icon
         small
-        @click="deleteItem(item)"
+        @click="deleteItem(item._id)"
       >
         mdi-delete
       </v-icon>
@@ -71,7 +73,7 @@ import axios from "axios";
           //{ text: 'Privilegios', value: 'role' },
           { text: 'Vis-Privilegios-Col' , value: 'switch', sortable:false},
           { text: 'Descripcion', value: 'about' },
-          { text: 'Collecciones' , value: 'collections'},
+          { text: 'Collecciones' , value: 'collections_concat'},
            { text: 'Actions', value: 'actions', sortable: false },
         //   { text: 'algosaurio', value: 'switch_toggle', sortable: false },
         ],
@@ -79,21 +81,27 @@ import axios from "axios";
       }
     },
       created() {
-    axios.get("/user/api/getusers").then((result) => {
+    axios.get("/user/api/getuserscollections").then((result) => {
       this.arreglo_datos=this.result = result.data;
       let objson_arr = this.arreglo_datos;
-       let arreglo_concat = "";
+       let arreglo_concat_lenguajes = "";
         let jsonaumentado = [];
         for(let x = 0 ; x<objson_arr.length;x++){
            let temparrjson=objson_arr[x];
-           let arreglo_concat="";//borrar por cada iteracion
+           let arreglo_concat_lenguajes="";//borrar por cada iteracion
+           let arreglo_concat_collections="";
             for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
-                arreglo_concat =arreglo_concat +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
-                temparrjson.lenguajes_concat=arreglo_concat;
+                arreglo_concat_lenguajes =arreglo_concat_lenguajes +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
+                temparrjson.lenguajes_concat=arreglo_concat_lenguajes;
                 jsonaumentado.push(temparrjson);
             }
+            for(let n=0;n<temparrjson.collectionsDocs.length;n++){
+              arreglo_concat_collections=arreglo_concat_collections+temparrjson.collectionsDocs[n].name+",";
+              temparrjson.collections_concat=arreglo_concat_collections;
+              jsonaumentado.push(temparrjson);
+            }
             //condiciones para agregar en la vista un boleano para manipular
-            if(temparrjson.role==="colaborator" || temparrjson.role==="su"){
+            if(temparrjson.role==="colaborator" ){
             temparrjson.switch_toggle=true;
             jsonaumentado.push(temparrjson);
             }
@@ -107,6 +115,25 @@ import axios from "axios";
         //this.arreglo_datos=jsonaumentado;
     })
     
+  },
+  methods:{
+    deleteItem(id){
+    
+    axios.delete('/user/api/delusers'+id);
+    console.log("eliminado: "+id);
+  }
+  ,
+  switch_toggle_role(stat,id){
+    let tipo_role="";
+    //console.log("Estado: "+stat+" id:"+id);
+    if(stat===false){
+      tipo_role="visitor";
+    }else{
+      tipo_role="colaborator";
+    }
+     axios.put("/user/api/toggleUserPrivileges/"+id);
+    console.log("El tipo ahora es: "+ tipo_role);
+  }
   }
   
   

@@ -93,16 +93,17 @@ import axios from "axios";
       let objson_arr = this.arreglo_datos;
        let arreglo_concat = "";
         let jsonaumentado = [];
+        let temparrjson=[];
         for(let x = 0 ; x<objson_arr.length;x++){
-           let temparrjson=objson_arr[x];
+            temparrjson=objson_arr[x];
            let arreglo_concat="";//borrar por cada iteracion
             for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
                 arreglo_concat =arreglo_concat +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
                 temparrjson.lenguajes_concat=arreglo_concat;
-                jsonaumentado.push(temparrjson);
+                
             }
             //condiciones para agregar en la vista un boleano para manipular
-            if(temparrjson.role==="colaborator" || temparrjson.role==="su"){
+            if(temparrjson.role==="colaborator"){
             temparrjson.switch_toggle=true;
             jsonaumentado.push(temparrjson);
             }
@@ -110,9 +111,15 @@ import axios from "axios";
             temparrjson.switch_toggle=false;
             jsonaumentado.push(temparrjson);
             }
+
+        }
+        //eliminar super usuario
+        for(let i=0;i<jsonaumentado.length;i++){
           
+          console.log( jsonaumentado[i].role+" n = " +i);
         }
         console.log( jsonaumentado);
+        jsonaumentado.push(temparrjson);
         //this.arreglo_datos=jsonaumentado;
     })
     

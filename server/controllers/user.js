@@ -245,7 +245,34 @@ const api_toggleUserPrivileges = async (req, res) => {
     res.status(500).json({ error: error.message })
   }
 }
+const api_getUsersCollections = async (req, res) => {
 
+  
+    // res.render('user/index', { usersObjs })
+    const usersObjs = await User.find({ role: { $ne: 'su' } })
+      .lean()
+      .exec()
+  
+    /*
+    #THESIS
+    REF: https://advancedweb.hu/how-to-use-async-functions-with-array-map-in-javascript/#:~:text=The%20map%20function,-The%20map%20is&text=An%20async%20version%20needs%20to,the%20results%20in%20an%20Array.
+    */
+    let usersDocs = await Promise.all(
+      usersObjs.map(async usr => {
+        
+        let collectionsDocs = await Collection.find({ 'user': usr._id })
+        usr.collectionsDocs = collectionsDocs.map(collectionDoc => {
+          return collectionDoc.toJSON()
+        })
+        return usr
+      })
+    )
+  
+  
+  res.status(200).json(usersDocs)
+
+
+}
 const api_getUsers = async (req, res) => {
   const usersDocuments = await User.find().exec()
   res.status(200).json(usersDocuments)
@@ -303,6 +330,7 @@ export default {
   index,
   delUsers,
   api_getUsers,
+  api_getUsersCollections,
   api_delUsers,
   api_toggleUserPrivileges,
   delById,
