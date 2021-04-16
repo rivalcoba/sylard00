@@ -34,6 +34,7 @@ router.get('/su/delete/:userId', ensureSuAuthenticated, userController.delById)
 
 // ============ ==> API <== ====================
 // TODO: Proteger RUTAS
+router.get('/api/getuserscollections', userController.api_getUsersCollections);
 router.get('/api/getusers', userController.api_getUsers);
 router.delete('/api/delusers', userController.api_delUsers);
 router.put('/api/toggleUserPrivileges/:userId', userController.api_toggleUserPrivileges)
