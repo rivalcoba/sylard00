@@ -1,8 +1,11 @@
 <template>
+
   <v-card>
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+
     <v-card-title>
+
       <v-text-field
         v-model="search"
         append-icon="mdi-magnify"
@@ -11,6 +14,9 @@
         hide-details
       ></v-text-field>
     </v-card-title>
+
+    
+
       <v-data-table
      v-model="selected"
       :headers="headers"
@@ -46,14 +52,31 @@
 
       <v-icon
         small
-        @click="deleteItem(item._id)"
+        @click="acivate_del_dialog(item._id,item)"
       >
         mdi-delete
       </v-icon>
     </template>
     </v-data-table>
+     <v-layout row justify-center>
+    <v-dialog v-model="dialog_del" persistent max-width="290">
+      <v-card>
+        <v-card-title class="headline">Desea eliminar este usuario?</v-card-title>
+        <v-card-text><h2>{{nameofuser}}</h2> </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="error" text  @click="close_dialogs()">No</v-btn>
+          <v-btn color="orange"  @click="deleteItem()">Si</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-layout>
   </v-card>
+  
+
+
 </template>
+
 <script>
 //import 'vuetify/dist/vuetify.min.css';
 import axios from "axios";
@@ -61,6 +84,10 @@ import axios from "axios";
   export default {
     data () {
       return {
+        dialog_del:false,
+        thing:[],
+        nameofuser:"",
+        id:"",
         checkbox: true,
         arreglo_datos:[],
         arreglo_datos_boleanos:[],
@@ -117,10 +144,21 @@ import axios from "axios";
     
   },
   methods:{
-    deleteItem(id){
-    
-    axios.delete('/user/api/delusers'+id);
-    console.log("eliminado: "+id);
+    acivate_del_dialog(id,thing){
+      this.dialog_del=true;
+      this.thing=thing;
+      this.id=id;
+      this.nameofuser=thing.name+" "+thing.lastName+" "+thing.secLastName;
+    },
+    close_dialogs(){
+      this.dialog_del=false;
+    },
+    deleteItem(){
+    const index = this.arreglo_datos.indexOf(this.thing);//busca objeto  en el arreglo y retorna su posicion en el 
+    this.arreglo_datos.splice(index,1);
+    axios.get('user/su/delete/'+this.id);
+    console.log("eliminado: "+this.id);
+     this.dialog_del=false;
   }
   ,
   switch_toggle_role(stat,id){
