@@ -59,9 +59,9 @@
     </template>
     </v-data-table>
      <v-layout row justify-center>
-    <v-dialog v-model="dialog_del" persistent max-width="290">
+    <v-dialog v-model="dialog_del" persistent max-width="600px">
       <v-card>
-        <v-card-title class="headline">Desea eliminar este usuario?</v-card-title>
+        <v-card-title class="headline">Esta seguro que desea eliminar este usuario?</v-card-title>
         <v-card-text><h2>{{nameofuser}}</h2> </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
