@@ -143,7 +143,7 @@ const resetPassword = (req, res) => {
   })
 }
 const indexUsuarios = (req, res) => {
-  res.render('/user', {
+  res.render('user', {
     title: 'Usuarios Index',
   })
 }
