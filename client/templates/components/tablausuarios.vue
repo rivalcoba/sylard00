@@ -1,6 +1,6 @@
 <template>
 
-  <v-card>
+  <v-container class="pa-2" outlined>
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
 
@@ -14,8 +14,18 @@
         hide-details
       ></v-text-field>
     </v-card-title>
+<v-card-subtitle>
+<v-btn color="secondary" @click="delete_all()">
+   <v-icon
+        small
+        
+      >
+        mdi-delete
+      </v-icon>
+</v-btn>
 
-    
+</v-card-subtitle>
+<v-card-text>
 
       <v-data-table
      v-model="selected"
@@ -34,18 +44,17 @@
     <template v-slot:item.switch="{ item }">
       <v-switch
       :key="item._id"
-      color="info"
+      color="secondary"
       v-model="item.switch_toggle"
-      :label="` ${item.switch_toggle.toString()}`"
       @click="switch_toggle_role(item.switch_toggle,item._id);"
     ></v-switch>
-    <label for="">{{item.switch_toggle}}</label>
+    
     </template>
      <template v-slot:item.actions="{ item }">
       <v-icon
         small
         class="icon-edit"
-        @click="editItem(item)"
+        @click="editItem(item._id)"
       >
       </v-icon>
         <p></p>
@@ -58,10 +67,11 @@
       </v-icon>
     </template>
     </v-data-table>
+    </v-card-text>    
      <v-layout row justify-center>
-    <v-dialog v-model="dialog_del" persistent max-width="290">
+    <v-dialog v-model="dialog_del" persistent max-width="600px">
       <v-card>
-        <v-card-title class="headline">Desea eliminar este usuario?</v-card-title>
+        <v-card-title class="headline">Esta seguro que desea eliminar este usuario?</v-card-title>
         <v-card-text><h2>{{nameofuser}}</h2> </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -71,7 +81,7 @@
       </v-card>
     </v-dialog>
   </v-layout>
-  </v-card>
+  </v-container>
   
 
 
@@ -159,6 +169,23 @@ import axios from "axios";
     axios.get('user/su/delete/'+this.id);
     console.log("eliminado: "+this.id);
      this.dialog_del=false;
+  },
+  delete_all(){ 
+    let arreglo = this.selected;
+    let question = confirm("¿esta seguro de eliminar los usuarios seleccionados?");
+    if(question==true){
+    arreglo.forEach(element => {
+    const index = this.arreglo_datos.indexOf(element);//busca objeto  en el arreglo y retorna su posicion en el 
+   this.arreglo_datos.splice(index,1);
+      axios.get('user/su/delete/'+element._id);
+    console.log("eliminado: "+element._id);
+    });
+    }
+  },
+  editItem(id){
+    axios.get('/user/su/edit/'+id);
+    window.location.href='/user/su/edit/'+id;
+   // console.log('/user/su/edit/'+id);
   }
   ,
   switch_toggle_role(stat,id){
