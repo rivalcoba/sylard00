@@ -238,7 +238,7 @@ if (window.location.pathname.match(/\/audioannotations\/edit\//)) {
 if (window.location.pathname == `/user`) {
     //if(window.location.pathname == /audioannotations/vuetest){ 
     // window.Vue = Vue
-    Vue.use(ElementUI)
+    
 
 Vue.config.productionTip = false
     Vue.use(VueAxios, axios);
