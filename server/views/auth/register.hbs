@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	let elemento_link = document.getElementById('register');
 	elemento_link.setAttribute("class", "active_a");
@@ -37,7 +38,7 @@
 					<h3>
 						{{translation.SYLARDREGISTER.COMPLETE_FIELDS}}
 					</h3>
-					<form action="/auth/register/user" method="post" role="form" class="formulario_contenedor">
+					<form id="register-form" action="/auth/register/user" method="post" role="form" class="formulario_contenedor">
 						<div id="selector_colaborador">
 							<p class="label">
 									{{translation.SYLARDREGISTER.STATUS}}
@@ -168,14 +169,10 @@
 								value="{{country}}">
 							<div class="contenedor_icono_correcto_input">
 								<p>
-									<span class="icono_correcto_input icon-check_circle"></span>
+									<span id="country_icon_verify" class="icono_error_input icon-error"></span>
 								</p>
 							</div>
-							<div class="contenedor_icono_error_input">
-								<p>
-									<span class="icono_error_input icon-error"></span>
-								</p>
-							</div>
+						
 							<datalist id="countries">
 								{{#each countries}}
 								{{#if ../es}}
@@ -193,7 +190,7 @@
 							<input class="input_con_boton_derecha" type="search" id="langSearch"
 								placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}" list="languages">
 							<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar"
-								onclick="formsManager.addSelection()">
+								onclick="register.addSelection()">
 								<span class="icon-plus"></span>
 							</i>
 							<datalist id="languages">
@@ -222,12 +219,12 @@
 								<span class="icon-minus"></span>
 							</i>
 						</div>
-						<div>
+						<!--div>
 							<label class="contenedor_checkbox contenedor_terms_registro"> 
 								  <input type="checkbox"  class="checkbox_personalizada" required>
 									<span class="marca_check"></span>
 								</label><label class="label float_left">{{{translation.SYLARDREGISTER.ACEPT_TERMS}}}</label>
-						</div>
+						</!--div>
 						
 						<!--<input class="contenedor_inputs" type="checkbox" required>
 						<label class="label" for="lenguas_agregadas">
@@ -240,8 +237,27 @@
 							<!--<button type="reset" class="btn btn-secundario float_right">Restablecer</button>-->
 						</div>
 					</form>
+					
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+//jquery country selector
+$(document).ready(function(){
+	//	alert("jquery is running");
+  $("#country").change(function(){
+	  let val_country= $("#country").val();
+	  if(val_country=="" || val_country==null){
+		  $("#country_icon_verify").removeClass("icono_correcto_input icon-check_circle");
+	 $("#country_icon_verify").addClass("icono_error_input icon-error");
+	  }
+	  else{
+    $("#country_icon_verify").removeClass("icono_error_input icon-error");
+	 $("#country_icon_verify").addClass("icono_correcto_input icon-check_circle");
+	  }
+  });
+});
+</script>
+
