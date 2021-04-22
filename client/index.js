@@ -14,6 +14,9 @@ import syModals from '@chelpers/modals'
 import formsManager from '@chelpers/formsManager'
 // Admin for view
 import locations_index from '@client/pages/locations/index'
+// Admin the register form
+//import formsManager from '@chelpers/formsManager'
+import register from '@client/pages/auth/register.js'
 // Collections Create Scripts
 import collectionsCreate from '@client/pages/collections/create'
 // Collections Edit Scripts
@@ -96,7 +99,13 @@ window.formsManager = formsManager
 window.syModals = syModals
 window.showColorPalette = colorPicker.showColorPalette
 window.hideColorPalette = colorPicker.hideColorPalette
-
+// Improving script loader
+switch (window.location.pathname) {
+    case `/auth/register`:
+        register.init();
+        window.register = register;
+        break;
+}
 if (window.location.pathname == `/locations/index`) {
     window.locations = locations_index
 }
