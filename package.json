@@ -4,14 +4,16 @@
   "private": true,
   "scripts": {
     "build": "npm run clean && npm run b:c && npm run b:s",
-    "b:c": "webpack --mode=development",
+    "b:c": "rimraf server/public/js && rimraf server/public/styles && webpack --config ./webpack.config.babel.js --mode production",
     "b:r:p": "NODE_ENV=production npm run build && node ./dist-server/bin/www",
     "b:s": "babel ./server --out-dir dist-server --copy-files",
     "clean": "rimraf dist-server",
     "dev": "NODE_ENV=development babel-node ./server/bin/www",
     "p": "node ./dist-server/bin/www",
     "start": "node ./dist-server/bin/www",
-    "w:d": "NODE_ENV=development nodemon --ignore './client' --ignore './server/public/eaf' --exec babel-node ./server/bin/www",
+    "wp:s": "NODE_ENV=production webpack serve --config ./webpack.dev.config.js --mode develpment",
+    "w:d": "NODE_ENV=production nodemon --ignore './client' --ignore './server/public/eaf' --exec babel-node ./server/bin/www",
+    "nw:d": "NODE_ENV=development babel-watch --watch ./server/views ./server/bin/www",
     "ww:d": "SET NODE_ENV=development && nodemon --ignore './client' --exec babel-node ./server/bin/www",
     "www:d": "SET NODE_ENV=development && babel-node ./server/bin/www"
   },
@@ -66,9 +68,11 @@
     "@babel/core": "^7.10.5",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.2.2",
     "babel-preset-minify": "^0.5.1",
+    "babel-watch": "^7.4.1",
     "copy-webpack-plugin": "^6.0.3",
+    "core-js": "^3.11.0",
     "css-loader": "^3.6.0",
     "deepmerge": "^1.5.2",
     "eslint": "^7.6.0",
@@ -85,6 +89,9 @@
     "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.7.0",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-middleware": "^4.1.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-hot-middleware": "^2.25.0"
   }
 }

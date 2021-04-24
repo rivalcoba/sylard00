@@ -16,6 +16,12 @@ import i18n from 'i18n-express'
 import MongoStore from 'connect-mongo'
 import mongoose from 'mongoose'
 
+// Webpack modules
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackConfig from '../webpack.dev.config';
+
 import multer from 'multer'
 // import bodyparser from 'body-parser'
 
@@ -39,6 +45,21 @@ passportConfig(passport)
 
 // -1 Creating an instance of express
 const app = express();
+
+// checking enviroment
+const env = process.env.NODE_ENV || 'development';
+if(env === 'development'){
+  console.log("> Ejecutando en modo desarrollo");
+  webpackConfig.entry = ['webpack-hot-middleware/client?reload=true&timeout=1000', webpackConfig.entry];
+  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+  const compiler = webpack(webpackConfig);
+  app.use(webpackDevMiddleware(compiler,{
+    publicPath: webpackConfig.output.publicPath
+  }));
+  app.use(webpackHotMiddleware(compiler));
+}else{
+  console.log("> Ejecutando en modo Producción.");
+}
 
 // 0. Connecting to the Database
 dbConnection();

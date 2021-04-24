@@ -1,29 +1,19 @@
-// Require dotenv for env variables
-require('dotenv').config()
-
-// Package to handle paths
-// const path = require('path');
-import path from 'path'
-// Vue loading plugin
+const path = require('path')
+const MiniExtractCssPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-// Import Webpack
-// import webpack from 'webpack'
-
-// Copy WP plugin
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
-// Front end dep list
-// const Assets = require('./assets');
-// Loading css extract plugin
-const MiniExtractCssPlugin = require('mini-css-extract-plugin')
-
 module.exports = {
-  mode: 'production',
+  mode: process.env.NODE_ENV || 'development',
   entry: './client/index.js',
   output: {
     filename: 'js/index.js', // outputfile
     publicPath: '/', // only to serve files virtually
     path: path.resolve(__dirname, 'server/public'),
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'server','public'),
+    port: 3000,
+    host: 'localhost'
   },
   module: {
     rules: [
@@ -34,30 +24,28 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              [
-                '@babel/preset-env',
-                {
-                  'modules': 'auto',
-                  'useBuiltIns': 'usage',
-                  'targets': { 'chrome': '80' },
-                  'corejs': 3,
-                },
-              ],
+              ['@babel/preset-env',
+              {
+                'modules': "auto",
+                'useBuiltIns': 'usage',
+                'targets': {"chrome": "80"},
+                'corejs': 3
+              }]
             ],
-            'plugins': [
+            "plugins":[
               [
-                'module-resolver',
+                "module-resolver",
                 {
-                  'root': ['./'],
-                  'alias': {
-                    '@client': './client',
-                    '@chelpers': './client/helpers',
-                    '@node_modules': './node_modules',
-                  },
-                },
-              ],
-            ],
-          },
+                  "root": ["./"],
+                  "alias": {
+                    "@client" : "./client",
+                    "@chelpers": "./client/helpers",
+                    "@node_modules" : "./node_modules"
+                  }
+                }
+              ]
+            ]
+          }
         },
       },
       {
