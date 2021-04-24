@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="container-fluid" id="contenedor_agregar_coleccion">
   <div class="container-fluid" id="cabezal_agregar_coleccion">
     <div class="container">
@@ -90,12 +91,7 @@
                />
               <div class="contenedor_icono_correcto_input">
                 <p>
-                  <span class="icono_correcto_input icon-check_circle"></span>
-                </p>
-              </div>
-              <div class="contenedor_icono_error_input">
-                <p>
-                  <span class="icono_error_input icon-error"></span>
+                  <span id="languages_icon_verify"class="icono_error_input icon-error"></span>
                 </p>
               </div>
               <datalist id="langlist">
@@ -123,16 +119,8 @@
               value="{{langGroup}}" 
               class="input_flexible" 
               />
-              <div class="contenedor_icono_correcto_input">
-                <p>
-                  <span class="icono_correcto_input icon-check_circle"></span>
-                </p>
-              </div>
-              <div class="contenedor_icono_error_input">
-                <p>
-                  <span class="icono_error_input icon-error"></span>
-                </p>
-              </div>
+              
+              
               <datalist id="groupLanglist">
              </datalist>
             </div>
@@ -191,14 +179,10 @@
                  />
                 <div class="contenedor_icono_correcto_input">
                   <p>
-                    <span class="icono_correcto_input icon-check_circle"></span>
+                    <span id="entity_icon_verify" class="icono_error_input icon-error"></span>
                   </p>
                 </div>
-                <div class="contenedor_icono_error_input">
-                  <p>
-                    <span class="icono_error_input icon-error"></span>
-                  </p>
-                </div>
+               
                  <datalist id="entities">
         {{#each entities}}
           <option 
@@ -318,14 +302,10 @@
             list="licenseType">
             <div class="contenedor_icono_correcto_input">
               <p>
-                <span class="icono_correcto_input icon-check_circle"></span>
+                <span id="license_icon_verify" class="icono_error_input icon-error"></span>
               </p>
             </div>
-            <div class="contenedor_icono_error_input">
-              <p>
-                <span class="icono_error_input icon-error"></span>
-              </p>
-            </div>
+            
             <datalist id="licenseType">
         <option value="CC-BY-NC-SA">
         <option value="CC BY-SA">
@@ -352,3 +332,45 @@
     </div>
   </section>
 </div>
+<script>
+	
+//jquery country selector
+$(document).ready(function(){
+	//	alert("jquery is running");sdffsdf
+  $("#language").change(function(){
+	  let val_language= $("#language").val();
+	  if(val_language=="" || val_language==null){
+		  $("#languages_icon_verify").removeClass("icono_correcto_input icon-check_circle");
+	 $("#languages_icon_verify").addClass("icono_error_input icon-error");
+	  }
+	  else{
+    $("#languages_icon_verify").removeClass("icono_error_input icon-error");
+	 $("#languages_icon_verify").addClass("icono_correcto_input icon-check_circle");
+	  }
+  });
+   $("#entity").change(function(){
+	  let val_entity= $("#entity").val();
+	  if(val_entity=="" || val_entity==null){
+		  $("#entity_icon_verify").removeClass("icono_correcto_input icon-check_circle");
+	 $("#entity_icon_verify").addClass("icono_error_input icon-error");
+	  }
+	  else{
+    $("#entity_icon_verify").removeClass("icono_error_input icon-error");
+	 $("#entity_icon_verify").addClass("icono_correcto_input icon-check_circle");
+	  }
+  });
+   $("#license").change(function(){
+	  let val_license= $("#license").val();
+	  if(val_license=="" || val_license==null){
+		  $("#license_icon_verify").removeClass("icono_correcto_input icon-check_circle");
+	 $("#license_icon_verify").addClass("icono_error_input icon-error");
+	  }
+	  else{
+    $("#license_icon_verify").removeClass("icono_error_input icon-error");
+	 $("#license_icon_verify").addClass("icono_correcto_input icon-check_circle");
+	  }
+  });
+  
+});
+</script>
+
