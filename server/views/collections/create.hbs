@@ -20,7 +20,7 @@
       class="col-sm-12 contenedor-90vh"
       id="contenedor_general_agregar_coleccion"
     >
-      <form action="/collections/add" method="post">
+      <form autocomplete="off" action="/collections/add" method="post">
         <div class="contenedor_input_agregar_coleccion">
           <label
             class="label"
@@ -219,7 +219,8 @@
                 <label class="label label_al_100">
                   {{translation.SYLARDCOLLECTIONS.LOCALITY}}
                 </label>
-                <input  
+                <input
+                autocomplete="off  
                 placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}"
                 disabled
                 type="text" 
