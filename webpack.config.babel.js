@@ -23,7 +23,7 @@ module.exports = {
   output: {
     filename: 'js/index.js', // outputfile
     publicPath: '/', // only to serve files virtually
-    path: path.resolve(__dirname, 'server/public'),
+    path: path.resolve(__dirname, 'dist-server/public'),
   },
   module: {
     rules: [
