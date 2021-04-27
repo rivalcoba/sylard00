@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "npm run clean && npm run b:s && npm run b:c",
-    "b:c": "rimraf server/public/js && rimraf server/public/styles && webpack --config ./webpack.config.babel.js --mode production",
+    "b:c": "rimraf dist-server/public/js && rimraf dist-server/public/styles && webpack --config ./webpack.config.babel.js --mode production",
     "b:r:p": "NODE_ENV=production npm run build && node ./dist-server/bin/www",
     "b:s": "babel ./server --out-dir dist-server --copy-files",
     "clean": "rimraf dist-server",
