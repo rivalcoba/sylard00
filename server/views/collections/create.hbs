@@ -1,4 +1,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <div class="container-fluid" id="contenedor_agregar_coleccion">
   <div class="container-fluid" id="cabezal_agregar_coleccion">
     <div class="container">
@@ -20,7 +21,7 @@
       class="col-sm-12 contenedor-90vh"
       id="contenedor_general_agregar_coleccion"
     >
-      <form autocomplete="off" action="/collections/add" method="post">
+      <form id="form-collections" autocomplete="off" action="/collections/add" method="post">
         <div class="contenedor_input_agregar_coleccion">
           <label
             class="label"
@@ -134,7 +135,7 @@
             <p class="label">
               {{translation.SYLARDCOLLECTIONS.LAG_ADS}}
             </p>
-            <table class="tabla_lenguas_agregadas">
+            <table id="languagesTable" class="tabla_lenguas_agregadas">
               <thead></thead>
                <tbody id="langTable">          
               </tbody>
@@ -220,7 +221,7 @@
                   {{translation.SYLARDCOLLECTIONS.LOCALITY}}
                 </label>
                 <input
-                autocomplete="off  
+                autocomplete="off" 
                 placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}"
                 disabled
                 type="text" 
@@ -284,7 +285,7 @@
             <p class="label">
               {{translation.SYLARDCOLLECTIONS.COMUNITIES_ADD}}
             </p>
-            <table class="tabla_comunidades_agregadas">
+            <table id="communityTable" class="tabla_comunidades_agregadas">
               <thead></thead>
              <tbody id="locTable">          
             </tbody>
@@ -373,5 +374,6 @@ $(document).ready(function(){
   });
   
 });
+
 </script>
 

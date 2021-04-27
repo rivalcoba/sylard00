@@ -467,8 +467,62 @@ const disableLocality = () => {
 
 }
 
+function init() {
+    const form = document.getElementById('form-collections');
+    form.addEventListener("submit", processForm);
+  }
+
+  async function processForm(e) {
+    if (e.preventDefault) e.preventDefault();
+    let cookies = document.cookie;
+      //console.log(cookies);
+    let result;
+    $(document).ready(async function(){
+        	//alert("jquery is running");
+            let nRows_on_lenguages = $("#languagesTable").find('tbody tr').length;
+            let nRows_on_communities = $("#communityTable").find('tbody tr').length;
+            if(nRows_on_lenguages<1 || nRows_on_communities<1){
+                if(cookies=="langbisquet=es"){
+                    result = await show_alert_empty_languages_comm_es();
+                   }
+                   else{
+                        result = await show_alert_empty_languages_comm_en();
+                   }
+            }
+            else{
+                const form = document.getElementById('form-collections');
+                form.submit();
+            }
+           // console.log("hay :"+ nRows_on_lenguages +" lenguajes");
+           // console.log("hay :"+ nRows_on_communities +" comun");
+    });
+    return false;
+  }
+async function show_alert_empty_languages_comm_es(){
+let answer= await Swal.fire({
+  icon: 'error',
+  title: 'Es necesario tener al menos una lengua y una comunidad agregada',
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true
+  
+})
+return answer;
+}
+async function show_alert_empty_languages_comm_en(){
+let answer= await Swal.fire({
+  icon: 'error',
+  title: "it's necessary to add at least one language and one community",
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true
+  
+})
+return answer;
+}
 //document.getElementsByTagName("tr")[2].remove();
 export default {
+    init,
     enableLangGroup,
     addLanguageRow,
     addLanguage,
@@ -481,5 +535,8 @@ export default {
     disableMunicipality,
     fillLocalitiesDataList,
     disableLocality,
-    addLocality
+    addLocality,
+    show_alert_empty_languages_comm_es,
+    show_alert_empty_languages_comm_en
+    
 }
