@@ -111,6 +111,7 @@ if (window.location.pathname == `/locations/index`) {
 }
 
 if (window.location.pathname == `/collections/create`) {
+    collectionsCreate.init();
     window.pageScripts = collectionsCreate
 }
 
