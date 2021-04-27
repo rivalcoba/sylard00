@@ -94,7 +94,7 @@
          </div>
 
          <!--AQUI on line HABLANDO--->
-         <hr />
+         <hr>
          <div
           class="contenedor_one_line_display" >
           <div v-if="this.info.data">
@@ -131,11 +131,12 @@
          
         
       </div>
+       <hr>
       </div>
       <p v-else>loading.....</p>
       <!--ESTA ES LA TERCERA TABLA DE QUIENES ESTAN HABLANDO-->
       <div v-if="this.info.data">
-        <hr />
+       
         <div class="contenedor_multilinea">
           <table class="tabla_multilinea">           
             <div v-for="(item, index) in tempdata" :key="index">
