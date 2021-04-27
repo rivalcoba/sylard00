@@ -99,10 +99,14 @@
           class="contenedor_one_line_display" >
           <table class="table_one_line">
             <div v-if="this.info.data">
-        <hr />
-        
-          <table class="table_one_line">           
+        <hr />        
+          <table class="table_one_line">  
+           <!-- <div v-if="options[index2].Visible">  
+              <div v-if="options[index2].value == 'A'">    -->   
+                
             <div v-for="(item, index) in tempdata" :key="index">
+              <div v-if="get_visible(item.TIER_ID)">
+                <div v-if="get_value(item.TIER_ID) == 'A'">              
               <div
                 v-if="
                   $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
@@ -121,20 +125,8 @@
                   </td>
                 </tr>
               </div>
-              <!--<div v-else>
-                <tr class="row_multilinea">
-                  <td class="td_reproduccion">
-                    <span></span>
-                  </td>
-                  <td>
-                    <span v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)">
-                      {{ item.TIER_ID }}: </span
-                    >{{ item.TIME_SLOT_REF1 }}
-                    {{ item.ANNOTATION_VALUE }}
-                  </td>
-                </tr>
-
-              </div>-->
+             </div>
+            </div>
             </div>
           </table>
         
@@ -176,7 +168,7 @@
                   <td>
                     <span v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)">
                       {{ item.TIER_ID }}: </span
-                    >{{ item.TIME_SLOT_REF1 }}
+                    >
                     {{ item.ANNOTATION_VALUE }}
                   </td>
                 </tr>
@@ -238,6 +230,13 @@ export default {
    }
      //console.log("Valor de siglas "+siglasvalor)
       return siglasvalor
+    },
+    get_visible:function (tier_id){
+      var visible_valor = this.options.find((x) => x.TIER_ID == tier_id).Visible;
+      return visible_valor;
+    },get_value:function (tier_id){
+      var value_valor = this.options.find((x) => x.TIER_ID == tier_id).value;
+      return value_valor;
     },
 
     colorclase: function (color) {
