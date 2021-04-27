@@ -108,7 +108,11 @@
                   <!--AQUÍ EMPIEZA LA LLAMADA HACIA EL HABLANTE PRINCIPAL-->
                   <div v-if="index == 0">
                     <p class="canal_1_hablante_one_line_display_item">
-                      <span class="siglas_canal_item">{{ siglas(item.TIER_ID[index]," ") }}</span>
+                      <span class="siglas_canal_item">
+                        <span v-bind:style="{ color: options[index2].color }">
+                        {{ siglas(item.TIER_ID[index]," ") }}
+                        </span>
+                        </span>
                 
                        <!--    <span class="siglas_canal_item">{{ item.TIER_ID[index] }} {{index2}} : </span>-->
                     </p>
