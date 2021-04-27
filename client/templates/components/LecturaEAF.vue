@@ -106,7 +106,7 @@
               <div
                 v-if="
                   $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
-                  $attrs.tiempo_parametro <= item.TIME_SLOT_REF2
+                  $attrs.tiempo_parametro <= item.TIME_SLOT_REF2-1
                 "
               >
                
