@@ -221,6 +221,7 @@ if (window.location.pathname == '/audioannotation') {
 //AQUI TERMINA DASHBOARD
 //Inicia Index para colecciones
 if (window.location.pathname == '/collections') {
+    IndexCollectionsScripts.count_items_collections();
     window.IndexCollectionsScript = IndexCollectionsScripts
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
