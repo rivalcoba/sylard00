@@ -5,7 +5,7 @@ const getCollectionById = async (collectionId) => {
     `/collections/api/read/${collectionId}`
   )
   if (response.status == 200) {
-    return response
+    return response.data
   }else{
     return null
   }
