@@ -471,7 +471,7 @@ export default {
         self.agregar_tier_acomodado();
       });
       //INTERNATIONALITATION PAGE WITH I18N
-         self.axios.get("i18n").then((response) => {
+         self.axios.get("/i18n").then((response) => {
       self.idioma = response.data.LANGUAGE;
       if (self.idioma === "es") {
         //console.log("esta en español");
