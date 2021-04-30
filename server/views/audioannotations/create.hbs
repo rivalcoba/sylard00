@@ -142,13 +142,13 @@
                   </div>
                </div>
             </div>
-
+            <!-- VUE -->
             <div id="app2">
                <LecturaTierEAF>
                </LecturaTierEAF>
             </div>
+            {{#if filename}}
             <div class="botones_agregar_audioanotacion">
-
                <div class="contenedor_botones">
                   <button type="reset" class="btn btn-secundario"
                      id="boton_restablecer_agregar_audioanotacion">{{translation.RESETPASSWORD.SUBMIT}}</button>
@@ -156,26 +156,13 @@
                      id="boton_guardar_agregar_audioanotacion">{{translation.SYLARDCOLLECTIONS.SAVE}}</button>
                </div>
             </div>
-
+            {{/if}}
          </form>
       </div>
-
    </section>
 </div>
 <script>
-
-   /*
-   const $form    = document.querySelector('#form5')
-   $form.addEventListener('submit', (event) =>  {
-     event.preventDefault()
-      const formData  =new FormData (event.currentTarget)
-   //debugger
-  // var longitud = "hola";
-   longitudmp3()
-   //formData.set('duration',longitud)
-   //console.log("longitud Final")
-   //console.log(longitudmp3())
-   })*/
+   
    function leer_eaf() {
       var leer = require('./converteaftojson');
    }
@@ -206,8 +193,10 @@
       //return duration
    }
 
+   {{#unless filename}}
    window.addEventListener("load", function () {
       let chargeAudio = document.chargeAudio;
+
       let file = document.chargeAudio.file;
       let campoError = document.getElementById("error");
 
@@ -216,6 +205,8 @@
       });
       file.addEventListener("change", envioAutomatico, false);
    });
+   {{/unless}}
+
    function uploadAudionn(e) {
       e = e || window.event;
       if (file.value == "") {
@@ -225,6 +216,7 @@
          console.log("Necesita cargar un archivo");
       };
    };
+
    function envioAutomatico() {
       chargeAudio.addEventListener("submit", uploadAudionn);
       chargeAudio.submit();
