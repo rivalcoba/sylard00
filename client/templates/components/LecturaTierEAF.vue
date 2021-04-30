@@ -10,7 +10,7 @@
           <div class="contenedor_canal_audioanotacion">
             <div class="contenedor_canal_padre">
               <div class="contenedor_hablante">
-                <p class="label label_al_100"> {{$t("lang.reproductor_audioannotation.Hablante")}}</p>
+                <p class="label label_al_100">{{$t("lang.reproductor_audioannotation.Hablante")}}</p>
                 <input
                   type="text"
                   class="hablante_canal_padre_input"
@@ -471,7 +471,8 @@ export default {
         self.agregar_tier_acomodado();
       });
       //INTERNATIONALITATION PAGE WITH I18N
-         self.axios.get("i18n").then((response) => {
+      
+         self.axios.get("/i18n").then((responseA) => {
       self.idioma = response.data.LANGUAGE;
       if (self.idioma === "es") {
         //console.log("esta en español");

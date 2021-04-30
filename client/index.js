@@ -21,6 +21,8 @@ import register from '@client/pages/auth/register.js'
 import collectionsCreate from '@client/pages/collections/create'
 // Collections Edit Scripts
 import editCollectionScripts from '@client/pages/collections/edit'
+//Collections Index Scripts
+import IndexCollectionsScripts from '@client/pages/collections/index'
 // ./Test scripts
 import indexTestScripts from '@client/pages/index/test'
 // Audioannotations Scripts
@@ -219,6 +221,8 @@ if (window.location.pathname == '/audioannotation') {
 //AQUI TERMINA DASHBOARD
 //Inicia Index para colecciones
 if (window.location.pathname == '/collections') {
+    IndexCollectionsScripts.count_items_collections();
+    window.IndexCollectionsScript = IndexCollectionsScripts
     // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("IndexCollections", IndexCollections);

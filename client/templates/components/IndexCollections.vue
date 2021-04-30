@@ -327,7 +327,7 @@ export default {
     },
     borrarCollection(collection_id) {
       var currentUrl = window.location.pathname;
-      const url = `${currentUrl}/delete/${collection_id}`;
+      const url = `${currentUrl}/api/delete/${collection_id}`;
       // /audioannotations/delete/{{_id}}?_method=DELETE
       console.log(url)
       this.axios.delete(url)

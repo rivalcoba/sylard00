@@ -739,6 +739,7 @@ export default {
     console.log("se longitud ");
     console.log(this.arreglo_coleccion.length);
     //INTERNATIONALITATION PAGE WITH I18N
+    
          self.axios.get("i18n").then((response) => {
       self.idioma = response.data.LANGUAGE;
       if (self.idioma === "es") {
