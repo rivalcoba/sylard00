@@ -2,7 +2,7 @@
   <div>
     <div v-if="this.info.data">
       <p class="label" id="opciones_visuales_predeterminadas">
-        {{$t("lang.Default_visual_options")}}
+        {{ $t('lang.Default_visual_options') }}
       </p>
       <div class="contenedor_opciones_visuales_predeterminadas">
         <div v-for="(item2, index) in tier_participante" :key="'item' + index">
@@ -10,7 +10,9 @@
           <div class="contenedor_canal_audioanotacion">
             <div class="contenedor_canal_padre">
               <div class="contenedor_hablante">
-                <p class="label label_al_100"> {{$t("lang.reproductor_audioannotation.Hablante")}}</p>
+                <p class="label label_al_100">
+                  {{ $t('lang.reproductor_audioannotation.Hablante') }}
+                </p>
                 <input
                   type="text"
                   class="hablante_canal_padre_input"
@@ -25,7 +27,9 @@
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal"
                 >
-                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.mostrar")}}</label>
+                  <label class="label label_al_100">{{
+                    $t('lang.reproductor_audioannotation.mostrar')
+                  }}</label>
                   <div class="contenedor_switch_canal_audioanotacion">
                     <label
                       class="swich_etiqueta_opcion1"
@@ -39,7 +43,7 @@
                         :id="item2"
                         checked
                         @change="selecion_todos_onoff($event)"
-                        class="checkbox_canal1" />
+                        class="checkbox_canal1"/>
                       <span class="slider_general round"></span
                     ></label>
                     <label
@@ -53,7 +57,9 @@
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en"
                 >
-                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.visualizar")}}</label>
+                  <label class="label label_al_100">{{
+                    $t('lang.reproductor_audioannotation.visualizar')
+                  }}</label>
 
                   <select
                     class="opciones_despliegue_viewer input_flexible"
@@ -67,14 +73,16 @@
                 <div
                   class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion"
                 >
-                  <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.colorTipo")}}</label>
+                  <label class="label label_al_100">{{
+                    $t('lang.reproductor_audioannotation.colorTipo')
+                  }}</label>
                   <input
                     type="text"
                     :data-did="'A' + (index + 55) + '-colorPicker'"
                     :id="item2"
                     value="#c60000"
                     v-bind:style="colorclase('#c60000')"
-                   class="inp input_flexible"
+                    class="inp input_flexible"
                     @change="seleccion_todos_color($event)"
                     @click="metodocolor(index + 55, $event, 0)"
                     @blur="metodoblur(index + 55, $event, 0)"
@@ -104,8 +112,18 @@
                   name="LINGUISTIC_TYPE_REF"
                   :value="item.LINGUISTIC_TYPE_REF"
                 />
-                <input hidden type="text" name="TIER_ID" :value="item.TIER_ID" />
-                <input hidden type="text" name="PARTICIPANT" :value="item.PARTICIPANT" />
+                <input
+                  hidden
+                  type="text"
+                  name="TIER_ID"
+                  :value="item.TIER_ID"
+                />
+                <input
+                  hidden
+                  type="text"
+                  name="PARTICIPANT"
+                  :value="item.PARTICIPANT"
+                />
                 <h6 class="canal_hijo">{{ item.TIER_ID }}</h6>
               </div>
               <div class="contenedor_opciones_visuales_canal1_viewer">
@@ -126,7 +144,7 @@
                         checked
                         @change="seleccion_onoff($event)"
                         v-model="item.Visible"
-                        class="checkbox_canal1" />
+                        class="checkbox_canal1"/>
                       <span class="slider_general round"></span
                     ></label>
                     <label
@@ -135,7 +153,12 @@
                       id="switch_usuario_canal1_on"
                       >ON</label
                     >
-                    <input hidden type="text" :value="item.Visible" name="Visible" />
+                    <input
+                      hidden
+                      type="text"
+                      :value="item.Visible"
+                      name="Visible"
+                    />
                   </div>
                 </div>
                 <div
@@ -186,81 +209,82 @@
 
 <script>
 export default {
-  name: "LecturaTierEAF",
+  name: 'LecturaTierEAF',
   data() {
     return {
       //data here
       info: [],
-      valor: "hello",
-      archivo: "",
+      valor: 'hello',
+      archivo: '',
       tier_acomodado: [],
       tier_agrupado: [],
       tier_participante: [],
       display: [
         {
-          value: "A",
-          name: "On-Line-Display",
+          value: 'A',
+          name: 'On-Line-Display',
         },
         {
-          value: "B",
-          name: "Scrolling",
+          value: 'B',
+          name: 'Scrolling',
         },
       ],
-    };
+    }
   },
   methods: {
-    colorclase: function (color) {
-      return "border-right: 2rem solid " + color;
+    colorclase: function(color) {
+      return 'border-right: 2rem solid ' + color
     },
-    metodocolor: function (parametro, e, valor) {
+    metodocolor: function(parametro, e, valor) {
       //this.quitarcolor_id(event.target.id)
 
-      var valorpaleta, valorcolor;
-      valorcolor = "A" + (parametro + valor) + "-colorPicker";
-      valorpaleta = "A" + (parametro + valor) + "-colorPalette";
+      var valorpaleta, valorcolor
+      valorcolor = 'A' + (parametro + valor) + '-colorPicker'
+      valorpaleta = 'A' + (parametro + valor) + '-colorPalette'
 
       console.log(
-        "este es el parametro del colorpicker " +
+        'este es el parametro del colorpicker ' +
           parametro +
-          " p " +
+          ' p ' +
           valorpaleta +
-          " c " +
+          ' c ' +
           valorcolor
-      );
-      showColorPalette(valorcolor, valorpaleta);
+      )
+      showColorPalette(valorcolor, valorpaleta)
       //  this.cambiarcolor(e)
       //return parametro
     },
-    metodoblur: function (parametro, e, valor) {
+    metodoblur: function(parametro, e, valor) {
       //"hideColorPalette('A1-colorPicker','A1-colorPalette')"
-      var valorpaleta, valorcolor;
-      valorcolor = "A" + (parametro + valor) + "-colorPicker";
-      valorpaleta = "A" + (parametro + valor) + "-colorPalette";
+      var valorpaleta, valorcolor
+      valorcolor = 'A' + (parametro + valor) + '-colorPicker'
+      valorpaleta = 'A' + (parametro + valor) + '-colorPalette'
 
       console.log(
-        "este es el parametro del blur " +
+        'este es el parametro del blur ' +
           parametro +
-          " p " +
+          ' p ' +
           valorpaleta +
-          " c " +
+          ' c ' +
           valorcolor
-      );
-      hideColorPalette(valorcolor, valorpaleta);
+      )
+      hideColorPalette(valorcolor, valorpaleta)
       //this.cambiarcolor(e);
     },
 
-    agregar_tier_acomodado: function () {
+    agregar_tier_acomodado: function() {
       for (var indice in this.info.data.tier) {
         //console.log(this.info.data.tier[indice][0])
         this.tier_acomodado.push({
           DEFAULT_LOCALE: this.info.data.tier[indice][0].DEFAULT_LOCALE[0],
           PARTICIPANT: this.info.data.tier[indice][0].PARTICIPANT[0],
-          LINGUISTIC_TYPE_REF: this.info.data.tier[indice][0].LINGUISTIC_TYPE_REF[0],
+          LINGUISTIC_TYPE_REF: this.info.data.tier[indice][0]
+            .LINGUISTIC_TYPE_REF[0],
           TIER_ID: this.info.data.tier[indice][0].TIER_ID[0],
-          value: "A",
+          value: 'A',
           Visible: true,
-          Color: "#000000",
-        });
+          Color: '#000000',
+        })
         //  this.info.data.tier[indice].forEach(x => {
         //        console.log(x)
         //  if (indice == 0) {
@@ -269,77 +293,83 @@ export default {
 
         //})
       }
-      this.ordenar_tier_acomodado(this.tier_acomodado, "PARTICIPANT");
-      console.log(this.tier_acomodado);
-      console.log("Ya lo ordeno");
-      this.agrupar_tier_acomodado();
-      console.log("Ya lo Acomodo");
+      this.ordenar_tier_acomodado(this.tier_acomodado, 'PARTICIPANT')
+      console.log(this.tier_acomodado)
+      console.log('Ya lo ordeno')
+      this.agrupar_tier_acomodado()
+      console.log('Ya lo Acomodo')
     },
-    ordenar_tier_acomodado: function (p_array_json, p_key) {
-      p_array_json.sort(function (a, b) {
-        return a[p_key] > b[p_key];
-      });
+    ordenar_tier_acomodado: function(p_array_json, p_key) {
+      p_array_json.sort(function(a, b) {
+        return a[p_key] > b[p_key]
+      })
     },
-    buscar_participante_value: function (item) {
-      var valor = this.tier_agrupado.find((x) => x.PARTICIPANT == item);
+    buscar_participante_value: function(item) {
+      var valor = this.tier_agrupado.find(x => x.PARTICIPANT == item)
       //console.log("Aqui "+item)
       //console.log("otro "+valor)
-      return valor;
+      return valor
     },
-    seleccion_visualizacion_options: function (e) {
-      console.log("--------------------------------");
+    seleccion_visualizacion_options: function(e) {
+      console.log('--------------------------------')
       console.log(
-        "valor original es " +
-          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).value
-      );
-      console.log(e.target.value);
-      console.log(event.target.id);
+        'valor original es ' +
+          this.tier_acomodado.find(x => x.TIER_ID == event.target.id).value
+      )
+      console.log(e.target.value)
+      console.log(event.target.id)
       // console.log(arreglo_ref_tiempo.find(x=>x.ANNOTATION_ID===ts).TIME_SLOT_REF1)
       //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
       if (
-        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).value !=
+        this.tier_acomodado.find(x => x.TIER_ID == event.target.id).value !=
         event.target.value
       ) {
         //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
-        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).value =
-          event.target.value;
+        this.tier_acomodado.find(x => x.TIER_ID == event.target.id).value =
+          event.target.value
       }
       console.log(
-        "Cambio el valor a " +
-          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).value
-      );
+        'Cambio el valor a ' +
+          this.tier_acomodado.find(x => x.TIER_ID == event.target.id).value
+      )
       //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
     },
-    selecion_todos_visualizacion_options: function (e) {
+    selecion_todos_visualizacion_options: function(e) {
       //aqui me quede seleccionando por participante para que desbloquee todos
-      console.log("valor " + e.target.value);
-      console.log("id " + event.target.id);
-      if (e.target.value == "A") {
-        console.log("si esta en online display");
+      console.log('valor ' + e.target.value)
+      console.log('id ' + event.target.id)
+      if (e.target.value == 'A') {
+        console.log('si esta en online display')
         //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = true;
         //cambiar todos
         for (var indice in this.tier_acomodado) {
           if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
             console.log(
-              "Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice
-            );
-            this.tier_acomodado[indice].value = "A";
+              'Encontro a ' +
+                this.tier_acomodado[indice].PARTICIPANT +
+                ' ' +
+                indice
+            )
+            this.tier_acomodado[indice].value = 'A'
           }
         }
       } else {
         //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = false;
-        console.log("esta Multi-line display");
+        console.log('esta Multi-line display')
         for (var indice in this.tier_acomodado) {
           if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
             console.log(
-              "Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice
-            );
-            this.tier_acomodado[indice].value = "B";
+              'Encontro a ' +
+                this.tier_acomodado[indice].PARTICIPANT +
+                ' ' +
+                indice
+            )
+            this.tier_acomodado[indice].value = 'B'
           }
         }
       }
     },
-    agrupar_tier_acomodado: function () {
+    agrupar_tier_acomodado: function() {
       for (var indice in this.tier_acomodado) {
         // this.tier_acomodado[indice][0]
         //if (this.tier_acomodado[indice].PARTICIPANT != this.buscar_participante_value(this.tier_agrupado[indice].PARTICIPANT)) {
@@ -348,7 +378,7 @@ export default {
         // this.tier_agrupado.push(this.tier_acomodado[indice].PARTICIPANT)
         //antes this.tier_participante.push(this.tier_acomodado[indice].PARTICIPANT[0])
 
-        this.tier_participante.push(this.tier_acomodado[indice].PARTICIPANT);
+        this.tier_participante.push(this.tier_acomodado[indice].PARTICIPANT)
         //  console.log("No lo encontro")
         //} else if (this.tier_agrupado.indexOf(this.tier_acomodado[indice].PARTICIPANT) > -1) {
         //console.log("Ya lo encontro")
@@ -357,8 +387,8 @@ export default {
 
         //}
       }
-      const myUniqueArray = [...new Set(this.tier_participante)]; // myArray = [...new Set(myArray)];
-      this.tier_participante = myUniqueArray;
+      const myUniqueArray = [...new Set(this.tier_participante)] // myArray = [...new Set(myArray)];
+      this.tier_participante = myUniqueArray
       //recorrer para agrupar
 
       //for (var indice in this.tier_acomodado) {
@@ -371,87 +401,95 @@ export default {
       // }
       //console.log(myUniqueArray); // console.log(myArray)
     },
-    selecion_todos_onoff: function (e) {
+    selecion_todos_onoff: function(e) {
       //aqui me quede seleccionando por participante para que desbloquee todos
-      console.log("valor " + e.target.value);
-      console.log("id " + event.target.id);
-      console.log("checado " + e.target.checked);
+      console.log('valor ' + e.target.value)
+      console.log('id ' + event.target.id)
+      console.log('checado ' + e.target.checked)
       if (e.target.checked) {
-        console.log("si esta en on");
+        console.log('si esta en on')
         //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = true;
         //cambiar todos
         for (var indice in this.tier_acomodado) {
           if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
             console.log(
-              "Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice
-            );
-            this.tier_acomodado[indice].Visible = true;
+              'Encontro a ' +
+                this.tier_acomodado[indice].PARTICIPANT +
+                ' ' +
+                indice
+            )
+            this.tier_acomodado[indice].Visible = true
           }
         }
       } else {
         //this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = false;
-        console.log("si los hace off");
+        console.log('si los hace off')
         for (var indice in this.tier_acomodado) {
           if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
             console.log(
-              "Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice
-            );
-            this.tier_acomodado[indice].Visible = false;
+              'Encontro a ' +
+                this.tier_acomodado[indice].PARTICIPANT +
+                ' ' +
+                indice
+            )
+            this.tier_acomodado[indice].Visible = false
           }
         }
       }
     },
-    seleccion_onoff: function (e) {
-      console.log("valor " + e.target.value);
-      console.log("id " + event.target.id);
-      console.log("checado " + e.target.checked);
+    seleccion_onoff: function(e) {
+      console.log('valor ' + e.target.value)
+      console.log('id ' + event.target.id)
+      console.log('checado ' + e.target.checked)
       if (e.target.checked) {
-        console.log("si esta en on");
-        this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = true;
+        console.log('si esta en on')
+        this.tier_acomodado.find(x => x.TIER_ID == e.target.id).Visible = true
       } else {
-        this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = false;
-        console.log("si lo off");
+        this.tier_acomodado.find(x => x.TIER_ID == e.target.id).Visible = false
+        console.log('si lo off')
       }
     },
-    seleccion_color: function (e) {
-      console.log("--------------------------------");
+    seleccion_color: function(e) {
+      console.log('--------------------------------')
       console.log(
-        "valor original es " +
-          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color
-      );
-      console.log(e.target.value);
-      console.log(event.target.id);
+        'valor original es ' +
+          this.tier_acomodado.find(x => x.TIER_ID == event.target.id).Color
+      )
+      console.log(e.target.value)
+      console.log(event.target.id)
       if (
-        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color !=
+        this.tier_acomodado.find(x => x.TIER_ID == event.target.id).Color !=
         event.target.value
       ) {
         //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
-        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color =
-          event.target.value;
+        this.tier_acomodado.find(x => x.TIER_ID == event.target.id).Color =
+          event.target.value
       }
       console.log(
-        "Cambio el valor a " +
-          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color
-      );
+        'Cambio el valor a ' +
+          this.tier_acomodado.find(x => x.TIER_ID == event.target.id).Color
+      )
       //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
     },
-    seleccion_todos_color: function (e) {
-      console.log("--------------------------------");
+    seleccion_todos_color: function(e) {
+      console.log('--------------------------------')
       console.log(
-        "valor original es " +
-          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).Color
-      );
-      console.log(e.target.value);
-      console.log(event.target.id);
+        'valor original es ' +
+          this.tier_acomodado.find(x => x.TIER_ID == event.target.id).Color
+      )
+      console.log(e.target.value)
+      console.log(event.target.id)
       for (var indice in this.tier_acomodado) {
         if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
           console.log(
-            "Encontro a " + this.tier_acomodado[indice].PARTICIPANT + " " + indice
-          );
-          this.tier_acomodado[indice].Color = e.target.value;
+            'Encontro a ' +
+              this.tier_acomodado[indice].PARTICIPANT +
+              ' ' +
+              indice
+          )
+          this.tier_acomodado[indice].Color = e.target.value
         }
       }
-      //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
     },
   },
 
@@ -462,10 +500,11 @@ export default {
     //this.leerTier();
   },
   mounted() {
-    var self = this;
+    var self = this
     this.axios
-      .get("/eaf/tmp/Nuevoeaf.json")
+      .get('/eaf/tmp/Nuevoeaf.json')
       //.then((response) => (this.info = response));
+<<<<<<< HEAD
       .then((response) => {
         this.info = response;
         self.agregar_tier_acomodado();
@@ -474,14 +513,26 @@ export default {
          self.axios.get("/i18n").then((response) => {
       self.idioma = response.data.LANGUAGE;
       if (self.idioma === "es") {
+=======
+      .then(response => {
+        this.info = response
+        self.agregar_tier_acomodado()
+      })
+    //INTERNATIONALITATION PAGE WITH I18N
+    self.axios.get('/i18n').then(response => {
+      self.idioma = response.data.LANGUAGE
+      if (self.idioma === 'es') {
+>>>>>>> 4483792508b3622c21d1b97ad537aaf2ac49092c
         //console.log("esta en español");
-        this.$i18n.locale = "es";
-      } else if (self.idioma === "en") {
+        this.$i18n.locale = 'es'
+      } else if (self.idioma === 'en') {
         //console.log("esta en ingles");
-        this.$i18n.locale = "en";
+        this.$i18n.locale = 'en'
       }
+    }).catch(error => {
+      console.log(`LecturaTierEAF.vue: LN523: Error al cargar internacionalización: ${error}`);
     });
     //this.agregar_tier_acomodado();
   },
-};
+}
 </script>

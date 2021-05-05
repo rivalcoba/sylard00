@@ -21,6 +21,7 @@ let localityBox = document.getElementById('locality')
 
 // Memory
 let locSelectedMemory = []
+let locSelectedMemory_lat_long=[]
 let langSelectedMemory = []
 
 function deleteTableRow(element) {
@@ -185,6 +186,8 @@ function addLocalityRow(locality) {
         locSelectedMemory = locSelectedMemory.filter(locId => locId !== locality._id)
         deleteTableRow(locality)
     }
+    document.getElementById('lat').value=``
+    document.getElementById('long').value=``
 }
 
 const getLangData = (inputBox, dataList) => {
@@ -302,6 +305,29 @@ const addLocality = async function() {
         /*addLocBtn.style.display = "none"*/
 
     addLocalityRow(location)
+}
+//fill input lat and long form
+const fill_lat_long = async function() {
+    let selectedEntity = entityBox.value;
+    let selectedMunicipality = municipalityBox.value;
+    let selectedLocality = localityBox.value;
+
+    // Check if Locality s valid
+    if (selectedLocality == "" ||
+        !is_valid_datalist_value(localitiesList.id, selectedLocality)) {
+        
+    }
+    else{
+    // Get the locality
+    var location = await locationsHelper.getLocality(
+        selectedEntity,
+        selectedMunicipality,
+        selectedLocality
+    )
+    locSelectedMemory_lat_long.push(location._id)
+       document.getElementById('lat').value=`${location.Lat_Decimal}`
+     document.getElementById('long').value=`${location.Lon_Decimal}`
+    }
 }
 
 // Main Functions
@@ -537,6 +563,7 @@ export default {
     disableLocality,
     addLocality,
     show_alert_empty_languages_comm_es,
-    show_alert_empty_languages_comm_en
+    show_alert_empty_languages_comm_en,
+    fill_lat_long
     
 }

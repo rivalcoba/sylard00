@@ -12,9 +12,12 @@
           <button class="btn btn-predeterminado"
             onclick="window.location.href ='/collections/create'">{{translation.SYLARDCOLLECTIONS.ADD_COLLECTION}} <span
               class="icono_boton icon-create_new_folder"></span></button>
-          <button class="btn btn-primario"
-            onclick="window.location.href = '/audioannotations/create'">{{translation.SYLARDCOLLECTIONS.UPLOAD_AUDIONOTATION}} <span
+              <div ></div>
+          <button id="button_load_audio" class="btn btn-primario"
+            onclick="IndexCollectionsScript.go_add_audion()">{{translation.SYLARDCOLLECTIONS.UPLOAD_AUDIONOTATION}} <span
               class="icono_boton icon-file_upload"></span></button>
+             
+              
         </div>
       </div>
     </div>
