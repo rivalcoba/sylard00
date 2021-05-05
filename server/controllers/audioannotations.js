@@ -230,6 +230,7 @@ const addAudioannotation = async(req, res) => {
         LINGUISTIC_TYPE_REF,
         TIER_ID,
         header,
+        eafjs,
     } = req.body
 
     // Audioannotations Creations.
@@ -265,17 +266,16 @@ const addAudioannotation = async(req, res) => {
         user: req.user._id,
         header,
         TIER: tiers,
+        eafjson : JSON.parse(eafjs)
     }
 
     try {
         const audioannotationDoc = await Audioannotations.create(audioannotation);
         console.log("> Audioanotations Created: " + JSON.stringify(audioannotationDoc))
-            // return res.status(200).json(audioannotationDoc)
-            //res.redirect(`/audioannotations/index/${audioannotationDoc._id}`)
-            //enviar a visualizar audioanootation con parametro
+        //enviar a visualizar audioanootation con parametro
         res.redirect(`/audioannotations/vuetest/${audioannotationDoc._id}`)
     } catch (error) {
-        return res.status(200).json({ error, from: "controller/audioannotations/addAudioannotation" })
+        return res.status(200).json({ error : error.message, from: "controller/audioannotations/addAudioannotation" })
     }
 }
 
@@ -296,7 +296,7 @@ const uploadfileAudioannotation = async(req, res, next) => {
 
     try {
         deletejson(file.filename)
-        eafjs = JSON.stringify(await eafTools.eafToJson(file));
+        eafjs = JSON.stringify(await eafTools.eafToJson(file, {mergeAttrs: true}));
         eaftojson(file.filename)
         convertEaf2json(file.filename)
 

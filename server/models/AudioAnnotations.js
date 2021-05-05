@@ -43,6 +43,7 @@ const AudioAnnotationsSchema = new Schema({
       TIER_ID: String,
     },
   ],
+  eafjson : {}
 })
 
 // Hooks
