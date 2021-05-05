@@ -11,160 +11,159 @@
    </div>
    <section class="container">
       <div class="col-sm-12 contenedor-90vh" id="contenedor_general_agregar_audioanotacion">
-      
-            {{#unless filename}}
-            <form action="/audioannotations/uploadfile" method="POST" name="chargeAudio" id="form"
-               enctype="multipart/form-data">
-               <div class="contenedor_input_seleciona_origen_audioanotacion">
-                   <label class="label label_al_100" id="selecciona_archivo_eaf"
-                     for="selecciona_archivo_eaf_input">{{translation.UPLOADAUDIO.SELECT_FILE}}</label>
-                  <input class="input_flexible" id="file" type='file' name="myFile" placeholder="Seleccionar el archivo"
-                     required>
-                  <div class="contenedor_icono_correcto_input">
-                     <p><span class="icono_correcto_input icon-check_circle"></span></p>
-                  </div>
-                  <div class="contenedor_icono_error_input">
-                     <p><span class="icono_error_input icon-error"></span></p>
-                  </div>
-               </div>
-            </form>
-            {{/unless}}
-         
-         {{#if filename}}
-         <form action="/audioannotations/add" method="post" id='form2'>
-            <div class="contenedor_tiempo">
-               <label class="label label_al_100" for="selecciona_archivo_eaf_input">{{translation.File_uploaded_successfully}}</label>
-               <input class="nombre_archivo_selecionado_input" value="{{filename}}" disabled>
-               <div class="contenedor_icono_correcto_input">
-                  <p><span class="icono_correcto_input icon-check_circle"></span></p>
-               </div>
-               <div class="contenedor_icono_error_input">
-                  <p><span class="icono_error_input icon-error"></span></p>
-               </div>
-               <label class="" for="duracion"><span
-                     class="icono_duracion icon-clock-o"></span></label>
-               <input class="duracion_input" readonly type="text" id="duracion" name="duration">
+      {{!-- Render when no eaf have been loaded --}}
+      {{#unless filename}}
+      <form action="/audioannotations/uploadfile" method="POST" name="chargeAudio" id="form"
+          enctype="multipart/form-data">
+          <div class="contenedor_input_seleciona_origen_audioanotacion">
+              <label class="label label_al_100" id="selecciona_archivo_eaf"
+                for="selecciona_archivo_eaf_input">{{translation.UPLOADAUDIO.SELECT_FILE}}</label>
+            <input class="input_flexible" id="file" type='file' name="myFile" placeholder="Seleccionar el archivo"
+                required>
+            <div class="contenedor_icono_correcto_input">
+                <p><span class="icono_correcto_input icon-check_circle"></span></p>
             </div>
-            <div class="contenedor_input_seleciona_origen_audioanotacion">
-               <input value="{{filename}}" type="hidden" id="eaf" name="eaf"><br><br>
-               <label class="label label_al_100" id="selecciona_url_mp3" for="selecciona_url_mp3_input">{{translation.UPLOADAUDIO.ENTER_AUDIO}}</label>
-               <input onblur="pageScripts.loadMp3()" type="text" id="mp3_url" name="mp3_url"
-                  value="{{mp3Test}}"
-                  class="input_flexible"
-                  placeholder="{{{translation.UPLOADAUDIO.PASTE_URL}}}" required>
-               <div class="contenedor_icono_correcto_input">
-                  <p><span class="icono_correcto_input icon-check_circle"></span></p>
-               </div>
-               <div class="contenedor_icono_error_input">
-                  <p><span class="icono_error_input icon-error"></span></p>
-               </div>
+            <div class="contenedor_icono_error_input">
+                <p><span class="icono_error_input icon-error"></span></p>
             </div>
-            <div class="contenedor_input_agregar_audioanotacion">
-               <label class="label label_al_100" for="titulo_audioanotacion_input">{{translation.UPLOADAUDIO.TITLE}}</label>
-               <input class="input_flexible" id="titulo" name="title" type="text"
-                  placeholder="{{translation.UPLOADAUDIO.MAXTITLE}}" maxlength="120" required>
-               <div class="contenedor_icono_correcto_input">
-                  <p><span class="icono_correcto_input icon-check_circle"></span></p>
-               </div>
-               <div class="contenedor_icono_error_input">
-                  <p><span class="icono_error_input icon-error"></span></p>
-               </div>
+          </div>
+      </form>
+      {{/unless}}
+      {{!-- Render when eaf have been loaded --}} 
+      {{#if filename}}
+      <form action="/audioannotations/add" method="post" id='form2'>
+        <div class="contenedor_tiempo">
+            <label class="label label_al_100" for="selecciona_archivo_eaf_input">{{translation.File_uploaded_successfully}}</label>
+            <input class="nombre_archivo_selecionado_input" value="{{filename}}" disabled>
+            <div class="contenedor_icono_correcto_input">
+              <p><span class="icono_correcto_input icon-check_circle"></span></p>
             </div>
-            <div class="contenedor_input_agregar_audioanotacion">
-               <label class="label label_al_100" id="descripcion_de_la_audioanotacion"
-                  for="descripcion_audioanotacion_input">{{translation.UPLOADAUDIO.DESCRIPTION}}</label>
-               <textarea type="text" id="description" name="description" class="input_flexible" type="textarea"
-                  placeholder="{{translation.UPLOADAUDIO.MAXDESCRIPTION}}" maxlength="200" rows="5" required></textarea>
+            <div class="contenedor_icono_error_input">
+              <p><span class="icono_error_input icon-error"></span></p>
+            </div>
+            <label class="" for="duracion"><span
+                  class="icono_duracion icon-clock-o"></span></label>
+            <input class="duracion_input" readonly type="text" id="duracion" name="duration">
+            <input class="duracion_input" hidden type="text" id="eafjson" name="eafjson" value="{{eafjs}}">
+        </div>
+        <div class="contenedor_input_seleciona_origen_audioanotacion">
+            <input value="{{filename}}" type="hidden" id="eaf" name="eaf"><br><br>
+            <label class="label label_al_100" id="selecciona_url_mp3" for="selecciona_url_mp3_input">{{translation.UPLOADAUDIO.ENTER_AUDIO}}</label>
+            <input onblur="pageScripts.loadMp3()" type="text" id="mp3_url" name="mp3_url"
+              value="{{mp3Test}}"
+              class="input_flexible"
+              placeholder="{{{translation.UPLOADAUDIO.PASTE_URL}}}" required>
+            <div class="contenedor_icono_correcto_input">
+              <p><span class="icono_correcto_input icon-check_circle"></span></p>
+            </div>
+            <div class="contenedor_icono_error_input">
+              <p><span class="icono_error_input icon-error"></span></p>
+            </div>
+        </div>
+        <div class="contenedor_input_agregar_audioanotacion">
+            <label class="label label_al_100" for="titulo_audioanotacion_input">{{translation.UPLOADAUDIO.TITLE}}</label>
+            <input class="input_flexible" id="titulo" name="title" type="text"
+              placeholder="{{translation.UPLOADAUDIO.MAXTITLE}}" maxlength="120" required>
+            <div class="contenedor_icono_correcto_input">
+              <p><span class="icono_correcto_input icon-check_circle"></span></p>
+            </div>
+            <div class="contenedor_icono_error_input">
+              <p><span class="icono_error_input icon-error"></span></p>
+            </div>
+        </div>
+        <div class="contenedor_input_agregar_audioanotacion">
+            <label class="label label_al_100" id="descripcion_de_la_audioanotacion"
+              for="descripcion_audioanotacion_input">{{translation.UPLOADAUDIO.DESCRIPTION}}</label>
+            <textarea type="text" id="description" name="description" class="input_flexible" type="textarea"
+              placeholder="{{translation.UPLOADAUDIO.MAXDESCRIPTION}}" maxlength="200" rows="5" required></textarea>
 
+        </div>
+        <div class="contenedor_input_agregar_audioanotacion">
+            <label class="label label_al_100" id="seleccion_coleccion_audioanotacion_label"
+              for="seleccion_coleccion_audioanotacion_input">{{translation.UPLOADAUDIO.COLLECTION}}</label>
+            <select  class="input_flexible" onchange="pageScripts.fillGlottologSelect()" id="colectionSelect"
+              name="colection" required>
+              <option value="" disabled selected>{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}</option>
+              {{#each collections}}
+              <option value="{{_id}}" name="{{name}}">
+                  {{name}}
+              </option>
+              {{/each}}
+            </select>
+            <div class="contenedor_icono_correcto_input">
+              <p><span class="icono_correcto_input icon-check_circle"></span></p>
             </div>
-            <div class="contenedor_input_agregar_audioanotacion">
-               <label class="label label_al_100" id="seleccion_coleccion_audioanotacion_label"
-                  for="seleccion_coleccion_audioanotacion_input">{{translation.UPLOADAUDIO.COLLECTION}}</label>
-               <select  class="input_flexible" onchange="pageScripts.fillGlottologSelect()" id="colectionSelect"
-                  name="colection" required>
+            <div class="contenedor_icono_error_input">
+              <p><span class="icono_error_input icon-error"></span></p>
+            </div>
+        </div>
+        <div class="contenedor_flex_audioanotacion">
+            <div class="contenedor_flex_tercio_audioanotacion">
+              <label class="label label_al_100" id="seleccion_comunidad_audioanotacion_label"
+                  for="seleccion_comunidad_audioanotacion_input">{{translation.UPLOADAUDIO.COMUNITY}}</label>
+              <select disabled class="input_flexible" id="localitiesSelect" name="location">
+              </select>
+              <div class="contenedor_icono_correcto_input">
+                  <p><span class="icono_correcto_input icon-check_circle"></span></p>
+              </div>
+              <div class="contenedor_icono_error_input">
+                  <p><span class="icono_error_input icon-error"></span></p>
+              </div>
+            </div>
+            <div class="contenedor_flex_tercio_audioanotacion">
+              <label class="label label_al_100" id="seleccion_lengua_terminal_audioanotacion_label"
+                  for="seleccion_lengua_terminal_audioanotacion_input">{{translation.UPLOADAUDIO.TERMINAL_L}}</label>
+              <select disabled class="input_flexible" id="glottologSelect" name="gid">
+              </select>
+              <div class="contenedor_icono_correcto_input">
+                  <p><span class="icono_correcto_input icon-check_circle"></span></p>
+              </div>
+              <div class="contenedor_icono_error_input">
+                  <p><span class="icono_error_input icon-error"></span></p>
+              </div>
+            </div>
+            <div class="contenedor_flex_tercio_audioanotacion">
+              <label class="label label_al_100" id="seleccion_genero_audioanotacion_label"
+                  for="seleccion_lengua_terminal_audioanotacion_input">{{translation.UPLOADAUDIO.GENERE}}</label>
+
+              <select  class="input_flexible" name="genre" id="genreSelect" required>
                   <option value="" disabled selected>{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}</option>
-                  {{#each collections}}
+                  {{#each genreArray}}
                   <option value="{{_id}}" name="{{name}}">
-                     {{name}}
+                    {{name}}
                   </option>
                   {{/each}}
-               </select>
-               <div class="contenedor_icono_correcto_input">
+              </select>
+              <div class="contenedor_icono_correcto_input">
                   <p><span class="icono_correcto_input icon-check_circle"></span></p>
-               </div>
-               <div class="contenedor_icono_error_input">
+              </div>
+              <div class="contenedor_icono_error_input">
                   <p><span class="icono_error_input icon-error"></span></p>
-               </div>
+              </div>
             </div>
-            <div class="contenedor_flex_audioanotacion">
-               <div class="contenedor_flex_tercio_audioanotacion">
-                  <label class="label label_al_100" id="seleccion_comunidad_audioanotacion_label"
-                     for="seleccion_comunidad_audioanotacion_input">{{translation.UPLOADAUDIO.COMUNITY}}</label>
-                  <select disabled class="input_flexible" id="localitiesSelect" name="location">
-                  </select>
-                  <div class="contenedor_icono_correcto_input">
-                     <p><span class="icono_correcto_input icon-check_circle"></span></p>
-                  </div>
-                  <div class="contenedor_icono_error_input">
-                     <p><span class="icono_error_input icon-error"></span></p>
-                  </div>
-               </div>
-               <div class="contenedor_flex_tercio_audioanotacion">
-                  <label class="label label_al_100" id="seleccion_lengua_terminal_audioanotacion_label"
-                     for="seleccion_lengua_terminal_audioanotacion_input">{{translation.UPLOADAUDIO.TERMINAL_L}}</label>
-                  <select disabled class="input_flexible" id="glottologSelect" name="gid">
-                  </select>
-                  <div class="contenedor_icono_correcto_input">
-                     <p><span class="icono_correcto_input icon-check_circle"></span></p>
-                  </div>
-                  <div class="contenedor_icono_error_input">
-                     <p><span class="icono_error_input icon-error"></span></p>
-                  </div>
-               </div>
-               <div class="contenedor_flex_tercio_audioanotacion">
-                  <label class="label label_al_100" id="seleccion_genero_audioanotacion_label"
-                     for="seleccion_lengua_terminal_audioanotacion_input">{{translation.UPLOADAUDIO.GENERE}}</label>
-
-                  <select  class="input_flexible" name="genre" id="genreSelect" required>
-                     <option value="" disabled selected>{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}</option>
-                     {{#each genreArray}}
-                     <option value="{{_id}}" name="{{name}}">
-                        {{name}}
-                     </option>
-                     {{/each}}
-                  </select>
-                  <div class="contenedor_icono_correcto_input">
-                     <p><span class="icono_correcto_input icon-check_circle"></span></p>
-                  </div>
-                  <div class="contenedor_icono_error_input">
-                     <p><span class="icono_error_input icon-error"></span></p>
-                  </div>
-               </div>
+        </div>
+        <!-- VUE -->
+        <div id="app2">
+            <LecturaTierEAF>
+            </LecturaTierEAF>
+        </div>
+        <div class="botones_agregar_audioanotacion">
+            <div class="contenedor_botones">
+              <button type="reset" class="btn btn-secundario"
+                  id="boton_restablecer_agregar_audioanotacion">{{translation.RESETPASSWORD.SUBMIT}}</button>
+              <button type="submit" class="btn btn-primario"
+                  id="boton_guardar_agregar_audioanotacion">{{translation.SYLARDCOLLECTIONS.SAVE}}</button>
             </div>
-            <!-- VUE -->
-            <div id="app2">
-               <LecturaTierEAF>
-               </LecturaTierEAF>
-            </div>
-            <div class="botones_agregar_audioanotacion">
-               <div class="contenedor_botones">
-                  <button type="reset" class="btn btn-secundario"
-                     id="boton_restablecer_agregar_audioanotacion">{{translation.RESETPASSWORD.SUBMIT}}</button>
-                  <button type="submit" class="btn btn-primario"
-                     id="boton_guardar_agregar_audioanotacion">{{translation.SYLARDCOLLECTIONS.SAVE}}</button>
-               </div>
-            </div>
-         </form>
-         {{/if}}
+        </div>
+      </form>
+      
+      {{/if}}
 
       </div>
    </section>
 </div>
 <script>
-   
-   function leer_eaf() {
-      var leer = require('./converteaftojson');
-   }
+   {{!-- let eafjson = "{{eafjs}}" --}} // TODO: BORRAR
    function longitudmp3() {
       var duration;
       //const mp3file = 'https://raw.githubusercontent.com/prof3ssorSt3v3/media-sample-files/master/doorbell.mp3'

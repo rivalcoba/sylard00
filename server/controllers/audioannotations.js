@@ -5,6 +5,7 @@ import Audioannotations from '@models/AudioAnnotations'
 import convertEaf2json from '@helpers/converteaftojson'
 import deletejson from '@helpers/deletejson'
 import eaftojson from '@helpers/converteaf'
+import eafTools from '@helpers/eafTools'
 import Genre from '@models/Genre'
 
 const index = async(req, res) => {
@@ -283,6 +284,7 @@ const addAudioannotation = async(req, res) => {
 
 const uploadfileAudioannotation = async(req, res, next) => {
     const file = req.file
+    let eafjs = ""
     if (!file) {
         const error = new Error('Please upload a file')
         error.httpStatusCode = 400
@@ -294,12 +296,14 @@ const uploadfileAudioannotation = async(req, res, next) => {
 
     try {
         deletejson(file.filename)
+        eafjs = JSON.stringify(await eafTools.eafToJson(file));
         eaftojson(file.filename)
         convertEaf2json(file.filename)
 
     } catch (error) {
         console.log("Erorroesss al convertir EAF2JSON")
         console.log(error)
+        res.status(500).json(error)
     }
 
     try {
@@ -317,12 +321,14 @@ const uploadfileAudioannotation = async(req, res, next) => {
         let genreArray = genreDocs.map(genre => {
             return genre.toJSON()
         })
+        console.log(typeof(eafjs));  
 
         res.render('audioannotations/create', {
             title: 'Agregar audioanotación',
             filename: file.filename,
             collections,
             genreArray,
+            eafjs: eafjs
         })
     } catch (error) {
         // Borrar eaf cargado

@@ -1,3 +1,8 @@
+// Dependencies
+const fs = require('fs')
+const path = require('path');
+const parseString = require('xml2js').parseString;
+
 /**
  * Funcion que regresa un color RGC aleatorio
  * @returns {string} El color
@@ -154,10 +159,47 @@ function getTierArr(eaf){
   return tierArr;
 }
 
+// function eafToJson(eafXmlFile, cb){
+//   fs.readFile(eafXmlFile.path,'utf8', (err, eafXml) => {
+//     if(err){
+//       console.log(`Error reading file ${eafXmlFile.filename}`);
+//       return {error: "Error reading file"}
+//     }
+//     // Parsing XML to JSON
+//     parseString(eafXml, (err, eafJs)=>{
+//       if(err){
+//         console.log(`Error when parsing xml data`);
+//         return {error: "Error parsing xml"};
+//       }
+//       cb(null, eafJs);
+//     });
+//   });
+// }
+
+function eafToJson(eafXmlFile){
+  return new Promise((res, rej)=>{
+    fs.readFile(eafXmlFile.path,'utf8', (err, eafXml) => {
+      if(err){
+        console.log(`Error reading file ${eafXmlFile.filename}`);
+        rej(new Error("Error reading file")); 
+      }
+      // Parsing XML to JSON
+      parseString(eafXml, (err, eafJs)=>{
+        if(err){
+          console.log(`Error when parsing xml data`);
+          rej(new Error("Error parsing xml")); 
+        }
+        res(eafJs)
+      });
+    });
+  });
+}
+
 
 export default {
   getTimeSlotArray,
   getDataArray,
   getLineTimeArray,
-  getTierArr
+  getTierArr,
+  eafToJson
 }
