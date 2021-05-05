@@ -30,8 +30,8 @@
             </form>
             {{/unless}}
          
+         {{#if filename}}
          <form action="/audioannotations/add" method="post" id='form2'>
-            {{#if filename}}
             <div class="contenedor_tiempo">
                <label class="label label_al_100" for="selecciona_archivo_eaf_input">{{translation.File_uploaded_successfully}}</label>
                <input class="nombre_archivo_selecionado_input" value="{{filename}}" disabled>
@@ -45,12 +45,11 @@
                      class="icono_duracion icon-clock-o"></span></label>
                <input class="duracion_input" readonly type="text" id="duracion" name="duration">
             </div>
-            {{/if}}
             <div class="contenedor_input_seleciona_origen_audioanotacion">
                <input value="{{filename}}" type="hidden" id="eaf" name="eaf"><br><br>
                <label class="label label_al_100" id="selecciona_url_mp3" for="selecciona_url_mp3_input">{{translation.UPLOADAUDIO.ENTER_AUDIO}}</label>
                <input onblur="pageScripts.loadMp3()" type="text" id="mp3_url" name="mp3_url"
-                  value="https://cdn.glitch.com/31e1c313-9473-4a67-b370-cbebc80a47b2%2FWhatsApp%20Audio%202020-11-09%20at%2020.55.02.mpeg"
+                  value="{{mp3Test}}"
                   class="input_flexible"
                   placeholder="{{{translation.UPLOADAUDIO.PASTE_URL}}}" required>
                <div class="contenedor_icono_correcto_input">
@@ -147,7 +146,6 @@
                <LecturaTierEAF>
                </LecturaTierEAF>
             </div>
-            {{#if filename}}
             <div class="botones_agregar_audioanotacion">
                <div class="contenedor_botones">
                   <button type="reset" class="btn btn-secundario"
@@ -156,8 +154,9 @@
                      id="boton_guardar_agregar_audioanotacion">{{translation.SYLARDCOLLECTIONS.SAVE}}</button>
                </div>
             </div>
-            {{/if}}
          </form>
+         {{/if}}
+
       </div>
    </section>
 </div>

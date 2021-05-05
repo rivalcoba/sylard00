@@ -1,8 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import Collection from '@models/Collection'
-import Glottolog from '@models/Glottolog'
-import Locations from '@models/Location'
 import Audioannotations from '@models/AudioAnnotations'
 import convertEaf2json from '@helpers/converteaftojson'
 import deletejson from '@helpers/deletejson'
@@ -209,6 +207,7 @@ const createAudioannotation = (req, res) => {
     // Getting languages
     res.render('audioannotations/create', {
         title: 'Agregar audionotación',
+        mp3Test: ""//"https://cdn.glitch.com/31e1c313-9473-4a67-b370-cbebc80a47b2%2FWhatsApp%20Audio%202020-11-09%20at%2020.55.02.mpeg"
     })
 }
 
