@@ -113,7 +113,7 @@
                   <td class="canal_1_hablante_one_line_display_item">
                    <span class="siglas_canal_item">
                     <span v-bind:style="{ color: traer_color(item.TIER_ID) }">
-                      {{ item.TIER_ID }}:
+                      {{siglas(item.TIER_ID," ") }}:
                     </span>
                    
                     {{ item.ANNOTATION_VALUE }}
@@ -154,7 +154,7 @@
                   </td>
                   <td class="td_canal">
                     <span v-bind:style="{ color: traer_color(item.TIER_ID) }">
-                      {{ item.TIER_ID }}:
+                      {{ siglas(item.TIER_ID," ") }}:
                     </span>
                     {{ item.ANNOTATION_VALUE }}
                   </td>
@@ -167,7 +167,7 @@
                   </td>
                   <td>
                     <span v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)">
-                      {{ item.TIER_ID }}: </span
+                      {{ siglas(item.TIER_ID," ") }}: </span
                     >
                     {{ item.ANNOTATION_VALUE }}
                   </td>
