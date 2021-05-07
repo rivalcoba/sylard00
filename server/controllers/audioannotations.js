@@ -95,7 +95,7 @@ const index = async(req, res) => {
 const indexById = async(req, res) => {
     const audioannotId = req.params.audioannotationId
     console.log(`>finding ${audioannotId}`)
-        // Find audio annotation to visualize
+    // Find audio annotation to visualize
     try {
         let audioannotationDoc = await Audioannotations.findById(audioannotId)
             .populate('collection_id')
@@ -384,6 +384,44 @@ const vuetestAudioannotaion = async(req, res) => {
     })
 }
 
+const audioannotationViwer = async (req,res)=>{
+    const audioannotId = req.params.audioannotationId
+    // Find audio annotation to visualize
+    try {
+        let audioannotationDoc = await Audioannotations.findById(audioannotId)
+            .populate('collection_id')
+            .populate('user').lean().exec();
+        // Having audio annotation
+        // Getting variables
+        //return res.send(audioannotationDoc.eafdotjson)
+        let timeslotArr = eafTools.getTimeSlotArray(audioannotationDoc.eafdotjson);
+        let dataArr = eafTools.getDataArray(audioannotationDoc.eafdotjson);
+        let lineTimeArr = eafTools.getLineTimeArray(audioannotationDoc.eafdotjson);
+        let tierArr = eafTools.getTierArr(audioannotationDoc.eafdotjson);
+
+        let timeslotArrStr = JSON.stringify(timeslotArr);
+        let dataArrStr = JSON.stringify(dataArr);
+        let lineTimeArrStr = JSON.stringify(lineTimeArr);
+        let tierArrStr = JSON.stringify(tierArr);
+
+        let eafViewModel = {
+            title : audioannotationDoc.title,
+            timeslotArr,
+            timeslotArrStr,
+            dataArr,
+            dataArrStr,
+            lineTimeArr,
+            lineTimeArrStr,
+            tierArr,
+            tierArrStr,
+            audioFile: audioannotationDoc.mp3_url
+        }
+        res.render('audioannotations/eafviwer', eafViewModel);
+    } catch (error) {
+        res.send(`Error retreaving Audio Annotations: ${error.message}`);
+    }
+}
+
 const color = (req, res) => {
     res.render('audioannotations/color')
 }
@@ -448,6 +486,7 @@ export default {
     addAudioannotation,
     uploadfileAudioannotation,
     vuetestAudioannotaion,
+    audioannotationViwer,
     filtrarAudioannotation,
     indexById,
     indexReadonlyCollection,

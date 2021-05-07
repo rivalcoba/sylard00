@@ -108,6 +108,12 @@ router.get(
 )
 
 router.get(
+    '/viwer/:audioannotationId',
+    ensureAuthenticated,
+    audioannotationsController.audioannotationViwer
+);
+
+router.get(
     '/filter/:page',
     ensureAuthenticated,
     //ensureColabUser,
