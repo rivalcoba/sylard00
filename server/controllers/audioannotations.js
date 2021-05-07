@@ -231,8 +231,9 @@ const addAudioannotation = async(req, res) => {
         TIER_ID,
         header,
         eafjs,
+        eafdotjson
     } = req.body
-
+    let eafdotjson_noDollar = eafdotjson.replace(/\$/g,'dollar');
     // Audioannotations Creations.
     let tiers = []
 
@@ -266,12 +267,13 @@ const addAudioannotation = async(req, res) => {
         user: req.user._id,
         header,
         TIER: tiers,
-        eafjson : JSON.parse(eafjs)
+        eafjson : JSON.parse(eafjs),
+        eafdotjson : JSON.parse(eafdotjson_noDollar)
     }
 
     try {
         const audioannotationDoc = await Audioannotations.create(audioannotation);
-        console.log("> Audioanotations Created: " + JSON.stringify(audioannotationDoc))
+        console.log("> Audioanotations Created: "); //+ JSON.stringify(audioannotationDoc))
         //enviar a visualizar audioanootation con parametro
         res.redirect(`/audioannotations/vuetest/${audioannotationDoc._id}`)
     } catch (error) {
@@ -283,8 +285,9 @@ const addAudioannotation = async(req, res) => {
 //aqui me quede
 
 const uploadfileAudioannotation = async(req, res, next) => {
-    const file = req.file
-    let eafjs = ""
+    const file = req.file;
+    let eafjs = "";
+    let eafdotjson = "";
     if (!file) {
         const error = new Error('Please upload a file')
         error.httpStatusCode = 400
@@ -297,6 +300,7 @@ const uploadfileAudioannotation = async(req, res, next) => {
     try {
         deletejson(file.filename)
         eafjs = JSON.stringify(await eafTools.eafToJson(file, {mergeAttrs: true}));
+        eafdotjson =  JSON.stringify(await eafTools.eaf2json(file)) ;
         eaftojson(file.filename)
         convertEaf2json(file.filename)
 
@@ -321,14 +325,14 @@ const uploadfileAudioannotation = async(req, res, next) => {
         let genreArray = genreDocs.map(genre => {
             return genre.toJSON()
         })
-        console.log(typeof(eafjs));  
 
         res.render('audioannotations/create', {
             title: 'Agregar audioanotación',
             filename: file.filename,
             collections,
             genreArray,
-            eafjs: eafjs
+            eafjs: eafjs,
+            eafdotjson
         })
     } catch (error) {
         // Borrar eaf cargado
