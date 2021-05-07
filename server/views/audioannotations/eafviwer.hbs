@@ -44,7 +44,7 @@
               <input
                 type="checkbox"
                 class="check-pres"
-                style=""
+                style="width:10px"
                 id="check-tier-{{this.participant}}"
                 value="{{this.participant}}"
                 onchange='changePresCheck("{{this.participant}}");toggleSpeaker("{{this.participant}}");'/>
@@ -54,6 +54,8 @@
             </div>
             <!-- Hijo Tier n -->
             {{#each this.tiers}}
+            <ul>
+              <li>
             <div
               style="
               clear: both;
@@ -62,7 +64,7 @@
               <!-- INPUT 1 -->
               <input
                 type="checkbox"
-                style="margin-right: 8px"
+                style="width:10px"
                 class="check-tier"
                 name="check-tier-{{../participant}}"
                 id="checkbox-{{name}}"
@@ -73,7 +75,7 @@
               <input
                 id="color-{{name}}"
                 class="color"
-                style=""
+                style="cursor: pointer; border: 1px solid black; height: 14px; width: 14px; font-size: 0px; ; background-image: none;color: rgb(0, 0, 0);"
                  
                 value="{{color}}"
                 onchange='changeTierColor(this.value,"{{../participant}}","{{name}}");'/>
@@ -81,19 +83,19 @@
               <span
                 id="key-{{name}}"
                 class="spkr_key"
-                style="color: #{{color}}; margin-right: 8px">
+                style="color: #{{color}};">
                 {{code}}
               </span>
               
               <!-- SPAN 3 -->
               <span 
-                class="spkr_name" style="margin-right: 8px">
+                class="spkr_name" style="">
                 {{name}}
               </span>
               <!-- Select 01 -->
               <select
                 id="{{name}}-display"
-                style="margin-left: 10px"
+                style="width:100px"
                 onchange="changeTierPlacement('{{name}}');">
                 {{#with (lookup ../../dataArr [name])}}
                   <option value="top">One-line display</option>
@@ -101,6 +103,8 @@
                 {{/with}}
               </select>
             </div>
+            </li>
+            </ul>
             {{/each}}
           {{/each}}
         </div>
