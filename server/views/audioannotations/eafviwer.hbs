@@ -1,3 +1,7 @@
+<div>
+    <div class="container-fluid" id="contenedor_viewer_ancho_total">
+      <section class="container">
+        <div class="col-sm-12 contenedor-90vh" id="contenedor_general_viewer">
 <!-- EAF VIWER -->
 <table id="maintable" cellspacing="0">
   <tr style="width: 100%">
@@ -33,15 +37,14 @@
               src="/img/minus.png"/>
           </div>
         </div>
-
-        <div id="spkr_keys" style="display: none; margin-left: 50px">
+        <div id="spkr_keys" style="display: none; ">
           {{#each tierArr}}
             <!-- PADRE TIER - PARTICIPANT N -->
-            <div style="clear: both; display: flex; align-items: center">
+            <div style="float:left">
               <input
                 type="checkbox"
                 class="check-pres"
-                style="margin-right: 8px"
+                style=""
                 id="check-tier-{{this.participant}}"
                 value="{{this.participant}}"
                 onchange='changePresCheck("{{this.participant}}");toggleSpeaker("{{this.participant}}");'/>
@@ -54,7 +57,6 @@
             <div
               style="
               clear: both;
-              margin-left: 20px;
               display: flex;
               align-items: center;">
               <!-- INPUT 1 -->
@@ -71,13 +73,8 @@
               <input
                 id="color-{{name}}"
                 class="color"
-                style="
-                  cursor: pointer;
-                  border: 1px black solid;
-                  height: 14px;
-                  width: 14px;
-                  font-size: 0px;
-                  margin-right: 8px;"
+                style=""
+                 
                 value="{{color}}"
                 onchange='changeTierColor(this.value,"{{../participant}}","{{name}}");'/>
               <!-- SPAN 1 -->  
@@ -87,10 +84,7 @@
                 style="color: #{{color}}; margin-right: 8px">
                 {{code}}
               </span>
-              <!-- SPAN 2 -->
-              <span style="margin-right: 8px">
-                &middot;
-              </span>
+              
               <!-- SPAN 3 -->
               <span 
                 class="spkr_name" style="margin-right: 8px">
@@ -141,3 +135,15 @@
   </tr>
 </table>
 <!-- EAF VIWER -->
+
+
+</div>
+      </section>
+    </div>
+    <!--				
+    <button @click="play">Play/Pause</button>-->
+  </div>
+     
+
+
+      
