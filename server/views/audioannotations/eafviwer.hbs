@@ -1,0 +1,143 @@
+<!-- EAF VIWER -->
+<table id="maintable" cellspacing="0">
+  <tr style="width: 100%">
+    <td class="middlecenter" colspan="3">
+      <div
+        id="innertext"
+        style="padding-left: 0px; padding-right: 0px; padding-top: 0px">
+        
+        <!-- Title Box -->
+        <div id="player-title-box">
+          <h1>
+            {{{title}}}
+          </h1>
+        </div>
+
+        <!-- Speaker Panel -->
+        <div id="spkr_keys_box">
+          <div
+            style="float: left; cursor: pointer"
+            onclick="toggleDisplayPanel();"
+            title="Toggle Display Panel">
+            <div
+              id="plusButton"
+              style="display: flex; align-items: center">
+              <img
+                style="border: 0px; margin-right: 8px"
+                src="/img/plus.png"/>
+              (Open to customize display)
+            </div>
+            <img
+              id="minusButton"
+              style="border: 0px; display: none"
+              src="/img/minus.png"/>
+          </div>
+        </div>
+
+        <div id="spkr_keys" style="display: none; margin-left: 50px">
+          {{#each tierArr}}
+            <!-- PADRE TIER - PARTICIPANT N -->
+            <div style="clear: both; display: flex; align-items: center">
+              <input
+                type="checkbox"
+                class="check-pres"
+                style="margin-right: 8px"
+                id="check-tier-{{this.participant}}"
+                value="{{this.participant}}"
+                onchange='changePresCheck("{{this.participant}}");toggleSpeaker("{{this.participant}}");'/>
+                <span class="spkr_name">
+                  {{this.participant}}
+                </span>            
+            </div>
+            <!-- Hijo Tier n -->
+            {{#each this.tiers}}
+            <div
+              style="
+              clear: both;
+              margin-left: 20px;
+              display: flex;
+              align-items: center;">
+              <!-- INPUT 1 -->
+              <input
+                type="checkbox"
+                style="margin-right: 8px"
+                class="check-tier"
+                name="check-tier-{{../participant}}"
+                id="checkbox-{{name}}"
+                onchange='changeTierCheck("{{../participant}}");toggleTier("{{name}}");'
+                value="{{name}}"
+                checked/>
+              <!-- INPUT 2 -->
+              <input
+                id="color-{{name}}"
+                class="color"
+                style="
+                  cursor: pointer;
+                  border: 1px black solid;
+                  height: 14px;
+                  width: 14px;
+                  font-size: 0px;
+                  margin-right: 8px;"
+                value="{{color}}"
+                onchange='changeTierColor(this.value,"{{../participant}}","{{name}}");'/>
+              <!-- SPAN 1 -->  
+              <span
+                id="key-{{name}}"
+                class="spkr_key"
+                style="color: #{{color}}; margin-right: 8px">
+                {{code}}
+              </span>
+              <!-- SPAN 2 -->
+              <span style="margin-right: 8px">
+                &middot;
+              </span>
+              <!-- SPAN 3 -->
+              <span 
+                class="spkr_name" style="margin-right: 8px">
+                {{name}}
+              </span>
+              <!-- Select 01 -->
+              <select
+                id="{{name}}-display"
+                style="margin-left: 10px"
+                onchange="changeTierPlacement('{{name}}');">
+                {{#with (lookup ../../dataArr [name])}}
+                  <option value="top">One-line display</option>
+                  <option value="bottom" {{displayBool}}>Scrolling</option>
+                {{/with}}
+              </select>
+            </div>
+            {{/each}}
+          {{/each}}
+        </div>
+        <!-- PLAYER -->
+        
+        <div
+          id="player_area"
+          style="width: 100%; margin-left: auto; margin-right: auto">
+          <audio
+            onclick="sync(this.currentTime)"
+            onmousemove="sync(this.currentTime)"
+            ontimeupdate="sync(this.currentTime)"
+            id="sync_player"
+            controls="true">
+            <source
+              src="{{audioFile}}"
+              type="audio/mpeg"
+              onerror="alertMLoadErr();">
+          </audio>
+        </div>
+        
+        <div id="gloss-box">
+          <div id="txt_refs" class="divTable glossTable">
+          </div>
+        </div>
+
+        <div id="txt_lns" class="scrollTable">
+        </div>
+
+      </div>
+    </td>
+  </tr>
+</table>
+<!-- EAF VIWER -->
