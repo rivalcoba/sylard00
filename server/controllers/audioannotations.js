@@ -251,7 +251,7 @@ const addAudioannotation = async(req, res) => {
 
     // Reading eaf
     // TODO: unlink the json once is sotred on the database
-    let eafjson = appRoot.require(path.join("server","public","eaf","tmp",`p-${eaf}`));
+    let eafjson = require(path.join("..","public","eaf","tmp",`p-${eaf}`));
 
     // Building audioannotation
     let genreDoc = await Genre.findById(genre).exec()
