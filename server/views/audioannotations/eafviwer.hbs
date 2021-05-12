@@ -60,45 +60,49 @@
         <div id="spkr_keys" style="display: none; ">
           {{#each tierArr}}
             <!-- PADRE TIER - PARTICIPANT N -->
-            <div style="float:left">
+            <table>
+              <tr>
+                <td WIDTH="25"  >
+          
               <input
                 type="checkbox"
                 class="check-pres"
-                style="width:10px"
+                
                 id="check-tier-{{this.participant}}"
                 value="{{this.participant}}"
                 onchange='changePresCheck("{{this.participant}}");toggleSpeaker("{{this.participant}}");'/>
+                </td>
+                <td>
                 <h4>
                 <span class="spkr_name">
                   {{this.participant}}
                 </span>            
                 </h4>
-            </div>
+            </td>
+            </tr>
+            </table>
             <!-- Hijo Tier n -->
             {{#each this.tiers}}
             
                 <table>
-                  <tr>
+                  
                    
                   
             <div
-              style="
-              clear: both;
-              display: flex;
-              align-items: center;">
+             >
            
             
               <!-- SPAN 1 -->  
-              <td>
+              <td WIDTH="50"  >
               <span
                 id="key-{{name}}"
                 class="spkr_key"
                 style="color: #{{color}};">
                 {{code}}
               </span>
-              </td>
+              </td WIDTH="100px" >
               <!-- SPAN 3 -->
-              <td>
+              <td WIDTH="200px"  >
                 <h5>
               <span 
                 class="spkr_name" style="">
@@ -128,7 +132,7 @@
               <td>
               <select
                 id="{{name}}-display"
-                style="width:100px"
+                style="width:120px"
                 onchange="changeTierPlacement('{{name}}');">
                 {{#with (lookup ../../dataArr [name])}}
                   <option value="top">One-line display</option>
@@ -142,7 +146,7 @@
               <input
                 id="color-{{name}}"
                 class="color"
-                style=""
+              style="width:120px"
                  
                 value="{{color}}"
                 onchange='changeTierColor(this.value,"{{../participant}}","{{name}}");'/>
