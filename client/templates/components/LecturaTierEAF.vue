@@ -504,16 +504,6 @@ export default {
     this.axios
       .get('/eaf/tmp/Nuevoeaf.json')
       //.then((response) => (this.info = response));
-<<<<<<< HEAD
-      .then((response) => {
-        this.info = response;
-        self.agregar_tier_acomodado();
-      });
-      //INTERNATIONALITATION PAGE WITH I18N
-         self.axios.get("/i18n").then((response) => {
-      self.idioma = response.data.LANGUAGE;
-      if (self.idioma === "es") {
-=======
       .then(response => {
         this.info = response
         self.agregar_tier_acomodado()
@@ -522,7 +512,6 @@ export default {
     self.axios.get('/i18n').then(response => {
       self.idioma = response.data.LANGUAGE
       if (self.idioma === 'es') {
->>>>>>> 4483792508b3622c21d1b97ad537aaf2ac49092c
         //console.log("esta en español");
         this.$i18n.locale = 'es'
       } else if (self.idioma === 'en') {
