@@ -12,102 +12,12 @@
         
         <!-- Title Box -->
         <div id="player-title-box">
-          <h1>
+          <h2>
             {{{title}}}
-          </h1>
+          </h2>
         </div>
 
-        <!-- Speaker Panel -->
-        <div id="spkr_keys_box">
-          <div
-            style="float: left; cursor: pointer"
-            onclick="toggleDisplayPanel();"
-            title="Toggle Display Panel">
-            <div
-              id="plusButton"
-              style="display: flex; align-items: center">
-              <img
-                style="border: 0px; margin-right: 8px"
-                src="/img/plus.png"/>
-              (Open to customize display)
-            </div>
-            <img
-              id="minusButton"
-              style="border: 0px; display: none"
-              src="/img/minus.png"/>
-          </div>
-        </div>
-        <div id="spkr_keys" style="display: none; ">
-          {{#each tierArr}}
-            <!-- PADRE TIER - PARTICIPANT N -->
-            <div style="float:left">
-              <input
-                type="checkbox"
-                class="check-pres"
-                style="width:10px"
-                id="check-tier-{{this.participant}}"
-                value="{{this.participant}}"
-                onchange='changePresCheck("{{this.participant}}");toggleSpeaker("{{this.participant}}");'/>
-                <span class="spkr_name">
-                  {{this.participant}}
-                </span>            
-            </div>
-            <!-- Hijo Tier n -->
-            {{#each this.tiers}}
-            <ul>
-              <li>
-            <div
-              style="
-              clear: both;
-              display: flex;
-              align-items: center;">
-              <!-- INPUT 1 -->
-              <input
-                type="checkbox"
-                style="width:10px"
-                class="check-tier"
-                name="check-tier-{{../participant}}"
-                id="checkbox-{{name}}"
-                onchange='changeTierCheck("{{../participant}}");toggleTier("{{name}}");'
-                value="{{name}}"
-                checked/>
-              <!-- INPUT 2 -->
-              <input
-                id="color-{{name}}"
-                class="color"
-                style="cursor: pointer; border: 1px solid black; height: 14px; width: 14px; font-size: 0px; ; background-image: none;color: rgb(0, 0, 0);"
-                 
-                value="{{color}}"
-                onchange='changeTierColor(this.value,"{{../participant}}","{{name}}");'/>
-              <!-- SPAN 1 -->  
-              <span
-                id="key-{{name}}"
-                class="spkr_key"
-                style="color: #{{color}};">
-                {{code}}
-              </span>
-              
-              <!-- SPAN 3 -->
-              <span 
-                class="spkr_name" style="">
-                {{name}}
-              </span>
-              <!-- Select 01 -->
-              <select
-                id="{{name}}-display"
-                style="width:100px"
-                onchange="changeTierPlacement('{{name}}');">
-                {{#with (lookup ../../dataArr [name])}}
-                  <option value="top">One-line display</option>
-                  <option value="bottom" {{displayBool}}>Scrolling</option>
-                {{/with}}
-              </select>
-            </div>
-            </li>
-            </ul>
-            {{/each}}
-          {{/each}}
-        </div>
+        
         <!-- PLAYER -->
         
         <div
@@ -126,10 +36,131 @@
           </audio>
         </div>
         
+<!-- Speaker Panel -->
+<div ></div>
+        <div id="spkr_keys_box">
+          <div
+            style="float: left; cursor: pointer"
+            onclick="toggleDisplayPanel();"
+            title="Toggle Display Panel">
+            <div
+              id="plusButton"
+              style="display: flex; align-items: center">
+              <img
+                style="border: 0px; margin-right: 8px"
+                src="/img/plus.png"/>
+              Opciones Visuales
+            </div>
+            <img
+              id="minusButton"
+              style="border: 0px; display: none"
+              src="/img/minus.png"/>
+          </div>
+        </div>
+        <div id="spkr_keys" style="display: none; ">
+          {{#each tierArr}}
+            <!-- PADRE TIER - PARTICIPANT N -->
+            <div style="float:left">
+              <input
+                type="checkbox"
+                class="check-pres"
+                style="width:10px"
+                id="check-tier-{{this.participant}}"
+                value="{{this.participant}}"
+                onchange='changePresCheck("{{this.participant}}");toggleSpeaker("{{this.participant}}");'/>
+                <h4>
+                <span class="spkr_name">
+                  {{this.participant}}
+                </span>            
+                </h4>
+            </div>
+            <!-- Hijo Tier n -->
+            {{#each this.tiers}}
+            
+                <table>
+                  <tr>
+                   
+                  
+            <div
+              style="
+              clear: both;
+              display: flex;
+              align-items: center;">
+           
+            
+              <!-- SPAN 1 -->  
+              <td>
+              <span
+                id="key-{{name}}"
+                class="spkr_key"
+                style="color: #{{color}};">
+                {{code}}
+              </span>
+              </td>
+              <!-- SPAN 3 -->
+              <td>
+                <h5>
+              <span 
+                class="spkr_name" style="">
+                {{name}}
+              </span>
+              </h5>
+              </td>
+                 <!-- INPUT 1 -->
+                 <td>
+                   <label for="checbox_canal_1" id="switch_usuario_canal1_on" class="swich_etiqueta_opcion2_compacto">ON</label>
+               <label class="switch_general">
+              <input
+                type="checkbox"
+                style="width:10px"
+                class="checkbox_canal1"
+                name="check-tier-{{../participant}}"
+                id="checkbox-{{name}}"
+                onchange='changeTierCheck("{{../participant}}");toggleTier("{{name}}");'
+                value="{{name}}"
+                checked/>
+                   <span class="slider_general round"></span
+                    >
+                </label>
+                <label for="checkbox" id="switch_canal1_off" class="swich_etiqueta_opcion1_compacto">OFF</label>
+                </td>
+              <!-- Select 01 -->
+              <td>
+              <select
+                id="{{name}}-display"
+                style="width:100px"
+                onchange="changeTierPlacement('{{name}}');">
+                {{#with (lookup ../../dataArr [name])}}
+                  <option value="top">One-line display</option>
+                  <option value="bottom" {{displayBool}}>Scrolling</option>
+                {{/with}}
+              </select>
+              </td>
+
+                <!-- INPUT 2 -->
+              <td>
+              <input
+                id="color-{{name}}"
+                class="color"
+                style=""
+                 
+                value="{{color}}"
+                onchange='changeTierColor(this.value,"{{../participant}}","{{name}}");'/>
+                </td>
+            </div>
+            </tr>
+                </table>
+            
+            {{/each}}
+          {{/each}}
+        </div>
+<!--EAF BOX -->
         <div id="gloss-box">
           <div id="txt_refs" class="divTable glossTable">
           </div>
         </div>
+
+
 
         <div id="txt_lns" class="scrollTable">
         </div>
