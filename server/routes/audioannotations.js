@@ -110,7 +110,7 @@ router.get(
 router.get(
     '/viewer/:audioannotationId',
     ensureAuthenticated,
-    audioannotationsController.audioannotationViwer
+    audioannotationsController.audioannotationViewer
 );
 
 router.get(
