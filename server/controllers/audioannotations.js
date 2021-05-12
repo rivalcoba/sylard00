@@ -7,6 +7,7 @@ import deletejson from '@helpers/deletejson'
 import eaftojson from '@helpers/converteaf'
 import eafTools from '@helpers/eafTools'
 import Genre from '@models/Genre'
+import appRoot from 'app-root-path';
 
 const index = async(req, res) => {
     // Get Collecionts
@@ -230,7 +231,7 @@ const addAudioannotation = async(req, res) => {
         LINGUISTIC_TYPE_REF,
         TIER_ID,
         header,
-        eafjs,
+        //eafjs,
         eafdotjson
     } = req.body
     let eafdotjson_noDollar = eafdotjson.replace(/\$/g,'dollar');
@@ -247,6 +248,10 @@ const addAudioannotation = async(req, res) => {
             TIER_ID: TIER_ID[index],
         })
     })
+
+    // Reading eaf
+    // TODO: unlink the json once is sotred on the database
+    let eafjson = require(path.join("..","public","eaf","tmp",`p-${eaf}`));
 
     // Building audioannotation
     let genreDoc = await Genre.findById(genre).exec()
@@ -267,7 +272,7 @@ const addAudioannotation = async(req, res) => {
         user: req.user._id,
         header,
         TIER: tiers,
-        eafjson : JSON.parse(eafjs),
+        eafjson, //JSON.parse(eafjs),
         eafdotjson : JSON.parse(eafdotjson_noDollar)
     }
 
@@ -299,10 +304,9 @@ const uploadfileAudioannotation = async(req, res, next) => {
 
     try {
         deletejson(file.filename)
-        eafjs = JSON.stringify(await eafTools.eafToJson(file, {mergeAttrs: true}));
         eafdotjson =  JSON.stringify(await eafTools.eaf2json(file)) ;
         eaftojson(file.filename)
-        convertEaf2json(file.filename)
+        eafjs = convertEaf2json(file.filename)
 
     } catch (error) {
         console.log("Erorroesss al convertir EAF2JSON")
@@ -331,7 +335,7 @@ const uploadfileAudioannotation = async(req, res, next) => {
             filename: file.filename,
             collections,
             genreArray,
-            eafjs: eafjs,
+            //eafjs: eafjs, TODO: BORRAR
             eafdotjson
         })
     } catch (error) {
