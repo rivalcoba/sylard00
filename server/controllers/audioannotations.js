@@ -291,7 +291,6 @@ const addAudioannotation = async(req, res) => {
 
 const uploadfileAudioannotation = async(req, res, next) => {
     const file = req.file;
-    let eafjs = "";
     let eafdotjson = "";
     if (!file) {
         const error = new Error('Please upload a file')
@@ -306,7 +305,7 @@ const uploadfileAudioannotation = async(req, res, next) => {
         deletejson(file.filename)
         eafdotjson =  JSON.stringify(await eafTools.eaf2json(file)) ;
         eaftojson(file.filename)
-        eafjs = convertEaf2json(file.filename)
+        convertEaf2json(file.filename)
 
     } catch (error) {
         console.log("Erorroesss al convertir EAF2JSON")
