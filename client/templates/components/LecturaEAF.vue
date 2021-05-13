@@ -544,17 +544,19 @@ export default {
     },
   },
   mounted() {
-    // var parseString = require('xml2js').parseString;
-    //estaba montando el xml
-    // this.axios
-    //.get('https://api.coindesk.com/v1/bpi/currentprice.json')
-    //.then(response => (this.info = response))
-
-    //this.axios.get('/eaf/asset01.eaf')
-    //       .then(response =>  (this.info = response)          );
-    var self = this;
-    this.axios.get("/eaf/tmp/Nuevoeaf.json").then((response) => {
-      this.info = response;
+  //lectura de archivo fisico
+    //  var self = this;
+    // this.axios.get("/eaf/tmp/Nuevoeaf.json").then((response) => {
+    //   this.info = response;
+    //   self.leerTier();
+    // });
+    //lectura BD
+    var data = new Object();
+       var self = this;
+    this.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
+      //data.data=response.data.eafjson
+      data.data=response.data.eafjson
+      this.info = data//response.data;
       self.leerTier();
     });
     this.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
