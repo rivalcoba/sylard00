@@ -11,10 +11,11 @@ console.log("Aqui lee el eaf "+nombreEaf)
     fs.unlinkSync(path.join(__dirname,'..','public','eaf','eaf.json'))
     console.log(">> Se borro eaf.json.");
    } catch (error) {
-       console.log(">> No se borro eaf.json por que existe.")
+       console.log(">> No se borro eaf.json por que no existe.")
    }
 try {
-    fs.unlinkSync(path.join(__dirname,'..','public','eaf','Nuevoeaf.json'))
+    fs.unlinkSync(path.join(__dirname, '..', 'public', 'eaf', 'tmp', 'Nuevoeaf.json'))
+    
     console.log(">> Se borro Nuevoeaf.json.");
 } catch (error) {
     console.log(">>>>> NO se encontro Nuevoeaf.json para borrar")

@@ -1,25 +1,19 @@
 import path from 'path'
-import xml2js from 'xml2js'
-import fs from 'fs'
-var jsonobj = null
-var objson = null
-var tiempo_ids = ''
-var tiempo_buscado = 0
-var tier_arreglo = []
-var bandera_grabar = true
-var arreglo_tiempo = []
-var arreglo_ref_tiempo = []
-var obj_datos_tier = {
+// let jsonobj = null
+let objson = null
+let tiempo_ids = ''
+let tier_arreglo = []
+let bandera_grabar = true
+let arreglo_tiempo = []
+let arreglo_ref_tiempo = []
+let obj_datos_tier = {
   PARTICIPANT: '',
   TIER_ID: '',
   LINGUISTIC_TYPE_REF: '',
   DEFAULT_LOCALE: '',
 }
 
-var obj = {
-  tier: [],
-  //datos_tier:[]
-}
+
 //aqui me quede 13 de agosto 2020 hay que convertir el tiempo para  sincronizar con el mp3
 function convertir_tiempo(tiempo) {
   tiempo = tiempo / 1000
@@ -147,10 +141,13 @@ function leer_Tier_Json(obj_tier) {
   // console.log(obj_tier)
 }
 export default function(nombreEaf) {
+  let obj = {
+    tier: [],
+  }
+
   let url = path.join(__dirname, '..', 'public', 'eaf', nombreEaf)
   tier_arreglo = []
   objson = null
-  jsonobj = null
   obj_datos_tier = null
   //var objson = require('../public/eaf/eaf.json');
   objson = require(path.join(
@@ -277,13 +274,16 @@ export default function(nombreEaf) {
   //+console.log(obj);
   // add_Tier_Json();
   // save JSON in a file
-  jsonobj = JSON.stringify(obj, null, 4)
+  console.dir(`> obj.tier[0].length: ${JSON.stringify(obj)}`);
+  let jsonobj = JSON.stringify(obj, null, 4)
 
   // path.join(__dirname,'..','public','eaf','eaf.json')
 
   //fs.writeFileSync('../public/eaf/Nuevoeaf.json', jsonobj);
   const fs2 = require('fs')
   try {
+    //fs2.unlinkSync( path.join(__dirname, '..', 'public', 'eaf', 'tmp', 'Nuevoeaf.json') )
+    console.log(">>>>>>>>>>>>>>> WRITING FILE Nuevoeaf.json");
     fs2.writeFileSync(
       path.join(__dirname, '..', 'public', 'eaf', 'tmp', 'Nuevoeaf.json'),
       jsonobj

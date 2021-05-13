@@ -251,7 +251,7 @@ const addAudioannotation = async(req, res) => {
 
     // Reading eaf
     // TODO: unlink the json once is sotred on the database
-    let eafjson = appRoot.require(path.join("server","public","eaf","tmp",`p-${eaf}`));
+    let eafjson = require(path.join("..","public","eaf","tmp",`p-${eaf}`));
 
     // Building audioannotation
     let genreDoc = await Genre.findById(genre).exec()
@@ -291,7 +291,6 @@ const addAudioannotation = async(req, res) => {
 
 const uploadfileAudioannotation = async(req, res, next) => {
     const file = req.file;
-    let eafjs = "";
     let eafdotjson = "";
     if (!file) {
         const error = new Error('Please upload a file')
@@ -306,7 +305,7 @@ const uploadfileAudioannotation = async(req, res, next) => {
         deletejson(file.filename)
         eafdotjson =  JSON.stringify(await eafTools.eaf2json(file)) ;
         eaftojson(file.filename)
-        eafjs = convertEaf2json(file.filename)
+        convertEaf2json(file.filename)
 
     } catch (error) {
         console.log("Erorroesss al convertir EAF2JSON")
@@ -388,7 +387,7 @@ const vuetestAudioannotaion = async(req, res) => {
     })
 }
 
-const audioannotationViwer = async (req,res)=>{
+const audioannotationViewer = async (req,res)=>{
     const audioannotId = req.params.audioannotationId
     // Find audio annotation to visualize
     try {
@@ -397,11 +396,27 @@ const audioannotationViwer = async (req,res)=>{
             .populate('user').lean().exec();
         // Having audio annotation
         // Getting variables
-        //return res.send(audioannotationDoc.eafdotjson)
         let timeslotArr = eafTools.getTimeSlotArray(audioannotationDoc.eafdotjson);
         let dataArr = eafTools.getDataArray(audioannotationDoc.eafdotjson);
         let lineTimeArr = eafTools.getLineTimeArray(audioannotationDoc.eafdotjson);
         let tierArr = eafTools.getTierArr(audioannotationDoc.eafdotjson);
+
+        // Updating Color Settings
+
+        // Getting tierArr Keys
+        const tierrArrkeys = Object.keys(tierArr);
+        
+        // dataArr
+        audioannotationDoc.TIER.forEach(tier => {
+            // Updating dataArr
+            dataArr[tier.TIER_ID].color = tier.color.replace("#","")
+            // Updating tierArr
+            tierrArrkeys.forEach(key =>{
+                if(tierArr[key].tiers[tier.TIER_ID]){
+                    tierArr[key].tiers[tier.TIER_ID].color = tier.color.replace("#","");
+                }
+            });
+        });
 
         let timeslotArrStr = JSON.stringify(timeslotArr);
         let dataArrStr = JSON.stringify(dataArr);
@@ -490,7 +505,7 @@ export default {
     addAudioannotation,
     uploadfileAudioannotation,
     vuetestAudioannotaion,
-    audioannotationViwer,
+    audioannotationViewer,
     filtrarAudioannotation,
     indexById,
     indexReadonlyCollection,
