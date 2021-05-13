@@ -1,3 +1,177 @@
+	<style type="text/css">
+      div[id^="txt-current_"] {
+        background-color: #eeeeee;
+      }
+
+      #player-title-box {
+        padding: 2rem;
+    	padding-top: 3rem;
+    	background-color: white;
+      }
+
+      /*#txt_sync_content {
+        padding: 0px 36px;
+		border: 2px red solid;
+		  
+      }*/
+
+      #spkr_keys_box {
+        margin-top: 0px;
+        margin-bottom: 18px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 22px;
+		padding-left: 1.75rem;
+		padding: 1rem;
+		  
+      }
+
+      .spkr_key {
+        font-family: 'Raleway', Helvetica, sans-serif;
+        font-size: 16px;
+		font-weight: 600;  
+        margin-right: 8px;
+        display: inline;
+      }
+
+      .spkr_name {
+        font-weight: 600;
+    	font-size: 1.325rem;
+    	line-height: 1.875rem;
+    	margin-top: .125rem;
+    	color: var(--gris-texto-principal);
+    	margin-right: .25rem;
+		  
+		 /* font-family: 'Raleway', Helvetica, sans-serif;
+        font-size: 18px;
+        margin-right: 8px;
+        display: inline;
+        font-style: italic;
+		border: 2px solid pink; */ 
+      }
+		.spkr_name_jr {
+    font-size: .75rem;
+    font-weight: 400;
+    color: #999999;
+    font-family: 'Raleway', Helvetica, sans-serif;
+			
+			
+			
+		}
+      #sync_player {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #gloss-box {
+        width: 100%;
+        min-height: 65px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 12px;
+		/*border: 2px solid darkgreen;  */
+      }
+
+      div.glossTable {
+        width: 100%;
+        text-align: left;
+        min-height: 30px;
+        margin-bottom: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+		/*border: 2px solid red;    */
+      }
+      .divTable.glossTable .divTableRow {
+        font-size: 18px;
+        line-height: 26px;
+		  /*border: 2px solid yellow;*/
+      }
+      .divTable.glossTable .divTableCell {
+        font-family: 'Raleway', Helvetica, sans-serif;
+		  /*border: 2px dashed violet; */
+      }
+      .divTable.glossTable .spkr {
+        width: 55px;
+		  /*border: 2px dashed purple;*/ 
+      }
+      div.scrollTable {
+        width: 100%;
+        height: 470px;
+        margin-left: auto;
+        margin-right: auto;
+        overflow-x: hidden;
+        overflow-y: visible;
+        background-color: #ffffff;
+        /*border: dotted 5px yellowgreen;*/
+      }
+      div.scrollTableCont {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+		 /* border: dotted 3px red;*/
+      }
+      .divTable.scrollTableCont .divTableRow {
+        font-size: 16px;
+        line-height: 26px;
+        margin: 0;
+		  /*border: dotted 3px blueviolet;*/
+      }
+      .divTable.scrollTableCont .divTableCell {
+        font-family: 'Merriweather', Times, serif;
+		  /*border: dashed 3px orange;*/
+      }
+      .divTable.scrollTableCont .spkr {
+        width: 55px;
+        margin-right: 4px;
+        font-weight: normal;
+        padding-left: 12px;
+		 /* border: dashed 3px brown;*/
+      }
+      .divTable.scrollTableCont .spkr:hover {
+        cursor: pointer;
+        font-weight: bold;
+		  /*border: double 3px red;*/
+      }
+      .divTable.scrollTableCont .spkn {
+        margin-left: 8px;
+        padding-right: 12px;
+		  /*border: double 1px gray;*/
+      }
+
+      .divTable {
+        display: table;
+		  /*border: double 1px blueviolet;*/
+      }
+      .divTableRow {
+        display: table-row;
+		  /*border: dotted 6px green;*/
+      }
+      .divTableCell {
+        display: table-cell;
+		  /*border: dotted 6px black;*/
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <div class="container-fluid back_aqua_0">
+			<nav class=" container contenedor_barra_nav_publico">
+				<a class="barra_nav_publico_elemento" href="#" id="bnpe_1"><span class="icono_nav_publico icon-home1"></span></a>
+				<a class="barra_nav_publico_elemento" href="#" id="bnpe_2">Catálogo</a>
+				<a class="barra_nav_publico_elemento" href="#" id="bnpe_3">Documentación</a>
+				<a class="barra_nav_publico_elemento" href="#" id="bnpe_4">Manual de usuario</a>		
+				<h1 class="logo_menu" id="bnpe_5">SYLARD</h1>
+				<a class="barra_nav_publico_elemento" href="#" id="bnpe_6">Contacto</a>
+				<a class="barra_nav_publico_elemento" href="#" id="bnpe_7">Descargas</a>
+				<a class="barra_nav_publico_elemento" href="#" id="bnpe_8">Términos y condiciones</a>
+				<a class="barra_nav_publico_elemento" href="#" id="bnpe_9">Creditos</a>
+			</nav>
+		</div>
+    <main>
 <div>
     <div class="container-fluid" id="contenedor_viewer_ancho_total">
       <section class="container">
@@ -12,30 +186,10 @@
         
         <!-- Title Box -->
         <div id="player-title-box">
-          <h2>
+          <h2><i>
             {{{title}}}
           </h2>
         </div>
-
-        
-        <!-- PLAYER -->
-        
-        <div
-          id="player_area"
-          style="width: 100%; margin-left: auto; margin-right: auto">
-          <audio
-            onclick="sync(this.currentTime)"
-            onmousemove="sync(this.currentTime)"
-            ontimeupdate="sync(this.currentTime)"
-            id="sync_player"
-            controls="true">
-            <source
-              src="{{audioFile}}"
-              type="audio/mpeg"
-              onerror="alertMLoadErr();">
-          </audio>
-        </div>
-        
 <!-- Speaker Panel -->
 <div ></div>
         <div id="spkr_keys_box">
@@ -88,8 +242,7 @@
                   
                    
                   
-            <div
-             >
+            <div>
            
             
               <!-- SPAN 1 -->  
@@ -158,15 +311,38 @@
             {{/each}}
           {{/each}}
         </div>
+        
+        <!-- PLAYER -->
+        
+        <div
+          id="player_area"
+          style="width: 100%; margin-left: auto; margin-right: auto">
+          <audio
+            onclick="sync(this.currentTime)"
+            onmousemove="sync(this.currentTime)"
+            ontimeupdate="sync(this.currentTime)"
+            id="sync_player"
+            controls="true">
+            <source
+              src="{{audioFile}}"
+              type="audio/mpeg"
+              onerror="alertMLoadErr();">
+          </audio>
+        </div>
+        
+
 <!--EAF BOX -->
+<hr>
         <div id="gloss-box">
           <div id="txt_refs" class="divTable glossTable">
           </div>
         </div>
+        <hr>
 
 
-
+<div class="contenedor_multilinea">
         <div id="txt_lns" class="scrollTable">
+        </div>
         </div>
 
       </div>
@@ -184,5 +360,5 @@
   </div>
      
 
-
+</main>
       
