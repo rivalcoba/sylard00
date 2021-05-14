@@ -37,81 +37,81 @@
 <!-- Speaker Panel -->
 
 
-        <div id="spkr_keys_box">
-          <div
-            style="float: left; cursor: pointer"
-            onclick="toggleDisplayPanel();"
-            title="Toggle Display Panel">
-            <div
-              id="plusButton"
-              style="display: flex; align-items: center">
-              <img
-                style="border: 0px; margin-right: 8px"
-                src="/img/plus.png"/>
-              Opciones Visuales
-            </div>
-            <img
-              id="minusButton"
-              style="border: 0px; display: none"
-              src="/img/minus.png"/>
-          </div>
-        </div>
-        <div id="spkr_keys" style="display: none; ">
+      
+        
+        <div id="spkr_keys" style=" ">
           {{#each tierArr}}
-            <!-- PADRE TIER - PARTICIPANT N -->
-            
-             
-             <label for="checbox_canal_1" id="switch_usuario_canal1_on" class="swich_etiqueta_opcion2_compacto">ON</label>
-               <label class="switch_general">
-              <input
-                type="checkbox"
-                class="check-pres"
-                
-                id="check-tier-{{this.participant}}"
+              <div class="contenedor_canal_audioanotacion">
+                            <div class="contenedor_canal_padre_compacto">
+                                <div class="contenedor_hablante">
+                                <p class="label label_al_100">Canal {{@index}} (hablante)</p> <!--etiqueta del hablante-->
+                                
+                                <!--PRIMER HABLANTE (PADRE)-->	
+                                <span class="spkr_name">    {{this.participant}}</span>	
+                                </div>
+                                <div class="contenedor_opciones_visuales_canal1_viewer">
+                                    <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                                    <!--Etiqueta superiror de columna-->
+                                        <label class="label label_al_100">Mostrar</label> 
+                                        <div class="contenedor_switch_canal_audioanotacion">
+                                        <!--SWITCH VISUALIZACION PRIMER HABLANTE PADRE-->	
+                                        <label class="swich_etiqueta_opcion1_compacto" for="checkbox" id="switch_canal1_off">OFF</label>
+                                        <label class="switch_general">
+                                        <!--checkbox de SWITCH VISUALIZACION PRIMER HABLANTE PADRE-->	
+                                        <input type="checkbox"  class="check-pres" id="check-tier-{{this.participant}}"
                 value="{{this.participant}}"
-                onchange='changePresCheck("{{this.participant}}");toggleSpeaker("{{this.participant}}");'/>
-                 <span class="slider_general round"></span
-                    >
-                </label>
-                <label for="checkbox" id="switch_canal1_off" class="swich_etiqueta_opcion1_compacto">OFF</label>
-             
-                <h4>
-                <span class="spkr_name">
-                  {{this.participant}}
-                </span>            
-                </h4>
-            
+                onchange='changePresCheck("{{this.participant}}");toggleSpeaker("{{this.participant}}");'>
+                                           <span class="slider_general round"></span></label>
+                                        <label class="swich_etiqueta_opcion2_compacto" for="checbox_canal_1" id="switch_usuario_canal1_on">ON</label>
+                                        </div>
+                                        
+                                    </div>
+                                    <!--ETIQUETA DE COLUMNA Tipo de Visualizacion-->
+                                    <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+                                        <label class="label label_al_100">Visualizar en:</label>
+                                        
+                                    </div>
+                                    <!--ETIQUETA DE COLUMNA Color-->
+                                    <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion">
+                                        <label class="label label_al_100">Color de tipografía</label>
+                                        
+                                    </div>	
+                                </div>
+                                
+                            </div>
+                                
+                        </div>
             <!-- Hijo Tier n -->
             {{#each this.tiers}}
             
                
-                  
+                  <div class="contenedor_canal_audioanotacion">
+                            <div class="contenedor_canal_hijo_compacto">
                    
                   
-            <div>
+           
            
           
               <!-- SPAN 1 -->  
-              
-              <span
+              <div class="contenedor_hablante_hijo">
+  <span
                 id="key-{{name}}"
                 class="spkr_key"
-                style="color: #{{color}};">
+                style="color: #{{color}};margin-right: 8px;">
                 {{code}}
               </span>
-             
-              <!-- SPAN 3 -->
-             
-                <h5>
-              <span 
+   <span 
                 class="spkr_name" style="">
                 {{name}}
               </span>
-              </h5>
+              </div>
+            
+        
          
                  <!-- INPUT 1 -->
-                
-                   <label for="checbox_canal_1" id="switch_usuario_canal1_on" class="swich_etiqueta_opcion2_compacto">ON</label>
+                  <div class="contenedor_opciones_visuales_canal1_viewer">
+                       <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
+                   <label for="checbox_canal_1" id="switch_usuario_canal1_on" class="swich_etiqueta_opcion2_compacto">OFF</label>
                <label class="switch_general">
               <input
                 type="checkbox"
@@ -125,27 +125,21 @@
                    <span class="slider_general round"></span
                     >
                 </label>
-                <label for="checkbox" id="switch_canal1_off" class="swich_etiqueta_opcion1_compacto">OFF</label>
-             
+                <label for="checkbox" id="switch_canal1_off" class="swich_etiqueta_opcion1_compacto">ON</label>
+             </div>
               <!-- Select 01 -->
-            
-              <select
+                 <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
+              <select class="input_flexible_compacto opciones_despliegue_viewer"
                 id="{{name}}-display"
-                style="width:120px"
+                style=""
                 onchange="changeTierPlacement('{{name}}');">
                 {{#with (lookup ../../dataArr [name])}}
                   <option value="top">One-line display</option>
                   <option value="bottom" {{displayBool}}>Scrolling</option>
                 {{/with}}
               </select>
-          
-
+               </div>
                 <!-- INPUT 2 -->
-      
-              
-            
-            </div>
-           
     	<div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
 											<!--SELECTOR COLOR SEGUNDO HABLANTE HIJO CAPA 3-->
 											<input
@@ -164,7 +158,13 @@
 
                       </div>
 										</div>
-            
+                    </div>
+
+                    
+<!--fin estilos hijo-->
+            </div>
+            </div>
+            <!--fin estilos hijo-->
             {{/each}}
           {{/each}}
         </div>
