@@ -2004,12 +2004,12 @@ switch_usuario_canal1_on {
 
 
 /*ELEMENTOS SELECTOR COLOR*/
-
+/*
 .inp {
-    border-right: 1rem solid red;
+    border-right: 1rem solid pink;
     width: 6rem;
 }
-
+*/
 .color-palette {
     height: 1rem;
     width: 1rem;

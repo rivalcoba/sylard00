@@ -1,5 +1,5 @@
 
-
+var checker_mouse =false;
 var colorInput = document.getElementById("colorPicker");
 var colorPalette = document.getElementById("colorPalette");
 function color_pickerstart(id_color,id_paleta){
@@ -12,8 +12,9 @@ function color_pickerstart(id_color,id_paleta){
 function color_picker_out(id_color,id_paleta){
   this.colorInput=document.getElementById(id_color);
   this.colorPalette=document.getElementById(id_paleta);
+ if(checker_mouse == false) {
   colorPalette.style.display = 'none';
- 
+ }
 }
 colorPalette.mouseIsOver = false;
 colorInput.style.borderRight =  `10px solid ${colorInput.value}`;
@@ -27,8 +28,10 @@ colorPalette.onmouseout = () => {
 }
 
 function hideColorPalette() {
- 
-    colorPalette.style.display = 'none';
+      
+        colorPalette.style.display = 'none';
+      
+    
 
 }
 
@@ -44,7 +47,7 @@ function chooseColor(e,speaker,tierID) {
   document.getElementById(keyID).style.color = selColor;
   var clean_color= color2.replace("#","");
 
-  console.log(clean_color);
+  //console.log(clean_color);
   tierArr[speaker].tiers[tierID].color = clean_color;
   
   setData();
@@ -68,3 +71,11 @@ function showColorPalette() {
 
 }
 
+function check_in_palette(){
+ checker_mouse=true;
+//console.log("in")
+}
+function check_out_palette(){
+  checker_mouse=false;
+//console.log("out");
+}
