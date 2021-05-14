@@ -12,8 +12,12 @@
   {{#if dataArrStr}}
   <!-- >STYLES -->
   <link rel="icon" type="/image/png" href="/img/plus.png" />
-  <link rel="stylesheet" href="/css/base.css" />
-  <link rel="stylesheet" href="/css/main.css" />
+
+  <link rel="stylesheet" href="/css/bootstrap-grid.css">
+  	<link rel="icon" href="/images/favicon_sylard3.svg" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/estilos_menu.css">
+  	<link rel="stylesheet" href="/fonts/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <style 
     type="text/css">
     div[id^="txt-current_"] {
@@ -190,7 +194,8 @@
     crossorigin="anonymous"
   ></script>
   <script src="/javascript/shared.js"></script>
-  <script src="/javascript/jscolor.js"></script>
+  <script src="/javascript/jscolor.js"></script>	
+  <script src="/javascript/la_color_picker.js"></script>
   <script type="text/javascript">
     var media;
     var ts_start_time_array = [];
@@ -564,7 +569,7 @@
 
     function changeTierColor(color, speaker, tierID) {
       var keyID = "key-" + tierID;
-      var selColor = "#" + color;
+      var selColor = color;
       document.getElementById(keyID).style.color = selColor;
       tierArr[speaker].tiers[tierID].color = color;
       setData();
@@ -609,6 +614,7 @@
         document.getElementById("minusButton").style.display = "none";
       }
     }
+    
   </script>
   {{/if}}
 </body>

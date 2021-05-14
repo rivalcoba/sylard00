@@ -1,163 +1,5 @@
-	<style type="text/css">
-      div[id^="txt-current_"] {
-        background-color: #eeeeee;
-      }
-
-      #player-title-box {
-        padding: 2rem;
-    	padding-top: 3rem;
-    	background-color: white;
-      }
-
-      /*#txt_sync_content {
-        padding: 0px 36px;
-		border: 2px red solid;
-		  
-      }*/
-
-      #spkr_keys_box {
-        margin-top: 0px;
-        margin-bottom: 18px;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        min-height: 22px;
-		padding-left: 1.75rem;
-		padding: 1rem;
-		  
-      }
-
-      .spkr_key {
-        font-family: 'Raleway', Helvetica, sans-serif;
-        font-size: 16px;
-		font-weight: 600;  
-        margin-right: 8px;
-        display: inline;
-      }
-
-      .spkr_name {
-        font-weight: 600;
-    	font-size: 1.325rem;
-    	line-height: 1.875rem;
-    	margin-top: .125rem;
-    	color: var(--gris-texto-principal);
-    	margin-right: .25rem;
-		  
-		 /* font-family: 'Raleway', Helvetica, sans-serif;
-        font-size: 18px;
-        margin-right: 8px;
-        display: inline;
-        font-style: italic;
-		border: 2px solid pink; */ 
-      }
-		.spkr_name_jr {
-    font-size: .75rem;
-    font-weight: 400;
-    color: #999999;
-    font-family: 'Raleway', Helvetica, sans-serif;
-			
-			
-			
-		}
-      #sync_player {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      #gloss-box {
-        width: 100%;
-        min-height: 65px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 12px;
-		/*border: 2px solid darkgreen;  */
-      }
-
-      div.glossTable {
-        width: 100%;
-        text-align: left;
-        min-height: 30px;
-        margin-bottom: 12px;
-        padding-left: 12px;
-        padding-right: 12px;
-		/*border: 2px solid red;    */
-      }
-      .divTable.glossTable .divTableRow {
-        font-size: 18px;
-        line-height: 26px;
-		  /*border: 2px solid yellow;*/
-      }
-      .divTable.glossTable .divTableCell {
-        font-family: 'Raleway', Helvetica, sans-serif;
-		  /*border: 2px dashed violet; */
-      }
-      .divTable.glossTable .spkr {
-        width: 55px;
-		  /*border: 2px dashed purple;*/ 
-      }
-      div.scrollTable {
-        width: 100%;
-        height: 470px;
-        margin-left: auto;
-        margin-right: auto;
-        overflow-x: hidden;
-        overflow-y: visible;
-        background-color: #ffffff;
-        /*border: dotted 5px yellowgreen;*/
-      }
-      div.scrollTableCont {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: transparent;
-		 /* border: dotted 3px red;*/
-      }
-      .divTable.scrollTableCont .divTableRow {
-        font-size: 16px;
-        line-height: 26px;
-        margin: 0;
-		  /*border: dotted 3px blueviolet;*/
-      }
-      .divTable.scrollTableCont .divTableCell {
-        font-family: 'Merriweather', Times, serif;
-		  /*border: dashed 3px orange;*/
-      }
-      .divTable.scrollTableCont .spkr {
-        width: 55px;
-        margin-right: 4px;
-        font-weight: normal;
-        padding-left: 12px;
-		 /* border: dashed 3px brown;*/
-      }
-      .divTable.scrollTableCont .spkr:hover {
-        cursor: pointer;
-        font-weight: bold;
-		  /*border: double 3px red;*/
-      }
-      .divTable.scrollTableCont .spkn {
-        margin-left: 8px;
-        padding-right: 12px;
-		  /*border: double 1px gray;*/
-      }
-
-      .divTable {
-        display: table;
-		  /*border: double 1px blueviolet;*/
-      }
-      .divTableRow {
-        display: table-row;
-		  /*border: dotted 6px green;*/
-      }
-      .divTableCell {
-        display: table-cell;
-		  /*border: dotted 6px black;*/
-      }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<input id="colorPicker" type="text" hidden>
+<div id="colorPalette"></div>
     <div class="container-fluid back_aqua_0">
 			<nav class=" container contenedor_barra_nav_publico">
 				<a class="barra_nav_publico_elemento" href="#" id="bnpe_1"><span class="icono_nav_publico icon-home1"></span></a>
@@ -177,21 +19,24 @@
       <section class="container">
         <div class="col-sm-12 contenedor-90vh" id="contenedor_general_viewer">
 <!-- EAF VIWER -->
-<table id="maintable" cellspacing="0">
-  <tr style="width: 100%">
-    <td class="middlecenter" colspan="3">
+
+ 
+   
       <div
         id="innertext"
         style="padding-left: 0px; padding-right: 0px; padding-top: 0px">
         
         <!-- Title Box -->
-        <div id="player-title-box">
-          <h2><i>
-            {{{title}}}
+        
+          <h2>
+            {{{title}}} <br>
+            <i>{{title}}</i>
           </h2>
-        </div>
+   
+        	<button class="contenedor_acordeon"><span class="icono_acordeon icon-chevron-down"></span> Opciones visuales</button>
 <!-- Speaker Panel -->
-<div ></div>
+
+
         <div id="spkr_keys_box">
           <div
             style="float: left; cursor: pointer"
@@ -214,10 +59,10 @@
         <div id="spkr_keys" style="display: none; ">
           {{#each tierArr}}
             <!-- PADRE TIER - PARTICIPANT N -->
-            <table>
-              <tr>
-                <td WIDTH="25"  >
-          
+            
+             
+             <label for="checbox_canal_1" id="switch_usuario_canal1_on" class="swich_etiqueta_opcion2_compacto">ON</label>
+               <label class="switch_general">
               <input
                 type="checkbox"
                 class="check-pres"
@@ -225,46 +70,47 @@
                 id="check-tier-{{this.participant}}"
                 value="{{this.participant}}"
                 onchange='changePresCheck("{{this.participant}}");toggleSpeaker("{{this.participant}}");'/>
-                </td>
-                <td>
+                 <span class="slider_general round"></span
+                    >
+                </label>
+                <label for="checkbox" id="switch_canal1_off" class="swich_etiqueta_opcion1_compacto">OFF</label>
+             
                 <h4>
                 <span class="spkr_name">
                   {{this.participant}}
                 </span>            
                 </h4>
-            </td>
-            </tr>
-            </table>
+            
             <!-- Hijo Tier n -->
             {{#each this.tiers}}
             
-                <table>
+               
                   
                    
                   
             <div>
            
-            
+          
               <!-- SPAN 1 -->  
-              <td WIDTH="50"  >
+              
               <span
                 id="key-{{name}}"
                 class="spkr_key"
                 style="color: #{{color}};">
                 {{code}}
               </span>
-              </td WIDTH="100px" >
+             
               <!-- SPAN 3 -->
-              <td WIDTH="200px"  >
+             
                 <h5>
               <span 
                 class="spkr_name" style="">
                 {{name}}
               </span>
               </h5>
-              </td>
+         
                  <!-- INPUT 1 -->
-                 <td>
+                
                    <label for="checbox_canal_1" id="switch_usuario_canal1_on" class="swich_etiqueta_opcion2_compacto">ON</label>
                <label class="switch_general">
               <input
@@ -280,9 +126,9 @@
                     >
                 </label>
                 <label for="checkbox" id="switch_canal1_off" class="swich_etiqueta_opcion1_compacto">OFF</label>
-                </td>
+             
               <!-- Select 01 -->
-              <td>
+            
               <select
                 id="{{name}}-display"
                 style="width:120px"
@@ -292,21 +138,31 @@
                   <option value="bottom" {{displayBool}}>Scrolling</option>
                 {{/with}}
               </select>
-              </td>
+          
 
                 <!-- INPUT 2 -->
-              <td>
-              <input
-                id="color-{{name}}"
-                class="color"
-              style="width:120px"
-                 
-                value="{{color}}"
-                onchange='changeTierColor(this.value,"{{../participant}}","{{name}}");'/>
-                </td>
+      
+              
+            
             </div>
-            </tr>
-                </table>
+           
+    	<div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion ">
+											<!--SELECTOR COLOR SEGUNDO HABLANTE HIJO CAPA 3-->
+											<input
+                      							id="color-{{name}}"
+                      							class="inp input_flexible_compacto"
+												  style=""
+												  value="{{color}}"
+												  onchange='changeTierColor(this.value,"{{../participant}}","{{name}}");'
+                          onclick='color_pickerstart("color-{{name}}","colorPalette-{{name}}");'
+                          />
+											<!--CONTENEDOR GAMA DE COLORES SEGUNDO HABLANTE HIJO CAPA 3-->
+											<div class="palette" id="colorPalette-{{name}}">
+
+<div class='color-option' style='background-color:#000000' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#666666' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#999999' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option_more_margin' style='background-color:#1B227E' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#123EB7' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#0086CC' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#166404' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#00861F' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#75C30C' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option_more_margin' style='background-color:#810707' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#C60000' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#F74E4E' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#624504' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#AC7802' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#DDB200' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option_more_margin' style='background-color:#540F72' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#782FA5' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#A458BF' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#A33E19' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#DD6600' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#FF9300' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option_more_margin' style='background-color:#135C6E' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#15C1D1' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div><div class='color-option' style='background-color:#7ECEDE' onclick='chooseColor(event,"{{../participant}}","{{name}}")'></div>
+
+                      </div>
+										</div>
             
             {{/each}}
           {{/each}}
@@ -346,9 +202,9 @@
         </div>
 
       </div>
-    </td>
-  </tr>
-</table>
+  
+
+
 <!-- EAF VIWER -->
 
 
