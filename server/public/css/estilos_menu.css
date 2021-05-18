@@ -777,8 +777,16 @@ input[type=checkbox]:checked+label
     color: green;
     font-weight: bold;
 }
-
-
+/*
+.check-press{
+visibility: hidden;
+width: 0px;
+height: 0px;
+top:4px;
+position: absolute;
+display: inline;
+}
+*/
 /*Textarea es variante de inputs */
 
 textarea+.contenedor_icono_correcto_input
@@ -1969,7 +1977,7 @@ input:checked+.slider_general:before {
 
 .acordeon_panel {
     display: none;
-    overflow: hidden;
+    overflow: visible;
     max-height: 0;
     transition: max-height 0.2s ease-out;
 }
@@ -2029,9 +2037,30 @@ switch_usuario_canal1_on {
     position: absolute;
     right: 0rem;
     bottom: -8rem;
-    z-index: 1000;
+    z-index: 9999;
 }
-
+/*
+.color-palette:last-of-type {
+    height: 1rem;
+    width: 1rem;
+    background: red;
+    display: none;
+}
+*/
+.contenedor_canal_audioanotacion:last-of-type .palette:last-of-type {
+    margin-top: .25rem;
+    width: 13.5rem;
+    height: 8.725rem;
+    background: white;
+    border: 1px solid #707070;
+    border-radius: 1px;
+    display: none;
+    padding: .25rem;
+    position: absolute;
+    right: 0rem;
+    bottom: 0rem;
+    z-index: 9999;
+}
 .color-option {
     width: 1.5rem;
     height: 1.5rem;
@@ -3417,8 +3446,10 @@ h5.hablante_canal_padre {
     flex-basis: 100%;
 }
 
-
-/*.contenedor_switch_canal_audioanotacion {}*/
+/*
+.contenedor_switch_canal_audioanotacion {
+    position: relative;
+}*/
 
 .contenedor_hablante {
     flex-basis: 52%;

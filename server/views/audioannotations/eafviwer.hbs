@@ -1,18 +1,47 @@
 <input id="colorPicker" type="text" hidden>
-<div id="colorPalette"></div>
-    <div class="container-fluid back_aqua_0">
-			<nav class=" container contenedor_barra_nav_publico">
-				<a class="barra_nav_publico_elemento" href="#" id="bnpe_1"><span class="icono_nav_publico icon-home1"></span></a>
-				<a class="barra_nav_publico_elemento" href="#" id="bnpe_2">Catálogo</a>
-				<a class="barra_nav_publico_elemento" href="#" id="bnpe_3">Documentación</a>
-				<a class="barra_nav_publico_elemento" href="#" id="bnpe_4">Manual de usuario</a>		
-				<h1 class="logo_menu" id="bnpe_5">SYLARD</h1>
-				<a class="barra_nav_publico_elemento" href="#" id="bnpe_6">Contacto</a>
-				<a class="barra_nav_publico_elemento" href="#" id="bnpe_7">Descargas</a>
-				<a class="barra_nav_publico_elemento" href="#" id="bnpe_8">Términos y condiciones</a>
-				<a class="barra_nav_publico_elemento" href="#" id="bnpe_9">Creditos</a>
-			</nav>
-		</div>
+<script>
+    let elemento_link = document.getElementById('home');
+  elemento_link.setAttribute("class", "active_a");
+</script>
+<!--INICIA barra de navegacion publico-->
+<div class="container-fluid back_aqua_0">
+  <nav class="container contenedor_barra_nav_publico">
+    {{#if user}}
+    <a id="home" class="barra_nav_publico_elemento" href="/dashboard" id="bnpe_1">
+      <span class="icono_nav_publico icon-home1"></span>
+    </a>
+     {{else}}
+     <a class="barra_nav_publico_elemento" href="/" id="bnpe_1">
+      <span class="icono_nav_publico icon-home1"></span>
+    </a>
+      {{/if}}
+    <a class="barra_nav_publico_elemento" href="#" id="bnpe_2">
+      {{translation.NAVBAR.CATALOGUE}}
+    </a>
+    <a class="barra_nav_publico_elemento" href="/documentation" id="bnpe_3">
+      {{translation.NAVBAR.DOCUMENTATION}}
+    </a>
+    <a class="barra_nav_publico_elemento" href="/usermanual" id="bnpe_4">
+      {{translation.NAVBAR.USER_MANUAL}}
+    </a>
+    <h1 class="logo_menu" id="bnpe_5">
+      SYLARD
+    </h1>
+    <a class="barra_nav_publico_elemento" href="/contact" id="bnpe_6">
+      {{translation.NAVBAR.CONTACT}}
+    </a>
+    <a class="barra_nav_publico_elemento" href="#" id="bnpe_7">
+      {{translation.SYLARDHOME.DOWNLOADS}}
+    </a>
+    <a class="barra_nav_publico_elemento" href="/terms" id="bnpe_8">
+      {{translation.FOOTER.TERMS}}
+    </a>
+    <a class="barra_nav_publico_elemento" href="/credits" id="bnpe_9">
+      {{translation.NAVBAR.CREDITS}}
+    </a>
+  </nav>
+</div>
+<!--TERMINA barra de navegacion publico-->
     <main>
 <div>
     <div class="container-fluid" id="contenedor_viewer_ancho_total">
@@ -36,7 +65,8 @@
         	<button class="contenedor_acordeon"><span class="icono_acordeon icon-chevron-down"></span> Opciones visuales</button>
 <!-- Speaker Panel -->
 
-
+	<div class="acordeon_panel">
+						<div class="acordeon_panel_item">
       
         
         <div id="spkr_keys" style=" ">
@@ -55,10 +85,10 @@
                                         <label class="label label_al_100">Mostrar</label> 
                                         <div class="contenedor_switch_canal_audioanotacion">
                                         <!--SWITCH VISUALIZACION PRIMER HABLANTE PADRE-->	
-                                        <label class="swich_etiqueta_opcion1_compacto" for="checkbox" id="switch_canal1_off">OFF</label>
+                                        <label class="swich_etiqueta_opcion1_compacto" id="switch_canal1_off">OFF</label>
                                         <label class="switch_general">
                                         <!--checkbox de SWITCH VISUALIZACION PRIMER HABLANTE PADRE-->	
-                                        <input type="checkbox"  class="check-pres" id="check-tier-{{this.participant}}"
+                                        <input style="visibility:hidden;" type="checkbox"  class="check-pres" id="check-tier-{{this.participant}}"
                 value="{{this.participant}}"
                 onchange='changePresCheck("{{this.participant}}");toggleSpeaker("{{this.participant}}");'>
                                            <span class="slider_general round"></span></label>
@@ -101,7 +131,7 @@
                 {{code}}
               </span>
    <span 
-                class="spkr_name" style="">
+                class="spkr_name_jr" style="">
                 {{name}}
               </span>
               </div>
@@ -111,7 +141,7 @@
                  <!-- INPUT 1 -->
                   <div class="contenedor_opciones_visuales_canal1_viewer">
                        <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
-                   <label for="checbox_canal_1" id="switch_usuario_canal1_on" class="swich_etiqueta_opcion2_compacto">OFF</label>
+                   <label for="checbox_canal_1" id="switch_usuario_canal1_off" class="swich_etiqueta_opcion2_compacto">OFF</label>
                <label class="switch_general">
               <input
                 type="checkbox"
@@ -125,7 +155,7 @@
                    <span class="slider_general round"></span
                     >
                 </label>
-                <label for="checkbox" id="switch_canal1_off" class="swich_etiqueta_opcion1_compacto">ON</label>
+                <label for="checkbox" id="switch_canal1_on" class="swich_etiqueta_opcion1_compacto">ON</label>
              </div>
               <!-- Select 01 -->
                  <div class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
@@ -168,12 +198,13 @@
             {{/each}}
           {{/each}}
         </div>
-        
+        	</div>
+					</div>
         <!-- PLAYER -->
         
         <div
           id="player_area"
-          style="width: 100%; margin-left: auto; margin-right: auto">
+          style="margin-top: 1rem">
           <audio
             onclick="sync(this.currentTime)"
             onmousemove="sync(this.currentTime)"
