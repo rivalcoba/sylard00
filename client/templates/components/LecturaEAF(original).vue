@@ -93,68 +93,96 @@
          </div>
          </div>
 
-         <!--AQUI on line HABLANDO--->
-         <hr>
+         <!--AQUI APARECE LA TABLA DE QUIENES ESTAN HABLANDO--->
+         <hr />
          <div
-          class="contenedor_one_line_display" >
-          <div v-if="this.info.data">
+          class="contenedor_one_line_display"
+          v-for="(item2, index2) in otro"
+          :key="index2"
+         >
+          <table class="table_one_line">
+            <div v-if="options[index2].Visible">
+              <div v-if="options[index2].value == 'A'">
+                <!--{{computedColor=options[index].color}}-->
+                <div v-for="(item, index) in otro[index2]" :key="index">
+                  <!--AQUÍ EMPIEZA LA LLAMADA HACIA EL HABLANTE PRINCIPAL-->
+                  <div v-if="index == 0">
+                    <p class="canal_1_hablante_one_line_display_item">
+                      <span class="siglas_canal_item">
+                        <span v-bind:style="{ color: options[index2].color }">
+                        {{ siglas(item.TIER_ID[index]," ") }}
+                        </span>
+                        </span>
                 
-          <table class="table_one_line">  
-             <div v-for="(item, index) in tempdata" :key="index">
-              <div v-if="get_visible(item.TIER_ID)">
-                <div v-if="get_value(item.TIER_ID) == 'A'">              
-              <div
-                v-if="
-                  $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
-                  $attrs.tiempo_parametro <= item.TIME_SLOT_REF2-1
-                "
-              >
-               
-                  <td class="canal_1_hablante_one_line_display_item">
-                   <span class="siglas_canal_item">
-                    <span v-bind:style="{ color: traer_color(item.TIER_ID) }">
-                      {{siglas(item.TIER_ID," ") }}:
-                    </span>
-                   
-                    {{ item.ANNOTATION_VALUE }}
-                   
-                    </span>
-                  </td>
-             
+                       <!--    <span class="siglas_canal_item">{{ item.TIER_ID[index] }} {{index2}} : </span>-->
+                    </p>
+                  </div>
+                  <!--AQUÍ TERMINA LA LLAMADA HACIA EL HABLANTE PRINCIPAL-->
+                  <div
+                    v-if="
+                      $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
+                      $attrs.tiempo_parametro <= item.TIME_SLOT_REF2
+                    "
+                  >
+                    <p class="canal_1_hablante_one_line_display_item">
+                     <span v-bind:style="{ color: options[index2].color }">
+                        {{ item.ANNOTATION_VALUE }}
+                      </span>
+                       <!-- <span> {{ item.ANNOTATION_VALUE }} - {{ index2 }} </span>-->
+                      <!--TODO AQUI ME QUEDE HACE FALTA CORREGIR EL SALTO DE LINEA EN LOS HABLANTES-->
+                    </p>
+                  </div>
+                </div>
               </div>
-             </div>
-            </div>
             </div>
           </table>
         
       </div>
-         
-        
-      </div>
-       <hr>
       </div>
       <p v-else>loading.....</p>
       <!--ESTA ES LA TERCERA TABLA DE QUIENES ESTAN HABLANDO-->
       <div v-if="this.info.data">
-       
+        <hr />
         <div class="contenedor_multilinea">
-          <table class="tabla_multilinea">           
+          <table class="tabla_multilinea">
+            <!--<div v-for="(item, index) in otro" :key="index">
+                <div v-if="options[index].Visible">
+                    <div v-if="options[index].value=='B'">
+                        <div v-for="(item, index) in otro[index]" :key="index">
+                            <div v-if="
+                    $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
+                      $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 - 1
+                  ">
+                                <b> {{ item.ANNOTATION_VALUE }} </b>
+                            </div>
+                            <p v-else>{{ item.ANNOTATION_VALUE }}</p>
+                            <div v-if="index == 0">
+                                <b> {{ item.TIER_ID[index] }} : </b>
+                               este no va// {{item.DEFAULT_LOCALE[index]}} {{item.LINGUISTIC_TYPE_REF[index]}}  {{item.PARTICIPANT[index]}}
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
             <div v-for="(item, index) in tempdata" :key="index">
-                     <div v-if="get_visible(item.TIER_ID)">
-                <div v-if="get_value(item.TIER_ID) == 'B'">     
               <div
                 v-if="
                   $attrs.tiempo_parametro >= item.TIME_SLOT_REF1 &&
                   $attrs.tiempo_parametro <= item.TIME_SLOT_REF2
                 "
               >
+                <!-- $attrs.tiempo_parametro <= item.TIME_SLOT_REF2 -1 -->
                 <tr class="row_multilinea">
                   <td rowspan="2" class="td_canal reproduccion">
                     <span class="bocina_reproduccion icon-volume-up"></span>
                   </td>
                   <td class="td_canal">
+                    <!--<span :style="traer_color(item.TIER_ID)">
+                     traer el color del item.TIER_ID de this.audioannotations traer_color(item.TIER_ID) -->
                     <span v-bind:style="{ color: traer_color(item.TIER_ID) }">
-                      {{ siglas(item.TIER_ID," ") }}:
+                      {{ item.TIER_ID }}:
                     </span>
                     {{ item.ANNOTATION_VALUE }}
                   </td>
@@ -167,13 +195,12 @@
                   </td>
                   <td>
                     <span v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)">
-                      {{ siglas(item.TIER_ID," ") }}: </span
-                    >
+                      {{ item.TIER_ID }}: </span
+                    >{{ item.TIME_SLOT_REF1 }}
                     {{ item.ANNOTATION_VALUE }}
                   </td>
                 </tr>
-               </div>
-            </div>
+                <!--Aqui me quede arreglando el scroll    <button v-on:click="mensaje_al_player(item.TIME_SLOT_REF1)"></button>-->
               </div>
             </div>
           </table>
@@ -231,13 +258,6 @@ export default {
    }
      //console.log("Valor de siglas "+siglasvalor)
       return siglasvalor
-    },
-    get_visible:function (tier_id){
-      var visible_valor = this.options.find((x) => x.TIER_ID == tier_id).Visible;
-      return visible_valor;
-    },get_value:function (tier_id){
-      var value_valor = this.options.find((x) => x.TIER_ID == tier_id).value;
-      return value_valor;
     },
 
     colorclase: function (color) {
@@ -544,19 +564,17 @@ export default {
     },
   },
   mounted() {
-  //lectura de archivo fisico
-    //  var self = this;
-    // this.axios.get("/eaf/tmp/Nuevoeaf.json").then((response) => {
-    //   this.info = response;
-    //   self.leerTier();
-    // });
-    //lectura BD
-    var data = new Object();
-       var self = this;
-    this.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
-      //data.data=response.data.eafjson
-      data.data=response.data.eafjson
-      this.info = data//response.data;
+    // var parseString = require('xml2js').parseString;
+    //estaba montando el xml
+    // this.axios
+    //.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+    //.then(response => (this.info = response))
+
+    //this.axios.get('/eaf/asset01.eaf')
+    //       .then(response =>  (this.info = response)          );
+    var self = this;
+    this.axios.get("/eaf/tmp/Nuevoeaf.json").then((response) => {
+      this.info = response;
       self.leerTier();
     });
     this.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
