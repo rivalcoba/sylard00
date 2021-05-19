@@ -1,6 +1,13 @@
 import Genre from '@models/Genre'
 
 // Genre Controllers
+const genresindex = (req, res) => {
+  res.render('genres/index', {
+      title: 'Generos',
+      content: 'Aquí están los generos añadidos a SYLARD',
+      advice:'¡Recuerde revisar y tener cuidado al editar!'
+  })
+}
 
 // Genre API
 // CREATE - POST
@@ -55,4 +62,5 @@ export default {
   api_getGenres,
   api_putGenres,
   api_deleteGenres,
+  genresindex,
 }

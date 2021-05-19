@@ -8,9 +8,14 @@ import genreController from '@controllers/genre'
 
 // Import Validator
 import genreValidator from '@validators/genres/genre'
-
+import ensureAuthenticated from '@helpers/ensureAuth'
 // Assing Routers
-
+router.get(
+    '/',
+    ensureAuthenticated,
+    genreController.genresindex
+);
+router.get('/contact', genreController.genresindex)
 // CREATE - POST
 router.post('/api/create', genreValidator.genrePost, genreController.api_postGenres)
 // READ - GET
