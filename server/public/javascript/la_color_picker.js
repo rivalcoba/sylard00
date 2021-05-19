@@ -16,8 +16,8 @@ function color_picker_out(id_color,id_paleta){
   colorPalette.style.display = 'none';
  }
 }
-colorPalette.mouseIsOver = false;
-colorInput.style.borderRight =  `10px solid ${colorInput.value}`;
+//colorPalette.mouseIsOver = false;
+//colorInput.style.borderRight =  `10px solid ${colorInput.value}`;
 
 
 colorPalette.onmouseover = () => {
