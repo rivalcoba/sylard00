@@ -72,7 +72,10 @@ function getDataArray(eaf) {
         stop = Number(timeSlotArray[timeObj.stop.toString()]) / 1000
       }
 
-      let lineValue = line['ANNOTATION_VALUE']//htmlEntities(line['ANNOTATION_VALUE'])
+      // let timeSlotString = line['TIME_SLOT_REF1'] || line['ANNOTATION_REF']
+      // timeSlotString = timeSlotString.replace('ts', '').replace('a', '')
+      // let timeSlot = timeSlotArray[timeSlotString] / 1000
+      let lineValue = htmlEntities(line['ANNOTATION_VALUE'])
 
       nLines[lineRef1] = {
         'lineref': lineRef2,
@@ -172,13 +175,13 @@ function getTierArr(eaf) {
   return tierArr
 }
 
-// function htmlEntities(str) {
-//   return String(str)
-//     .replace(/&/g, '&amp;')
-//     .replace(/</g, '&lt;')
-//     .replace(/>/g, '&gt;')
-//     .replace(/"/g, '&quot;')
-// }
+function htmlEntities(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
 
 function eafToJson(eafXmlFile, options = { attrkey: 'attrs' }) {
   return new Promise((res, rej) => {

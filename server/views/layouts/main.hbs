@@ -12,132 +12,173 @@
   {{#if dataArrStr}}
   <!-- >STYLES -->
   <link rel="icon" type="/image/png" href="/img/plus.png" />
-  <link rel="stylesheet" href="/css/base.css" />
-  <link rel="stylesheet" href="/css/main.css" />
+
+  <link rel="stylesheet" href="/css/bootstrap-grid.css">
+  	<link rel="icon" href="/images/favicon_sylard3.svg" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/estilos_menu.css">
+  	<link rel="stylesheet" href="/fonts/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <style 
     type="text/css">
-    div[id^="txt-current_"] {
-      background-color: #eeeeee;
-    }
-    #player-title-box {
-      width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
+        div[id^="txt-current_"] {
+        background-color: #dddddd;
+		font-weight: bold;
+		   
+      }
 
-    #txt_sync_content {
-      padding: 0px 36px;
-    }
+      #player-title-box {
+        padding: 2rem;
+    	padding-top: 3rem;
+    	background-color: white;
+      }
 
-    #spkr_keys_box {
-      margin-top: 0px;
-      margin-bottom: 18px;
-      width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      min-height: 22px;
-    }
+      /*#txt_sync_content {
+        padding: 0px 36px;
+		border: 2px red solid;
+		  
+      }*/
 
-    .spkr_key {
-      font-family: Seravek, Arial, Helvetica, sans-serif;
-      font-size: 18px;
-      margin-right: 8px;
-      display: inline;
-    }
+      #spkr_keys_box {
+        margin-top: 0px;
+        margin-bottom: 18px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 22px;
+		padding-left: 1.75rem;
+		padding: 1rem;
+		  
+      }
 
-    .spkr_name {
-      font-family: Seravek, Arial, Helvetica, sans-serif;
-      font-size: 18px;
-      margin-right: 8px;
-      display: inline;
-      font-style: italic;
-    }
+      .spkr_key {
+        font-family: 'Raleway', Helvetica, sans-serif;
+        font-size: 16px;
+		font-weight: 600;  
+        margin-right: 8px;
+        display: inline;
+      }
 
-    #sync_player {
-      width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      border: solid 1px #ffffff;
-    }
+      .spkr_name {
+        font-weight: 600;
+    	font-size: 1.325rem;
+    	line-height: 1.875rem;
+    	margin-top: .125rem;
+    	color: var(--gris-texto-principal);
+    	margin-right: .25rem;
+		  
+		 /* font-family: 'Raleway', Helvetica, sans-serif;
+        font-size: 18px;
+        margin-right: 8px;
+        display: inline;
+        font-style: italic;
+		border: 2px solid pink; */ 
+      }
+		.spkr_name_jr {
+    font-size: .75rem;
+    font-weight: 400;
+    color: #999999;
+    font-family: 'Raleway', Helvetica, sans-serif;
+			
+			
+			
+		}
+      #sync_player {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-    #gloss-box {
-      width: 100%;
-      min-height: 65px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 12px;
-    }
+      #gloss-box {
+        width: 100%;
+        min-height: 65px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 12px;
+		/*border: 2px solid darkgreen;  */
+      }
 
-    div.glossTable {
-      width: 100%;
-      text-align: left;
-      min-height: 30px;
-      margin-bottom: 12px;
-      padding-left: 12px;
-      padding-right: 12px;
-    }
-    .divTable.glossTable .divTableRow {
-      font-size: 18px;
-      line-height: 26px;
-    }
-    .divTable.glossTable .divTableCell {
-      font-family: Seravek, Arial, Helvetica, sans-serif;
-    }
-    .divTable.glossTable .spkr {
-      width: 55px;
-    }
-    div.scrollTable {
-      width: 100%;
-      height: 470px;
-      margin-left: auto;
-      margin-right: auto;
-      overflow-x: hidden;
-      overflow-y: visible;
-      background-color: #ffffff;
-      border: solid 1px #cccccc;
-    }
-    div.scrollTableCont {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      outline: 0;
-      font-size: 100%;
-      vertical-align: baseline;
-      background: transparent;
-    }
-    .divTable.scrollTableCont .divTableRow {
-      font-size: 18px;
-      line-height: 26px;
-      margin: 0;
-    }
-    .divTable.scrollTableCont .divTableCell {
-      font-family: Seravek, Arial, Helvetica, sans-serif;
-    }
-    .divTable.scrollTableCont .spkr {
-      width: 55px;
-      margin-right: 4px;
-      font-weight: normal;
-      padding-left: 12px;
-    }
-    .divTable.scrollTableCont .spkr:hover {
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .divTable.scrollTableCont .spkn {
-      margin-left: 8px;
-      padding-right: 12px;
-    }
+      div.glossTable {
+        width: 100%;
+        text-align: left;
+        min-height: 30px;
+        margin-bottom: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+		/*border: 2px solid red;    */
+      }
+      .divTable.glossTable .divTableRow {
+        font-size: 18px;
+        line-height: 26px;
+		  /*border: 2px solid yellow;*/
+      }
+      .divTable.glossTable .divTableCell {
+        font-family: 'Raleway', Helvetica, sans-serif;
+		  /*border: 2px dashed violet; */
+      }
+      .divTable.glossTable .spkr {
+        width: 55px;
+		  /*border: 2px dashed purple;*/ 
+      }
+      div.scrollTable {
+        width: 100%;
+        min-height: 470px;
+        margin-left: auto;
+        margin-right: auto;
+        overflow-x: hidden;
+        overflow-y: visible;
+        background-color: #ffffff;
+        /*border: dotted 5px yellowgreen;*/
+      }
+      div.scrollTableCont {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+		 /* border: dotted 3px red;*/
+      }
+      .divTable.scrollTableCont .divTableRow {
+        font-size: 16px;
+        line-height: 26px;
+        margin: 0;
+		  /*border: dotted 3px blueviolet;*/
+      }
+      .divTable.scrollTableCont .divTableCell {
+        font-family: 'Merriweather', Times, serif;
+		  /*border: dashed 3px orange;*/
+      }
+      .divTable.scrollTableCont .spkr {
+        width: 60px;
+        margin-right: 4px;
+        font-weight: normal;
+        padding-left: 12px;
+		 /* border: dashed 3px brown;*/
+      }
+      .divTable.scrollTableCont .spkr:hover {
+        cursor: pointer;
+        font-weight: bold;
+		  /*border: double 3px red;*/
+      }
+      .divTable.scrollTableCont .spkn {
+        margin-left: 8px;
+        padding-right: 12px;
+		  /*border: double 1px gray;*/
+      }
 
-    .divTable {
-      display: table;
-    }
-    .divTableRow {
-      display: table-row;
-    }
-    .divTableCell {
-      display: table-cell;
-    }
+      .divTable {
+        display: table;
+		  /*border: double 1px blueviolet;*/
+      }
+      .divTableRow {
+        display: table-row;
+		  /*border: dotted 6px green;*/
+      }
+      .divTableCell {
+        display: table-cell;
+		  /*border: dotted 6px black;*/
+      }
   </style>
   {{/if}}
 
@@ -165,10 +206,10 @@
   <!-- JQUERY -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  {{!-- <!-- Materilize SCRIPTS -->
+  <!-- Materilize SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" crossorigin="anonymous"></script>
   <!-- WYSIWYG EDITOR -->  
-  <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script> --}}
+  <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
   <!-- App scripts  -->
   <script src="/js/index.js"></script>
   <script>
@@ -190,7 +231,8 @@
     crossorigin="anonymous"
   ></script>
   <script src="/javascript/shared.js"></script>
-  <script src="/javascript/jscolor.js"></script>
+  <script src="/javascript/jscolor.js"></script>	
+  <script src="/javascript/la_color_picker.js"></script>
   <script type="text/javascript">
     var media;
     var ts_start_time_array = [];
@@ -214,7 +256,7 @@
     var lineTimeArr = JSON.parse(`{{{lineTimeArrStr}}}`);
 
     $(document).ready(function () {
-      setColors();
+     // setColors();
       setData();
       for (pid in tierArr) {
         if (tierArr.hasOwnProperty(pid)) {
@@ -313,7 +355,6 @@
           }
         }
       }
-      console.dir(glossArr)
     }
 
     function setTranscriptionBox() {
@@ -342,7 +383,7 @@
               '" data-stop="' +
               stop +
               '"><div class="divTableCell spkr">' +
-              `${spkr}: ` +
+              spkr +
               '</div><div class="divTableCell spkn" id="' +
               id +
               '">' +
@@ -454,7 +495,7 @@
                         "<div class='divTableRow' style='color:#" +
                         color +
                         "'><div class='divTableCell spkr'>" +
-                        `${spkr}:` +
+                        spkr +
                         "</div><div class='divTableCell tran'>" +
                         value +
                         "</div></div>";
@@ -565,7 +606,7 @@
 
     function changeTierColor(color, speaker, tierID) {
       var keyID = "key-" + tierID;
-      var selColor = "#" + color;
+      var selColor = color;
       document.getElementById(keyID).style.color = selColor;
       tierArr[speaker].tiers[tierID].color = color;
       setData();
@@ -610,8 +651,46 @@
         document.getElementById("minusButton").style.display = "none";
       }
     }
+    
   </script>
-  {{/if}}
-</body>
+   <script>
+	var acc = document.getElementsByClassName("contenedor_acordeon");
+var i;
 
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("acordeon_activo");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+	</script>
+	<script>
+var acc = document.getElementsByClassName("contenedor_acordeon");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("acordeon_activo");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+</script>
+  {{/if}}
+ 
+</body>
+	
 </html>
