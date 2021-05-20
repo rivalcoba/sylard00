@@ -2,6 +2,7 @@
 <div id="app">
     <v-app>
     <tablausuarios></tablausuarios>
+    <genresview></genresview>
    
     
     </v-app>
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+import Genresview from './components/Genresview.vue';
 
 //import CompUsuarios from "./components/CompUsuarios.vue";
 import Tablausuarios from './components/tablausuarios.vue';
@@ -21,6 +23,7 @@ export default {
     components: {
        
         Tablausuarios,
+        Genresview,
         
     }
 };

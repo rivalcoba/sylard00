@@ -1,7 +1,7 @@
 <template>
 <div id="app">
     <v-app>
-    <genresview></genresview>
+    <genresview/>
     
     </v-app>
    
@@ -11,7 +11,7 @@
 
 <script>
 
-import Genresview from './components/genresview.vue';
+import Genresview from './components/Genresview.vue';
 export default {
     name: "App",
     components: {

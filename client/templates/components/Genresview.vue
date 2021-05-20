@@ -13,6 +13,7 @@
         single-line
         hide-details
       ></v-text-field>
+      
     </v-card-title>
 <v-card-subtitle>
 <v-btn color="secondary" @click="delete_all()">
@@ -36,20 +37,8 @@
       show-select
      class="elevation-1"
     >
-      <template v-slot:item.name="{ item }">
-      <p><label for="">{{item.name}}</label></p>
-      <p><label for="">{{item.email}}</label></p>
-     
-    </template>
-    <template v-slot:item.switch="{ item }">
-      <v-switch
-      :key="item._id"
-      color="secondary"
-      v-model="item.switch_toggle"
-      @click="switch_toggle_role(item.switch_toggle,item._id);"
-    ></v-switch>
     
-    </template>
+    
      <template v-slot:item.actions="{ item }">
       <v-icon
         small
@@ -81,6 +70,97 @@
       </v-card>
     </v-dialog>
   </v-layout>
+ <v-row justify="end">
+    <v-dialog
+      v-model="dialog"
+      fullscreen
+      hide-overlay
+      transition="dialog-bottom-transition"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          + Agregar nuevo genero
+        </v-btn>
+      </template>
+      <v-card>
+        <v-toolbar
+          dark
+          color="primary"
+        >
+          <v-btn
+            icon
+            dark
+            @click="dialog = false"
+          >
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+          <v-toolbar-title>Crear nuevo genero</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-btn
+              dark
+              text
+              @click="dialog = false"
+            >
+              Guardar
+            </v-btn>
+          </v-toolbar-items>
+        </v-toolbar>
+        <v-list
+          three-line
+          subheader
+        >
+          <v-subheader>Datos de nuevo genero</v-subheader>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>Nombre</v-list-item-title>
+             <v-list-item-subtitle><v-col
+                cols="12"
+                sm="6"
+                md="4"
+              >
+                <v-text-field
+                  label="Nombre de nuevo genero"
+                  hint="Ejemplo:TERROR"
+                  persistent-hint
+                  required
+                ></v-text-field>
+              </v-col></v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>Descripcion</v-list-item-title>
+              <v-list-item-subtitle><v-col
+                cols="12"
+                sm="6"
+                md="4"
+              >
+                <v-text-field
+                  label="Descripcion de nuevo genero"
+                  hint="Ejemplo: da mucho miedo"
+                  persistent-hint
+                  required
+                ></v-text-field>
+              </v-col></v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+        <v-divider></v-divider>
+        <v-list
+          three-line
+          subheader
+        >
+      
+        </v-list>
+      </v-card>
+    </v-dialog>
+  </v-row>
   </v-card>
   
 
@@ -94,6 +174,10 @@ import axios from "axios";
   export default {
     data () {
       return {
+         dialog: false,
+        notifications: false,
+        sound: true,
+        widgets: false,
         dialog_del:false,
         thing:[],
         nameofuser:"",
@@ -105,12 +189,8 @@ import axios from "axios";
         selected: [],
          switch1: [],
         headers: [
-            { text:'Usuario', value:'name', sortable:true},
-          { text: 'Lenguajes', value: 'lenguajes_concat' },
-          //{ text: 'Privilegios', value: 'role' },
-          { text: 'Vis-Privilegios-Col' , value: 'switch', sortable:false},
-          { text: 'Descripcion', value: 'about' },
-          { text: 'Collecciones' , value: 'collections_concat'},
+            { text:'Nombre', value:'name', sortable:true},
+          { text: 'Descripcion', value: 'description' },
            { text: 'Actions', value: 'actions', sortable: false },
         //   { text: 'algosaurio', value: 'switch_toggle', sortable: false },
         ],
@@ -119,38 +199,10 @@ import axios from "axios";
     },
       created() {
        
-    axios.get("/user/api/getuserscollections").then((result) => {
+    axios.get("/genres/api").then((result) => {
       this.arreglo_datos=this.result = result.data;
       let objson_arr = this.arreglo_datos;
-       let arreglo_concat_lenguajes = "";
-        let jsonaumentado = [];
-        for(let x = 0 ; x<objson_arr.length;x++){
-           let temparrjson=objson_arr[x];
-           let arreglo_concat_lenguajes="";//borrar por cada iteracion
-           let arreglo_concat_collections="";
-            for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
-                arreglo_concat_lenguajes =arreglo_concat_lenguajes +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
-                temparrjson.lenguajes_concat=arreglo_concat_lenguajes;
-                jsonaumentado.push(temparrjson);
-            }
-            for(let n=0;n<temparrjson.collectionsDocs.length;n++){
-              arreglo_concat_collections=arreglo_concat_collections+temparrjson.collectionsDocs[n].name+",";
-              temparrjson.collections_concat=arreglo_concat_collections;
-              jsonaumentado.push(temparrjson);
-            }
-            //condiciones para agregar en la vista un boleano para manipular
-            if(temparrjson.role==="colaborator" ){
-            temparrjson.switch_toggle=true;
-            jsonaumentado.push(temparrjson);
-            }
-             if(temparrjson.role==="visitor"){
-            temparrjson.switch_toggle=false;
-            jsonaumentado.push(temparrjson);
-            }
-          
-        }
-        console.log( jsonaumentado);
-        //this.arreglo_datos=jsonaumentado;
+    
     })
     
   },
@@ -159,7 +211,7 @@ import axios from "axios";
       this.dialog_del=true;
       this.thing=thing;
       this.id=id;
-      this.nameofuser=thing.name+" "+thing.lastName+" "+thing.secLastName;
+      this.nameofuser=thing.name;
     },
     close_dialogs(){
       this.dialog_del=false;
@@ -167,7 +219,7 @@ import axios from "axios";
     deleteItem(){
     const index = this.arreglo_datos.indexOf(this.thing);//busca objeto  en el arreglo y retorna su posicion en el 
     this.arreglo_datos.splice(index,1);
-    axios.get('user/su/delete/'+this.id);
+    axios.delete('genres/api/delete/'+this.id);
     console.log("eliminado: "+this.id);
      this.dialog_del=false;
   },
@@ -178,7 +230,7 @@ import axios from "axios";
     arreglo.forEach(element => {
     const index = this.arreglo_datos.indexOf(element);//busca objeto  en el arreglo y retorna su posicion en el 
    this.arreglo_datos.splice(index,1);
-      axios.get('user/su/delete/'+element._id);
+      axios.delete('genres/api/delete/'+element._id);
     console.log("eliminado: "+element._id);
     });
     }
@@ -187,18 +239,6 @@ import axios from "axios";
     axios.get('/user/su/edit/'+id);
     window.location.href='/user/su/edit/'+id;
    // console.log('/user/su/edit/'+id);
-  }
-  ,
-  switch_toggle_role(stat,id){
-    let tipo_role="";
-    //console.log("Estado: "+stat+" id:"+id);
-    if(stat===false){
-      tipo_role="visitor";
-    }else{
-      tipo_role="colaborator";
-    }
-     axios.put("/user/api/toggleUserPrivileges/"+id);
-    console.log("El tipo ahora es: "+ tipo_role);
   }
   }
   
