@@ -43,7 +43,7 @@
       <v-icon
         small
         class="icon-edit"
-        @click="editItem(item._id)"
+        @click="show_edit(item)"
       >
       </v-icon>
         <p></p>
@@ -60,7 +60,7 @@
      <v-layout row justify-center>
     <v-dialog v-model="dialog_del" persistent max-width="600px">
       <v-card>
-        <v-card-title class="headline">Esta seguro que desea eliminar este usuario?</v-card-title>
+        <v-card-title class="headline">Esta seguro que desea eliminar este genero?</v-card-title>
         <v-card-text><h2>{{nameofuser}}</h2> </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -70,6 +70,57 @@
       </v-card>
     </v-dialog>
   </v-layout>
+    <v-col cols="auto">
+      <v-dialog
+        transition="dialog-top-transition"
+        max-width="600"
+        v-model="dialog_edit"
+      >
+
+        <template v-slot:default="dialog_edit">
+          <v-card>
+            <v-toolbar
+              color="primary"
+              dark
+            >Editar Genero</v-toolbar>
+            <v-card-text>
+              <div >
+ <v-text-field
+                  label="Nombre"
+                  hint="Ejemplo:TERROR"
+                  persistent-hint
+                  id="name"
+                  name="name"
+                  v-model="name_edit"
+                  required
+                ></v-text-field>
+                 <v-text-field
+                  label="Descripcion"
+                  hint="Ejemplo:TERROR"
+                  persistent-hint
+                  id="name"
+                  name="name"
+                  v-model="description_edit"
+                  required
+                ></v-text-field>
+                  <input type="text" v-model="id_edit" hidden>
+              </div>
+            </v-card-text>
+            <v-card-actions class="justify-end">
+              <v-btn
+                text
+                @click="close_edit()"
+              >Cerrar</v-btn>
+                        <v-btn
+                text
+                @click="save_edit()"
+              >Guardar</v-btn>
+            </v-card-actions>
+          </v-card>
+        </template>
+      </v-dialog>
+    </v-col>
+    
  <v-row justify="end">
     <v-dialog
       v-model="dialog"
@@ -95,7 +146,7 @@
           <v-btn
             icon
             dark
-            @click="dialog = false"
+            @click="close_add_new_genre()"
           >
             <v-icon>mdi-close</v-icon>
           </v-btn>
@@ -105,7 +156,7 @@
             <v-btn
               dark
               text
-              @click="dialog = false"
+              @click="save_add_new_genre()"
             >
               Guardar
             </v-btn>
@@ -115,10 +166,10 @@
           three-line
           subheader
         >
-          <v-subheader>Datos de nuevo genero</v-subheader>
+          <v-subheader><h1>Datos de nuevo genero:</h1> </v-subheader>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title>Nombre</v-list-item-title>
+              <v-list-item-title> <h3> Nombre:{{name}}</h3></v-list-item-title>
              <v-list-item-subtitle><v-col
                 cols="12"
                 sm="6"
@@ -128,6 +179,9 @@
                   label="Nombre de nuevo genero"
                   hint="Ejemplo:TERROR"
                   persistent-hint
+                  id="name"
+                  name="name"
+                  v-model="name"
                   required
                 ></v-text-field>
               </v-col></v-list-item-subtitle>
@@ -135,7 +189,7 @@
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title>Descripcion</v-list-item-title>
+              <v-list-item-title><h3>Descripcion: {{description}} </h3> </v-list-item-title>
               <v-list-item-subtitle><v-col
                 cols="12"
                 sm="6"
@@ -145,9 +199,13 @@
                   label="Descripcion de nuevo genero"
                   hint="Ejemplo: da mucho miedo"
                   persistent-hint
+                  id="description"
+                  name="description"
+                  v-model="description"
                   required
                 ></v-text-field>
-              </v-col></v-list-item-subtitle>
+              </v-col>
+              </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -163,8 +221,6 @@
   </v-row>
   </v-card>
   
-
-
 </template>
 
 <script>
@@ -174,6 +230,15 @@ import axios from "axios";
   export default {
     data () {
       return {
+        obj_on_table_edit:{},
+        v:"",
+        index_of_item_edit:"",
+        id_edit:"",
+        name_edit:"",
+        description_edit:"",
+        name:"",
+        description:"",
+        dialog_edit:false,
          dialog: false,
         notifications: false,
         sound: true,
@@ -197,6 +262,11 @@ import axios from "axios";
         
       }
     },
+    watch:{
+      dialog_edit(val){
+        val||this.close_edit()
+      }
+    },
       created() {
        
     axios.get("/genres/api").then((result) => {
@@ -204,7 +274,7 @@ import axios from "axios";
       let objson_arr = this.arreglo_datos;
     
     })
-    
+    //setInterval(this.update_all_data,3000) ;
   },
   methods:{
     acivate_del_dialog(id,thing){
@@ -219,9 +289,10 @@ import axios from "axios";
     deleteItem(){
     const index = this.arreglo_datos.indexOf(this.thing);//busca objeto  en el arreglo y retorna su posicion en el 
     this.arreglo_datos.splice(index,1);
-    axios.delete('genres/api/delete/'+this.id);
+    axios.delete('/genres/api/delete/'+this.id);
     console.log("eliminado: "+this.id);
      this.dialog_del=false;
+     setTimeout(this.update_all_data,200) ;
   },
   delete_all(){ 
     let arreglo = this.selected;
@@ -230,18 +301,78 @@ import axios from "axios";
     arreglo.forEach(element => {
     const index = this.arreglo_datos.indexOf(element);//busca objeto  en el arreglo y retorna su posicion en el 
    this.arreglo_datos.splice(index,1);
-      axios.delete('genres/api/delete/'+element._id);
+      axios.delete('/genres/api/delete/'+element._id);
     console.log("eliminado: "+element._id);
+    
     });
+    setTimeout(this.update_all_data,200) ;
     }
+   
   },
-  editItem(id){
-    axios.get('/user/su/edit/'+id);
-    window.location.href='/user/su/edit/'+id;
+  clean_all_fields(){
+    this.name_edit="";
+    this.description_edit="";
+    this.name="";
+    this.description="";
+    this.id_edit="";
+    this.index_of_item_edit="";
+    this.obj_on_table_edit={};
+    this.v="";
+  },
+  update_all_data(){
+        axios.get("/genres/api").then((result) => {
+      this.arreglo_datos=this.result = result.data;
+    })
+  },
+save_add_new_genre() {
+    axios.post('/genres/api/create',{
+       name:this.name,
+       description:this.description
+     })
+         // this.arreglo_datos.push(newitem);
+        this.dialog=false;
+     //this.update_all_data();
+      this.clean_all_fields();
+      setTimeout(this.update_all_data,200) ;
+      
+       
+      },
+      close_add_new_genre(){
+        this.dialog=false;
+        this.clean_all_fields;
+      }      ,
+      show_edit(item){
+        this.dialog_edit=true;
+        this.name_edit= item.name;
+        this.description_edit=item.description;
+        this.id_edit=item._id;
+        this.v=item.__v;
+        this.index_of_item_edit=this.arreglo_datos.indexOf(item);
+        this.obj_on_table_edit= Object.assign({}, item);
+        
+      },
+       save_edit(){
+    var id = this.id_edit;
+    axios.put('/genres/api/update/'+id,{
+      name:this.name_edit,
+      description:this.description_edit
+    });
+    var new_item_edit={_id:this.id_edit, name:this.name_edit,description:this.description_edit,__v:this.v};
+    /*verifica retorno de objetos
+    console.log(this.index_of_item_edit);
+    console.log(this.obj_on_table_edit);
+    console.log(new_item_edit);
+    */
+    Object.assign(this.arreglo_datos[this.index_of_item_edit], new_item_edit);
+    this.close_edit();
+    //window.location.href='/user/su/edit/'+id;
    // console.log('/user/su/edit/'+id);
-  }
-  }
+  },
+      close_edit(){
+        this.dialog_edit = false;
+        this.clean_all_fields();
+      }
   
-  
+  },
   }
 </script>

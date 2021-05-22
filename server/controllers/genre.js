@@ -12,9 +12,10 @@ const genresindex = (req, res) => {
 // Genre API
 // CREATE - POST
 const api_postGenres = async (req, res) => {
+
   // Destructuring genre
   let { genre } = req
-
+  
   // Create Validates genre
   try {
     const genreDoc = await Genre.create(genre)
