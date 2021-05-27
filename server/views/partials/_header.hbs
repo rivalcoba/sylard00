@@ -77,6 +77,11 @@
         <i class="fa fa-book"></i> {{translation.HEADER.USERS}}
       </a>
       {{/ifSu}}
+          {{#ifSu user}}
+      <a href="/genres/">
+        <i class="fa fa-book"></i> Generos
+      </a>
+      {{/ifSu}}
 
           {{#hideIfSu user}}
           <a href="/dashboard">

@@ -21,7 +21,7 @@ const index = (req, res) => {
 const contact = (req, res) => {
     res.render('index/contact', {
         title: 'Contact',
-        content: 'Contact the administrator',
+        content: 'Contact the administrator asdas',
     })
 }
 
@@ -37,6 +37,7 @@ const credits = (req, res) => {
         content: 'Site builded by Drako-YonceCe',
     })
 }
+
 const dashboard = async(req, res) => {
     // Get Collecionts
     const collectionsDocs = await Collection.find()

@@ -50,6 +50,7 @@ import App4 from '@client/templates/main4.vue'
 import App5 from '@client/templates/main5.vue'
 import App6 from '@client/templates/main6.vue'
 import MainUser from '@client/templates/MainUser.vue'
+import Genres from '@client/templates/genres.vue'
 //AQUÍ TERMINAN
 import en from '@client/templates/lang/locals/en_US'
 import es from '@client/templates/lang/locals/es_MX'
@@ -101,7 +102,7 @@ window.formsManager = formsManager
 window.syModals = syModals
 window.showColorPalette = colorPicker.showColorPalette
 window.hideColorPalette = colorPicker.hideColorPalette
-// Improving script loader
+    // Improving script loader
 switch (window.location.pathname) {
     case `/auth/register`:
         register.init();
@@ -223,7 +224,7 @@ if (window.location.pathname == '/audioannotation') {
 if (window.location.pathname == '/collections') {
     IndexCollectionsScripts.count_items_collections();
     window.IndexCollectionsScript = IndexCollectionsScripts
-    // window.Vue = Vue
+        // window.Vue = Vue
     Vue.use(VueAxios, axios);
     Vue.component("IndexCollections", IndexCollections);
     window.vm = new Vue({
@@ -249,12 +250,28 @@ if (window.location.pathname.match(/\/audioannotations\/edit\//)) {
     })
 }
 
+if (window.location.pathname == `/genres/`) {
+    //if(window.location.pathname == /audioannotations/vuetest){ 
+    // window.Vue = Vue
+
+    console.log("ruta valida");
+    Vue.config.productionTip = false
+    Vue.use(VueAxios, axios);
+    //Vue.component("Usuarios", Usuarios);
+    window.vm = new Vue({
+        vuetify,
+        el: '#appgenres',
+        i18n,
+        render: h => h(Genres)
+    })
+}
+
 if (window.location.pathname == `/user`) {
     //if(window.location.pathname == /audioannotations/vuetest){ 
     // window.Vue = Vue
-    
 
-Vue.config.productionTip = false
+    console.log("ruta valida");
+    Vue.config.productionTip = false
     Vue.use(VueAxios, axios);
     //Vue.component("Usuarios", Usuarios);
     window.vm = new Vue({
@@ -264,6 +281,8 @@ Vue.config.productionTip = false
         render: h => h(MainUser)
     })
 }
+
+
 
 // No se puede cargar script condicionalmente
 if (window.location.pathname.match(/\/collections\/edit\//)) {
