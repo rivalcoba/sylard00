@@ -71,9 +71,15 @@ function getDataArray(eaf) {
         start = Number(timeSlotArray[timeObj.start.toString()]) / 1000
         stop = Number(timeSlotArray[timeObj.stop.toString()]) / 1000
       }
-
-      let lineValue = line['ANNOTATION_VALUE']//htmlEntities(line['ANNOTATION_VALUE'])
-
+      let lineValue = htmlEntities(line['ANNOTATION_VALUE'])
+      //let lineValue = line['ANNOTATION_VALUE']//htmlEntities(line['ANNOTATION_VALUE'])
+      function htmlEntities(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+      }
       nLines[lineRef1] = {
         'lineref': lineRef2,
         'start': start,
@@ -231,3 +237,4 @@ export default {
   eafToJson,
   eaf2json,
 }
+
