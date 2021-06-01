@@ -255,6 +255,8 @@
     
     var lineTimeArr = JSON.parse(`{{{lineTimeArrStr}}}`);
 
+    var arreglo_elementos=[];
+
     $(document).ready(function () {
      // setColors();
       setData();
@@ -340,7 +342,7 @@
                 transArr[start][tid]["stop"] = lines[l].stop;
                 transArr[start][tid]["spkr"] = spkr;
                 transArr[start][tid]["id"] = l;
-                transArr[start][tid]["value"] = lines[l].value;
+                transArr[start][tid]["value"] = sanitizar(lines[l].value);
               } else {
                 if (!glossArr[lineref]) glossArr[lineref] = [];
                 if (!glossArr[lineref][tid]) glossArr[lineref][tid] = [];
@@ -349,7 +351,7 @@
                 glossArr[lineref][tid][l]["speaker"] = pid;
                 glossArr[lineref][tid][l]["color"] = color;
                 glossArr[lineref][tid][l]["spkr"] = spkr;
-                glossArr[lineref][tid][l]["value"] = lines[l].value;
+                glossArr[lineref][tid][l]["value"] =sanitizar(lines[l].value);
               }
             }
           }
@@ -372,7 +374,7 @@
             var stop = transArr[t][s]["stop"];
             var spkr = transArr[t][s]["spkr"];
             var id = transArr[t][s]["id"];
-            var value = transArr[t][s]["value"];
+            var value = sanitizar(transArr[t][s]["value"]);
             innerHtml +=
               '<div name="bottom-' +
               lineref +
@@ -489,7 +491,7 @@
                     var speaker = glossArr[l][s][n]["speaker"];
                     if (speakerShowArr.indexOf(speaker) !== -1) {
                       var spkr = glossArr[l][s][n]["spkr"];
-                      var value = glossArr[l][s][n]["value"];
+                      var value = sanitizar(glossArr[l][s][n]["value"]);
                       var color = glossArr[l][s][n]["color"];
                       innerHtml +=
                         "<div class='divTableRow' style='color:#" +
@@ -499,6 +501,7 @@
                         "</div><div class='divTableCell tran'>" +
                         value +
                         "</div></div>";
+//console.log(value);
                     }
                   }
                 }
@@ -568,7 +571,7 @@
                     var speaker = glossArr[l][s][n]["speaker"];
                     if (speakerShowArr.indexOf(speaker) !== -1) {
                       var spkr = glossArr[l][s][n]["spkr"];
-                      var value = glossArr[l][s][n]["value"];
+                      var value = sanitizar(glossArr[l][s][n]["value"]);
                       var color = glossArr[l][s][n]["color"];
                       innerHtml +=
                         "<div class='divTableRow' style='color:#" +
@@ -687,6 +690,21 @@ for (i = 0; i < acc.length; i++) {
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
   });
+}
+function sanitizar(str){
+return String(str).replace('&amp;',"&")
+          .replace('&lt;',"<")
+          .replace('&gt;',">")
+          .replace('&quot;','"')
+          .replace("&lt;/i&gt;","</i>")
+}
+function start_elements(tierID){
+ var idName = tierID + "-display";
+      var value = document.getElementById(idName).value;
+      dataArr[tierID].display = value;
+      setData();
+      setTranscriptionBox();
+      setPlayer();
 }
 </script>
   {{/if}}
