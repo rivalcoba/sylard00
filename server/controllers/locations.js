@@ -71,6 +71,17 @@ const indexNomLoc = async (req, res) => {
   //   })
 }
 
+const getAllEntities = async (req, res)=>{
+  const { nom_ent } = req.params
+  try {
+    const entities = await Locations.find({Nom_Ent:nom_ent}).limit(50000).exec()
+    console.log("consulta exitosa");
+    return res.status(200).json(entities)
+  } catch (error) {
+    return res.status(404).json({error:"no se encontraron entidades"})
+  }  
+}
+
 const getEntities = async (req, res)=>{
   try {
     const entities = await Locations.distinct('Nom_Ent')
@@ -122,5 +133,6 @@ export default {
   getMunicipalities,
   getLocalities,
   findLocality,
-  getEntities
+  getEntities,
+  getAllEntities
 }

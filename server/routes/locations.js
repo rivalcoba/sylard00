@@ -19,8 +19,8 @@ router.get('/index/nomloc/:nom_loc',/*ensureAuthenticated, ensureColabUser,*/loc
 router.get('/index/municipalitiesOf/:nom_ent',/*ensureAuthenticated, ensureColabUser,*/locationsController.getMunicipalities)
 router.get('/index/localitiesOf/:nom_ent/:nom_mun',/*ensureAuthenticated, ensureColabUser,*/locationsController.getLocalities)
 router.get('/find/:nom_ent/:nom_mun/:nom_loc',/*ensureAuthenticated, ensureColabUser,*/locationsController.findLocality)
-router.get('/entities',/*ensureAuthenticated, ensureColabUser,*/locationsController.getEntities)
-
+router.get('/entities',/*ensureAuthenticated, ensureColabUser,*/locationsController.getEntities);
+router.get('/index/getAllEntities/:nom_ent',locationsController.getAllEntities);
 
 
 // Se exportan rutas

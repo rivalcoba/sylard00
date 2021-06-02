@@ -4,6 +4,18 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
 <h1>Editar Comunidades</h1>
+     <v-col >
+        <v-select
+          v-model="select_list"
+          :items="data_list"
+          item-text="state"
+          item-value=""
+          label="Select"
+          @change="new_query()"
+          return-object
+          single-line
+        ></v-select>
+      </v-col>
     <v-card-title>
 
       <v-text-field
@@ -29,6 +41,7 @@
 <v-card-text>
 
       <v-data-table
+      dense
      v-model="selected"
       :headers="headers"
       :items="arreglo_datos"
@@ -36,6 +49,13 @@
       item-key="_id"
       show-select
      class="elevation-1"
+      :footer-props="{
+    'items-per-page-options': [10, 20, 30, 40, 50,80,100,200]
+  }"
+  :items-per-page="10"
+       :loading=true
+       
+    loading-text="Cargando por favor espere..."
     >
     
     
@@ -230,6 +250,11 @@ import axios from "axios";
   export default {
     data () {
       return {
+
+        obj_list:{},
+        item_list:[],
+        data_list:[],
+        select_list:"Aguascalientes",
         obj_on_table_edit:{},
         v:"",
         index_of_item_edit:"",
@@ -254,10 +279,26 @@ import axios from "axios";
         selected: [],
          switch1: [],
         headers: [
-            { text:'Nombre', value:'name', sortable:true},
-          { text: 'Descripcion', value: 'description' },
-           { text: 'Actions', value: 'actions', sortable: false },
-        //   { text: 'algosaurio', value: 'switch_toggle', sortable: false },
+            { text:'Mapa', value:'Mapa', sortable:true},
+          { text: 'Cve_Ent', value: 'Cve_Ent' },
+           { text: 'Nom_Ent', value: 'Nom_Ent', sortable: true },
+             { text:'Nom_Abr', value:'Nom_Abr', sortable:true},
+          { text: 'Cve_Mun', value: 'Cve_Mun' },
+           { text: 'Nom_Mun', value: 'Nom_Mun', sortable: true },
+             { text:'Cve_Loc', value:'Cve_Loc', sortable:true},
+          { text: 'Nom_Loc', value: 'Nom_Loc' },
+           { text: 'Ámbito', value: 'Ámbito', sortable: true },
+           { text:'Latitud', value:'Latitud', sortable:true},
+          { text: 'Longitud', value: 'Longitud' },
+           { text: 'Lat_Decimal', value: 'Lat_Decimal', sortable: true },
+             { text:'Lon_Decimal', value:'Lon_Decimal', sortable:true},
+          { text: 'Altitud', value: 'Altitud' },
+           { text: 'Cve_Carta', value: 'Cve_Carta', sortable: true },
+             { text:'Pob_Total', value:'Pob_Total', sortable:true},
+          { text: 'Pob_Masculina', value: 'Pob_Masculina' },
+           { text: 'Pob_Femenina', value: 'Pob_Femenina', sortable: true },
+           { text: 'Total De Viviendas Habitadas', value: 'Total De Viviendas Habitadas', sortable: true },
+        //   { text: 'algosaurio', value: 'switch_toggle', sortable: true },
         ],
         
       }
@@ -269,9 +310,13 @@ import axios from "axios";
     },
       created() {
        
-    axios.get("/genres/api").then((result) => {
+    axios.get("/locations/index/getAllEntities/"+this.select_list).then((result) => {
       this.arreglo_datos=this.result = result.data;
-      let objson_arr = this.arreglo_datos;
+    
+    })
+       axios.get("/locations/entities").then((result) => {
+      this.data_list=this.result = result.data;
+      
     
     })
     //setInterval(this.update_all_data,3000) ;
@@ -324,6 +369,14 @@ import axios from "axios";
       this.arreglo_datos=this.result = result.data;
     })
   },
+  new_query(){
+    this.arreglo_datos=[];
+      axios.get("/locations/index/getAllEntities/"+this.select_list).then((result) => {
+      this.arreglo_datos=this.result = result.data;
+    })
+    console.log("termino");
+  }
+  ,
 save_add_new_genre() {
     axios.post('/genres/api/create',{
        name:this.name,
