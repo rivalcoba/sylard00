@@ -19,7 +19,7 @@
                   :value="item2"
                   disabled
                 />
-                <button class="btn_accion_tabla">
+                <button class="btn_accion_tabla" hidden>
                   <span class="icono_accion_tabla icon-edit"></span>
                 </button>
               </div>
