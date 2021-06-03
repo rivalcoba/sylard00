@@ -170,13 +170,13 @@
           >
             <v-icon>mdi-close</v-icon>
           </v-btn>
-          <v-toolbar-title>Crear nuevo genero</v-toolbar-title>
+          <v-toolbar-title>Crear nueva comunidad</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
             <v-btn
               dark
               text
-              @click="save_add_new_genre()"
+              @click="save_add_new_location()"
             >
               Guardar
             </v-btn>
@@ -186,48 +186,225 @@
           three-line
           subheader
         >
-          <v-subheader><h1>Datos de nuevo genero:</h1> </v-subheader>
+          <v-subheader><h1>Datos de nueva comunidad:</h1> </v-subheader>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title> <h3> Nombre:{{name}}</h3></v-list-item-title>
-             <v-list-item-subtitle><v-col
-                cols="12"
-                sm="6"
-                md="4"
-              >
+             <v-list-item-subtitle>
+               <table>
+                 <tr>
+                   <td>
                 <v-text-field
-                  label="Nombre de nuevo genero"
-                  hint="Ejemplo:TERROR"
+                  label="Mapa"
+                 
                   persistent-hint
-                  id="name"
-                  name="name"
-                  v-model="name"
+                  id="Mapa"
+                  name="Mapa"
+                  v-model="Mapa"
                   required
                 ></v-text-field>
-              </v-col></v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title><h3>Descripcion: {{description}} </h3> </v-list-item-title>
-              <v-list-item-subtitle><v-col
-                cols="12"
-                sm="6"
-                md="4"
-              >
+                   </td>
+                       <td>
                 <v-text-field
-                  label="Descripcion de nuevo genero"
-                  hint="Ejemplo: da mucho miedo"
+                  label="Clave de entidad"
+                 
                   persistent-hint
-                  id="description"
-                  name="description"
-                  v-model="description"
+                  id="Cve_Ent"
+                  name="Cve_Ent"
+                  v-model="Cve_Ent"
                   required
                 ></v-text-field>
-              </v-col>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Nombre de la entidad"
+                 
+                  persistent-hint
+                  id="Nom_Ent"
+                  name="Nom_Ent"
+                  v-model="Nom_Ent"
+                  required
+                ></v-text-field>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Nombre Abreviado"
+                 
+                  persistent-hint
+                  id="Nom_Abr"
+                  name="Nom_Abr"
+                  v-model="Nom_Abr"
+                  required
+                ></v-text-field>
+                   </td>
+                 </tr>
+                   <tr>
+                   <td>
+                <v-text-field
+                  label="Clave de Municipio"
+                 
+                  persistent-hint
+                  id="Cve_Mun"
+                  name="Cve_Mun"
+                  v-model="Cve_Mun"
+                  required
+                ></v-text-field>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Nombre de Municipio"
+                 
+                  persistent-hint
+                  id="Nom_Mun"
+                  name="Nom_Mun"
+                  v-model="Nom_Mun"
+                  required
+                ></v-text-field>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Clave de localidad"
+                 
+                  persistent-hint
+                  id="Cve_Loc"
+                  name="Cve_Loc"
+                  v-model="Cve_Loc"
+                  required
+                ></v-text-field>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Nombre Localidad"
+                 
+                  persistent-hint
+                  id="Nom_Loc"
+                  name="Nom_Loc"
+                  v-model="Nom_Loc"
+                  required
+                ></v-text-field>
+                   </td>
+                 </tr>
+                   <tr>
+                   <td>
+                <v-text-field
+                  label="Ambito"
+                 
+                  persistent-hint
+                  id="Ambito"
+                  name="Ambito"
+                  v-model="Ambito"
+                  required
+                ></v-text-field>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Latitud"
+                 
+                  persistent-hint
+                  id="Latitud"
+                  name="Latitud"
+                  v-model="Latitud"
+                  required
+                ></v-text-field>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Longitud"
+                 
+                  persistent-hint
+                  id="Longitud"
+                  name="Longitud"
+                  v-model="Longitud"
+                  required
+                ></v-text-field>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Latitud Decimal"
+                 
+                  persistent-hint
+                  id="Lat_Decimal"
+                  name="Lat_Decimal"
+                  v-model="Lat_Decimal"
+                  required
+                ></v-text-field>
+                   </td>
+                 </tr>
+                   <tr>
+                   <td>
+                <v-text-field
+                  label="Longitud Decimal"
+                 
+                  persistent-hint
+                  id="Lon_Decimal"
+                  name="Lon_Decimal"
+                  v-model="Lon_Decimal"
+                  required
+                ></v-text-field>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Altitud"
+                 
+                  persistent-hint
+                  id="Altitud"
+                  name="Altitud"
+                  v-model="Altitud"
+                  required
+                ></v-text-field>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Cve Carta"
+                 
+                  persistent-hint
+                  id="Cve_Carta"
+                  name="Cve_Carta"
+                  v-model="Cve_Carta"
+                  required
+                ></v-text-field>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Publacion Total"
+                 
+                  persistent-hint
+                  id="Pob_Total"
+                  name="Pob_Total"
+                  v-model="Pob_Total"
+                  required
+                ></v-text-field>
+                   </td>
+                 </tr>
+                   <tr>
+                   <td>
+                <v-text-field
+                  label="Publacion Masculina"
+                 
+                  persistent-hint
+                  id="Pob_Masculina"
+                  name="Pob_Masculina"
+                  v-model="Pob_Masculina"
+                  required
+                ></v-text-field>
+                   </td>
+                       <td>
+                <v-text-field
+                  label="Poblacion Femenina"
+                 
+                  persistent-hint
+                  id="Pob_Femenina"
+                  name="Pob_Femenina"
+                  v-model="Pob_Femenina"
+                  required
+                ></v-text-field>
+                   </td>
+                 </tr>
+               </table>
+            
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
+          
         </v-list>
         <v-divider></v-divider>
         <v-list
@@ -251,6 +428,25 @@ import axios from "axios";
     data () {
       return {
 
+  Mapa: "",
+  Cve_Ent: "",
+  Nom_Ent: "",
+  Nom_Abr: "",
+  Cve_Mun: "",
+  Nom_Mun: "",
+  Cve_Loc: "",
+  Nom_Loc: "",
+  Ambito: "",
+  Latitud: "",
+  Longitud: "",
+  Lat_Decimal: "",
+  Lon_Decimal: "",
+  Altitud: "",
+  Cve_Carta: "",
+  Pob_Total: "",
+  Pob_Masculina: "",
+  Pob_Femenina: "",
+
         obj_list:{},
         item_list:[],
         data_list:[],
@@ -261,8 +457,6 @@ import axios from "axios";
         id_edit:"",
         name_edit:"",
         description_edit:"",
-        name:"",
-        description:"",
         dialog_edit:false,
          dialog: false,
         notifications: false,
@@ -298,6 +492,7 @@ import axios from "axios";
           { text: 'Pob_Masculina', value: 'Pob_Masculina' },
            { text: 'Pob_Femenina', value: 'Pob_Femenina', sortable: true },
            { text: 'Total De Viviendas Habitadas', value: 'Total De Viviendas Habitadas', sortable: true },
+            { text: 'Actions', value: 'actions', sortable: false },
         //   { text: 'algosaurio', value: 'switch_toggle', sortable: true },
         ],
         
@@ -334,7 +529,7 @@ import axios from "axios";
     deleteItem(){
     const index = this.arreglo_datos.indexOf(this.thing);//busca objeto  en el arreglo y retorna su posicion en el 
     this.arreglo_datos.splice(index,1);
-    axios.delete('/genres/api/delete/'+this.id);
+    axios.delete('/locations/api/delete/'+this.id);
     console.log("eliminado: "+this.id);
      this.dialog_del=false;
      setTimeout(this.update_all_data,200) ;
@@ -346,7 +541,7 @@ import axios from "axios";
     arreglo.forEach(element => {
     const index = this.arreglo_datos.indexOf(element);//busca objeto  en el arreglo y retorna su posicion en el 
    this.arreglo_datos.splice(index,1);
-      axios.delete('/genres/api/delete/'+element._id);
+      axios.delete('/locations/api/delete/'+element._id);
     console.log("eliminado: "+element._id);
     
     });
@@ -357,8 +552,26 @@ import axios from "axios";
   clean_all_fields(){
     this.name_edit="";
     this.description_edit="";
-    this.name="";
-    this.description="";
+
+  this.Mapa= "";
+  this.Cve_Ent="";
+  this.Nom_Ent="";
+  this.Nom_Abr= "";
+  this.Cve_Mun= "";
+  this.Nom_Mun= "";
+  this.Cve_Loc= "";
+  this.Nom_Loc= "";
+  this.Ambito="";
+  this.Latitud= "";
+  this.Longitud= "";
+  this.Lat_Decimal= "";
+  this.Lon_Decimal= "";
+  this.Altitud="";
+  this.Cve_Carta= "";
+  this.Pob_Total= "";
+  this.Pob_Masculina= "";
+  this.Pob_Femenina0="";
+
     this.id_edit="";
     this.index_of_item_edit="";
     this.obj_on_table_edit={};
@@ -377,10 +590,28 @@ import axios from "axios";
     console.log("termino");
   }
   ,
-save_add_new_genre() {
-    axios.post('/genres/api/create',{
-       name:this.name,
-       description:this.description
+save_add_new_location() {
+  
+    axios.post('/locations/api/create',{
+       Mapa: this.Mapa,
+  Cve_Ent: this.Cve_Ent,
+  Nom_Ent: this.Nom_Ent,
+  Nom_Abr: this.Nom_Abr,
+  Cve_Mun: this.Cve_Mun,
+  Nom_Mun: this.Nom_Mun,
+  Cve_Loc: this.Cve_Loc ,
+  Nom_Loc: this.Nom_Loc,
+  Ambito: this.Ambito,
+  Latitud: this.Latitud,
+  Longitud: this.Longitud,
+  Lat_Decimal: this.Lat_Decimal,
+  Lon_Decimal: this.Lon_Decimal,
+  Altitud: this.Altitud,
+  Cve_Carta: this.Cve_Carta,
+  Pob_Total: this.Pob_Total,
+  Pob_Masculina: this.Pob_Masculina,
+  Pob_Femenina: this.Pob_Femenina,
+  'Total De Viviendas Habitadas': 1,
      })
          // this.arreglo_datos.push(newitem);
         this.dialog=false;

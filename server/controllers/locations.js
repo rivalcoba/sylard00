@@ -126,7 +126,30 @@ const findLocality = async (req,res)=>{
     res.status(404).send('Not Found')
   }
 }
+// CREATE - POST
+const api_postLoc= async (req, res) => {
 
+  // Destructuring location
+  let { location } = req
+  
+  // Create Validates location
+  try {
+    const locationDoc = await Locations.create(location)
+    res.status(200).json(locationDoc)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+const api_deleteLocations = async (req, res) => {
+  const {loc_id} = req.params
+  try {
+    let result = await Locations.deleteOne({_id : loc_id})
+    res.status(200).json(result)
+  } catch (error) {
+    error.reason = `Document with id ${genre_id} not deleted because it was not found`
+    res.status(404).json(error)
+  }
+}
 export default {
   indexNomLoc,
   index,
@@ -134,5 +157,7 @@ export default {
   getLocalities,
   findLocality,
   getEntities,
-  getAllEntities
+  getAllEntities,
+  api_postLoc,
+  api_deleteLocations
 }
