@@ -42,6 +42,7 @@
 
       <v-data-table
       dense
+       :loading="table_loader"
      v-model="selected"
       :headers="headers"
       :items="arreglo_datos"
@@ -50,10 +51,10 @@
       show-select
      class="elevation-1"
       :footer-props="{
-    'items-per-page-options': [10, 20, 30, 40, 50,80,100,200]
+    'items-per-page-options': [5,10, 20, 30, 40, 50,80,100,200,500]
   }"
-  :items-per-page="10"
-       :loading=true
+  :items-per-page="5"
+      
        
     loading-text="Cargando por favor espere..."
     >
@@ -155,7 +156,7 @@
           v-bind="attrs"
           v-on="on"
         >
-          + Agregar nuevo genero
+          + Agregar nueva locacion
         </v-btn>
       </template>
       <v-card>
@@ -427,6 +428,7 @@ import axios from "axios";
   export default {
     data () {
       return {
+        table_loader:true,
 
   Mapa: "",
   Cve_Ent: "",
@@ -493,15 +495,22 @@ import axios from "axios";
            { text: 'Pob_Femenina', value: 'Pob_Femenina', sortable: true },
            { text: 'Total De Viviendas Habitadas', value: 'Total De Viviendas Habitadas', sortable: true },
             { text: 'Actions', value: 'actions', sortable: false },
-        //   { text: 'algosaurio', value: 'switch_toggle', sortable: true },
         ],
         
       }
     },
     watch:{
       dialog_edit(val){
-        val||this.close_edit()
+        val||this.close_edit();
+      },
+       arreglo_datos:function(datos){
+      if(datos.length<=0){
+        this.table_loader=true;
       }
+      else{
+        this.table_loader=false;
+      }
+    }
     },
       created() {
        
@@ -578,8 +587,14 @@ import axios from "axios";
     this.v="";
   },
   update_all_data(){
-        axios.get("/genres/api").then((result) => {
+         
+       axios.get("/locations/index/getAllEntities/"+this.select_list).then((result) => {
       this.arreglo_datos=this.result = result.data;
+    })
+       axios.get("/locations/entities").then((result) => {
+      this.data_list=this.result = result.data;
+      
+    
     })
   },
   new_query(){
@@ -587,13 +602,12 @@ import axios from "axios";
       axios.get("/locations/index/getAllEntities/"+this.select_list).then((result) => {
       this.arreglo_datos=this.result = result.data;
     })
-    console.log("termino");
   }
   ,
 save_add_new_location() {
   
     axios.post('/locations/api/create',{
-       Mapa: this.Mapa,
+  Mapa: this.Mapa,
   Cve_Ent: this.Cve_Ent,
   Nom_Ent: this.Nom_Ent,
   Nom_Abr: this.Nom_Abr,
@@ -604,20 +618,43 @@ save_add_new_location() {
   Ambito: this.Ambito,
   Latitud: this.Latitud,
   Longitud: this.Longitud,
-  Lat_Decimal: this.Lat_Decimal,
-  Lon_Decimal: this.Lon_Decimal,
-  Altitud: this.Altitud,
+  Lat_Decimal: parseInt(this.Lat_Decimal),
+  Lon_Decimal: parseInt(this.Lon_Decimal),
+  Altitud: parseInt( this.Altitud),
   Cve_Carta: this.Cve_Carta,
-  Pob_Total: this.Pob_Total,
-  Pob_Masculina: this.Pob_Masculina,
-  Pob_Femenina: this.Pob_Femenina,
+  Pob_Total: parseInt( this.Pob_Total),
+  Pob_Masculina: parseInt( this.Pob_Masculina),
+  Pob_Femenina: parseInt( this.Pob_Femenina),
   'Total De Viviendas Habitadas': 1,
      })
+     /*
+     var jsonsaurio = {
+      Mapa: this.Mapa,
+  Cve_Ent: this.Cve_Ent,
+  Nom_Ent: this.Nom_Ent,
+  Nom_Abr: this.Nom_Abr,
+  Cve_Mun: this.Cve_Mun,
+  Nom_Mun: this.Nom_Mun,
+  Cve_Loc: this.Cve_Loc ,
+  Nom_Loc: this.Nom_Loc,
+  Ambito: this.Ambito,
+  Latitud: this.Latitud,
+  Longitud: this.Longitud,
+  Lat_Decimal: parseInt(this.Lat_Decimal),
+  Lon_Decimal: parseInt(this.Lon_Decimal),
+  Altitud: parseInt( this.Altitud),
+  Cve_Carta: this.Cve_Carta,
+  Pob_Total: parseInt( this.Pob_Total),
+  Pob_Masculina: parseInt( this.Pob_Masculina),
+  Pob_Femenina: parseInt( this.Pob_Femenina),
+  'Total De Viviendas Habitadas': 1,}
+     console.log(jsonsaurio)
+     */
          // this.arreglo_datos.push(newitem);
         this.dialog=false;
      //this.update_all_data();
       this.clean_all_fields();
-      setTimeout(this.update_all_data,200) ;
+      //setTimeout(this.update_all_data,200) ;
       
        
       },
