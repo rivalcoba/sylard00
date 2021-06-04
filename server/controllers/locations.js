@@ -150,6 +150,22 @@ const api_deleteLocations = async (req, res) => {
     res.status(404).json(error)
   }
 }
+//update
+const api_putLocations = async(req, res) => {
+  // Extracting data to update
+  let {locDoc} = req
+  
+  // Saving Document
+  let savedDoc = {} 
+  try {
+    savedDoc = await locDoc.save()
+  } catch (error) {
+    error.reason = `Error when saving document`
+    res.status(500).json(error)
+  }
+  res.status(200).json(savedDoc)
+}
+
 export default {
   indexNomLoc,
   index,
@@ -159,5 +175,6 @@ export default {
   getEntities,
   getAllEntities,
   api_postLoc,
-  api_deleteLocations
+  api_deleteLocations,
+  api_putLocations
 }

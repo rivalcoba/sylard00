@@ -11,7 +11,12 @@ const router = new Router();
 
 // Import Controllers
 import locationsController from '@controllers/locations'
-
+import ensureAuthenticated from '@helpers/ensureAuth'
+// Assing Routers
+router.get(
+    '/',
+    ensureAuthenticated,
+);
 
 
 // Collections Routes
@@ -29,6 +34,9 @@ router.get('/index/getAllEntities/:nom_ent',locationsController.getAllEntities);
 router.post('/api/create',  locationsController.api_postLoc);
 //delete
 router.delete('/api/delete/:loc_id', locationsController.api_deleteLocations);
+//Update
+router.put('/api/update/:genre_id', locationsController.api_putLocations);
+
 
 
 

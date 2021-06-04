@@ -81,7 +81,7 @@
      <v-layout row justify-center>
     <v-dialog v-model="dialog_del" persistent max-width="600px">
       <v-card>
-        <v-card-title class="headline">Esta seguro que desea eliminar este genero?</v-card-title>
+        <v-card-title class="headline">Esta seguro que desea eliminar esta localidad?</v-card-title>
         <v-card-text><h2>{{nameofuser}}</h2> </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -103,27 +103,221 @@
             <v-toolbar
               color="primary"
               dark
-            >Editar Genero</v-toolbar>
+            >Editar Localidad</v-toolbar>
             <v-card-text>
               <div >
- <v-text-field
-                  label="Nombre"
-                  hint="Ejemplo:TERROR"
-                  persistent-hint
-                  id="name"
-                  name="name"
-                  v-model="name_edit"
-                  required
-                ></v-text-field>
-                 <v-text-field
-                  label="Descripcion"
-                  hint="Ejemplo:TERROR"
-                  persistent-hint
-                  id="name"
-                  name="name"
-                  v-model="description_edit"
-                  required
-                ></v-text-field>
+            <table>
+<tr>
+  <td>
+<v-text-field
+ label="edit_Mapa"
+
+ persistent-hint
+ id="edit_Mapa"
+ name="edit_Mapa"
+ v-model="edit_Mapa"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="Clave de entidad"
+
+ persistent-hint
+ id="edit_Cve_Ent"
+ name="edit_Cve_Ent"
+ v-model="edit_Cve_Ent"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="Nombre de la entidad"
+
+ persistent-hint
+ id="edit_Nom_Ent"
+ name="edit_Nom_Ent"
+ v-model="edit_Nom_Ent"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="Nombre Abreviado"
+
+ persistent-hint
+ id="edit_Nom_Abr"
+ name="edit_Nom_Abr"
+ v-model="edit_Nom_Abr"
+ required
+></v-text-field>
+  </td>
+</tr>
+  <tr>
+  <td>
+<v-text-field
+ label="Clave de Municipio"
+
+ persistent-hint
+ id="edit_Cve_Mun"
+ name="edit_Cve_Mun"
+ v-model="edit_Cve_Mun"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="Nombre de Municipio"
+
+ persistent-hint
+ id="edit_Nom_Mun"
+ name="edit_Nom_Mun"
+ v-model="edit_Nom_Mun"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="Clave de localidad"
+
+ persistent-hint
+ id="edit_Cve_Loc"
+ name="edit_Cve_Loc"
+ v-model="edit_Cve_Loc"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="Nombre Localidad"
+
+ persistent-hint
+ id="edit_Nom_Loc"
+ name="edit_Nom_Loc"
+ v-model="edit_Nom_Loc"
+ required
+></v-text-field>
+  </td>
+</tr>
+  <tr>
+  <td>
+<v-text-field
+ label="edit_Ambito"
+
+ persistent-hint
+ id="edit_Ambito"
+ name="edit_Ambito"
+ v-model="edit_Ambito"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="edit_Latitud"
+
+ persistent-hint
+ id="edit_Latitud"
+ name="edit_Latitud"
+ v-model="edit_Latitud"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="edit_Longitud"
+
+ persistent-hint
+ id="edit_Longitud"
+ name="edit_Longitud"
+ v-model="edit_Longitud"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="edit_Latitud Decimal"
+
+ persistent-hint
+ id="edit_Lat_Decimal"
+ name="edit_Lat_Decimal"
+ v-model="edit_Lat_Decimal"
+ required
+></v-text-field>
+  </td>
+</tr>
+  <tr>
+  <td>
+<v-text-field
+ label="Longitud Decimal"
+
+ persistent-hint
+ id="edit_Lon_Decimal"
+ name="edit_Lon_Decimal"
+ v-model="edit_Lon_Decimal"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="Altitud"
+
+ persistent-hint
+ id="edit_Altitud"
+ name="edit_Altitud"
+ v-model="edit_Altitud"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="Cve Carta"
+
+ persistent-hint
+ id="edit_Cve_Carta"
+ name="edit_Cve_Carta"
+ v-model="edit_Cve_Carta"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="Publacion Total"
+
+ persistent-hint
+ id="edit_Pob_Total"
+ name="edit_Pob_Total"
+ v-model="edit_Pob_Total"
+ required
+></v-text-field>
+  </td>
+</tr>
+  <tr>
+  <td>
+<v-text-field
+ label="Publacion Masculina"
+
+ persistent-hint
+ id="edit_Pob_Masculina"
+ name="edit_Pob_Masculina"
+ v-model="edit_Pob_Masculina"
+ required
+></v-text-field>
+  </td>
+      <td>
+<v-text-field
+ label="Poblacion Femenina"
+
+ persistent-hint
+ id="edit_Pob_Femenina"
+ name="edit_Pob_Femenina"
+ v-model="edit_Pob_Femenina"
+ required
+></v-text-field>
+  </td>
+</tr>
+</table>
+ 
+              
                   <input type="text" v-model="id_edit" hidden>
               </div>
             </v-card-text>
@@ -449,6 +643,25 @@ import axios from "axios";
   Pob_Masculina: "",
   Pob_Femenina: "",
 
+  edit_Mapa: "",
+  edit_Cve_Ent: "",
+  edit_Nom_Ent: "",
+  edit_Nom_Abr: "",
+  edit_Cve_Mun: "",
+  edit_Nom_Mun: "",
+  edit_Cve_Loc: "",
+  edit_Nom_Loc: "",
+  edit_Ambito: "",
+  edit_Latitud: "",
+  edit_Longitud: "",
+  edit_Lat_Decimal: "",
+  edit_Lon_Decimal: "",
+  edit_Altitud: "",
+  edit_Cve_Carta: "",
+  edit_Pob_Total: "",
+  edit_Pob_Masculina: "",
+  edit_Pob_Femenina: "",
+
         obj_list:{},
         item_list:[],
         data_list:[],
@@ -579,7 +792,27 @@ import axios from "axios";
   this.Cve_Carta= "";
   this.Pob_Total= "";
   this.Pob_Masculina= "";
-  this.Pob_Femenina0="";
+  this.Pob_Femenina="";
+
+   this.edit_Mapa= "";
+  this.edit_Cve_Ent="";
+  this.edit_Nom_Ent="";
+  this.edit_Nom_Abr= "";
+  this.edit_Cve_Mun= "";
+  this.edit_Nom_Mun= "";
+  this.edit_Cve_Loc= "";
+  this.edit_Nom_Loc= "";
+  this.edit_Ambito="";
+  this.edit_Latitud= "";
+  this.edit_Longitud= "";
+  this.edit_Lat_Decimal= "";
+  this.edit_Lon_Decimal= "";
+  this.edit_Altitud="";
+  this.edit_Cve_Carta= "";
+  this.edit_Pob_Total= "";
+  this.edit_Pob_Masculina= "";
+  this.edit_Pob_Femenina="";
+  
 
     this.id_edit="";
     this.index_of_item_edit="";
@@ -608,7 +841,7 @@ save_add_new_location() {
   
     axios.post('/locations/api/create',{
   Mapa: this.Mapa,
-  Cve_Ent: this.Cve_Ent,
+  Cve_Ent: this.Cve_Ent,/*
   Nom_Ent: this.Nom_Ent,
   Nom_Abr: this.Nom_Abr,
   Cve_Mun: this.Cve_Mun,
@@ -625,9 +858,9 @@ save_add_new_location() {
   Pob_Total: parseInt( this.Pob_Total),
   Pob_Masculina: parseInt( this.Pob_Masculina),
   Pob_Femenina: parseInt( this.Pob_Femenina),
-  'Total De Viviendas Habitadas': 1,
+  'Total De Viviendas Habitadas': 1,*/
      })
-     /*
+     
      var jsonsaurio = {
       Mapa: this.Mapa,
   Cve_Ent: this.Cve_Ent,
@@ -649,7 +882,7 @@ save_add_new_location() {
   Pob_Femenina: parseInt( this.Pob_Femenina),
   'Total De Viviendas Habitadas': 1,}
      console.log(jsonsaurio)
-     */
+     
          // this.arreglo_datos.push(newitem);
         this.dialog=false;
      //this.update_all_data();
@@ -663,9 +896,26 @@ save_add_new_location() {
         this.clean_all_fields;
       }      ,
       show_edit(item){
-        this.dialog_edit=true;
-        this.name_edit= item.name;
-        this.description_edit=item.description;
+  this.dialog_edit=true;
+  this.edit_Mapa= item.Mapa;
+  this.edit_Cve_Ent=item.Cve_Ent;
+  this.edit_Nom_Ent=item.Nom_Ent;
+  this.edit_Nom_Abr= item.Nom_Abr;
+  this.edit_Cve_Mun= item.Cve_Mun;
+  this.edit_Nom_Mun= item.Nom_Mun;
+  this.edit_Cve_Loc= item.Cve_Loc;
+  this.edit_Nom_Loc= item.Nom_Loc;
+  this.edit_Ambito=item.Ambito;
+  this.edit_Latitud= item.Latitud;
+  this.edit_Longitud= item.Longitud;
+  this.edit_Lat_Decimal= item.Lat_Decimal;
+  this.edit_Lon_Decimal= item.Lon_Decimal;
+  this.edit_Altitud=item.Altitud;
+  this.edit_Cve_Carta= item.Cve_Carta;
+  this.edit_Pob_Total= item.Pob_Total;
+  this.edit_Pob_Masculina= item.Pob_Masculina;
+  this.edit_Pob_Femenina=item.Pob_Femenina;
+        
         this.id_edit=item._id;
         this.v=item.__v;
         this.index_of_item_edit=this.arreglo_datos.indexOf(item);
@@ -674,11 +924,45 @@ save_add_new_location() {
       },
        save_edit(){
     var id = this.id_edit;
-    axios.put('/genres/api/update/'+id,{
-      name:this.name_edit,
-      description:this.description_edit
+    axios.put('/locations/api/update/'+id,{
+  Mapa: this.edit_Mapa,
+  Cve_Ent: this.edit_Cve_Ent,
+  Nom_Ent: this.edit_Nom_Ent,
+  Nom_Abr: this.edit_Nom_Abr,
+  Cve_Mun: this.edit_Cve_Mun,
+  Nom_Mun: this.edit_Nom_Mun,
+  Cve_Loc: this.edit_Cve_Loc ,
+  Nom_Loc: this.edit_Nom_Loc,
+  Ambito: this.edit_Ambito,
+  Latitud: this.edit_Latitud,
+  Longitud: this.edit_Longitud,
+  Lat_Decimal: parseInt(this.edit_Lat_Decimal),
+  Lon_Decimal: parseInt(this.edit_Lon_Decimal),
+  Altitud: parseInt( this.edit_Altitud),
+  Cve_Carta: this.edit_Cve_Carta,
+  Pob_Total: parseInt( this.edit_Pob_Total),
+  Pob_Masculina: parseInt( this.edit_Pob_Masculina),
+  Pob_Femenina: parseInt( this.edit_Pob_Femenina),
+  'Total De Viviendas Habitadas': 1,
     });
-    var new_item_edit={_id:this.id_edit, name:this.name_edit,description:this.description_edit,__v:this.v};
+    var new_item_edit={_id:this.id_edit, Mapa: this.edit_Mapa,
+  Cve_Ent: this.edit_Cve_Ent,
+  Nom_Ent: this.edit_Nom_Ent,
+  Nom_Abr: this.edit_Nom_Abr,
+  Cve_Mun: this.edit_Cve_Mun,
+  Nom_Mun: this.edit_Nom_Mun,
+  Cve_Loc: this.edit_Cve_Loc ,
+  Nom_Loc: this.edit_Nom_Loc,
+  Ambito: this.edit_Ambito,
+  Latitud: this.edit_Latitud,
+  Longitud: this.edit_Longitud,
+  Lat_Decimal: parseInt(this.edit_Lat_Decimal),
+  Lon_Decimal: parseInt(this.edit_Lon_Decimal),
+  Altitud: parseInt( this.edit_Altitud),
+  Cve_Carta: this.edit_Cve_Carta,
+  Pob_Total: parseInt( this.edit_Pob_Total),
+  Pob_Masculina: parseInt( this.edit_Pob_Masculina),
+  Pob_Femenina: parseInt( this.edit_Pob_Femenina),__v:this.v};
     /*verifica retorno de objetos
     console.log(this.index_of_item_edit);
     console.log(this.obj_on_table_edit);
