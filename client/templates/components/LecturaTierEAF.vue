@@ -78,11 +78,12 @@
                   }}</label>
                   <input
                     type="text"
-                    :data-did="'A' + (index + 55) + '-colorPicker'"
                     :id="item2"
-                    value="#c60000"
                     v-bind:style="colorclase('#c60000')"
+                    value="#c60000"
                     class="inp input_flexible"
+                    :data-did="'A' + (index + 55) + '-colorPicker'"
+                    name="colorMaster"
                     @change="seleccion_todos_color($event)"
                     @click="metodocolor(index + 55, $event, 0)"
                     @blur="metodoblur(index + 55, $event, 0)"
@@ -180,21 +181,22 @@
                 >
                   <!--<input type="text" class="inp input_flexible" id="colorPicker" autocomplete="off">-->
                   <input
-                    name="color"
                     class="inp input_flexible"
-                    v-bind:style="colorclase('#c60000')"
+                    autocomplete="off"
+                    name="color"
                     type="text"
-                    :data-did="'A' + (index + 155) + '-colorPicker'"
-                    :id="item.TIER_ID"
-                    value="#c60000"
+                    v-model="item.color"
+                    :id="'color_' + item.TIER_ID"
+                    v-bind:style="colorclase(item.color)"
+                    :data-did="'A' + (index + 1) + '-colorPicker'"
                     @change="seleccion_color($event)"
-                    @click="metodocolor(index + 155, $event, 0)"
-                    @blur="metodoblur(index + 155, $event, 0)"
+                    @click="metodocolor(index, $event, 1)"
+                    @blur="metodoblur(index, $event, 1)"
                   /><!--PENDIENTE PICKET-->
                   <div
                     class="palette"
-                    :data-did="'A' + (index + 155) + '-colorPalette'"
-                    :id="'A' + (index + 155) + '-colorPalette'"
+                    :data-did="'A' + (index + 1) + '-colorPalette'"
+                    :id="'A' + (index + 1) + '-colorPalette'"
                   ></div>
                 </div>
               </div>
@@ -241,16 +243,11 @@ export default {
       var valorpaleta, valorcolor
       valorcolor = 'A' + (parametro + valor) + '-colorPicker'
       valorpaleta = 'A' + (parametro + valor) + '-colorPalette'
-
-      console.log(
-        'este es el parametro del colorpicker ' +
-          parametro +
-          ' p ' +
-          valorpaleta +
-          ' c ' +
-          valorcolor
-      )
-      showColorPalette(valorcolor, valorpaleta)
+      // LOGS
+      console.log(`<metodocolor> Idx: ${parametro} - Paleta: ${valorpaleta} - Picker: ${valorcolor}`);
+      console.log(`<metodocolor> Target ID: ${e.target.id}`);
+      let tierId = e.target.id;
+      showColorPalette(valorcolor, valorpaleta, tierId)
       //  this.cambiarcolor(e)
       //return parametro
     },
@@ -283,7 +280,7 @@ export default {
           TIER_ID: this.info.data.tier[indice][0].TIER_ID[0],
           value: 'A',
           Visible: true,
-          Color: '#000000',
+          color: '#000000',
         })
         //  this.info.data.tier[indice].forEach(x => {
         //        console.log(x)
@@ -453,21 +450,21 @@ export default {
       console.log('--------------------------------')
       console.log(
         'valor original es ' +
-          this.tier_acomodado.find(x => x.TIER_ID == event.target.id).Color
+          this.tier_acomodado.find(x => x.TIER_ID == event.target.id).color
       )
       console.log(e.target.value)
       console.log(event.target.id)
       if (
-        this.tier_acomodado.find(x => x.TIER_ID == event.target.id).Color !=
+        this.tier_acomodado.find(x => x.TIER_ID == event.target.id).color !=
         event.target.value
       ) {
         //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
-        this.tier_acomodado.find(x => x.TIER_ID == event.target.id).Color =
+        this.tier_acomodado.find(x => x.TIER_ID == event.target.id).color =
           event.target.value
       }
       console.log(
         'Cambio el valor a ' +
-          this.tier_acomodado.find(x => x.TIER_ID == event.target.id).Color
+          this.tier_acomodado.find(x => x.TIER_ID == event.target.id).color
       )
       //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
     },
@@ -475,7 +472,7 @@ export default {
       console.log('--------------------------------')
       console.log(
         'valor original es ' +
-          this.tier_acomodado.find(x => x.TIER_ID == event.target.id).Color
+          this.tier_acomodado.find(x => x.TIER_ID == event.target.id).color
       )
       console.log(e.target.value)
       console.log(event.target.id)
@@ -487,7 +484,7 @@ export default {
               ' ' +
               indice
           )
-          this.tier_acomodado[indice].Color = e.target.value
+          this.tier_acomodado[indice].color = e.target.value
         }
       }
     },

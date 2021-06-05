@@ -69,14 +69,14 @@
                 >
                   <label class="label label_al_100">{{$t("lang.reproductor_audioannotation.colorTipo")}}</label>
                   <input
-                    type="text"
-                    v-bind:style="colorclase(item.color)"
-                    :data-did="'A' + (index + 1) + '-colorPicker'"
-                    name="color"
-                    :id="'color_' + item.TIER_ID"
                     class="inp input_flexible_compacto"
                     autocomplete="off"
+                    name="color"
+                    type="text"
                     v-model="item.color"
+                    :id="'color_' + item.TIER_ID"
+                    v-bind:style="colorclase(item.color)"
+                    :data-did="'A' + (index + 1) + '-colorPicker'"
                     v-on:input="cambiarcolor($event)"
                     @click="metodocolor(index, $event)"
                     @blur="metodoblur(index, $event)"
@@ -245,10 +245,6 @@ export default {
     },
     quitarcolor_id: function (e) {
       var color_name = e;
-      // console.log("---------original-----------------------");
-      // console.log(color_name);
-      // console.log("----------sin color_----------------------");
-      // console.log(color_name.replace("color_", ""));
       return color_name.replace("color_", "");
     },
     cambiarcolor: function (e) {
@@ -267,22 +263,14 @@ export default {
       return e.target.value;
     },
     metodocolor: function (parametro, e) {
-      //this.quitarcolor_id(event.target.id)
-
       var valorpaleta, valorcolor;
       valorcolor = "A" + (parametro + 1) + "-colorPicker";
       valorpaleta = "A" + (parametro + 1) + "-colorPalette";
-      showColorPalette(valorcolor, valorpaleta);
-      // console.log(
-      //   "este es el parametro del colorpicker " +
-      //     parametro +
-      //     " p " +
-      //     valorpaleta +
-      //     " c " +
-      //     valorcolor
-      // );
-      //  this.cambiarcolor(e)
-      //return parametro
+      // -LOGS
+      console.log(`<metodocolor> Idx: ${parametro} - Paleta: ${valorpaleta} - Picker: ${valorcolor}`);
+      console.log(`<metodocolor> Target ID: ${e.target.id}`);
+      let tierId = e.target.id;
+      showColorPalette(valorcolor, valorpaleta, tierId);
     },
     metodoblur: function (parametro, e) {
       //"hideColorPalette('A1-colorPicker','A1-colorPalette')"
@@ -302,37 +290,23 @@ export default {
     },
 
     traer_color: function (tier_id) {
-      // return "color:"+this.audioannotations.find(x => x.TIER_ID == tier_id).color
-
-      //this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
-      //return color aqui me quede trayendo el color de audioannotations por id
       var valor_color = this.options.find((x) => x.TIER_ID == tier_id).color;
       return valor_color;
     },
     mensaje_al_player: function (tiempo) {
       console.log("Se envia un msg al player " + tiempo);
       this.$emit("mensaje_scroll", tiempo);
-      //this.$emit('nombre_mp3',this.mp3Audio)
     },
     recorrer_todo: function (longitud) {
       for (var i = 0; i <= longitud; i++) {
         this.recorrer(i);
       }
-      //this.recorrer(7)
-      //+ console.log("Este el  ultimo contador" + this.contador)
     },
     recorrer: function (item) {
       //https://stackoverflow.com/questions/38618088/how-to-find-multiple-elements-in-array-javascript-es6
 
       for (var indice in this.otro) {
         this.otro[indice].forEach((x) => {
-          //  var temp = ((x.TIME_SLOT_REF1 == item) || (x.TIME_SLOT_REF2 == item))
-          //console.log("temporal " + temp)
-          //if (this.results.find(((x) => x == ((x.TIME_SLOT_REF1 == item) || (x.TIME_SLOT_REF2 == item))))) {
-
-          //console.log("+++++rrrrr+++" + this.otro[indice][0].PARTICIPANT)
-
-          //if (this.results.find(((x) => x.TIME_SLOT_REF1 >= item) && ((x) => x.TIME_SLOT_REF2 <= item))) {
           if (
             (x.TIME_SLOT_REF1 == item || x.TIME_SLOT_REF2 == item) &&
             this.results.indexOf(x) === -1
@@ -349,21 +323,8 @@ export default {
               TIME_SLOT_REF2: x.TIME_SLOT_REF2,
               // valor: "valor " + indice
             };
-
-            //+ console.log("+++++rrrrr+++" + this.otro[indice][0].TIER_ID)
-            //+ console.log("anotatio id" + x.ANNOTATION_ID)
-            //+ console.log("value " + x.ANNOTATION_VALUE)
-            //+ console.log("value TIME_SLOT_REF1 y 2:" + x.TIME_SLOT_REF1 + " " + x.TIME_SLOT_REF2)
-            //+ console.log("-----Este es el contador" + this.contador + "-----")
             this.contador++;
-            //this.results.push(tempdata)
-            //console.log("el valor " + this.otro[indice][0].TIER_ID[0])
-
-            //
           }
-          //if ((x.TIME_SLOT_REF2 <= item)) results.push(x)
-
-          //}
         });
       }
 
@@ -396,36 +357,14 @@ export default {
         this.options.find((x) => x.TIER_ID == e.target.id).Visible = true;
       } else {
         this.options.find((x) => x.TIER_ID == e.target.id).Visible = false;
-        //+console.log("si lo off");
       }
-      //+  console.log(
-      //+     "Lo dejo en " +
-      //+       event.target.id +
-      //+      " " +
-      //+      this.options.find((x) => x.tier_id == e.target.id).Visible
-      //+   );
     },
     seleccion_visualizacion_options: function (e) {
-      //+  console.log("--------------------------------");
-      //+   console.log(
-      //+       "valor original es " +
-      //+      this.options.find((x) => x.tier_id == event.target.id).value
-      //+    );
-      //+    console.log(e.target.value);
-      //+     console.log(event.target.id);
-      // console.log(arreglo_ref_tiempo.find(x=>x.ANNOTATION_ID===ts).TIME_SLOT_REF1)
-      //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
       if (
         this.options.find((x) => x.TIER_ID == event.target.id).value != event.target.value
       ) {
-        //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
         this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
       }
-      //+   console.log(
-      //+      "Cambio el valor a " +
-      //+     this.options.find((x) => x.tier_id == event.target.id).value
-      //+    );
-      //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
     }, //audioannotations
     leerAudioannotationsMp3: function () {
       // var i=0;
@@ -437,13 +376,6 @@ export default {
     },
     leerTierBD: function () {
       for (var i in this.audioannotations_info.data.TIER) {
-        // console.log("----------Tier de BD ---------"+i)
-        // console.log (this.audioannotations_info.data.TIER[i].LINGUISTIC_TYPE_REF)
-        // console.log (this.audioannotations_info.data.TIER[i].PARTICIPANT)
-        // console.log(this.audioannotations_info.data.TIER[i].TIER_ID)
-        // console.log(this.audioannotations_info.data.TIER[i].Visible)
-        // console.log(this.audioannotations_info.data.TIER[i].color)
-        // console.log(this.audioannotations_info.data.TIER[i].value)
         this.audioannotations.push(this.audioannotations_info.data.TIER[i]);
       }
     },
@@ -451,15 +383,7 @@ export default {
       // var i=0;
       console.log("esta leyendo la tier");
       for (var i in this.info.data.tier) {
-        //+   console.log("aqui si entro 1");
-        //console.log(this.info.data.tier[i]);
-        //+   console.log("aqui si entro 2");
-        //7/08/2020 aqui no puedo quitar infinite loop
         this.otro.push(this.info.data.tier[i]);
-        //console.log("aqui si entro 3")
-        //+    console.log("Tier num " + i);
-        // console.log(this.info.data.ANNOTATION_DOCUMENT.tier[1]);
-        //console.log(this.info.data);
       }
       for (var j in this.otro) {
         //Agrega al vector options para mostrar una linea o multiples
@@ -473,37 +397,14 @@ export default {
           LINGUISTIC_TYPE_REF: "Transcripción",
         });
       }
-      // for (var j in this.audioannotations) {
-      //   //Agrega al vector options para mostrar una linea o multiples
-      //   this.options.push({
-      //     _id: this.audioannotations[j]._id,
-      //     TIER_ID: this.audioannotations[j].TIER_ID,
-      //     PARTICIPANT: this.audioannotations[j].PARTICIPANT,
-      //     value: this.audioannotations[j].value,
-      //     Visible: this.audioannotations[j].Visible,
-      //     color: this.audioannotations[j].color,
-      //     LINGUISTIC_TYPE_REF:this.audioannotations[j].LINGUISTIC_TYPE_REF
-      //   });
-      // }
-      // console.log("se asigno el vector audioannotations a options")
-      // se asigno el vector audioannotations a options
-      //this.options = this.audioannotations;
-      //return true;
     },
 
     saveFileJSon: function () {
       const data = JSON.stringify(this.otro);
       window.localStorage.setItem("otro", data);
-      //console.log(JSON.parse(window.localStorage.getItem('info')))
-      //console.log("se creo el json");
       return "ok";
     },
     time_order_sub: function (text) {
-      //       var parser, xmlDoc;
-      //parser = new DOMParser();
-      //xmlDoc = parser.parseFromString(text,"text/xml");
-      //document.getElementById("demo").innerHTML =
-      //xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
       return text;
     },
     add: function (valor) {
@@ -511,20 +412,13 @@ export default {
         first: "1",
         lastn: "3",
       });
-      //+   console.log(valor);
-      //+   console.log(1);
     },
   },
   created() {
-    //      console.log("Aqui se creo el json");
-    //this.saveFileJSon();
-    //this.leerTier();
   },
   activated() {
-    //this.leerTier();
   },
   updated() {
-    //this.leerTier();
   },
   created() {
     var currentUrl = window.location.pathname;
@@ -544,15 +438,8 @@ export default {
     },
   },
   mounted() {
-  //lectura de archivo fisico
-    //  var self = this;
-    // this.axios.get("/eaf/tmp/Nuevoeaf.json").then((response) => {
-    //   this.info = response;
-    //   self.leerTier();
-    // });
-    //lectura BD
     var data = new Object();
-       var self = this;
+    var self = this;
     this.axios.get("/audioannotations/index/" + self.ruta).then((response) => {
       //data.data=response.data.eafjson
       data.data=response.data.eafjson
@@ -580,14 +467,6 @@ export default {
         this.$i18n.locale = "en";
       }
     });
-    //this.saveFileJSon();
-    //console.log("Aqui se esta añadiendo al json");
-    //this.add("hola");
-    //this.leerTier();
-    //leer script color picker
-    // let la_colorScript = document.createElement('script')
-    // la_colorScript.setAttribute('src', 'https://cdn.glitch.com/120f087f-0e29-4163-9f0b-687d6b040d37%2Fla_color_picker.js')
-    // document.head.appendChild(la_colorScript)
   },
 };
 </script>

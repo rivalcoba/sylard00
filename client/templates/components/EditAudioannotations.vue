@@ -161,10 +161,10 @@
                   :key="'item5' + index"
                   v-bind:value="
                     'item5.NomLoc' +
-                    '-' +
-                    'item5.Nom_Mun' +
-                    '-' +
-                    'item5.Nom_Ent'
+                      '-' +
+                      'item5.Nom_Mun' +
+                      '-' +
+                      'item5.Nom_Ent'
                   "
                   :id="item5._id"
                 >
@@ -289,7 +289,7 @@
                             :id="item2"
                             @change="selecion_todos_onoff($event)"
                             class="checkbox_canal1"
-                            checked />
+                            checked/>
                           <span class="slider_general round"></span
                         ></label>
                         <label
@@ -321,23 +321,22 @@
                       >
                       <input
                         type="text"
-                       :id="item2"
-                       v-bind:style="colorclase('#c60000')"
+                        :id="item2"
+                        v-bind:style="colorclase('#c60000')"
                         value="#c60000"
-                         class="inp input_flexible"
-                         :data-did="'A' + (index+55 ) + '-colorPicker'"
-                         name="color"                         
-                        @change="seleccion_todos_color($event)"                     
-                    @click="metodocolor(index+55, $event,0)"
-                    @blur="metodoblur(index+55, $event,0)"
+                        class="inp input_flexible"
+                        :data-did="'A' + (index + 55) + '-colorPicker'"
+                        name="colorMaster"
+                        @change="seleccion_todos_color($event)"
+                        @click="metodocolor(index + 55, $event, 0)"
+                        @blur="metodoblur(index + 55, $event, 0)"
                         autocomplete="off"
                       />
-                       <div
-                    class="palette"
-                    :data-did="'A' + (index+55  ) + '-colorPalette'"
-                    :id="'A' + (index+55 ) + '-colorPalette'"
-                  ></div>
-                      <!--COLOR PICKET PENDIENTE todos-->
+                      <div
+                        class="palette"
+                        :data-did="'A' + (index + 55) + '-colorPalette'"
+                        :id="'A' + (index + 55) + '-colorPalette'"
+                      ></div>
                     </div>
                   </div>
                 </div>
@@ -372,7 +371,7 @@
                             class="checkbox_canal1"
                             v-model="item.Visible"
                             :value="item.Visible"
-                            @change="seleccion_onoff($event)" />
+                            @change="seleccion_onoff($event)"/>
                           <span class="slider_general round"></span
                         ></label>
                         <label
@@ -396,8 +395,8 @@
                         <option value="B">Scrolling</option>
                         <option value="A" selected>On-Line-Display</option>
                       </select>
-                        <!--checar https://stackoverflow.com/questions/43839066/how-can-i-set-selected-option-selected-in-vue-js-2 -->
-                <!--No funciona (no actualiza de manera automatica )<select v-model="tier_acomodado.value">
+                      <!--checar https://stackoverflow.com/questions/43839066/how-can-i-set-selected-option-selected-in-vue-js-2 -->
+                      <!--No funciona (no actualiza de manera automatica )<select v-model="tier_acomodado.value">
                         <option  v-bind:value="item.value" v-for="(c, index) in display" :key="index" :id="item.TIER_ID">{{ c.name }}</option>
                     </select>-->
                     </div>
@@ -405,23 +404,23 @@
                       class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion"
                     >
                       <input
-                          class="inp input_flexible"
+                        class="inp input_flexible"
                         autocomplete="off"
                         name="color"
                         type="text"
-                         v-model="item.color"
+                        v-model="item.color"
                         :id="'color_' + item.TIER_ID"
                         v-bind:style="colorclase(item.color)"
                         :data-did="'A' + (index + 1) + '-colorPicker'"
                         @change="seleccion_color($event)"
-                          @click="metodocolor(index, $event,1)"
-                    @blur="metodoblur(index, $event,1)"
+                        @click="metodocolor(index, $event, 1)"
+                        @blur="metodoblur(index, $event, 1)"
                       />
-                    <div
-                    class="palette"
-                    :data-did="'A' + (index + 1) + '-colorPalette'"
-                    :id="'A' + (index + 1) + '-colorPalette'"
-                  ></div>
+                      <div
+                        class="palette"
+                        :data-did="'A' + (index + 1) + '-colorPalette'"
+                        :id="'A' + (index + 1) + '-colorPalette'"
+                      ></div>
                       <!--PENDIENTE COLOR PICKET-->
                     </div>
                   </div>
@@ -474,78 +473,57 @@ export default {
     }
   },
   methods: {
-    colorclase: function (color) {
-      return "border-right: 2rem solid " + color;
+    colorclase: function(color) {
+      return 'border-right: 2rem solid ' + color
     },
-    quitarcolor_id: function (e) {
-      var color_name = e;
-      // console.log("---------original-----------------------");
-      // console.log(color_name);
-      // console.log("----------sin color_----------------------");
-      // console.log(color_name.replace("color_", ""));
-      return color_name.replace("color_", "");
+    quitarcolor_id: function(e) {
+      var color_name = e
+      return color_name.replace('color_', '')
     },
-    cambiarcolor: function (e) {
-      console.log("-------------cambiar color-------------------");
+    cambiarcolor: function(e) {
+      console.log('-------------cambiar color-------------------')
       console.log(
-        "valor original es " +
-          this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color
-      );
+        'valor original es ' +
+          this.tier_acomodado.find(
+            x => x.TIER_ID == this.quitarcolor_id(e.target.id)
+          ).color
+      )
 
-      console.log("---------Valor-----------------------");
-      console.log(e.target.value);
-      console.log("--------id------------------------");
-      console.log(e.target.id);
-      this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(e.target.id)).color =
-        e.target.value;
-      return e.target.value;
+      console.log('---------Valor-----------------------')
+      console.log(e.target.value)
+      console.log('--------id------------------------')
+      console.log(e.target.id)
+      this.tier_acomodado.find(
+        x => x.TIER_ID == this.quitarcolor_id(e.target.id)
+      ).color = e.target.value
+      return e.target.value
     },
-    metodocolor: function (parametro, e,valor) {
-      //this.quitarcolor_id(event.target.id)
-
+    metodocolor: function(parametro, e, valor) {
+      var valorpaleta, valorcolor
+      valorcolor = 'A' + (parametro + valor) + '-colorPicker';
+      valorpaleta = 'A' + (parametro + valor) + '-colorPalette';
+      // -LOGS
+      console.log(`<metodocolor> Idx: ${parametro} - Paleta: ${valorpaleta} - Picker: ${valorcolor}`);
+      console.log(`<metodocolor> Target ID: ${e.target.id}`);
+      let tierId = e.target.id;
+      // Mostrando paleta de color
+      showColorPalette(valorcolor, valorpaleta, tierId)
+    },
+    metodoblur: function(parametro, e, valor) {
       var valorpaleta, valorcolor;
-      valorcolor = "A" + (parametro + valor) + "-colorPicker";
-      valorpaleta = "A" + (parametro + valor) + "-colorPalette";
-     
-      console.log(
-        "este es el parametro del colorpicker " +
-          parametro +
-          " p " +
-          valorpaleta +
-          " c " +
-          valorcolor
-      );
-       showColorPalette(valorcolor, valorpaleta);
-      //  this.cambiarcolor(e)
-      //return parametro
-    },
-    metodoblur: function (parametro, e,valor) {
-      //"hideColorPalette('A1-colorPicker','A1-colorPalette')"
-      var valorpaleta, valorcolor;
-      valorcolor = "A" + (parametro + valor) + "-colorPicker";
-      valorpaleta = "A" + (parametro + valor) + "-colorPalette";
-     
-      console.log(
-        "este es el parametro del blur " +
-          parametro +
-          " p " +
-          valorpaleta +
-          " c " +
-          valorcolor
-      );
-       hideColorPalette(valorcolor, valorpaleta);
-      //this.cambiarcolor(e);
+      valorcolor = 'A' + (parametro + valor) + '-colorPicker';
+      valorpaleta = 'A' + (parametro + valor) + '-colorPalette';
+      // - LOGS
+      console.log(`<metodoblur> TierIdx: ${parametro} - Paleta: ${valorpaleta} - Picker: ${valorcolor}`);
+      // Oculta la paleta
+      hideColorPalette(valorcolor, valorpaleta)
     },
 
-    traer_color: function (tier_id) {
-      // return "color:"+this.audioannotations.find(x => x.TIER_ID == tier_id).color
-
-      //this.options.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
-      //return color aqui me quede trayendo el color de audioannotations por id
-      var valor_color = this.options.find((x) => x.TIER_ID == tier_id).color;
-      return valor_color;
+    traer_color: function(tier_id) {
+      var valor_color = this.options.find(x => x.TIER_ID == tier_id).color
+      return valor_color
     },
-    changeColeccion: function (e) {
+    changeColeccion: function(e) {
       var colecTemporal = []
       var id_coleccion
       var id_lenguaje
@@ -558,34 +536,19 @@ export default {
       } else {
         console.log('No esta encontrado la colecccion')
       }
-      //console.log("id "+event.target.id)
-      //console.log("valor " + e.target.value);
-      //console.log(colecTemporal.find((x) => x._id == e.target.value));
       if (e.target.options.selectedIndex > -1) {
-        this.coleccion = colecTemporal.find((x) => x._id == id_coleccion)
-        this.lenguaje = colecTemporal.find(
-          (x) => x._id == id_coleccion
-        ).languages
-        //   console.log("++++++++Lenguajes++++++++")
-        //   console.log(this.lenguaje)
+        this.coleccion = colecTemporal.find(x => x._id == id_coleccion)
+        this.lenguaje = colecTemporal.find(x => x._id == id_coleccion).languages
         this.comunidad = colecTemporal.find(
-          (x) => x._id == id_coleccion
+          x => x._id == id_coleccion
         ).localities
-        //   console.log("++++++++localities++++++++")
-        //   console.log(this.comunidad)
-        //   this.coleccion.languages=[]
-        //   this.coleccion.languages.push(this.lenguaje[0])
-        //   this.coleccion.localities=[]
-        //   this.coleccion.localities.push(this.comunidad[0])
         this.id_lenguajeparametro = this.lenguaje[0]._id
         this.id_comunidadparametro = this.comunidad[0]._id
       }
     },
-    changeLenguaje: function (e) {
-      //   //Aqui me quede quitando el error quitar los metodos  changeLenguaje y changeComunidad
-      //   //dos lenguajes
-      console.log('valor changeLenguaje' + e.target.value)
-      console.log('valor changeLenguaje' + e.target.id)
+    changeLenguaje: function(e) {
+      // console.log('valor changeLenguaje' + e.target.value)
+      // console.log('valor changeLenguaje' + e.target.id)
 
       if (e.target.options.selectedIndex > -1) {
         console.log(e.target.options[e.target.options.selectedIndex].id)
@@ -594,20 +557,8 @@ export default {
       } else {
         console.log('No esta encontrado el lenguaje')
       }
-
-      //console.log(this.lenguage.find((x) => x._id == e.target.value));
-      // if (e.target.value === undefined) {
-      //   //this.coleccion.lenguage = [];
-      //   console.log("Esta entrando al undefined changeLenguaje")
-      // } else {
-      //   this.coleccion.languages=[]
-      //   var leng = this.lenguaje.find(x => x._id == e.target.value)
-      //   this.coleccion.languages.push(leng)
-      //   console.log("cambia el valor de changeLenguaje")
-      //   console.log("cambia el valor de changeLenguaje"+this.coleccion.languages[0].language.name+" "+this.coleccion.languages[0].LanguageGroup.name)
-      // }
     },
-    changeComunidad: function (e) {
+    changeComunidad: function(e) {
       console.log('valor changeComunidad' + e.target.value)
 
       if (e.target.options.selectedIndex > -1) {
@@ -617,20 +568,8 @@ export default {
       } else {
         console.log('No esta encontrado el lenguaje')
       }
-      // console.log(this.comunidad.find((x) => x._id == e.target.value));
-      // if (e.target.value === undefined) {
-      //   //this.coleccion.localities = [];
-      //   console.log("Esta entrando al undefined changeComunidad")
-      // } else {
-      //   this.coleccion.localities=[]
-      //   var local=this.comunidad.find(x => x._id == e.target.value)
-      //   this.coleccion.localities.push(local)
-      //   console.log("cambia el valor de changeComunidad")
-      //    console.log("cambia el valor de changeLenguaje"+this.coleccion.localities[0].Nom_Loc+" "+this.coleccion.localities[0].Nom_Mun)
-
-      // }
     },
-    formaraudioannotation: function () {
+    formaraudioannotation: function() {
       var pGenero, pColeccion, pLengua, pLocalidad
       var p_lenguaje = []
       var p_Comunidad = []
@@ -657,18 +596,18 @@ export default {
       // console.log(this.$refs.comunidad.id);
 
       //limpiar coleccion y leng []
-      this.coleccion = this.colecciones.find((x) => x._id == pColeccion)
+      this.coleccion = this.colecciones.find(x => x._id == pColeccion)
       console.log('Error en coleccion' + pColeccion)
       console.log(this.coleccion)
       console.log('Error en lenguaje' + pLengua)
-      this.p_lenguaje = this.coleccion.languages.find((x) => x._id == pLengua)
+      this.p_lenguaje = this.coleccion.languages.find(x => x._id == pLengua)
       console.log(this.p_lenguaje)
       this.p_Comunidad = this.coleccion.localities.find(
-        (x) => x._id == pLocalidad
+        x => x._id == pLocalidad
       )
       console.log('Error en comunidad' + pLocalidad)
       console.log(this.p_Comunidad)
-      this.p_Genero = this.genero.find((x) => x.name == pGenero)
+      this.p_Genero = this.genero.find(x => x.name == pGenero)
       console.log('Error en comunidad' + pGenero)
       console.log(this.p_Genero)
       this.coleccion.languages = this.p_lenguaje
@@ -682,18 +621,21 @@ export default {
       delete this.audioannotations.__v
       delete this.audioannotations._id
     },
-    enviardatos: function () {
-      //this.audioannotations.TIER = this.tier_acomodado;
+    enviardatos: async function() {
       this.formaraudioannotation()
-      console.log('Enviando datos')
-      this.axios.post(
+      console.log('Enviando datos');
+      let res = await this.axios.post(
         '/audioannotations/api/update/' + this.ruta,
         this.audioannotations
-      )
-      console.log('Ya Enviando  datos')
-      window.location.href = '/collections' 
+      );
+      if(res){
+        console.log('Ya Enviando  datos')
+        window.location.href = '/collections'
+      }else{
+        alert("ERROR AL SALVAR");
+      }
     },
-    leerTierBD: function () {
+    leerTierBD: function() {
       //for (var i in this.audioannotations_info.data) {
       this.audioannotations = this.audioannotations_info.data
       //Valor para inicializar el select
@@ -706,7 +648,7 @@ export default {
       //5f66395f6620c52fea0c5360
       this.axios
         .get('/collections/api/index/' + this.audioannotations.user._id)
-        .then((response) => {
+        .then(response => {
           //self.axios.get("/collections/api/index/5f66395f6620c52fea0c5360").then((response) => {
           this.colecciones = response.data.collectionDocs
           //Inicializa select de languages y localities
@@ -717,7 +659,7 @@ export default {
         })
       // }
     },
-    agrupar_tier_acomodado: function () {
+    agrupar_tier_acomodado: function() {
       for (var indice in this.audioannotations.TIER) {
         this.tier_participante.push(
           this.audioannotations.TIER[indice].PARTICIPANT
@@ -726,7 +668,7 @@ export default {
       const myUniqueArray = [...new Set(this.tier_participante)]
       this.tier_participante = myUniqueArray
     },
-    selecion_todos_onoff: function (e) {
+    selecion_todos_onoff: function(e) {
       console.log('valor ' + e.target.value)
       console.log('id ' + event.target.id)
       console.log('checado ' + e.target.checked)
@@ -761,30 +703,28 @@ export default {
         }
       }
     },
-    seleccion_onoff: function (e) {
+    seleccion_onoff: function(e) {
       console.log('valor ' + e.target.value)
       console.log('id ' + event.target.id)
       console.log('checado ' + e.target.checked)
       if (e.target.checked) {
         console.log('si esta en on')
-        this.tier_acomodado.find((x) => x.TIER_ID == e.target.id).Visible = true
+        this.tier_acomodado.find(x => x.TIER_ID == e.target.id).Visible = true
       } else {
-        this.tier_acomodado.find(
-          (x) => x.TIER_ID == e.target.id
-        ).Visible = false
+        this.tier_acomodado.find(x => x.TIER_ID == e.target.id).Visible = false
         console.log('si lo off')
       }
-    }, seleccion_visualizacion_options: function (e) {
-
-      if (
-        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).value != event.target.value
-      ) {
-
-        this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).value = event.target.value;
-      }
-    
     },
-    selecion_todos_visualizacion_options: function (e) {
+    seleccion_visualizacion_options: function(e) {
+      if (
+        this.tier_acomodado.find(x => x.TIER_ID == event.target.id).value !=
+        event.target.value
+      ) {
+        this.tier_acomodado.find(x => x.TIER_ID == event.target.id).value =
+          event.target.value
+      }
+    },
+    selecion_todos_visualizacion_options: function(e) {
       console.log('valor ' + e.target.value)
       console.log('id ' + event.target.id)
       if (e.target.value == 'A') {
@@ -818,51 +758,57 @@ export default {
         }
       }
     },
-    seleccion_color: function (e) {
-      console.log('--------------------------------')
-      console.log(
-        'valor original es ' +
-          this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(event.target.id)).color
-      )
-      console.log(e.target.value)
-      console.log(event.target.id)
+    seleccion_color: function(e) {
+      console.log('---------seleccion_color ln 821-----------------------')
+      // console.log(
+      //   'valor original es ' +
+      //     this.tier_acomodado.find(
+      //       x => x.TIER_ID == this.quitarcolor_id(event.target.id)
+      //     ).color
+      // )
+      // console.log(e.target.value)
+      // console.log(e.target.id)
       if (
-        this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(event.target.id)).color !=
-        event.target.value
+        this.tier_acomodado.find(
+          x => x.TIER_ID == this.quitarcolor_id(event.target.id)
+        ).color != event.target.value
       ) {
         //console.log("Si lo encontro "+this.options.find(x=>x.tier_id==event.target.id).value)
-        this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(event.target.id)).color =
-          event.target.value
+        this.tier_acomodado.find(
+          x => x.TIER_ID == this.quitarcolor_id(event.target.id)
+        ).color = event.target.value
       }
-      console.log(
-        'Cambio el valor a ' +
-          this.tier_acomodado.find((x) => x.TIER_ID == this.quitarcolor_id(event.target.id)).color
-      )
-      //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
+      // console.log(
+      //   'Cambio el valor a ' +
+      //     this.tier_acomodado.find(
+      //       x => x.TIER_ID == this.quitarcolor_id(event.target.id)
+      //     ).color
+      // )
     },
-    seleccion_todos_color: function (e) {
-      console.log('----------El valor original del cambio de todos es----------------------'+event.target.id)
-      console.log(
-        'valor original es ' +
-          this.tier_acomodado.find((x) => x.TIER_ID == event.target.id).color
-      )
-      console.log('----------El valor q se pasa es----')
-      console.log(e.target.value)
+    seleccion_todos_color: function(e) {
+      // console.log(
+      //   '----------El valor original del cambio de todos es----------------------' +
+      //     e.target.id
+      // )
+      // console.log(
+      //   'valor original es ' +
+      //     this.tier_acomodado.find(x => x.TIER_ID == e.target.id).color
+      // )
+      // console.log('----------El valor q se pasa es----')
+      // console.log(e.target.value)
       for (var indice in this.tier_acomodado) {
         if (this.tier_acomodado[indice].PARTICIPANT == e.target.id) {
-          console.log(
-            'Encontro a ' +
-              this.tier_acomodado[indice].PARTICIPANT +
-              ' ' +
-              indice
-          )
+          // console.log(
+          //   'Encontro a ' +
+          //     this.tier_acomodado[indice].PARTICIPANT +
+          //     ' ' +
+          //     indice
+          // )
           this.tier_acomodado[indice].color = e.target.value
         }
       }
-      //this.options.push({ tier_id:'2',tier_name:event.target.id, value: 'A' })
     },
   },
-  //   props:['idParametro'],
   computed: {},
   created() {
     var currentUrl = window.location.pathname
@@ -874,12 +820,12 @@ export default {
   beforeMount() {},
   mounted() {
     var self = this
-    self.axios.get('/audioannotations/index/' + self.ruta).then((response) => {
+    self.axios.get('/audioannotations/index/' + self.ruta).then(response => {
       self.audioannotations_info = response
       //falta hacer algo self.leerTier();
       self.leerTierBD()
     })
-    self.axios.get('/genres/api').then((response) => {
+    self.axios.get('/genres/api').then(response => {
       self.genero = response.data
       //falta hacer algo self.leerTier();
     })

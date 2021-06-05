@@ -101,7 +101,6 @@ router.get('/index/readonly/:collectionId',
 //  '/vuetest/:audioannotation_id',
 router.get(
     '/vuetest/:audioannotation_id',
-
     ensureAuthenticated,
     //ensureColabUser,
     audioannotationsController.vuetestAudioannotaion

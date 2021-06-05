@@ -113,7 +113,13 @@
                         </div>
             <!-- Hijo Tier n -->
             {{#each this.tiers}}
-            
+            <script>
+              document.addEventListener("DOMContentLoaded", function(){
+              start_elements('{{name}}');
+                });
+
+
+            </script>
                
                   <div class="contenedor_canal_audioanotacion">
                             <div class="contenedor_canal_hijo_compacto">
@@ -162,7 +168,8 @@
               <select class="input_flexible_compacto opciones_despliegue_viewer"
                 id="{{name}}-display"
                 style=""
-                onchange="changeTierPlacement('{{name}}');">
+                onchange="changeTierPlacement('{{name}}');" 
+                >
                 {{#with (lookup ../../dataArr [name])}}
                   <option value="top">One-line display</option>
                   <option value="bottom" {{displayBool}}>Scrolling</option>
