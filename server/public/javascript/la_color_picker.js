@@ -3,11 +3,11 @@ var checker_mouse =false;
 var colorInput = document.getElementById("colorPicker");
 var colorPalette = document.getElementById("colorPalette");
 function color_pickerstart(id_color,id_paleta){
-  //this.colorInput=document.getElementById(id_color);
- // this.colorPalette=document.getElementById(id_paleta);
+  this.colorInput=document.getElementById(id_color);
+ this.colorPalette=document.getElementById(id_paleta);
   console.log(id_color);
   console.log(id_paleta);
-  //showColorPalette();
+  showColorPalette();
 }
 //colorInput.addEventListener("click", showColorPalette);
 //colorInput.addEventListener("focusout", hideColorPalette);
