@@ -7,7 +7,6 @@ import deletejson from '@helpers/deletejson'
 import eaftojson from '@helpers/converteaf'
 import eafTools from '@helpers/eafTools'
 import Genre from '@models/Genre'
-import appRoot from 'app-root-path';
 
 const index = async(req, res) => {
     // Get Collecionts
@@ -334,7 +333,6 @@ const uploadfileAudioannotation = async(req, res, next) => {
             filename: file.filename,
             collections,
             genreArray,
-            //eafjs: eafjs, TODO: BORRAR
             eafdotjson
         })
     } catch (error) {
@@ -346,15 +344,9 @@ const uploadfileAudioannotation = async(req, res, next) => {
 
 
 const editAudioannotation = async(req, res) => {
-
-    // let genreDoc = await Genre.findById(genre).exec()
-    // let collectionDoc = await Collection.findById(collection_id).exec()
-    // let gidDoc = collectionDoc.languages.id(gid)
-    // let locationDoc = collectionDoc.localities.id(location)
-
     const audioannotationid = req.params.audioannotation_id
-    console.log("--------------Aqui Edit--------------")
-    console.log(audioannotationid)
+    console.log('-------------- Editando AudioAnotacion --------------');
+    console.log(`---- Id de audioant: ${audioannotationid} -------`);
     res.render('audioannotations/edit', {
         title: 'Editar audioanotación',
         audioannotationid
@@ -376,15 +368,9 @@ const deleteAudioannotaion = async(req, res) => {
         return res.status(404).json(error)
     }
 }
-
+/* Wave Surfer EAF Viewer */
 const vuetestAudioannotaion = async(req, res) => {
-    const audioannotationid = req.params.audioannotation_id
-    console.log("--------------Aqui--------------")
-    console.log(audioannotationid)
-    res.render('audioannotations/vuetest', {
-        title: 'SYLARD Visor EAF',
-        audioannotationid
-    })
+    res.render('audioannotations/vuetest', {})
 }
 
 const audioannotationViewer = async (req,res)=>{
@@ -463,6 +449,8 @@ const api_updateAudioAnnot = async(req, res) => {
         const { audioannotationId } = req.params
         let collectionDoc = await Audioannotations.findById(audioannotationId).exec()
         collectionDoc.set(req.body)
+        let { TIER } = req.body;
+        console.log(JSON.stringify(TIER, null, '\t'));
         let result = await collectionDoc.save()
         res.status(200).json(result)
     } catch (error) {
