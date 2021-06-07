@@ -319,9 +319,11 @@
     function setData() {
       transArr = [];
       glossArr = [];
+      // pid = particpant ID
       for (pid in tierArr) {
         //pid == $speaker
         var tiers = tierArr[pid].tiers;
+        // tid => Tier ID
         for (tid in tiers) {
           //tid == $a_tier['TIER_ID']
           var spkr = tiers[tid].code;

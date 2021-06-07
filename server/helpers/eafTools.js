@@ -89,16 +89,23 @@ function getDataArray(eaf) {
       return nLines
     }, {})
 
-    let display = currTier['ANNOTATION'][0]['REF_ANNOTATION'] ? 'top' : 'bottom'
+    // "top": One-Line Display
+    // "bottom": Scrolling
+    // "nodisplay": Off
+    let display = "top";
+    // currTier['ANNOTATION'][0]['REF_ANNOTATION'] ? 
+    // 'top' : 'bottom';
+    let displayTier = true;//!(display === "nodisplay");
 
-    let displayBool = currTier['ANNOTATION'][0]['REF_ANNOTATION']
+    let displayBottom = display === 'bottom'
       ? 'selected'
-      : ''
+      : '';
 
     // Forming Tier
     tiers[currTier['TIER_ID']] = {
       'display': display,
-      displayBool,
+      displayBottom,
+      displayTier,
       'color': getRandomColor(),
       'lines': lines,
     }

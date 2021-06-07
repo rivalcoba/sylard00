@@ -388,10 +388,8 @@ const audioannotationViewer = async (req,res)=>{
         let tierArr = eafTools.getTierArr(audioannotationDoc.eafdotjson);
 
         // Updating Color Settings
-
         // Getting tierArr Keys
         const tierrArrkeys = Object.keys(tierArr);
-        
         // dataArr
         audioannotationDoc.TIER.forEach(tier => {
             // Updating dataArr
@@ -421,7 +419,7 @@ const audioannotationViewer = async (req,res)=>{
             tierArrStr,
             audioFile: audioannotationDoc.mp3_url
         }
-        res.render('audioannotations/eafviwer', eafViewModel);
+        res.render('audioannotations/eafviewer', eafViewModel);
     } catch (error) {
         res.send(`Error retreaving Audio Annotations: ${error.message}`);
     }

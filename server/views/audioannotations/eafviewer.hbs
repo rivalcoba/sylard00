@@ -157,7 +157,8 @@
                 id="checkbox-{{name}}"
                 onchange='changeTierCheck("{{../participant}}");toggleTier("{{name}}");'
                 value="{{name}}"
-                checked/>
+                {{#with (lookup ../../dataArr [name])}}
+                {{#if displayTier}}checked{{/if}}{{/with}}/>
                    <span class="slider_general round"></span
                     >
                 </label>
@@ -172,7 +173,7 @@
                 >
                 {{#with (lookup ../../dataArr [name])}}
                   <option value="top">One-line display</option>
-                  <option value="bottom" {{displayBool}}>Scrolling</option>
+                  <option value="bottom" {{displayBottom}}>Scrolling</option>
                 {{/with}}
               </select>
                </div>
