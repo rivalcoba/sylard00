@@ -139,10 +139,12 @@
                       >OFF</label
                     >
                     <label class="switch_general">
+                      <!-- CHECKBOX QUE CONTROLA VISUALIZACION DE CADA HABLABTE -->
+                      <!-- TODO: Aqui  @change="seleccion_onoff($event)" no es necesario, verificar -->
+                      <!-- Si se puede remover con seguridad -->
                       <input
                         type="checkbox"
                         :id="item.TIER_ID"
-                        checked
                         @change="seleccion_onoff($event)"
                         v-model="item.Visible"
                         class="checkbox_canal1"/>
