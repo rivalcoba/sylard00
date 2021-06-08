@@ -1,17 +1,20 @@
+"use strict";
 
 var checker_mouse =false;
 var colorInput = document.getElementById("colorPicker");
 var colorPalette = document.getElementById("colorPalette");
 function color_pickerstart(id_color,id_paleta){
-  this.colorInput=document.getElementById(id_color);
-  this.colorPalette=document.getElementById(id_paleta);
+  colorInput=document.getElementById(id_color);
+ colorPalette=document.getElementById(id_paleta);
+  //console.log(id_color);
+  //console.log(id_paleta);
   showColorPalette();
 }
 //colorInput.addEventListener("click", showColorPalette);
 //colorInput.addEventListener("focusout", hideColorPalette);
 function color_picker_out(id_color,id_paleta){
-  this.colorInput=document.getElementById(id_color);
-  this.colorPalette=document.getElementById(id_paleta);
+  colorInput=document.getElementById(id_color);
+  colorPalette=document.getElementById(id_paleta);
  if(checker_mouse == false) {
   colorPalette.style.display = 'none';
  }
@@ -62,7 +65,7 @@ function componentToHex(c) {
 }
 
 function rgbToHex(color) {
-  arr = color.replace('rgb', '').replace('(', '').replace(')', '').split(',');
+  var arr = color.replace('rgb', '').replace('(', '').replace(')', '').split(',');
   return "#" + componentToHex(Number(arr[0])) + componentToHex(Number(arr[1])) + componentToHex(Number(arr[2]));
 }
 
