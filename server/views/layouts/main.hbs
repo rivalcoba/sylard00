@@ -269,7 +269,9 @@
               if (tierShowArr.indexOf(tid) === -1) {
                 if (dataArr[tid]) {
                   var display = dataArr[tid].display;
-                  if (display !== "nodisplay") {
+                  var checker_display = dataArr[tid].displayTier;
+                 // console.log(checker_display);
+                  if (display !== "nodisplay" && checker_display===true) {
                     showSpeaker = true;
                     tierShowArr.push(tid);
                   }
@@ -330,6 +332,7 @@
           var color = tiers[tid].color;
           if (dataArr[tid]) {
             var display = dataArr[tid].display;
+         //   console.log(tierShowArr);
             var lines = dataArr[tid].lines;
             for (l in lines) {
               var lineref = lines[l].lineref;
@@ -604,6 +607,7 @@
         var index = tierShowArr.indexOf(tierID);
         tierShowArr.splice(index, 1);
       }
+    //  console.log(tierShowArr);
       restartPlayer();
       setTranscriptionBox();
       setPlayer();

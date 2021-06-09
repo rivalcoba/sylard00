@@ -100,10 +100,14 @@ router.get('/index/readonly/:collectionId',
 //router.get(
 //  '/vuetest/:audioannotation_id',
 router.get(
+    /* old viewer with wave viewer
     '/vuetest/:audioannotation_id',
     ensureAuthenticated,
     //ensureColabUser,
-    audioannotationsController.vuetestAudioannotaion
+    audioannotationsController.vuetestAudioannotaion*/
+    '/vuetest/:audioannotationId',
+    ensureAuthenticated,
+    audioannotationsController.audioannotationViewer
 )
 
 router.get(

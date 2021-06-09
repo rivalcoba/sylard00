@@ -32,7 +32,7 @@ const audioannotation = (req, res) => {
     })
 }
 const credits = (req, res) => {
-    res.render('index/contact', {
+    res.render('index/credits', {
         title: 'Credits',
         content: 'Site builded by Drako-YonceCe',
     })
