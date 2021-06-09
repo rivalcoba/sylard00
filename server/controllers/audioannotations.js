@@ -98,15 +98,14 @@ const indexById = async(req, res) => {
     // Find audio annotation to visualize
     try {
         let audioannotationDoc = await Audioannotations.findById(audioannotId)
-            .populate('collection_id')
-            .populate('user').exec()
-            // TODO: TOÑO
-            // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-            // >>>>>>>>>>>>>>>>>>>>>>>>> AQUI ESTA EL JSON DE LA AUDIO ANNOTACION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-            // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        .populate('collection_id')
+        .populate('user').lean().exec();
+        // Normilize Visble a bool ya que recibe string
+        audioannotationDoc.TIER.forEach((tier, index) => {
+            audioannotationDoc.TIER[index].Visible = audioannotationDoc.TIER[index].Visible === 'true'
+        });
+        //audioannotationDoc.TIER = true;
         res.json(audioannotationDoc)
-            // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-            // >>>>>>>>>>>>>>>>>>>>>>>>> ---------------------------------------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     } catch (error) {
         res.json(error)
     }
@@ -238,16 +237,16 @@ const addAudioannotation = async(req, res) => {
     let tiers = []
 
     PARTICIPANT.forEach((participant, index) => {
+        console.log(`##### Visible[index] type: ${typeof(Visible[index])}`);
         tiers.push({
             PARTICIPANT: participant,
-            Visible: Visible[index],
+            Visible: Visible[index] === "true",
             value: value[index],
             color: color[index],
             LINGUISTIC_TYPE_REF: LINGUISTIC_TYPE_REF[index],
             TIER_ID: TIER_ID[index],
         })
     })
-
     // Reading eaf
     // TODO: unlink the json once is sotred on the database
     let eafjson = require(path.join("..","public","eaf","tmp",`p-${eaf}`));
@@ -274,7 +273,6 @@ const addAudioannotation = async(req, res) => {
         eafjson, //JSON.parse(eafjs),
         eafdotjson : JSON.parse(eafdotjson_noDollar)
     }
-
     try {
         const audioannotationDoc = await Audioannotations.create(audioannotation);
         console.log("> Audioanotations Created: "); //+ JSON.stringify(audioannotationDoc))
@@ -388,15 +386,22 @@ const audioannotationViewer = async (req,res)=>{
         let tierArr = eafTools.getTierArr(audioannotationDoc.eafdotjson);
 
         // Updating Color Settings
-
         // Getting tierArr Keys
         const tierrArrkeys = Object.keys(tierArr);
-        
         // dataArr
         audioannotationDoc.TIER.forEach(tier => {
-            // Updating dataArr
-            dataArr[tier.TIER_ID].color = tier.color.replace("#","")
-            // Updating tierArr
+            // Updating COLORS in dataArr
+            dataArr[tier.TIER_ID].color = tier.color.replace("#","");
+            // Updating Display Settings
+            // OneLineDisplay : A : top
+            // Scrolling: B : bottom
+            dataArr[tier.TIER_ID].display = tier.value === "A" ?
+            "top" : "bottom";
+            dataArr[tier.TIER_ID].displayTier = tier.Visible === 'true';
+            dataArr[tier.TIER_ID].displayBottom = dataArr[tier.TIER_ID].display === 'bottom'
+            ? 'selected'
+            : ''; 
+            // Updating COLORS in tierArr
             tierrArrkeys.forEach(key =>{
                 if(tierArr[key].tiers[tier.TIER_ID]){
                     tierArr[key].tiers[tier.TIER_ID].color = tier.color.replace("#","");
@@ -421,7 +426,7 @@ const audioannotationViewer = async (req,res)=>{
             tierArrStr,
             audioFile: audioannotationDoc.mp3_url
         }
-        res.render('audioannotations/eafviwer', eafViewModel);
+        res.render('audioannotations/eafviewer', eafViewModel);
     } catch (error) {
         res.send(`Error retreaving Audio Annotations: ${error.message}`);
     }
@@ -450,7 +455,8 @@ const api_updateAudioAnnot = async(req, res) => {
         let collectionDoc = await Audioannotations.findById(audioannotationId).exec()
         collectionDoc.set(req.body)
         let { TIER } = req.body;
-        console.log(JSON.stringify(TIER, null, '\t'));
+        res.status(200).json({TIER});
+        //console.log(JSON.stringify(TIER, null, '\t'));
         let result = await collectionDoc.save()
         res.status(200).json(result)
     } catch (error) {
