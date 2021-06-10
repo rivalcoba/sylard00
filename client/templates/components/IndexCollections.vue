@@ -546,7 +546,14 @@ export default {
       }
 
       var self = this;
-      self.axios.get("collections/api/pag/" + page).then((response) => {
+      var API_Route = "";
+    if(superusuario===true){
+      API_Route="collections/api/read_all/"+page;
+    }
+    else{
+      API_Route="collections/api/pag/"+page;
+    }
+      self.axios.get(API_Route).then((response) => {
         self.notas_audioannotations = response.data.itemsList;
         self.paginacion = response.data.paginator;
         self.pagina = self.paginacion;
@@ -555,8 +562,17 @@ export default {
     },
   },
   mounted() {
+    //console.log(superusuario);
     var self = this;
-    self.axios.get("collections/api/pag/1").then((response) => {
+    var API_Route = "";
+    if(superusuario===true){
+      API_Route="collections/api/read_all/1";
+    }
+    else{
+      API_Route="collections/api/pag/1";
+    }
+
+    self.axios.get(API_Route).then((response) => {
       self.notas_audioannotations = response.data.itemsList;
       self.paginacion = response.data.paginator;
       self.pagina = self.paginacion;
