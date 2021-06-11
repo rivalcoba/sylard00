@@ -18,7 +18,6 @@ router.get(
     ensureAuthenticated,
 );
 
-
 // Collections Routes
 router.get('/index',/*ensureAuthenticated, ensureColabUser,*/locationsController.index)
 // API Lista las colecciones del usuario
