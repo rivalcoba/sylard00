@@ -539,7 +539,6 @@ export default {
   data() {
     return {
       table_loader: true,
-
       Mapa: '',
       Cve_Ent: '',
       Nom_Ent: '',
@@ -558,7 +557,6 @@ export default {
       Pob_Total: '',
       Pob_Masculina: '',
       Pob_Femenina: '',
-
       edit_Mapa: '',
       edit_Cve_Ent: '',
       edit_Nom_Ent: '',
@@ -752,58 +750,38 @@ export default {
           this.arreglo_datos = this.result = result.data
         })
     },
-    save_add_new_location() {
-      axios.post('/locations/api/create', {
-        Mapa: this.Mapa,
-        Cve_Ent: this
-          .Cve_Ent /*
-  Nom_Ent: this.Nom_Ent,
-  Nom_Abr: this.Nom_Abr,
-  Cve_Mun: this.Cve_Mun,
-  Nom_Mun: this.Nom_Mun,
-  Cve_Loc: this.Cve_Loc ,
-  Nom_Loc: this.Nom_Loc,
-  Ambito: this.Ambito,
-  Latitud: this.Latitud,
-  Longitud: this.Longitud,
-  Lat_Decimal: parseInt(this.Lat_Decimal),
-  Lon_Decimal: parseInt(this.Lon_Decimal),
-  Altitud: parseInt( this.Altitud),
-  Cve_Carta: this.Cve_Carta,
-  Pob_Total: parseInt( this.Pob_Total),
-  Pob_Masculina: parseInt( this.Pob_Masculina),
-  Pob_Femenina: parseInt( this.Pob_Femenina),
-  'Total De Viviendas Habitadas': 1,*/,
-      })
-
-      var jsonsaurio = {
+    async save_add_new_location() {
+      let location = {
         Mapa: this.Mapa,
         Cve_Ent: this.Cve_Ent,
         Nom_Ent: this.Nom_Ent,
         Nom_Abr: this.Nom_Abr,
         Cve_Mun: this.Cve_Mun,
         Nom_Mun: this.Nom_Mun,
-        Cve_Loc: this.Cve_Loc,
+        Cve_Loc: this.Cve_Loc ,
         Nom_Loc: this.Nom_Loc,
         Ambito: this.Ambito,
         Latitud: this.Latitud,
         Longitud: this.Longitud,
         Lat_Decimal: parseInt(this.Lat_Decimal),
         Lon_Decimal: parseInt(this.Lon_Decimal),
-        Altitud: parseInt(this.Altitud),
+        Altitud: parseInt( this.Altitud),
         Cve_Carta: this.Cve_Carta,
-        Pob_Total: parseInt(this.Pob_Total),
-        Pob_Masculina: parseInt(this.Pob_Masculina),
-        Pob_Femenina: parseInt(this.Pob_Femenina),
+        Pob_Total: parseInt( this.Pob_Total),
+        Pob_Masculina: parseInt( this.Pob_Masculina),
+        Pob_Femenina: parseInt( this.Pob_Femenina),
         'Total De Viviendas Habitadas': 1,
       }
-      console.log(jsonsaurio)
-
-      // this.arreglo_datos.push(newitem);
-      this.dialog = false
-      //this.update_all_data();
-      this.clean_all_fields()
-      //setTimeout(this.update_all_data,200) ;
+      try {
+        const response = await axios.post('/locations/api/create', {location});
+        // this.arreglo_datos.push(newitem);
+        console.log(`data: ${JSON.stringify(response.data)}`);
+        this.dialog = false
+        //this.update_all_data();
+        this.clean_all_fields()
+      } catch (error) {
+        alert("Error al agregar nuevo registro");
+      }
     },
     close_add_new_genre() {
       this.dialog = false

@@ -128,59 +128,16 @@ const findLocality = async (req,res)=>{
 }
 // CREATE - POST
 const api_postLoc= async (req, res) => {
-
-  // Destructuring location elements
-  let { 
-    Mapa,
-    Cve_Ent,
-    Nom_Ent,
-    Nom_Abr,
-    Cve_Mun,
-    Nom_Mun,
-    Cve_Loc ,
-    Nom_Loc,
-    Ambito,
-    Latitud,
-    Longitud,
-    Lat_Decimal,
-    Lon_Decimal,
-    Altitud,
-    Cve_Carta,
-    Pob_Total,
-    Pob_Masculina,
-    Pob_Femenina,
-    'Total De Viviendas Habitadas': Total_De_Viviendas_Habitadas,
-  } = req.body;
-  const location = {
-    Mapa,
-    Cve_Ent,
-    Nom_Ent,
-    Nom_Abr,
-    Cve_Mun,
-    Nom_Mun,
-    Cve_Loc ,
-    Nom_Loc,
-    Ambito,
-    Latitud,
-    Longitud,
-    Lat_Decimal,
-    Lon_Decimal,
-    Altitud,
-    Cve_Carta,
-    Pob_Total,
-    Pob_Masculina,
-    Pob_Femenina,
-    'Total De Viviendas Habitadas' : Total_De_Viviendas_Habitadas
-  };
-  console.log(JSON.stringify(location, null, '\t'));
-  return res.status(200).json(location);
-  
+  let { location } = req.body;
+  // console.log(JSON.stringify(location, null, '\t'));
+  // return res.status(200).json(location);
   // Create Validates location
   try {
     const locationDoc = await Locations.create(location)
     res.status(200).json(locationDoc)
   } catch (error) {
-    res.status(500).json(error)
+    console.log(`> ERROR Actualizar Location: ${error.message}`);
+    res.status(500).json(error);
   }
 }
 const api_deleteLocations = async (req, res) => {
