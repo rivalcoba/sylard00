@@ -780,6 +780,7 @@ export default {
         //this.update_all_data();
         this.clean_all_fields()
       } catch (error) {
+        // TODO: Usar una alerta con diseño o flash message.
         alert("Error al agregar nuevo registro");
       }
     },
