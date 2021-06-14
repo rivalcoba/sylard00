@@ -128,16 +128,16 @@ const findLocality = async (req,res)=>{
 }
 // CREATE - POST
 const api_postLoc= async (req, res) => {
-
-  // Destructuring location
-  let { location } = req
-  
+  let { location } = req.body;
+  // console.log(JSON.stringify(location, null, '\t'));
+  // return res.status(200).json(location);
   // Create Validates location
   try {
     const locationDoc = await Locations.create(location)
     res.status(200).json(locationDoc)
   } catch (error) {
-    res.status(500).json(error)
+    console.log(`> ERROR Actualizar Location: ${error.message}`);
+    res.status(500).json(error);
   }
 }
 const api_deleteLocations = async (req, res) => {
