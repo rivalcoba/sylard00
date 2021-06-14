@@ -8,20 +8,31 @@
           <h2 class="llamada" id="llamada_mis_colecciones">{{translation.SYLARDCOLLECTIONS.HELLO_COLLECTIONS}}</h2>
           <h3 class="blanco">{{user.name}} {{user.lastName}}</h3>
         </div>
+          {{#ifColaborator user}}
         <div class="" id="contenedor_botones_cabezal">
           <button class="btn btn-predeterminado"
             onclick="window.location.href ='/collections/create'">{{translation.SYLARDCOLLECTIONS.ADD_COLLECTION}} <span
               class="icono_boton icon-create_new_folder"></span></button>
               <div ></div>
+                 
           <button id="button_load_audio" class="btn btn-primario"
-            onclick="IndexCollectionsScript.go_add_audion()">{{translation.SYLARDCOLLECTIONS.UPLOAD_AUDIONOTATION}} <span
+            onclick="IndexCollectionsScript.go_add_audion()"  >{{translation.SYLARDCOLLECTIONS.UPLOAD_AUDIONOTATION}} <span
               class="icono_boton icon-file_upload"></span></button>
-             
-              
+         
+                  {{/ifColaborator}}
         </div>
       </div>
     </div>
   </div>
+    {{#ifSu user}}
+      <script>var superusuario=true;
+  </script>
+      {{/ifSu}}
+         {{#ifColaborator user}}
+           <script>var superusuario=false;
+  </script>
+          {{/ifColaborator}}
+ 
   <div id="app6"  >
     <IndexCollections>
 
