@@ -212,6 +212,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: 'LecturaTierEAF',
   data() {
@@ -234,7 +235,14 @@ export default {
         },
       ],
     }
-  },
+  },created(){
+    
+    setTimeout(() => {
+       axios.get("/cleaneafs");
+    }, 7000);
+    
+  }
+  ,
   methods: {
     colorclase: function(color) {
       return 'border-right: 2rem solid ' + color

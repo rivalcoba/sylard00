@@ -30,6 +30,8 @@ import netConfig from '@config/net'
 import templateEngine from '@config/template-engine'
 import dbConnection from '@database/odmconnect'
 
+
+
 // -4 Creatting eaf path
 let eafPath = path.join(__dirname,'public','eaf')
 if (!fs.existsSync(eafPath)){
@@ -185,6 +187,7 @@ app.use(multer({ dest: './uploads/'}).single('myFile'));
 
 //})
 
-
 //module.exports = app;
+
+
 export default app;
