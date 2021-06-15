@@ -134,6 +134,7 @@ const api_postLoc= async (req, res) => {
   // Create Validates location
   try {
     const locationDoc = await Locations.create(location)
+    console.log(locationDoc);
     res.status(200).json(locationDoc)
   } catch (error) {
     console.log(`> ERROR Actualizar Location: ${error.message}`);
@@ -150,21 +151,73 @@ const api_deleteLocations = async (req, res) => {
     res.status(404).json(error)
   }
 }
+
 //update
 const api_putLocations = async(req, res) => {
-  // Extracting data to update
-  let {locDoc} = req
+ // let { location } = req.body;
+let id_locat=req.params.loc_id
+ let { 
+  Mapa,
+  Cve_Ent,
+  Nom_Ent,
+  Nom_Abr,
+  Cve_Mun,
+  Nom_Mun,
+  Cve_Loc ,
+  Nom_Loc,
+  Latitud,
+  Longitud,
+  Lat_Decimal,
+  Lon_Decimal,
+  Altitud,
+  Cve_Carta,
+  Pob_Total,
+  Pob_Masculina,
+  Pob_Femenina,
+  'Total De Viviendas Habitadas': Total_De_Viviendas_Habitadas,
+} = req.body;
+let location = {
+  _id:id_locat,
+  Mapa,
+  Cve_Ent,
+  Nom_Ent,
+  Nom_Abr,
+  Cve_Mun,
+  Nom_Mun,
+  Cve_Loc ,
+  Nom_Loc,
+  Ambito:"no data",
+  Latitud,
+  Longitud,
+  Lat_Decimal,
+  Lon_Decimal,
+  Altitud,
+  Cve_Carta,
+  Pob_Total,
+  Pob_Masculina,
+  Pob_Femenina,
+  'Total De Viviendas Habitadas' : Total_De_Viviendas_Habitadas
+};
   
-  // Saving Document
-  let savedDoc = {} 
   try {
-    savedDoc = await locDoc.save()
+    //savedDoc = await location.save()
+    let result = await Locations.deleteOne({_id : id_locat});
+    try{
+    const locationDoc = await Locations.create(location);
+    //console.log(locationDoc);
+    res.status(200).json(locationDoc);
+    }catch(err){
+      es.status(500).json(err)
+    }
+
   } catch (error) {
     error.reason = `Error when saving document`
     res.status(500).json(error)
   }
-  res.status(200).json(savedDoc)
 }
+
+
+
 
 export default {
   indexNomLoc,

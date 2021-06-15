@@ -10,7 +10,7 @@ const LocationSchema = new Schema({
   Nom_Mun:  { type: String, default: 'no data' },
   Cve_Loc:  { type: String, default: 'no data' },
   Nom_Loc:  { type: String, default: 'no data' },
-  Ambito:  { type: String, default: 'no data' },
+  Ámbito:  { type: String, default: 'no data' },
   Latitud:  { type: String, default: 'no data' },
   Longitud:  { type: String, default: 'no data' },
   Lat_Decimal:  { type: Number, default: 1 },

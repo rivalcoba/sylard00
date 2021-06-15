@@ -38,12 +38,14 @@ const api_putGenres = async(req, res) => {
   // Saving Document
   let savedDoc = {} 
   try {
+    console.log(genreDoc);
     savedDoc = await genreDoc.save()
+    res.status(200).json(savedDoc)
   } catch (error) {
     error.reason = `Error when saving document`
     res.status(500).json(error)
   }
-  res.status(200).json(savedDoc)
+  
 }
 
 // DELETE - DELETE

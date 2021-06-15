@@ -98,8 +98,8 @@
                   label="Descripcion"
                   hint="Ejemplo:TERROR"
                   persistent-hint
-                  id="name"
-                  name="name"
+                  id="desc"
+                  name="desc"
                   v-model="description_edit"
                   required
                 ></v-text-field>
