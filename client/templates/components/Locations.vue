@@ -1,22 +1,21 @@
 <template>
-<!--
+
   <v-card class="pa-2" outlined>
-     <v-btn
+     <button
       :disabled="dialog"
       :loading="dialog"
-      class="white--text"
-      color="purple darken-2"
       @click="watch_error_dialog"
+      hidden
     >
     probador
-    </v-btn>
+    </button>
     <v-dialog
       v-model="error_dialog"
       hide-overlay
       persistent
       width="400"
     >
-    -->
+    
       
             <v-alert
       border="right"
