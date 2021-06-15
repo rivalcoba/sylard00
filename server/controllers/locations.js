@@ -71,6 +71,17 @@ const indexNomLoc = async (req, res) => {
   //   })
 }
 
+const getAllEntities = async (req, res)=>{
+  const { nom_ent } = req.params
+  try {
+    const entities = await Locations.find({Nom_Ent:nom_ent}).limit(50000).exec()
+    console.log("consulta exitosa");
+    return res.status(200).json(entities)
+  } catch (error) {
+    return res.status(404).json({error:"no se encontraron entidades"})
+  }  
+}
+
 const getEntities = async (req, res)=>{
   try {
     const entities = await Locations.distinct('Nom_Ent')
@@ -115,6 +126,98 @@ const findLocality = async (req,res)=>{
     res.status(404).send('Not Found')
   }
 }
+// CREATE - POST
+const api_postLoc= async (req, res) => {
+  let { location } = req.body;
+  // console.log(JSON.stringify(location, null, '\t'));
+  // return res.status(200).json(location);
+  // Create Validates location
+  try {
+    const locationDoc = await Locations.create(location)
+    console.log(locationDoc);
+    res.status(200).json(locationDoc)
+  } catch (error) {
+    console.log(`> ERROR Actualizar Location: ${error.message}`);
+    res.status(500).json(error);
+  }
+}
+const api_deleteLocations = async (req, res) => {
+  const {loc_id} = req.params
+  try {
+    let result = await Locations.deleteOne({_id : loc_id})
+    res.status(200).json(result)
+  } catch (error) {
+    error.reason = `Document with id ${genre_id} not deleted because it was not found`
+    res.status(404).json(error)
+  }
+}
+
+//update
+const api_putLocations = async(req, res) => {
+ // let { location } = req.body;
+let id_locat=req.params.loc_id
+ let { 
+  Mapa,
+  Cve_Ent,
+  Nom_Ent,
+  Nom_Abr,
+  Cve_Mun,
+  Nom_Mun,
+  Cve_Loc ,
+  Nom_Loc,
+  Latitud,
+  Longitud,
+  Lat_Decimal,
+  Lon_Decimal,
+  Altitud,
+  Cve_Carta,
+  Pob_Total,
+  Pob_Masculina,
+  Pob_Femenina,
+  'Total De Viviendas Habitadas': Total_De_Viviendas_Habitadas,
+} = req.body;
+let location = {
+  _id:id_locat,
+  Mapa,
+  Cve_Ent,
+  Nom_Ent,
+  Nom_Abr,
+  Cve_Mun,
+  Nom_Mun,
+  Cve_Loc ,
+  Nom_Loc,
+  Ambito:"no data",
+  Latitud,
+  Longitud,
+  Lat_Decimal,
+  Lon_Decimal,
+  Altitud,
+  Cve_Carta,
+  Pob_Total,
+  Pob_Masculina,
+  Pob_Femenina,
+  'Total De Viviendas Habitadas' : Total_De_Viviendas_Habitadas
+};
+  
+  try {
+    //savedDoc = await location.save()
+    let result = await Locations.deleteOne({_id : id_locat});
+    try{
+    const locationDoc = await Locations.create(location);
+    //console.log(locationDoc);
+    res.status(200).json(locationDoc);
+    }catch(err){
+      es.status(500).json(err)
+    }
+
+  } catch (error) {
+    error.reason = `Error when saving document`
+    res.status(500).json(error)
+  }
+}
+
+
+
 
 export default {
   indexNomLoc,
@@ -122,5 +225,9 @@ export default {
   getMunicipalities,
   getLocalities,
   findLocality,
-  getEntities
+  getEntities,
+  getAllEntities,
+  api_postLoc,
+  api_deleteLocations,
+  api_putLocations
 }
