@@ -1,18 +1,31 @@
 <template>
-
+<!--
   <v-card class="pa-2" outlined>
+     <v-btn
+      :disabled="dialog"
+      :loading="dialog"
+      class="white--text"
+      color="purple darken-2"
+      @click="watch_error_dialog"
+    >
+    probador
+    </v-btn>
     <v-dialog
       v-model="error_dialog"
       hide-overlay
       persistent
       width="400"
     >
-      <v-card
-        color=""
-        dark
-      >
-        <v-card-text>
-         <center><h3>Algo salio mal :(</h3></center> 
+    -->
+      
+            <v-alert
+      border="right"
+      colored-border
+      type="error"
+      elevation="2"
+    >
+         <center><h3>Algo salio mal :(</h3>
+         <p> Contacte con el administrador</p></center> 
          <center>
           <v-progress-circular
       :width="3"
@@ -20,8 +33,8 @@
       indeterminate
     ></v-progress-circular>
         </center>
-        </v-card-text>
-      </v-card>
+         </v-alert>
+       
     </v-dialog>
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
