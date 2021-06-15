@@ -1,6 +1,37 @@
 <template>
 
   <v-card class="pa-2" outlined>
+     <v-dialog
+      v-model="eraser_dialog"
+      persistent
+      max-width="290"
+    >
+     <v-alert
+      border="bottom"
+      colored-border
+      type="warning"
+      elevation="2"
+    >
+      Seguro que desea eliminar los datos seleccionados?
+      <v-btn
+      :disabled="dialog"
+      :loading="dialog"
+      @click="close_eraser_dialog"
+      
+    >
+    No
+    </v-btn>
+     <v-btn
+      :disabled="dialog"
+      :loading="dialog"
+      @click="delete_all"
+      color="error"
+      
+    >
+    Si
+    </v-btn>
+    </v-alert>
+       </v-dialog>
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
   <h1>Editar Generos</h1>
@@ -16,14 +47,16 @@
       
     </v-card-title>
 <v-card-subtitle>
-<v-btn color="secondary" @click="delete_all()">
-   <v-icon
-        small
-        
-      >
-        mdi-delete
-      </v-icon>
-</v-btn>
+ <v-btn
+      :disabled="dialog"
+      :loading="dialog"
+      @click="watch_eraser_dialog"
+      color="secondary"
+    >
+      <v-icon small>
+          mdi-delete
+        </v-icon>
+    </v-btn>
 
 </v-card-subtitle>
 <v-card-text>
@@ -58,16 +91,20 @@
     </v-data-table>
     </v-card-text>    
      <v-layout row justify-center>
-    <v-dialog v-model="dialog_del" persistent max-width="600px">
-      <v-card>
-        <v-card-title class="headline">Esta seguro que desea eliminar este genero?</v-card-title>
-        <v-card-text><h2>{{nameofuser}}</h2> </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="error" text  @click="close_dialogs()">No</v-btn>
-          <v-btn color="orange"  @click="deleteItem()">Si</v-btn>
-        </v-card-actions>
-      </v-card>
+    <v-dialog v-model="dialog_del" persistent max-width="290px">
+      <v-alert
+      border="bottom"
+      colored-border
+      type="warning"
+      elevation="2"
+    >
+            Esta seguro que desea eliminar {{nameofuser}} ?
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn   @click="close_dialogs()">No</v-btn>
+            <v-btn color="error" @click="deleteItem()">Si</v-btn>
+          </v-card-actions>
+         </v-alert>
     </v-dialog>
   </v-layout>
     <v-col cols="auto">
@@ -230,6 +267,7 @@ import axios from "axios";
   export default {
     data () {
       return {
+        eraser_dialog:false,
         obj_on_table_edit:{},
         v:"",
         index_of_item_edit:"",
@@ -296,8 +334,8 @@ import axios from "axios";
   },
   delete_all(){ 
     let arreglo = this.selected;
-    let question = confirm("¿esta seguro de eliminar los usuarios seleccionados?");
-    if(question==true){
+  //  let question = confirm("¿esta seguro de eliminar los usuarios seleccionados?");
+    //if(question==true){
     arreglo.forEach(element => {
     const index = this.arreglo_datos.indexOf(element);//busca objeto  en el arreglo y retorna su posicion en el 
    this.arreglo_datos.splice(index,1);
@@ -305,8 +343,9 @@ import axios from "axios";
     console.log("eliminado: "+element._id);
     
     });
+    setTimeout(this.close_eraser_dialog, 200);
     setTimeout(this.update_all_data,200) ;
-    }
+   //}
    
   },
   clean_all_fields(){
@@ -371,7 +410,13 @@ save_add_new_genre() {
       close_edit(){
         this.dialog_edit = false;
         this.clean_all_fields();
-      }
+      },
+       watch_eraser_dialog(){
+      this.eraser_dialog=true;
+  },
+  close_eraser_dialog(){
+    this.eraser_dialog=false;
+  }
   
   },
   }
