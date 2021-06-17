@@ -4,7 +4,7 @@
      <button
       :disabled="dialog"
       :loading="dialog"
-      @click="watch_error_dialog"
+      @click="watch_eraser_dialog"
       hidden
     >
     probador
@@ -15,8 +15,6 @@
       persistent
       width="400"
     >
-    
-      
             <v-alert
       border="right"
       colored-border
@@ -33,8 +31,38 @@
     ></v-progress-circular>
         </center>
          </v-alert>
-       
     </v-dialog>
+       <v-dialog
+      v-model="eraser_dialog"
+      persistent
+      max-width="290"
+    >
+     <v-alert
+      border="bottom"
+      colored-border
+      type="warning"
+      elevation="2"
+    >
+      Seguro que desea eliminar los datos seleccionados?
+      <v-btn
+      :disabled="dialog"
+      :loading="dialog"
+      @click="close_eraser_dialog"
+      
+    >
+    No
+    </v-btn>
+     <v-btn
+      :disabled="dialog"
+      :loading="dialog"
+      @click="delete_all"
+      color="error"
+      
+    >
+    Si
+    </v-btn>
+    </v-alert>
+       </v-dialog>
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
       rel="stylesheet"
@@ -56,6 +84,7 @@
         single-line
       ></v-select>
     </v-col>
+    
     <v-card-title>
       <v-text-field
         v-model="search"
@@ -65,12 +94,16 @@
         hide-details
       ></v-text-field>
     </v-card-title>
-    <v-card-subtitle>
-      <v-btn color="secondary" @click="delete_all()">
-        <v-icon small>
+    <v-card-subtitle>     <v-btn
+      :disabled="dialog"
+      :loading="dialog"
+      @click="watch_eraser_dialog"
+      color="secondary"
+    >
+      <v-icon small>
           mdi-delete
         </v-icon>
-      </v-btn>
+    </v-btn>
     </v-card-subtitle>
     <v-card-text>
       <v-data-table
@@ -100,20 +133,20 @@
       </v-data-table>
     </v-card-text>
     <v-layout row justify-center>
-      <v-dialog v-model="dialog_del" persistent max-width="600px">
-        <v-card>
-          <v-card-title class="headline"
-            >Esta seguro que desea eliminar esta localidad?</v-card-title
-          >
-          <v-card-text
-            ><h2>{{ nameofuser }}</h2>
-          </v-card-text>
+      <v-dialog v-model="dialog_del" persistent max-width="290px">
+         <v-alert
+      border="bottom"
+      colored-border
+      type="warning"
+      elevation="2"
+    >
+            Esta seguro que desea eliminar esta localidad?
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="error" text @click="close_dialogs()">No</v-btn>
-            <v-btn color="orange" @click="deleteItem()">Si</v-btn>
+            <v-btn   @click="close_dialogs()">No</v-btn>
+            <v-btn color="error" @click="deleteItem()">Si</v-btn>
           </v-card-actions>
-        </v-card>
+         </v-alert>
       </v-dialog>
     </v-layout>
     <v-col cols="auto">
@@ -557,6 +590,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      eraser_dialog:false,
       error_dialog:false,
       table_loader: true,
       Mapa: '',
@@ -702,18 +736,19 @@ export default {
     },
     delete_all() {
       let arreglo = this.selected
-      let question = confirm(
-        '¿esta seguro de eliminar los usuarios seleccionados?'
-      )
-      if (question == true) {
+    //  let question = confirm(
+       // '¿esta seguro de eliminar los usuarios seleccionados?'
+     // )
+      //if (question == true) {
         arreglo.forEach(element => {
           const index = this.arreglo_datos.indexOf(element) //busca objeto  en el arreglo y retorna su posicion en el
           this.arreglo_datos.splice(index, 1)
           axios.delete('/locations/api/delete/' + element._id)
           console.log('eliminado: ' + element._id)
         })
-        setTimeout(this.update_all_data, 200)
-      }
+        setTimeout(this.close_eraser_dialog, 200);
+        setTimeout(this.update_all_data, 200);
+     // }
     },
     clean_all_fields() {
       this.name_edit = ''
@@ -898,7 +933,15 @@ export default {
     watch_error_dialog(){
       this.error_dialog=true;
       setTimeout(()=>(this.error_dialog=false),4000);
-    }
+    },
+    watch_eraser_dialog(){
+      this.eraser_dialog=true;
   },
+  close_eraser_dialog(){
+    this.eraser_dialog=false;
+  }
+    
+  },
+  
 }
 </script>

@@ -189,5 +189,26 @@ app.use(multer({ dest: './uploads/'}).single('myFile'));
 
 //module.exports = app;
 
+//demon clean eaf
+/*
+import axios from "axios";
 
+setInterval(() => {
+  let time = new Date();
+  let time_hour = time.getHours();
+  if(time_hour===20){
+      console.log("Ya es la hora de la limpieza ;)");
+      async function limpieza(){
+        try{
+         const response = await axios.get("/cleaneafs");
+         console.log("limpieza todo un exito"+ response)
+        }catch(err){
+            console.log("error al limpiar"+err)
+        }
+      }
+      
+  }
+}, 1000*60*45);
+
+*/
 export default app;
