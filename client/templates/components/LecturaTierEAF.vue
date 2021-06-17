@@ -236,11 +236,11 @@ export default {
       ],
     }
   },created(){
-    
+    /*
     setTimeout(() => {
        axios.get("/cleaneafs");
     }, 7000);
-    
+    */
   }
   ,
   methods: {
