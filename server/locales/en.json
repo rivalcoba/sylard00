@@ -14,6 +14,8 @@
         "SYLARD_FOR_EVERYONE": "SYLARD for everyone!",
         "SYLARD_CONTENT": "We put our App at your disposal so that you can use them in another portal. Don't forget to give us credit and it's Creative Commons.",
         "DOWNLOADS": "Downloads",
+        "SOURCE_CODE":"Source Code",
+        "ABOUT_SYLARD":"About SYLARD",
         "WHY_REGISTER": "Why the registration?",
         "THE_RESPONSABILITIES": "The responsibilities...",
         "WE_BELIEVE": "We believe in access to knowledge and in the proper use of it.",
@@ -21,7 +23,7 @@
         "INFORMATION": "*We will handle your information in accordance with federal law on the protection of personal data."
     },
     "FOOTER": {
-        "TERMS": "Terms",
+        "TERMS": "Terms & Conditions",
         "NOTICE_PRIVACY": "Notice of Privacy",
         "SYLARD_RESERVED": "SYLARD all rights reserved",
         "DEVELOPED": "Developed By: Drako estudio",

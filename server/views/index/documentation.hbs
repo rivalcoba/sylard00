@@ -1,2 +1,38 @@
-<h1>{{title}}</h1>
-<p>{{content}}</p>
+<main>
+		<div class="container-fluid" id="contenedor_acerca_de">
+			<div class="extension_fondo_blanco_izquierdo d-sm-none d-md-block"></div>
+		<div class="container">
+			<div class="row contenedor-90vh" id="fila1_acerca_de">
+				<div class="col-md-7" id="columna_izquierda_acerca_de">
+				  <div class="columna_izquierda_seccion_standar">
+					<h1 class="color_principal h1_para_fijas">Acerca de SYLARD</h1>
+					  <h3 class="h3_para_fijas">Descripción general</h3>
+					<p class="parrafo_grande">SYLARD es un <a href="#" alt="Github">software de código abierto</a> que tiene como objetivo remediar una deficiencia significativa en los esfuerzos de documentación de idiomas amenazados: poner a disposición un corpus de documentación en lenguaje audiovisual a los usuarios finales quienes no estén familiarizados con la navegación  en los repositorios que contienen los materiales primarios (generalmente archivos de audio .wav con anotaciones codificadas por tiempo en <a href="https://archive.mpi.nl/tla/elan">ELAN</a> o, en algunos casos, <a href="https://transcriber.en.softonic.com">Transcriber</a>, cuyos archivos se pueden importar sin problemas a ELAN).</p>
+					<p class="parrafo_grande">Un intento inicial de poner a disposición  audio y transcripciones a los usuarios finales se desarrolló como parte del portal DEMCA: Documentando la Etnobiología de México y Centroamérica <a href="https://demca.mesolex.org/portal/ethno/eaf/index.php">(demca.mesolex.org &gt; Multimedia)</a>, el portal contiene  grabaciones  acerca del conocimiento etnobiológico. <a href="https://demca.mesolex.org/portal/ethno/eaf/index.php">En este portal</a> se pueden encontrar ejemplos de materiales en Mixteco, Náhuatl y Totonaco. Sin embargo, este sistema no era independiente de DEMCA y, por lo tanto, estaba muy limitado en su capacidad para colocar audio y anotaciones en línea si primero no se integraban en un proyecto de investigación etnobotánica de DEMCA.</p>
+
+					<h3 class="h3_para_fijas">Mesolex: Recursos Lexicosemánticos <br>para Lenguas Mesoamericanas</h3>
+					<p class="parrafo_grande">En 2019, Jonathan Amith buscó el apoyo del National Endowment for the Humanities, Office of Digital Humanities (que había apoyado en dos ocasiones el desarrollo de DEMCA) para el proyecto nombrado  Mesolex: Lexicosemantic Resources for Mesoamerican Languages (actualmente en <a href="https://staging.mesolex.org/es/">staging.mesolex.org</a>). La concepción original era ofrecer al público dichos recursos en un solo portal, con subportales para cada idioma. Un ejemplo de subportal es el que presenta el material de Amith del  <a href="https://staging.mesolex.org/en/azz/">Nahuatl de la Sierra de Puebla</a>. Como se puede ver en este subportal, los recursos léxico-semánticos que ofrece Mesolex se dividen en tres secciones:</p>
+
+					<ol>
+						<li><strong>Léxicos / Diccionarios</strong></li>
+						<li><strong>Corpora</strong> (grabaciones de audio con transcripciones y, a menudo, traducciones o análisis lingüísticos)</li>
+						<li><strong>Gramática</strong> (textos y artículos sobre cualquiera de los temas relacionados con la gramática del idioma del subportal)</li>
+					</ol>
+
+					<p class="parrafo_grande">El desarrollo de Mesolex comenzó con la colaboración de Amith y Neil Ashton, programador quien se enfoca en el léxico back-and-front-end de Mesolex. Una vez que la estructura de este portal y los subportales  estuvieron mejor definidos, se decidió que Ashton se abocara en los módulos de léxico, y que Bruno Pérez de Drako Estudio, trabajara en el módulo de corpus, al que ha nombrado SYLARD <em>(Synchronized Language Annotation Result Display)</em>: Visualización de resultados de anotaciones de lenguaje sincronizado. Actualmente, SYLARD se está desarrollando como un programa independiente con su propia interfaz administrativa, para Visitantes y Colaboradores. Esta interfaz está diseñada actualmente solo para administrar la conversión de ELAN a HTML que es el núcleo de esta iniciativa. La etapa 1 de Mesolex simplemente vinculará el módulo Corpora de los subportales Mesolex a las colecciones de SYLARD. Se tiene planeado el desarrollo posterior para utilizar las funcionalidades administrativas de SYLARD como puerta de entrada a Mesolex, sus subportales y sus tres módulos básicos: Lexicons, Corpora y Grammar.</p>
+
+					<h3 class="h3_para_fijas">SYLARD: Visualización de resultados <br>de anotaciones de idioma sincronizado.</h3>
+					<p class="parrafo_grande">La versión actual de SYLARD, 1.0, es un esfuerzo preliminar para proporcionar la presentación en línea, más versátil, de grabaciones y anotaciones de lenguas amenazadas. Tiene como objetivo ofrecer la flexibilidad necesaria para procesar múltiples formatos en archivos ELAN, es decir, anotaciones que pueden estar limitadas a transcripciones, o que pueden incluir traducciones a uno o más idiomas, segmentación morfológica y glosas. Los Colaboradores pueden seleccionar los niveles en que desean cargar sus archivos ELAN al servidor SYLARD. Estos niveles se pueden ocultar en la vista predeterminada seleccionando un color de texto del selector de color. Lo más importante es que el Visitante (usuario) puede personalizar la visualización,  cambiando los niveles que se muestran para su visualización (los cambios son temporales y no alteran el valor predeterminado para otros Visitantes). El Visitante también puede cambiar dónde aparece cualquier nivel (en una pantalla de una sola línea sobre un cuadro de desplazamiento o dentro de un cuadro de desplazamiento) y cómo se muestra  (el color del texto).</p>
+					<p class="parrafo_grande">Para  una descripción más detallada de las funciones de SYLARD para Visitantes y Colaboradores, consulte el <a href="#">Manual</a>.</p>
+				  </div>
+				    </div>						
+					<div class="" id="columna_derecha_acerca_de">
+						<img class="" src="images/ave_volando_huichapan.svg" id="pajaro_al_vuelo_acerca_de" alt="Imagen de animal fantástico de Textil Huichapan">
+						<img class="" src="images/guajolote_huichapan.svg" id="guajolote_acerca_de" alt="Imagen de animal fantástico de Textil Huichapan">
+						<img class="" src="images/gallo_huichapan.svg" id="gallo_acerca_de" alt="Imagen de animal fantástico de Textil Huichapan">
+						<img class="" src="images/ave_pequena.svg" id="ave_pequena_acerca_de" alt="Imagen de animal fantástico de Textil Huichapan">
+					</div>
+		</div>
+		</div>
+	</div>
+	</main>

@@ -2,6 +2,26 @@
     let elemento_link = document.getElementById('home');
   elemento_link.setAttribute("class", "active_a");
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+ let cookies = document.cookie;
+     // console.log(cookies);
+    let result;
+    $(document).ready(function(){
+        	//alert("jquery is running");
+                if(cookies=="langbisquet=es"){
+                   console.log("esta en español");
+                   }
+                   else{
+                       console.log("esta en ingles");
+                      $("#bnpe_3").addClass("bnpe_en");
+                      $("#bnpe_4").addClass("bnpe_en");
+                      $("#bnpe_6").addClass("bnpe_en");
+                      $("#bnpe_7").addClass("bnpe_en");
+                   }
+    });
+
+</script>
 <!--INICIA barra de navegacion publico-->
 <div class="container-fluid back_aqua_0">
   <nav class="container contenedor_barra_nav_publico">
@@ -18,7 +38,7 @@
       {{translation.NAVBAR.CATALOGUE}}
     </a>
     <a class="barra_nav_publico_elemento" href="/documentation" id="bnpe_3">
-      {{translation.NAVBAR.DOCUMENTATION}}
+      {{translation.SYLARDHOME.ABOUT_SYLARD}}
     </a>
     <a class="barra_nav_publico_elemento" href="/usermanual" id="bnpe_4">
       {{translation.NAVBAR.USER_MANUAL}}
@@ -26,16 +46,13 @@
     <h1 class="logo_menu" id="bnpe_5">
       SYLARD
     </h1>
-    <a class="barra_nav_publico_elemento" href="/contact" id="bnpe_6">
-      {{translation.NAVBAR.CONTACT}}
+    <a class="barra_nav_publico_elemento" href="#" id="bnpe_6">
+      {{translation.SYLARDHOME.SOURCE_CODE}}
     </a>
-    <a class="barra_nav_publico_elemento" href="#" id="bnpe_7">
-      {{translation.SYLARDHOME.DOWNLOADS}}
-    </a>
-    <a class="barra_nav_publico_elemento" href="/terms" id="bnpe_8">
+    <a class="barra_nav_publico_elemento" href="/terms" id="bnpe_7">
       {{translation.FOOTER.TERMS}}
     </a>
-    <a class="barra_nav_publico_elemento" href="/credits" id="bnpe_9">
+    <a class="barra_nav_publico_elemento" href="/credits" id="bnpe_8">
       {{translation.NAVBAR.CREDITS}}
     </a>
   </nav>
