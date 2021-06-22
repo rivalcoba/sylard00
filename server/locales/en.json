@@ -34,7 +34,8 @@
         "DOCUMENTATION": "Documentation",
         "USER_MANUAL": "User manual",
         "CONTACT": "Contact",
-        "CREDITS": "Credits"
+        "CREDITS": "Credits",
+        "a":"hola"
     },
     "HEADER": {
         "LOGIN": "Acceso",
@@ -213,5 +214,12 @@
         "colorTipo": "Typography Color",
         "Hablante": "Channel 1 (speaker)",
         "Canal": "Channel"
+    },
+    "SOURCE_CODE_VIEW":{
+        "titulo":"Source Code",
+        "parraf1":"The code for SYLARD is open source and available via GitHub",
+        "parraf2":"Please feel free to contact the SYLARD team with any questions about the code or possible enhancements: ",
+        "parraf3":"For user's authorizations or questions about SYLARD, please write to",
+        "button":"SYLARD on GitHub"
     }
 }

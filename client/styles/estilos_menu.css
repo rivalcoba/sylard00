@@ -4162,3 +4162,243 @@ input[type=password]::-ms-clear {
     line-height: 1.625rem;
     color: var(--color-sec-pressed)!important;
 }
+/*//////////////////////////////////Terminos y condiciones///////////////////////////////////////////////////*/
+#contenedor_editar_contrasena,
+#contenedor_acerca_de,
+#contenedor_terminos {
+  background-color: white;
+  position: relative;
+  z-index: 1;
+}
+
+/* CLASE GENERAL*/
+.extension_fondo_blanco_izquierdo {
+  background: white;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 65%;
+}
+
+#fila1_editar_contrasena,
+#fila1_creditos,
+#fila1_codigo_fuente,
+#fila1_acerca_de,
+#fila1_terminos {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#columna_izquierda_editar_contrasena,
+#columna_izquierda_creditos,
+#columna_izquierda_codigo_fuente,
+#columna_izquierda_acerca_de,
+#columna_izquierda_terminos {
+  align-self: stretch;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  padding-bottom: 1rem;
+  min-width: 576px;
+  background-color: white;
+}
+.columna_izquierda_seccion_standar {
+  margin-top: 3rem;
+  align-self: center;
+  max-width: 700px;
+  padding: 1rem;
+}
+
+/* CLASE GENERAL*/
+.color_principal {
+  color: var(--color-primario-principal);
+}
+
+.h1_para_fijas {
+  margin-bottom: 2rem;
+  color: var(--color-primario-principal);
+}
+
+.h3_para_fijas {
+  margin-top: 2rem;
+}
+
+.columna_izquierda_seccion_standar ol {
+  padding-left: 2.5rem;
+}
+
+.columna_izquierda_seccion_standar ol li {
+  list-style-position: inside;
+  list-style-type: decimal;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: var(--gris-texto-principal);
+  text-indent: -1.25rem;
+  margin-bottom: 1rem;
+}
+.columna_izquierda_seccion_standar ol li:last-of-type {
+  margin-bottom: 3rem;
+}
+
+.columna_izquierda_seccion_standar ul li {
+  list-style: square;
+  margin-bottom: 0.5rem;
+}
+p.parrafo_grande {
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: var(--gris-texto-principal);
+  margin-bottom: 1rem;
+  margin-top: 0.25rem;
+  orphans: 2;
+}
+
+p.parrafo_grande a {
+  font-size: 1rem;
+}
+
+.icono_parrafo_vinculo {
+  color: var(--color-primario-principal);
+}
+.icono_parrafo_vinculo:hover {
+  color: var(--color-sec-pressed);
+}
+
+.ul_para_fijas {
+  padding-left: 3rem;
+}
+.ul_li_para_fijas {
+  list-style-position: inside !important;
+  font-weight: 400 ;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: var(--gris-texto-principal);
+  margin-bottom: 1rem !important;
+  margin-top: 0.25rem;
+  orphans: 2 !important;
+  padding-left: -10px !important;
+  text-indent: -1.25rem;
+}
+.ul_li_para_fijas:last-of-type {
+  margin-bottom: 3rem;
+}
+
+.advertencia_para_fijas {
+  color: var(--naranja);
+}
+#columna_derecha_acerca_de {
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+  flex-basis: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+}
+#coyote_terminos {
+  width: 60%;
+}
+#perro_terminos {
+  width: 65%;
+}
+#caballo_terminos {
+  width: 90%;
+  align-self: flex-end;
+}
+#cerdo_terminos {
+  width: 70%;
+}
+
+/*//////////////////////////////////ACERCA DE///////////////////////////////////////////////////*/
+
+#pajaro_al_vuelo_acerca_de {
+  width: 65%;
+}
+#guajolote_acerca_de {
+  width: 65%;
+}
+#gallo_acerca_de,
+#ave_pequena_acerca_de {
+  width: 60%;
+}
+#gallo_acerca_de,
+#ave_pequena_acerca_de {
+  width: 60%;
+}
+/*//////////////////////////////////CREDITOS///////////////////////////////////////////////////*/
+
+.contenedor_drako_estudio_team {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.item_lista_colaboradores {
+  color: var(--gris-texto-principal);
+  list-style: none !important;
+  margin-left: 0.25rem;
+  font-size: 0.975rem;
+}
+.item_lista_colaboradores a {
+  color: #ff8119;
+  text-decoration: underline;
+}
+.item_lista_colaboradores:last-of-type {
+}
+
+.contenedor_drako_estudio_team li.item_lista_colaboradores::before {
+  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #ff8119; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 0.5rem; /* Also needed for space (tweak if needed) */
+  margin-right: 0.5rem; /* Also needed for space (tweak if needed) */
+}
+li.item_lista_colaboradores:last-of-type::before {
+  content: none;
+  margin-bottom: 0;
+}
+.icono_principal_correo_drako_estudio {
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  color: var(--gris02);
+}
+#columna_derecha_creditos {
+  flex-basis: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-self: flex-end;
+}
+#conejo_creditos {
+  width: 90%;
+  margin-bottom: 8rem;
+}
+
+/*//////////////////////////////////CODIGO FUENTE///////////////////////////////////////////////////*/
+
+/*clase general*/
+.icono_boton {
+  font-size: 1.3rem;
+  vertical-align: middle;
+  display: inline-block;
+  margin-bottom: 1px;
+}
+#columna_derecha_codigo_fuente {
+  flex-basis: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-self: center;
+}
+#mascota_codigo_fuente {
+  width: 60%;
+}

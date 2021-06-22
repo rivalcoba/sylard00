@@ -213,5 +213,12 @@
         "colorTipo": "Color de tipografía",
         "Hablante": "Canal 1 (hablante)",
         "Canal": "Canal"
+    },
+    "SOURCE_CODE_VIEW":{
+        "titulo":"Código fuente",
+        "parraf1":"El código fuente de SYLARD es de acceso libre mediante GitHub.",
+        "parraf2":"Favor de contactar a Drako Estudio, el equipo de desarrollo para preguntas o mejoras acerca del código: ",
+        "parraf3":"Para autorizaciones de usuarios, dudas o ayuda en SYLARD, contactar a",
+        "button":"SYLARD en GitHub"
     }
 }
