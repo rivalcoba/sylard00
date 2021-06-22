@@ -3248,7 +3248,7 @@ tr.selected {
 }
 
 .correo_usuario_mensaje_promocion_a_colaborador {
-    color: white;
+    color: var(--color-primario-principal);
 }
 
 .contenedor_establecer_origen_archivos_audioanotacion {
