@@ -125,7 +125,7 @@ if (window.location.pathname == `/test`) {
   //window.VueCdn = VueCdn
   window.app = indexTestScripts.getVueApp()
 }
-
+/*
 if (window.location.pathname.match(/\/audioannotations\/vuetest\//)) {
   Vue.use(VueAxios, axios, colorPicker)
   Vue.component('LecturaEAF', LecturaEAF)
@@ -135,7 +135,7 @@ if (window.location.pathname.match(/\/audioannotations\/vuetest\//)) {
     render: h => h(ReproduceEAF),
   })
 }
-
+*/
 //if(window.location.pathname == `/audioannotations/create`){
 if (window.location.pathname == `/audioannotations/uploadfile`) {
   // window.Vue = Vue
