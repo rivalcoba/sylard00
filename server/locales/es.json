@@ -41,10 +41,11 @@
         "REGISTER": "Registrarse",
         "EDIT_USER": "Editar Usuario",
         "EDIT_PASSWORD": "Editar Contraseña",
-        "MY_COLLECTIONS": "Mis colecciones",
+        "MY_COLLECTIONS": "Mis Colecciones",
         "LOGOUT": "Salir",
         "USERS": "Usuarios",
-        "EXPLORE": "Explorar"
+        "EXPLORE": "Explorar",
+        "FIELDS_EDITOR":"Editor Campos"
     },
     "SYLARDLOGIN": {
         "LOGIN": "Acceso",

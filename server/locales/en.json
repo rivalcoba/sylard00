@@ -34,8 +34,7 @@
         "DOCUMENTATION": "Documentation",
         "USER_MANUAL": "User manual",
         "CONTACT": "Contact",
-        "CREDITS": "Credits",
-        "a":"hola"
+        "CREDITS": "Credits"
     },
     "HEADER": {
         "LOGIN": "Acceso",
@@ -46,6 +45,7 @@
         "LOGOUT": "Logout",
         "USERS": "Usuarios",
         "EXPLORE": "Explore"
+        ,"FIELDS_EDITOR":"Fields Editor"
     },
     "SYLARDLOGIN": {
         "LOGIN": "Login",
