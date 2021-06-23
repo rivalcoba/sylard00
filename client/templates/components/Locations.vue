@@ -163,27 +163,7 @@
                 <table>
                   <tr>
                     <td>
-                      <v-text-field
-                        label="edit_Mapa"
-                        persistent-hint
-                        id="edit_Mapa"
-                        name="edit_Mapa"
-                        v-model="edit_Mapa"
-                        required
-                      ></v-text-field>
-                    </td>
-                    <td>
-                      <v-text-field
-                        label="Clave de entidad"
-                        persistent-hint
-                        id="edit_Cve_Ent"
-                        name="edit_Cve_Ent"
-                        v-model="edit_Cve_Ent"
-                        required
-                      ></v-text-field>
-                    </td>
-                    <td>
-                      <v-text-field
+                    <v-text-field
                         label="Nombre de la entidad"
                         persistent-hint
                         id="edit_Nom_Ent"
@@ -193,44 +173,12 @@
                       ></v-text-field>
                     </td>
                     <td>
-                      <v-text-field
-                        label="Nombre Abreviado"
-                        persistent-hint
-                        id="edit_Nom_Abr"
-                        name="edit_Nom_Abr"
-                        v-model="edit_Nom_Abr"
-                        required
-                      ></v-text-field>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <v-text-field
-                        label="Clave de Municipio"
-                        persistent-hint
-                        id="edit_Cve_Mun"
-                        name="edit_Cve_Mun"
-                        v-model="edit_Cve_Mun"
-                        required
-                      ></v-text-field>
-                    </td>
-                    <td>
-                      <v-text-field
+                       <v-text-field
                         label="Nombre de Municipio"
                         persistent-hint
                         id="edit_Nom_Mun"
                         name="edit_Nom_Mun"
                         v-model="edit_Nom_Mun"
-                        required
-                      ></v-text-field>
-                    </td>
-                    <td>
-                      <v-text-field
-                        label="Clave de localidad"
-                        persistent-hint
-                        id="edit_Cve_Loc"
-                        name="edit_Cve_Loc"
-                        v-model="edit_Cve_Loc"
                         required
                       ></v-text-field>
                     </td>
@@ -244,31 +192,8 @@
                         required
                       ></v-text-field>
                     </td>
-                  </tr>
-                  <tr>
-                  
                     <td>
-                      <v-text-field
-                        label="edit_Latitud"
-                        persistent-hint
-                        id="edit_Latitud"
-                        name="edit_Latitud"
-                        v-model="edit_Latitud"
-                        required
-                      ></v-text-field>
-                    </td>
-                    <td>
-                      <v-text-field
-                        label="edit_Longitud"
-                        persistent-hint
-                        id="edit_Longitud"
-                        name="edit_Longitud"
-                        v-model="edit_Longitud"
-                        required
-                      ></v-text-field>
-                    </td>
-                    <td>
-                      <v-text-field
+                         <v-text-field
                         label="edit_Latitud Decimal"
                         persistent-hint
                         id="edit_Lat_Decimal"
@@ -277,8 +202,10 @@
                         required
                       ></v-text-field>
                     </td>
-                     <td>
-                      <v-text-field
+                  </tr>
+                  <tr>
+                    <td>
+                    <v-text-field
                         label="Longitud Decimal"
                         persistent-hint
                         id="edit_Lon_Decimal"
@@ -287,60 +214,49 @@
                         required
                       ></v-text-field>
                     </td>
+                    <td>
+                   
+                    </td>
+                    <td>
+                 
+                    </td>
+                    <td>
+                     
+                    </td>
+                  </tr>
+                  <tr>
+                  
+                    <td>
+                  
+                    </td>
+                    <td>
+                  
+                    </td>
+                    <td>
+                
+                    </td>
+                     <td>
+                     
+                    </td>
                   </tr>
                   <tr>
                    
                     <td>
-                      <v-text-field
-                        label="Altitud"
-                        persistent-hint
-                        id="edit_Altitud"
-                        name="edit_Altitud"
-                        v-model="edit_Altitud"
-                        required
-                      ></v-text-field>
+                     
                     </td>
                     <td>
-                      <v-text-field
-                        label="Cve Carta"
-                        persistent-hint
-                        id="edit_Cve_Carta"
-                        name="edit_Cve_Carta"
-                        v-model="edit_Cve_Carta"
-                        required
-                      ></v-text-field>
+                      
                     </td>
                     <td>
-                      <v-text-field
-                        label="Poblacion Femenina"
-                        persistent-hint
-                        id="edit_Pob_Femenina"
-                        name="edit_Pob_Femenina"
-                        v-model="edit_Pob_Femenina"
-                        required
-                      ></v-text-field>
+                     
                     </td>
                      <td>
-                      <v-text-field
-                        label="Poblacion Masculina"
-                        persistent-hint
-                        id="edit_Pob_Masculina"
-                        name="edit_Pob_Masculina"
-                        v-model="edit_Pob_Masculina"
-                        required
-                      ></v-text-field>
+                      
                     </td>
                   </tr>
                   <tr>
                       <td colspan="4">
-                      <v-text-field
-                        label="Poblacion Total"
-                        persistent-hint
-                        id="edit_Pob_Total"
-                        name="edit_Pob_Total"
-                        v-model="edit_Pob_Total_computado"
-                        readonly
-                      ></v-text-field>
+                      
                     </td>
                   </tr>
                 </table>
@@ -390,27 +306,7 @@
                   <table>
                     <tr>
                       <td>
-                        <v-text-field
-                          label="Mapa"
-                          persistent-hint
-                          id="Mapa"
-                          name="Mapa"
-                          v-model="Mapa"
-                          required
-                        ></v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field
-                          label="Clave de entidad"
-                          persistent-hint
-                          id="Cve_Ent"
-                          name="Cve_Ent"
-                          v-model="Cve_Ent"
-                          required
-                        ></v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field
+                           <v-text-field
                           label="Nombre de la entidad"
                           persistent-hint
                           id="Nom_Ent"
@@ -420,29 +316,7 @@
                         ></v-text-field>
                       </td>
                       <td>
-                        <v-text-field
-                          label="Nombre Abreviado"
-                          persistent-hint
-                          id="Nom_Abr"
-                          name="Nom_Abr"
-                          v-model="Nom_Abr"
-                          required
-                        ></v-text-field>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <v-text-field
-                          label="Clave de Municipio"
-                          persistent-hint
-                          id="Cve_Mun"
-                          name="Cve_Mun"
-                          v-model="Cve_Mun"
-                          required
-                        ></v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field
+                       <v-text-field
                           label="Nombre de Municipio"
                           persistent-hint
                           id="Nom_Mun"
@@ -452,17 +326,7 @@
                         ></v-text-field>
                       </td>
                       <td>
-                        <v-text-field
-                          label="Clave de localidad"
-                          persistent-hint
-                          id="Cve_Loc"
-                          name="Cve_Loc"
-                          v-model="Cve_Loc"
-                          required
-                        ></v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field
+                     <v-text-field
                           label="Nombre Localidad"
                           persistent-hint
                           id="Nom_Loc"
@@ -471,31 +335,8 @@
                           required
                         ></v-text-field>
                       </td>
-                    </tr>
-                    <tr>
-                    
                       <td>
-                        <v-text-field
-                          label="Latitud"
-                          persistent-hint
-                          id="Latitud"
-                          name="Latitud"
-                          v-model="Latitud"
-                          required
-                        ></v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field
-                          label="Longitud"
-                          persistent-hint
-                          id="Longitud"
-                          name="Longitud"
-                          v-model="Longitud"
-                          required
-                        ></v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field
+                           <v-text-field
                           label="Latitud Decimal"
                           persistent-hint
                           id="Lat_Decimal"
@@ -504,8 +345,10 @@
                           required
                         ></v-text-field>
                       </td>
-                       <td>
-                        <v-text-field
+                    </tr>
+                    <tr>
+                      <td>
+                           <v-text-field
                           label="Longitud Decimal"
                           persistent-hint
                           id="Lon_Decimal"
@@ -514,60 +357,49 @@
                           required
                         ></v-text-field>
                       </td>
+                      <td>
+                    
+                      </td>
+                      <td>
+                     
+                      </td>
+                      <td>
+                      
+                      </td>
+                    </tr>
+                    <tr>
+                    
+                      <td>
+                      
+                      </td>
+                      <td>
+                        
+                      </td>
+                      <td>
+                   
+                      </td>
+                       <td>
+                    
+                      </td>
                     </tr>
                     <tr>
                       <td>
-                        <v-text-field
-                          label="Altitud"
-                          persistent-hint
-                          id="Altitud"
-                          name="Altitud"
-                          v-model="Altitud"
-                          required
-                        ></v-text-field>
+                     
                       </td>
                       <td>
-                        <v-text-field
-                          label="Cve Carta"
-                          persistent-hint
-                          id="Cve_Carta"
-                          name="Cve_Carta"
-                          v-model="Cve_Carta"
-                          required
-                        ></v-text-field>
+                       
                       </td>
                       <td>
-                        <v-text-field
-                          label="Poblacion Femenina"
-                          persistent-hint
-                          id="Pob_Femenina"
-                          name="Pob_Femenina"
-                          v-model="Pob_Femenina"
-                          required
-                        ></v-text-field>
+                      
                       </td>
                  <td>
-                        <v-text-field
-                          label="Publacion Masculina"
-                          persistent-hint
-                          id="Pob_Masculina"
-                          name="Pob_Masculina"
-                          v-model="Pob_Masculina"
-                          required
-                        ></v-text-field>
+                      
                       </td>
                     </tr>
                     <tr>
                      
                             <td colspan="4">
-                        <v-text-field
-                          label="Poblacion Total"
-                          persistent-hint
-                          id="Pob_Total"
-                          name="Pob_Total"
-                          v-model="Pob_Total_computado"
-                          readonly
-                        ></v-text-field>
+                     
                       </td>
                     </tr>
                   </table>
@@ -601,7 +433,7 @@ export default {
       Nom_Mun: '',
       Cve_Loc: '',
       Nom_Loc: '',
-      
+
       Latitud: '',
       Longitud: '',
       Lat_Decimal: '',
@@ -655,29 +487,28 @@ export default {
       selected: [],
       switch1: [],
       headers: [
-        { text: 'Mapa', value: 'Mapa', sortable: true },
-        { text: 'Cve_Ent', value: 'Cve_Ent' },
-        { text: 'Nom_Ent', value: 'Nom_Ent', sortable: true },
-        { text: 'Nom_Abr', value: 'Nom_Abr', sortable: true },
-        { text: 'Cve_Mun', value: 'Cve_Mun' },
-        { text: 'Nom_Mun', value: 'Nom_Mun', sortable: true },
-        { text: 'Cve_Loc', value: 'Cve_Loc', sortable: true },
-        { text: 'Nom_Loc', value: 'Nom_Loc' },
+        //{ text: 'Mapa', value: 'Mapa', sortable: true },
+        //{ text: 'Cve_Ent', value: 'Cve_Ent' },
+        { text: 'Entidad', value: 'Nom_Ent', sortable: true },
+        //{ text: 'Nom_Abr', value: 'Nom_Abr', sortable: true },
+        //{ text: 'Cve_Mun', value: 'Cve_Mun' },
+        { text: 'Municipio', value: 'Nom_Mun', sortable: true },
+        //{ text: 'Cve_Loc', value: 'Cve_Loc', sortable: true },
+        { text: 'Localidad', value: 'Nom_Loc' },
        // { text: 'Ámbito', value: 'Ámbito', sortable: true },
-        { text: 'Latitud', value: 'Latitud', sortable: true },
-        { text: 'Longitud', value: 'Longitud' },
-        { text: 'Lat_Decimal', value: 'Lat_Decimal', sortable: true },
-        { text: 'Lon_Decimal', value: 'Lon_Decimal', sortable: true },
-        { text: 'Altitud', value: 'Altitud' },
-        { text: 'Cve_Carta', value: 'Cve_Carta', sortable: true },
-        { text: 'Pob_Masculina', value: 'Pob_Masculina' },
-        { text: 'Pob_Femenina', value: 'Pob_Femenina', sortable: true },
-         { text: 'Pob_Total', value: 'Pob_Total', sortable: true },
-        {
-          text: 'Total De Viviendas Habitadas',
+        //{ text: 'Latitud', value: 'Latitud', sortable: true },
+        //{ text: 'Longitud', value: 'Longitud' },
+        { text: 'Latitud Decimal', value: 'Lat_Decimal', sortable: true },
+        { text: 'Longitud Decimal', value: 'Lon_Decimal', sortable: true },
+        //{ text: 'Altitud', value: 'Altitud' },
+        //{ text: 'Cve_Carta', value: 'Cve_Carta', sortable: true },
+        //{ text: 'Pob_Masculina', value: 'Pob_Masculina' },
+        //{ text: 'Pob_Femenina', value: 'Pob_Femenina', sortable: true },
+         //{ text: 'Pob_Total', value: 'Pob_Total', sortable: true },
+       /* {   text: 'Total De Viviendas Habitadas',
           value: 'Total De Viviendas Habitadas',
           sortable: true,
-        },
+        },*/
         { text: 'Actions', value: 'actions', sortable: false },
       ],
     }

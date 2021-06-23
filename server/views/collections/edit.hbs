@@ -207,7 +207,7 @@
 			</datalist>
             	</div>
 							<div class="contenedor_botones ">
-							<button type="reset" class="btn btn-secundario" id="boton_restablecer_agregar_coleccion">Restablecer</button>
+							<span onclick="location.reload(); " type="reset" class="btn btn-secundario" id="boton_restablecer_agregar_coleccion">Restablecer</span>
 							<button type="submit" class="btn btn-primario" id="boton_guardar_agregar_coleccion">Guardar</button>
 						</div>
 						</div>
@@ -231,6 +231,8 @@
 	var app = new Vue({
 		el: '#app',
 		data: {
+		name_saved: '{{collectionDoc.name}}',
+      description_saved: '{{collectionDoc.description}}',
       name: '{{collectionDoc.name}}',
       description: '{{collectionDoc.description}}',
 			languages : [],
