@@ -1304,11 +1304,13 @@ input:checked+.slider_general:before {
     line-height: 1rem !important;
 }
 
-#bnpe_4, #bnpe_7, #bnpe_8 {
+
+/*#bnpe_4,
+#bnpe_6,#bnpe_7 {
     flex-grow: 2;
     padding: .6rem .3rem !important;
-    /* IMPORTANTE Compensa los items de la barra publica de dos renglones*/
-}
+    /* IMPORTANTE Compensa los items de la barra publica de dos renglones
+}*/
 
 
 /*LOGO GRANDE SYLARD*/
@@ -1577,12 +1579,17 @@ input:checked+.slider_general:before {
 
 
 /*MEDIA QUERY PARA COMPENSAR MENU*/
-
-/*@media only screen and (min-width: 1198px) {
-    #bnpe_4, #bnp_7, #bnpe_8 {
-        flex-grow: 3;
-        padding: 1rem .3rem!important;
+@media only screen and (max-width: 1196px) and (min-width: 980px) {
+    #bnpe_3, #bnpe_4, #bnpe_6,  #bnpe_7  {
+        flex-grow: 2;
+       
+        /*color: red;*/
+        padding: 0.5rem .3rem!important;
         /* IMPORTANTE Compensa los items de la barra publica de dos renglones*/
+    }
+    .bnpe_en{
+        /*color: purple !important;*/
+        margin-top: 0.5rem !important;
     }
 }
 
@@ -4091,6 +4098,7 @@ input[type=password]::-ms-clear {
 	font-size: 1.125rem;
 	font-weight: 500;
 	line-height: 1.5rem;
+    color: purple;
 }
 
 .sa_btn_eliminar {

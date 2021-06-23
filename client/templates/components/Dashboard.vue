@@ -195,6 +195,52 @@ export default {
   },
       });
     },
+    show_alert_advert(){
+this.$swal({
+  title: 'Contenido restringido, <br> por favor ingrese o regístrese',
+  text: "",
+  icon: 'warning',
+  showCancelButton: true,
+ cancelButtonText: 'Registrar',
+  confirmButtonText: 'Entrar',
+  buttonsStyling: false,
+  allowOutsideClick:false,
+   customClass: {
+        container: '',
+        popup:'sa-popup',
+        header: '',
+        title: 'sa_title',
+        // closeButton: '...',
+        // image: '...',
+        // content: '...',
+        //htmlContainer: 'sa_popup',
+        // input: '...',
+        // inputLabel: '...',
+        // validationMessage: '...',
+        // actions: '...',
+        confirmButton:  'btn btn-primario sa_btn_confirm',
+        // denyButton: '...',
+        cancelButton: 'btn btn-secundario sa_btn',
+        // loader: '...',
+        footer: 'secundario '
+      },	
+	
+  
+}).then((result) => {
+    if(result.isConfirmed==true){
+    window.location.href ="/auth/login";
+    
+    }
+    if(result.isDismissed==true){
+  window.location.href ="/auth/register";
+    
+    }
+    
+
+
+
+})
+    },
         ordenar_descendente: function (e) {
             //falta ordenar
             console.log(
@@ -368,6 +414,18 @@ export default {
             });
         },
     },
+    created(){
+        if(typeof catalog_mode=="undefined" ){
+            console.log("modo dashboard");
+        }
+        else{
+            if(catalog_mode==true){
+                console.log("modo catalogo")
+                setTimeout(this.show_alert_advert, 1000*60);
+            }
+        }
+    }
+    ,
     mounted() {
         var self = this;
         self.axios.get("collections/api/read_all/1").then((response) => {

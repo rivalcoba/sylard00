@@ -136,6 +136,27 @@ const testMail = async (req, res) =>{
         res.status(400).json({error : error.message})
     }
 }
+const catalog = async(req, res) => {
+    // Get Collecionts
+    const collectionsDocs = await Collection.find()
+        .populate('user')
+        .exec()
+        // Collections to JSON
+    let collections = collectionsDocs.map((collection) => {
+        return collection.toJSON()
+    })
+    res.render('index/catalog', {
+        title: 'Catálogo por colección',
+        collections,
+    })
+}
+const source_code = async(req, res) => {
+    // Get Collecionts
+  
+    res.render('index/source_code', {
+        title: 'Catálogo por colección',
+    })
+}
 
 // Exporting Controllers
 export default {
@@ -152,5 +173,7 @@ export default {
     audioannotation,
     cleanEaf,
     i18n,
-    testMail
+    testMail,
+    catalog,
+    source_code
 }

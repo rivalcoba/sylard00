@@ -298,22 +298,19 @@
             <label class="label" for="licencia">
               {{translation.SYLARDCOLLECTIONS.CONTENT_LICENSE}}
             </label>
-            <input type="text" 
-            placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}" 
-            name="license" 
-            id="license"
-            list="licenseType"
-            required>
+            <select name="license" id="license">
+               <option value="">{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}</option>
+               <option value="CC-BY-NC-SA">CC-BY-NC-SA</option>
+        <option value="CC BY-SA">CC BY-SA</option>
+            </select>
+        
             <div class="contenedor_icono_correcto_input">
               <p>
                 <span id="license_icon_verify" class="icono_error_input icon-error"></span>
               </p>
             </div>
             
-            <datalist id="licenseType">
-        <option value="CC-BY-NC-SA">
-        <option value="CC BY-SA">
-      </datalist>
+        
           </div>
           <div class="contenedor_botones">
             

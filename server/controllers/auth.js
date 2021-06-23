@@ -149,10 +149,10 @@ const enableColaborator = async(req, res) => {
             })
             .send()
             // We update the user with the confirmation
-        res.render("result", {
+        res.render("auth/confirm_promotion_colab", {
             title: "Promoción a colaborador",
             iconTitle: "fa fa-certificate",
-            message: `El usuario con el correo: ${user.email} se ha promocionado correctamente.`,
+            email: `${user.email}`,
             error: ``
         })
     } catch (error) {

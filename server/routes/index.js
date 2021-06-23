@@ -16,6 +16,8 @@ router.get('/index', homeController.index);
 router.get('/contact', homeController.contact)
 router.get('/credits', homeController.credits)
 router.get('/dashboard', ensureAuthenticated, homeController.dashboard)
+router.get('/catalog',homeController.catalog)
+router.get('/source_code',homeController.source_code)
 router.get('/audioannotation', ensureAuthenticated, homeController.audioannotation)
 router.get('/documentation', homeController.documentation)
 router.get('/usermanual', homeController.usermanual)

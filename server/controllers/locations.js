@@ -73,9 +73,10 @@ const indexNomLoc = async (req, res) => {
 
 const getAllEntities = async (req, res)=>{
   const { nom_ent } = req.params
+  var divide=nom_ent.split("+");
   try {
-    const entities = await Locations.find({Nom_Ent:nom_ent}).limit(50000).exec()
-    console.log("consulta exitosa");
+    const entities = await Locations.find({Nom_Ent:divide[0],Nom_Mun:divide[1]}).exec()
+    console.log("consulta exitosa"+divide[0]+divide[1]);
     return res.status(200).json(entities)
   } catch (error) {
     return res.status(404).json({error:"no se encontraron entidades"})
@@ -202,7 +203,7 @@ let location = {
   try {
     //savedDoc = await location.save()
     let result = await Locations.deleteOne({_id : id_locat});
-    try{
+    
     const locationDoc = await Locations.create(location);
     //console.log(locationDoc);
     res.status(200).json(locationDoc);
@@ -210,10 +211,7 @@ let location = {
       es.status(500).json(err)
     }
 
-  } catch (error) {
-    error.reason = `Error when saving document`
-    res.status(500).json(error)
-  }
+ 
 }
 
 

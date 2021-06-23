@@ -125,7 +125,7 @@ if (window.location.pathname == `/test`) {
   //window.VueCdn = VueCdn
   window.app = indexTestScripts.getVueApp()
 }
-
+/*
 if (window.location.pathname.match(/\/audioannotations\/vuetest\//)) {
   Vue.use(VueAxios, axios, colorPicker)
   Vue.component('LecturaEAF', LecturaEAF)
@@ -135,7 +135,7 @@ if (window.location.pathname.match(/\/audioannotations\/vuetest\//)) {
     render: h => h(ReproduceEAF),
   })
 }
-
+*/
 //if(window.location.pathname == `/audioannotations/create`){
 if (window.location.pathname == `/audioannotations/uploadfile`) {
   // window.Vue = Vue
@@ -197,6 +197,22 @@ if (window.location.pathname == '/dashboard') {
     //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview
   })
 }
+if (window.location.pathname == '/catalog') {
+  // window.Vue = Vue
+  Vue.use(VueAxios, axios)
+  Vue.use(VueSweetalert2);
+  
+  Vue.component('Dashboard', Dashboard)
+  window.vm = new Vue({
+    el: '#app4',
+    i18n,
+    render: h => h(App4),
+    //aqui
+    //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
+    //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview
+  })
+}
+
 
 if (window.location.pathname == '/audioannotation') {
   // window.Vue = Vue

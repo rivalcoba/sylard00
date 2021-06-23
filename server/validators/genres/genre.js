@@ -46,7 +46,7 @@ const genrePost = async (req, res, next)=>{
     let { name, description } = req.body
 
     // Normalize genreName
-    name = name.toUpperCase();
+    //name = name.toUpperCase();
     // console.log(name)
 
     let genre = {
