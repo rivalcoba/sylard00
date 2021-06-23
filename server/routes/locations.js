@@ -37,7 +37,7 @@ router.post('/api/create',  locationsController.api_postLoc);
 //delete
 router.delete('/api/delete/:loc_id', locationsController.api_deleteLocations);
 //Update
-router.put('/api/update/:loc_id' ,locationValidator.locationPut , locationsController.api_putLocations);
+router.put('/api/update/:loc_id' , locationsController.api_putLocations);
 
 
 

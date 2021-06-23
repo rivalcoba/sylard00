@@ -737,7 +737,7 @@ export default {
       this.index_of_item_edit = this.arreglo_datos.indexOf(item)
       this.obj_on_table_edit = Object.assign({}, item)
     },
-    save_edit() {
+     save_edit() {
       var id = this.id_edit
       console.log(id);
      let location = {
@@ -763,11 +763,11 @@ export default {
       }
    
         try {
-        let response2 =  axios.put('/locations/api/update/'+id, location);
+       axios.put('/locations/api/update/'+id, location);
         // this.arreglo_datos.push(newitem);
         //console.log(`data: ${JSON.stringify(response2.data)}`);
         this.close_edit();
-        this.update_all_data();
+       this.update_all_data();
       } catch (error) {
         // TODO: Usar una alerta con diseño o flash message.
         //alert("Error al editar");

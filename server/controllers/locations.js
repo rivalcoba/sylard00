@@ -203,7 +203,7 @@ let location = {
   try {
     //savedDoc = await location.save()
     let result = await Locations.deleteOne({_id : id_locat});
-    try{
+    
     const locationDoc = await Locations.create(location);
     //console.log(locationDoc);
     res.status(200).json(locationDoc);
@@ -211,10 +211,7 @@ let location = {
       es.status(500).json(err)
     }
 
-  } catch (error) {
-    error.reason = `Error when saving document`
-    res.status(500).json(error)
-  }
+ 
 }
 
 
