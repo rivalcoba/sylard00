@@ -3,8 +3,8 @@ import Genre from '@models/Genre'
 // Genre Controllers
 const genresindex = (req, res) => {
   res.render('genres/index', {
-      title: 'Generos',
-      content: 'Aquí están los generos añadidos a SYLARD',
+      title: 'Editor de Campos',
+      content: 'Aquí están los generos y locaciones añadidos a SYLARD',
       advice:'¡Recuerde revisar y tener cuidado al editar!'
   })
 }

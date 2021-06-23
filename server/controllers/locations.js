@@ -73,9 +73,10 @@ const indexNomLoc = async (req, res) => {
 
 const getAllEntities = async (req, res)=>{
   const { nom_ent } = req.params
+  var divide=nom_ent.split("+");
   try {
-    const entities = await Locations.find({Nom_Ent:nom_ent}).limit(50000).exec()
-    console.log("consulta exitosa");
+    const entities = await Locations.find({Nom_Ent:divide[0],Nom_Mun:divide[1]}).exec()
+    console.log("consulta exitosa"+divide[0]+divide[1]);
     return res.status(200).json(entities)
   } catch (error) {
     return res.status(404).json({error:"no se encontraron entidades"})

@@ -73,9 +73,23 @@
     />
     <h1>Editar Comunidades</h1>
     <v-col>
+      <h3>Entidad</h3>
       <v-select
         v-model="select_list"
         :items="data_list"
+        item-text="state"
+        item-value=""
+        label="Select"
+        @change="upgrade_list_munc()"
+        return-object
+        single-line
+      ></v-select>
+    </v-col>
+    <v-col>
+      <h3>Municipio</h3>
+      <v-select
+        v-model="select_list2"
+        :items="data_list_munc"
         item-text="state"
         item-value=""
         label="Select"
@@ -84,7 +98,6 @@
         single-line
       ></v-select>
     </v-col>
-    
     <v-card-title>
       <v-text-field
         v-model="search"
@@ -422,6 +435,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      count_q:1,
       eraser_dialog:false,
       error_dialog:false,
       table_loader: true,
@@ -465,7 +479,9 @@ export default {
       obj_list: {},
       item_list: [],
       data_list: [],
-      select_list: 'Aguascalientes',
+      data_list_munc:[],
+      select_list:'Aguascalientes',
+      select_list2: 'Aguascalientes',
       obj_on_table_edit: {},
       index_of_item_edit: '',
       id_edit: '',
@@ -527,16 +543,21 @@ export default {
     },
   },
   created() {
+       axios.get('/locations/entities').then(result => {
+      this.data_list = this.result = result.data
+    })
+     axios.get('/locations/index/municipalitiesOf/'+this.select_list).then(result => {
+      this.data_list_munc = this.result = result.data
+    })
     axios
-      .get('/locations/index/getAllEntities/' + this.select_list)
+      .get('/locations/index/getAllEntities/' + this.select_list+"+"+this.select_list2)
       .then(result => {
         this.arreglo_datos = this.result = result.data
       })
-    axios.get('/locations/entities').then(result => {
-      this.data_list = this.result = result.data
-    })
+ 
     //setInterval(this.update_all_data,3000) ;
   },
+
   computed:{
     Pob_Total_computado(){     
       this.Pob_Total=parseInt(this.Pob_Masculina)+parseInt(this.Pob_Femenina);
@@ -548,6 +569,11 @@ export default {
     }
   },
   methods: {
+      upgrade_list_munc(){
+  axios.get('/locations/index/municipalitiesOf/'+this.select_list).then(result => {
+      this.data_list_munc = this.result = result.data
+    })
+  },
     acivate_del_dialog(id, thing) {
       this.dialog_del = true
       this.thing = thing
@@ -628,22 +654,25 @@ export default {
       this.obj_on_table_edit = {}
     },
     update_all_data() {
-      axios
-        .get('/locations/index/getAllEntities/' + this.select_list)
-        .then(result => {
-          this.arreglo_datos = this.result = result.data
-        })
-      axios.get('/locations/entities').then(result => {
-        this.data_list = this.result = result.data
+        axios.get('/locations/entities').then(result => {
+      this.data_list = this.result = result.data
+    })
+     axios.get('/locations/index/municipalitiesOf/'+this.select_list).then(result => {
+      this.data_list_munc = this.result = result.data
+    })
+    axios
+      .get('/locations/index/getAllEntities/' + this.select_list+"+"+this.select_list2)
+      .then(result => {
+        this.arreglo_datos = this.result = result.data
       })
     },
     new_query() {
       this.arreglo_datos = []
       axios
-        .get('/locations/index/getAllEntities/' + this.select_list)
-        .then(result => {
-          this.arreglo_datos = this.result = result.data
-        })
+      .get('/locations/index/getAllEntities/' + this.select_list+"+"+this.select_list2)
+      .then(result => {
+        this.arreglo_datos = this.result = result.data
+      })
     },
     async save_add_new_location() {
       let location = {
