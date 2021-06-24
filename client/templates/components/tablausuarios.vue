@@ -128,7 +128,12 @@ import axios from "axios";
            let arreglo_concat_lenguajes="";//borrar por cada iteracion
            let arreglo_concat_collections="";
             for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
+              if(temparrjson.spokenLanguages[i].gid=="undefined" || temparrjson.spokenLanguages[i].gid==null || temparrjson.spokenLanguages[i].gid==""){
+                arreglo_concat_lenguajes =arreglo_concat_lenguajes +" : "+ temparrjson.spokenLanguages[i].name + ", ";
+              }
+              else{
                 arreglo_concat_lenguajes =arreglo_concat_lenguajes +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
+              }
                 temparrjson.lenguajes_concat=arreglo_concat_lenguajes;
                 jsonaumentado.push(temparrjson);
             }
