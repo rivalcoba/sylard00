@@ -1,9 +1,10 @@
-APP_URL=http://localhost:40923
-DATABASE_URL=mongodb+srv://alberto:rOmuoGg3sXFdTLz0@sylardcluster0.atuie.mongodb.net/sylard_dev?retryWrites=true&w=majority
+APP_URL=<ulr>
+DATABASE_URL=mongodb+srv://<user>:<password>0@<db name>.atuie.mongodb.net/<db name>?retryWrites=true&w=majority
 PORT=40923
 IP=0.0.0.0
-MAIL_USERNAME=255ef9297af894
-MAIL_PASSWORD=ef9f2823b79091
+MAIL_USERNAME=
+MAIL_PASSWORD=
 SMTP_PORT=2525
 SMTP_HOST=smtp.mailtrap.io
 MAIL_CONNECTION=smtp
+AUTH_MAIL=<admon@mail.com>

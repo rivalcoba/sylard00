@@ -2,6 +2,8 @@ import path from 'path'
 import jsonReader from '@helpers/jsonReader'
 import User from '@models/User'
 import Collection from '@models/Collection'
+import keys from '@config/keys'
+import Mail from '@fullstackjs/mail'
 
 // DELETE async
 const edit = (req, res) => {
@@ -245,9 +247,36 @@ const api_toggleUserPrivileges = async (req, res) => {
     res.status(500).json({ error: error.message })
   }
 }
-const api_getUsersCollections = async (req, res) => {
 
-  
+function handleApiErr(res, error){
+  res.status(500).json({ err: error.message })
+}
+
+const api_requestPromotion = async (req, res) => {
+  let { userId } = req.params;
+  // Search for User
+  // #THESIS HANDLE ERRORS https://dev.to/sobiodarlington/better-error-handling-with-async-await-2e5m?signin=true
+  let userDoc = await User.findById(userId).catch(error => handleApiErr(res, error));
+  // Send Email to Admon
+  // Send the account upgrade to su (Super User)
+  await new Mail('request-upgradeAccount')
+  .from("yoncece@sylard.com")
+  .to(keys.authMail, "Sylard Auth System")
+  .subject('Sylard, Authorize Collaboration Account')
+  .data({
+      name: userDoc.name,
+      lastName: userDoc.lastName,
+      email: userDoc.email,
+      loginUrl: `${keys.homeUrl}/auth/login`,
+      url: `${keys.homeUrl}/auth/enable/colaborator/${userDoc.email}`
+  })
+  .send().catch(error => handleApiErr(res, error));
+  console.log(`authController>emailConfirmed> Correo enviado a ${keys.authMail}`)
+  // We update the user with the confirmation
+  return res.status(200).json({acknowledge: 'Request Send', userId: userDoc._id });
+}
+
+const api_getUsersCollections = async (req, res) => {
     // res.render('user/index', { usersObjs })
     const usersObjs = await User.find({ role: { $ne: 'su' } })
       .lean()
@@ -267,12 +296,9 @@ const api_getUsersCollections = async (req, res) => {
         return usr
       })
     )
-  
-  
   res.status(200).json(usersDocs)
-
-
 }
+
 const api_getUsers = async (req, res) => {
   const usersDocuments = await User.find().exec()
   res.status(200).json(usersDocuments)
@@ -333,6 +359,7 @@ export default {
   api_getUsersCollections,
   api_delUsers,
   api_toggleUserPrivileges,
+  api_requestPromotion,
   delById,
   indexUsuarios
 }
