@@ -48,14 +48,34 @@
 								<label class="swich_etiqueta_opcion1" for="checkbox" id="switch_usuario_visitante">
 									{{translation.SYLARDREGISTER.VISITOR}}
 								</label>
-								<label class="switch_general">
-									<input type="checkbox" name="role" class="checkbox_colaborador" requiered />
+								<label  class="switch_general">
+									<input id="slider"  onclick="show_box()" type="checkbox" name="role" class="checkbox_colaborador" requiered />
 									<span class="slider_general round"></span>
 								</label>
 								<label class="swich_etiqueta_opcion2" for="checkbox" id="switch_usuario_colaborador">
 									{{translation.SYLARDREGISTER.CONTRIBUTOR}}
 								</label>
 							</div>
+							<!--
+							<textarea placeholder="Cuentanos por que quieres ser colaborador!" name="" id="TextBox_colab" class="TextAreaColab hiddenBox"  ></textarea>
+							<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+							<script>
+								function show_box(){ 
+								$(document).ready(function(){
+								var estado = document.getElementById("slider").checked;
+   								 if(estado==false){
+										$("#TextBox_colab").removeClass( "showBox" )
+										$("#TextBox_colab").addClass("hiddenBox");
+									}
+									else{
+											$("#TextBox_colab").removeClass( "hiddenBox" )
+											$("#TextBox_colab").addClass("showBox");
+									}
+  
+								});
+								}	
+							</script>
+							-->
 						</div>
 						<div class="contenedor_inputs">
 							<label class="label" for="name">
@@ -189,16 +209,18 @@
 								{{translation.SYLARDREGISTER.LANGUAGUES}}
 							</label>
 							<input class="input_con_boton_derecha" type="search" id="langSearch"
-								placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}" list="languages">
+								placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}" >
 							<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar"
 								onclick="register.addSelection()">
 								<span class="icon-plus"></span>
 							</i>
+							<!--
 							<datalist id="languages">
 								{{#each nativeLanguages}}
 								<option value="{{name}} | {{gid}} | {{iso639P3code}} | {{country_ids}}">
 									{{/each}}
 							</datalist>
+							-->
 						</div>
 						<div class="contenedor_inputs" id="contenedor_inputs_con_boton">
 							<label class="label" for="about_you">

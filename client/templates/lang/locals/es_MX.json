@@ -169,5 +169,15 @@
         "colorTipo": "Color de tipografía",
         "Hablante": "Canal 1 (hablante)",
         "Canal": "Canal"
+    },
+    "elipsis":{
+        "upload_audioannotation":"Cargar audioanotacion",
+        "edit_metadata":"Editar metadatos",
+        "erase":"Eliminar"
     }
+    ,"super_users":{
+        "search":"Buscar",
+        "edit_c":"Editar Comunidades"
+    }
+
 }

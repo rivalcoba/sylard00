@@ -5,11 +5,12 @@
 <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
 
     <v-card-title>
-
+      {{
+                  $t("lang.super_users.search")
+                }}
       <v-text-field
         v-model="search"
         append-icon="mdi-magnify"
-        label="Search"
         single-line
         hide-details
       ></v-text-field>
@@ -128,7 +129,12 @@ import axios from "axios";
            let arreglo_concat_lenguajes="";//borrar por cada iteracion
            let arreglo_concat_collections="";
             for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
+              if(temparrjson.spokenLanguages[i].gid=="undefined" || temparrjson.spokenLanguages[i].gid==null || temparrjson.spokenLanguages[i].gid==""){
+                arreglo_concat_lenguajes =arreglo_concat_lenguajes +" : "+ temparrjson.spokenLanguages[i].name + ", ";
+              }
+              else{
                 arreglo_concat_lenguajes =arreglo_concat_lenguajes +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
+              }
                 temparrjson.lenguajes_concat=arreglo_concat_lenguajes;
                 jsonaumentado.push(temparrjson);
             }
@@ -200,7 +206,23 @@ import axios from "axios";
     console.log("El tipo ahora es: "+ tipo_role);
   }
   }
-  
+  ,
+   mounted() {
+    //console.log(superusuario);
+    var self = this;
+
+   
+    self.axios.get("i18n").then((response) => {
+      self.idioma = response.data.LANGUAGE;
+      if (self.idioma === "es") {
+        //console.log("esta en español");
+        this.$i18n.locale = "es";
+      } else if (self.idioma === "en") {
+        //console.log("esta en ingles");
+        this.$i18n.locale = "en";
+      }
+    });
+  }
   
   }
 </script>

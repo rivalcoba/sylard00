@@ -4398,3 +4398,15 @@ li.item_lista_colaboradores:last-of-type::before {
 #mascota_codigo_fuente {
   width: 60%;
 }
+.TextAreaColab{
+    width: 88%;
+}
+.hiddenBox{
+    height: 0;
+    visibility: hidden;
+}
+.showBox{
+    height: 6rem;
+   visibility: visible;
+    transition:height 1s;
+}

@@ -180,18 +180,21 @@
                   <span v-on:click="elipsis($event)" class="icono_cerrar_modal_elipsis icon-close"></span>
                   <div class="contenedor_opciones_elipsis">
                     <a v-bind:href="'/audioannotations/create'" class="btn_opciones_ellipsis_mis_colecciones"
-                      ><span class="icono_opcion_elipsis icon-file_upload"></span> Cargar
-                      audioanotación</a
+                      ><span class="icono_opcion_elipsis icon-file_upload"></span> {{
+                  $t("lang.elipsis.upload_audioannotation")
+                }}</a
                     >
                     <a v-bind:href="'/collections/edit/' + item2._id" class="btn_opciones_ellipsis_mis_colecciones"
-                      ><span class="icono_opcion_elipsis icon-edit"></span> Editar
-                      metadatos</a
+                      ><span class="icono_opcion_elipsis icon-edit"></span> {{
+                  $t("lang.elipsis.edit_metadata")
+                }}</a
                     >
                       <a href=""
                       @click.prevent="borrarCollection(item2._id)"
                         class="btn_opciones_ellipsis_mis_colecciones"
-                        ><span class="icono_opcion_elipsis icon-delete"></span>
-                        Eliminar</a
+                        ><span class="icono_opcion_elipsis icon-delete"></span>{{
+                  $t("lang.elipsis.erase")
+                }}</a
                       >
                   </div>
                 </div>

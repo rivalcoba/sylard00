@@ -477,13 +477,15 @@ this.$swal({
             return pagesArray;
         },
         search_titulo: function () {
+
             if (this.titulo.length > 2) {
                 return this.notas_audioannotations.filter((item) =>
                     item.name.toLowerCase().includes(this.titulo.toLowerCase())
                 );
             } else if (this.lengua.length > 2) {
                 return this.notas_audioannotations.filter((item) =>
-                    item.languages[0].language.name.toLowerCase().includes(this.lengua.toLowerCase())
+                console.log(item.languages)
+                   // item.languages[0].language.name.toLowerCase().includes(this.lengua.toLowerCase())
                 );
             } else if (this.gpo_lengua.length > 2) {
                 return this.notas_audioannotations.filter((item) =>

@@ -167,6 +167,15 @@
         "colorTipo": "Typography Color",
         "Hablante": "Channel 1 (speaker)",
         "Canal": "Channel"
+    },
+    "elipsis":{
+        "upload_audioannotation":"Upload Audio Annotation",
+        "edit_metadata":"Edit metadata",
+        "erase":"Erase"
+    }
+    ,"super_users":{
+        "search":"Search",
+        "edit_c":"Edit Communities"
     }
 
 }

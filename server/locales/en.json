@@ -37,8 +37,8 @@
         "CREDITS": "Credits"
     },
     "HEADER": {
-        "LOGIN": "Acceso",
-        "REGISTER": "Registrarse",
+        "LOGIN": "Login",
+        "REGISTER": "Sing up",
         "EDIT_USER": "Edit User",
         "EDIT_PASSWORD": "Edit Password",
         "MY_COLLECTIONS": "My Collections",
