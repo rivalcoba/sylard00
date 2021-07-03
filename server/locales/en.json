@@ -81,7 +81,8 @@
         "IF_CONTRIBUTOR": "If you wish to be a Contributor",
         "DESCRIPTION_PARR": "Please first read <a href='/#'>Contribute audio</a> and accept the <a href='/terms'>Terms and Conditions</a> for contributors.",
         "REGISTER_ACEPT": "Contributors will be assigned privileges to manage their ELAN annotated audio collections. At present SYLARD is not a substitute for a permanent archive such as those affiliated with the <a href='https://www.delaman.org/'>DELAMAN</a> archive network. Rather, SYLARD is focused on providing rapid access to recorded and annotated corpora for stakeholders, particularly native communities, scholars, students, and speakers.",
-        "ACEPT_TERMS": "I have read and accepted the <a href='/terms'>terms and conditions.</a>"
+        "ACEPT_TERMS": "I have read and accepted the <a href='/terms'>terms and conditions.</a>",
+        "OPEN_BOX":"Tell us, why do you want change to contributor account?"
     },
     "RESETPASSWORD": {
         "RESET_PASSWORD_TITLE": "Reset Password",

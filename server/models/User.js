@@ -53,10 +53,15 @@ const UserSchema = new Schema({
         default: false,
         // required: true
     },
+    TextBox_colab: {
+        type: String,
+        default: 'no_data'
+    },
     emailConfirmationToken : String,
     createdAt: Date,
     updatedAt: Date,
-    emailConfirmedAt: Date
+    emailConfirmedAt: Date,
+    
 })
 
 UserSchema.pre('deleteOne',{ query: false , document : true },async function(){

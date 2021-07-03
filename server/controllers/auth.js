@@ -57,7 +57,8 @@ const registerUser = async(req, res) => {
         spokenLanguages,
         country,
         terms,
-        about
+        about,
+        TextBox_colab
     } = req.body
 
     try {
@@ -73,7 +74,8 @@ const registerUser = async(req, res) => {
             spokenLanguages,
             country,
             terms: terms === 'on',
-            about
+            about,
+            TextBox_colab
         })
 
         let userModel = user.toJSON()
@@ -111,7 +113,8 @@ const emailConfirmed = async(req, res) => {
                     lastName: user.lastName,
                     email: user.email,
                     loginUrl: `${keys.homeUrl}/auth/login`,
-                    url: `${keys.homeUrl}/auth/enable/colaborator/${user.email}`
+                    url: `${keys.homeUrl}/auth/enable/colaborator/${user.email}`,
+                    reasons:user.TextBox_colab
                 })
                 .send()
             console.log(`authController>emailConfirmed> Correo enviado a ${keys.authMail}`)
