@@ -4403,6 +4403,7 @@ li.item_lista_colaboradores:last-of-type::before {
 }
 .hiddenBox{
     height: 0;
+    transition:height 1s;
     visibility: hidden;
 }
 .showBox{
