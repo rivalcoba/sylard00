@@ -17,7 +17,7 @@ const edit = (req, res) => {
   let spokenLang = ''
 
   req.user.spokenLanguages.forEach(lang => {
-    spokenLang = spokenLang.concat(`${lang.name} | ${lang.gid}\n`)
+    spokenLang = spokenLang.concat(`${lang.name}`)
   })
   spokenLang = spokenLang.trim()
   res.render('user/edit', {
@@ -105,7 +105,7 @@ const editUser = async (req, res) => {
     country,
     about,
   } = req.body
-
+ 
   //return res.json({spokenLanguages})
 
   // Update user
@@ -253,7 +253,9 @@ function handleApiErr(res, error){
 }
 
 const api_requestPromotion = async (req, res) => {
-  let { userId } = req.params;
+  let { userId,text_reasons } = req.params;
+
+  console.log(text_reasons);
   // Search for User
   // #THESIS HANDLE ERRORS https://dev.to/sobiodarlington/better-error-handling-with-async-await-2e5m?signin=true
   let userDoc = await User.findById(userId).catch(error => handleApiErr(res, error));
@@ -268,12 +270,26 @@ const api_requestPromotion = async (req, res) => {
       lastName: userDoc.lastName,
       email: userDoc.email,
       loginUrl: `${keys.homeUrl}/auth/login`,
-      url: `${keys.homeUrl}/auth/enable/colaborator/${userDoc.email}`
+      url: `${keys.homeUrl}/auth/enable/colaborator/${userDoc.email}`,
+      reasons:text_reasons
   })
   .send().catch(error => handleApiErr(res, error));
   console.log(`authController>emailConfirmed> Correo enviado a ${keys.authMail}`)
   // We update the user with the confirmation
-  return res.status(200).json({acknowledge: 'Request Send', userId: userDoc._id });
+  try{
+  await userDoc.editUser({
+    TextBox_colab:text_reasons,
+    onpromote:true
+  })
+  req.flash('success_msg', 'solicitud enviada con exito')
+  // Get the info from
+  res.redirect('/dashboard')
+}catch(e){
+  req.flash('error_msg', 'Error')
+  // Get the info from
+  res.redirect('/dashboard')
+}
+  //return res.status(200).json({acknowledge: 'Request Send', userId: userDoc._id });
 }
 
 const api_getUsersCollections = async (req, res) => {
@@ -343,7 +359,12 @@ const delById = async (req, res)=>{
     res.status(500).json({ error: error.message })
   }
 }
-
+const promote_view = (req, res) => {
+  res.render('user/reasons_promote', {
+    title: 'Promote view',
+   
+  })
+}
 export default {
   edit,
   editUser,
@@ -361,5 +382,6 @@ export default {
   api_toggleUserPrivileges,
   api_requestPromotion,
   delById,
-  indexUsuarios
+  indexUsuarios,
+  promote_view
 }

@@ -56,6 +56,18 @@
           <span class="icono icon-angle-down" id="flecha_dropdow_barra_superior"></span>
         </button>
         <div class="contenido_dropdown_menu_usuario">
+          {{#ifVisitor user}}
+          <a id="promote_account"  href="/user/promote_view">
+        <img src="/images/group_add_white_24dp.svg" width="22px" alt=""> {{translation.HEADER.PROMOTE_MENU_TRUE}}
+          </a>  
+          <script>
+            var verify_onpromote={{user.onpromote}};
+            	if(verify_onpromote==true){
+                document.getElementById("promote_account").setAttribute('href',"#");
+                document.getElementById("promote_account").innerHTML=" {{translation.HEADER.PROMOTE_MENU_FALSE}}"
+              }
+          </script>
+          {{/ifVisitor}}
           {{#if user}}
           <a href="/user/edit"><span class="icono_dropdown_menu_usuario_item icon-edit"></span>
             {{translation.HEADER.EDIT_USER}}</a>

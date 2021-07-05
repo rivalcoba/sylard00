@@ -1,0 +1,32 @@
+<div class="container-fluid" id="contenedor_actualiza_usuario">
+			<div class="extension_fondo_blanco_izquierdo d-sm-none d-md-block"></div>
+			<div class="container">
+				<div class="row contenedor-90vh" id="fila1_actualiza_usuario">
+					<div class="col-md-7" id="columna_izquierda_actualiza_usuario">
+						<div class="" id="columna_izquierda_actualiza_cuenta_anidada">
+						<h1 class=""><span class="icono_principal_mensaje icon-user-plus" id="icono_principal_actualiza_usuario"></span></h1>
+						<h1>{{translation.UPGRADE_ACCOUNT_VIEW.title}}</h1>
+						
+						<h3>{{translation.UPGRADE_ACCOUNT_VIEW.dialog_why}}</h3>
+						<form id="form" method="POST" action="/user/api/requestPromotion/{{user._id}}/" role="form" class="formulario_contenedor">
+							<div id="contenedor_solicitud_actualiza_usuario" class="">	
+								<label class="label" for="actualiza_usuario">Describe brevemente el proyecto que quieres compartir en SYLARD</label>
+								<textarea oninput="insert()" name="actualiza_usuario_formulario" id="actualiza_usuario" name="text_reasons" placeholder="{{translation.UPGRADE_ACCOUNT_VIEW.example_questions}}" rows="13" required></textarea>
+								<p class="secundario float_left">{{translation.UPGRADE_ACCOUNT_VIEW.be}}</p>
+								<button type="submit" class="btn btn-primario float_right" id="boton_actualiza_usuario">Enviar</button>
+							</div>
+                            <script>
+                                function insert(){
+                                    var txt_box=document.getElementById("actualiza_usuario").value;
+                                    document.getElementById("form").setAttribute('action',"/user/api/requestPromotion/{{user._id}}/"+txt_box);
+                                }
+                            </script>
+						</form>
+						</div>
+					</div>
+					<div class="" id="columna_derecha_actualiza_cuenta_anidada">
+						<img class="" src="/images/seritriangulo.svg" id="img_actualiza_usuario" alt="Pintura Facial Seri">
+					</div>
+				</div>
+		</div>
+	</div>
