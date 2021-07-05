@@ -3,6 +3,7 @@
 import Collection from '@models/Collection'
 import Glottolog from '@models/Glottolog'
 import Locations from '@models/Location'
+import User from '@models/User'
 
 // import User from '@models/User'
 

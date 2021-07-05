@@ -365,6 +365,16 @@ const promote_view = (req, res) => {
    
   })
 }
+const getAllUsersNames = async (req, res)=>{
+  try {
+    let userDoc = await User.find().select('_id name');
+   res.json(userDoc)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+}
+
+
 export default {
   edit,
   editUser,
@@ -383,5 +393,7 @@ export default {
   api_requestPromotion,
   delById,
   indexUsuarios,
-  promote_view
+  promote_view,
+  getAllUsersNames
+
 }
