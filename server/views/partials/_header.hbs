@@ -58,13 +58,13 @@
         <div class="contenido_dropdown_menu_usuario">
           {{#ifVisitor user}}
           <a id="promote_account"  href="/user/promote_view">
-        <img src="/images/group_add_white_24dp.svg" width="22px" alt=""> {{translation.HEADER.PROMOTE_MENU_TRUE}}
+          <span class='icono_dropdown_menu_usuario_item icon-user-plus'></span> {{translation.HEADER.PROMOTE_MENU_TRUE}}
           </a>  
           <script>
             var verify_onpromote={{user.onpromote}};
             	if(verify_onpromote==true){
                 document.getElementById("promote_account").setAttribute('href',"#");
-                document.getElementById("promote_account").innerHTML=" {{translation.HEADER.PROMOTE_MENU_FALSE}}"
+                document.getElementById("promote_account").innerHTML="<span class='icono_dropdown_menu_usuario_item icon-user-times'></span> {{translation.HEADER.PROMOTE_MENU_FALSE}}"
               }
           </script>
           {{/ifVisitor}}
@@ -74,33 +74,31 @@
           <a href="/user/edit/password"><span class="icono_dropdown_menu_usuario_item icon-key1"></span>
             {{translation.HEADER.EDIT_PASSWORD}}</a>
           {{/if}}
-          <a href="#"><span class="icono_dropdown_menu_usuario_item icon-folder-open-o"></span>
-            {{translation.HEADER.EXPLORE}}</a>
           {{#ifColaborator user}}
           <a href="/collections">
-            <i class="fa fa-book"></i> {{translation.HEADER.MY_COLLECTIONS}}
+            <i class="fa fa-book"></i> <span class="icono_dropdown_menu_usuario_item icon-folder-open-o"></span> {{translation.HEADER.MY_COLLECTIONS}}
           </a>
           {{/ifColaborator}}
            {{#ifSu user}}
       <a href="/collections">
-        <i class="fa fa-book"></i> {{translation.HEADER.MY_COLLECTIONS}}
+        <i class="fa fa-book"></i> <span class="icono_dropdown_menu_usuario_item icon-library_books"></span> {{translation.HEADER.SU_Collections}}
       </a>
       {{/ifSu}}
 
       {{#ifSu user}}
       <a href="/user">
-        <i class="fa fa-book"></i> {{translation.HEADER.USERS}}
+        <i class="fa fa-book"></i> <span class="icono_dropdown_menu_usuario_item icon-users"></span> {{translation.HEADER.USERS}}
       </a>
       {{/ifSu}}
           {{#ifSu user}}
       <a href="/genres/">
-        <i class="fa fa-book"></i>  {{translation.HEADER.FIELDS_EDITOR}}
+        <i class="fa fa-book"></i><span class="icono_dropdown_menu_usuario_item icon-playlist_add_check"></span>   {{translation.HEADER.FIELDS_EDITOR}}
       </a>
       {{/ifSu}}
 
           {{#hideIfSu user}}
           <a href="/dashboard">
-            <i class="fa fa-table"></i> {{translation.NAVBAR.CATALOGUE}}
+            <i class="fa fa-table"></i><span class="icono_dropdown_menu_usuario_item icon-library_books"></span> {{translation.NAVBAR.CATALOGUE}}
           </a>
           {{/hideIfSu}}
           <a class="dropdown_menu_usuario_logout" href="/auth/logout"><span

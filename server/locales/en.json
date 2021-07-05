@@ -43,11 +43,12 @@
         "EDIT_PASSWORD": "Edit Password",
         "MY_COLLECTIONS": "My Collections",
         "LOGOUT": "Logout",
-        "USERS": "Usuarios",
+        "USERS": "All Users",
         "EXPLORE": "Explore"
         ,"FIELDS_EDITOR":"Fields Editor",
         "PROMOTE_MENU_TRUE":"Promote to contributor",
-        "PROMOTE_MENU_FALSE":"Account on revision"
+        "PROMOTE_MENU_FALSE":"Account on revision",
+        "SU_Collections":"All Collections"
     },
     "SYLARDLOGIN": {
         "LOGIN": "Login",
@@ -241,5 +242,18 @@
     "example_questions":"What?Why?How?",
     "description":"Describe the project you want to share on SYLARD",
     "be":"*be brief, be clear, be patient"
+},
+"auth_confirmMail":{
+    "Active_account":"Active account!",
+    "Dear_user":"Dear ",
+    "active_msj":"Your account has been actived. Remember login with your email"
+
+},
+"confirm_contributor_account":{
+    "auth":"Authorized!",
+    "promotion_succes":"Promotion to contributor successed",
+    "user_mail":"The account with the mail",
+    "has_been":"has been promoted to contributor"
 }
+
 }
