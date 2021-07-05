@@ -32,12 +32,13 @@ router.get('/reset/password', userController.resetPassword);
 router.put('/reset/password', confirmEmailAccount, userController.resetUserPassword);
 router.get('/su/delete/:userId', ensureSuAuthenticated, userController.delById)
 
+router.get('/promote_view', ensureAuthenticated, userController.promote_view);
 // ============ ==> API <== ====================
 // TODO: Proteger RUTAS
 router.get('/api/getuserscollections', userController.api_getUsersCollections);
 router.get('/api/getusers', userController.api_getUsers);
 router.delete('/api/delusers', userController.api_delUsers);
 router.put('/api/toggleUserPrivileges/:userId', userController.api_toggleUserPrivileges)
-router.get('/api/requestPromotion/:userId',userController.api_requestPromotion);
+router.post('/api/requestPromotion/:userId/:text_reasons',userController.api_requestPromotion);
 
 module.exports = router;

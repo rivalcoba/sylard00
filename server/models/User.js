@@ -57,6 +57,7 @@ const UserSchema = new Schema({
         type: String,
         default: 'no_data'
     },
+    onpromote:  {  type: Boolean, default: false },
     emailConfirmationToken : String,
     createdAt: Date,
     updatedAt: Date,

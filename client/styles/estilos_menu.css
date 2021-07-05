@@ -4411,3 +4411,16 @@ li.item_lista_colaboradores:last-of-type::before {
    visibility: visible;
     transition:height 1s;
 }
+.alert_privs{
+    margin:6px;
+    padding:9px;
+    background-color: var(--amarillo);
+    border-radius: 6px;
+    font-family: var(--sans-serif);
+}
+.showLayer{
+    visibility: visible;
+}
+.hideLayer{
+    visibility: hidden;
+}
