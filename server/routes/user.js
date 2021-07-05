@@ -40,5 +40,6 @@ router.get('/api/getusers', userController.api_getUsers);
 router.delete('/api/delusers', userController.api_delUsers);
 router.put('/api/toggleUserPrivileges/:userId', userController.api_toggleUserPrivileges)
 router.post('/api/requestPromotion/:userId/:text_reasons',userController.api_requestPromotion);
+router.get('/api/getusersnames', userController.getAllUsersNames);
 
 module.exports = router;

@@ -4,6 +4,33 @@
       <div class="contenedor_tabla_mis_colecciones">
         <table class="tabla_mis_colecciones">
           <thead>
+                 <th class="cabezal_columnas_th">
+              <div class="contenedor_etiquetas_barras_busqueda">
+                <label class="label label_junto_flechas">{{$t("lang.tabla_coleccion.director")}}</label>
+                <button
+                  id="lengua_on"
+                  @click="ordenar_ascendente('user')"
+                  class="flecha_orden_ascendente"
+                >
+                  <span class="icon-arrow-up"></span>
+                </button>
+                <button
+                  id="lengua_on"
+                  @click="ordenar_descendente('user')"
+                  class="flecha_orden_descendente"
+                >
+                  <span class="icon-arrow-down"></span>
+                </button>
+              </div>
+              <input
+                class="input_busqueda"
+                type="text"
+                id=""
+                name=""
+                
+                placeholder="Búsqueda"
+              />
+            </th>
             <th class="cabezal_columnas_th" id="th_coleccion">
               <div class="contenedor_etiquetas_barras_busqueda">
                 <label class="label label_junto_flechas">{{
@@ -122,6 +149,9 @@
             <th class="" id="th_acciones"></th>
           </thead>
           <tr v-for="(item2, index) in search_titulo" :key="'item' + index">
+            <td>
+              <strong>{{item2.user}}</strong>
+            </td>
             <td>
               <strong
                 ><i>{{ item2.name }}</i></strong
@@ -274,6 +304,7 @@ export default {
   },
   data() {
     return {
+      names:{},
       participantOrdenado: [],
       tier: [],
       result: null,
@@ -392,7 +423,18 @@ export default {
           " ************ " +
           e
       );
-      if (e == "titulo_off") {
+           if (e == "user") {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.user > b.user) {
+            return -1;
+          }
+          if (a.user < b.user) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      } else  if (e == "titulo_off") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.name > b.name) {
             return -1;
@@ -469,8 +511,18 @@ export default {
           " ************ " +
           e
       );
-
-      if (e == "titulo_on") {
+if (e == "user") {
+        return this.notas_audioannotations.sort(function (a, b) {
+          if (a.user > b.user) {
+            return 1;
+          }
+          if (a.user < b.user) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+      }else if (e == "titulo_on") {
         return this.notas_audioannotations.sort(function (a, b) {
           if (a.name > b.name) {
             return 1;
@@ -564,7 +616,7 @@ export default {
       });
     },
   },
-  mounted() {
+  async mounted() {
     //console.log(superusuario);
     var self = this;
     var API_Route = "";
@@ -574,9 +626,18 @@ export default {
     else{
       API_Route="collections/api/pag/1";
     }
-
+  await this.axios.get("/user/api/getusersnames").then((result) => {
+      this.names=this.result = result.data;
+    })
     self.axios.get(API_Route).then((response) => {
       self.notas_audioannotations = response.data.itemsList;
+      self.notas_audioannotations.forEach(element => {
+        this.names.forEach(name => {
+          if(element.user==name._id){
+            element.user=name.name;
+          }
+        });
+      });
       self.paginacion = response.data.paginator;
       self.pagina = self.paginacion;
       //console.log(response.data)
