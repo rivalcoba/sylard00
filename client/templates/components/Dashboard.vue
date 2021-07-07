@@ -34,7 +34,7 @@
                                         <span class="icon-arrow-down"></span>
                                     </button>
                                 </div>
-                                <input id="titulo" name="titulo" v-model="titulo" class="input_busqueda" type="search" placeholder="Búsqueda">
+                                <input id="titulo" name="titulo" v-model="titulo" @input="searching_by_collection()" class="input_busqueda" type="search" placeholder="Búsqueda">
                             </th>
                             <th class="cabezal_columnas_th">
                                 <div class="contenedor_etiquetas_barras_busqueda">
@@ -46,7 +46,7 @@
                                         <span class="icon-arrow-down"></span>
                                     </button>
                                 </div>
-                                <input class="input_busqueda" type="text" id="lengua" name="lengua" v-model="lengua" placeholder="Busqueda" />
+                                <input class="input_busqueda" @input="searching_by_lang()" type="text" id="lengua" name="lengua" v-model="lengua" placeholder="Busqueda" />
                             </th>
                             <th class="cabezal_columnas_th">
                                 <div class="contenedor_etiquetas_barras_busqueda">
@@ -169,6 +169,46 @@ export default {
         };
     },
     methods: {
+       async searching_by_collection(){
+                var self = this;
+                if(this.titulo.length>0){
+           await self.axios.get("collections/api/bycollection/"+this.titulo).then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+                
+                if(this.titulo.length<=0){
+                     await self.axios.get("collections/api/read_all/1").then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+        },
+       async searching_by_lang(){
+                var self = this;
+                if(this.lengua.length>0){
+           await self.axios.get("collections/api/byLenguages/"+this.lengua).then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+                
+                if(this.lengua.length<=0){
+                      self.axios.get("collections/api/read_all/1").then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+        },
        showCollect(title,text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
@@ -479,14 +519,10 @@ this.$swal({
         search_titulo: function () {
 
             if (this.titulo.length > 2) {
-                return this.notas_audioannotations.filter((item) =>
-                    item.name.toLowerCase().includes(this.titulo.toLowerCase())
-                );
+             
             } else if (this.lengua.length > 2) {
-                return this.notas_audioannotations.filter((item) =>
-                console.log(item.languages)
-                   // item.languages[0].language.name.toLowerCase().includes(this.lengua.toLowerCase())
-                );
+               
+              
             } else if (this.gpo_lengua.length > 2) {
                 return this.notas_audioannotations.filter((item) =>
                     item.languages[0].LanguageGroup.name
