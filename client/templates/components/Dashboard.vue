@@ -58,7 +58,7 @@
                                         <span class="icon-arrow-down"></span>
                                     </button>
                                 </div>
-                                <input class="input_busqueda" type="text" id="gpo_lengua" name="gpo_lengua" v-model="gpo_lengua" placeholder="Búsqueda" />
+                                <input class="input_busqueda" @input="searching_by_GpoL()" type="text" id="gpo_lengua" name="gpo_lengua" v-model="gpo_lengua" placeholder="Búsqueda" />
                             </th>
                             <th class="cabezal_columnas_th">
                                 <div class="contenedor_etiquetas_barras_busqueda">
@@ -70,7 +70,7 @@
                                         <span class="icon-arrow-down"></span>
                                     </button>
                                 </div>
-                                <input class="input_busqueda" type="text" id="comunidad" name="comunidad" v-model="comunidad" placeholder="Búsqueda" />
+                                <input class="input_busqueda" @input="searching_by_Community()" type="text" id="comunidad" name="comunidad" v-model="comunidad" placeholder="Búsqueda" />
                             </th>
                             <th class="" id="th_acciones">
 
@@ -201,6 +201,46 @@ export default {
                 }
                 
                 if(this.lengua.length<=0){
+                      self.axios.get("collections/api/read_all/1").then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+        },
+        async searching_by_GpoL(){
+                var self = this;
+                if(this.gpo_lengua.length>0){
+           await self.axios.get("collections/api/byGposL/"+this.gpo_lengua).then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+                
+                if(this.gpo_lengua.length<=0){
+                      self.axios.get("collections/api/read_all/1").then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+        },
+        async searching_by_Community(){
+                var self = this;
+                if(this.comunidad.length>0){
+           await self.axios.get("collections/api/bycommu/"+this.comunidad).then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+                
+                if(this.comunidad.length<=0){
                       self.axios.get("collections/api/read_all/1").then((response) => {
             self.notas_audioannotations = response.data.itemsList;
             self.paginacion = response.data.paginator;
@@ -524,11 +564,7 @@ this.$swal({
                
               
             } else if (this.gpo_lengua.length > 2) {
-                return this.notas_audioannotations.filter((item) =>
-                    item.languages[0].LanguageGroup.name
-                    .toLowerCase()
-                    .includes(this.gpo_lengua.toLowerCase())
-                );
+               
             } else if (this.comunidad.length > 2) {
                 return this.notas_audioannotations.filter((item) =>
                     item.localities[0].Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())

@@ -437,6 +437,96 @@ const api_getCollectionFilteredbyLang = async(req, res) => {
         })
     }
 }
+const api_getCollectionFilteredbyGpoL= async(req, res) => {
+    //let collectionDoc = {}
+    const myCustomLabels = {
+        totalDocs: 'itemCount',
+        docs: 'itemsList',
+        limit: 'perPage',
+        page: 'currentPage',
+        nextPage: 'next',
+        prevPage: 'prev',
+        totalPages: 'pageCount',
+        pagingCounter: 'slNo',
+        meta: 'paginator',
+    };
+    const options = {
+        page: req.params.page,
+        limit: 5,
+        sort: { title: 1 },
+        populate: 'colection',
+        customLabels: myCustomLabels,
+    };
+    let {gpol} = req.params;
+    const gpolRegex = new RegExp(gpol, 'i');
+    try {
+        Collection.paginate({$or:[{"languages.0.LanguageGroup.gid":gpolRegex},{"languages.1.LanguageGroup.gid":gpolRegex},{"languages.2.LanguageGroup.gid":gpolRegex},{"languages.3.LanguageGroup.gid":gpolRegex},{"languages.4.LanguageGroup.gid":gpolRegex},{"languages.5.LanguageGroup.gid":gpolRegex},{"languages.6.LanguageGroup.gid":gpolRegex},{"languages.0.LanguageGroup.name":gpolRegex},{"languages.1.LanguageGroup.name":gpolRegex},{"languages.2.LanguageGroup.name":gpolRegex},{"languages.3.LanguageGroup.name":gpolRegex},{"languages.4.LanguageGroup.name":gpolRegex},{"languages.5.LanguageGroup.name":gpolRegex},{"languages.6.LanguageGroup.name":gpolRegex}]}, options, function(
+            err,
+            result
+        ) {
+            if (err) {
+                console.log("El error esta aqui")
+                console.err(err);
+                return res.status(400).json({
+                    mensaje: 'Ocurrio un error',
+                    err
+                })
+            } else {
+                res.json(result);
+            }
+        })
+    } catch (error) {
+        return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            error
+        })
+    }
+}
+const api_getCollectionFilteredbyCommu= async(req, res) => {
+    //let collectionDoc = {}
+    const myCustomLabels = {
+        totalDocs: 'itemCount',
+        docs: 'itemsList',
+        limit: 'perPage',
+        page: 'currentPage',
+        nextPage: 'next',
+        prevPage: 'prev',
+        totalPages: 'pageCount',
+        pagingCounter: 'slNo',
+        meta: 'paginator',
+    };
+    const options = {
+        page: req.params.page,
+        limit: 5,
+        sort: { title: 1 },
+        populate: 'colection',
+        customLabels: myCustomLabels,
+    };
+    let {commu} = req.params;
+    const commuRegex = new RegExp(commu, 'i');
+    try {
+        Collection.paginate({$or:[{"localities.0.Nom_Ent":commuRegex},{"localities.1.Nom_Ent":commuRegex},{"localities.2.Nom_Ent":commuRegex},{"localities.3.Nom_Ent":commuRegex},{"localities.4.Nom_Ent":commuRegex},{"localities.5.Nom_Ent":commuRegex},{"localities.6.Nom_Ent":commuRegex},{"localities.0.Nom_Mun":commuRegex},{"localities.1.Nom_Mun":commuRegex},{"localities.2.Nom_Mun":commuRegex},{"localities.3.Nom_Mun":commuRegex},{"localities.4.Nom_Mun":commuRegex},{"localities.5.Nom_Mun":commuRegex},{"localities.6.Nom_Mun":commuRegex},{"localities.0.Nom_Loc":commuRegex},{"localities.1.Nom_Loc":commuRegex},{"localities.2.Nom_Loc":commuRegex},{"localities.3.Nom_Loc":commuRegex},{"localities.4.Nom_Loc":commuRegex},{"localities.5.Nom_Loc":commuRegex},{"localities.6.Nom_Loc":commuRegex}]}, options, function(
+            err,
+            result
+        ) {
+            if (err) {
+                console.log("El error esta aqui")
+                console.err(err);
+                return res.status(400).json({
+                    mensaje: 'Ocurrio un error',
+                    err
+                })
+            } else {
+                res.json(result);
+            }
+        })
+    } catch (error) {
+        return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            error
+        })
+    }
+}
     //final
 export default {
     // List Collections from a particular Colaborator User
@@ -463,5 +553,7 @@ export default {
     api_delCollectionById,
     api_delete,
     api_getCollectionFilteredbyCollection,
-    api_getCollectionFilteredbyLang
+    api_getCollectionFilteredbyLang,
+    api_getCollectionFilteredbyGpoL,
+    api_getCollectionFilteredbyCommu
 }
