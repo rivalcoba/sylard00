@@ -557,19 +557,6 @@ this.$swal({
             return pagesArray;
         },
         search_titulo: function () {
-
-            if (this.titulo.length > 2) {
-             
-            } else if (this.lengua.length > 2) {
-               
-              
-            } else if (this.gpo_lengua.length > 2) {
-               
-            } else if (this.comunidad.length > 2) {
-                return this.notas_audioannotations.filter((item) =>
-                    item.localities[0].Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())
-                );
-            }
             return this.notas_audioannotations;
         },
     },
