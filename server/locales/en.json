@@ -38,7 +38,7 @@
     },
     "HEADER": {
         "LOGIN": "Login",
-        "REGISTER": "Sing up",
+        "REGISTER": "Sign up",
         "EDIT_USER": "Edit User",
         "EDIT_PASSWORD": "Edit Password",
         "MY_COLLECTIONS": "My Collections",
@@ -47,7 +47,7 @@
         "EXPLORE": "Explore"
         ,"FIELDS_EDITOR":"Fields Editor",
         "PROMOTE_MENU_TRUE":"Promote to contributor",
-        "PROMOTE_MENU_FALSE":"Account on revision",
+        "PROMOTE_MENU_FALSE":"Account in revision",
         "SU_Collections":"All Collections"
     },
     "SYLARDLOGIN": {
@@ -72,12 +72,12 @@
         "EMAIL": "email:",
         "PASSWORD": "Password:",
         "PASSWORD_PLACEHOLDER": "Enter at least 6 characters",
-        "CONFIRM_PASSWORD": "Confirm Password:",
+        "CONFIRM_PASSWORD": "Confirm password:",
         "CONFIRM_PASSWORD_PLACEHOLDER_": "Must match password",
         "COUNTRY": "Country of origin",
         "SELECT_AN_OPTION": "Select your option",
-        "LANGUAGUES": "Languages spoken",
-        "ABOUT": "Personal statement",
+        "LANGUAGUES": "Added lenguages",
+        "ABOUT": "Personal statement(optional)",
         "WHAT_IS_YOUR_JOB": "Tell about yourself and your interest in SYLARD",
         "IF_VISITOR": "If you wish enjoy Visitor privileges",
         "SECONDARY_WHITE": "Registration is required to document acceptance of <a href='/terms'>terms and conditions</a> of use and to protect the rights of speakers and contributors. As a Visitor you will have access to all SYLARD materials.",
@@ -85,7 +85,7 @@
         "DESCRIPTION_PARR": "Please first read <a href='/#'>Contribute audio</a> and accept the <a href='/terms'>Terms and Conditions</a> for contributors.",
         "REGISTER_ACEPT": "Contributors will be assigned privileges to manage their ELAN annotated audio collections. At present SYLARD is not a substitute for a permanent archive such as those affiliated with the <a href='https://www.delaman.org/'>DELAMAN</a> archive network. Rather, SYLARD is focused on providing rapid access to recorded and annotated corpora for stakeholders, particularly native communities, scholars, students, and speakers.",
         "ACEPT_TERMS": "I have read and accepted the <a href='/terms'>terms and conditions.</a>",
-        "OPEN_BOX":"Tell us, why do you want change to contributor account?",
+        "OPEN_BOX":"Tell us why you want to be contributor",
         "ALERT_PRIV":"At the moment the administrator is checking your reasons about your change of account to contributor"
     },
     "RESETPASSWORD": {
@@ -107,8 +107,8 @@
         "DESC_COLLECTION": "Description of the collection",
         "DESC_COLLECTION_": "Brief description (max 200 characters)",
         "LANG_COLLECTION": "Languages ​​of the collection",
-        "LENGUAGUET": "Last Tongue:",
-        "GROUP_LANG": "Languages Group:",
+        "LENGUAGUET": "Terminal language:",
+        "GROUP_LANG": "Language group:",
         "LAG_ADS": "Languages ​​added to the collection",
         "COMUNITY": "Languages ​​added to the collection",
         "COUNTRY": "Country",
@@ -191,7 +191,7 @@
     },
     "tabla_coleccion": {
         "coleccion": "Collection",
-        "Lenguaterminal": "Last Tongue",
+        "Lenguaterminal": "Terminal language",
         "gpoLengua": "Language Group",
         "comunidades": "Communities",
         "langAdd": "Languages ​​added to the collection",
@@ -203,11 +203,11 @@
         "editCollection": "Edit Collection",
         "uploadAudioAnnotation": "upload AudioAnnotation",
         "coleccion": "Collection",
-        "Lenguaterminal": "Last Tongue",
-        "gpoLengua": "Languages Group:",
-        "gpo_de_lengua": "Languages Group:",
+        "Lenguaterminal": "Terminal language",
+        "gpoLengua": "Language group:",
+        "gpo_de_lengua": "Language group:",
         "comunidades": "Communities",
-        "Comunidad": "Comunity",
+        "Comunidad": "Community",
         "hablantes": "Speakers",
         "generoduracion": "Gender and duration",
         "titulo": "Title"
@@ -251,7 +251,7 @@
 },
 "confirm_contributor_account":{
     "auth":"Authorized!",
-    "promotion_succes":"Promotion to contributor successed",
+    "promotion_succes":"Promotion to contributor Successful",
     "user_mail":"The account with the mail",
     "has_been":"has been promoted to contributor"
 }
