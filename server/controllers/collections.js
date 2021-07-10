@@ -527,6 +527,51 @@ const api_getCollectionFilteredbyCommu= async(req, res) => {
         })
     }
 }
+const api_getCollectionFilteredbyUserId= async(req, res) => {
+    //let collectionDoc = {}
+    const myCustomLabels = {
+        totalDocs: 'itemCount',
+        docs: 'itemsList',
+        limit: 'perPage',
+        page: 'currentPage',
+        nextPage: 'next',
+        prevPage: 'prev',
+        totalPages: 'pageCount',
+        pagingCounter: 'slNo',
+        meta: 'paginator',
+    };
+    const options = {
+        page: req.params.page,
+        limit: 5,
+        sort: { title: 1 },
+        populate: 'colection',
+        customLabels: myCustomLabels,
+    };
+    let {userid} = req.params;
+    //const useridRegex = new RegExp(userid, 'i');
+    try {
+        Collection.paginate({user:userid}, options, function(
+            err,
+            result
+        ) {
+            if (err) {
+                console.log("El error esta aqui")
+                console.err(err);
+                return res.status(400).json({
+                    mensaje: 'Ocurrio un error',
+                    err
+                })
+            } else {
+                res.json(result);
+            }
+        })
+    } catch (error) {
+        return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            error
+        })
+    }
+}
     //final
 export default {
     // List Collections from a particular Colaborator User
@@ -555,5 +600,6 @@ export default {
     api_getCollectionFilteredbyCollection,
     api_getCollectionFilteredbyLang,
     api_getCollectionFilteredbyGpoL,
-    api_getCollectionFilteredbyCommu
+    api_getCollectionFilteredbyCommu,
+    api_getCollectionFilteredbyUserId
 }

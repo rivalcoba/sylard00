@@ -25,9 +25,10 @@
               <input
                 class="input_busqueda"
                 type="text"
-                id=""
-                name=""
-                
+                @input="search_by_name()"
+                id="names_director"
+                name="names_director"
+                v-model="names_director"
                 placeholder="Búsqueda"
               />
             </th>
@@ -57,7 +58,8 @@
                 id="titulo"
                 name="titulo"
                 v-model="titulo"
-                class="input_busqueda"
+                @input="searching_by_collection()"
+                class="input_busqueda"t
                 type="search"
                 placeholder="Búsqueda"
               />
@@ -89,6 +91,7 @@
                 id="lengua"
                 name="lengua"
                 v-model="lengua"
+                @input="searching_by_lang()"
                 placeholder="Busqueda"
               />
             </th>
@@ -116,6 +119,7 @@
                 id="gpo_lengua"
                 name="gpo_lengua"
                 v-model="gpo_lengua"
+                @input="searching_by_GpoL()"
                 placeholder="Búsqueda"
               />
             </th>
@@ -143,6 +147,7 @@
                 id="comunidad"
                 name="comunidad"
                 v-model="comunidad"
+                @input="searching_by_Community()"
                 placeholder="Búsqueda"
               />
             </th>
@@ -305,6 +310,7 @@ export default {
   data() {
     return {
       names:{},
+      names_director:"",
       participantOrdenado: [],
       tier: [],
       result: null,
@@ -344,6 +350,128 @@ export default {
     };
   },
   methods: {
+   async sync_names(){
+       await this.notas_audioannotations.forEach(element => {
+        this.names.forEach(name => {
+          if(element.user==name._id){
+            element.user=name.name;
+          }
+        });
+      });
+    },
+     async search_by_name(){
+       var self = this;
+      let found = this.names.filter(element => element.name==this.names_director);
+     try{
+     // console.log(found[0]._id);
+         await this.axios.get("collections/api/byuserid/"+found[0]._id).then((response) => {
+            this.notas_audioannotations = response.data.itemsList;
+            this.sync_names();
+            this.paginacion = response.data.paginator;
+            this.pagina = this.paginacion;
+            //console.log(response.data)
+        });
+     }catch(e){
+       //console.log("not match")
+     }
+       if(this.names_director.length<=0){
+                     await self.axios.get("collections/api/read_all/1").then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+            this.sync_names();
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+    },
+     async searching_by_collection(){
+                var self = this;
+                if(this.titulo.length>0){
+           await self.axios.get("collections/api/bycollection/"+this.titulo).then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+            this.sync_names();
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+                
+                if(this.titulo.length<=0){
+                     await self.axios.get("collections/api/read_all/1").then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+            this.sync_names();
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+        },
+       async searching_by_lang(){
+                var self = this;
+                if(this.lengua.length>0){
+           await self.axios.get("collections/api/byLenguages/"+this.lengua).then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+               this.sync_names();
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+                
+                if(this.lengua.length<=0){
+                      self.axios.get("collections/api/read_all/1").then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+               this.sync_names();
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+        },
+        async searching_by_GpoL(){
+                var self = this;
+                if(this.gpo_lengua.length>0){
+           await self.axios.get("collections/api/byGposL/"+this.gpo_lengua).then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+               this.sync_names();
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+                
+                if(this.gpo_lengua.length<=0){
+                      self.axios.get("collections/api/read_all/1").then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+               this.sync_names();
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+        },
+        async searching_by_Community(){
+                var self = this;
+                if(this.comunidad.length>0){
+           await self.axios.get("collections/api/bycommu/"+this.comunidad).then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+               this.sync_names();
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+                
+                if(this.comunidad.length<=0){
+                      self.axios.get("collections/api/read_all/1").then((response) => {
+            self.notas_audioannotations = response.data.itemsList;
+               this.sync_names();
+            self.paginacion = response.data.paginator;
+            self.pagina = self.paginacion;
+            //console.log(response.data)
+        });
+                }
+        },
     elipsis: function(index, event) {
       if (this.bandera_elipsiss) {
         if (event) event.preventDefault()
@@ -610,6 +738,7 @@ if (e == "user") {
     }
       self.axios.get(API_Route).then((response) => {
         self.notas_audioannotations = response.data.itemsList;
+        this.sync_names();
         self.paginacion = response.data.paginator;
         self.pagina = self.paginacion;
         //console.log(response.data)
@@ -628,8 +757,7 @@ if (e == "user") {
     }
   await this.axios.get("/user/api/getusersnames").then((result) => {
       this.names=this.result = result.data;
-    })
-    self.axios.get(API_Route).then((response) => {
+       self.axios.get(API_Route).then((response) => {
       self.notas_audioannotations = response.data.itemsList;
       self.notas_audioannotations.forEach(element => {
         this.names.forEach(name => {
@@ -642,6 +770,8 @@ if (e == "user") {
       self.pagina = self.paginacion;
       //console.log(response.data)
     });
+    })
+   
     self.axios.get("i18n").then((response) => {
       self.idioma = response.data.LANGUAGE;
       if (self.idioma === "es") {
@@ -684,27 +814,11 @@ if (e == "user") {
       return pagesArray;
     },
     search_titulo: function () {
-      if (this.titulo.length > 2) {
+       if (this.names_director.length > 1) {
         return this.notas_audioannotations.filter((item) =>
-          item.name.toLowerCase().includes(this.titulo.toLowerCase())
+          item.user.toLowerCase().includes(this.names_director.toLowerCase())
         );
-      } else if (this.lengua.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
-          item.languages[0].language.name
-            .toLowerCase()
-            .includes(this.lengua.toLowerCase())
-        );
-      } else if (this.gpo_lengua.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
-          item.languages[0].LanguageGroup.name
-            .toLowerCase()
-            .includes(this.gpo_lengua.toLowerCase())
-        );
-      } else if (this.comunidad.length > 2) {
-        return this.notas_audioannotations.filter((item) =>
-          item.localities[0].Nom_Loc.toLowerCase().includes(this.comunidad.toLowerCase())
-        );
-      }
+      } 
       return this.notas_audioannotations;
     },
   },

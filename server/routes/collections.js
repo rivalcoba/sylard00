@@ -106,6 +106,6 @@ router.get('/api/bycollection/:collection', collectionsController. api_getCollec
 router.get('/api/byLenguages/:lang', collectionsController. api_getCollectionFilteredbyLang)
 router.get('/api/byGposL/:gpol', collectionsController. api_getCollectionFilteredbyGpoL)
 router.get('/api/bycommu/:commu', collectionsController. api_getCollectionFilteredbyCommu)
-
+router.get('/api/byuserid/:userid', collectionsController. api_getCollectionFilteredbyUserId)
 // Se exportan rutas
 export default router
