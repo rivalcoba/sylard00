@@ -262,5 +262,10 @@
     "show":"Show",
     "showOn":"Show on",
     "colorT":"Typography color "
+},
+"fields_editor":{
+    "title":"Fields editor",
+    "banner":"Here are the genres and locations added to SYLARD",
+    "rememb":"Remember to review and be careful when editing!"
 }
 }

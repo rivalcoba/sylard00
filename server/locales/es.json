@@ -262,7 +262,11 @@
     "show":"Mostrar",
     "showOn":"Visualizar en",
     "colorT":"Color de tipografía"
+},
+"fields_editor":{
+    "title":"Editor de Campos",
+    "banner":"Aquí están los generos y locaciones añadidos a SYLARD ",
+    "rememb":"¡Recuerde revisar y tener cuidado al editar! "
 }
-
 
 }

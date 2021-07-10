@@ -179,6 +179,33 @@
     ,"super_users":{
         "search":"Buscar",
         "edit_c":"Editar Comunidades"
-    }
+    },
+    "genres_edit":{
+        "title":"Editar Géneros",
+        "button_add":"Agregar nuevo género",
+        "window_add_title":"Crear nuevo género",
+        "window_add_save_btn":"Guardar",
+        "data_new_title":"Datos de nuevo género",
+        "name":"Nombre",
+        "description":"Descripcion",
+        "edit_title":"Editar género"
+    },
+    "locations_edit":{
+        "title":"Editar Comunidades ",
+        "entity":"Entidad",
+        "munc":"Municipio",
+        "button_add":"Agregar nueva comunidad",
+        "window_add_title":"Crear nueva comunidad",
+        "data_new_title":"Datos de la nueva comunidad",
+        "edit_title":"Editar comunidad"
+    },
+    "messages":{
+        "delete":"¿Esta seguro que desea eliminar este elemento?",
+        "delete_all":"¿Seguro que desea eliminar los elementos seleccionados?",
+        "yes":"Sí",
+        "save":"Guardar",
+        "close":"Cerrar",
+        "wrong":"Algo salió mal :("
 
+    }
 }
