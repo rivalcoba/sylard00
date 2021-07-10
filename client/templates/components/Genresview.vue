@@ -12,7 +12,7 @@
       type="warning"
       elevation="2"
     >
-      Seguro que desea eliminar los datos seleccionados?
+     {{$t("lang.messages.delete_all")}}
       <v-btn
       :disabled="dialog"
       :loading="dialog"
@@ -28,13 +28,13 @@
       color="error"
       
     >
-    Si
+    {{$t("lang.messages.yes")}}
     </v-btn>
     </v-alert>
        </v-dialog>
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
-  <h1>Editar Generos</h1>
+  <h1>{{$t("lang.genres_edit.title")}}</h1>
     <v-card-title>
 
       <v-text-field
@@ -98,11 +98,11 @@
       type="warning"
       elevation="2"
     >
-            Esta seguro que desea eliminar {{nameofuser}} ?
+               {{$t("lang.messages.delete")}}{{nameofuser}} 
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn   @click="close_dialogs()">No</v-btn>
-            <v-btn color="error" @click="deleteItem()">Si</v-btn>
+            <v-btn color="error" @click="deleteItem()"> {{$t("lang.messages.yes")}}</v-btn>
           </v-card-actions>
          </v-alert>
     </v-dialog>
@@ -119,7 +119,7 @@
             <v-toolbar
               color="primary"
               dark
-            >Editar Genero</v-toolbar>
+            >{{$t("lang.genres_edit.edit_title")}}</v-toolbar>
             <v-card-text>
               <div >
  <v-text-field
@@ -147,11 +147,11 @@
               <v-btn
                 text
                 @click="close_edit()"
-              >Cerrar</v-btn>
+              > {{$t("lang.messages.close")}}</v-btn>
                         <v-btn
                 text
                 @click="save_edit()"
-              >Guardar</v-btn>
+              > {{$t("lang.messages.save")}}</v-btn>
             </v-card-actions>
           </v-card>
         </template>
@@ -172,7 +172,7 @@
           v-bind="attrs"
           v-on="on"
         >
-          + Agregar nuevo genero
+          + {{$t("lang.genres_edit.button_add")}}
         </v-btn>
       </template>
       <v-card>
@@ -187,7 +187,7 @@
           >
             <v-icon>mdi-close</v-icon>
           </v-btn>
-          <v-toolbar-title>Crear nuevo genero</v-toolbar-title>
+          <v-toolbar-title>{{$t("lang.genres_edit.window_add_title")}}</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
             <v-btn
@@ -195,7 +195,7 @@
               text
               @click="save_add_new_genre()"
             >
-              Guardar
+             {{$t("lang.genres_edit.window_add_save_btn")}}
             </v-btn>
           </v-toolbar-items>
         </v-toolbar>
@@ -203,10 +203,10 @@
           three-line
           subheader
         >
-          <v-subheader><h1>Datos de nuevo genero:</h1> </v-subheader>
+          <v-subheader><h1>{{$t("lang.genres_edit.data_new_title")}}</h1> </v-subheader>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title> <h3> Nombre:{{name}}</h3></v-list-item-title>
+              <v-list-item-title> <h3> {{$t("lang.genres_edit.name")}}: {{name}}</h3></v-list-item-title>
              <v-list-item-subtitle><v-col
                 cols="12"
                 sm="6"
@@ -226,7 +226,7 @@
           </v-list-item>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title><h3>Descripcion: {{description}} </h3> </v-list-item-title>
+              <v-list-item-title><h3>{{$t("lang.genres_edit.description")}}: {{description}} </h3> </v-list-item-title>
               <v-list-item-subtitle><v-col
                 cols="12"
                 sm="6"
@@ -291,6 +291,7 @@ import axios from "axios";
         search: '',
         selected: [],
          switch1: [],
+         //translate
         headers: [
             { text:'Nombre', value:'name', sortable:true},
           { text: 'Descripcion', value: 'description' },
@@ -419,5 +420,19 @@ save_add_new_genre() {
   }
   
   },
+  mounted() {
+        //INTERNATIONALITATION PAGE WITH I18N
+        var self=this;
+         self.axios.get("../i18n").then((response) => {
+      self.idioma = response.data.LANGUAGE;
+      if (self.idioma === "es") {
+        //console.log("esta en español");
+        this.$i18n.locale = "es";
+      } else if (self.idioma === "en") {
+       // console.log("esta en ingles");
+        this.$i18n.locale = "en";
+      }
+    });
+    },
   }
 </script>

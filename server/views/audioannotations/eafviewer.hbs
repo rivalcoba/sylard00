@@ -18,8 +18,7 @@
             <h2>
               {{{title}}} <br>
             </h2>
-            <button class="contenedor_acordeon"><span class="icono_acordeon icon-chevron-down"></span> Opciones
-              visuales</button>
+            <button class="contenedor_acordeon"><span class="icono_acordeon icon-chevron-down"></span> {{translation.eaf_viewer.visualOp}}</button>
             <!-- Speaker Panel -->
             <div class="acordeon_panel">
               <div class="acordeon_panel_item">
@@ -28,7 +27,7 @@
                   <div class="contenedor_canal_audioanotacion">
                     <div class="contenedor_canal_padre_compacto">
                       <div class="contenedor_hablante">
-                        <p class="label label_al_100">Canal {{@index}} (hablante)</p>
+                        <p class="label label_al_100"><channel></channel> {{{@index}}} ( <speaker></speaker> )</p>
                         <!--etiqueta del hablante-->
                         <!--PRIMER HABLANTE (PADRE)-->
                         <span class="spkr_name"> {{this.participant}}</span>
@@ -37,7 +36,7 @@
                         <div
                           class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal">
                           <!--Etiqueta superiror de columna-->
-                          <label class="label label_al_100">Mostrar</label>
+                          <label class="label label_al_100"><show></show></label>
                           <div class="contenedor_switch_canal_audioanotacion">
                             <!--SWITCH VISUALIZACION PRIMER HABLANTE PADRE-->
                             <label class="swich_etiqueta_opcion1_compacto" id="switch_canal1_off">OFF</label>
@@ -55,12 +54,12 @@
                         <!--ETIQUETA DE COLUMNA Tipo de Visualizacion-->
                         <div
                           class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en">
-                          <label class="label label_al_100">Visualizar en:</label>
+                          <label class="label label_al_100"><ShowOn></ShowOn>:</label>
                         </div>
                         <!--ETIQUETA DE COLUMNA Color-->
                         <div
                           class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion">
-                          <label class="label label_al_100">Color de tipografía</label>
+                          <label class="label label_al_100"><ColorT></ColorT></label>
                         </div>
                       </div>
                     </div>
@@ -210,3 +209,13 @@
     <button @click="play">Play/Pause</button>-->
   </div>
 </main>
+<script>
+  //international JQUERY
+$( document ).ready(function() {
+    $("channel").html("{{translation.eaf_viewer.channel}}");
+    $("speaker").html("{{translation.eaf_viewer.speaker}}");
+     $("show").html("{{translation.eaf_viewer.show}}");
+     $("ShowOn").html("{{translation.eaf_viewer.showOn}}");
+       $("ColorT").html("{{translation.eaf_viewer.colorT}}");
+});
+</script>

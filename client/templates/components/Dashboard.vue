@@ -501,7 +501,7 @@ this.$swal({
         else{
             if(catalog_mode==true){
                 console.log("modo catalogo")
-                setTimeout(this.show_alert_advert, 1000*60);
+                setTimeout(this.show_alert_advert, 1000*20);
             }
         }
     }

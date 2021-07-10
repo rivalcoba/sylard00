@@ -4,7 +4,7 @@
      <button
       :disabled="dialog"
       :loading="dialog"
-      @click="watch_eraser_dialog"
+      @click="watch_error_dialog"
       hidden
     >
     probador
@@ -21,8 +21,8 @@
       type="error"
       elevation="2"
     >
-         <center><h3>Algo salio mal :(</h3>
-         <p> Contacte con el administrador</p></center> 
+         <center><h3> {{$t("lang.messages.wrong")}}</h3>
+         </center> 
          <center>
           <v-progress-circular
       :width="3"
@@ -43,7 +43,7 @@
       type="warning"
       elevation="2"
     >
-      Seguro que desea eliminar los datos seleccionados?
+      {{$t("lang.messages.delete")}}
       <v-btn
       :disabled="dialog"
       :loading="dialog"
@@ -59,7 +59,7 @@
       color="error"
       
     >
-    Si
+    {{$t("lang.messages.yes")}}
     </v-btn>
     </v-alert>
        </v-dialog>
@@ -71,9 +71,9 @@
       href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css"
       rel="stylesheet"
     />
-    <h1>Editar Comunidades</h1>
+    <h1>{{$t("lang.locations_edit.title")}}</h1>
     <v-col>
-      <h3>Entidad</h3>
+      <h3>{{$t("lang.locations_edit.entity")}}</h3>
       <v-select
         v-model="select_list"
         :items="data_list"
@@ -86,7 +86,7 @@
       ></v-select>
     </v-col>
     <v-col>
-      <h3>Municipio</h3>
+      <h3>{{$t("lang.locations_edit.munc")}}</h3>
       <v-select
         v-model="select_list2"
         :items="data_list_munc"
@@ -153,11 +153,11 @@
       type="warning"
       elevation="2"
     >
-            Esta seguro que desea eliminar esta localidad?
+          {{$t("lang.messages.delete")}}
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn   @click="close_dialogs()">No</v-btn>
-            <v-btn color="error" @click="deleteItem()">Si</v-btn>
+            <v-btn color="error" @click="deleteItem()">{{$t("lang.messages.yes")}}</v-btn>
           </v-card-actions>
          </v-alert>
       </v-dialog>
@@ -170,7 +170,7 @@
       >
         <template v-slot:default="dialog_edit">
           <v-card>
-            <v-toolbar color="primary" dark>Editar Localidad</v-toolbar>
+            <v-toolbar color="primary" dark>{{$t("lang.locations_edit.edit_title")}}</v-toolbar>
             <v-card-text>
               <div>
                 <table>
@@ -278,8 +278,8 @@
               </div>
             </v-card-text>
             <v-card-actions class="justify-end">
-              <v-btn text @click="close_edit()">Cerrar</v-btn>
-              <v-btn text @click="save_edit()">Guardar</v-btn>
+              <v-btn text @click="close_edit()">{{$t("lang.messages.close")}}</v-btn>
+              <v-btn text @click="save_edit()">{{$t("lang.messages.save")}}</v-btn>
             </v-card-actions>
           </v-card>
         </template>
@@ -295,7 +295,7 @@
       >
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary" dark v-bind="attrs" v-on="on">
-            + Agregar nueva locacion
+            + {{$t("lang.locations_edit.button_add")}}
           </v-btn>
         </template>
         <v-card>
@@ -303,16 +303,16 @@
             <v-btn icon dark @click="close_add_new_genre()">
               <v-icon>mdi-close</v-icon>
             </v-btn>
-            <v-toolbar-title>Crear nueva comunidad</v-toolbar-title>
+            <v-toolbar-title>{{$t("lang.locations_edit.window_add_title")}}</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
               <v-btn dark text @click="save_add_new_location()">
-                Guardar
+                {{$t("lang.messages.save")}}
               </v-btn>
             </v-toolbar-items>
           </v-toolbar>
           <v-list three-line subheader>
-            <v-subheader><h1>Datos de nueva comunidad:</h1> </v-subheader>
+            <v-subheader><h1>{{$t("lang.locations_edit.data_new_title")}}:</h1> </v-subheader>
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-subtitle>
@@ -802,6 +802,19 @@ export default {
   }
     
   },
-  
+    mounted() {
+        //INTERNATIONALITATION PAGE WITH I18N
+        var self=this;
+         self.axios.get("../i18n").then((response) => {
+      self.idioma = response.data.LANGUAGE;
+      if (self.idioma === "es") {
+        //console.log("esta en español");
+        this.$i18n.locale = "es";
+      } else if (self.idioma === "en") {
+       // console.log("esta en ingles");
+        this.$i18n.locale = "en";
+      }
+    });
+    },
 }
 </script>

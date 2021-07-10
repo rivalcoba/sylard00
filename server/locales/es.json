@@ -254,7 +254,19 @@
     "promotion_succes":"Tu promoción como colaborador ha sido exitosa",
     "user_mail":"El correo",
     "has_been":"ha sido promovido como colaborador"
+},
+"eaf_viewer":{
+    "visualOp":"Opciones visuales",
+    "channel":"Canal",
+    "speaker":"hablante",
+    "show":"Mostrar",
+    "showOn":"Visualizar en",
+    "colorT":"Color de tipografía"
+},
+"fields_editor":{
+    "title":"Editor de Campos",
+    "banner":"Aquí están los generos y locaciones añadidos a SYLARD ",
+    "rememb":"¡Recuerde revisar y tener cuidado al editar! "
 }
-
 
 }

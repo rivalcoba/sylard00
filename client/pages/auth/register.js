@@ -115,7 +115,7 @@ async function showTerms_en() {
     cancelButtonText:
       'Salir',
     cancelButtonAriaLabel: 'Thumbs down',
-    footer:'<p class="secundario"><strong>*Al darle click en aceptar, estas de acuerdo con los terminos antes expuestos</strong></p>',
+    footer:'<p class="secundario"><strong>*By clicking accept, you agree to the terms set out above</strong></p>',
     customClass: {
         container: '',
         popup:'sa-popup',
