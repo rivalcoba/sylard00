@@ -254,6 +254,14 @@
     "promotion_succes":"Tu promoción como colaborador ha sido exitosa",
     "user_mail":"El correo",
     "has_been":"ha sido promovido como colaborador"
+},
+"eaf_viewer":{
+    "visualOp":"Opciones visuales",
+    "channel":"Canal",
+    "speaker":"hablante",
+    "show":"Mostrar",
+    "showOn":"Visualizar en",
+    "colorT":"Color de tipografía"
 }
 
 

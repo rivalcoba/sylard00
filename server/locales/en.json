@@ -254,6 +254,13 @@
     "promotion_succes":"Promotion to contributor Successful",
     "user_mail":"The account with the mail",
     "has_been":"has been promoted to contributor"
+},
+"eaf_viewer":{
+    "visualOp":"Visual options",
+    "channel":"Channel",
+    "speaker":"Speaker",
+    "show":"Show",
+    "showOn":"Show on",
+    "colorT":"Typography color "
 }
-
 }
