@@ -490,7 +490,138 @@ const api_deleteAudioannotations = async(req, res) => {
         res.status(500).json({ error: error.message })
     }
 }
+const filtrarAudioannotation_by_genre = async(req, res) => {
+    try {
 
+        const myCustomLabels = {
+            totalDocs: 'itemCount',
+            docs: 'itemsList',
+            limit: 'perPage',
+            page: 'currentPage',
+            nextPage: 'next',
+            prevPage: 'prev',
+            totalPages: 'pageCount',
+            pagingCounter: 'slNo',
+            meta: 'paginator',
+        };
+
+        const options = {
+            page: req.params.page,
+            limit: 5,
+            sort: { title: 1 },
+            populate: 'collection_id',
+            customLabels: myCustomLabels,
+        };
+        let {genre}=req.params
+        const genreRegex = new RegExp(genre, 'i');
+        Audioannotations.paginate({"genre.name":genreRegex}, options, function(err, result) {
+                if (err) {
+                    console.log("El error esta aqui")
+                    console.err(err);
+                    return res.status(400).json({
+                        mensaje: 'Ocurrio un error',
+                        err
+                    })
+                } else {
+                    res.json(result);
+                }
+            })
+            //checar https://kb.objectrocket.com/mongo-db/mongoose-pagination-with-nodejs-and-mongodb-1304
+    } catch (error) {
+        return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            error
+        })
+    }
+}
+const filtrarAudioannotation_by_speaker = async(req, res) => {
+    try {
+
+        const myCustomLabels = {
+            totalDocs: 'itemCount',
+            docs: 'itemsList',
+            limit: 'perPage',
+            page: 'currentPage',
+            nextPage: 'next',
+            prevPage: 'prev',
+            totalPages: 'pageCount',
+            pagingCounter: 'slNo',
+            meta: 'paginator',
+        };
+
+        const options = {
+            page: req.params.page,
+            limit: 5,
+            sort: { title: 1 },
+            populate: 'collection_id',
+            customLabels: myCustomLabels,
+        };
+        let {spkr}=req.params
+        const spkrRegex = new RegExp(spkr, 'i');
+        Audioannotations.paginate({$or:[{"header.0":spkrRegex},{"header.1":spkrRegex},{"header.2":spkrRegex},{"header.3":spkrRegex},{"header.4":spkrRegex},{"header.5":spkrRegex},{"header.6":spkrRegex},]}, options, function(err, result) {
+                if (err) {
+                    console.log("El error esta aqui")
+                    console.err(err);
+                    return res.status(400).json({
+                        mensaje: 'Ocurrio un error',
+                        err
+                    })
+                } else {
+                    res.json(result);
+                }
+            })
+            //checar https://kb.objectrocket.com/mongo-db/mongoose-pagination-with-nodejs-and-mongodb-1304
+    } catch (error) {
+        return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            error
+        })
+    }
+}
+const filtrarAudioannotation_by_location = async(req, res) => {
+    try {
+
+        const myCustomLabels = {
+            totalDocs: 'itemCount',
+            docs: 'itemsList',
+            limit: 'perPage',
+            page: 'currentPage',
+            nextPage: 'next',
+            prevPage: 'prev',
+            totalPages: 'pageCount',
+            pagingCounter: 'slNo',
+            meta: 'paginator',
+        };
+
+        const options = {
+            page: req.params.page,
+            limit: 5,
+            sort: { title: 1 },
+            populate: 'collection_id',
+            customLabels: myCustomLabels,
+        };
+        let {spkr}=req.params
+        const spkrRegex = new RegExp(spkr, 'i');
+        Audioannotations.paginate({$or:[{"header.0":spkrRegex},{"header.1":spkrRegex},{"header.2":spkrRegex},{"header.3":spkrRegex},{"header.4":spkrRegex},{"header.5":spkrRegex},{"header.6":spkrRegex},]}, options, function(err, result) {
+                if (err) {
+                    console.log("El error esta aqui")
+                    console.err(err);
+                    return res.status(400).json({
+                        mensaje: 'Ocurrio un error',
+                        err
+                    })
+                } else {
+                    res.json(result);
+                }
+            })
+            //checar https://kb.objectrocket.com/mongo-db/mongoose-pagination-with-nodejs-and-mongodb-1304
+    } catch (error) {
+        return res.status(400).json({
+            mensaje: 'Ocurrio un error',
+            error
+        })
+    }
+}
 export default {
     index,
     createAudioannotation,
@@ -507,4 +638,6 @@ export default {
     api_indexAudioannotationsByCollection,
     api_deleteAudioannotations,
     color,
+    filtrarAudioannotation_by_genre,
+    filtrarAudioannotation_by_speaker,
 }

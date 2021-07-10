@@ -172,4 +172,9 @@ router.delete('/api/delete',
         //ensureColabUser, // TODO: Uncomment to protect route
         audioannotationsController.api_deleteAudioannotations)
     // Se exportan rutas
+//search API filtration
+router.get('/api/bygenre/:genre', audioannotationsController.filtrarAudioannotation_by_genre)
+router.get('/api/byspeaker/:spkr', audioannotationsController.filtrarAudioannotation_by_speaker)
+// Se exportan rutas
+
 export default router
