@@ -267,5 +267,8 @@
     "title":"Fields editor",
     "banner":"Here are the genres and locations added to SYLARD",
     "rememb":"Remember to review and be careful when editing!"
+},
+"usermanual":{
+    "content":"<h1 class='color_principal'>Under development</h1>"
 }
 }

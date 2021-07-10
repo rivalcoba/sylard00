@@ -267,6 +267,9 @@
     "title":"Editor de Campos",
     "banner":"Aquí están los generos y locaciones añadidos a SYLARD ",
     "rememb":"¡Recuerde revisar y tener cuidado al editar! "
+},
+"usermanual":{
+    "content":"<h1 class='color_principal'>Sitio en construcción</h1>"
 }
 
 }
