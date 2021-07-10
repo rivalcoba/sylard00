@@ -4,7 +4,7 @@
       <div class="contenedor_tabla_mis_colecciones">
         <table class="tabla_mis_colecciones">
           <thead>
-                 <th class="cabezal_columnas_th">
+                 <th v-if="status_super_user" class="cabezal_columnas_th">
               <div class="contenedor_etiquetas_barras_busqueda">
                 <label class="label label_junto_flechas">{{$t("lang.tabla_coleccion.director")}}</label>
                 <button
@@ -59,7 +59,7 @@
                 name="titulo"
                 v-model="titulo"
                 @input="searching_by_collection()"
-                class="input_busqueda"t
+                class="input_busqueda"
                 type="search"
                 placeholder="Búsqueda"
               />
@@ -154,7 +154,7 @@
             <th class="" id="th_acciones"></th>
           </thead>
           <tr v-for="(item2, index) in search_titulo" :key="'item' + index">
-            <td>
+            <td v-if="status_super_user">
               <strong>{{item2.user}}</strong>
             </td>
             <td>
@@ -324,7 +324,7 @@ export default {
       comunidad: "",
       hablantes: "",
       genero: "",
-
+      status_super_user:false,
       bandera_titulo: false,
       bandera_lengua: false,
       bandera_gpo_lengua: false,
@@ -750,6 +750,7 @@ if (e == "user") {
     var self = this;
     var API_Route = "";
     if(superusuario===true){
+      this.status_super_user=true;
       API_Route="collections/api/read_all/1";
     }
     else{
