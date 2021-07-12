@@ -87,7 +87,7 @@
 							<label class="label" for="country">
 								{{translation.SYLARDREGISTER.COUNTRY}}
 							</label>
-							<input type="text" placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}" name="country"
+							<input type="text" placeholder="{{{translation.SYLARDREGISTER.WHAT_IS_YOUR_JOB}}}" name="country"
 								id="country" list="countries" {{#if es}} value="{{user.country.name_es}}" {{else}}
 								value="{{user.country.name_en}}" {{/if}}>
 							<div class="contenedor_icono_correcto_input">
@@ -119,18 +119,20 @@
 							<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar">
 								<span class="icon-plus" onclick="formsManager.addSelection()"></span>
 							</i>
+							<!--
 							<datalist id="languages">
 								{{#each nativeLanguages}}
 								<option value="{{name}} | {{gid}}">
 									{{/each}}
 							</datalist>
+							-->
 						</div>
 						<div class="contenedor_inputs" id="contenedor_inputs_con_boton">
 							<label class="label" for="about_you">
 								{{{translation.EDITCOUNT.WHAT_IS_YOUR_JOB}}}
 							</label>
 							<textarea name="about" id="about" placeholder="¿A qué te dedicas? ¿Para qué usarías SYLARD?"
-								rows="3">{{user.about}}
+								rows="6">{{user.about}}
               </textarea>
 						</div>
 						<div class="contenedor_inputs" id="lenguas_agregadas_input_seleccionadas">
@@ -138,7 +140,7 @@
 								{{translation.ADD_LANG}}
 							</label>
 							<textarea type="text" name="spokenLanguages" id="spokenLanguages"
-								placeholder="{{translation.ADD_LANG_}}" rows="3"
+								placeholder="{{translation.ADD_LANG_}}" rows="6"
 								readonly>{{spokenLang}}</textarea>
 						</div>
 						<div class="">

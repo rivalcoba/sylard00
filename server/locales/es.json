@@ -139,8 +139,8 @@
     "EDITCOUNT": {
         "EDIT_ACCOUNT": "Editar cuenta",
         "EDIT_FIELDS": "Edita los campos y pulsa el botón de guardar",
-        "UDPATE_PRIVILEGES": "Actualiza tus privilegios de usuario:",
-        "WHAT_IS_YOUR_JOB": "Escríbenos algo acerca de ti mismo.",
+        "UDPATE_PRIVILEGES": "Actualiza tus privilegios de usuario",
+        "WHAT_IS_YOUR_JOB": "Declaración personal (opcional)",
         "NAME": "Nombre de pila",
         "LAST_NAME": "Apellido",
         "MATERNAL_SUR": "Apellido materno"
@@ -269,7 +269,7 @@
     "rememb":"¡Recuerde revisar y tener cuidado al editar! "
 },
 "usermanual":{
-    "content":"<h1 class='color_principal'>Sitio en construcción</h1>"
+    "content":"<h1 class='color_principal'>Sitio en construcción.</h1>"
 }
 
 }
