@@ -99,7 +99,7 @@ const genrePut = async (req, res, next)=>{
     // Validating update
     let { name, description } = req.body
     // Normalizing
-    name = name.toUpperCase();
+    // name = name.toUpperCase();
 
     let genre = {
         name,
