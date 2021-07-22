@@ -34,9 +34,15 @@
       <span class="icono_nav_publico icon-home1"></span>
     </a>
       {{/if}}
+          {{#if user}}
+    <a class="barra_nav_publico_elemento" href="/dashboard" id="bnpe_2">
+      {{translation.NAVBAR.CATALOGUE}}
+    </a>
+               {{else}}
     <a class="barra_nav_publico_elemento" href="/catalog" id="bnpe_2">
       {{translation.NAVBAR.CATALOGUE}}
     </a>
+                   {{/if}}
     <a class="barra_nav_publico_elemento" href="/documentation" id="bnpe_3">
       {{translation.SYLARDHOME.ABOUT_SYLARD}}
     </a>
