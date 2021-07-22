@@ -5,6 +5,7 @@ const router = new Router();
 
 // Authorization Check Middleware
 import ensureAuthenticated from '@helpers/ensureAuth'
+import ensureSuAuth from '@helpers/ensureSuAuth'
 // Import Controllers
 import homeController from '@controllers/home'
 
@@ -16,6 +17,7 @@ router.get('/index', homeController.index);
 router.get('/contact', homeController.contact)
 router.get('/credits', homeController.credits)
 router.get('/dashboard', ensureAuthenticated, homeController.dashboard)
+router.get('/superUserDashboard', ensureSuAuth, homeController.superUserDashboard)
 router.get('/catalog',homeController.catalog)
 router.get('/source_code',homeController.source_code)
 router.get('/audioannotation', ensureAuthenticated, homeController.audioannotation)

@@ -335,7 +335,7 @@ export default {
       bandera_elipsiss:true,
       activeClass: 'contenido_modal_elipsis',
       item_index:"",
-       contenido_modal_elipsis:{
+      contenido_modal_elipsis:{
       background: '#fefefe',
       width: '13rem !important',
       position: 'absolute !important',

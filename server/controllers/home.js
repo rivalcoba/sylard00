@@ -7,10 +7,9 @@ import Mail from '@fullstackjs/mail'
 // Home Controllers
 const index = (req, res) => {
     // Check if the user is logged
-    if (res.locals.user && res.locals.user.role == "colaborator") {
+    if(res.locals.user && res.locals.user.role === "colaborator"){
         res.redirect(`/collections`)
-    } else
-    if (res.locals.user) {
+    } else if (res.locals.user) {
         res.redirect('/dashboard')
     } else {
         res.render('index/home', {
@@ -38,19 +37,26 @@ const credits = (req, res) => {
     })
 }
 
+const superUserDashboard = (req, res) => {
+    return res.render('index/superUserDashboard');
+}
+
 const dashboard = async(req, res) => {
-    // Get Collecionts
-    const collectionsDocs = await Collection.find()
-        .populate('user')
-        .exec()
-        // Collections to JSON
-    let collections = collectionsDocs.map((collection) => {
-        return collection.toJSON()
-    })
+    if (res.locals.user && res.locals.user.role == "su") {
+        return res.redirect('/superUserDashboard');
+    }
+    // // Get Collecionts
+    // const collectionsDocs = await Collection.find()
+    //     .populate('user')
+    //     .exec()
+    //     // Collections to JSON
+    // let collections = collectionsDocs.map((collection) => {
+    //     return collection.toJSON()
+    // })
     res.render('index/dashboard', {
         title: 'Catálogo por colección',
-        collections,
-    })
+        // collections,
+    });
 }
 const documentation = (req, res) => {
     res.render('index/documentation', {
@@ -164,6 +170,7 @@ export default {
     contact,
     credits,
     dashboard,
+    superUserDashboard,
     documentation,
     usermanual,
     terms,

@@ -34,8 +34,8 @@ import Vue from 'vue'
 // import App from '@client/templates/main.vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import LecturaEAF from '@client/templates/components/LecturaEAF.vue';
-import ReproduceEAF from "@client/templates/components/ReproduceEAF.vue";
+// import LecturaEAF from '@client/templates/components/LecturaEAF.vue'
+// import ReproduceEAF from '@client/templates/components/ReproduceEAF.vue'
 import LecturaTierEAF from '@client/templates/components/LecturaTierEAF.vue'
 // import App2 from '@client/templates/main2.vue'
 import FiltroAudioannotations from '@client/templates/components/FiltroAudioannotations.vue'
@@ -52,6 +52,7 @@ import App5 from '@client/templates/main5.vue'
 import App6 from '@client/templates/main6.vue'
 import MainUser from '@client/templates/MainUser.vue'
 import Genres from '@client/templates/genres.vue'
+import SuperUserDashboard from '@client/templates/SuperUserDashboard.vue'
 //AQUÍ TERMINAN
 import en from '@client/templates/lang/locals/en_US'
 import es from '@client/templates/lang/locals/es_MX'
@@ -69,6 +70,7 @@ Vue.config.productionTip = false
 //Intern
 import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
+Vue.use(VueAxios, axios)
 
 const messages = {
   en: {
@@ -152,7 +154,7 @@ if (window.location.pathname == `/audioannotations/uploadfile`) {
 }
 
 if (window.location.pathname.match(/\/collections\/index\//)) {
-  Vue.use(VueAxios, axios)
+  // Vue.use(VueAxios, axios)
   //Vue.component("AudioAnnotationsByCollection", AudioAnnotationsByCollection);
   window.vm = new Vue({
     el: '#main31',
@@ -163,7 +165,7 @@ if (window.location.pathname.match(/\/collections\/index\//)) {
 
 //Dashboard Collections
 if (window.location.pathname.match(/\/audioannotations\/index\/readonly\//)) {
-  Vue.use(VueAxios, axios)
+  // Vue.use(VueAxios, axios)
   //Vue.component("AudioAnnotationsByCollection", AudioAnnotationsByCollection);
   window.vm = new Vue({
     el: '#main7',
@@ -174,7 +176,7 @@ if (window.location.pathname.match(/\/audioannotations\/index\/readonly\//)) {
 
 if (window.location.pathname == `/audioannotations`) {
   // window.Vue = Vue
-  Vue.use(VueAxios, axios)
+  // Vue.use(VueAxios, axios)
   Vue.component('FiltroAudioannotations', FiltroAudioannotations)
   window.vm = new Vue({
     el: '#app3',
@@ -183,10 +185,19 @@ if (window.location.pathname == `/audioannotations`) {
   })
 }
 
+// Super User Dashboard
+if (window.location.pathname === '/superUserDashboard') {
+  // Vue.use(VueAxios, axios)
+  new Vue({
+    i18n,
+    render: h => h(SuperUserDashboard),
+  }).$mount("#super-user-dashboard");
+}
+
 //Aquí redirige a la nueva vista de dashboard
 if (window.location.pathname == '/dashboard') {
   // window.Vue = Vue
-  Vue.use(VueAxios, axios)
+  // Vue.use(VueAxios, axios)
   Vue.component('Dashboard', Dashboard)
   window.vm = new Vue({
     el: '#app4',
@@ -199,9 +210,9 @@ if (window.location.pathname == '/dashboard') {
 }
 if (window.location.pathname == '/catalog') {
   // window.Vue = Vue
-  Vue.use(VueAxios, axios)
-  Vue.use(VueSweetalert2);
-  
+  // Vue.use(VueAxios, axios)
+  Vue.use(VueSweetalert2)
+
   Vue.component('Dashboard', Dashboard)
   window.vm = new Vue({
     el: '#app4',
@@ -213,10 +224,9 @@ if (window.location.pathname == '/catalog') {
   })
 }
 
-
 if (window.location.pathname == '/audioannotation') {
   // window.Vue = Vue
-  Vue.use(VueAxios, axios)
+  // Vue.use(VueAxios, axios)
   Vue.component('Audioannotations', Audioannotations)
   window.vm = new Vue({
     el: '#app5',
@@ -233,7 +243,7 @@ if (window.location.pathname == '/collections') {
   IndexCollectionsScripts.count_items_collections()
   window.IndexCollectionsScript = IndexCollectionsScripts
   // window.Vue = Vue
-  Vue.use(VueAxios, axios)
+  // Vue.use(VueAxios, axios)
   Vue.component('IndexCollections', IndexCollections)
   window.vm = new Vue({
     el: '#app6',
@@ -261,7 +271,7 @@ if (window.location.pathname == `/genres/`) {
 
   console.log('ruta valida')
   Vue.config.productionTip = false
-  Vue.use(VueAxios, axios)
+  // Vue.use(VueAxios, axios)
   //Vue.component("Usuarios", Usuarios);
   window.vm = new Vue({
     vuetify,
@@ -277,7 +287,7 @@ if (window.location.pathname == `/user`) {
 
   console.log('ruta valida')
   Vue.config.productionTip = false
-  Vue.use(VueAxios, axios)
+  // Vue.use(VueAxios, axios)
   //Vue.component("Usuarios", Usuarios);
   window.vm = new Vue({
     vuetify,
