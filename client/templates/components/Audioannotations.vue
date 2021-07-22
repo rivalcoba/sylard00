@@ -239,9 +239,7 @@
               <tbody v-for="(item2, index) in search_titulo" :key="'item' + index">
                 <tr>
                   <td class="titulo_audioanotacion_tabla" data-label="titulo">
-                    <a v-bind:href="'/audioannotations/vuetest/' + item2._id" class="link_audioanotacion_tabla_catalogo">{{
-                      item2.title
-                    }}</a
+                    <a v-bind:href="'/audioannotations/vuetest/' + item2._id" class="link_audioanotacion_tabla_catalogo">	 <span v-html="item2.title"></span></a
                     ><button @click="showAudio(item2.title,item2.description)" class="btn_info_coleccion_tabla">
                       <span class="icono_info_coleccion_tabla icon-info1"></span></button
                     ><span class="unique_id" data-label="unique_id"
