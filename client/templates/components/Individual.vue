@@ -6,7 +6,7 @@
 						<div  class="" id="contenedor_titulos_cabezal_catalogo_coleccion_individual">
 							<h1 id="titulo_catalogo_coleccion_individual">Contenido</h1>
 							<h4 class="blanco" id="etiqueta_coleccion_catalogo_coleccion_individual">De la colección</h4>
-							<h3 class="nombre_coleccion_audioanotaciones blanco">{{collectionName}}<button class="btn_info_coleccion_cabezal_coleccion_audioanotaciones" id="coleccion_info_general_cabezal"><span @click="showCollection(collectionName, collectionDescription)" class="icono_info_coleccion_audioanotacion  icon-info1"></span></button></h3>
+							<h3 class="nombre_coleccion_audioanotaciones blanco"><span v-html="collectionName"></span><button class="btn_info_coleccion_cabezal_coleccion_audioanotaciones" id="coleccion_info_general_cabezal"><span @click="showCollection(collectionName, collectionDescription)" class="icono_info_coleccion_audioanotacion  icon-info1"></span></button></h3>
 							<h4 class="blanco gpo_lenguas_audioanotaciones">Grupo de lenguas: <strong>{{languageGroupName}} <span class="gpo_lenguas_glottocode_info">[{{languageGroupId}}]</span></strong></h4>
 						</div>	
 						<div class="contenedor_imagen_cabezal_catalogo_coleccion_individual">
@@ -142,8 +142,7 @@
     					    <tr>
 								
 								<td class="titulo_audioanotacion_tabla" data-label="titulo">
-								 {{ item2.title
-                  }}<span class="unique_id" data-label="unique_id">UID:xxx xxxxxxx xx</span>
+								 <span v-html="item2.title"></span><span class="unique_id" data-label="unique_id">UID:xxx xxxxxxx xx</span>
 								</td>
             													 
             					<td class="" data-label="Lengua terminal (glottocode)">
