@@ -158,7 +158,7 @@
               <strong>{{item2.user}}</strong>
             </td>
             <td>
-              <strong> <span v-html="item2.name"></span></strong>
+              <span v-html="item2.name"></span>
             </td>
             <td class="" data-label="Lengua terminal (glottocode)">
               <div v-for="(item3, index3) in item2.languages" :key="'item3' + index3">

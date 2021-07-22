@@ -250,7 +250,7 @@
                   </td>
                   <td class="">
                     <a v-bind:href="'/audioannotations/index/readonly/' + item2.collection_id._id" class="link_coleccion_tabla_catalogo"
-                      ><i>{{ item2.collection_id.name }} </i></a
+                      ><span v-html="item2.collection_id.name"></span> </a
                     >
                     <button @click="showCollection(item2.collection_id.name,item2.collection_id.description)" class="btn_info_coleccion_tabla">
                       <span class="icono_info_coleccion_tabla icon-info1"></span>

@@ -79,7 +79,7 @@
                         </thead>
                         <tr v-for="(item2, index) in search_titulo" :key="'item' + index">
                             <td>
-                                <strong><i> {{ item2.name }}</i></strong>
+                                <span v-html="item2.name "></span>
                                 <p class="primeras_palabras_descripcion_collect"></p>
                             </td>
                             <td class="" data-label="Lengua terminal (glottocode)">
