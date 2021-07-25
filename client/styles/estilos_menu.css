@@ -448,7 +448,9 @@ p>a:visited,
 p>a:link {
     text-decoration: underline;
 }
-
+b{
+    font-weight: bolder;
+}
 i {
     font-style: italic;
 }
