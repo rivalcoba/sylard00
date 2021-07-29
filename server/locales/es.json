@@ -84,7 +84,7 @@
         "IF_CONTRIBUTOR": "Si deseas ser Contribuyente",
         "DESCRIPTION_PARR": "Leer primero <a href='/#'>Contribuir audio</a> y aceptar los <a href='/terms'>Términos y Condiciones</a> para Contribuyentes.",
         "REGISTER_ACEPT": "A los Contribuyentes se les asignarán privilegios para administrar sus colecciones de audio anotados en ELAN. Por el momento SYLARD no remplaza a un archivo permanente como los que participan en la red de archivos <a href='https://www.delaman.org/'>DELAMAN.</a> Al contrario, SYLARD se enfoca en facilitar acceso rápido a material grabado y anotado a interesados que incluyen comunidades, investigadores, estudiantes y hablantes indígenas.",
-        "ACEPT_TERMS": "He leído y aceptado los <a href='/terms'>términos y condiciones.</a>",
+        "ACEPT_TERMS": "He leído y aceptado los <a href='/terms'>términos y condiciones</a>",
         "OPEN_BOX":"Indique porque desea una cuenta de Contribuyente",
         "ALERT_PRIV":"En estos momentos el administrador revisa los motivos por los cuales quiere cambiar tu tipo de cuenta a colaborador"
     },
