@@ -110,10 +110,10 @@ async function showTerms_en() {
     focusConfirm: true,
     buttonsStyling:false,
     confirmButtonText:
-      'Aceptar',
+      'Accept',
     confirmButtonAriaLabel: 'Thumbs up, great!',
     cancelButtonText:
-      'Salir',
+      'Exit',
     cancelButtonAriaLabel: 'Thumbs down',
     footer:'<p class="secundario"><strong>*By clicking accept, you agree to the terms set out above</strong></p>',
     customClass: {
