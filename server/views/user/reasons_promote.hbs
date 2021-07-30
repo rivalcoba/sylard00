@@ -10,10 +10,10 @@
 						<h3>{{translation.UPGRADE_ACCOUNT_VIEW.dialog_why}}</h3>
 						<form id="form" method="POST" action="/user/api/requestPromotion/{{user._id}}/" role="form" class="formulario_contenedor">
 							<div id="contenedor_solicitud_actualiza_usuario" class="">	
-								<label class="label" for="actualiza_usuario">Describe brevemente el proyecto que quieres compartir en SYLARD</label>
+								<label class="label" for="actualiza_usuario">{{translation.UPGRADE_ACCOUNT_VIEW.description}}</label>
 								<textarea oninput="insert()" name="actualiza_usuario_formulario" id="actualiza_usuario" name="text_reasons" placeholder="{{translation.UPGRADE_ACCOUNT_VIEW.example_questions}}" rows="13" required></textarea>
 								<p class="secundario float_left">{{translation.UPGRADE_ACCOUNT_VIEW.be}}</p>
-								<button type="submit" class="btn btn-primario float_right" id="boton_actualiza_usuario">Enviar</button>
+								<button type="submit" class="btn btn-primario float_right" id="boton_actualiza_usuario">{{translation.UPGRADE_ACCOUNT_VIEW.btn}}</button>
 							</div>
                             <script>
                                 function insert(){

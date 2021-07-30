@@ -241,7 +241,8 @@
     "dialog_why":"Dinos por qué quieres ser colaborador",
     "example_questions":"¿Qué? ¿Para qué? ¿Por qué? y ¿Cómo?",
     "description":"Describe brevemente el proyecto que quieres compartir en SYLARD",
-    "be":"*Se breve, claro y paciente."
+    "be":"*Se breve, claro y paciente.",
+    "btn":"Enviar"
 },
 "auth_confirmMail":{
     "Active_account":"¡Cuenta activa! ",
