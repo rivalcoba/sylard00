@@ -240,8 +240,9 @@
     "title":"Upgrade your account to contributor",
     "dialog_why":"Tell us, why do you want change to contributor account?",
     "example_questions":"What?Why?How?",
-    "description":"Describe the project you want to share on SYLARD",
-    "be":"*be brief, be clear, be patient"
+    "description":"Briefly describe the project you want to share on SYLARD",
+    "be":"*be brief, be clear, be patient",
+    "btn":"Submit"
 },
 "auth_confirmMail":{
     "Active_account":"Active account!",
