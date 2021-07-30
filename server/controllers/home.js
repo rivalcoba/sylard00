@@ -26,7 +26,7 @@ const contact = (req, res) => {
 
 const audioannotation = (req, res) => {
   if (res.locals.user && res.locals.user.role == 'su')
-    return res.redirect('/superUserAudioDashboard')
+    return res.redirect('/suAudiosDashboard')
   res.render('index/audioannotation', {
     title: 'Catálogo por audioanotación',
   })
@@ -38,17 +38,17 @@ const credits = (req, res) => {
   })
 }
 
-const superUserDashboard = (req, res) => {
-  return res.render('index/superUserDashboard')
+const suCollectionsDashboard = (req, res) => {
+  return res.render('index/suCollectionsDashboard')
 }
 
-const superUserAudioDashboard = (req, res) => {
+const suAudiosDashboard = (req, res) => {
   return res.render('index/superUserAudioDashboardView')
 }
 
 const dashboard = async (req, res) => {
   if (res.locals.user && res.locals.user.role == 'su') {
-    return res.redirect('/superUserDashboard')
+    return res.redirect('/suCollectionsDashboard')
   }
   // // Get Collecionts
   // const collectionsDocs = await Collection.find()
@@ -179,8 +179,8 @@ export default {
   contact,
   credits,
   dashboard,
-  superUserDashboard,
-  superUserAudioDashboard,
+  suCollectionsDashboard,
+  suAudiosDashboard,
   documentation,
   usermanual,
   terms,
