@@ -52,7 +52,8 @@ import App5 from '@client/templates/main5.vue'
 import App6 from '@client/templates/main6.vue'
 import MainUser from '@client/templates/MainUser.vue'
 import Genres from '@client/templates/genres.vue'
-import SuperUserDashboard from '@client/templates/SuperUserDashboard.vue'
+import SuCollectionsDashboard from '@client/templates/SuCollectionsDashboard.vue'
+import SuAudioDashboard from '@client/templates/SuAudiosDashboard.vue'
 //AQUÍ TERMINAN
 import en from '@client/templates/lang/locals/en_US'
 import es from '@client/templates/lang/locals/es_MX'
@@ -190,8 +191,16 @@ if (window.location.pathname === '/superUserDashboard') {
   // Vue.use(VueAxios, axios)
   new Vue({
     i18n,
-    render: h => h(SuperUserDashboard),
-  }).$mount("#super-user-dashboard");
+    render: h => h(SuCollectionsDashboard),
+  }).$mount('#super-user-dashboard')
+}
+
+// Super User Audio Dashboard
+if (window.location.pathname === '/superUserAudioDashboard') {
+  new Vue({
+    i18n,
+    render: h => h(SuAudioDashboard),
+  }).$mount('#su-audio-dashboard')
 }
 
 //Aquí redirige a la nueva vista de dashboard

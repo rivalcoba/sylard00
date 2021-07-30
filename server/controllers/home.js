@@ -25,6 +25,8 @@ const contact = (req, res) => {
 }
 
 const audioannotation = (req, res) => {
+  if (res.locals.user && res.locals.user.role == 'su')
+    return res.redirect('/superUserAudioDashboard')
   res.render('index/audioannotation', {
     title: 'Catálogo por audioanotación',
   })
@@ -41,7 +43,7 @@ const superUserDashboard = (req, res) => {
 }
 
 const superUserAudioDashboard = (req, res) => {
-  res.send('superUserAudioDashboard')
+  return res.render('index/superUserAudioDashboardView')
 }
 
 const dashboard = async (req, res) => {
