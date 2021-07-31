@@ -644,6 +644,7 @@ export default {
     leerTierBD: function() {
       //for (var i in this.audioannotations_info.data) {
       this.audioannotations = this.audioannotations_info.data
+      this.audioannotations.title = String.raw`${this.audioannotations.title}` 
       //Valor para inicializar el select
       this.id_coleccionparametro = this.audioannotations.collection_id._id
       this.id_lenguajeparametro = this.audioannotations.gid._id

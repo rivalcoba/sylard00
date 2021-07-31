@@ -258,8 +258,9 @@
                   </label>
                 </td>
                 <td class="titulo_audioanotacion_tabla" data-label="titulo">
-                  {{ item2.title
-                  }}<!--<i>(Malvaceae: Guazuma ulmifolia Lam. var.  ulmifolia)</i>--><span
+                  <span v-html="item2.title"></span>
+                  <!--{{ item2.title}} <i>(Malvaceae: Guazuma ulmifolia Lam. var.  ulmifolia)</i>-->
+                  <span
                     class="unique_id"
                     data-label="unique_id"
                     >UID:xxx xxxxxxx xx</span
