@@ -16,7 +16,7 @@
             </h4>
             <!--NOMBRE DE LA COLECCIÓN EN ENCABEZADO-->
             <h3 class="nombre_coleccion_audioanotaciones blanco">
-              {{ collectionName }}
+              <span v-html="collectionName"></span>
               <button
                 class="btn_info_coleccion_cabezal_coleccion_audioanotaciones"
                 id="coleccion_info_general_cabezal"
