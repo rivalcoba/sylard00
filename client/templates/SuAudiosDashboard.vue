@@ -276,17 +276,25 @@
                       v-bind:href="'/audioannotations/vuetest/' + item2._id"
                       class="link_audioanotacion_tabla_catalogo"
                     >
-                      <span v-html="item2.title"></span></a
-                    ><button
+                      <span v-html="item2.title"></span>
+                    </a>
+                    <button
                       @click="showAudio(item2.title, item2.description)"
                       class="btn_info_coleccion_tabla"
                     >
                       <span
                         class="icono_info_coleccion_tabla icon-info1"
-                      ></span></button
-                    ><span class="unique_id" data-label="unique_id"
-                      >UID:xxx xxxxxxx xx</span
-                    >
+                      ></span>
+                    </button>
+                    <a
+                      v-bind:href="'/audioannotations/edit/' + item2._id"
+                      class="btn_opciones_ellipsis_mis_colecciones"
+                      >
+                      <span class="icono_opcion_elipsis icon-edit"></span>
+                    </a>
+                    <span class="unique_id" data-label="unique_id">
+                      UID:xxx xxxxxxx xx
+                    </span>
                   </td>
                   <td class="">
                     <a

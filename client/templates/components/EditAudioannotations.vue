@@ -500,21 +500,25 @@ export default {
     },
     metodocolor: function(parametro, e, valor) {
       var valorpaleta, valorcolor
-      valorcolor = 'A' + (parametro + valor) + '-colorPicker';
-      valorpaleta = 'A' + (parametro + valor) + '-colorPalette';
+      valorcolor = 'A' + (parametro + valor) + '-colorPicker'
+      valorpaleta = 'A' + (parametro + valor) + '-colorPalette'
       // -LOGS
-      console.log(`<metodocolor> Idx: ${parametro} - Paleta: ${valorpaleta} - Picker: ${valorcolor}`);
-      console.log(`<metodocolor> Target ID: ${e.target.id}`);
-      let tierId = e.target.id;
+      console.log(
+        `<metodocolor> Idx: ${parametro} - Paleta: ${valorpaleta} - Picker: ${valorcolor}`
+      )
+      console.log(`<metodocolor> Target ID: ${e.target.id}`)
+      let tierId = e.target.id
       // Mostrando paleta de color
       showColorPalette(valorcolor, valorpaleta, tierId)
     },
     metodoblur: function(parametro, e, valor) {
-      var valorpaleta, valorcolor;
-      valorcolor = 'A' + (parametro + valor) + '-colorPicker';
-      valorpaleta = 'A' + (parametro + valor) + '-colorPalette';
+      var valorpaleta, valorcolor
+      valorcolor = 'A' + (parametro + valor) + '-colorPicker'
+      valorpaleta = 'A' + (parametro + valor) + '-colorPalette'
       // - LOGS
-      console.log(`<metodoblur> TierIdx: ${parametro} - Paleta: ${valorpaleta} - Picker: ${valorcolor}`);
+      console.log(
+        `<metodoblur> TierIdx: ${parametro} - Paleta: ${valorpaleta} - Picker: ${valorcolor}`
+      )
       // Oculta la paleta
       hideColorPalette(valorcolor, valorpaleta)
     },
@@ -623,16 +627,18 @@ export default {
     },
     enviardatos: async function() {
       this.formaraudioannotation()
-      console.log('Enviando datos');
+      console.log('Enviando datos')
       let res = await this.axios.post(
         '/audioannotations/api/update/' + this.ruta,
         this.audioannotations
-      );
-      if(res){
-        console.log('Ya Enviando  datos')
-        window.location.href = '/collections'
-      }else{
-        alert("ERROR AL SALVAR");
+      )
+      if (res) {
+        if(res.data.userRole === 'su')
+        return window.location.href = '/suAudiosDashboard'
+        return window.location.href = `/collections/index/${this.audioannotations.collection_id._id}`
+      } else {
+        // TODO: USAR MEJOR UNA ALERTA DE SWEET ALERT
+        alert('ERROR AL SALVAR')
       }
     },
     leerTierBD: function() {
