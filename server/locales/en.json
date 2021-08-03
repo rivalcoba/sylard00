@@ -271,5 +271,27 @@
 },
 "usermanual":{
     "content":"<h1 class='color_principal'>Under development</h1>"
+},
+"COLLECTIONS_EDIT":{
+    "TITLE": "Edit Collection",
+    "SUB_TITLE":"Modify the fields correctly",
+    "NAME_COLLECTION": "Collection name",
+    "DESC_COLLECTION": "Description of the collection",
+    "LANG_COLLECTION": "Collection languages",
+    "LANG_TERM": "Terminal language:",
+    "GROUP_LANG": "Language group:",
+    "LANG_ADD": "Languages added to the collection",
+    "COMUNITIES": "Collection communities",
+    "COUNTRY": "Country:",
+    "MEX":"Mexico",
+    "ENTITY": "Entity:",
+    "MUNICIPALITY": "Municipality:",
+    "LOCALITY": "Locality:",
+    "LATITUDE": "Latitude:",
+    "LONGITUDE": "Longitude:",
+    "COMUNITIES_ADD": "Communities added to the collection",
+    "CONTENT_LICENSE": "Content license",
+    "RESTORE": "Restore",
+    "SAVE": "Save"
 }
 }
