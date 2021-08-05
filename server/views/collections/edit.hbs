@@ -3,8 +3,8 @@
 				<div class="container">
 					<div class="col-sm-12" id="contenedor_items_cabezal_agregar_coleccion">
 						<div  class="" id="contenedor_titulos_cabezal_agregar_coleccion">
-							<h1 id="titulo_agregar_coleccion"><span class="icono_cabezal icon-edit"></span> Editar Colección</h1>
-							<h2 class="llamada" id="llamada_agregar_coleccion">Modifica los campos correctamente</h2>
+							<h1 id="titulo_agregar_coleccion"><span class="icono_cabezal icon-edit"></span>{{translation.COLLECTIONS_EDIT.TITLE}}</h1>
+							<h2 class="llamada" id="llamada_agregar_coleccion">{{translation.COLLECTIONS_EDIT.SUB_TITLE}}</h2>
 						</div>	
 					</div>	
 				</div>
@@ -14,20 +14,20 @@
 					<form id="app" class="center" action="/collections/edit/{{collectionDoc._id}}?_method=PUT" method="POST">
         	<input type="hidden" name="_method" value="PUT">
 						<div class="contenedor_input_agregar_coleccion">
-							<label class="label" id="nombre_de_la_coleccion" for="nombre_coleccion">Nombre de la colección</label>
+							<label class="label" id="nombre_de_la_coleccion" for="nombre_coleccion">{{translation.COLLECTIONS_EDIT.NAME_COLLECTION}}</label>
 							<input class="input_ancho_completo" type="text" name="name" id="name" placeholder="Titulo breve (max 120 carácteres)" maxlength="120" v-model="name" required>
 							<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
 							<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
 						</div>
 						<div class="contenedor_input_agregar_coleccion">
-							<label class="label" id="descripcion_de_la_coleccion" for="descripcion_coleccion_input">Descripcion de la coleccion</label>
+							<label class="label" id="descripcion_de_la_coleccion" for="descripcion_coleccion_input">{{translation.COLLECTIONS_EDIT.DESC_COLLECTION}}</label>
 							<textarea name="description" class="input_ancho_completo" type="text" id="description" placeholder="Breve descripcion (max 200 carácteres)" maxlength="200" rows="5" v-model="description" required></textarea>
           	</div>
-						<p class="label" id="lenguas_de_la_coleccion">Lenguas de la colección</p>
+						<p class="label" id="lenguas_de_la_coleccion">{{translation.COLLECTIONS_EDIT.LANG_COLLECTION}}</p>
 						<div class="contenedor_etiqueta_agregar_coleccion_lenguas">
 							<div class="contenedor_inputs_agregar_coleccion_lengua">
 								<div class="modulo_inputs_lengua" id="">
-									<label class="label label_al_100">Lengua terminal:</label>
+									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LANG_TERM}}</label>
 									<input type="text" placeholder="{{translation.SELECT_AN_OPTION}}" id="language" class="input_flexible" onchange="editCollectionScripts.fillLangGroupList(app)"  list="langlist">
 									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
 									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
@@ -40,7 +40,7 @@
       </datalist>
               	</div>
 								<div class="modulo_inputs_lengua">
-									<label class="label label_al_100">Grupo de lenguas:</label>
+									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.GROUP_LANG}}</label>
 									<input class="input_flexible" type="text" :disabled = "!languagesGroup.length > 0" placeholder="{{translation.SELECT_AN_OPTION}}" id="langGroup" name="langGroup" list="groupLanglist">
 									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
 									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
@@ -57,7 +57,7 @@
 								</div>
 							</div>
 							<div class="contenedor_lenguas_agregadas">
-									<p class="label">Lenguas agregadas a la colección</p>
+									<p class="label">{{translation.COLLECTIONS_EDIT.LANG_ADD}}</p>
 									<table id="langTable" class="tabla_lenguas_agregadas">
 										<thead>
 										</thead>
@@ -88,19 +88,19 @@
       </div>
 								</div>
 						</div>
-						<p class="label" id="comunidades_de_la_coleccion">Comunidades de la colección</p>
+						<p class="label" id="comunidades_de_la_coleccion">{{translation.COLLECTIONS_EDIT.COMUNITIES}}</p>
 						<div class="contenedor_etiqueta_agregar_coleccion_comunidad">
 							
 							<div class="contenedor_inputs_agregar_coleccion_comunidad2 ">
 								<div class="contenedor_inputs_boton_lateral">
 									<div class="modulo_inputs_comunidad2" id="">
-									<label class="label label_al_100">País:</label>
+									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.COUNTRY}}</label>
 									<input type="text" class="input_flexible" placeholder="México" readonly>
 									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
 									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
 								</div>
 								<div class="modulo_inputs_comunidad2" id="">
-									<label class="label label_al_100">Entidad:</label>
+									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.ENTITY}}</label>
 									<input type="text" class="input_flexible" placeholder="{{translation.SELECT_AN_OPTION}}" :disabled= "!entitiesList.length > 0" 	onchange="editCollectionScripts.fillMunicipalitiesList(app)" id="entity" list="entitiesList">
 									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
 									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
@@ -112,7 +112,7 @@
       </datalist>
                 </div>
 								<div class="modulo_inputs_comunidad2">
-									<label class="label label_al_100">Municipio:</label>
+									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.MUNICIPALITY}}</label>
 									<input type="text" class="input_flexible" placeholder="{{translation.SELECT_AN_OPTION}}" :disabled = "!municipalitiesList.length > 0" onchange="editCollectionScripts.fillLocalitiesList(app)"  id="municipality"  list="municipalitiesList">
 									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
 									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
@@ -124,7 +124,7 @@
       </datalist>
               	</div>
 								<div class="modulo_inputs_comunidad2">
-									<label class="label label_al_100">Localidad:</label>
+									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LOCALITY}}</label>
 									<input type="text" class="input_flexible" placeholder="{{translation.SELECT_AN_OPTION}}" :disabled = "!localitiesList.length  > 0" id="locality" list="localitiesList">
 									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
 									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
@@ -135,13 +135,13 @@
       </datalist>
                 </div>
 								<div class="modulo_inputs_comunidad2" id="">
-									<label class="label label_al_100">Latitud:</label>
+									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LATITUDE}}</label>
 									<input type="text" class="input_flexible">
 									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
 									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
 								</div>
 								<div class="modulo_inputs_comunidad2" id="">
-									<label class="label label_al_100">Longitud:</label>
+									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LONGITUDE}}</label>
 									<input type="text" class="input_flexible">
 									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
 									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
@@ -152,7 +152,7 @@
 								</div>
 							</div>
 							<div class="contenedor_comunidades_agregadas">
-									<p class="label">Comunidades agregadas a la colección</p>
+									<p class="label">{{translation.COLLECTIONS_EDIT.COMUNITIES_ADD}}</p>
 									<table class="tabla_comunidades_agregadas" id="locTable">
 										<thead>
 										</thead>
@@ -160,7 +160,7 @@
 											<td class="comunidad_agregar_coleccion">\{{loc.Nom_Loc}}</td>
 											<td class="municipio_agregar_coleccion">\{{loc.Nom_Mun}}</td>
 											<td class="entidad_agregar_coleccion">\{{loc.Nom_Ent}}</td>
-											<td class="pais_agregar_coleccion">México</td>
+											<td class="pais_agregar_coleccion">{{translation.COLLECTIONS_EDIT.MEX}}</td>
 											<td class="latitud_agregar_coleccion">\{{loc.Lat_Decimal}}</td>
 											<td class="longitud_agregar_coleccion">\{{loc.Lon_Decimal}}</td>
 											<td class="">
@@ -191,7 +191,7 @@
 						</div>
 						<div class="contenedor_licencia_y_botones_agregar_coleccion">
 							<div class="contenedor_licencia ">
-								<label class="label" for="licencia">Licencia del contenido</label>
+								<label class="label" for="licencia">{{translation.COLLECTIONS_EDIT.CONTENT_LICENSE}}</label>
 								<input 
       type="text" 
       placeholder="{{translation.SELECT_AN_OPTION}}"
@@ -207,8 +207,8 @@
 			</datalist>
             	</div>
 							<div class="contenedor_botones ">
-							<span onclick="location.reload(); " type="reset" class="btn btn-secundario" id="boton_restablecer_agregar_coleccion">Restablecer</span>
-							<button type="submit" class="btn btn-primario" id="boton_guardar_agregar_coleccion">Guardar</button>
+							<span onclick="location.reload(); " type="reset" class="btn btn-secundario" id="boton_restablecer_agregar_coleccion">{{translation.COLLECTIONS_EDIT.RESTORE}}</span>
+							<button type="submit" class="btn btn-primario" id="boton_guardar_agregar_coleccion">{{translation.COLLECTIONS_EDIT.SAVE}}</button>
 						</div>
 						</div>
 						

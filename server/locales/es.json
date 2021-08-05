@@ -271,6 +271,28 @@
 },
 "usermanual":{
     "content":"<h1 class='color_principal'>Sitio en construcción.</h1>"
+},
+"COLLECTIONS_EDIT":{
+    "TITLE": "Editar Colección",
+    "SUB_TITLE":"Modifica los campos correctamente",
+    "NAME_COLLECTION": "Nombre de la colección",
+    "DESC_COLLECTION": "Descripción de la colección",
+    "LANG_COLLECTION": "Lenguas de la colección",
+    "LANG_TERM": "Lengua terminal:",
+    "GROUP_LANG": "Grupo de lenguas:",
+    "LANG_ADD": "Lenguas agregadas a la colección",
+    "COMUNITIES": "Comunidades de la colección",
+    "COUNTRY": "País:",
+    "MEX":"México",
+    "ENTITY": "Entidad:",
+    "MUNICIPALITY": "Municipio:",
+    "LOCALITY": "Localidad:",
+    "LATITUDE": "Latitud:",
+    "LONGITUDE": "Longitud:",
+    "COMUNITIES_ADD": "Comunidades agregadas a la colección:",
+    "CONTENT_LICENSE": "Licencia del contenido",
+    "RESTORE": "Restablecer",
+    "SAVE": "Guardar"
 }
 
 }
