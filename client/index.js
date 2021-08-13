@@ -43,13 +43,12 @@ import EditAudioannotations from '@client/templates/components/EditAudioannotati
 import Audioannotations from '@client/templates/components/Audioannotations.vue'
 //AQUÍ SE IMPORTAN LAS NUEVAS VISTAS PARA EL DASHBOARD DE COLLECTIONS
 import Dashboard from '@client/templates/components/Dashboard.vue'
-import IndexCollections from '@client/templates/components/IndexCollections.vue'
 import App3 from '@client/templates/main3.vue'
 import Main31 from '@client/templates/main31.vue'
 import Main7 from '@client/templates/main7.vue'
 import App4 from '@client/templates/main4.vue'
 import App5 from '@client/templates/main5.vue'
-import App6 from '@client/templates/main6.vue'
+import Collections from '@client/templates/main6.vue'
 import MainUser from '@client/templates/MainUser.vue'
 import Genres from '@client/templates/genres.vue'
 import SuCollectionsDashboard from '@client/templates/SuCollectionsDashboard.vue'
@@ -253,11 +252,10 @@ if (window.location.pathname == '/collections') {
   window.IndexCollectionsScript = IndexCollectionsScripts
   // window.Vue = Vue
   // Vue.use(VueAxios, axios)
-  Vue.component('IndexCollections', IndexCollections)
   window.vm = new Vue({
-    el: '#app6',
+    el: '#collections',
     i18n,
-    render: h => h(App6),
+    render: h => h(Collections),
     //aqui
     //https://stackoverrun.com/es/q/1064113 pasar parametro converttojson
     //ejemplo http://plnkr.co/edit/iE0Vr7sszfqrrDIsR8Wi?p=preview&preview
