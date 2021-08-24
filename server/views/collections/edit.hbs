@@ -1,290 +1,385 @@
 <div class="container-fluid" id="contenedor_agregar_coleccion">
-			<div class="container-fluid" id="cabezal_editar_coleccion">
-				<div class="container">
-					<div class="col-sm-12" id="contenedor_items_cabezal_agregar_coleccion">
-						<div  class="" id="contenedor_titulos_cabezal_agregar_coleccion">
-							<h1 id="titulo_agregar_coleccion"><span class="icono_cabezal icon-edit"></span>{{translation.COLLECTIONS_EDIT.TITLE}}</h1>
-							<h2 class="llamada" id="llamada_agregar_coleccion">{{translation.COLLECTIONS_EDIT.SUB_TITLE}}</h2>
-						</div>	
-					</div>	
+	<div class="container-fluid" id="cabezal_editar_coleccion">
+		<div class="container">
+			<div class="col-sm-12" id="contenedor_items_cabezal_agregar_coleccion">
+				<div class="" id="contenedor_titulos_cabezal_agregar_coleccion">
+					<h1 id="titulo_agregar_coleccion">
+						<span class="icono_cabezal icon-edit"></span>
+						{{translation.COLLECTIONS_EDIT.TITLE}}
+					</h1>
+					
+					<h2 class="llamada" id="llamada_agregar_coleccion">
+						{{translation.COLLECTIONS_EDIT.SUB_TITLE}}
+					</h2>
+
+					<section class="container">
+						<div class="col-sm-12 contenedor-90vh  " id="contenedor_general_agregar_coleccion">
+							<form id="app" class="center" action="/collections/edit/{{collectionDoc._id}}?_method=PUT" method="POST">
+								<input type="hidden" name="_method" value="PUT">
+								
+								<div class="contenedor_input_agregar_coleccion">
+									<label class="label" id="nombre_de_la_coleccion"
+										for="nombre_coleccion">{{translation.COLLECTIONS_EDIT.NAME_COLLECTION}}</label>
+									
+									<input class="input_ancho_completo" type="text" name="name" id="name"
+										placeholder="Titulo breve (max 120 carácteres)" maxlength="120" v-model="name" required>
+									
+									<div class="contenedor_icono_correcto_input">
+										<p><span class="icono_correcto_input icon-check_circle"></span></p>
+									</div>
+									
+									<div class="contenedor_icono_error_input">
+										<p><span class="icono_error_input icon-error"></span></p>
+									</div>
+								</div>
+								
+								<div class="contenedor_input_agregar_coleccion">
+									<label class="label" id="descripcion_de_la_coleccion"
+										for="descripcion_coleccion_input">{{translation.COLLECTIONS_EDIT.DESC_COLLECTION}}</label>
+									<textarea name="description" class="input_ancho_completo" type="text" id="description"
+										placeholder="Breve descripcion (max 200 carácteres)" maxlength="200" rows="5" v-model="description"
+										required></textarea>
+								</div>
+								
+								<p class="label" id="lenguas_de_la_coleccion">{{translation.COLLECTIONS_EDIT.LANG_COLLECTION}}</p>
+								
+								<div class="contenedor_etiqueta_agregar_coleccion_lenguas">
+									<div class="contenedor_inputs_agregar_coleccion_lengua">
+										<div class="modulo_inputs_lengua" id="">
+											<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LANG_TERM}}</label>
+											
+											<input type="text" placeholder="{{translation.SELECT_AN_OPTION}}" id="language"
+												class="input_flexible" onchange="editCollectionScripts.fillLangGroupList(app)"
+												list="langlist">
+											
+											<div class="contenedor_icono_correcto_input">
+												<p><span class="icono_correcto_input icon-check_circle"></span></p>
+											</div>
+											
+											<div class="contenedor_icono_error_input">
+												<p><span class="icono_error_input icon-error"></span></p>
+											</div>
+											
+											<datalist id="langlist">
+												<option v-for="language in languages" :id="language._id"
+													:value="language.name + ' | ' + language.gid">
+											</datalist>
+										</div>
+										
+										<div class="modulo_inputs_lengua">
+											<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.GROUP_LANG}}</label>
+											
+											<input class="input_flexible" type="text" :disabled="!languagesGroup.length > 0"
+												placeholder="{{translation.SELECT_AN_OPTION}}" id="langGroup" name="langGroup"
+												list="groupLanglist">
+											
+											<div class="contenedor_icono_correcto_input">
+												<p><span class="icono_correcto_input icon-check_circle"></span></p>
+											</div>
+											
+											<div class="contenedor_icono_error_input">
+												<p><span class="icono_error_input icon-error"></span></p>
+											</div>
+											
+											<datalist id="groupLanglist">
+												<option v-for="languageG in languagesGroup" :id="languageG._id"
+													:value="languageG.name + ' | ' + languageG.gid">
+											</datalist>
+										</div>
+										
+										<div class="modulo_boton_lengua">
+											<button class="btn_lateral_input_agregar_lengua" disabled><span id="addLangBtn"
+													@click="addLanguages()" class="icono_boton_lateral icon-plus"></span></button>
+										</div>
+									</div>
+									
+									<div class="contenedor_lenguas_agregadas">
+										<p class="label">{{translation.COLLECTIONS_EDIT.LANG_ADD}}</p>
+										
+										<table id="langTable" class="tabla_lenguas_agregadas">
+											<tr class="row_lenguas_agregadas" v-for="(langs, index) in colLanguages">
+												<td class="lengua_terminal_glottocode_agregar_coleccion">\{{ langs.language.gid }}</td>
+												
+												<td class="">\{{ langs.language.name }}</td>
+												
+												<td class="grupo_terminal_glottocode_agregar_coleccion">\{{ langs.LanguageGroup.gid }}</td>
+												
+												<td class="">\{{ langs.LanguageGroup.name }}</td>
+												
+												<td class="">
+													<div class="contenedor_botones_accion_lengua">
+														<i class="btn_accion_tabla float_right">
+															<span @click="removeLangs(index)" class="icono_accion_tabla  icon-delete"></span>
+														</i>
+													</div>
+												</td>
+											</tr>
+										</table>
+										
+										<div v-for="(langs, index) in colLanguages">
+											<input style="display: none;" name="languages" type="text" v-model="langs.language.gid">
+										
+											<input style="display: none;" name="languages" type="text" v-model="langs.LanguageGroup.gid">
+										</div>
+									</div>
+								</div>
+								
+								<p class="label" id="comunidades_de_la_coleccion">{{translation.COLLECTIONS_EDIT.COMUNITIES}}</p>
+								
+								<div class="contenedor_etiqueta_agregar_coleccion_comunidad">
+									<div class="contenedor_inputs_agregar_coleccion_comunidad2 ">
+										<div class="contenedor_inputs_boton_lateral">
+											<div class="modulo_inputs_comunidad2" id="">
+												<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.COUNTRY}}</label>
+												
+												<input type="text" class="input_flexible" placeholder="México" readonly>
+												
+												<div class="contenedor_icono_correcto_input">
+													<p><span class="icono_correcto_input icon-check_circle"></span></p>
+												</div>
+												
+												<div class="contenedor_icono_error_input">
+													<p><span class="icono_error_input icon-error"></span></p>
+												</div>
+											</div>
+											
+											<div class="modulo_inputs_comunidad2" id="">
+												<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.ENTITY}}</label>
+											
+												<input type="text" class="input_flexible" placeholder="{{translation.SELECT_AN_OPTION}}"
+													:disabled="!entitiesList.length > 0"
+													onchange="editCollectionScripts.fillMunicipalitiesList(app)" id="entity"
+													list="entitiesList">
+											
+												<div class="contenedor_icono_correcto_input">
+													<p><span class="icono_correcto_input icon-check_circle"></span></p>
+												</div>
+											
+												<div class="contenedor_icono_error_input">
+													<p><span class="icono_error_input icon-error"></span></p>
+												</div>
+											
+												<datalist id="entitiesList">
+													<option v-for="entity in entitiesList" :value="entity">
+												</datalist>
+											</div>
+											
+											<div class="modulo_inputs_comunidad2">
+												<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.MUNICIPALITY}}</label>
+											
+												<input type="text" class="input_flexible" placeholder="{{translation.SELECT_AN_OPTION}}"
+													:disabled="!municipalitiesList.length > 0"
+													onchange="editCollectionScripts.fillLocalitiesList(app)" id="municipality"
+													list="municipalitiesList">
+											
+												<div class="contenedor_icono_correcto_input">
+													<p><span class="icono_correcto_input icon-check_circle"></span></p>
+												</div>
+											
+												<div class="contenedor_icono_error_input">
+													<p><span class="icono_error_input icon-error"></span></p>
+												</div>
+											
+												<datalist id="municipalitiesList">
+													<option v-for="municipality in municipalitiesList" :value="municipality">
+												</datalist>
+											</div>
+											
+											<div class="modulo_inputs_comunidad2">
+												<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LOCALITY}}</label>
+												
+												<input type="text" class="input_flexible" placeholder="{{translation.SELECT_AN_OPTION}}"
+													:disabled="!localitiesList.length  > 0" id="locality" list="localitiesList">
+												
+												<div class="contenedor_icono_correcto_input">
+													<p><span class="icono_correcto_input icon-check_circle"></span></p>
+												</div>
+												
+												<div class="contenedor_icono_error_input">
+													<p><span class="icono_error_input icon-error"></span></p>
+												</div>
+												
+												<datalist id="localitiesList">
+													<option v-for="locality in localitiesList" :value="locality">
+												</datalist>
+											</div>
+											
+											<div class="modulo_inputs_comunidad2" id="">
+												<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LATITUDE}}</label>
+											
+												<input type="text" class="input_flexible">
+											
+												<div class="contenedor_icono_correcto_input">
+													<p><span class="icono_correcto_input icon-check_circle"></span></p>
+												</div>
+											
+												<div class="contenedor_icono_error_input">
+													<p><span class="icono_error_input icon-error"></span></p>
+												</div>
+											</div>
+											
+											<div class="modulo_inputs_comunidad2" id="">
+												<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LONGITUDE}}</label>
+											
+												<input type="text" class="input_flexible">
+											
+												<div class="contenedor_icono_correcto_input">
+													<p><span class="icono_correcto_input icon-check_circle"></span></p>
+												</div>
+											
+												<div class="contenedor_icono_error_input">
+													<p><span class="icono_error_input icon-error"></span></p>
+												</div>
+											</div>
+										</div>
+										
+										<div class="modulo_boton_comunidad">
+											<button class="btn_lateral_input_agregar_comunidad" disabled><span id="addLocBtn"
+													@click="addLocality()" class="icono_boton_lateral icon-plus"></span></button>
+										</div>
+									</div>
+									
+									<div class="contenedor_comunidades_agregadas">
+										<p class="label">{{translation.COLLECTIONS_EDIT.COMUNITIES_ADD}}</p>
+									
+										<table class="tabla_comunidades_agregadas" id="locTable">
+											<tr class="row_comunidades_agregadas" v-for="(loc, index) in localities">
+												<td class="comunidad_agregar_coleccion">\{{loc.Nom_Loc}}</td>
+									
+												<td class="municipio_agregar_coleccion">\{{loc.Nom_Mun}}</td>
+									
+												<td class="entidad_agregar_coleccion">\{{loc.Nom_Ent}}</td>
+									
+												<td class="pais_agregar_coleccion">{{translation.COLLECTIONS_EDIT.MEX}}</td>
+									
+												<td class="latitud_agregar_coleccion">\{{loc.Lat_Decimal}}</td>
+									
+												<td class="longitud_agregar_coleccion">\{{loc.Lon_Decimal}}</td>
+									
+												<td class="">
+													<div class="contenedor_botones_accion_lengua">
+														<i class="btn_accion_tabla float_right"><span @click="removeLocs(index)"
+																class="icono_accion_tabla  icon-delete"></span></i>
+													</div>
+												</td>
+											</tr>
+										</table>
+										
+										<div v-for="(loc, index) in localities">
+											<input type="text" style="display:none;" name="localities" v-model="loc.Nom_Ent">
+										
+											<input type="text" style="display:none;" name="localities" v-model="loc.Nom_Mun">
+										
+											<input type="text" style="display:none;" name="localities" v-model="loc.Nom_Loc">
+										</div>
+									</div>
+								</div>
+								
+								<div class="contenedor_licencia_y_botones_agregar_coleccion">
+									<div class="contenedor_licencia ">
+										<label class="label" for="licencia">{{translation.COLLECTIONS_EDIT.CONTENT_LICENSE}}</label>
+								
+										<input type="text" placeholder="{{translation.SELECT_AN_OPTION}}" name="license" id="license"
+											list="licenseType" v-model="license">
+								
+										<div class="contenedor_icono_correcto_input">
+											<p><span class="icono_correcto_input icon-check_circle"></span></p>
+										</div>
+								
+										<div class="contenedor_icono_error_input">
+											<p><span class="icono_error_input icon-error"></span></p>
+										</div>
+								
+										<datalist id="licenseType">
+											<option value="CC-BY-NC-SA">
+											<option value="CC BY-SA">
+										</datalist>
+									</div>
+								
+									<div class="contenedor_botones ">
+										<span onclick="location.reload(); " type="reset" class="btn btn-secundario"
+											id="boton_restablecer_agregar_coleccion">{{translation.COLLECTIONS_EDIT.RESTORE}}</span>
+										
+										<button type="submit" class="btn btn-primario"
+											id="boton_guardar_agregar_coleccion">{{translation.COLLECTIONS_EDIT.SAVE}}</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</section>
 				</div>
 			</div>
-			<section class="container">
-				<div class="col-sm-12 contenedor-90vh  " id="contenedor_general_agregar_coleccion">
-					<form id="app" class="center" action="/collections/edit/{{collectionDoc._id}}?_method=PUT" method="POST">
-        	<input type="hidden" name="_method" value="PUT">
-						<div class="contenedor_input_agregar_coleccion">
-							<label class="label" id="nombre_de_la_coleccion" for="nombre_coleccion">{{translation.COLLECTIONS_EDIT.NAME_COLLECTION}}</label>
-							<input class="input_ancho_completo" type="text" name="name" id="name" placeholder="Titulo breve (max 120 carácteres)" maxlength="120" v-model="name" required>
-							<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-							<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-						</div>
-						<div class="contenedor_input_agregar_coleccion">
-							<label class="label" id="descripcion_de_la_coleccion" for="descripcion_coleccion_input">{{translation.COLLECTIONS_EDIT.DESC_COLLECTION}}</label>
-							<textarea name="description" class="input_ancho_completo" type="text" id="description" placeholder="Breve descripcion (max 200 carácteres)" maxlength="200" rows="5" v-model="description" required></textarea>
-          	</div>
-						<p class="label" id="lenguas_de_la_coleccion">{{translation.COLLECTIONS_EDIT.LANG_COLLECTION}}</p>
-						<div class="contenedor_etiqueta_agregar_coleccion_lenguas">
-							<div class="contenedor_inputs_agregar_coleccion_lengua">
-								<div class="modulo_inputs_lengua" id="">
-									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LANG_TERM}}</label>
-									<input type="text" placeholder="{{translation.SELECT_AN_OPTION}}" id="language" class="input_flexible" onchange="editCollectionScripts.fillLangGroupList(app)"  list="langlist">
-									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-							<datalist id="langlist">
-				<option 
-					v-for="language in languages"
-					:id="language._id"
-					:value="language.name + ' | ' + language.gid"
-					>
-      </datalist>
-              	</div>
-								<div class="modulo_inputs_lengua">
-									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.GROUP_LANG}}</label>
-									<input class="input_flexible" type="text" :disabled = "!languagesGroup.length > 0" placeholder="{{translation.SELECT_AN_OPTION}}" id="langGroup" name="langGroup" list="groupLanglist">
-									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-							<datalist id="groupLanglist">				
-      <option 
-					v-for="languageG in languagesGroup"
-					:id="languageG._id"
-					:value="languageG.name + ' | ' + languageG.gid"
-					>
-      </datalist>
-              	</div>
-								<div class="modulo_boton_lengua">
-									<button class="btn_lateral_input_agregar_lengua" disabled><span id="addLangBtn" @click="addLanguages()" class="icono_boton_lateral icon-plus"></span></button>
-								</div>
-							</div>
-							<div class="contenedor_lenguas_agregadas">
-									<p class="label">{{translation.COLLECTIONS_EDIT.LANG_ADD}}</p>
-									<table id="langTable" class="tabla_lenguas_agregadas">
-										<thead>
-										</thead>
-										<tr class="row_lenguas_agregadas" v-for="(langs, index) in colLanguages">
-											<td class="lengua_terminal_glottocode_agregar_coleccion">\{{ langs.language.gid }}</td>
-											<td class="">\{{ langs.language.name }}</td>
-											<td class="grupo_terminal_glottocode_agregar_coleccion">\{{ langs.LanguageGroup.gid }}</td>
-											<td class="">\{{ langs.LanguageGroup.name }}</td>
-											<td class="">
-												<div class="contenedor_botones_accion_lengua">
-													<i class="btn_accion_tabla float_right"><span @click="removeLangs(index)" class="icono_accion_tabla  icon-delete"></span></i>
-													
-												</div>
-											</td>	
-										</tr>
-									</table>
-                  <div v-for="(langs, index) in colLanguages">
-        <input 
-        style="display: none;"
-        name="languages" 
-        type="text" 
-        v-model="langs.language.gid">
-        <input 
-        style="display: none;"
-        name="languages" 
-        type="text" 
-        v-model="langs.LanguageGroup.gid">
-      </div>
-								</div>
-						</div>
-						<p class="label" id="comunidades_de_la_coleccion">{{translation.COLLECTIONS_EDIT.COMUNITIES}}</p>
-						<div class="contenedor_etiqueta_agregar_coleccion_comunidad">
-							
-							<div class="contenedor_inputs_agregar_coleccion_comunidad2 ">
-								<div class="contenedor_inputs_boton_lateral">
-									<div class="modulo_inputs_comunidad2" id="">
-									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.COUNTRY}}</label>
-									<input type="text" class="input_flexible" placeholder="México" readonly>
-									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-								</div>
-								<div class="modulo_inputs_comunidad2" id="">
-									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.ENTITY}}</label>
-									<input type="text" class="input_flexible" placeholder="{{translation.SELECT_AN_OPTION}}" :disabled= "!entitiesList.length > 0" 	onchange="editCollectionScripts.fillMunicipalitiesList(app)" id="entity" list="entitiesList">
-									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-								<datalist id="entitiesList">
-        <option 
-        v-for="entity in entitiesList"
-				:value="entity"
-        >
-      </datalist>
-                </div>
-								<div class="modulo_inputs_comunidad2">
-									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.MUNICIPALITY}}</label>
-									<input type="text" class="input_flexible" placeholder="{{translation.SELECT_AN_OPTION}}" :disabled = "!municipalitiesList.length > 0" onchange="editCollectionScripts.fillLocalitiesList(app)"  id="municipality"  list="municipalitiesList">
-									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-							 <datalist id="municipalitiesList">
-				<option 
-        v-for="municipality in municipalitiesList"
-				:value="municipality"
-        >
-      </datalist>
-              	</div>
-								<div class="modulo_inputs_comunidad2">
-									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LOCALITY}}</label>
-									<input type="text" class="input_flexible" placeholder="{{translation.SELECT_AN_OPTION}}" :disabled = "!localitiesList.length  > 0" id="locality" list="localitiesList">
-									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-              	 <datalist id="localitiesList">
-        <option 
-        v-for="locality in localitiesList"
-        :value="locality">
-      </datalist>
-                </div>
-								<div class="modulo_inputs_comunidad2" id="">
-									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LATITUDE}}</label>
-									<input type="text" class="input_flexible">
-									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-								</div>
-								<div class="modulo_inputs_comunidad2" id="">
-									<label class="label label_al_100">{{translation.COLLECTIONS_EDIT.LONGITUDE}}</label>
-									<input type="text" class="input_flexible">
-									<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-									<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-								</div>
-								</div>
-								<div class="modulo_boton_comunidad">
-									<button class="btn_lateral_input_agregar_comunidad" disabled><span id="addLocBtn" @click="addLocality()" class="icono_boton_lateral icon-plus"></span></button>
-								</div>
-							</div>
-							<div class="contenedor_comunidades_agregadas">
-									<p class="label">{{translation.COLLECTIONS_EDIT.COMUNITIES_ADD}}</p>
-									<table class="tabla_comunidades_agregadas" id="locTable">
-										<thead>
-										</thead>
-										<tr class="row_comunidades_agregadas" v-for="(loc, index) in localities">
-											<td class="comunidad_agregar_coleccion">\{{loc.Nom_Loc}}</td>
-											<td class="municipio_agregar_coleccion">\{{loc.Nom_Mun}}</td>
-											<td class="entidad_agregar_coleccion">\{{loc.Nom_Ent}}</td>
-											<td class="pais_agregar_coleccion">{{translation.COLLECTIONS_EDIT.MEX}}</td>
-											<td class="latitud_agregar_coleccion">\{{loc.Lat_Decimal}}</td>
-											<td class="longitud_agregar_coleccion">\{{loc.Lon_Decimal}}</td>
-											<td class="">
-												<div class="contenedor_botones_accion_lengua">
-													<i class="btn_accion_tabla float_right"><span  @click="removeLocs(index)" class="icono_accion_tabla  icon-delete"></span></i>
-												</div>
-											</td>	
-										</tr>
-									</table>
-                   <div v-for="(loc, index) in localities">
-        <input 
-        type="text"
-        style="display:none;"
-        name="localities" 
-        v-model="loc.Nom_Ent">
-        <input 
-        type="text" 
-        style="display:none;"
-        name="localities" 
-        v-model="loc.Nom_Mun">
-        <input 
-        type="text" 
-        style="display:none;"
-        name="localities" 
-        v-model="loc.Nom_Loc">
-      </div>
-								</div>
-						</div>
-						<div class="contenedor_licencia_y_botones_agregar_coleccion">
-							<div class="contenedor_licencia ">
-								<label class="label" for="licencia">{{translation.COLLECTIONS_EDIT.CONTENT_LICENSE}}</label>
-								<input 
-      type="text" 
-      placeholder="{{translation.SELECT_AN_OPTION}}"
-			name="license" 
-      id="license" 
-      list="licenseType"
-			v-model="license">
-								<div class="contenedor_icono_correcto_input"><p><span class="icono_correcto_input icon-check_circle"></span></p></div>
-								<div class="contenedor_icono_error_input"><p><span class="icono_error_input icon-error"></span></p></div>
-						<datalist id="licenseType">
-				<option value="CC-BY-NC-SA">
-				<option value="CC BY-SA">
-			</datalist>
-            	</div>
-							<div class="contenedor_botones ">
-							<span onclick="location.reload(); " type="reset" class="btn btn-secundario" id="boton_restablecer_agregar_coleccion">{{translation.COLLECTIONS_EDIT.RESTORE}}</span>
-							<button type="submit" class="btn btn-primario" id="boton_guardar_agregar_coleccion">{{translation.COLLECTIONS_EDIT.SAVE}}</button>
-						</div>
-						</div>
-						
-					</form>
-				</div>	
-				
-			</section>
 		</div>
+	</div>
+</div>
 <!-- VUE  -->
-  <script src="https://unpkg.com/vue" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/vue" crossorigin="anonymous"></script>
 <script>
-
-  const getLangObj = function(stringVal){
-    return {
-      gid: stringVal.split(' | ')[1],
-      name: stringVal.split(' | ')[0]
-    }
-  }
+const getLangObj = function(stringVal){
+	return {
+    	gid: stringVal.split(' | ')[1],
+      	name: stringVal.split(' | ')[0]
+	}
+}
  
-	var app = new Vue({
-		el: '#app',
-		data: {
+var app = new Vue({
+	el: '#app',
+	data: {
 		name_saved: '{{collectionDoc.name}}',
-      description_saved: '{{collectionDoc.description}}',
-      name: '{{{collectionDoc.name}}}',
-      description: '{{collectionDoc.description}}',
-			languages : [],
-      languagesGroup : [],
-      colLanguages: {{{collectionDoc.languages}}},
-      localities : {{{collectionDoc.localities}}},
-      entitiesList : [],
-      municipalitiesList: [],
-      localitiesList: [],
-      license: '{{collectionDoc.license}}'
-		},
+      	description_saved: '{{collectionDoc.description}}',
+      	name: '{{{collectionDoc.name}}}',
+      	description: '{{{collectionDoc.description}}}',
+		languages : [],
+      	languagesGroup : [],
+      	colLanguages: {{{collectionDoc.languages}}},
+      	localities : {{{collectionDoc.localities}}},
+      	entitiesList : [],
+      	municipalitiesList: [],
+      	localitiesList: [],
+      	license: '{{collectionDoc.license}}'
+	},
     methods:{
-      removeLangs : function(idx){
-        this.colLanguages.splice(idx, 1)
-      },
-      removeLocs : function(idx){
-        this.localities.splice(idx, 1)
-      },
-      addLanguages : function(){
-        let lang = getLangObj(document.getElementById('language').value) 
-        let langGroup = getLangObj(document.getElementById('langGroup').value)
+    	removeLangs: function(idx) {
+			this.colLanguages.splice(idx, 1)
+		},
+      	removeLocs : function(idx){
+        	this.localities.splice(idx, 1)
+      	},
+      	addLanguages : function(){
+        	let lang = getLangObj(document.getElementById('language').value) 
+        	let langGroup = getLangObj(document.getElementById('langGroup').value)
 
-        // Check if langGeoup is valid
-        let validLangGroup = this.languagesGroup.map(function(langOption){
-          return langOption.name == langGroup.name && langOption.gid == langGroup.gid
-        }).reduce(function(acc, current){
-          return acc || current
-        })
+        	// Check if langGeoup is valid
+        	let validLangGroup = this.languagesGroup.map(function(langOption){
+          		return langOption.name == langGroup.name && langOption.gid == langGroup.gid
+        	}).reduce(function(acc, current){
+          		return acc || current
+        	})
 
-        if(!validLangGroup){
-          return alert("Debe seleccionar una opción de la lista")
-          document.getElementById('langGroup').value = ""
-        }
+        	if(!validLangGroup){
+          		return alert("Debe seleccionar una opción de la lista")
+          		document.getElementById('langGroup').value = ""
+        	}
 
-        // Check if language have been choosed previously
-        let areadySelected = false
-        for(let index = 0; index < this.colLanguages.length; index++){
-          areadySelected = this.colLanguages[index].language.name == lang.name
-          if (areadySelected){
-            break
-          }
-        }
-        if(areadySelected){
-          alert("Ya se ha seleccionado esta lengua")
-        }else{
-          this.colLanguages.push({
-            language : lang,
-            LanguageGroup : langGroup
-          })
-        }
-        document.getElementById('language').value = ""
-        document.getElementById('langGroup').value = ""
+        	// Check if language have been choosed previously
+        	let areadySelected = false
+        	for(let index = 0; index < this.colLanguages.length; index++){
+          		areadySelected = this.colLanguages[index].language.name == lang.name
+          		if (areadySelected){
+            		break
+          		}
+        	}
+        
+			if(areadySelected){
+          		alert("Ya se ha seleccionado esta lengua")
+        	}else{
+          		this.colLanguages.push({
+            		language : lang,
+            		LanguageGroup : langGroup
+          		})
+        	}
+        	document.getElementById('language').value = ""
+        	document.getElementById('langGroup').value = ""
       },
       addLocality : function(){
         let ent = document.getElementById('entity').value
