@@ -163,6 +163,7 @@ const editCollection = async (req, res) => {
 
     if (result.ok) {
       req.flash('success_msg', 'La colección se ha actualizado con éxito')
+      console.log('Aquí se encuentra el mensaje flash');
     } else {
       req.flash('error_msg', 'No se ha podido actualizar la colección')
     }
