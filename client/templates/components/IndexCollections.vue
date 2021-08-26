@@ -300,6 +300,7 @@
 </template>
 
 <script>
+import Swale from 'sweetalert2'
 export default {
   name: "IndexCollections",
   props: {
@@ -515,7 +516,7 @@ export default {
     showCollect(title,  text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       console.log("title " + title + "text " + text);
-      this.$swal({
+      Swale.fire({
         //title: title,
         //text: text,
         html:
