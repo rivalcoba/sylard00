@@ -347,12 +347,17 @@
         </div>
       </div>
     </section>
+    <Collection />
   </div>
 </template>
 
 <script>
+import Collection from './Collections.vue'
 export default {
   name: 'Collections',
+  components: {
+    Collection
+  },
   props: {
     parametro: Object,
   },
