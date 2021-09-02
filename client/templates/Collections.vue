@@ -5,6 +5,7 @@
                 <div class="contenedor_tabla_mis_colecciones">
                     <table>
                         <Thead />
+                        <TBody />
                     </table>
                 </div>
             </div>
@@ -14,10 +15,12 @@
 
 <script>
 import Thead from './components/Thead.vue'
+import TBody from './components/TBody.vue'
 export default {
     name: 'Collection',
     components: {
-        Thead
+        Thead,
+        TBody
     },
     setup() {
         
