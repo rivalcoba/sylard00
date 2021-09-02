@@ -1,70 +1,46 @@
 <template>
-    <div id="body">
-        <table class="tabla_mis_colecciones">
-            <tr v-for="(item2, index) in search_titulo" :key="'item' + index">
-              <td>
-                <span v-html="item2.name"></span>
-              </td>
+  <div id="acciones">
+    <div class="contenedor_botones_accion">
+      <button class="btn_accion_tabla" aria-hidden="true">
+        <span class="icono_accion_tabla icon-info1"></span>
+      </button>
 
-              <td class="" data-label="Lengua terminal (glottocode)">
-                <div v-for="(item3, index3) in item2.languages" :key="'item3' + index3">
-                    {{ item3.language.gid }}
-                    <span class="lengua_term_comun" data-label="Lengua terminal (nombre común)">
-                        {{ item3.language.name }} 
-                    </span>
-                    
-                    <br />
-                </div>
-              </td>
+      <a class="btn_accion_tabla">
+        <span class="icono_accion_tabla icon-launch"></span>
+      </a>
 
-              <td class="grupo_lenguas" data-label="Grupo de lenguas (glottocode)">
-                <div v-for="(item4, index4) in item2.languages" :key="'item4' + index4">
-                    {{ item4.LanguageGroup.gid}}
-                    <span class="grupo_lengua_comun" data-label="Grupo de lenguas (nombre común)">
-                        {{ item4.LanguageGroup.name }}
-                    </span>
+      <button class="dropdown-trigger" @click="elipsis(index)">
+        <span class="icono_accion_tabla icon-ellipsis-v"></span>
+      </button>
 
-                    <br />
-                </div>
-              </td>
+      <div :class="{ contenido_modal_elipsis : bandera_elipsiss}" :style="contenido_modal_elipsis" 
+      v-if="item_index == index" >
+        <span class="icono_cerrar_modal_elipsis icon-close" @click="elipsis($event)"></span>
 
-              <td id="mostrar-hr" class="comunidades">
-                <div v-for="(item5, index5) in item2.localities" :key="'item5' + index5">
-                    <span class="pais">
-                        {{ item5.Nom_Ent }}
-                    </span>
-                    
-                    <span class="comunidad">
-                        {{ item5.Nom_Loc }}
-                    </span>
-                    
-                    <span class="municipio_tabla">
-                        {{ item5.Nom_Mun }}
-                    </span>
-                    
-                    <span class="localizacion">
-                        {{ item5.Lat_Decimal }}, {{ item5.Lon_Decimal }}
-                    </span>
+        <div class="contenedor_opciones_elipsis">
+          <a class="btn_opciones_ellipsis_mis_colecciones" :href="'/audioannotations/create'">
+            <span class="icono_opcion_elipsis icon-file_upload"></span>
+            {{$t('lang.elipsis.upload_audioannotation')}}
+          </a>
 
-                    <hr class="hr_divisor_comunidad" />
-                </div>
-              </td>
-              
-              <td> 
-                <Acc />
-              </td>
-            </tr>
-        </table>
+          <a class="btn_opciones_ellipsis_mis_colecciones">
+            <span class="icono_opcion_elipsis icon-edit"></span>
+            {{$t('lang.elipsis.edit_metadata')}}
+          </a>
+
+         <a class="btn_opciones_ellipsis_mis_colecciones" @click.prevent="borrarCollection(item2._id)">
+           <span class="icono_opcion_elipsis icon-delete"></span>
+           {{$t('lang.elipsis.erase')}}
+         </a>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-import Acc from './Acciones.vue'
 export default {
-  name: 'Body',
-  components: {
-    Acc
-  },
+  name: 'Acciones',
   data() {
     return {
       names: {},

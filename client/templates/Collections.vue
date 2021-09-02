@@ -7,6 +7,7 @@
                         <Thead />
                         <TBody />
                     </table>
+                    <Paginacion />
                 </div>
             </div>
         </section>
@@ -16,11 +17,16 @@
 <script>
 import Thead from './components/Thead.vue'
 import TBody from './components/TBody.vue'
+import Acciones from './components/Acciones.vue'
+import Paginacion from './components/Paginacion.vue'
+
 export default {
     name: 'Collection',
     components: {
         Thead,
-        TBody
+        TBody,
+        Acciones,
+        Paginacion
     },
     setup() {
         
