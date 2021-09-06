@@ -62,6 +62,9 @@
 import Acc from './Acciones.vue'
 export default {
   name: 'Body',
+  props: [
+    'text'
+  ],
   components: {
     Acc
   },

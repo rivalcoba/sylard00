@@ -1,5 +1,5 @@
 <template>
-    <div id="thead">
+    <div id="cabecera">
         <table class="tabla_mis_colecciones">
             <thead>
                 <th class="cabezal_columnas_th" id="th_coleccion">
@@ -93,3 +93,12 @@
         </table>
     </div>
 </template>
+
+<script>
+export default {
+    name: 'Cabecera',
+    props: [
+        'text'
+    ]
+}
+</script>

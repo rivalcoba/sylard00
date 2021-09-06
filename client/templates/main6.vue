@@ -348,11 +348,13 @@
       </div>
     </section>
     <Collection />
+    
   </div>
 </template>
 
 <script>
-import Collection from './Collections.vue'
+// import Collection from './Collections.vue'
+import Collection from './views/Collections.vue'
 export default {
   name: 'Collections',
   components: {
