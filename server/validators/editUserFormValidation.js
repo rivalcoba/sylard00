@@ -29,7 +29,7 @@ export default async (req, res, next)=>{
         let {spokenLanguages, country} = req.body
         
         // Parsing Spoken languages
-        req.body.spokenLanguages = getSpokenLang(spokenLanguages)
+        req.body.spokenLanguages = getSpokenLang(spokenLanguages + `aquí se muestra la información`)
         
         // Parsing Country
         country = getCountryObj(country)
