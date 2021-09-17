@@ -25,9 +25,8 @@ export default async (req, res, next)=>{
         let {spokenLanguages, country} = req.body
         
         // Parsing Spoken languages
-            req.body.spokenLanguages = getSpokenLang(spokenLanguages)
-        
-            // Parsing Country
+        req.body.spokenLanguages = getSpokenLang(spokenLanguages) // ["Español","Ingles","Uk"]
+        // Parsing Country
         country = getCountryObj(country)
         if(country)
             req.body.country = country
