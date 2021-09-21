@@ -83,12 +83,12 @@
         <div class="contenedor_input_agregar_audioanotacion">
             <label class="label label_al_100" id="seleccion_coleccion_audioanotacion_label"
               for="seleccion_coleccion_audioanotacion_input">{{translation.UPLOADAUDIO.COLLECTION}}</label>
-            <select  class="input_flexible" onchange="pageScripts.fillGlottologSelect()" id="colectionSelect"
+            <select class="input_flexible" onchange="pageScripts.fillGlottologSelect()" id="colectionSelect"
               name="colection" required>
               <option value="" disabled selected>{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}</option>
               {{#each collections}}
               <option value="{{_id}}" name="{{name}}">
-                  {{name}}
+                {{{name}}}
               </option>
               {{/each}}
             </select>

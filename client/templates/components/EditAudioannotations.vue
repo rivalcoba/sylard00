@@ -123,6 +123,7 @@
                 :key="'item3' + index"
                 v-bind:value="item3.name"
                 :id="item3._id"
+                v-html="item3.name"
               >
                 {{ item3.name }}
               </option>
