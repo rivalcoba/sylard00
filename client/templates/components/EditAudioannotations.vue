@@ -116,7 +116,7 @@
               @change="changeColeccion($event)"
             >
               <option disabled :value="audioannotations.collection_id.name">
-                {{ audioannotations.collection_id.name }}
+                <span v-html="audioannotations.collection_id.name"></span>
               </option>
               <option
                 v-for="(item3, index) in colecciones"
