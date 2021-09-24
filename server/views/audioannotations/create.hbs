@@ -1,15 +1,16 @@
 <div class="container-fluid" id="contenedor_agregar_audioanotacion">
-   <div class="container-fluid" id="cabezal_agregar_audioanotacion">
-      <div class="container">
-         <div class="col-sm-12" id="contenedor_items_cabezal_agregar_audioanotacion">
-            <div class="" id="contenedor_titulos_cabezal_agregar_audioanotacion">
-               <h1 class="blanco" id="titulo_agregar_audioanotacion"><span
-                     class="icono_cabezal icon-file_upload"></span> {{translation.UPLOADAUDIO.UPLOADA}}</h1>
-            </div>
-         </div>
+  <div class="container-fluid" id="cabezal_agregar_audioanotacion">
+    <div class="container">
+      <div class="col-sm-12" id="contenedor_items_cabezal_agregar_audioanotacion">
+        <div class="" id="contenedor_titulos_cabezal_agregar_audioanotacion">
+          <h1 class="blanco" id="titulo_agregar_audioanotacion">
+            <span class="icono_cabezal icon-file_upload"></span> 
+            {{translation.UPLOADAUDIO.UPLOADA}}
+          </h1>
+        </div>
       </div>
-      
-   </div>
+    </div>
+</div>
    
    <section class="container">
       <div class="col-sm-12 contenedor-90vh" id="contenedor_general_agregar_audioanotacion">
@@ -83,12 +84,12 @@
         <div class="contenedor_input_agregar_audioanotacion">
             <label class="label label_al_100" id="seleccion_coleccion_audioanotacion_label"
               for="seleccion_coleccion_audioanotacion_input">{{translation.UPLOADAUDIO.COLLECTION}}</label>
-            <select  class="input_flexible" onchange="pageScripts.fillGlottologSelect()" id="colectionSelect"
+            <select class="input_flexible" onchange="pageScripts.fillGlottologSelect()" id="colectionSelect"
               name="colection" required>
               <option value="" disabled selected>{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}</option>
               {{#each collections}}
               <option value="{{_id}}" name="{{name}}">
-                  {{name}}
+                {{{name}}}
               </option>
               {{/each}}
             </select>

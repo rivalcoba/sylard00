@@ -116,13 +116,14 @@
               @change="changeColeccion($event)"
             >
               <option disabled :value="audioannotations.collection_id.name">
-                {{ audioannotations.collection_id.name }}
+                <span v-html="audioannotations.collection_id.name"></span>
               </option>
               <option
                 v-for="(item3, index) in colecciones"
                 :key="'item3' + index"
                 v-bind:value="item3.name"
                 :id="item3._id"
+                v-html="item3.name"
               >
                 {{ item3.name }}
               </option>
