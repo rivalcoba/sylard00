@@ -206,6 +206,8 @@
         "save":"Guardar",
         "close":"Cerrar",
         "wrong":"Algo salió mal :("
-
+    },
+    "EDIT_AUDIO_ANNOTATION": {
+        "FILE": "Archivo cargado"
     }
 }

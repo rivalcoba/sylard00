@@ -12,8 +12,9 @@
                 class="label label_al_100"
                 id="selecciona_archivo_eaf"
                 for="selecciona_archivo_eaf_input"
-                >Archivo cargado</label
-              >
+                >
+                {{ $t ('lang.EDIT_AUDIO_ANNOTATION.FILE') }}
+                </label>
               <input
                 class="input_flexible"
                 type="text"

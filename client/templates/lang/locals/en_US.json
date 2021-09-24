@@ -204,8 +204,8 @@
         "save":"Save",
         "close":"Close",
         "wrong":"Something went wrong :("
-
+    },
+    "EDIT_AUDIO_ANNOTATION": {
+        "FILE": "Archivo cargado"
     }
-    
-
 }
