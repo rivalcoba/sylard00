@@ -26,7 +26,9 @@ const UserSchema = new Schema({
         "name_es": String,
         "code": String
     },
-    spokenLanguages:[String],
+    spokenLanguages: [
+        String
+    ],
     email: {
         type: String,
         // required: true
