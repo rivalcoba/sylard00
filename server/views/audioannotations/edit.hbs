@@ -1,19 +1,21 @@
 <div class="container-fluid" id="contenedor_agregar_audioanotacion">
-<div class="container-fluid" id="cabezal_agregar_audioanotacion">
-  <div class="container">
-    <div class="col-sm-12" id="contenedor_items_cabezal_agregar_audioanotacion">
-      <div class="" id="contenedor_titulos_cabezal_agregar_audioanotacion">
-        <h1 class="blanco" id="titulo_agregar_audioanotacion">
-          <span class="icono_cabezal icon-file_upload"></span>
-          Editar audioanotacion
-        </h1>
-        <h2 class="llamada" id="llamada_agregar_audioanotacion">
-         Llena los campos que deseas modificar
-        </h2>
+  <div class="container-fluid" id="cabezal_agregar_audioanotacion">
+    <div class="container">
+      <div class="col-sm-12" id="contenedor_items_cabezal_agregar_audioanotacion">
+        <div class="" id="contenedor_titulos_cabezal_agregar_audioanotacion">
+          <h1 class="blanco" id="titulo_agregar_audioanotacion">
+            <span class="icono_cabezal icon-file_upload"></span>
+            {{translation.EDIT_AUDIO_ANNOTATION.TITLE}}
+          </h1>
+          
+          <h2 class="llamada" id="llamada_agregar_audioanotacion">
+          {{translation.EDIT_AUDIO_ANNOTATION.SUBTITLE}}
+          </h2>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
 <div id="EditAudioannotations" :idParametro="5">
   Cargando ...
   <!-- {{{audioannotationid}}} -->

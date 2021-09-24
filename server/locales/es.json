@@ -293,6 +293,9 @@
     "CONTENT_LICENSE": "Licencia del contenido",
     "RESTORE": "Restablecer",
     "SAVE": "Guardar"
+},
+"EDIT_AUDIO_ANNOTATION": {
+    "TITLE": "Editar audio anotación",
+    "SUBTITLE": "Llena los campos que deseas modificar"
 }
-
 }
