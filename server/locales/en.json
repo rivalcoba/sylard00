@@ -293,10 +293,5 @@
     "CONTENT_LICENSE": "Content license",
     "RESTORE": "Restore",
     "SAVE": "Save"
-},
-"EDIT_AUDIO_ANNOTATION": {
-    "TITLE": "Edit audioannotation",
-    "SUBTITLE": "Fill in the fields that you wish modify",
-    "LOAD": "Loading"
 }
 }
