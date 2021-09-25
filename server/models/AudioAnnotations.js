@@ -4,10 +4,9 @@ import fs from 'fs'
 //import { promises as fs } from 'fs'
 import path from 'path'
 
-const mongoosePaginate = require('mongoose-paginate-v2'); //first step
+const mongoosePaginate = require('mongoose-paginate-v2') //first step
 
 const AudioAnnotationsSchema = new Schema({
-
   //name: String,
   // a_id:String,
   eaf: String,
@@ -29,49 +28,58 @@ const AudioAnnotationsSchema = new Schema({
   siglas: String,
   user: { type: Schema.Types.ObjectId, ref: 'Users' },
   header: [String],
-  participant:{
-    name:String,
-    canal:String,
+  participant: {
+    name: String,
+    canal: String,
   },
   TIER: [
     {
       PARTICIPANT: String,
-      Visible : String,
+      Visible: String,
       value: String,
       color: String,
       LINGUISTIC_TYPE_REF: String,
       TIER_ID: String,
     },
   ],
-  eafjson : {},
-  eafdotjson : {},
+  eafjson: {},
+  eafdotjson: {},
 })
 
 // Hooks
-AudioAnnotationsSchema.pre('deleteOne',{ query: false , document : true }, function(){
-  // Deleting eaf file
-  let fileName = this.eaf
-  // ref: https://stackoverflow.com/questions/10265798/determine-project-root-from-a-running-node-js-application
-  let eafPath = path.join(__dirname, '..', 'public', 'eaf')
-  let jsonPath = path.join(__dirname, '..', 'public', 'eaf', 'tmp')
-  console.log(`$>> Deleting file: ${fileName}`);
-
-  fs.unlink(path.join(eafPath, fileName),err=>{
-    if (err) {
-      console.log(`$>> error: ${err.message}`);
-      throw err
+AudioAnnotationsSchema.pre(
+  'deleteOne',
+  { query: false, document: true },
+  function() {
+    // Deleting eaf file
+    let fileName = this.eaf
+    // ref: https://stackoverflow.com/questions/10265798/determine-project-root-from-a-running-node-js-application
+    let eafPath = path.join(__dirname, '..', 'public', 'eaf')
+    let jsonPath = path.join(__dirname, '..', 'public', 'eaf', 'tmp')
+    console.log(`$AudioAnnotationsSchema.pre >> Deleting file: ${fileName}`)
+    try {
+      fs.unlink(path.join(eafPath, fileName), err => {
+        if (err) {
+          console.log(`$>> error: ${err.message}`)
+          throw err
+        }
+        console.log(`$>> File deleted: ${fileName} OK!`)
+        fs.unlink(path.join(jsonPath, `${fileName}.json`), err => {
+          if (err) throw err
+          console.log(`$>> File deleted: ${fileName}.json OK!`)
+        })
+      })
+    } catch (error) {
+      console.log(
+        `server/models/AudioAnnotations.js >> No se pudo borrar ${fileName}`
+      )
     }
-    console.log(`$>> File deleted: ${fileName} OK!`);
-    fs.unlink(path.join(jsonPath, `${fileName}.json`), err=>{
-      if(err) throw err
-      console.log(`$>> File deleted: ${fileName}.json OK!`);
-    })
-  })
-})
+  }
+)
 
 //AudioAnnotationsSchema.methods.updateCollection= async function(data){
 // return await this.updateOne(data).exec()
 //}
 // Compile model from schema
-AudioAnnotationsSchema.plugin(mongoosePaginate); //second step
+AudioAnnotationsSchema.plugin(mongoosePaginate) //second step
 export default mongoose.model('AudioAnnotations', AudioAnnotationsSchema)
