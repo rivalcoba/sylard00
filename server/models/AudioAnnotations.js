@@ -57,23 +57,25 @@ AudioAnnotationsSchema.pre(
     let eafPath = path.join(__dirname, '..', 'public', 'eaf')
     let jsonPath = path.join(__dirname, '..', 'public', 'eaf', 'tmp')
     console.log(`$AudioAnnotationsSchema.pre >> Deleting file: ${fileName}`)
-    try {
-      fs.unlink(path.join(eafPath, fileName), err => {
-        if (err) {
-          console.log(`$>> error: ${err.message}`)
-          throw err
-        }
-        console.log(`$>> File deleted: ${fileName} OK!`)
-        fs.unlink(path.join(jsonPath, `${fileName}.json`), err => {
-          if (err) throw err
-          console.log(`$>> File deleted: ${fileName}.json OK!`)
-        })
-      })
-    } catch (error) {
-      console.log(
-        `server/models/AudioAnnotations.js >> No se pudo borrar ${fileName}`
-      )
-    }
+    console.log(`$AudioAnnotationsSchema.pre >> Deleting file: ${eafPath}`)
+    console.log(`$AudioAnnotationsSchema.pre >> Deleting file: ${jsonPath}`)
+    // try {
+    //   fs.unlink(path.join(eafPath, fileName), err => {
+    //     if (err) {
+    //       console.log(`$>> error: ${err.message}`)
+    //       throw err
+    //     }
+    //     console.log(`$>> File deleted: ${fileName} OK!`)
+    //     fs.unlink(path.join(jsonPath, `${fileName}.json`), err => {
+    //       if (err) throw err
+    //       console.log(`$>> File deleted: ${fileName}.json OK!`)
+    //     })
+    //   })
+    // } catch (error) {
+    //   console.log(
+    //     `server/models/AudioAnnotations.js >> No se pudo borrar ${fileName}`
+    //   )
+    // }
   }
 )
 
