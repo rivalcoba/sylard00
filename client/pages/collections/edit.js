@@ -16,10 +16,7 @@ const fillLangList = async app => {
     if (languages.length == 0) {
       return alert('No se encontraron lenguas')
     }
-    console.log(`client/pages/collections/edit.js: app.languages`)
     app.languages = languages
-    console.log(`client/pages/collections/edit.js: document.getElementById('language')
-`)
     document.getElementById('language').disabled = false
   } catch (error) {
     alert(`fillLangList> ${error}`)
@@ -132,6 +129,9 @@ const getLocality = async (ent, mun, loc) => {
     return null
   }
 }
+const queryCollection = () => {
+  console.log("Desde la función queryCollection")
+}
 
 export default {
   fillLangList,
@@ -140,4 +140,5 @@ export default {
   fillMunicipalitiesList,
   fillLocalitiesList,
   getLocality,
+  queryCollection,
 }

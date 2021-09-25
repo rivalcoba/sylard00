@@ -26,7 +26,7 @@ const getLanguageList = async ()=>{
         }
         return null
     } catch (error) {
-        console.log(`client/helpers/models/languages> ${error}` )
+        alert(`client/helpers/models/languages> ${error}` )
         return null
     }
 }

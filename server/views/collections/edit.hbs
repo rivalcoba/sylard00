@@ -314,6 +314,7 @@
 </div>
 <!-- VUE  -->
 <script src="https://unpkg.com/vue" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 const getLangObj = function(stringVal){
 	return {
@@ -325,18 +326,29 @@ const getLangObj = function(stringVal){
 var app = new Vue({
 	el: '#app',
 	data: {
-		name_saved: '{{collectionDoc.name}}',
-      	{{!-- description_saved: '{{collectionDoc.description}}', --}}
-      	name: '{{{collectionDoc.name}}}',
-      	description: '{{{collectionDoc.description}}}',
+    name: '',
+    description: '',
 		languages : [],
-      	languagesGroup : [],
-      	colLanguages: {{{collectionDoc.languages}}},
-      	localities : {{{collectionDoc.localities}}},
-      	entitiesList : [],
-      	municipalitiesList: [],
-      	localitiesList: [],
-      	license: '{{collectionDoc.license}}'
+    languagesGroup : [],
+    colLanguages: [],
+    localities : [],
+    entitiesList : [],
+    municipalitiesList: [],
+    localitiesList: [],
+    license: '',
+	},
+	mounted(){
+		// Obteniendo el Id de Coleccion
+		const collectionId = window.location.pathname.split('/').pop();
+		// Solicitar datos al endpoint
+		axios.get(`/collections/api/read/${collectionId}`).then((res)=>{
+			const collection = res.data;
+			this.name = collection.name;
+			this.description = collection.description;
+			this.colLanguages = collection.languages; 
+			this.localities = collection.localities;
+			this.license = collection.license;
+		});
 	},
     methods:{
     	removeLangs: function(idx) {
