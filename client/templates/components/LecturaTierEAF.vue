@@ -67,7 +67,7 @@
                     @change="selecion_todos_visualizacion_options($event)"
                   >
                     <option value="B">Scrolling</option>
-                    <option value="A" selected>On-Line-Display</option>
+                    <option value="A" selected>On Line Display</option>
                   </select>
                 </div>
                 <div
@@ -175,7 +175,7 @@
                     @change="seleccion_visualizacion_options($event)"
                   >
                     <option value="B">Scrolling</option>
-                    <option value="A" selected>On-Line-Display</option>
+                    <option value="A" selected>On Line Display</option>
                   </select>
                 </div>
                 <div
