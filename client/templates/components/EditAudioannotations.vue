@@ -311,7 +311,7 @@
                         @change="selecion_todos_visualizacion_options($event)"
                       >
                         <option value="B">Scrolling</option>
-                        <option value="A" selected>On-Line-Display</option>
+                        <option value="A" selected>On Line Display</option>
                       </select>
                     </div>
                     <div
@@ -394,7 +394,7 @@
                         v-model="item.value"
                       >
                         <option value="B">Scrolling</option>
-                        <option value="A" selected>On-Line-Display</option>
+                        <option value="A" selected>On Line Display</option>
                       </select>
                       <!--checar https://stackoverflow.com/questions/43839066/how-can-i-set-selected-option-selected-in-vue-js-2 -->
                       <!--No funciona (no actualiza de manera automatica )<select v-model="tier_acomodado.value">
