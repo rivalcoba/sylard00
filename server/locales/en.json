@@ -101,7 +101,7 @@
         "HELLO_COLLECTIONS": "Hello!",
         "ADD_COLLECTION": "Add Collection",
         "UPLOAD_AUDIONOTATION": "Upload Audio Annotation",
-        "COMPLETE_FIELDS": "Fill in the fields correctly",
+        "COMPLETE_FIELDS": "Fill in the fields",
         "NAME_COLLECTION": "Collection name",
         "SHORT_TITLE": "Short title (max 500 characters)",
         "DESC_COLLECTION": "Description of the collection",
