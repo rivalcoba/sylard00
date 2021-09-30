@@ -13,7 +13,7 @@
                 id="selecciona_archivo_eaf"
                 for="selecciona_archivo_eaf_input"
                 >
-                {{ $t ('lang.EDIT_AUDIO_ANNOTATION.FILE') }}
+                {{ $t('lang.EDIT_AUDIOANNOTATION.FILE') }}
                 </label>
               <input
                 class="input_flexible"
@@ -37,7 +37,7 @@
                 class="label"
                 id="selecciona_url_mp3"
                 for="selecciona_url_mp3_input"
-                >URL del audio en ".mp3"</label
+                >{{ $t('lang.EDIT_AUDIOANNOTATION.URL') }}</label
               >
               <input
                 class="input_flexible"
@@ -62,7 +62,7 @@
               class="label label_al_100"
               id="titulo_audioanotacion"
               for="titulo_audioanotacion_input"
-              >Título</label
+              > {{ $t('lang.EDIT_AUDIOANNOTATION.TITLE')}} </label
             >
             <input
               class="input_flexible"
@@ -88,7 +88,7 @@
               class="label label_al_100"
               id="descripcion_de_la_audioanotacion"
               for="descripcion_audioanotacion_input"
-              >Descripcion de la audioanotación</label
+              >{{ $t('lang.EDIT_AUDIOANNOTATION.DESC') }}</label
             >
             <textarea
               id="description"
@@ -107,7 +107,7 @@
               class="label label_al_100"
               id="seleccion_coleccion_audioanotacion_label"
               for="seleccion_coleccion_audioanotacion_input"
-              >Colección a la que pertenece</label
+              >{{ $t('lang.EDIT_AUDIOANNOTATION.COLLEC') }}</label
             >
             <select
               class="input_flexible"
@@ -143,7 +143,7 @@
                 class="label label_al_100"
                 id="seleccion_comunidad_audioanotacion_label"
                 for="seleccion_comunidad_audioanotacion_input"
-                >Comunidad a la que pertenece</label
+                >{{ $t('lang.EDIT_AUDIOANNOTATION.COMMU') }}</label
               >
               <select
                 class="input_flexible"
@@ -186,7 +186,7 @@
                 class="label label_al_100"
                 id="seleccion_lengua_terminal_audioanotacion_label"
                 for="seleccion_lengua_terminal_audioanotacion_input"
-                >Lengua terminal a la que pertenece</label
+                >{{ $t('lang.EDIT_AUDIOANNOTATION.LANG_TERM') }}</label
               >
               <select
                 class="input_flexible"
@@ -222,7 +222,7 @@
                 class="label label_al_100"
                 id="seleccion_genero_audioanotacion_label"
                 for="seleccion_lengua_terminal_audioanotacion_input"
-                >Género al que pertenece</label
+                >{{ $t('lang.EDIT_AUDIOANNOTATION.GENRE') }}</label
               >
 
               <select class="input_flexible" ref="genero">
@@ -250,7 +250,7 @@
             </div>
           </div>
           <p class="label" id="opciones_visuales_predeterminadas">
-            Opciones visuales predeterminadas
+            {{ $t('lang.EDIT_AUDIOANNOTATION.OPC') }}
           </p>
 
           <div class="contenedor_opciones_visuales_predeterminadas">
@@ -261,7 +261,7 @@
               <div class="contenedor_canal_audioanotacion">
                 <div class="contenedor_canal_padre">
                   <div class="contenedor_hablante">
-                    <p class="label label_al_100">Canal 1 (hablante)</p>
+                    <p class="label label_al_100">{{ $t('lang.EDIT_AUDIOANNOTATION.CHANNEL') }}</p>
                     <input
                       type="text"
                       class="hablante_canal_padre_input"
@@ -276,7 +276,7 @@
                     <div
                       class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_mostrar_canal"
                     >
-                      <label class="label label_al_100">Mostrar</label>
+                      <label class="label label_al_100">{{ $t('lang.EDIT_AUDIOANNOTATION.SHOW') }}</label>
                       <div class="contenedor_switch_canal_audioanotacion">
                         <label
                           class="swich_etiqueta_opcion1"
@@ -304,7 +304,7 @@
                     <div
                       class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion contenedor_visualizar_canal_en"
                     >
-                      <label class="label label_al_100">Visualizar en:</label>
+                      <label class="label label_al_100">{{ $t('lang.EDIT_AUDIOANNOTATION.VISU') }}</label>
                       <select
                         class="opciones_despliegue_viewer input_flexible"
                         :id="item2"
@@ -318,7 +318,7 @@
                       class="contenedor_etiqueta_propiedad_opciones_visuales_agregar_audioanotacion color_audioanotacion"
                     >
                       <label class="label label_al_100"
-                        >Color de tipografía</label
+                        >{{ $t('lang.EDIT_AUDIOANNOTATION.COLOR') }}</label
                       >
                       <input
                         type="text"
@@ -436,7 +436,7 @@
                 class="btn btn-primario"
                 id="boton_guardar_agregar_audioanotacion"
               >
-                Guardar
+                {{ $t('lang.EDIT_AUDIOANNOTATION.SAVE') }}
               </button>
             </div>
           </div>
@@ -827,7 +827,7 @@ export default {
   },
   beforeMount() {},
   mounted() {
-    var self = this
+    var self = this;
     self.axios.get('/audioannotations/index/' + self.ruta).then(response => {
       self.audioannotations_info = response
       //falta hacer algo self.leerTier();
@@ -838,6 +838,20 @@ export default {
       //falta hacer algo self.leerTier();
     })
     //this.agregar_tier_acomodado();colecciones
+
+    // Internationalitation page with i18n
+    self.axios.get('/i18n')
+    .then((res) => {
+      self.idioma = res.data.LANGUAGE;
+      if(self.idioma === 'es') {
+        // console.log('esta en español');
+        this.$i18n.locale = 'es'
+      } else if(self.idioma === 'en') {
+        // console.log('esta en ingles');
+        this.$i18n.locale = 'en'
+      }
+      
+    })
   },
 }
 </script>
