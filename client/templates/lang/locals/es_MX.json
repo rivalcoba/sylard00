@@ -206,6 +206,21 @@
         "save":"Guardar",
         "close":"Cerrar",
         "wrong":"Algo salió mal :("
-
+    },
+    "EDIT_AUDIOANNOTATION": {
+        "FILE": "Archivo cargado",
+        "URL": "URL del audio en 'mp3'",
+        "TITLE": "Titulo",
+        "DESC": "Descripción de la audio anotación",
+        "COLLEC": "Colección a la que pertenece",
+        "COMMU": "Comunidad a la que pertenece",
+        "LANG_TERM": "Lengua terminal a la que pertenece",
+        "GENRE": "Género al que pertenece",
+        "OPC": "Opciones visuales predeterminadas",
+        "CHANNEL": "Canal 1 (hablante)",
+        "SHOW": "Mostrar",
+        "VISU": "Visualizar en:",
+        "COLOR": "Color de tipografía",
+        "SAVE": "Guardar"
     }
 }
