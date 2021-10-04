@@ -282,7 +282,7 @@
                           class="swich_etiqueta_opcion1"
                           for="checkbox"
                           id="switch_canal1_off"
-                          >OFF</label
+                          >{{ $t('lang.OPT_EDIT_AUDIOANNOTATION.OFF') }}</label
                         >
                         <label class="switch_general">
                           <input
@@ -297,7 +297,7 @@
                           class="swich_etiqueta_opcion2"
                           for="checbox_canal_1"
                           id="switch_usuario_canal1_on"
-                          >ON</label
+                          >{{ $t('lang.OPT_EDIT_AUDIOANNOTATION.ON') }}</label
                         >
                       </div>
                     </div>
@@ -310,8 +310,8 @@
                         :id="item2"
                         @change="selecion_todos_visualizacion_options($event)"
                       >
-                        <option value="B">Scrolling</option>
-                        <option value="A" selected>On Line Display</option>
+                        <option value="B">{{ $t('lang.OPT_EDIT_AUDIOANNOTATION.VISU_SCROLL') }}</option>
+                        <option value="A" selected>{{ $t('lang.OPT_EDIT_AUDIOANNOTATION.VISU_DIS') }}</option>
                       </select>
                     </div>
                     <div
@@ -363,7 +363,7 @@
                           class="swich_etiqueta_opcion1"
                           for="checkbox"
                           id="switch_canal1_off"
-                          >OFF</label
+                          >{{ $t('lang.OPT_EDIT_AUDIOANNOTATION.OFF') }}</label
                         >
                         <label class="switch_general">
                           <input
@@ -379,7 +379,7 @@
                           class="swich_etiqueta_opcion2"
                           for="checbox_canal_1"
                           id="switch_usuario_canal1_on"
-                          >ON</label
+                          >{{ $t('lang.OPT_EDIT_AUDIOANNOTATION.ON') }}</label
                         >
                       </div>
                     </div>
@@ -393,8 +393,8 @@
                         @change="seleccion_visualizacion_options($event)"
                         v-model="item.value"
                       >
-                        <option value="B">Scrolling</option>
-                        <option value="A" selected>On Line Display</option>
+                        <option value="B">{{ $t('lang.OPT_EDIT_AUDIOANNOTATION.VISU_SCROLL') }}</option>
+                        <option value="A" selected>{{ $t('lang.OPT_EDIT_AUDIOANNOTATION.VISU_DIS') }}</option>
                       </select>
                       <!--checar https://stackoverflow.com/questions/43839066/how-can-i-set-selected-option-selected-in-vue-js-2 -->
                       <!--No funciona (no actualiza de manera automatica )<select v-model="tier_acomodado.value">

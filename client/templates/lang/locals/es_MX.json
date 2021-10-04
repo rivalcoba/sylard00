@@ -206,6 +206,11 @@
         "save":"Guardar",
         "close":"Cerrar",
         "wrong":"Algo salió mal :("
-
+    },
+    "OPT_EDIT_AUDIOANNOTATION":{
+        "VISU_DIS":"En linea",
+        "VISU_SCROLL": "En desplazamiento",
+        "ON":"Encendido",
+        "OFF":"Apagado"
     }
 }
