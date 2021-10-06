@@ -34,12 +34,12 @@ const AudioAnnotationsSchema = new Schema({
   },
   TIER: [
     {
-      PARTICIPANT: { type: String, required: true },
-      Visible: { type: String, required: true },
-      value: { type: String, required: true },
-      color: { type: String, required: true },
-      LINGUISTIC_TYPE_REF: { type: String, required: true },
-      TIER_ID: { type: String, required: true },
+      PARTICIPANT: { type: String },
+      Visible: { type: String },
+      value: { type: String },
+      color: { type: String },
+      LINGUISTIC_TYPE_REF: { type: String },
+      TIER_ID: { type: String },
     },
   ],
   eafjson: {},
