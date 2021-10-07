@@ -207,6 +207,12 @@
         "close":"Cerrar",
         "wrong":"Algo salió mal :("
     },
+    "OPT_EDIT_AUDIOANNOTATION":{
+        "VISU_DIS":"En linea",
+        "VISU_SCROLL": "En desplazamiento",
+        "ON":"Encendido",
+        "OFF":"Apagado"
+    },
     "EDIT_AUDIOANNOTATION": {
         "FILE": "Archivo cargado",
         "URL": "URL del audio en 'mp3'",

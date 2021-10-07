@@ -206,6 +206,12 @@
         "close":"Close",
         "wrong":"Something went wrong :("
     },
+    "OPT_EDIT_AUDIOANNOTATION":{
+        "VISU_DIS":"One Line Display",
+        "VISU_SCROLL": "Scrolling",
+        "ON":"ON",
+        "OFF":"OFF"
+    },
     "EDIT_AUDIOANNOTATION": {
         "FILE": "File loaded",
         "URL": "URL of the audio in 'mp3'",
