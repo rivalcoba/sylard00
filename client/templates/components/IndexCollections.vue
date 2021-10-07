@@ -61,7 +61,7 @@
                 @input="searching_by_collection()"
                 class="input_busqueda"
                 type="search"
-                placeholder="Búsqueda"
+                :placeholder="$t('lang.tabla_coleccion.search')"
               />
             </th>
             <th class="cabezal_columnas_th">
@@ -92,7 +92,7 @@
                 name="lengua"
                 v-model="lengua"
                 @input="searching_by_lang()"
-                placeholder="Busqueda"
+                :placeholder="$t('lang.tabla_coleccion.search')"
               />
             </th>
             <th class="cabezal_columnas_th">
@@ -120,7 +120,7 @@
                 name="gpo_lengua"
                 v-model="gpo_lengua"
                 @input="searching_by_GpoL()"
-                placeholder="Búsqueda"
+                :placeholder="$t('lang.tabla_coleccion.search')"
               />
             </th>
             <th class="cabezal_columnas_th">
@@ -148,7 +148,7 @@
                 name="comunidad"
                 v-model="comunidad"
                 @input="searching_by_Community()"
-                placeholder="Búsqueda"
+                :placeholder="$t('lang.tabla_coleccion.search')"
               />
             </th>
             <th class="" id="th_acciones"></th>

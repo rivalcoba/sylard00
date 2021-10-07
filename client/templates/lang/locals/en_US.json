@@ -145,7 +145,8 @@
         "comunidades": "Communities",
         "langAdd": "Languages ​​added to the collection",
         "comunidades_coll": "Collection communities",
-        "director": "Director's collection"
+        "director": "Director's collection",
+        "search": "Search"
     },
     "tabla_audioannotation": {
         "Audioannotations":"Audioanotations ",
@@ -210,5 +211,21 @@
         "VISU_SCROLL": "Scrolling",
         "ON":"ON",
         "OFF":"OFF"
+    },
+    "EDIT_AUDIOANNOTATION": {
+        "FILE": "File loaded",
+        "URL": "URL of the audio in 'mp3'",
+        "TITLE": "Title",
+        "DESC": "Description of the audioannotation",
+        "COLLEC": "Collection to which it belongs",
+        "COMMU": "Community to which it belongs",
+        "LANG_TERM": "Terminal language to which it belongs",
+        "GENRE": "Genre to which it belongs",
+        "OPC": "Default visual options",
+        "CHANNEL": "Channel 1 (speaker)",
+        "SHOW": "Show",
+        "VISU": "Visualization in:",
+        "COLOR": "Typography color",
+        "SAVE": "Save"
     }
 }
