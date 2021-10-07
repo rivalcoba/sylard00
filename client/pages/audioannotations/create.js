@@ -65,7 +65,7 @@ const loadMp3 = ()=>{
   audio.onloadeddata = function(){
     const durationBoc = document.getElementById('duracion')
     // The duration is converted to minutes
-    durationBoc.value = audio.duration * 60000
+    durationBoc.value = audio.duration / 60000
   }
 }
 
