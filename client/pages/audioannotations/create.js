@@ -62,9 +62,16 @@ const loadMp3 = ()=>{
   audio.onerror = function(){
     console.log("Audio not loaded properly")
   }
-  audio.onloadeddata = function(){
-    const durationBoc = document.getElementById('duracion')
-    durationBoc.value = audio.duration
+  audio.onloadeddata = function () {
+    // const durationBoc = document.getElementById('duracion')
+    // The duration is converted to minutes
+    // durationBoc.value = audio.duration / 60
+    const minute = document.getElementById('duracion');
+    const sec = Math.floor(audio.duration % 60)
+    minute.value = Math.floor(audio.duration / 60) + ':' + sec
+    
+    
+    
   }
 }
 
