@@ -199,7 +199,7 @@
                   aria-hidden="true"
                   class="btn_accion_tabla"
                 >
-                  <span class="icono_accion_tabla icon-info1"></span>
+                  <span :title="det_mess" class="icono_accion_tabla icon-info1"></span>
                 </button>
                 <a
                   class="btn_accion_tabla"
@@ -308,6 +308,7 @@ export default {
   },
   data() {
     return {
+      det_mess: 'Presiona para ver los detalles',
       names:{},
       names_director:"",
       participantOrdenado: [],
@@ -515,7 +516,7 @@ export default {
     },
     showCollect(title,  text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
-      console.log("title " + title + "text " + text);
+      // console.log("title " + title + "text " + text);
       Swale.fire({
         //title: title,
         //text: text,
@@ -524,22 +525,7 @@ export default {
         `<p class="sa_parrafo_grande"><code>${text}</code></p>`,
         icon: 'info',
         showCloseButton: true,
-        showConfirmButton: true,
-        buttonsStyling:false,
-        confirmButtonText:
-        'Entiendo',
-        confirmButtonAriaLabel: 'Entendido',
-        customClass: {
-        container: '',
-        popup:'sa-popup',
-        //header: 'sa_header',
-        title: 'sa_title',
-        icon:'sa_icon',
-        text: 'sa_parrafo_grande',
-        confirmButton: 'btn btn-predeterminado sa_btn_confirm', //resolver focus en css,
-        cancelButton: 'btn btn-secundario sa_btn',
-        footer: 'secundario'
-  },
+        showConfirmButton: false,
       });
     },
     ordenar_descendente: function (e) {
