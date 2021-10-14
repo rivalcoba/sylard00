@@ -16,7 +16,7 @@ const AudioAnnotationsSchema = new Schema({
     name: { type: String, required: true },
     description: { type: String, default: 'Description not assigned' },
   },
-  duration: { type: String, required: true},
+  duration: { type: String, required: true },
   mp3_url: { type: String, required: true},
   //location: { type: Schema.ObjectId, ref:"Locations" },
   location: {},
@@ -29,8 +29,8 @@ const AudioAnnotationsSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'Users' },
   header: [String],
   participant: {
-    name: { type: String, required: true },
-    canal: { type: String, required: true },
+    name: { type: String },
+    canal: { type: String },
   },
   TIER: [
     {
