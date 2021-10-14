@@ -16,6 +16,7 @@ const AudioAnnotationsSchema = new Schema({
     name: { type: String, required: true },
     description: { type: String, default: 'Description not assigned' },
   },
+
   duration: { type: String, required: true },
   mp3_url: { type: String, required: true},
   //location: { type: Schema.ObjectId, ref:"Locations" },
