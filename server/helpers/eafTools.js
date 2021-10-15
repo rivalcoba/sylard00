@@ -34,18 +34,24 @@ function getTimeSlotArray(eaf) {
 function getDataArray(eaf) {
   let timeSlotArray = getTimeSlotArray(eaf)
   let lineTimeArray = getLineTimeArray(eaf)
-
+  
   const tiers = eaf['ANNOTATION_DOCUMENT']['TIER']
+  
+  
   const dataArray = tiers.reduce((prevTier, currTier) => {
     let tiers = prevTier
 
-    // Checking if tier
+    
+    // Checking if tier has Annotation
     if (!currTier['ANNOTATION']) return tiers
+    
+    // If currTier['ANNOTATION'] is not an array
+    // convert it into an array and store in annotations
+    let annotations = Array.isArray(currTier['ANNOTATION']) ? currTier['ANNOTATION'] : [currTier['ANNOTATION']];
 
     // Getting anotations per tier
-    let annotationType = Object.keys(currTier['ANNOTATION'][0])[0]
-    let annotations = currTier['ANNOTATION']
-
+    let annotationType = Object.keys(annotations[0])[0]
+    
     // Forming lines
     let lines = annotations.reduce((prevLine, currLine) => {
       let nLines = prevLine
@@ -116,16 +122,28 @@ function getDataArray(eaf) {
 }
 
 function getLineTimeArray(eaf) {
-  const tiers = eaf['ANNOTATION_DOCUMENT']['TIER']
+  // eaf.ANNOTATION_DOCUMENT.TIER
+  const tiers = eaf['ANNOTATION_DOCUMENT']['TIER'] 
   // Creating Result Object
   let lineTimeArray = {}
   // Iterating over all tiers
   tiers.forEach(tier => {
     if (!tier['ANNOTATION']) return
     // Getting Annotations fo Current Tier
+    /*
+    tier = { ANNOTATION : <data>}
+    tier.ANNOTATION
+    tier['ANNOTATION']
+    */
     let annotations = tier['ANNOTATION']
+
+    if (!Array.isArray(annotations)) {
+      if(!annotations["REF_ANNOTATION"]["ANNOTATION_VALUE"]) return;
+      // If annotations isn't array
+      // Is converted in array
+      annotations = [annotations]
+    };
     // Iterating over all annotations of the current tier
-    // TODO: Solucionar el error de forEach
     annotations.forEach(annotation => {
       // Getting Annotations type
       let annotationType = Object.keys(annotation)[0]

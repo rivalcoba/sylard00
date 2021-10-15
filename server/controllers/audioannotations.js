@@ -381,11 +381,12 @@ const audioannotationViewer = async (req, res) => {
       .populate('user')
       .lean()
       .exec()
+    
     // Having audio annotation
     // Getting variables
     let timeslotArr = eafTools.getTimeSlotArray(audioannotationDoc.eafdotjson)
-    let dataArr = eafTools.getDataArray(audioannotationDoc.eafdotjson)
     let lineTimeArr = eafTools.getLineTimeArray(audioannotationDoc.eafdotjson)
+    let dataArr = eafTools.getDataArray(audioannotationDoc.eafdotjson)
     let tierArr = eafTools.getTierArr(audioannotationDoc.eafdotjson)
 
     // Updating Color Settings
