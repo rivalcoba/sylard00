@@ -125,6 +125,7 @@ function getLineTimeArray(eaf) {
     // Getting Annotations fo Current Tier
     let annotations = tier['ANNOTATION']
     // Iterating over all annotations of the current tier
+    // TODO: Solucionar el error de forEach
     annotations.forEach(annotation => {
       // Getting Annotations type
       let annotationType = Object.keys(annotation)[0]
