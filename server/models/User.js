@@ -27,7 +27,10 @@ const UserSchema = new Schema({
         "code": String
     },
     spokenLanguages: [
-        String
+        {
+            type: String,
+            required: true
+        }
     ],
     email: {
         type: String,

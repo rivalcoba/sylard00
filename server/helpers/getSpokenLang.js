@@ -12,7 +12,8 @@ export default function (str) {
   let spokenLanguages = [];
   // if no str provided we return an empty string
   if (!str) return spokenLanguages
-  spokenLanguages = str.split('\r\n \r\n').map(lang => capitalizeFirstLetter(lang));
+  
+  spokenLanguages = str.split('\r\n \n').map(lang => capitalizeFirstLetter(lang));
 
   return spokenLanguages;
 }
