@@ -13,7 +13,10 @@ export default function (str) {
   // if no str provided we return an empty string
   if (!str) return spokenLanguages
   
-  spokenLanguages = str.split('\r\n \n').map(lang => capitalizeFirstLetter(lang));
-
+  let LineBreak = str.split('\r\n');
+  spokenLanguages = LineBreak.map(lang => capitalizeFirstLetter(lang));
+  // spokenLanguages.forEach(element => {
+  //   console.log(element);
+  // });
   return spokenLanguages;
 }
