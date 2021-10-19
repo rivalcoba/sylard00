@@ -8,19 +8,17 @@
      // console.log(cookies);
     let result;
     $(document).ready(function(){
-        	//alert("jquery is running");
-                if(cookies=="langbisquet=es"){
-                   console.log("esta en español");
-                   }
-                   else{
-                       console.log("esta en ingles");
-                      $("#bnpe_3").addClass("bnpe_en");
-                      $("#bnpe_4").addClass("bnpe_en");
-                      $("#bnpe_6").addClass("bnpe_en");
-                      $("#bnpe_7").addClass("bnpe_en");
-                   }
+    //alert("jquery is running");
+      if(cookies=="langbisquet=en"){
+        console.log("esta en ingles");
+      } else {
+        console.log("esta en español");
+        $("#bnpe_3").addClass("bnpe_en");
+        $("#bnpe_4").addClass("bnpe_en");
+        $("#bnpe_6").addClass("bnpe_en");
+        $("#bnpe_7").addClass("bnpe_en");
+      }
     });
-
 </script>
 <!--INICIA barra de navegacion publico-->
 <div class="container-fluid back_aqua_0">
