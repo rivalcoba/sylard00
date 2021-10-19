@@ -119,6 +119,21 @@ const editUser = async (req, res) => {
     about,
   })
 
+  // let spoken_Languages = []
+  // spokenLanguages.forEach((element) => {
+  //   spoken_Languages.push(
+  //     element.split('\r\n')  
+  //   )
+  //   if (!/\s+$/.test(spokenLanguages)) {
+  //     console.log(element);
+  //     console.log(element.length);
+  //     console.log('No finaliza con espacio en blanco');
+  //   } 
+  // });
+
+  
+
+  
   // Flash Message
   req.flash('success_msg', 'Sus cambios se han guardado')
   // Get the info from
