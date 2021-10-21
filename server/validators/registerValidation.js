@@ -22,7 +22,7 @@ export default async (req, res, next)=>{
         // Extracting form data
         req.body.role = typeof(req.body.role)==="undefined"?"visitor":"colaborator"
         const {name, lastName, email, password, confirmationPassword, role} = req.body
-        let {spokenLanguages, country} = req.body
+        let { spokenLanguages, country} = req.body
         
         // Parsing Spoken languages
         req.body.spokenLanguages = getSpokenLang(spokenLanguages) // ["Español","Ingles","Uk"]
