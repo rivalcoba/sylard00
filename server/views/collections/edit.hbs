@@ -88,8 +88,8 @@
 										</div>
 										
 										<div class="modulo_boton_lengua">
-											<button class="btn_lateral_input_agregar_lengua" disabled><span id="addLangBtn"
-													@click="addLanguages()" class="icono_boton_lateral icon-plus"></span></button>
+											<button class="btn_lateral_input_agregar_lengua" disabled><span title="Presiona para agregar la lengua" 
+											id="addLangBtn" @click="addLanguages()" class="icono_boton_lateral icon-plus"></span></button>
 										</div>
 									</div>
 									
@@ -104,12 +104,12 @@
 												
 												<td class="grupo_terminal_glottocode_agregar_coleccion">\{{ langs.LanguageGroup.gid }}</td>
 												
-												<td class="">\{{ langs.LanguageGroup.name }}</td>
+												<td class="">\{{ langs.LanguageGroup.name }}
 												
 												<td class="">
 													<div class="contenedor_botones_accion_lengua">
 														<i class="btn_accion_tabla float_right">
-															<span @click="removeLangs(index)" class="icono_accion_tabla  icon-delete"></span>
+															<span title="Presiona para eliminar la lengua" @click="removeLangs(index)" class="icono_accion_tabla  icon-delete"></span>
 														</i>
 													</div>
 												</td>
@@ -234,7 +234,7 @@
 										</div>
 										
 										<div class="modulo_boton_comunidad">
-											<button class="btn_lateral_input_agregar_comunidad" disabled><span id="addLocBtn"
+											<button class="btn_lateral_input_agregar_comunidad" disabled><span title="Presiona para agregar la comunidad" id="addLocBtn"
 													@click="addLocality()" class="icono_boton_lateral icon-plus"></span></button>
 										</div>
 									</div>
@@ -259,7 +259,7 @@
 												<td class="">
 													<div class="contenedor_botones_accion_lengua">
 														<i class="btn_accion_tabla float_right"><span @click="removeLocs(index)"
-																class="icono_accion_tabla  icon-delete"></span></i>
+														title="Presiona para eliminar la comunidad" class="icono_accion_tabla  icon-delete"></span></i>
 													</div>
 												</td>
 											</tr>
