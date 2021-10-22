@@ -26,11 +26,12 @@ const UserSchema = new Schema({
         "name_es": String,
         "code": String
     },
-    spokenLanguages:[{
-        name: String,
-        gid: String,
-        iso639P3code: String
-    }],
+    spokenLanguages: [
+        {
+            type: String,
+            required: true
+        }
+    ],
     email: {
         type: String,
         // required: true

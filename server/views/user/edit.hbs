@@ -1,166 +1,200 @@
 <div class="container-fluid" id="contenedor_editar_cuenta">
 	<div class="extension_fondo_blanco_izquierdo d-sm-none d-md-block"></div>
-	<div class="container">
-		<div class="row contenedor-90vh" id="fila1_editar_cuenta">
-			<div class="col-md-7" id="columna_izquierda_editar_cuenta">
-				<div class="" id="columna_izquierda_editar_cuenta_anidada">
-					<h1 class="">
-						<span class="icono_principal_mensaje icon-edit" id="icono_principal_editar_cuenta"></span>
-					</h1>
-					<h1>
-						{{translation.EDITCOUNT.EDIT_ACCOUNT}}
-					</h1>
-					<h3>
-						{{translation.EDITCOUNT.EDIT_FIELDS}}
-					</h3>
-					<form action="?_method=PUT" method="POST" role="form" class="formulario_contenedor">
-						<div class="contenedor_inputs">
-							<label class="label" for="name">
-								{{translation.SYLARDREGISTER.NAME}}
-							</label>
-							<input placeholder="{{translation.EDITCOUNT.NAME}}" id="name" name="name" type="text" class="validate"
+		<div class="container">
+			<div class="row contenedor-90vh" id="fila1_editar_cuenta">
+				<div class="col-md-7" id="columna_izquierda_editar_cuenta">
+					<div class="" id="columna_izquierda_editar_cuenta_anidada">
+						<h1 class="">
+							<span class="icono_principal_mensaje icon-edit" id="icono_principal_editar_cuenta"></span>
+						</h1>
+						
+						<h1>
+							{{translation.EDITCOUNT.EDIT_ACCOUNT}}
+						</h1>
+						
+						<h3>
+							{{translation.EDITCOUNT.EDIT_FIELDS}}
+						</h3>
+						
+						<form action="?_method=PUT" method="POST" role="form" class="formulario_contenedor">
+							<div class="contenedor_inputs">
+								<label class="label" for="name">
+									{{translation.SYLARDREGISTER.NAME}}
+								</label>
+								
+								<input placeholder="{{translation.EDITCOUNT.NAME}}" id="name" name="name" type="text" class="validate"
 								value="{{user.name}}" *required* />
-							<div class="contenedor_icono_correcto_input">
-								<p>
-									<span class="icono_correcto_input icon-check_circle"></span>
-								</p>
+									<div class="contenedor_icono_correcto_input">
+										<p>
+											<span class="icono_correcto_input icon-check_circle"></span>
+										</p>
+									</div>
+									
+									<div class="contenedor_icono_error_input">
+										<p>
+											<span class="icono_error_input icon-error"></span>
+										</p>
+									</div>
 							</div>
-							<div class="contenedor_icono_error_input">
-								<p>
-									<span class="icono_error_input icon-error"></span>
-								</p>
-							</div>
-						</div>
-						<div class="contenedor_inputs">
-							<label class="label" for="last_name">
-								{{translation.SYLARDREGISTER.LAST_NAME}}
-							</label>
-							<input placeholder="{{translation.EDITCOUNT.LAST_NAME}}" id="lastName" name="lastName" type="text"
+							
+							<div class="contenedor_inputs">
+								<label class="label" for="last_name">
+									{{translation.SYLARDREGISTER.LAST_NAME}}
+								</label>
+								
+								<input placeholder="{{translation.EDITCOUNT.LAST_NAME}}" id="lastName" name="lastName" type="text"
 								class="validate" value="{{user.lastName}}" *required* />
-							<div class="contenedor_icono_correcto_input">
-								<p>
-									<span class="icono_correcto_input icon-check_circle"></span>
-								</p>
+									<div class="contenedor_icono_correcto_input">
+										<p>
+											<span class="icono_correcto_input icon-check_circle"></span>
+										</p>
+									</div>
+									
+									<div class="contenedor_icono_error_input">
+										<p>
+											<span class="icono_error_input icon-error"></span>
+										</p>
+									</div>
+									
 							</div>
-							<div class="contenedor_icono_error_input">
-								<p>
-									<span class="icono_error_input icon-error"></span>
-								</p>
-							</div>
-						</div>
-						<div class="contenedor_inputs">
-							<label class="label" for="mothers_last_name">
-								{{translation.SYLARDREGISTER.MATERNAL_SUR}}
-							</label>
-							<input placeholder="{{translation.EDITCOUNT.MATERNAL_SUR}}" id="secLastName" name="secLastName" type="text"
+							
+							<div class="contenedor_inputs">
+								<label class="label" for="mothers_last_name">
+									{{translation.SYLARDREGISTER.MATERNAL_SUR}}
+								</label>
+											
+								<input placeholder="{{translation.EDITCOUNT.MATERNAL_SUR}}" id="secLastName" name="secLastName" type="text"
 								class="validate" value="{{user.secLastName}}" />
-							<div class="contenedor_icono_correcto_input">
-								<p>
-									<span class="icono_correcto_input icon-check_circle"></span>
-								</p>
+									<div class="contenedor_icono_correcto_input">
+										<p>
+											<span class="icono_correcto_input icon-check_circle"></span>
+										</p>
+									</div>
+											
+									<div class="contenedor_icono_error_input">
+										<p>
+											<span class="icono_error_input icon-error"></span>
+										</p>
+									</div>
 							</div>
-							<div class="contenedor_icono_error_input">
-								<p>
-									<span class="icono_error_input icon-error"></span>
-								</p>
-							</div>
-						</div>
-						<div class="contenedor_inputs">
-							<label class="label" for="email">
-								<span class="icon-email"></span>
-								{{translation.SYLARDREGISTER.EMAIL}}
-							</label>
-							<input id="email" type="email" class="validate" name="email" value="{{user.email}}"
+							
+							<div class="contenedor_inputs">
+								<label class="label" for="email">
+									<span class="icon-email"></span>
+									{{translation.SYLARDREGISTER.EMAIL}}
+								</label>
+								
+								<input id="email" type="email" class="validate" name="email" value="{{user.email}}"
 								readonly />
-							<div class="contenedor_icono_correcto_input">
-								<p>
-									<span class="icono_correcto_input icon-check_circle"></span>
-								</p>
+								
+								<div class="contenedor_icono_correcto_input">
+									<p>
+										<span class="icono_correcto_input icon-check_circle"></span>
+									</p>
+								</div>
+									
+								<div class="contenedor_icono_error_input">
+									<p>
+										<span class="icono_error_input icon-error"></span>
+									</p>
+								</div>
 							</div>
-							<div class="contenedor_icono_error_input">
-								<p>
-									<span class="icono_error_input icon-error"></span>
-								</p>
-							</div>
-						</div>
-						<div class="contenedor_inputs">
-							<label class="label" for="country">
-								{{translation.SYLARDREGISTER.COUNTRY}}
-							</label>
-							<input type="text" placeholder="{{{translation.SYLARDREGISTER.WHAT_IS_YOUR_JOB}}}" name="country"
+							
+							<div class="contenedor_inputs">
+								<label class="label" for="country">
+									{{translation.SYLARDREGISTER.COUNTRY}}
+								</label>
+								
+								<input type="text" placeholder="{{{translation.SYLARDREGISTER.WHAT_IS_YOUR_JOB}}}" name="country"
 								id="country" list="countries" {{#if es}} value="{{user.country.name_es}}" {{else}}
 								value="{{user.country.name_en}}" {{/if}}>
-							<div class="contenedor_icono_correcto_input">
+									<div class="contenedor_icono_correcto_input">
 								<p>
 									<span class="icono_correcto_input icon-check_circle"></span>
 								</p>
 							</div>
+									
 							<div class="contenedor_icono_error_input">
 								<p>
 									<span class="icono_error_input icon-error"></span>
 								</p>
+										
 								<datalist id="countries">
-									{{#each countries}}
-									{{#if ../es}}
+										{{#each countries}}
+										{{#if ../es}}
+										
 									<option value="{{name_es}}">
 										{{else}}
+									
 									<option value="{{name_en}}">
 										{{/if}}
 										{{/each}}
 								</datalist>
 							</div>
 						</div>
+								
 						<div class="contenedor_inputs" id="lenguas_habladas_input">
-							<label class="label" for="lenguas_habladas">
-								{{translation.SYLARDREGISTER.LANGUAGUES}}
-							</label>
+								<label class="label" for="lenguas_habladas">
+									{{translation.SYLARDREGISTER.LANGUAGUES}}
+								</label>
+									
 							<input placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}" type="search" id="langSearch"
-								list="languages">
-							<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar">
-								<span class="icon-plus" onclick="formsManager.addSelection()"></span>
-							</i>
+							list="languages">
+								<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar">
+									<span class="icon-plus" onclick="formsManager.addSelection()"></span>
+								</i>
+										
 							<!--
 							<datalist id="languages">
 								{{#each nativeLanguages}}
+										
 								<option value="{{name}} | {{gid}}">
-									{{/each}}
+								{{/each}}
 							</datalist>
 							-->
 						</div>
+								
 						<div class="contenedor_inputs" id="contenedor_inputs_con_boton">
 							<label class="label" for="about_you">
 								{{{translation.EDITCOUNT.WHAT_IS_YOUR_JOB}}}
 							</label>
+									
 							<textarea name="about" id="about" placeholder="¿A qué te dedicas? ¿Para qué usarías SYLARD?"
-								rows="6">{{user.about}}
-              </textarea>
+							rows="6">{{user.about}}</textarea>
 						</div>
+								
 						<div class="contenedor_inputs" id="lenguas_agregadas_input_seleccionadas">
 							<label class="label" for="lenguas_agregadas">
 								{{translation.ADD_LANG}}
 							</label>
+									
 							<textarea type="text" name="spokenLanguages" id="spokenLanguages"
-								placeholder="{{translation.ADD_LANG_}}" rows="6"
-								readonly>{{spokenLang}}</textarea>
+							placeholder="{{translation.ADD_LANG_}}" rows="6" 
+							readonly>{{spokenLang}}</textarea>
 						</div>
+								
 						<div class="">
 							<i class="btn btn_input_derecha" id="boton_quitar">
 								<span id="clearLast" onclick="formsManager.clearLastSelection()"
-									class="icon-minus"></span>
+								class="icon-minus"></span>
 							</i>
 						</div>
+								
 						<div class="contenedor_botones_registro">
 							<p class="secundario float_left">
 								*{{translation.PROMO_COLLABORATOR}}
 							</p>
+								
 							<button type="submit" class="btn btn-primario float_right">
 								{{translation.SYLARDCOLLECTIONS.SAVE}}
 							</button>
+								
 							<!--<button type="reset" class="btn btn-secundario float_right">Restablecer</button>-->
 						</div>
 					</form>
 				</div>
 			</div>
+					
 			<div class="" id="columna_derecha_editar_cuenta_anidada">
 				<img class="" src="/images/cactus_tudela.svg" id="img_editar_cuenta" alt="Cactus códice Tudela" />
 			</div>
