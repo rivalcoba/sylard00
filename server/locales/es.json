@@ -298,5 +298,11 @@
     "TITLE": "Editar audio anotación",
     "SUBTITLE": "Llenar los campos que deseas modificar",
     "LOAD": "Cargando"
+},
+"TOOLTIPS": {
+    "ADD_LANG": "Presiona para agregar una lengua",
+    "REM_LANG": "Presiona para eliminar una lengua",
+    "ADD_COMM": "Presiona para agregar una comunidad",
+    "REM_COMM": "Presiona para eliminar una comunidad"
 }
 }

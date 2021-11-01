@@ -139,11 +139,12 @@
 								</label>
 									
 							<input placeholder="{{translation.SYLARDREGISTER.SELECT_AN_OPTION}}" type="search" id="langSearch"
-							list="languages">
-								<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar">
-									<span class="icon-plus" onclick="formsManager.addSelection()"></span>
-								</i>
-										
+
+								list="languages">
+							<i class="btn btn-predeterminado btn_input_derecha" id="boton_agregar">
+								<span  title="{{translation.TOOLTIPS.ADD_LANG}}" class="icon-plus" onclick="formsManager.addSelection()"></span>
+							</i>
+
 							<!--
 							<datalist id="languages">
 								{{#each nativeLanguages}}
@@ -175,8 +176,8 @@
 								
 						<div class="">
 							<i class="btn btn_input_derecha" id="boton_quitar">
-								<span id="clearLast" onclick="formsManager.clearLastSelection()"
-								class="icon-minus"></span>
+								<span title="{{translation.TOOLTIPS.REM_LANG}}" id="clearLast" onclick="formsManager.clearLastSelection()"
+									class="icon-minus"></span>
 							</i>
 						</div>
 								
