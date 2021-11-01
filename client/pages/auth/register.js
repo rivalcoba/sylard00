@@ -33,19 +33,20 @@ function addSelection() {
   let selectedLanguagesBox = document.getElementById('spokenLanguages')
 
   // Getting values
-  let language = langSearchBox.value
+  let language = langSearchBox.value.trim()
   langSearchBox.value = ''
 
   // Extracting the language name
   //language = language.split(' | ')[0]
-  selectedLanguagesBox.value = selectedLanguagesBox.value.trim()
-  // Check if added prevously
+  // selectedLanguagesBox.value = selectedLanguagesBox.value.trim()
+  
+  // Check if language added prevously
   if (selectedLanguagesBox.value.indexOf(language) >= 0) {
     return flashLib.showFlashMesage('error', `Lenguaje ya seleccionado`)
   }
 
-  // Adding the separator
-  if (selectedLanguagesBox.value.length == 0) separator = ''
+  // Adding empty string as separator in case of first element insertion
+  if (selectedLanguagesBox.value.length === 0) separator = ''
 
   selectedLanguagesBox.value = selectedLanguagesBox.value.concat(
     separator,

@@ -7,9 +7,6 @@ import Mail from '@fullstackjs/mail'
 
 // DELETE async
 const edit = (req, res) => {
-  let nativeLanguages = jsonReader.readFileSync(
-    path.join(__dirname, '..', 'assets', 'languages.json')
-  )
   let countries = jsonReader.readFileSync(
     path.join(__dirname, '..', 'assets', 'countries.json')
   )
@@ -17,13 +14,11 @@ const edit = (req, res) => {
   let spokenLang = ''
 
   req.user.spokenLanguages.forEach(lang => {
-    spokenLang = spokenLang.concat(`${lang.name}`)
+    spokenLang = spokenLang.concat(lang + '\r\n')
   })
-  spokenLang = spokenLang.trim()
   res.render('user/edit', {
     title: 'SYLARD Editar Cuenta',
-    spokenLang: spokenLang,
-    nativeLanguages: nativeLanguages,
+    spokenLang,
     countries: countries,
   })
 }
