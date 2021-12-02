@@ -7,6 +7,7 @@ import path from 'path'
 import fs from 'fs'
 import cookieParser from 'cookie-parser'
 import morgan from 'morgan'
+import winston from '@config/winston'
 import passportConfig from '@config/passport'
 import passport from 'passport'
 import session from 'express-session'
@@ -74,7 +75,7 @@ netConfig(app)
 templateEngine(app)
 
 // 3. Global Middleware
-app.use(morgan('dev'));
+app.use(morgan('dev', {stream: winston.stream}));
 
 // 4. Used instead of Body Parser
 app.use(express.json({limit: '50mb'}));
