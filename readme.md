@@ -53,6 +53,7 @@ npm run www:d
 npm run ww:d
 ```
  
-
+## Developers
+Tech Lead: Ivan Rivalcoba
 
 
