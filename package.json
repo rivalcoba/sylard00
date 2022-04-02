@@ -94,6 +94,6 @@
     "vue-loader": "^15.9.3",
     "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.7.0",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^3.3.12"
   }
 }
