@@ -278,12 +278,21 @@ export default {
       hideColorPalette(valorcolor, valorpaleta)
       //this.cambiarcolor(e);
     },
-
     agregar_tier_acomodado: function() {
       for (var indice in this.info.data.tier) {
         //console.log(this.info.data.tier[indice][0])
+        let state = true;
+        let defLoc='none';
+        try{
+          this.info.data.tier[indice][0].DEFAULT_LOCALE[0];
+        }catch{
+          state=false;
+        }
+        if(state){
+          defLoc=this.info.data.tier[indice][0].DEFAULT_LOCALE[0];
+        }
         this.tier_acomodado.push({
-          DEFAULT_LOCALE: this.info.data.tier[indice][0].DEFAULT_LOCALE[0],
+          DEFAULT_LOCALE: defLoc,
           PARTICIPANT: this.info.data.tier[indice][0].PARTICIPANT[0],
           LINGUISTIC_TYPE_REF: this.info.data.tier[indice][0]
             .LINGUISTIC_TYPE_REF[0],

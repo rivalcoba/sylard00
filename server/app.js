@@ -1,5 +1,3 @@
-// import 'core-js/stable'
-// import 'regenerator-runtime'
 
 import createError from 'http-errors'
 import express from 'express'
@@ -168,47 +166,7 @@ app.use(function(err, req, res) {
   res.render('error');
 });
 
-//multer
-// app.use(bodyparser.urlencoded({extended: true}));
-//app.use(multer({ dest: './uploads/'}).single('myFile')); // added the single() method
+// multer
 app.use(multer({ dest: './uploads/'}).single('myFile'));
-//app.use(function(req, res, next) {
-
-//var storage = multer.diskStorage({
-//  destination: function (req, file, cb) {
-//    cb(null, 'uploads')
-//  },
-//  filename: function (req, file, cb) {
-//    cb(null, file.fieldname + '-' + Date.now())
-//  }
-//})
- 
-//var upload = multer({ storage: storage })
-
-//})
-
-//module.exports = app;
-
-//demon clean eaf
-/*
-import axios from "axios";
-
-setInterval(() => {
-  let time = new Date();
-  let time_hour = time.getHours();
-  if(time_hour===20){
-      console.log("Ya es la hora de la limpieza ;)");
-      async function limpieza(){
-        try{
-         const response = await axios.get("/cleaneafs");
-         console.log("limpieza todo un exito"+ response)
-        }catch(err){
-            console.log("error al limpiar"+err)
-        }
-      }
-      
-  }
-}, 1000*60*45);
-
-*/
+// exportando la aplicacion
 export default app;
