@@ -505,7 +505,7 @@
                         "'><div class='divTableCell spkr'>" +
                         spkr +
                         "</div><div class='divTableCell tran'>" +
-                        value +
+                        doubleSanitizer(value) +
                         "</div></div>";
 //console.log(value);
                     }
@@ -531,7 +531,13 @@
         i++;
       }
     }
-
+function doubleSanitizer(val){
+  return String(val).replace('&amp;',"&")
+          .replace('&lt;',"<")
+          .replace('&gt;',">")
+          .replace('&quot;','"')
+          .replace("&lt;/i&gt;","</i>")
+}
     function changePresCheck(tierID) {
       var eleName = "check-tier-" + tierID;
       var idName = "check-tier-" + tierID;
