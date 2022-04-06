@@ -1,9 +1,9 @@
 APP_URL=<ulr>
-DATABASE_URL=mongodb+srv://<user>:<password>0@<db name>.atuie.mongodb.net/<db name>?retryWrites=true&w=majority
+DATABASE_URL=mongodb+srv://doadmin:X4G0R9N756vQH32u@db-sylard-production-7e370144.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=db-sylard-production&tls=true&tlsCAFile=server/cert/ca-certificate.crt
 PORT=40923
 IP=0.0.0.0
-MAIL_USERNAME=
-MAIL_PASSWORD=
+MAIL_USERNAME=b010bc4dabebf0
+MAIL_PASSWORD=46aef626b09c8d
 SMTP_PORT=2525
 SMTP_HOST=smtp.mailtrap.io
 MAIL_CONNECTION=smtp
