@@ -86,4 +86,6 @@ dist-server/
 package-lock.json
 
 #database certificate
-ca-certificate.crt
+ca-certificate.crt 
+
+#####
