@@ -1,9 +1,9 @@
-APP_URL=<ulr>
+APP_URL=http://localhost:5000
 DATABASE_URL=mongodb+srv://<user>:<password>0@<db name>.atuie.mongodb.net/<db name>?retryWrites=true&w=majority
 PORT=40923
 IP=0.0.0.0
-MAIL_USERNAME=
-MAIL_PASSWORD=
+MAIL_USERNAME=b010bc4dabebf0
+MAIL_PASSWORD=46aef626b09c8d
 SMTP_PORT=2525
 SMTP_HOST=smtp.mailtrap.io
 MAIL_CONNECTION=smtp
