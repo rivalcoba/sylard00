@@ -49,7 +49,7 @@ passportConfig(passport)
 const app = express();
 
 //Certificate Creator
-fs.writeFileSync(path.resolve(__dirname, "cert/ca-certificate.crt"), process.env.CERT)
+fs.writeFileSync(path.resolve(__dirname, "cert/ca-certificate.crt"), process.env.CERT || 'No se encontro variable CERT')
 
 // checking enviroment
 const env = process.env.NODE_ENV || 'development';
