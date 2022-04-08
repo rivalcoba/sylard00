@@ -1,5 +1,5 @@
 APP_URL=<ulr>
-DATABASE_URL=mongodb+srv://<user>:<password>@<nombre de base de daots>.mongo.ondigitalocean.com/<nombre de usuario>?authSource=admin&replicaSet=<db-sylard-production>&tls=true&tlsCAFile=<ruta del certificado>
+DATABASE_URL=mongodb+srv://<user>:<password>@<db name>.mongo.ondigitalocean.com/<db name>?authSource=admin&replicaSet=<db-sylard-production>&tls=true&tlsCAFile=<Certificate path>
 PORT=<Puerto de salida>
 IP=0.0.0.0
 MAIL_USERNAME=<Nombre de usuario del agente de correo>
