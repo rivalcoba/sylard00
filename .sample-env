@@ -1,10 +1,11 @@
 APP_URL=<ulr>
-DATABASE_URL=mongodb+srv://<user>:<password>0@<db name>.atuie.mongodb.net/<db name>?retryWrites=true&w=majority
-PORT=40923
+DATABASE_URL=mongodb+srv://<user>:<password>@<db name>.mongo.ondigitalocean.com/<db name>?authSource=admin&replicaSet=<db-sylard-production>&tls=true&tlsCAFile=<Certificate path>
+PORT=<Puerto de salida>
 IP=0.0.0.0
-MAIL_USERNAME=
-MAIL_PASSWORD=
+MAIL_USERNAME=<Nombre de usuario del agente de correo>
+MAIL_PASSWORD=<Password de usuario del agente de correo>
 SMTP_PORT=2525
-SMTP_HOST=smtp.mailtrap.io
+SMTP_HOST=<Host del usuario del correo>
 MAIL_CONNECTION=smtp
-AUTH_MAIL=<admon@mail.com>
+AUTH_MAIL=<sylard.admon@mail.com Correo del Super Usuario> 
+CERT=<String con el contenido del certificado con separador de lineas>
