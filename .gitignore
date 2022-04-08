@@ -84,3 +84,8 @@ server/public/js/index.js
 # Ignoring builds
 dist-server/
 package-lock.json
+
+#database certificate
+ca-certificate.crt 
+
+#####
