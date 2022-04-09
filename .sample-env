@@ -9,3 +9,4 @@ SMTP_HOST=<Host del usuario del correo>
 MAIL_CONNECTION=smtp
 AUTH_MAIL=<sylard.admon@mail.com Correo del Super Usuario> 
 CERT=<String con el contenido del certificado con separador de lineas>
+NODE_TLS_REJECT_UNAUTHORIZED=0
