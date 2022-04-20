@@ -2,6 +2,10 @@
   "name": "00-ehboilerplate",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "16.14.2",
+    "npm": "8.5.0"
+  },
   "scripts": {
     "build": "npm run clean && npm run b:s && npm run b:c",
     "b:c": "webpack --config ./webpack.config.babel.js --mode production",
