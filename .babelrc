@@ -3,7 +3,7 @@
         ["@babel/preset-env",{
             "debug": true,
             "targets": {
-                "node": true
+                "node": "16.14"
               }
             }]
     ],
