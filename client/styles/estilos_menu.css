@@ -934,11 +934,14 @@ btn-secundario:active {
 }
 
 .contenedor_ancho_area_principal {
+     
     min-width: 992px;
     max-width: 1198px;
     /*Basado en media queries de bootstrap*/
     margin: 0 auto;
     overflow: auto;
+   /* height: 2.125rem;*/ /*checar este cambio cuanto afecta* abril 2021*/ 
+   overflow-y: hidden; /*se oculto el scroll en posicion y*/
 }
 
 .contenedor-90vh {

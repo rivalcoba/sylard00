@@ -2,6 +2,9 @@
 SYLARD converts ELAN files to HTML and offers line-by-line playback 
 of audio accompanied by transcriptions, translations, or other representations.
 
+## Node Version
+The system compiles in backend at node "16.14"
+
 
 ## Deployment
 
