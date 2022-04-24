@@ -88,6 +88,8 @@
         "OPEN_BOX":"Tell us why you want a Contributor account.",
         "ALERT_PRIV":"At the moment the administrator is checking your reasons about your change of account to contributor"
     },
+    "restore":"Reset"
+    ,
     "RESETPASSWORD": {
         "RESET_PASSWORD_TITLE": "Reset Password",
         "TYPE_EMAIL": "Type your email!",
