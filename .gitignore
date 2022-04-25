@@ -83,4 +83,4 @@ server/public/js/index.js
 
 # Ignoring builds
 dist-server/
-package-lock.json
+package-lock.json 
