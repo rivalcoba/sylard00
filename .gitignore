@@ -88,3 +88,6 @@ package-lock.json
 # Ignoring logs
 logs
 *./logs
+
+# database certificate
+ca-certificate.crt
