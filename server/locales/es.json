@@ -88,6 +88,8 @@
         "OPEN_BOX":"Indique porque desea una cuenta de Contribuyente",
         "ALERT_PRIV":"En estos momentos el administrador revisa los motivos por los cuales quiere cambiar tu tipo de cuenta a colaborador"
     },
+    "restore":"Restablecer"
+    ,
     "RESETPASSWORD": {
         "RESET_PASSWORD_TITLE": "Restablecer contraseña",
         "TYPE_EMAIL": "¡Escríbe tu correo!",
