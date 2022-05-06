@@ -1,5 +1,5 @@
 // Importando a winston
-import winston, { formar } from 'winston';
+import winston, { format } from 'winston';
 import appRoot from 'app-root-path' ;
 
 // Componentes para crear el formato personalizado
@@ -34,7 +34,7 @@ const options = {
         handleExceptions: true,
         maxsize: 5242880, //5MB
         maxFiles: 5,
-        format: myFilesFormat,
+        format: myFileFormat,
     },
     warnFile: {
         level: 'warn',
