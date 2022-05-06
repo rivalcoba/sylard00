@@ -13,6 +13,7 @@ import flash from 'connect-flash'
 import i18n from 'i18n-express'
 import MongoStore from 'connect-mongo'
 import mongoose from 'mongoose'
+import winston from '@config/winston'
 
 // Webpack modules
 import webpack from 'webpack';
@@ -75,7 +76,7 @@ netConfig(app)
 templateEngine(app)
 
 // 3. Global Middleware
-app.use(morgan('dev'));
+app.use(morgan('dev', {stream: winston.stream}));
 
 // 4. Used instead of Body Parser
 app.use(express.json({limit: '50mb'}));

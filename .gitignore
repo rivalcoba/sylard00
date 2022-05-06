@@ -88,4 +88,6 @@ package-lock.json
 #database certificate
 ca-certificate.crt 
 
-#####
+# Ignorando los archivos de logs
+logs
+*.logs
