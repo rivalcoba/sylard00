@@ -3,17 +3,18 @@
 
 import mongoose from 'mongoose'
 import keys from '@config/keys'
+import winston from '@config/winston'
 
 const getConnection = async () => {
   try {
     await mongoose.connect(keys.databaseUrl, {
       useNewUrlParser: true,
-      useUnifiedTopology: true,
+      useUnifiedTopology: true,     
       replset: { sslValidate: false }, // Not recommended look for another options
-    })
-    console.log(`LN10@OdmConnect.js: Mongoose connected @${keys.databaseUrl}`)
-  } catch (error) {
-    console.log(`LN12@OdmConnect.js: Error: ${error.message}`)
+    }) 
+    winston.info(` LN10@OdmConnect.js: Mongoose connected @${keys.databaseUrl} `);
+  } catch (error) { 
+    winston.error(`LN12@OdmConnect.js: Error: ${error.message}`); 
   }
 }
 

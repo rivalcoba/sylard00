@@ -1,6 +1,7 @@
 import path from 'path'
 import xml2js from 'xml2js'
 import fs from 'fs';
+import winston from '@config/winston'
 //var objson ;
 var tiempo_ids = "";
 var tiempo_buscado = 0;
@@ -18,16 +19,16 @@ var obj = {
    //datos_tier:[]
  };
  export default  function (nombreEaf) {
-let url =path.join(__dirname,'..','public','eaf',nombreEaf)
+let url =path.join(__dirname,'..','public','eaf',nombreEaf) 
 //+console.log(url)
-console.log("==============================")
-console.log("Aqui lee el eaf "+nombreEaf)
+winston.info(` ============================== `);
+winston.info(` Aqui lee el eaf "${+nombreEaf} `);
 let xml=""
 try {
      xml = fs.readFileSync(path.join(__dirname,'..','public','eaf',nombreEaf));
 } catch (error) {
-    console.log("error xml")
-    console.trace(error)
+    winston.error(`error xml`);
+    winston.error(error);
     
 }
 
@@ -49,4 +50,4 @@ xml2js.parseString(xml, { mergeAttrs: true }, (err, result) => {
    fs.writeFileSync(path.join(__dirname,'..','public','eaf','tmp',nombreEaf+'.json'), json);  
    console.log("Aqui graba "+nombreEaf+'eaf.json')
 }); 
- }
+ } 

@@ -1,4 +1,5 @@
 import path from 'path'
+import winston from '@config/winston'
 // let jsonobj = null
 let objson = null
 let tiempo_ids = ''
@@ -270,20 +271,20 @@ export default function(nombreEaf) {
     tier_arreglo = []
     bandera_grabar = false
   }
-  console.log('Imprime el nuevo json')
+  winston.info(` Imprime el nuevo json `); 
   //+console.log(obj);
   // add_Tier_Json();
-  // save JSON in a file
-  console.dir(`> obj.tier[0].length: ${JSON.stringify(obj)}`);
+  // save JSON in a file  
+  winston.info(` > obj.tier[0].length: ${JSON.stringify(obj)} `);
   let jsonobj = JSON.stringify(obj, null, 4)
 
   // path.join(__dirname,'..','public','eaf','eaf.json')
 
   //fs.writeFileSync('../public/eaf/Nuevoeaf.json', jsonobj);
   const fs2 = require('fs')
-  try {
+  try { 
     //fs2.unlinkSync( path.join(__dirname, '..', 'public', 'eaf', 'tmp', 'Nuevoeaf.json') )
-    console.log(">>>>>>>>>>>>>>> WRITING FILE Nuevoeaf.json");
+    winston.info(` >>>>>>>>>>>>>>> WRITING FILE Nuevoeaf.json `);
     fs2.writeFileSync(
       path.join(__dirname, '..', 'public', 'eaf', 'tmp', 'Nuevoeaf.json'),
       jsonobj
@@ -292,11 +293,11 @@ export default function(nombreEaf) {
         path.join(__dirname, '..', 'public', 'eaf', 'tmp', `p-${nombreEaf}.json`),
         jsonobj
     )
-    console.log('Grabo obj a JSON')
-    console.log('==============================')
+    winston.info(` Grabo obj a JSON `);   
+    winston.info(` ============================== `); 
     return jsonobj;
-  } catch (error) {
-    console.error(error.message)
+  } catch (error) { 
+    winston.error(`${error.message}`);  
   }
   //fs.close('Nuevoeaf.json')
   //  obj=null;

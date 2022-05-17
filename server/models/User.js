@@ -5,6 +5,7 @@ import randomstring from 'randomstring'
 import Mail from '@fullstackjs/mail'
 import keys from '@config/keys'
 import Collections from '@models/Collection'
+import winston from '@config/winston'
 
 // Creatnig a User Schema
 const UserSchema = new Schema({    
@@ -66,25 +67,25 @@ const UserSchema = new Schema({
 })
 
 UserSchema.pre('deleteOne',{ query: false , document : true },async function(){
-    console.log(`>> USER PRE DELETE ONE: ${this._id}`);
+    winston.info(` >> USER PRE DELETE ONE: ${this._id} `);
     let query = {
         user : this._id
     }
-    try {
+    try { 
         let collectionsDocs = await Collections.find(query).exec()
-        console.log(`>> collectionsDocs: ${collectionsDocs.length}`);
-       
+        winston.info(` >> collectionsDocs: ${collectionsDocs.length} `);
+        
         let deletionResults = await Promise.all(
             collectionsDocs.map(async colletionDoc => {
-            console.log(`>> Deleting Collection: ${colletionDoc.title}`);
+            winston.info(` >> Deleting Collection: ${colletionDoc.title}} `);
             let deleteResult = await colletionDoc.deleteOne()
             return deleteResult  
-        }))
+        }))  
 
-        console.log(`>-> deletionResults: ${deletionResults}`);
+        winston.info(` >-> deletionResults: ${deletionResults} `); 
 
-    } catch (error) {
-        console.log(`>-> USER PRE DELETEONE Error: ${error.message}`);
+    } catch (error) {   
+        winston.error(`>-> USER PRE DELETEONE Error: ${error.message}`);
         throw error
     }
 })
@@ -103,10 +104,10 @@ UserSchema.pre('save', function(){
 // ref: https://mongoosejs.com/docs/middleware.html#post
 // The method retunr a promise
 UserSchema.post('save', async function(){
-    try {
-        console.log(`LN68@models/User.js>: Sending email to ${this.email}`)
-        console.log(`LN68@models/User.js>: Sending email from ${keys.authMail}`)
-        console.log(`LN68@models/User.js>: user mail service ${keys.mailUserName}`)
+    try {  
+    winston.info(` LN68@models/User.js>: Sending email to ${this.email} `);
+    winston.info(` LN68@models/User.js>: Sending email from ${keys.authMail} `);
+    winston.info(` LN68@models/User.js>: user mail service ${keys.mailUserName} `);
         let result = await new Mail('confirm-account')
         .from(keys.authMail)
         .to(this.email, this.name)
@@ -116,10 +117,10 @@ UserSchema.post('save', async function(){
             url: `${keys.homeUrl}/auth/email/confirm/${this.emailConfirmationToken}`
         })
         .send()
-        console.log(`>>> Email Response: ${JSON.stringify(result)}`)
-        console.log(`models/User.js>: Email send correctly!!!`)
+        winston.info(` >>> Email Response: ${JSON.stringify(result)} `);
+        winston.info(` models/User.js>: Email send correctly!!! `);
     } catch (error) {
-        console.log(`models/User.js> ERROR SENDING MAIL: ${error.message}`)
+        winston.error(`models/User.js> ERROR SENDING MAIL: ${error.message}`);
         throw error
     }    
 })

@@ -1,6 +1,7 @@
 import {Strategy as LocalStrategy} from 'passport-local'
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
+import winston from '@config/winston'
 
 // Load user model
 import User from '@models/User'
@@ -22,8 +23,9 @@ export default function(passport){
                 )
             }
             console.log('--------------------------')
-            console.log(`> CUENTA ${user.emailConfirmedAt?'ACTIVA':'INACTIVA'}`)
+            winston.info(`> CUENTA ${user.emailConfirmedAt?'ACTIVA':'INACTIVA'}`);
             console.log('--------------------------')
+            
             // Verifies if the account is active
             if(!user.emailConfirmedAt){
                 return done(
@@ -38,6 +40,7 @@ export default function(passport){
                 if (isMatch) {
                     return done(null, user)
                 } else {
+                    winston.error(`Password Incorrecto: ${user}`);
                     return done(
                         null, // error
                         false, // user
@@ -45,8 +48,9 @@ export default function(passport){
                     )
                 }
             })
+            
             .catch((err)=> {
-                console.log(`config>passport>bcryp> Error: ${err}`)
+                winston.error(`config>passport>bcryp> Error: ${err}`);
                 throw err
             })
         })

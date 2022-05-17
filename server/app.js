@@ -34,7 +34,7 @@ import dbConnection from '@database/odmconnect'
 // -4 Creatting eaf path
 let eafPath = path.join(__dirname,'public','eaf')
 if (!fs.existsSync(eafPath)){
-  console.log(">> Creating eafpath");
+  winston.info(` Message: >> Creating eafpath, URL: ${req.originalUrl}, Method: ${req.method} IP: ${req.ip}`); 
   fs.mkdirSync(eafPath);
 }
 
@@ -53,7 +53,7 @@ fs.writeFileSync(path.resolve(__dirname, "cert/ca-certificate.crt"), process.env
 // checking enviroment
 const env = process.env.NODE_ENV || 'development';
 if(env === 'development'){
-  console.log("> Ejecutando en modo desarrollo");
+  winston.info(` Message: >> Ejecutando en modo desarrollo, `);
   webpackConfig.entry = ['webpack-hot-middleware/client?reload=true&timeout=1000', webpackConfig.entry];
   webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
   const compiler = webpack(webpackConfig);
@@ -62,10 +62,10 @@ if(env === 'development'){
   }));
   app.use(webpackHotMiddleware(compiler));
 }else{
-  console.log("> Ejecutando en modo Producción.");
+  winston.info(` Message: >> Ejecutando en modo Producción, `); 
+  
 }
 
-// 0. Connecting to the Database
 dbConnection();
 
 // Applying main App Configurations
@@ -158,7 +158,7 @@ addAppRoutes(app)
 app.use(function(req, res, next) {
   // Log
   winston.error(
-    `Code: 404, Message: Page Not Found, URL: ${req.originalUrl}, Method: ${req.method}`
+    `Code: 404, Message: Page Not Found, URL: ${req.originalUrl}, Method: ${req.method} IP: ${req.ip}`
   );
   next(createError(404));
 });

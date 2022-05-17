@@ -2,6 +2,7 @@
 import Locations from '@models/Location'
 // Helpers
 import regexhelp from '@helpers/regexhelp'
+import winston from '@config/winston'
 
 const index = async (req, res) => {
   // Getting the Entities list
@@ -32,13 +33,13 @@ const indexNomLoc = async (req, res) => {
     default:
       limit = 0
       break
-  }
-  console.log(`limte de query>${limit}`)
+  }   
+  winston.info(` limte de query>${limit} `);
   nom_loc = regexhelp.diacriticSensitiveRegex(nom_loc)
-  console.log(`> nom_loc: ${nom_loc}`)
+  winston.info(` > nom_loc: ${nom_loc} `);
 
   var regex = new RegExp(nom_loc, 'i')
-  console.log(`> regex: ${regex}`)
+  winston.info(` > regex: ${regex} `);
 
   //Working
   const locations = await Locations.find({
@@ -74,9 +75,9 @@ const indexNomLoc = async (req, res) => {
 const getAllEntities = async (req, res)=>{
   const { nom_ent } = req.params
   var divide=nom_ent.split("+");
-  try {
+  try {  
     const entities = await Locations.find({Nom_Ent:divide[0],Nom_Mun:divide[1]}).exec()
-    console.log("consulta exitosa"+divide[0]+divide[1]);
+    winston.info(` "consulta exitosa"${+divide[0]+divide[1]} `);
     return res.status(200).json(entities)
   } catch (error) {
     return res.status(404).json({error:"no se encontraron entidades"})
@@ -133,12 +134,12 @@ const api_postLoc= async (req, res) => {
   // console.log(JSON.stringify(location, null, '\t'));
   // return res.status(200).json(location);
   // Create Validates location
-  try {
+  try { 
     const locationDoc = await Locations.create(location)
-    console.log(locationDoc);
+    winston.info(locationDoc);
     res.status(200).json(locationDoc)
   } catch (error) {
-    console.log(`> ERROR Actualizar Location: ${error.message}`);
+    winston.error(`> ERROR Actualizar Location: ${error.message}`); 
     res.status(500).json(error);
   }
 }

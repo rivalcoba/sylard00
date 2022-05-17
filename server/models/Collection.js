@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import { Schema } from 'mongoose'
 const mongoosePaginate = require('mongoose-paginate-v2'); //first step
 import AudioAnnotations from '@models/AudioAnnotations'
+import winston from '@config/winston'
 
 const CollectionSchema = new Schema({
   name: { type: String, required: true },
@@ -61,23 +62,23 @@ const CollectionSchema = new Schema({
 
 // Hooks
 CollectionSchema.pre('deleteOne',{ query: false , document : true }, async function(){
-  console.log(">> COLLECTION PRE DELETE ONE");
+  winston.info(` >> COLLECTION PRE DELETE ONE `);   
   
   let query = {
     collection_id : this._id
   }
   // return console.log("Delleted collection > collection_id: " + this._id)
-  try {
+  try {  
     let audioAnnotDocs = await AudioAnnotations.find(query).exec()
-    console.log(">> Lengh audioAnnotDocs: " + audioAnnotDocs.length);
-    console.log(">> Type audioAnnotDocs: " + typeof (audioAnnotDocs));
+    winston.info(`>> Lengh audioAnnotDocs: ${+ audioAnnotDocs.length} `);  
+    winston.info(`>> Type audioAnnotDocs: ${+ typeof (audioAnnotDocs)} `);
     let deletionResults = await Promise.all(audioAnnotDocs.map(async audioAnnot => {
       let deleteResult = await audioAnnot.deleteOne()
       return deleteResult
     }))
-    console.log(`>-> deletionResults: ${deletionResults}`)
+    winston.info(`>-> deletionResults: ${deletionResults}  `);  
   } catch (error) {
-    console.log(">> No AudioAnnot detected: " + error.message);
+    winston.error(` >> No AudioAnnot detected: ${+ error.message} `); 
   }    
 })
 

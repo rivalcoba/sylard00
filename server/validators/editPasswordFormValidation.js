@@ -1,6 +1,7 @@
 // import "@babel/polyfill" // DELETE NOT USE
 // Importing validation framework
 import * as Yup from 'yup';
+import winston from '@config/winston'
 
 // Creating validation schema
 // All we need from the confirmation email is the token
@@ -20,9 +21,9 @@ export default async (req, res, next)=>{
         })
         // Go to the next middleware
         next()
-    } catch (error) {
-        console.log(`editPasswordFormValidation>errors> ${error.errors}`)
-        req.flash('error_msg',`Formulario incorrecto: ${error.message}`)
+    } catch (error) {   
+        winston.error(`editPasswordFormValidation>errors> ${error.errors}`);
+        winston.error(`error_msg ,Formulario incorrecto: ${error.message}`);
         res.redirect('/user/edit/password')
     }
 }

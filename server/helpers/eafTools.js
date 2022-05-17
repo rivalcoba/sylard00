@@ -2,6 +2,7 @@
 const fs = require('fs')
 const parseString = require('xml2js').parseString
 import parser from 'xml2json'
+import winston from '@config/winston'
 
 /**
  * Funcion que regresa un color RGC aleatorio
@@ -216,16 +217,16 @@ function eafToJson(eafXmlFile, options = { attrkey: 'attrs' }) {
   return new Promise((res, rej) => {
     fs.readFile(eafXmlFile.path, 'utf8', (err, eafXml) => {
       if (err) {
-        console.log(`Error reading file ${eafXmlFile.filename}`)
+        winston.error(`Error reading file ${eafXmlFile.filename}`);
         rej(new Error('Error reading file'))
-      }
+      } 
       // Parsing XML to JSON
       parseString(eafXml, options, (err, eafJs) => {
         if (err) {
-          console.log(`Error when parsing xml data`)
+          winston.error(`Error when parsing xml data`);
           rej(new Error('Error parsing xml'))
         }
-        res(eafJs)
+        res(eafJs)  
       })
     })
   })
@@ -234,8 +235,8 @@ function eafToJson(eafXmlFile, options = { attrkey: 'attrs' }) {
 function eaf2json(eafXmlFile) {
   return new Promise((res, rej) => {
     fs.readFile(eafXmlFile.path, 'utf8', (err, eafXml) => {
-      if (err) {
-        console.log(`Error reading file ${eafXmlFile.filename}`)
+      if (err) { 
+        winston.error(`Error reading file ${eafXmlFile.filename}`);
         rej(new Error('Error reading file'))
       }
       // Options for xml2json

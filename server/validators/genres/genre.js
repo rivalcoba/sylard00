@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 // Imporntado Modelos
 import Genre from "@models/Genre"
 import Location from "@models/Location"
+import winston from '@config/winston'
 
 const MAX_GENRE_NAME_LENGTH = 10
 const MAX_GENRE_NAME_DESCRIPTION = 300
@@ -58,9 +59,9 @@ const genrePost = async (req, res, next)=>{
     try {
         await GenreValidationSchema.validate(genre, { abortEarly: false })
     } catch (error) {
-        console.trace(`Errores: ${error}`)
+        winston.error(`Errores: ${error}`);
         res.status(400).json(error)
-    }
+    } 
 
     // Checking Duplicates
     let genreDocument;
@@ -71,13 +72,13 @@ const genrePost = async (req, res, next)=>{
           // Loading
           req.genre = genre
           next()
-        } else {
-          console.trace(`LN50>This Genre aready exist in the DB`)
+        } else {  
+            winston.info(` LN50>This Genre aready exist in the DB `);
           // 409 (Conflict) if resource already exists
           res.status(409).json({error: "This Genre aready exist in the Data Base"})
         }
-    } catch (error) {
-        console.trace(`LN50>Errores: ${error}`)
+    } catch (error) {  
+        winston.error(`LN50>Errores: ${error}`);
         res.status(400).json(error)
     }
 }
@@ -88,13 +89,13 @@ const genrePut = async (req, res, next)=>{
     let genreDoc = {};
     
     // Check document existence
-    try {
+    try {   
         genreDoc =  await Genre.findById(genreId)
         console.log("id: "+genreId+" Encontrado")
     } catch(error) {
-        error.reason = `Document with id ${genreId} not found`;
+        winston.error(`Document with id ${genreId} not found`);
         return res.status(404).json(error)
-    }
+    }  
 
     // Validating update
     let { name, description } = req.body
@@ -113,8 +114,8 @@ const genrePut = async (req, res, next)=>{
         console.log("validando..........");
         console.log(genre);
         console.log("--------------")*/
-    } catch (error) {
-        console.trace(`Errores: ${error}`)
+    } catch (error) {  
+        winston.error(`Errores: ${error}`);
         res.status(400).json(error)
     }
     // Storing Document in req
@@ -136,8 +137,8 @@ const locationPut = async (req, res, next)=>{
     try {
         locDoc =  await Location.findById(locId)
         console.log("id: "+locId+" Encontrado")
-    } catch(error) {
-        error.reason = `Document with id ${locId} not found`;
+    } catch(error) { 
+        winston.error(`Document with id ${locId} not found`);
         return res.status(404).json(error)
     }
     let { 
@@ -189,8 +190,8 @@ const locationPut = async (req, res, next)=>{
             console.log(location);
             console.log("--------------")
 */
-        } catch (error) {
-            console.trace(`Errores: ${error}`)
+        } catch (error) {  
+            winston.error(`Errores: ${error}`);
             res.status(400).json(error)
         }
 // Storing Document in req

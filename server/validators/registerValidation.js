@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import User from '@models/User';
 import getSpokenLang from '@helpers/getSpokenLang'
 import getCountryObj from '@helpers/getCountryObj'
+import winston from '@config/winston'
 
 // Creating validation schema
 // All we need from the confirmation email is the token
@@ -59,12 +60,12 @@ export default async (req, res, next)=>{
             // Failed be cause a user is attepmting to register
             // an aready registered user
             // Setting the flashing message            
-            req.flash('error_msg',`El usuario con el correo "${req.body.email}" ya existe.`)
+            winston.error(`error_msg',El usuario con el correo "${req.body.email}" ya existe.`);
             res.redirect('/auth/register')
         }
     } catch (error) {
-        console.log(`duplicateUserValidation> ${error.message}`)        
-        req.flash('error_msg',`Formulario incorrecto: ${error.message}`)
+        winston.error(`duplicateUserValidation> ${error.message}`);        
+        winston.error(`error_msg',Formulario incorrecto: ${error.message}`);
         res.redirect('/auth/register')
     }
 }

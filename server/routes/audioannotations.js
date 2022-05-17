@@ -9,7 +9,7 @@ import ensureAuthenticated from '@helpers/ensureAuth'
 import ensureColabUser from '@validators/ensureColabUser'
 
 import audioannotationsController from '@controllers/audioannotations'
-
+import winston from '@config/winston'
 import multer from 'multer'
 
 var cors = require('cors')
@@ -36,10 +36,10 @@ router.post(
 )
 
 var storage = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function(req, file, cb) {  
         // resolving temp path
         let eafPath = path.join(__dirname, '..', 'public', 'eaf')
-        console.log(`>> eafPath: ${eafPath}`);
+        winston.info(` >> eafPath: ${eafPath} `);
         cb(null, eafPath)
     },
     filename: function(req, file, cb) {

@@ -4,6 +4,7 @@ import User from '@models/User'
 import Collection from '@models/Collection'
 import keys from '@config/keys'
 import Mail from '@fullstackjs/mail'
+import winston from '@config/winston'
 
 // DELETE async
 const edit = (req, res) => {
@@ -183,11 +184,11 @@ const delUsers = async (req, res) => {
   // Normalizing
   usersIds = typeof usersIds == 'string' ? [usersIds] : usersIds
   // TODO: DELETE USER AUDIOANNOTATIONS
-  // UNA VEZ QUE TOÑO
+  // UNA VEZ QUE TOÑO 
   console.log('========================================================')
   console.log('========================================================')
   console.log('>>>>>>>>>>>>>>>>>>>>>>> TODO <<<<<<<<<<<<<<<<<<<<<<<<<<<')
-  console.log('> FALTA QUE SE IMPLEMENTE BORRADO DE AUDIO ANOTACIONES')
+  winston.info(` > FALTA QUE SE IMPLEMENTE BORRADO DE AUDIO ANOTACIONES `);
   console.log('> CUANDO SEBORRAN USUARIOS cotrollers/users.js')
   console.log('========================================================')
   console.log('========================================================')
@@ -216,14 +217,14 @@ const delUsers = async (req, res) => {
   try {
     result = await User.find(query, { name: true, role: true })
       .remove()
-      .exec()
-    console.log(JSON.stringify(result))
+      .exec()  
+    winston.info(` ${JSON.stringify(result)} `);
     req.flash(
       'success_msg',
       `Usuarios borrados con exito: ${result.deletedCount}`
     )
   } catch (error) {
-    console.log(error)
+    winston.error(`${error}`);
     req.flash('error_msg', 'No se ha podido actualizar la colección')
   } finally {
     res.redirect('/user')
@@ -249,8 +250,8 @@ function handleApiErr(res, error){
 
 const api_requestPromotion = async (req, res) => {
   let { userId,text_reasons } = req.params;
-
-  console.log(text_reasons);
+ 
+  winston.warn(` ${text_reasons} `);
   // Search for User
   // #THESIS HANDLE ERRORS https://dev.to/sobiodarlington/better-error-handling-with-async-await-2e5m?signin=true
   let userDoc = await User.findById(userId).catch(error => handleApiErr(res, error));
@@ -268,8 +269,8 @@ const api_requestPromotion = async (req, res) => {
       url: `${keys.homeUrl}/auth/enable/colaborator/${userDoc.email}`,
       reasons:text_reasons
   })
-  .send().catch(error => handleApiErr(res, error));
-  console.log(`authController>emailConfirmed> Correo enviado a ${keys.authMail}`)
+  .send().catch(error => handleApiErr(res, error));  
+  winston.info(` authController>emailConfirmed> Correo enviado a ${keys.authMail} `);
   // We update the user with the confirmation
   try{
   await userDoc.editUser({
@@ -330,15 +331,15 @@ const api_delUsers = async (req, res) => {
     const userDocs = await User.find(query).exec()
 
     let deletionResults = Promise.all(
-      userDocs.map(async userDoc =>{
-        console.log(`>> Deleting user: ${userDoc.name}`);
+      userDocs.map(async userDoc =>{  
+        winston.info(` >> Deleting user: ${userDoc.name} `);
         let result = await userDoc.deleteOne()
         return result
       })
     )
     res.status(200).json({ result: 'Dellete user(s) ok', deletionResults })
   } catch (error) {
-    console.log(`>-> Error al borrar usuario(s): ${error.message}`)
+    winston.error(`>-> Error al borrar usuario(s): ${error.message}`)
     res.status(500).json({ error: error.message })
   }
 }
@@ -348,7 +349,7 @@ const delById = async (req, res)=>{
   try {
     let userDoc = await User.findById(userId)
     let result = await userDoc.deleteOne()
-    console.log(`> DELETE: ${result}`)
+    winston.info(`> DELETE: ${result} `);   
     res.redirect('/user')
   } catch (error) {
     res.status(500).json({ error: error.message })

@@ -3,6 +3,7 @@ import * as Yup from 'yup'
 // Model
 import Language from '@models/Glottolog'
 import Location from '@models/Location'
+import winston from '@config/winston'
 
 // Validation Schema
 const CollectionValidationSchema = Yup.object().shape({
@@ -114,10 +115,10 @@ export default async(req, res, next) => {
 
         next()
     } catch (error) {
-        console.log(`validator>collection> ${error}`)
-        console.log(JSON.stringify(error.errors))
-        req.flash('error_msg', `Error al crear coleccion: ${error.message}`)
+        winston.error(`validator>collection> ${error}`);
+        winston.error(`${JSON.stringify} ${error.errors}`);
+        winston.error(`error_msg', Error al crear coleccion: ${error.message}`);
             //res.render('index/dashboard')
         res.redirect('/collections/create')
     }
-}
+} 

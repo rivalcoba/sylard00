@@ -6,6 +6,7 @@ import path from 'path'
 import jsonReader from '@helpers/jsonReader'
 import Mail from '@fullstackjs/mail'
 import keys from '@config/keys'
+import winston from '@config/winston'
 
 // Show Loginform
 const login = (req, res) => {
@@ -82,8 +83,8 @@ const registerUser = async(req, res) => {
 
         res.render('auth/confirmMailSent', userModel)
             // return res.status(201).json({user: user.toJSON()})
-    } catch (error) {
-        console.log(`controllers/auth.js> ERROR registering user: ${error.message}`)
+    } catch (error) { 
+        winston.error(`controllers/auth.js> ERROR registering user: ${error.message}`);
         return res.status(409).send(`> Error : ${error.message}`)
     }
 }
@@ -102,6 +103,7 @@ const emailConfirmed = async(req, res) => {
         if (requestedRole == "visitor") {
             // We update the user with the confirmation
             res.render('auth/confirmedMail', req.user.toJSON())
+            winston.info(` Visitor registred -> authController>emailConfirmed> Correo enviado a ${keys.authMail} `);
         } else {
             // Send the account upgrade to su (Super User)
             await new Mail('request-upgradeAccount')
@@ -116,14 +118,15 @@ const emailConfirmed = async(req, res) => {
                     url: `${keys.homeUrl}/auth/enable/colaborator/${user.email}`,
                     reasons:user.TextBox_colab
                 })
-                .send()
-            console.log(`authController>emailConfirmed> Correo enviado a ${keys.authMail}`)
+                .send() 
+            
                 // We update the user with the confirmation
             res.render('auth/colabAuthRequested', req.user.toJSON())
+            winston.info(` Colaborator registred -> authController>emailConfirmed> Correo enviado a ${keys.authMail} `);
         }
 
-    } catch (error) {
-        console.log(`Controllers>auth>emailConfirmed> ${error.message}`)
+    } catch (error) { 
+        winston.error(`Controllers>auth>emailConfirmed> ${error.message} `);
         res.render("failed", {
             title: "Editar usuario",
             iconTitle: "fa fa-frown-o",
@@ -158,8 +161,8 @@ const enableColaborator = async(req, res) => {
             email: `${user.email}`,
             error: ``
         })
-    } catch (error) {
-        console.log(`Controllers>auth>emailConfirmed> ${error.message}`)
+    } catch (error) { 
+        winston.error(`Controllers>auth>emailConfirmed> ${error.message} `);
         res.render("failed", {
             title: "Promoción a colaborador",
             iconTitle: "fa fa-frown-o",

@@ -3,6 +3,7 @@ import { Schema } from 'mongoose'
 import fs from 'fs'
 //import { promises as fs } from 'fs'
 import path from 'path'
+import winston from '@config/winston'
 
 const mongoosePaginate = require('mongoose-paginate-v2') //first step
 
@@ -57,10 +58,10 @@ AudioAnnotationsSchema.pre(
     // ref: https://stackoverflow.com/questions/10265798/determine-project-root-from-a-running-node-js-application
     let eafPath = path.join(__dirname, '..', 'public', 'eaf')
     let jsonPath = path.join(__dirname, '..', 'public', 'eaf', 'tmp')
-    console.log(`$AudioAnnotationsSchema.pre >> Deleting file: ${fileName}`)
-    console.log(`$AudioAnnotationsSchema.pre >> Deleting file: ${eafPath}`)
-    console.log(`$AudioAnnotationsSchema.pre >> Deleting file: ${jsonPath}`)
-    // try {
+    winston.info(` $AudioAnnotationsSchema.pre >> Deleting file: ${fileName} `);  
+    winston.info(` $AudioAnnotationsSchema.pre >> Deleting file: ${eafPath} `);
+    winston.info(` $AudioAnnotationsSchema.pre >> Deleting file: ${jsonPath} `);
+    // try {  
     //   fs.unlink(path.join(eafPath, fileName), err => {
     //     if (err) {
     //       console.log(`$>> error: ${err.message}`)

@@ -7,6 +7,7 @@ import app from '../app';
 import debugLib from 'debug';
 import http from 'http';
 import colors from 'colors'
+import winston from '@config/winston'
 
 colors.setTheme({
   silly: 'rainbow',
@@ -76,5 +77,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  console.log(`bin>www.js> Listen @ http://${app.get('ip')}:${addr.port}`.info)
+  winston.info(`bin>www.js> Listen @ http://${app.get('ip')}:${addr.port}`);
 }

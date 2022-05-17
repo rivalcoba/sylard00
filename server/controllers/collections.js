@@ -1,9 +1,12 @@
 // Collections Controllers
 // Import model
+import winston from '@config/winston'
 import Collection from '@models/Collection'
 import Glottolog from '@models/Glottolog'
 import Locations from '@models/Location'
 import User from '@models/User'
+
+
 
 // import User from '@models/User'
 
@@ -67,9 +70,9 @@ const addCollection = async (req, res) => {
   let { collection } = req.body
   // Add user
   collection.user = req.user._id
-
+  
   const collectionDoc = await Collection.create(collection)
-  console.log(`addCollection> Colection Created: ${collectionDoc.name}`)
+  winston.info(`addCollection> Colection Created: ${collectionDoc.name} `);
   // Se encuentra usuario
   res.redirect('/collections')
 }
@@ -90,7 +93,7 @@ const deleteCollection = async (req, res) => {
     }
 
     const result = await Collection.deleteOne({ _id: collection_id }).exec()
-    console.log(`deleteCollection> Result: ${result}`)
+    winston.info(` deleteCollection> Result: ${result} `);  
     res.redirect('/collections')
   } catch (error) {
     return res.status(400).json(error)
@@ -99,8 +102,8 @@ const deleteCollection = async (req, res) => {
 
 // Working
 const editCollectionForm = async (req, res) => {
-  const collection_id = req.params.collection_id
-  console.log(`controllers>collections> COL ID: ${collection_id}`)
+  const collection_id = req.params.collection_id  
+  winston.info(` controllers>collections> COL ID: ${collection_id} `);   
 
   // Grab the collection to edit
   try {
@@ -134,8 +137,8 @@ const editCollectionForm = async (req, res) => {
     })
 
     //res.status(200).json(collectionDoc)
-  } catch (error) {
-    console.log(`controller>collections> Error: ${error.message}`)
+  } catch (error) {   
+    winston.error(` controller>collections> Error: ${error.message} `);
     req.flash('error_msg', error.message)
     return res.redirect('/collections')
   }
@@ -214,8 +217,8 @@ const api_getCollectionAll = async (req, res) => {
   try {
     Collection.paginate({}, options, function(err, result) {
       if (err) {
-        console.log('El error esta aqui')
-        console.err(err)
+        winston.info(` El error esta aqui `);
+        winston.info(err); 
         return res.status(400).json({
           mensaje: 'Ocurrio un error',
           err,
@@ -273,8 +276,8 @@ const api_getPagCollectionByUser = async (req, res) => {
   try {
     Collection.paginate({ user: userid }, options, function(err, result) {
       if (err) {
-        console.log('El error esta aqui')
-        console.err(err)
+        winston.info(` El error esta aqui `);  
+        winston.info(err);
         return res.status(400).json({
           mensaje: 'Ocurrio un error',
           err,
@@ -313,8 +316,8 @@ const api_delCollectionById = async (req, res) => {
     } else {
       return res.status(400).json({ 'CollectionDeleted': 'nothing to delete' })
     }
-  } catch (error) {
-    console.log('no borro en la bd', error)
+  } catch (error) { 
+    winston.error(`no borro en la bd', ${error}`);
     return res.status(404).json({ error: error.message })
   }
 }
@@ -345,8 +348,8 @@ const api_delete = async (req, res) => {
     res
       .status(200)
       .json({ result: 'Dellete Collection(s) ok', deletionResults })
-  } catch (error) {
-    console.log(`>-> Error al borrar Collection(es): ${error.message}`)
+  } catch (error) { 
+    winston.error(`>-> Error al borrar Collection(es): ${error.message}`);
     res.status(500).json({ error: error.message })
   }
 }
@@ -378,9 +381,9 @@ const api_getCollectionFilteredbyCollection = async (req, res) => {
       err,
       result
     ) {
-      if (err) {
-        console.log('El error esta aqui')
-        console.err(err)
+      if (err) { winston.info(err); 
+      winston.info(` El error esta aqui `); 
+      winston.info(err); 
         return res.status(400).json({
           mensaje: 'Ocurrio un error',
           err,
@@ -442,9 +445,9 @@ const api_getCollectionFilteredbyLang = async (req, res) => {
       },
       options,
       function(err, result) {
-        if (err) {
-          console.log('El error esta aqui')
-          console.err(err)
+        if (err) {  
+          winston.info(` El error esta aqui `);
+          winston.info(err);
           return res.status(400).json({
             mensaje: 'Ocurrio un error',
             err,
@@ -505,9 +508,9 @@ const api_getCollectionFilteredbyGpoL = async (req, res) => {
       },
       options,
       function(err, result) {
-        if (err) {
-          console.log('El error esta aqui')
-          console.err(err)
+        if (err) { 
+        winston.info(` El error esta aqui `); 
+        winston.info(err); 
           return res.status(400).json({
             mensaje: 'Ocurrio un error',
             err,
@@ -575,9 +578,9 @@ const api_getCollectionFilteredbyCommu = async (req, res) => {
       },
       options,
       function(err, result) {
-        if (err) {
-          console.log('El error esta aqui')
-          console.err(err)
+        if (err) { 
+        winston.info(` El error esta aqui `); 
+        winston.info(err); 
           return res.status(400).json({
             mensaje: 'Ocurrio un error',
             err,
@@ -618,9 +621,9 @@ const api_getCollectionFilteredbyUserId = async (req, res) => {
   //const useridRegex = new RegExp(userid, 'i');
   try {
     Collection.paginate({ user: userid }, options, function(err, result) {
-      if (err) {
-        console.log('El error esta aqui')
-        console.err(err)
+      if (err) { 
+        winston.info(` El error esta aqui `); 
+        winston.info(err); 
         return res.status(400).json({
           mensaje: 'Ocurrio un error',
           err,

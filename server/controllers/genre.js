@@ -37,8 +37,8 @@ const api_putGenres = async(req, res) => {
   
   // Saving Document
   let savedDoc = {} 
-  try {
-    console.log(genreDoc);
+  try { 
+    winston.info(genreDoc); 
     savedDoc = await genreDoc.save()
     res.status(200).json(savedDoc)
   } catch (error) {

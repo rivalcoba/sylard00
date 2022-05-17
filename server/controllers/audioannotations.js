@@ -7,6 +7,7 @@ import deletejson from '@helpers/deletejson'
 import eaftojson from '@helpers/converteaf'
 import eafTools from '@helpers/eafTools'
 import Genre from '@models/Genre'
+import winston from '@config/winston'
 
 const index = async (req, res) => {
   // Get Collecionts
@@ -94,7 +95,7 @@ const index = async (req, res) => {
 // Visualize Audio Annotations By Id
 const indexById = async (req, res) => {
   const audioannotId = req.params.audioannotationId
-  console.log(`>finding ${audioannotId}`)
+  winston.info(` >finding ${audioannotId} `); 
   // Find audio annotation to visualize
   try {
     let audioannotationDoc = await Audioannotations.findById(audioannotId)
@@ -138,8 +139,8 @@ const filtrarAudioannotation = async (req, res) => {
 
     Audioannotations.paginate({}, options, function(err, result) {
       if (err) {
-        console.log('El error esta aqui')
-        console.err(err)
+        winston.error(`El error esta aqui`); 
+        winston.error(err); 
         return res.status(400).json({
           mensaje: 'Ocurrio un error',
           err,
@@ -235,8 +236,8 @@ const addAudioannotation = async (req, res) => {
   // Audioannotations Creations.
   let tiers = []
 
-  PARTICIPANT.forEach((participant, index) => {
-    console.log(`##### Visible[index] type: ${typeof Visible[index]}`)
+  PARTICIPANT.forEach((participant, index) => { 
+    winston.info(` ##### Visible[index] type: ${typeof Visible[index]} `); 
     tiers.push({
       PARTICIPANT: participant,
       Visible: Visible[index] === 'true',
@@ -272,9 +273,9 @@ const addAudioannotation = async (req, res) => {
     eafjson, //JSON.parse(eafjs),
     eafdotjson: JSON.parse(eafdotjson_noDollar),
   }
-  try {
+  try { 
     const audioannotationDoc = await Audioannotations.create(audioannotation)
-    console.log('> Audioanotations Created: ') //+ JSON.stringify(audioannotationDoc))
+    winston.info(` > Audioanotations Created: `);  //+ JSON.stringify(audioannotationDoc))
     //enviar a visualizar audioanootation con parametro
     res.redirect(`/audioannotations/vuetest/${audioannotationDoc._id}`)
   } catch (error) {
@@ -307,9 +308,9 @@ const uploadfileAudioannotation = async (req, res, next) => {
     eafdotjson = JSON.stringify(await eafTools.eaf2json(file))
     eaftojson(file.filename)
     convertEaf2json(file.filename)
-  } catch (error) {
-    console.log('Erorroesss al convertir EAF2JSON')
-    console.log(error)
+  } catch (error) { 
+    winston.error(`Erorroesss al convertir EAF2JSON`);
+    winston.error(error);
     res.status(500).json(error)
   }
 
@@ -343,10 +344,10 @@ const uploadfileAudioannotation = async (req, res, next) => {
   }
 }
 
-const editAudioannotation = async (req, res) => {
+const editAudioannotation = async (req, res) => { 
   const audioannotationid = req.params.audioannotation_id
-  console.log('-------------- Editando AudioAnotacion --------------')
-  console.log(`---- Id de audioant: ${audioannotationid} -------`)
+  winston.info(` -------------- Editando AudioAnotacion -------------- `);
+  winston.info(` ---- Id de audioant: ${audioannotationid} ------- `);
   res.render('audioannotations/edit', {
     title: 'Editar audioanotación',
     audioannotationid,
@@ -362,8 +363,8 @@ const deleteAudioannotaion = async (req, res) => {
 
     document.deleteOne()
     return res.status(200).json({ 'fileDeleted': 'ok' })
-  } catch (error) {
-    console.log('no borro en la bd', error)
+  } catch (error) {  
+    winston.error(`no borro en la bd', ${error}`);
     return res.status(404).json(error)
   }
 }
