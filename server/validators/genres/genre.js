@@ -89,9 +89,9 @@ const genrePut = async (req, res, next)=>{
     let genreDoc = {};
     
     // Check document existence
-    try {   
+    try {    
         genreDoc =  await Genre.findById(genreId)
-        console.log("id: "+genreId+" Encontrado")
+        winston.info(` id: ${genreId} Encontrado `);
     } catch(error) {
         winston.error(`Document with id ${genreId} not found`);
         return res.status(404).json(error)
@@ -134,9 +134,9 @@ const locationPut = async (req, res, next)=>{
     let locDoc = {};
     
     // Check document existence
-    try {
+    try { 
         locDoc =  await Location.findById(locId)
-        console.log("id: "+locId+" Encontrado")
+        winston.info(`id: ${locId}  Encontrado `); 
     } catch(error) { 
         winston.error(`Document with id ${locId} not found`);
         return res.status(404).json(error)

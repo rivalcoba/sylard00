@@ -183,9 +183,9 @@ const api_indexAudioannotationsByCollection = async (req, res) => {
     }
 
     Audioannotations.paginate(query, options, function(err, result) {
-      if (err) {
-        console.log('El error esta aqui')
-        console.err(err)
+      if (err) {   
+        winston.error('El error esta aqui');
+        winston.error(err); 
         return res.status(400).json({
           mensaje: 'Ocurrio un error',
           err,
@@ -527,9 +527,9 @@ const filtrarAudioannotation_by_genre = async (req, res) => {
       err,
       result
     ) {
-      if (err) {
-        console.log('El error esta aqui')
-        console.err(err)
+      if (err) {  
+        winston.error('El error esta aqui')
+        winston.error(err); 
         return res.status(400).json({
           mensaje: 'Ocurrio un error',
           err,
@@ -583,9 +583,9 @@ const filtrarAudioannotation_by_speaker = async (req, res) => {
       },
       options,
       function(err, result) {
-        if (err) {
-          console.log('El error esta aqui')
-          console.err(err)
+        if (err) { 
+        winston.error(`El error esta aqui`);
+        winston.err(err)
           return res.status(400).json({
             mensaje: 'Ocurrio un error',
             err,
@@ -640,9 +640,9 @@ const filtrarAudioannotation_by_location = async (req, res) => {
       },
       options,
       function(err, result) {
-        if (err) {
-          console.log('El error esta aqui')
-          console.err(err)
+        if (err) { 
+        winston.error(`El error esta aqui`);
+        winston.err(err)
           return res.status(400).json({
             mensaje: 'Ocurrio un error',
             err,
