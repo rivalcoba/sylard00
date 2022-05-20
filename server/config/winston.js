@@ -3,7 +3,7 @@ import winston, { format } from 'winston';
 import appRoot from 'app-root-path' ;
 
 // Componentes para crear el formato personalizado
-const { combine, timestamp, printf, uncolorize, json, colorize } = format;
+const { combine, timestamp, label, printf, uncolorize, json, colorize } = format;
 //
 // Creando el Perfil de color para el log
 const colors = {
@@ -19,12 +19,23 @@ winston.addColors(colors);
 // Formato de consola
 const myFormat = combine(
     colorize({ all: true }),
-    timestamp(),
-    printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
+    // Agregando una etiqueta
+    label({ label: '🎫' }),
+    // Agregando la fecha
+    timestamp({ format: 'DD-MM-YYYY HH:mm:ss' }),
+    // Funcion de impresión
+    printf((info) => `${info.level}: ${info.label}: ${[info.timestamp]}: ${info.message}`)
 );
 
 // Formato para la salida de los archivos de log
-const myFileFormat = combine(uncolorize(), timestamp(), json());
+const myFileFormat = combine(
+    // Sin color
+    format.uncolorize(), 
+    // Agregando la fecha
+    timestamp({ format: 'DD-MM-YYYY HH:mm:ss' }),
+    // Salida en formato Json
+    format.json()
+    );
 
 // Creando objetos de configuracion
 const options = {
