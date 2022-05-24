@@ -17,9 +17,10 @@
     "start": "NODE_ENV=production node ./dist-server/bin/www",
     "wp:s": "NODE_ENV=production webpack serve --config ./webpack.dev.config.js --mode develpment",
     "w:d": "NODE_ENV=development nodemon --ignore './client' --ignore './server/public/eaf' --exec babel-node ./server/bin/www",
-    "dev": "NODE_ENV=development babel-watch --watch ./server/views ./server/bin/www",
+    "dev": "NODE_ENV=development babel-watch --watch ./server/views ./server/bin/www ",
     "ww:d": "SET NODE_ENV=development && nodemon --ignore './client' --exec babel-node ./server/bin/www",
-    "www:d": "SET NODE_ENV=development && babel-node ./server/bin/www"
+    "www:d": "SET NODE_ENV=development && babel-node ./server/bin/www", 
+    "clearlogs": "rm -rf ./server/logs/*.log"
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
