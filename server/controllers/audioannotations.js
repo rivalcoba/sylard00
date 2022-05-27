@@ -237,7 +237,7 @@ const addAudioannotation = async (req, res) => {
   let tiers = []
 
   PARTICIPANT.forEach((participant, index) => { 
-    winston.info(` ##### Visible[index] type: ${typeof Visible[index]} `); 
+    //winston.info(` ##### Visible[index] type: ${typeof Visible[index]} `); 
     tiers.push({
       PARTICIPANT: participant,
       Visible: Visible[index] === 'true',
@@ -275,7 +275,8 @@ const addAudioannotation = async (req, res) => {
   }
   try { 
     const audioannotationDoc = await Audioannotations.create(audioannotation)
-    winston.info(` > Audioanotations Created: `);  //+ JSON.stringify(audioannotationDoc))
+    winston.info(` > AUDIOANOTACION "${audioannotationDoc.title}" CREADA `);  //+ JSON.stringify(audioannotationDoc))
+    winston.info(`------------------------------------`);
     //enviar a visualizar audioanootation con parametro
     res.redirect(`/audioannotations/vuetest/${audioannotationDoc._id}`)
   } catch (error) {

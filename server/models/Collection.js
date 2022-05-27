@@ -62,7 +62,8 @@ const CollectionSchema = new Schema({
 
 // Hooks
 CollectionSchema.pre('deleteOne',{ query: false , document : true }, async function(){
-  winston.info(` >> COLLECTION PRE DELETE ONE `);   
+  winston.info(` ----------------------------------------------------------- `);
+  winston.info(` >> COLECCION BORRADA `);   
   
   let query = {
     collection_id : this._id
@@ -70,15 +71,18 @@ CollectionSchema.pre('deleteOne',{ query: false , document : true }, async funct
   // return console.log("Delleted collection > collection_id: " + this._id)
   try {  
     let audioAnnotDocs = await AudioAnnotations.find(query).exec()
-    winston.info(`>> Lengh audioAnnotDocs: ${+ audioAnnotDocs.length} `);  
-    winston.info(`>> Type audioAnnotDocs: ${+ typeof (audioAnnotDocs)} `);
+    winston.info(`coleccion contenia ${+ audioAnnotDocs.length} Audio Anotaciones `);  
+    winston.info(`>> Tipo De Audio Anotaciones: ${typeof (audioAnnotDocs)} `);
     let deletionResults = await Promise.all(audioAnnotDocs.map(async audioAnnot => {
       let deleteResult = await audioAnnot.deleteOne()
       return deleteResult
     }))
-    winston.info(`>-> deletionResults: ${deletionResults}  `);  
+    winston.info(` -------------------------------------- `); 
+     
+    winston.info(`Contenido De Coleccion Borrada: ${deletionResults}  `);
+    winston.info(` ----------------------------------------------------------- `);  
   } catch (error) {
-    winston.error(` >> No AudioAnnot detected: ${+ error.message} `); 
+    winston.info(` Coleccion sin audio detectado `); 
   }    
 })
 

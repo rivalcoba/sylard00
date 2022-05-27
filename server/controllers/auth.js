@@ -19,6 +19,7 @@ const login = (req, res) => {
 const loginUser = (req, res, next) => {
     // 1 Se agrega authenticacion
     // y se pasa una estrategia
+   
     passport.authenticate('local', {
         successRedirect: "/",
         failureRedirect: "/auth/login",
@@ -177,6 +178,10 @@ const logoutUser = (req, res) => {
     req.logout()
     req.flash('success_msg', 'Ha cerrado sesión correctamente');
     res.redirect('/auth/login')
+    winston.info(`----------------------------`);
+    winston.info(`Sesión cerrada correctamente`);
+    winston.info(`----------------------------`);
+    
 }
 
 export default {

@@ -538,7 +538,7 @@ return answer;
 async function show_alert_empty_languages_comm_en(){
 let answer= await Swal.fire({
   icon: 'error',
-  title: "it's necessary to add at least one language and one community",
+  title: "Es necesario agregar al menos un idioma y una comunidad",
   showConfirmButton: false,
   timer: 1500,
   timerProgressBar: true

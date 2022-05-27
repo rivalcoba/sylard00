@@ -271,11 +271,11 @@ export default function(nombreEaf) {
     tier_arreglo = []
     bandera_grabar = false
   }
-  winston.info(` Imprime el nuevo json `); 
+  winston.warn(` Imprime el nuevo json `); 
   //+console.log(obj);
   // add_Tier_Json();
   // save JSON in a file  
-  winston.info(` > obj.tier[0].length: ${JSON.stringify(obj)} `);
+  //winston.debug(` > obj.tier[0].length: ${JSON.stringify(obj)} `);
   let jsonobj = JSON.stringify(obj, null, 4)
 
   // path.join(__dirname,'..','public','eaf','eaf.json')
@@ -284,7 +284,7 @@ export default function(nombreEaf) {
   const fs2 = require('fs')
   try { 
     //fs2.unlinkSync( path.join(__dirname, '..', 'public', 'eaf', 'tmp', 'Nuevoeaf.json') )
-    winston.info(` >>>>>>>>>>>>>>> WRITING FILE Nuevoeaf.json `);
+    winston.info(` >>>>>>>>>>>>>>> WRITING FILE Nuevo eaf.json `);
     fs2.writeFileSync(
       path.join(__dirname, '..', 'public', 'eaf', 'tmp', 'Nuevoeaf.json'),
       jsonobj
@@ -293,8 +293,8 @@ export default function(nombreEaf) {
         path.join(__dirname, '..', 'public', 'eaf', 'tmp', `p-${nombreEaf}.json`),
         jsonobj
     )
-    winston.info(` Grabo obj a JSON `);   
-    winston.info(` ============================== `); 
+    winston.warn(` Se Grabo obj a JSON `);   
+    winston.warn(` ============================== `); 
     return jsonobj;
   } catch (error) { 
     winston.error(`${error.message}`);  

@@ -72,7 +72,7 @@ const addCollection = async (req, res) => {
   collection.user = req.user._id
   
   const collectionDoc = await Collection.create(collection)
-  winston.info(`addCollection> Colection Created: ${collectionDoc.name} `);
+  winston.info(`Colección "${collectionDoc.name}" creada exitosamente`);
   // Se encuentra usuario
   res.redirect('/collections')
 }

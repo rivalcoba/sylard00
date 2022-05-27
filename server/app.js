@@ -76,7 +76,7 @@ netConfig(app)
 templateEngine(app)
 
 // 3. Global Middleware
-app.use(morgan('dev', {stream: winston.stream}));
+//app.use(morgan('dev', {stream: winston.stream}));
 
 // 4. Used instead of Body Parser
 app.use(express.json({limit: '50mb'}));

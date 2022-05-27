@@ -58,9 +58,13 @@ AudioAnnotationsSchema.pre(
     // ref: https://stackoverflow.com/questions/10265798/determine-project-root-from-a-running-node-js-application
     let eafPath = path.join(__dirname, '..', 'public', 'eaf')
     let jsonPath = path.join(__dirname, '..', 'public', 'eaf', 'tmp')
-    winston.info(` $AudioAnnotationsSchema.pre >> Deleting file: ${fileName} `);  
-    winston.info(` $AudioAnnotationsSchema.pre >> Deleting file: ${eafPath} `);
-    winston.info(` $AudioAnnotationsSchema.pre >> Deleting file: ${jsonPath} `);
+    winston.info(` -------------------------------------- `); 
+    winston.info(` BORRANDO AUDIO ANOTACION DEL ARCHIVO LLAMADO: 
+     ${fileName} `);
+    winston.info(` DE LA RUTA: ${eafPath} `);
+    winston.info(` **AUDIO ANOTACION BORRADA CON EXITO** `);
+    winston.info(` -------------------------------------- `); 
+    //winston.info(` $AudioAnnotationsSchema.pre >> Deleting file: ${jsonPath} `);
     // try {  
     //   fs.unlink(path.join(eafPath, fileName), err => {
     //     if (err) {

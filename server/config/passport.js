@@ -22,9 +22,7 @@ export default function(passport){
                     {message : "Usuario incorrecto"} // Message
                 )
             }
-            console.log('--------------------------')
-            winston.info(`> CUENTA ${user.emailConfirmedAt?'ACTIVA':'INACTIVA'}`);
-            console.log('--------------------------')
+            
             
             // Verifies if the account is active
             if(!user.emailConfirmedAt){
@@ -38,9 +36,18 @@ export default function(passport){
             bcrypt.compare(password, user.password)
             .then((isMatch)=>{
                 if (isMatch) {
+            winston.info(`> Cuenta  ${user.emailConfirmedAt?'ACTIVA':'INACTIVA'}`);
+            winston.info('--------------------------')
+            winston.info(`> Usuario "${email}" Logeado `);
+            winston.info('--------------------------')
                     return done(null, user)
-                } else {
-                    winston.error(`Password Incorrecto: ${user}`);
+                } else { 
+
+                    let asteriscos=""
+ for(let i=0;i<password.length;i++)asteriscos+="*";
+ winston.info(`Usuario o contraseña incorrecta ` );
+    winston.info(`del usuario: ${email} con contraseña: ${asteriscos}` );
+                    
                     return done(
                         null, // error
                         false, // user

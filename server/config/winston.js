@@ -12,6 +12,7 @@ const colors = {
     info: 'green',
     http: 'magenta',
     debug: 'green',
+    
 };
 // Agregando el perfil a winston
 winston.addColors(colors);
@@ -63,6 +64,7 @@ const options = {
         maxFiles: 5,
         format: myFileFormat,
     },
+   
     console: {
         level: 'debug',
         handleExceptions: true,
@@ -74,9 +76,10 @@ const options = {
 const logger = winston.createLogger({
     transports: [
         new winston.transports.File(options.infoFile),
-        new winston.transports.File(options.warnFile),
         new winston.transports.File(options.errorFile),
+        new winston.transports.File(options.warnFile), 
         new winston.transports.Console(options.console),
+        
     ],
     exitOnError: false, //No finaliza en excepciones manejadas
 });

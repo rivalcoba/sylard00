@@ -22,7 +22,7 @@ var obj = {
 let url =path.join(__dirname,'..','public','eaf',nombreEaf) 
 //+console.log(url)
 winston.info(` ============================== `);
-winston.info(` Aqui lee el eaf "${+nombreEaf} `);
+winston.info(` Aqui lee el archivo eaf " `);
 let xml=""
 try {
      xml = fs.readFileSync(path.join(__dirname,'..','public','eaf',nombreEaf));
@@ -48,6 +48,7 @@ xml2js.parseString(xml, { mergeAttrs: true }, (err, result) => {
     // save JSON in a file 
    // fs.writeFileSync('../public/eaf/eaf.json', json);   
    fs.writeFileSync(path.join(__dirname,'..','public','eaf','tmp',nombreEaf+'.json'), json);  
-   console.log("Aqui graba "+nombreEaf+'eaf.json')
+   winston.info(` "Nombre Del Archivo eaf.json AGREGADO:" 
+    "${nombreEaf}" `);
 }); 
  } 

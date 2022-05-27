@@ -7,17 +7,17 @@ import winston from '@config/winston'
 let url =path.join(__dirname,'..','public','eaf',nombreEaf)
 //+console.log(url)
 winston.info(` ============================== `);  
-winston.info(` Aqui lee el eaf ${+nombreEaf} `);
+winston.info(` Leyendo Archivo eaf  `);
  try {
     fs.unlinkSync(path.join(__dirname,'..','public','eaf','eaf.json'))
     winston.info(` >> Se borro eaf.json. `); 
    } catch (error) {
-    winston.error(` >> No se borro eaf.json por que no existe. `);
+    //winston.error(` >> No se borro eaf.json por que no existe. `);
    } 
 try {
     fs.unlinkSync(path.join(__dirname, '..', 'public', 'eaf', 'tmp', 'Nuevoeaf.json'))
     
-    winston.info(` >> Se borro Nuevoeaf.json. `);   
+    winston.info(` >> Se borro Nuevo eaf.json. `);   
 } catch (error) {
     winston.error(`>>>>> NO se encontro Nuevoeaf.json para borrar`);
 }
