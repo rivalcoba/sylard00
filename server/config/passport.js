@@ -45,8 +45,10 @@ export default function(passport){
 
                     let asteriscos=""
  for(let i=0;i<password.length;i++)asteriscos+="*";
+ winston.info('-------------------------------------');
  winston.info(`Usuario o contraseña incorrecta ` );
     winston.info(`del usuario: ${email} con contraseña: ${asteriscos}` );
+    winston.info('-------------------------------------');
                     
                     return done(
                         null, // error
