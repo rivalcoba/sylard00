@@ -21,12 +21,12 @@
       show-select
      class="elevation-1"
     >
-      <template v-slot:item.name="{ item }">
+      <template v-slot:[`item.name`]="{ item }">
       <p><label for="">{{item.name}}</label></p>
       <p><label for="">{{item.email}}</label></p>
      
     </template>
-    <template v-slot:item.role="{ item }">
+    <template v-slot:[`item.role`]="{ item }">
       <v-radio-group
       v-model="item.role"
       column>
@@ -42,7 +42,7 @@
       ></v-radio>
       </v-radio-group>
     </template>
-     <template v-slot:item.actions="{ item }">
+     <template v-slot:[`item.actions`]="{ item }">
       <v-icon
         small
         class="icon-edit"
@@ -78,11 +78,11 @@ import axios from "axios";
             { text:'Usuario', value:'name', sortable:true},
           { text: 'Lenguajes', value: 'lenguajes_concat' },
           { text: 'Privilegios', value: 'role' },
-          //{ text: 'Vis-Privilegios-Col' , value: 'switch', sortable:false},
+          { text: 'Vis-Privilegios-Col' , value: 'switch', sortable:false},
           { text: 'Descripcion', value: 'about' },
           { text: 'Collecciones' , value: 'collections'},
            { text: 'Actions', value: 'actions', sortable: false },
-        //   { text: 'algosaurio', value: 'switch_toggle', sortable: false },
+        { text: 'algosaurio', value: 'switch_toggle', sortable: false },
         ],
         
       }
@@ -98,7 +98,7 @@ import axios from "axios";
             temparrjson=objson_arr[x];
            let arreglo_concat="";//borrar por cada iteracion
             for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
-                arreglo_concat =arreglo_concat +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
+                arreglo_concat =arreglo_concat +temparrjson.spokenLanguages[i]+" : "+ temparrjson.spokenLanguages[i] + ", ";
                 temparrjson.lenguajes_concat=arreglo_concat;
                 
             }
