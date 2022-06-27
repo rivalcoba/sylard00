@@ -37,12 +37,12 @@
       show-select
      class="elevation-1"
     >
-      <template v-slot:item.name="{ item }">
+      <template v-slot:[`item.name`]="{ item }">
       <p><label for="">{{item.name}}</label></p>
       <p><label for="">{{item.email}}</label></p>
      
     </template>
-    <template v-slot:item.switch="{ item }">
+    <template v-slot:[`item.switch`]="{ item }">
       <v-switch
       :key="item._id"
       color="secondary"
@@ -51,7 +51,7 @@
     ></v-switch>
     
     </template>
-     <template v-slot:item.actions="{ item }">
+     <template v-slot:[`item.actions`]="{ item }">
       <v-icon
         small
         class="icon-edit"
@@ -108,7 +108,7 @@ import axios from "axios";
         headers: [
             { text:'User', value:'name', sortable:true},
           { text: 'Lenguages', value: 'lenguajes_concat' },
-          //{ text: 'Privilegios', value: 'role' },
+          { text: 'Privilegios', value: 'role' },
           { text: 'Vis-kind of user-Col' , value: 'switch', sortable:false},
           { text: 'Description', value: 'about' },
           { text: 'Collections' , value: 'collections_concat'},
@@ -129,12 +129,7 @@ import axios from "axios";
            let arreglo_concat_lenguajes="";//borrar por cada iteracion
            let arreglo_concat_collections="";
             for(let i=0; i< temparrjson.spokenLanguages.length ; i++ ){
-              if(temparrjson.spokenLanguages[i].gid=="undefined" || temparrjson.spokenLanguages[i].gid==null || temparrjson.spokenLanguages[i].gid==""){
-                arreglo_concat_lenguajes =arreglo_concat_lenguajes +" : "+ temparrjson.spokenLanguages[i].name + ", ";
-              }
-              else{
-                arreglo_concat_lenguajes =arreglo_concat_lenguajes +temparrjson.spokenLanguages[i].gid+" : "+ temparrjson.spokenLanguages[i].name + ", ";
-              }
+                arreglo_concat_lenguajes =arreglo_concat_lenguajes +temparrjson.spokenLanguages[i];
                 temparrjson.lenguajes_concat=arreglo_concat_lenguajes;
                 jsonaumentado.push(temparrjson);
             }
