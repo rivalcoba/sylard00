@@ -98,7 +98,8 @@
 										
 										<table id="langTable" class="tabla_lenguas_agregadas">
 											<tr class="row_lenguas_agregadas" v-for="(langs, index) in colLanguages">
-												<td class="lengua_terminal_glottocode_agregar_coleccion">\{{ langs.language.gid }}</td>
+
+												<td class="lengua_terminal_glottocode_agregar_coleccion">\{{langs.language.gid}}</td>
 												
 												<td class="">\{{ langs.language.name }}</td>
 												
@@ -314,7 +315,7 @@
 	</div>
 </div>
 <!-- VUE  -->
-<script src="https://unpkg.com/vue" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 const getLangObj = function(stringVal){
