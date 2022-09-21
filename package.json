@@ -64,7 +64,7 @@
     "vue-data-tables": "^3.4.5",
     "vue-i18n": "^8.22.4",
     "vue-sweetalert2": "^4.1.1",
-    "vuetify": "^2.4.6",
+    "vuetify": "^2.6.10",
     "webpack": "^4.43.0",
     "webpack-dev-middleware": "^4.1.0",
     "webpack-dev-server": "^3.11.2",
