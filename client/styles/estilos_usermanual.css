@@ -1,0 +1,43 @@
+/*//////////////////////////////////USER MANUAL///////////////////////////////////////////////////*/
+#fila1_user_manual {
+  /* display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center; */
+}
+figure {
+  margin: 3rem 0;
+}
+figcaption {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 0.85rem;
+  line-height: 1.5rem;
+  color: var(--gris-texto-secundario);
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+figcaption strong {
+  color: var(--color-sec-principal);
+}
+img.imagen_para_estaticas {
+  width: 100%;
+}
+.ul_li_para_fijas a,
+.ul_para_fijas a,
+.ul_li_para_fijas_2nivel a {
+  font-size: 1rem;
+}
+
+.ul_li_para_fijas_2nivel {
+  list-style-position: inside;
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: var(--gris-texto-principal);
+  margin-bottom: 1rem;
+  margin-top: 0.25rem;
+  orphans: 2;
+  padding-left: 0;
+  text-indent: -1.5rem;
+}
