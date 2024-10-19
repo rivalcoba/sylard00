@@ -4,7 +4,7 @@
   "private": true,
   "engines": {
     "node": "18.20.4",
-    "npm": "8.5.0"
+    "npm": "10.7.0"
   },
   "scripts": {
     "build": "npm run clean && npm run b:s && npm run b:c",
