@@ -489,6 +489,7 @@ export default {
     },
     borrarCollection(collection_id) {
       var currentUrl = window.location.pathname;
+      console.log(currentUrl)
       const url = `${currentUrl}/api/delete/${collection_id}`;
       // /audioannotations/delete/{{_id}}?_method=DELETE
       console.log(url)

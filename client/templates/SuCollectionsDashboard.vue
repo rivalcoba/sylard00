@@ -492,6 +492,33 @@ export default {
         })
       }
     },
+    borrarCollection(collection_id) {
+      //var currentUrl = window.location.pathname;
+      const url = `/collections/api/delete/${collection_id}`;
+      // /audioannotations/delete/{{_id}}?_method=DELETE
+      console.log(url)
+      this.axios.delete(url)
+      // .then(res => {
+      //               if (res.data === 'ok')
+      //                   commit('DELETE_POST', audioannotation_id)
+      //           }).catch(err => {
+      //           console.log(err)
+      //       })
+      .then(
+        (response) => {
+          console.log("si se borro "+collection_id);
+           let index = this.notas_audioannotations.findIndex(item => item._id === collection_id)
+           console.log(index);
+            this.notas_audioannotations.splice(index, 1)
+          console.log(url);
+        },
+        (error) => {
+          console.log("no se borro " + "/collections/delete/" + collection_id);
+          console.log(url);
+          console.log(error);
+        }
+      );
+    },
     showCollect(title, text) {
       //Aqui se utiizan las funciones o estilos de SweetAlert
       this.$swal({
