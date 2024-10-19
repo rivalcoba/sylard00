@@ -89,3 +89,5 @@ package-lock.json
 ca-certificate.crt 
 
 #####
+### updater ###
+automaticUpdate.sh
