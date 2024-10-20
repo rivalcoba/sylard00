@@ -171,9 +171,18 @@ const enableColaborator = async(req, res) => {
 
 const logoutUser = (req, res) => {
     // Funcion para salirse
-    req.logout()
+    //req.logout()
+    req.logout((err) => {
+        if (err) {
+            console.log("error al cerrar sesión")
+            return next(err);
+        }
+        // Redirect to the home page or login page after logout
     req.flash('success_msg', 'Ha cerrado sesión correctamente');
     res.redirect('/auth/login')
+
+    });
+    
 }
 
 export default {
